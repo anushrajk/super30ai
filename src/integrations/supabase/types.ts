@@ -14,7 +14,148 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      audit_results: {
+        Row: {
+          accessibility_score: number | null
+          ai_visibility_score: number | null
+          best_practices_score: number | null
+          created_at: string
+          diagnostics: Json | null
+          id: string
+          lead_id: string | null
+          opportunities: Json | null
+          performance_score: number | null
+          seo_score: number | null
+          technical_issues: number | null
+        }
+        Insert: {
+          accessibility_score?: number | null
+          ai_visibility_score?: number | null
+          best_practices_score?: number | null
+          created_at?: string
+          diagnostics?: Json | null
+          id?: string
+          lead_id?: string | null
+          opportunities?: Json | null
+          performance_score?: number | null
+          seo_score?: number | null
+          technical_issues?: number | null
+        }
+        Update: {
+          accessibility_score?: number | null
+          ai_visibility_score?: number | null
+          best_practices_score?: number | null
+          created_at?: string
+          diagnostics?: Json | null
+          id?: string
+          lead_id?: string | null
+          opportunities?: Json | null
+          performance_score?: number | null
+          seo_score?: number | null
+          technical_issues?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_results_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      leads: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          id: string
+          monthly_revenue: string | null
+          phone: string | null
+          role: string | null
+          session_id: string | null
+          step: number
+          updated_at: string
+          website_url: string
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          id?: string
+          monthly_revenue?: string | null
+          phone?: string | null
+          role?: string | null
+          session_id?: string | null
+          step?: number
+          updated_at?: string
+          website_url: string
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          id?: string
+          monthly_revenue?: string | null
+          phone?: string | null
+          role?: string | null
+          session_id?: string | null
+          step?: number
+          updated_at?: string
+          website_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "leads_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      sessions: {
+        Row: {
+          browser: string | null
+          created_at: string
+          current_page_url: string | null
+          first_landed_at: string
+          first_page_url: string | null
+          id: string
+          ip_address: string | null
+          ip_city: string | null
+          ip_country: string | null
+          referrer: string | null
+          user_agent: string | null
+        }
+        Insert: {
+          browser?: string | null
+          created_at?: string
+          current_page_url?: string | null
+          first_landed_at?: string
+          first_page_url?: string | null
+          id?: string
+          ip_address?: string | null
+          ip_city?: string | null
+          ip_country?: string | null
+          referrer?: string | null
+          user_agent?: string | null
+        }
+        Update: {
+          browser?: string | null
+          created_at?: string
+          current_page_url?: string | null
+          first_landed_at?: string
+          first_page_url?: string | null
+          id?: string
+          ip_address?: string | null
+          ip_city?: string | null
+          ip_country?: string | null
+          referrer?: string | null
+          user_agent?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
