@@ -30,10 +30,16 @@ const steps = [
 
 export const ProcessSection = () => {
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-muted/30 relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+            How It Works
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Our Process
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -43,21 +49,21 @@ export const ProcessSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative group">
               {/* Connector Line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-16 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-orange-500 to-orange-300" />
+                <div className="hidden lg:block absolute top-20 left-[60%] w-[80%] h-1 bg-gradient-to-r from-orange-500 to-orange-300 rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
               )}
               
-              <Card className="bg-background border-border hover:shadow-xl transition-shadow relative z-10">
+              <Card className="bg-background/80 backdrop-blur-sm border-border/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 relative z-10 hover:-translate-y-2">
                 <CardContent className="p-6 text-center">
-                  <div className="text-5xl font-bold text-orange-500/20 mb-4">
+                  <div className="text-6xl font-bold bg-gradient-to-br from-orange-200 to-orange-400 bg-clip-text text-transparent mb-4 group-hover:from-orange-400 group-hover:to-orange-600 transition-all duration-300">
                     {step.number}
                   </div>
-                  <div className="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
                     <step.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">
+                  <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-orange-600 transition-colors">
                     {step.title}
                   </h3>
                   <p className="text-muted-foreground text-sm">
