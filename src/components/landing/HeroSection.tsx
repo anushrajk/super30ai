@@ -1,76 +1,78 @@
-import { Badge } from "@/components/ui/badge";
 import { LeadCaptureForm } from "./LeadCaptureForm";
+import { Check, Users, Globe, Bot, Handshake } from "lucide-react";
 
 interface HeroSectionProps {
-  onSubmit: (data: { website_url: string; email: string }) => void;
+  onSubmit: (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => void;
   loading?: boolean;
 }
 
+const trustSignals = [
+  { icon: Users, text: "Built for Founders & CXOs" },
+  { icon: Globe, text: "Bangalore-based & Global Playbooks" },
+  { icon: Bot, text: "AI + Human Expert Model" },
+  { icon: Handshake, text: "No long-term lock-ins" },
+];
+
+const stats = [
+  { value: "300%+", label: "ROI Avg." },
+  { value: "50+", label: "AI SEO Audits" },
+  { value: "Enterprise", label: "Security" },
+];
+
 export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
   return (
-    <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-orange-500/10 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent" />
-      
-      <div className="container mx-auto px-4 py-16 lg:py-24">
+    <section className="relative min-h-screen bg-background overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/50 via-background to-background" />
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-orange-400 rounded-full blur-3xl" />
+      </div>
+
+      <div className="container relative mx-auto px-4 py-16 lg:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
-          <div className="text-center lg:text-left">
-            <Badge className="mb-6 bg-orange-500/10 text-orange-400 border-orange-500/20 hover:bg-orange-500/20">
-              🚀 AI-Powered SEO for 2025
-            </Badge>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              When AI Decides Who Ranks,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
-                We Decide Who Wins.
-              </span>
-            </h1>
-            
-            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-xl mx-auto lg:mx-0">
-              Future-proof your digital presence with AI-first SEO strategies. Get found in ChatGPT, Google AI Overviews, and next-gen search engines.
-            </p>
-
+          <div className="space-y-8">
             {/* Trust Signals */}
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8">
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span className="w-2 h-2 bg-green-500 rounded-full" />
-                Built for Founders
-              </div>
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span className="w-2 h-2 bg-green-500 rounded-full" />
-                Bangalore-based
-              </div>
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span className="w-2 h-2 bg-green-500 rounded-full" />
-                AI + Human Model
-              </div>
-              <div className="flex items-center gap-2 text-slate-400 text-sm">
-                <span className="w-2 h-2 bg-green-500 rounded-full" />
-                No Lock-ins
-              </div>
+            <div className="flex flex-wrap gap-3">
+              {trustSignals.map((signal, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center gap-2 bg-orange-50 border border-orange-100 rounded-full px-3 py-1.5 text-sm text-foreground"
+                >
+                  <signal.icon className="w-4 h-4 text-orange-500" />
+                  <span>{signal.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Headline */}
+            <div className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
+                When AI Decides Who Ranks,{" "}
+                <span className="text-orange-500">We Decide Who Wins.</span>
+              </h1>
+              <p className="text-lg md:text-xl text-muted-foreground max-w-xl">
+                We help founders dominate Google, AI Overviews, and LLM answers — with predictable SEO performance, not vanity rankings.
+              </p>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0">
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold text-orange-500">300%+</div>
-                <div className="text-sm text-slate-400">Avg. ROI</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold text-orange-500">50+</div>
-                <div className="text-sm text-slate-400">AI Audits Done</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-3xl font-bold text-orange-500">100%</div>
-                <div className="text-sm text-slate-400">Enterprise Security</div>
-              </div>
+            <div className="flex flex-wrap gap-6 pt-4">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <div className="w-5 h-5 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Check className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="font-semibold text-foreground">{stat.value}</span>
+                  <span className="text-muted-foreground">{stat.label}</span>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Right Form */}
-          <div className="w-full max-w-md mx-auto lg:mx-0 lg:ml-auto">
+          {/* Right - Form */}
+          <div className="lg:pl-8">
             <LeadCaptureForm onSubmit={onSubmit} loading={loading} />
           </div>
         </div>

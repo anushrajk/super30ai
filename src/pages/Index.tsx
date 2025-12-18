@@ -19,11 +19,13 @@ const Index = () => {
   const { session } = useSession();
   const { createLead, sendLeadEmail, loading } = useLead();
 
-  const handleFormSubmit = async (data: { website_url: string; email: string }) => {
+  const handleFormSubmit = async (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => {
     try {
       const leadData = {
         website_url: data.website_url,
         email: data.email,
+        role: data.role,
+        monthly_revenue: data.monthly_revenue,
         step: 1
       };
 

@@ -1,98 +1,122 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { 
   Search, 
-  MessageSquare, 
-  Network, 
-  LineChart, 
+  Target, 
+  BarChart3, 
   FileText, 
-  Settings,
+  Shield, 
   Zap,
-  Link2
+  ArrowRight,
+  Quote,
+  Database,
+  TrendingUp,
+  Layers,
+  Code,
+  LineChart,
+  Users,
+  Link as LinkIcon,
+  Award
 } from "lucide-react";
 
-const services = [
-  {
-    icon: Search,
-    title: "AI Search & Intent Mapping",
-    description: "Understand how AI interprets search queries and optimize your content to match user intent at every stage.",
-    color: "bg-blue-500"
-  },
-  {
-    icon: MessageSquare,
-    title: "AI Prompt & Generative Search Optimization",
-    description: "Get your brand recommended by ChatGPT, Perplexity, and other AI assistants for relevant queries.",
-    color: "bg-purple-500"
-  },
-  {
-    icon: Network,
-    title: "Entity & Knowledge Graph SEO",
-    description: "Build your brand's presence in Google's Knowledge Graph and establish topical authority.",
-    color: "bg-green-500"
-  },
-  {
-    icon: LineChart,
-    title: "Predictive & Data-Driven SEO",
-    description: "Use AI to predict algorithm changes and adapt your strategy before competitors.",
-    color: "bg-orange-500"
-  },
-  {
-    icon: FileText,
-    title: "AI Content Framework",
-    description: "Create content that AI understands, values, and recommends to users.",
-    color: "bg-pink-500"
-  },
-  {
-    icon: Settings,
-    title: "Technical AI SEO",
-    description: "Optimize your site's technical foundation for AI crawlers and understanding.",
-    color: "bg-cyan-500"
-  },
-  {
-    icon: Zap,
-    title: "AI SEO + CRO",
-    description: "Convert AI-driven traffic into customers with optimized user experiences.",
-    color: "bg-yellow-500"
-  },
-  {
-    icon: Link2,
-    title: "AI Link & Brand Signal Optimization",
-    description: "Build authority signals that AI search engines trust and value.",
-    color: "bg-indigo-500"
-  }
+const coreServices = [
+  { icon: Search, title: "AI Search Optimization", description: "Optimize for AI-powered search results" },
+  { icon: Target, title: "Intent Mapping", description: "Map user intent to AI understanding" },
+  { icon: BarChart3, title: "Predictive Analytics", description: "Data-driven SEO forecasting" },
+  { icon: FileText, title: "AI Content Strategy", description: "Content that AI systems cite" },
+  { icon: Shield, title: "Authority Building", description: "Establish AI trust signals" },
+  { icon: Zap, title: "Technical AI SEO", description: "Technical foundation for AI" },
 ];
 
+const technicalBadges = ["Schema Markup", "Structured Data", "Technical Audits", "Core Web Vitals", "Crawl Optimization", "Security & Trust"];
+
 export const ServicesSection = () => {
+  const scrollToForm = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
-    <section className="py-20 bg-slate-900">
+    <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Our AI SEO Services
-          </h2>
-          <p className="text-lg text-slate-400">
-            Comprehensive solutions to dominate AI-powered search
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Our AI SEO Services</h2>
+          <p className="text-lg text-muted-foreground">Comprehensive solutions to dominate AI search</p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="bg-slate-800/50 border-slate-700 hover:border-orange-500/50 transition-all group hover:-translate-y-1"
-            >
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20">
+          {coreServices.map((service, index) => (
+            <Card key={index} className="bg-background border-border hover:shadow-lg transition-shadow group">
               <CardContent className="p-6">
-                <div className={`w-12 h-12 ${service.color} rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                  <service.icon className="w-6 h-6 text-white" />
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors">
+                  <service.icon className="w-6 h-6 text-orange-500 group-hover:text-white transition-colors" />
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">
-                  {service.title}
-                </h3>
-                <p className="text-slate-400 text-sm">
-                  {service.description}
-                </p>
+                <h3 className="text-lg font-semibold text-foreground mb-2">{service.title}</h3>
+                <p className="text-muted-foreground text-sm">{service.description}</p>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
+          <div>
+            <h3 className="text-2xl font-bold text-foreground mb-4">AI Search & Intent Mapping</h3>
+            <p className="text-muted-foreground mb-6">Understand how AI systems interpret search queries and map your content to user intent.</p>
+            <ul className="space-y-3 mb-6">
+              {["AI query analysis and intent classification", "Semantic search optimization", "User journey mapping for AI platforms"].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-foreground"><div className="w-2 h-2 bg-orange-500 rounded-full" />{item}</li>
+              ))}
+            </ul>
+            <Button onClick={scrollToForm} className="bg-orange-500 hover:bg-orange-600 text-white">Map My AI Visibility<ArrowRight className="w-4 h-4 ml-2" /></Button>
+          </div>
+          <div className="bg-background border border-border rounded-xl p-8">
+            <div className="flex items-center justify-center gap-4">
+              {[Search, Target, Users].map((Icon, i) => (
+                <><div key={i} className={`w-20 h-20 ${i === 2 ? 'bg-orange-500' : 'bg-orange-100'} rounded-xl flex items-center justify-center`}>
+                  <Icon className={`w-10 h-10 ${i === 2 ? 'text-white' : 'text-orange-500'}`} />
+                </div>{i < 2 && <ArrowRight className="w-6 h-6 text-orange-500" />}</>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="bg-background border border-border rounded-xl p-8 mb-20">
+          <h3 className="text-2xl font-bold text-foreground mb-4 text-center">AI Prompt & Generative Search Optimization</h3>
+          <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">Optimize your content to appear in AI-generated answers.</p>
+          <Card className="bg-orange-50 border-orange-200 max-w-2xl mx-auto">
+            <CardContent className="p-6">
+              <Quote className="w-8 h-8 text-orange-500 mb-4" />
+              <p className="text-foreground italic">"The future of search isn't just about ranking — it's about being the answer AI systems trust and recommend."</p>
+              <p className="text-orange-500 font-medium mt-4">— DA360 AI SEO Philosophy</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="bg-background border border-border rounded-xl p-8 mb-20">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-4">Technical AI SEO</h3>
+            <p className="text-muted-foreground">The foundation that makes AI optimization possible</p>
+          </div>
+          <div className="flex flex-wrap justify-center gap-3">
+            {technicalBadges.map((badge, index) => (
+              <span key={index} className="px-4 py-2 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">{badge}</span>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-background border border-border rounded-xl p-8">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-4">AI Link & Brand Signal Optimization</h3>
+            <p className="text-muted-foreground">Build the authority signals that matter to AI systems</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-6">
+            {[{ v: "85/100", l: "Domain Authority" }, { v: "78/100", l: "AI Trust Score" }, { v: "92/100", l: "Citation Index", badge: "+23% this quarter" }].map((m, i) => (
+              <Card key={i} className="bg-muted/30 border-border text-center">
+                <CardContent className="p-6">
+                  <div className="text-3xl font-bold text-orange-500 mb-2">{m.v}</div>
+                  <p className="text-sm text-muted-foreground">{m.l}</p>
+                  {m.badge && <span className="inline-block mt-2 px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">{m.badge}</span>}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
