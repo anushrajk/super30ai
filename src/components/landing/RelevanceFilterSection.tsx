@@ -57,10 +57,10 @@ export const RelevanceFilterSection = () => {
                     className="flex items-start gap-3 opacity-0 animate-fade-in"
                     style={{ animationDelay: `${index * 100}ms`, animationFillMode: 'forwards' }}
                   >
-                    <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-500 transition-colors duration-300">
-                      <Check className="w-3 h-3 text-green-600 group-hover:text-white transition-colors duration-300" />
+                    <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-3 h-3 text-white" />
                     </div>
-                    <span className="text-foreground">{item}</span>
+                    <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -83,10 +83,10 @@ export const RelevanceFilterSection = () => {
                     className="flex items-start gap-3 opacity-0 animate-fade-in"
                     style={{ animationDelay: `${index * 100 + 200}ms`, animationFillMode: 'forwards' }}
                   >
-                    <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-red-500 transition-colors duration-300">
-                      <X className="w-3 h-3 text-red-600 group-hover:text-white transition-colors duration-300" />
+                    <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <X className="w-3 h-3 text-white" />
                     </div>
-                    <span className="text-foreground">{item}</span>
+                    <span className="text-slate-700">{item}</span>
                   </li>
                 ))}
               </ul>
