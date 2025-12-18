@@ -15,6 +15,7 @@ import { FinalCTASection } from "@/components/landing/FinalCTASection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Footer } from "@/components/landing/Footer";
+import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet";
 import { toast } from "sonner";
 
@@ -77,6 +78,9 @@ const Index = () => {
         <BlogSection />
         <Footer />
       </main>
+      
+      {/* Mobile sticky CTA */}
+      <StickyCTA onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
     </>
   );
 };
