@@ -8,8 +8,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { 
   Loader2, 
   CheckCircle, 
@@ -53,11 +51,7 @@ const Audit = () => {
   const [analyzing, setAnalyzing] = useState(true);
   const [currentStep, setCurrentStep] = useState(0);
   const [auditResults, setAuditResults] = useState<AuditResults | null>(null);
-  const [showUnlockForm, setShowUnlockForm] = useState(false);
-  const [unlockFormData, setUnlockFormData] = useState({
-    role: "",
-    monthly_revenue: ""
-  });
+const [isUnlocking, setIsUnlocking] = useState(false);
 
   useEffect(() => {
     updateCurrentPage();
@@ -125,28 +119,20 @@ const Audit = () => {
     }
   };
 
-  const handleUnlockSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
+  const handleUnlockClick = async () => {
     const leadId = location.state?.leadId || localStorage.getItem('seo_lead_id');
     if (!leadId) return;
 
+    setIsUnlocking(true);
     try {
-      await updateLead(leadId, {
-        ...unlockFormData,
-        step: 2
-      });
+      await updateLead(leadId, { step: 2 });
 
-      // Send email with updated info
-      if (session) {
+      // Send email notification
+      if (session && lead) {
         await sendLeadEmail(
-          { 
-            ...lead!, 
-            ...unlockFormData,
-            step: 2 
-          },
+          { ...lead, step: 2 },
           session,
-          "Step 2 - Unlock Full Report"
+          "Step 2 - Viewed Audit Results"
         );
       }
 
@@ -154,6 +140,7 @@ const Audit = () => {
       navigate("/booking", { state: { leadId } });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
+      setIsUnlocking(false);
     }
   };
 
@@ -389,88 +376,34 @@ const Audit = () => {
               </div>
 
               {/* Unlock CTA */}
-              {!showUnlockForm ? (
-                <Card className="bg-gradient-to-br from-orange-500 to-orange-600">
-                  <CardContent className="p-8 text-center">
-                    <Zap className="w-12 h-12 text-white mx-auto mb-4" />
-                    <h2 className="text-2xl font-bold text-white mb-2">
-                      Unlock Full Fixes & Revenue Forecast
-                    </h2>
-                    <p className="text-orange-100 mb-6 max-w-lg mx-auto">
-                      Get personalized recommendations, step-by-step fixes, and a 90-day growth roadmap tailored to your business.
-                    </p>
-                    <Button 
-                      onClick={() => setShowUnlockForm(true)}
-                      className="bg-white text-orange-500 hover:bg-orange-50 px-8 py-6 text-lg"
-                    >
-                      Unlock Full Report
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              ) : (
-                <Card>
-                  <CardContent className="p-8">
-                    <h2 className="text-2xl font-bold text-slate-900 mb-6 text-center">
-                      Complete Your Profile to Unlock
-                    </h2>
-                    <form onSubmit={handleUnlockSubmit} className="max-w-md mx-auto space-y-4">
-                      <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">
-                          Your Role
-                        </label>
-                        <Select 
-                          value={unlockFormData.role}
-                          onValueChange={(value) => setUnlockFormData(prev => ({ ...prev, role: value }))}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select your role" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="founder">Founder/CEO</SelectItem>
-                            <SelectItem value="marketing">Marketing Lead</SelectItem>
-                            <SelectItem value="growth">Growth Manager</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">
-                          Monthly Revenue Range
-                        </label>
-                        <Select 
-                          value={unlockFormData.monthly_revenue}
-                          onValueChange={(value) => setUnlockFormData(prev => ({ ...prev, monthly_revenue: value }))}
-                        >
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select revenue range" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="0-10k">$0 - $10K</SelectItem>
-                            <SelectItem value="10k-50k">$10K - $50K</SelectItem>
-                            <SelectItem value="50k-100k">$50K - $100K</SelectItem>
-                            <SelectItem value="100k+">$100K+</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <Button 
-                        type="submit" 
-                        disabled={leadLoading || !unlockFormData.role || !unlockFormData.monthly_revenue}
-                        className="w-full bg-orange-500 hover:bg-orange-600 py-6 text-lg"
-                      >
-                        {leadLoading ? (
-                          <Loader2 className="w-5 h-5 animate-spin" />
-                        ) : (
-                          <>
-                            Book Strategy Call & Unlock Report
-                            <ArrowRight className="w-5 h-5 ml-2" />
-                          </>
-                        )}
-                      </Button>
-                    </form>
-                  </CardContent>
-                </Card>
-              )}
+              <Card className="bg-gradient-to-br from-orange-500 to-orange-600">
+                <CardContent className="p-8 text-center">
+                  <Zap className="w-12 h-12 text-white mx-auto mb-4" />
+                  <h2 className="text-2xl font-bold text-white mb-2">
+                    Unlock Full Fixes & Revenue Forecast
+                  </h2>
+                  <p className="text-orange-100 mb-6 max-w-lg mx-auto">
+                    Get personalized recommendations, step-by-step fixes, and a 90-day growth roadmap tailored to your business.
+                  </p>
+                  <Button 
+                    onClick={handleUnlockClick}
+                    disabled={isUnlocking}
+                    className="bg-white text-orange-500 hover:bg-orange-50 px-8 py-6 text-lg"
+                  >
+                    {isUnlocking ? (
+                      <>
+                        <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                        Processing...
+                      </>
+                    ) : (
+                      <>
+                        Book Free Strategy Call
+                        <ArrowRight className="w-5 h-5 ml-2" />
+                      </>
+                    )}
+                  </Button>
+                </CardContent>
+              </Card>
             </div>
           )}
         </div>

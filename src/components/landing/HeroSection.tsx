@@ -1,5 +1,5 @@
 import { LeadCaptureForm } from "./LeadCaptureForm";
-import { Check, Users, Globe, Bot, Handshake } from "lucide-react";
+import { Users, Globe, Bot, Handshake } from "lucide-react";
 
 interface HeroSectionProps {
   onSubmit: (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => void;
@@ -11,12 +11,6 @@ const trustSignals = [
   { icon: Globe, text: "Bangalore-based & Global Playbooks" },
   { icon: Bot, text: "AI + Human Expert Model" },
   { icon: Handshake, text: "No long-term lock-ins" },
-];
-
-const stats = [
-  { value: "300%+", label: "ROI Avg." },
-  { value: "50+", label: "AI SEO Audits" },
-  { value: "Enterprise", label: "Security" },
 ];
 
 export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
@@ -57,36 +51,17 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
               </p>
             </div>
 
-            {/* Trust Signals */}
-            <div className="flex flex-wrap gap-2">
+            {/* Trust Signals - Stacked Vertically */}
+            <div className="flex flex-col gap-3">
               {trustSignals.map((signal, index) => (
                 <div 
                   key={index}
-                  className="flex items-center gap-2 bg-background/60 backdrop-blur-md border border-orange-200/50 rounded-full px-3 py-1.5 text-sm text-foreground shadow-lg shadow-orange-500/5 hover:shadow-orange-500/20 hover:border-orange-400/70 hover:scale-105 transition-all duration-300 cursor-default"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="flex items-center gap-3"
                 >
-                  <div className="w-5 h-5 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
-                    <signal.icon className="w-3 h-3 text-white" />
+                  <div className="w-6 h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <signal.icon className="w-3.5 h-3.5 text-white" />
                   </div>
-                  <span className="font-medium text-xs md:text-sm">{signal.text}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Stats */}
-            <div className="flex flex-wrap gap-4">
-              {stats.map((stat, index) => (
-                <div 
-                  key={index} 
-                  className="flex items-center gap-3 bg-background/60 backdrop-blur-sm border border-border/50 rounded-xl px-4 py-3 shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-                >
-                  <div className="w-8 h-8 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/30">
-                    <Check className="w-4 h-4 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-foreground text-lg">{stat.value}</span>
-                    <span className="text-muted-foreground ml-1 text-sm">{stat.label}</span>
-                  </div>
+                  <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
                 </div>
               ))}
             </div>
