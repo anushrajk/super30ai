@@ -1,22 +1,67 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Eye, MessageSquare, Users } from "lucide-react";
+import { Check, Eye, MessageSquare, Users, TrendingUp, BarChart3, Target } from "lucide-react";
 
 const features = [
-  "Real-time AI visibility tracking",
-  "ChatGPT & Perplexity monitoring",
-  "Competitor AI presence analysis",
-  "Citation & mention tracking",
-  "ROI & revenue attribution",
-  "Custom reporting dashboards"
-];
-
-const metrics = [
-  { label: "AI Visibility", value: "78%", icon: Eye, color: "from-orange-500 to-orange-600" },
-  { label: "Citations", value: "124", icon: MessageSquare, color: "from-blue-500 to-blue-600" },
-  { label: "AI Leads", value: "89", icon: Users, color: "from-green-500 to-green-600" }
+  { 
+    id: "visibility",
+    label: "Real-time AI visibility tracking",
+    metrics: [
+      { label: "AI Visibility", value: "78%", icon: Eye, color: "from-orange-500 to-orange-600" },
+      { label: "Impressions", value: "12.4K", icon: TrendingUp, color: "from-blue-500 to-blue-600" },
+      { label: "Growth", value: "+24%", icon: BarChart3, color: "from-green-500 to-green-600" }
+    ]
+  },
+  { 
+    id: "chatgpt",
+    label: "ChatGPT & Perplexity monitoring",
+    metrics: [
+      { label: "ChatGPT Mentions", value: "89", icon: MessageSquare, color: "from-purple-500 to-purple-600" },
+      { label: "Perplexity Cites", value: "56", icon: Target, color: "from-pink-500 to-pink-600" },
+      { label: "Claude Refs", value: "34", icon: Eye, color: "from-indigo-500 to-indigo-600" }
+    ]
+  },
+  { 
+    id: "competitor",
+    label: "Competitor AI presence analysis",
+    metrics: [
+      { label: "Your Rank", value: "#2", icon: TrendingUp, color: "from-orange-500 to-orange-600" },
+      { label: "Share of Voice", value: "34%", icon: BarChart3, color: "from-blue-500 to-blue-600" },
+      { label: "Gap Score", value: "12pts", icon: Target, color: "from-red-500 to-red-600" }
+    ]
+  },
+  { 
+    id: "citations",
+    label: "Citation & mention tracking",
+    metrics: [
+      { label: "Citations", value: "124", icon: MessageSquare, color: "from-green-500 to-green-600" },
+      { label: "Brand Mentions", value: "287", icon: Users, color: "from-orange-500 to-orange-600" },
+      { label: "Backlinks", value: "1.2K", icon: TrendingUp, color: "from-blue-500 to-blue-600" }
+    ]
+  },
+  { 
+    id: "roi",
+    label: "ROI & revenue attribution",
+    metrics: [
+      { label: "AI Revenue", value: "$48K", icon: TrendingUp, color: "from-green-500 to-green-600" },
+      { label: "ROI", value: "340%", icon: BarChart3, color: "from-orange-500 to-orange-600" },
+      { label: "Leads", value: "89", icon: Users, color: "from-blue-500 to-blue-600" }
+    ]
+  },
+  { 
+    id: "custom",
+    label: "Custom reporting dashboards",
+    metrics: [
+      { label: "Reports", value: "12", icon: BarChart3, color: "from-purple-500 to-purple-600" },
+      { label: "Widgets", value: "48", icon: Eye, color: "from-pink-500 to-pink-600" },
+      { label: "Exports", value: "156", icon: Target, color: "from-indigo-500 to-indigo-600" }
+    ]
+  }
 ];
 
 export const DashboardPreview = () => {
+  const [activeFeature, setActiveFeature] = useState(features[0]);
+
   return (
     <section className="py-24 bg-background relative overflow-hidden">
       {/* Subtle background */}
@@ -36,17 +81,28 @@ export const DashboardPreview = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          <div className="space-y-4">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="flex items-center gap-4 p-3 rounded-xl hover:bg-orange-50/50 transition-colors duration-300 group"
+          <div className="space-y-2">
+            {features.map((feature) => (
+              <button
+                key={feature.id}
+                onClick={() => setActiveFeature(feature)}
+                className={`w-full flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group text-left ${
+                  activeFeature.id === feature.id
+                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30'
+                    : 'hover:bg-orange-50/50'
+                }`}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform duration-300">
-                  <Check className="w-4 h-4 text-white" />
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                  activeFeature.id === feature.id
+                    ? 'bg-white/20'
+                    : 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30 group-hover:scale-110'
+                }`}>
+                  <Check className={`w-4 h-4 ${activeFeature.id === feature.id ? 'text-white' : 'text-white'}`} />
                 </div>
-                <span className="text-foreground font-medium">{feature}</span>
-              </div>
+                <span className={`font-medium transition-colors ${
+                  activeFeature.id === feature.id ? 'text-white' : 'text-foreground'
+                }`}>{feature.label}</span>
+              </button>
             ))}
           </div>
 
@@ -66,11 +122,13 @@ export const DashboardPreview = () => {
             </div>
 
             <CardContent className="p-6">
+              <div className="text-sm text-muted-foreground mb-4 font-medium">{activeFeature.label}</div>
               <div className="grid grid-cols-3 gap-4">
-                {metrics.map((metric, index) => (
+                {activeFeature.metrics.map((metric, index) => (
                   <div 
                     key={index} 
-                    className="text-center p-4 bg-muted/30 rounded-xl border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
+                    className="text-center p-4 bg-muted/30 rounded-xl border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group animate-fade-in"
+                    style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className={`w-10 h-10 bg-gradient-to-br ${metric.color} rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <metric.icon className="w-5 h-5 text-white" />

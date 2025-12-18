@@ -86,7 +86,7 @@ export const RelevanceFilterSection = () => {
                     <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-red-500 transition-colors duration-300">
                       <X className="w-3 h-3 text-red-600 group-hover:text-white transition-colors duration-300" />
                     </div>
-                    <span className="text-muted-foreground">{item}</span>
+                    <span className="text-foreground">{item}</span>
                   </li>
                 ))}
               </ul>

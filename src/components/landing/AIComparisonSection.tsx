@@ -35,17 +35,17 @@ export const AIComparisonSection = () => {
         </div>
 
         {/* 50/50 Layout: Comparison Table + AI Search Journey */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
+        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
           {/* Left: Comparison Table */}
-          <Card className="border-border/50 overflow-hidden shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500">
-            <CardContent className="p-0">
-              <div className="grid md:grid-cols-2">
+          <Card className="border-border/50 overflow-hidden shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500 h-full">
+            <CardContent className="p-0 h-full flex flex-col">
+              <div className="grid md:grid-cols-2 flex-1">
                 {/* Traditional SEO Column */}
-                <div className="p-6 bg-muted/50 backdrop-blur-sm border-b md:border-b-0 md:border-r border-border/50">
+                <div className="p-6 bg-muted/50 backdrop-blur-sm border-b md:border-b-0 md:border-r border-border/50 flex flex-col">
                   <h3 className="text-lg font-bold text-muted-foreground mb-4 text-center">
                     Traditional SEO
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-3 flex-1">
                     {comparisons.map((item, index) => (
                       <div 
                         key={index} 
@@ -61,11 +61,11 @@ export const AIComparisonSection = () => {
                 </div>
 
                 {/* AI SEO Column */}
-                <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100/50">
+                <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 flex flex-col">
                   <h3 className="text-lg font-bold text-orange-600 mb-4 text-center">
                     The Super 30 AI SEO
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-3 flex-1">
                     {comparisons.map((item, index) => (
                       <div 
                         key={index} 
@@ -84,12 +84,12 @@ export const AIComparisonSection = () => {
           </Card>
 
           {/* Right: AI Search Journey */}
-          <Card className="border-border/50 shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500">
+          <Card className="border-border/50 shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500 h-full">
             <CardContent className="p-6 h-full flex flex-col justify-center">
               <h3 className="text-lg font-bold text-foreground mb-6 text-center">
                 The AI Search Journey
               </h3>
-              <div className="flex flex-wrap items-center justify-center gap-3">
+              <div className="flex flex-wrap items-center justify-center gap-3 flex-1">
                 {journeySteps.map((step, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="flex flex-col items-center gap-2 group">

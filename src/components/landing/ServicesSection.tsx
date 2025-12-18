@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { 
@@ -12,7 +13,17 @@ import {
   Users,
   Globe,
   MessageSquare,
-  TrendingUp
+  TrendingUp,
+  Code,
+  Database,
+  Lock,
+  Gauge,
+  Bug,
+  FileCheck,
+  Sparkles,
+  Bot,
+  BrainCircuit,
+  LineChart
 } from "lucide-react";
 
 const coreServices = [
@@ -33,10 +44,69 @@ const intentMappingIcons = [
   { Icon: Users, label: "Lead Conversion" },
 ];
 
-const technicalBadges = ["Schema Markup", "Structured Data", "Technical Audits", "Core Web Vitals", "Crawl Optimization", "Security & Trust"];
+const aiPromptFeatures = [
+  { icon: Sparkles, title: "Optimize for AI", description: "Structure content for LLM consumption" },
+  { icon: Bot, title: "LLM Training Signals", description: "Build authority AI systems recognize" },
+  { icon: BrainCircuit, title: "Citation Building", description: "Get cited as trusted source" },
+  { icon: LineChart, title: "Monitor & Track", description: "Real-time AI visibility metrics" },
+];
+
+const technicalTabs = [
+  { 
+    id: "schema", 
+    label: "Schema Markup", 
+    icon: Code,
+    title: "Structured Data & Schema",
+    description: "Implement rich schema markup that helps AI systems understand your content structure, entities, and relationships.",
+    benefits: ["JSON-LD implementation", "Entity relationships", "Rich snippets optimization", "Knowledge graph inclusion"]
+  },
+  { 
+    id: "data", 
+    label: "Structured Data", 
+    icon: Database,
+    title: "Data Architecture",
+    description: "Build a semantic data layer that AI crawlers can easily parse and understand for better content comprehension.",
+    benefits: ["Semantic HTML structure", "Content hierarchies", "Internal linking optimization", "Topic clustering"]
+  },
+  { 
+    id: "audits", 
+    label: "Technical Audits", 
+    icon: Bug,
+    title: "Comprehensive Technical Audits",
+    description: "Deep-dive technical analysis to identify and fix issues preventing AI systems from properly indexing your content.",
+    benefits: ["Crawl budget optimization", "Index coverage analysis", "Canonicalization review", "Mobile-first audit"]
+  },
+  { 
+    id: "vitals", 
+    label: "Core Web Vitals", 
+    icon: Gauge,
+    title: "Performance Optimization",
+    description: "Optimize Core Web Vitals to meet Google's performance standards that influence AI-powered rankings.",
+    benefits: ["LCP optimization", "FID/INP improvement", "CLS reduction", "Page speed enhancement"]
+  },
+  { 
+    id: "crawl", 
+    label: "Crawl Optimization", 
+    icon: FileCheck,
+    title: "Crawl Efficiency",
+    description: "Ensure AI bots can efficiently discover and process your most important content.",
+    benefits: ["XML sitemap optimization", "Robots.txt configuration", "Log file analysis", "Crawl prioritization"]
+  },
+  { 
+    id: "security", 
+    label: "Security & Trust", 
+    icon: Lock,
+    title: "Security & Trust Signals",
+    description: "Build the security foundation that establishes trust with both users and AI systems.",
+    benefits: ["HTTPS implementation", "Security headers", "Trust badge integration", "Privacy compliance"]
+  },
+];
 
 export const ServicesSection = () => {
+  const [activeTab, setActiveTab] = useState("schema");
   const scrollToForm = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const activeTabData = technicalTabs.find(tab => tab.id === activeTab);
 
   return (
     <section className="py-24 bg-muted/30 relative overflow-hidden">
@@ -121,26 +191,43 @@ export const ServicesSection = () => {
           </div>
         </div>
 
-        {/* Quote Section */}
+        {/* Enhanced AI Prompt & Generative Search Optimization */}
         <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 mb-20 shadow-xl">
           <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 text-center">
             AI Prompt & Generative Search Optimization
           </h3>
           <p className="text-muted-foreground text-center mb-8 max-w-2xl mx-auto">
-            Optimize your content to appear in AI-generated answers.
+            Optimize your content to appear in AI-generated answers and become the trusted source LLMs cite.
           </p>
+          
+          {/* Feature Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {aiPromptFeatures.map((feature, index) => (
+              <Card key={index} className="bg-muted/30 border-border/50 hover:border-orange-500/50 hover:shadow-lg transition-all duration-300 group">
+                <CardContent className="p-5 text-center">
+                  <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center mx-auto mb-3 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
+                    <feature.icon className="w-6 h-6 text-orange-500 group-hover:text-white transition-colors" />
+                  </div>
+                  <h4 className="font-semibold text-foreground mb-1">{feature.title}</h4>
+                  <p className="text-xs text-muted-foreground">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Quote Callout */}
           <Card className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200/50 max-w-2xl mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardContent className="p-8">
-              <Quote className="w-10 h-10 text-orange-500 mb-4" />
-              <p className="text-foreground italic text-lg leading-relaxed">
+            <CardContent className="p-6">
+              <Quote className="w-8 h-8 text-orange-500 mb-3" />
+              <p className="text-foreground italic text-base leading-relaxed">
                 "The future of search isn't just about ranking — it's about being the answer AI systems trust and recommend."
               </p>
-              <p className="text-orange-600 font-semibold mt-4">— The Super 30 AI SEO Philosophy</p>
+              <p className="text-orange-600 font-semibold mt-3 text-sm">— The Super 30 AI SEO Philosophy</p>
             </CardContent>
           </Card>
         </div>
 
-        {/* Technical AI SEO */}
+        {/* Interactive Technical AI SEO Tabs */}
         <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 mb-20 shadow-xl">
           <div className="text-center mb-8">
             <span className="inline-block px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-medium mb-3">
@@ -149,16 +236,52 @@ export const ServicesSection = () => {
             <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">Technical AI SEO</h3>
             <p className="text-muted-foreground">The foundation that makes AI optimization possible</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-3">
-            {technicalBadges.map((badge, index) => (
-              <span 
-                key={index} 
-                className="px-5 py-2.5 bg-gradient-to-br from-orange-100 to-orange-200 text-orange-700 rounded-full text-sm font-medium hover:from-orange-500 hover:to-orange-600 hover:text-white hover:scale-105 transition-all duration-300 cursor-default shadow-sm"
+          
+          {/* Tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {technicalTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 py-2.5 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
+                  activeTab === tab.id
+                    ? 'bg-gradient-to-br from-orange-500 to-orange-600 text-white shadow-lg shadow-orange-500/30'
+                    : 'bg-gradient-to-br from-orange-100 to-orange-200 text-orange-700 hover:from-orange-200 hover:to-orange-300'
+                }`}
               >
-                {badge}
-              </span>
+                <tab.icon className="w-4 h-4" />
+                {tab.label}
+              </button>
             ))}
           </div>
+
+          {/* Tab Content */}
+          {activeTabData && (
+            <div className="grid md:grid-cols-2 gap-8 items-center animate-fade-in">
+              <div>
+                <h4 className="text-xl font-bold text-foreground mb-3">{activeTabData.title}</h4>
+                <p className="text-muted-foreground mb-6">{activeTabData.description}</p>
+                <ul className="space-y-3">
+                  {activeTabData.benefits.map((benefit, i) => (
+                    <li key={i} className="flex items-center gap-3 text-foreground">
+                      <div className="w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0">
+                        <Zap className="w-3 h-3 text-white" />
+                      </div>
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-orange-100/50 rounded-2xl p-8 flex items-center justify-center min-h-[250px] border border-orange-200/50">
+                <div className="text-center">
+                  <div className="w-24 h-24 bg-gradient-to-br from-orange-500 to-orange-600 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-xl shadow-orange-500/30">
+                    <activeTabData.icon className="w-12 h-12 text-white" />
+                  </div>
+                  <p className="text-orange-600 font-semibold">{activeTabData.label}</p>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
 
         {/* AI Link & Brand Signal */}

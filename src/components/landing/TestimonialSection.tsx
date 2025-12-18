@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote, TrendingUp, ChevronLeft, ChevronRight, Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { Star, Quote, TrendingUp, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const testimonials = [
@@ -28,10 +28,10 @@ const testimonials = [
 ];
 
 const videoTestimonials = [
-  { id: 1, thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=225&fit=crop", name: "John D.", company: "TechCorp" },
-  { id: 2, thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=225&fit=crop", name: "Maria S.", company: "GrowthIQ" },
-  { id: 3, thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=225&fit=crop", name: "Alex R.", company: "ScaleUp" },
-  { id: 4, thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=225&fit=crop", name: "David K.", company: "NexGen" },
+  { id: 1, thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=533&fit=crop", name: "John D.", company: "TechCorp", duration: "2:34" },
+  { id: 2, thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=533&fit=crop", name: "Maria S.", company: "GrowthIQ", duration: "1:45" },
+  { id: 3, thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=533&fit=crop", name: "Alex R.", company: "ScaleUp", duration: "3:12" },
+  { id: 4, thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=533&fit=crop", name: "David K.", company: "NexGen", duration: "2:08" },
 ];
 
 export const TestimonialSection = () => {
@@ -55,7 +55,7 @@ export const TestimonialSection = () => {
 
   const scrollVideos = (direction: 'left' | 'right') => {
     if (videoScrollRef.current) {
-      const scrollAmount = 320;
+      const scrollAmount = 200;
       videoScrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -84,7 +84,7 @@ export const TestimonialSection = () => {
         </div>
 
         {/* Text Testimonial Carousel */}
-        <div className="max-w-4xl mx-auto mb-16">
+        <div className="max-w-4xl mx-auto mb-20">
           <Card className="bg-gradient-to-br from-orange-50 via-orange-100/50 to-orange-50 border-orange-200/50 shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-500 overflow-hidden relative group">
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-400/10 to-transparent rounded-full blur-3xl" />
@@ -159,80 +159,100 @@ export const TestimonialSection = () => {
           </Card>
         </div>
 
-        {/* Netflix-style Video Carousel */}
-        <div className="relative">
-          <h3 className="text-xl font-bold text-foreground mb-6 text-center">Video Testimonials</h3>
-          
-          <div className="relative group/carousel">
-            {/* Left Arrow */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => scrollVideos('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </Button>
+        {/* Video Testimonials Section */}
+        <div className="text-center mb-8">
+          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+            Video Stories
+          </span>
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+            Video Testimonials
+          </h3>
+          <p className="text-muted-foreground">
+            Hear directly from our clients about their AI SEO journey
+          </p>
+        </div>
+        
+        <div className="relative group/carousel">
+          {/* Left Arrow */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => scrollVideos('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </Button>
 
-            {/* Video Grid */}
-            <div 
-              ref={videoScrollRef}
-              className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 px-8"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-            >
-              {videoTestimonials.map((video) => (
-                <div
-                  key={video.id}
-                  className="flex-shrink-0 w-[300px] relative rounded-xl overflow-hidden cursor-pointer group/video"
-                  onMouseEnter={() => setHoveredVideo(video.id)}
-                  onMouseLeave={() => setHoveredVideo(null)}
-                >
-                  <div className="aspect-video relative">
-                    <img 
-                      src={video.thumbnail} 
-                      alt={`${video.name} testimonial`}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-110"
-                    />
-                    
-                    {/* Overlay */}
-                    <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${hoveredVideo === video.id ? 'opacity-100' : 'opacity-70'}`} />
-                    
-                    {/* Play button */}
-                    <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${hoveredVideo === video.id ? 'scale-100 opacity-100' : 'scale-90 opacity-70'}`}>
-                      <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
-                        <Play className="w-8 h-8 text-orange-500 ml-1" />
-                      </div>
-                    </div>
-
-                    {/* Controls on hover */}
-                    {hoveredVideo === video.id && (
-                      <div className="absolute bottom-14 left-4 right-4 flex items-center gap-2">
-                        <div className="flex-1 h-1 bg-white/30 rounded-full">
-                          <div className="w-0 h-full bg-orange-500 rounded-full" />
-                        </div>
-                        <Volume2 className="w-4 h-4 text-white" />
-                      </div>
-                    )}
-
-                    {/* Info */}
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <p className="text-white font-bold">{video.name}</p>
-                      <p className="text-white/70 text-sm">{video.company}</p>
+          {/* Video Grid - Portrait Style */}
+          <div 
+            ref={videoScrollRef}
+            className="flex gap-4 overflow-x-auto pb-4 px-8 snap-x snap-mandatory scrollbar-hide"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {videoTestimonials.map((video) => (
+              <div
+                key={video.id}
+                className="flex-shrink-0 w-[180px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start"
+                onMouseEnter={() => setHoveredVideo(video.id)}
+                onMouseLeave={() => setHoveredVideo(null)}
+              >
+                <div className="aspect-[9/16] relative">
+                  <img 
+                    src={video.thumbnail} 
+                    alt={`${video.name} testimonial`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-110"
+                  />
+                  
+                  {/* Overlay */}
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${hoveredVideo === video.id ? 'opacity-100' : 'opacity-70'}`} />
+                  
+                  {/* Play button */}
+                  <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${hoveredVideo === video.id ? 'scale-100 opacity-100' : 'scale-90 opacity-70'}`}>
+                    <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
+                      <Play className="w-6 h-6 text-orange-500 ml-1" />
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
 
-            {/* Right Arrow */}
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => scrollVideos('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </Button>
+                  {/* Duration badge */}
+                  <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-medium">
+                    {video.duration}
+                  </div>
+
+                  {/* Controls on hover */}
+                  {hoveredVideo === video.id && (
+                    <div className="absolute bottom-16 left-3 right-3 flex items-center gap-2">
+                      <div className="flex-1 h-1 bg-white/30 rounded-full">
+                        <div className="w-0 h-full bg-orange-500 rounded-full" />
+                      </div>
+                      <Volume2 className="w-4 h-4 text-white" />
+                    </div>
+                  )}
+
+                  {/* Info */}
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white font-bold text-sm">{video.name}</p>
+                    <p className="text-white/70 text-xs">{video.company}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Right Arrow */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => scrollVideos('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </Button>
+
+          {/* Mobile scroll indicator */}
+          <div className="flex justify-center gap-2 mt-4 lg:hidden">
+            <div className="w-8 h-1 bg-orange-500 rounded-full" />
+            <div className="w-8 h-1 bg-orange-200 rounded-full" />
+            <div className="w-8 h-1 bg-orange-200 rounded-full" />
           </div>
         </div>
       </div>
