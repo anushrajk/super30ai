@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { HeroSection } from "@/components/landing/HeroSection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
 import { AIComparisonSection } from "@/components/landing/AIComparisonSection";
@@ -12,6 +12,8 @@ import { ProcessSection } from "@/components/landing/ProcessSection";
 import { DashboardPreview } from "@/components/landing/DashboardPreview";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { FinalCTASection } from "@/components/landing/FinalCTASection";
+import { FAQSection } from "@/components/landing/FAQSection";
+import { BlogSection } from "@/components/landing/BlogSection";
 import { Footer } from "@/components/landing/Footer";
 import { Helmet } from "react-helmet";
 import { toast } from "sonner";
@@ -60,8 +62,8 @@ const Index = () => {
       </Helmet>
 
       <main className="min-h-screen">
-        <ClientLogosSection />
         <HeroSection onSubmit={handleFormSubmit} loading={loading} />
+        <ClientLogosSection />
         <ProblemSection />
         <RelevanceFilterSection />
         <AIComparisonSection />
@@ -71,6 +73,8 @@ const Index = () => {
         <DashboardPreview />
         <TestimonialSection />
         <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+        <FAQSection />
+        <BlogSection />
         <Footer />
       </main>
     </>

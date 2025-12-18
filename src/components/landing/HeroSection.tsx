@@ -37,44 +37,44 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
       </div>
 
       <div className="container relative mx-auto px-4 py-16 lg:py-20">
-        {/* H1 and Description at the Top - Centered */}
-        <div className="text-center max-w-4xl mx-auto mb-10">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-            When AI Decides Who Ranks,{" "}
-            <span className="relative">
-              <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                We Decide Who Wins.
-              </span>
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full opacity-50" />
-            </span>
-          </h1>
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            We help founders dominate Google, AI Overviews, and LLM answers — with predictable SEO performance, not vanity rankings.
-          </p>
-        </div>
-
-        {/* Trust Signals Below Headline - Centered */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {trustSignals.map((signal, index) => (
-            <div 
-              key={index}
-              className="flex items-center gap-2 bg-background/60 backdrop-blur-md border border-orange-200/50 rounded-full px-4 py-2 text-sm text-foreground shadow-lg shadow-orange-500/5 hover:shadow-orange-500/20 hover:border-orange-400/70 hover:scale-105 transition-all duration-300 cursor-default"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="w-6 h-6 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
-                <signal.icon className="w-3.5 h-3.5 text-white" />
-              </div>
-              <span className="font-medium">{signal.text}</span>
+        {/* 2-Column Layout */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column - Content */}
+          <div className="lg:col-span-7 space-y-6">
+            {/* H1 and Description */}
+            <div>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
+                When AI Decides Who Ranks,{" "}
+                <span className="relative">
+                  <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                    We Decide Who Wins.
+                  </span>
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full opacity-50" />
+                </span>
+              </h1>
+              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                We help founders dominate Google, AI Overviews, and LLM answers — with predictable SEO performance, not vanity rankings.
+              </p>
             </div>
-          ))}
-        </div>
 
-        {/* Stats and Form Side by Side */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Left - Stats */}
-          <div className="space-y-8">
-            {/* Stats with enhanced styling */}
-            <div className="flex flex-wrap gap-6 justify-center lg:justify-start">
+            {/* Trust Signals */}
+            <div className="flex flex-wrap gap-2">
+              {trustSignals.map((signal, index) => (
+                <div 
+                  key={index}
+                  className="flex items-center gap-2 bg-background/60 backdrop-blur-md border border-orange-200/50 rounded-full px-3 py-1.5 text-sm text-foreground shadow-lg shadow-orange-500/5 hover:shadow-orange-500/20 hover:border-orange-400/70 hover:scale-105 transition-all duration-300 cursor-default"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="w-5 h-5 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                    <signal.icon className="w-3 h-3 text-white" />
+                  </div>
+                  <span className="font-medium text-xs md:text-sm">{signal.text}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Stats */}
+            <div className="flex flex-wrap gap-4">
               {stats.map((stat, index) => (
                 <div 
                   key={index} 
@@ -85,15 +85,15 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                   </div>
                   <div>
                     <span className="font-bold text-foreground text-lg">{stat.value}</span>
-                    <span className="text-muted-foreground ml-1">{stat.label}</span>
+                    <span className="text-muted-foreground ml-1 text-sm">{stat.label}</span>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Right - Form */}
-          <div className="lg:pl-8 animate-fade-in" style={{ animationDelay: '300ms' }}>
+          {/* Right Column - Form */}
+          <div className="lg:col-span-5 animate-fade-in" style={{ animationDelay: '300ms' }}>
             <LeadCaptureForm onSubmit={onSubmit} loading={loading} />
           </div>
         </div>
