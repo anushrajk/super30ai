@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
@@ -52,13 +53,14 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>AI SEO Agency Bangalore | DA360 - Dominate AI Search in 2025</title>
+        <title>The Super 30 | AI SEO Agency Bangalore - Dominate AI Search in 2025</title>
         <meta name="description" content="Future-proof your digital presence with AI-first SEO strategies. Get found in ChatGPT, Google AI Overviews, and next-gen search engines. Free AI SEO Audit." />
-        <meta name="keywords" content="AI SEO, SEO Agency Bangalore, AI Search Optimization, ChatGPT SEO, Google AI Overview" />
+        <meta name="keywords" content="AI SEO, SEO Agency Bangalore, AI Search Optimization, ChatGPT SEO, Google AI Overview, The Super 30" />
         <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app" />
       </Helmet>
 
       <main className="min-h-screen">
+        <ClientLogosSection />
         <HeroSection onSubmit={handleFormSubmit} loading={loading} />
         <ProblemSection />
         <RelevanceFilterSection />

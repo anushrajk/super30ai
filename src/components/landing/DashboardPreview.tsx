@@ -60,7 +60,7 @@ export const DashboardPreview = () => {
               </div>
               <div className="flex-1 flex justify-center">
                 <div className="bg-background/80 px-4 py-1 rounded-full text-xs text-muted-foreground border border-border/50">
-                  dashboard.da360.ai
+                  dashboard.thesuper30.ai
                 </div>
               </div>
             </div>

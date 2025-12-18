@@ -7,7 +7,10 @@ import {
   GraduationCap, 
   Stethoscope, 
   Rocket,
-  ArrowRight 
+  ArrowRight,
+  Home,
+  Scale,
+  Utensils
 } from "lucide-react";
 
 const audiences = [
@@ -40,6 +43,21 @@ const audiences = [
     icon: Rocket,
     title: "Tech Startups",
     description: "Innovative companies scaling fast"
+  },
+  {
+    icon: Home,
+    title: "Real Estate",
+    description: "Property developers and brokers"
+  },
+  {
+    icon: Scale,
+    title: "Legal Services",
+    description: "Law firms and legal consultants"
+  },
+  {
+    icon: Utensils,
+    title: "Hospitality & Travel",
+    description: "Hotels, restaurants, and travel agencies"
   }
 ];
 
