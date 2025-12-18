@@ -2,7 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Check, X } from "lucide-react";
 
 const forYou = [
-  "You're spending on SEO but can't predict ROI",
+  "Spending ₹1L+/mo but can't predict ROI",
+  "Revenue from organic is important",
   "You want visibility inside ChatGPT & Google AI",
   "You want one agency accountable for outcomes",
   "You're ready to invest in long-term growth",

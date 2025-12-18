@@ -20,7 +20,7 @@ export const Footer = () => {
           </div>
           <div>
             <h3 className="text-lg font-semibold text-white mb-6">Contact</h3>
-            <div className="flex items-center gap-3 text-slate-400 mb-6"><Mail className="w-4 h-4 text-orange-500" /><a href="mailto:hello@da360.ai" className="hover:text-orange-500 transition-colors">hello@da360.ai</a></div>
+            <div className="flex items-center gap-3 text-slate-400 mb-6"><Mail className="w-4 h-4 text-orange-500" /><a href="mailto:hello@thesuper30.ai" className="hover:text-orange-500 transition-colors">hello@thesuper30.ai</a></div>
             <div>
               <p className="text-sm text-slate-500 mb-3">Quick Links</p>
               <div className="flex flex-wrap gap-4">
@@ -29,7 +29,7 @@ export const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="pt-8 border-t border-slate-800"><p className="text-center text-slate-500 text-sm">© 2025 DA360 AI SEO Agency. All rights reserved.</p></div>
+        <div className="pt-8 border-t border-slate-800"><p className="text-center text-slate-500 text-sm">© 2025 The Super 30 AI SEO Agency. All rights reserved.</p></div>
       </div>
     </footer>
   );

@@ -9,7 +9,10 @@ import {
   Zap,
   ArrowRight,
   Quote,
-  Users
+  Users,
+  Globe,
+  MessageSquare,
+  TrendingUp
 } from "lucide-react";
 
 const coreServices = [
@@ -19,6 +22,15 @@ const coreServices = [
   { icon: FileText, title: "AI Content Strategy", description: "Content that AI systems cite" },
   { icon: Shield, title: "Authority Building", description: "Establish AI trust signals" },
   { icon: Zap, title: "Technical AI SEO", description: "Technical foundation for AI" },
+  { icon: Globe, title: "LLM Visibility Optimization", description: "Get cited in ChatGPT & Perplexity" },
+  { icon: MessageSquare, title: "AI Brand Mentions", description: "Build brand presence in AI responses" },
+  { icon: TrendingUp, title: "Revenue Attribution", description: "Track SEO-to-revenue pipeline" },
+];
+
+const intentMappingIcons = [
+  { Icon: Search, label: "Query Analysis" },
+  { Icon: Target, label: "Intent Mapping" },
+  { Icon: Users, label: "Lead Conversion" },
 ];
 
 const technicalBadges = ["Schema Markup", "Structured Data", "Technical Audits", "Core Web Vitals", "Crawl Optimization", "Security & Trust"];
@@ -89,13 +101,16 @@ export const ServicesSection = () => {
           </div>
           <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-xl">
             <div className="flex items-center justify-center gap-4">
-              {[Search, Target, Users].map((Icon, i) => (
+              {intentMappingIcons.map((item, i) => (
                 <div key={i} className="flex items-center gap-4">
-                  <div className={`w-20 h-20 ${i === 2 ? 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30' : 'bg-gradient-to-br from-orange-100 to-orange-200'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
-                    <Icon className={`w-10 h-10 ${i === 2 ? 'text-white' : 'text-orange-500'}`} />
+                  <div className="flex flex-col items-center gap-2">
+                    <div className={`w-20 h-20 ${i === 2 ? 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30' : 'bg-gradient-to-br from-orange-100 to-orange-200'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
+                      <item.Icon className={`w-10 h-10 ${i === 2 ? 'text-white' : 'text-orange-500'}`} />
+                    </div>
+                    <span className="text-xs text-muted-foreground font-medium">{item.label}</span>
                   </div>
                   {i < 2 && (
-                    <div className="flex items-center">
+                    <div className="flex items-center mb-6">
                       <div className="w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 rounded-full" />
                       <div className="w-0 h-0 border-t-4 border-b-4 border-l-8 border-transparent border-l-orange-500" />
                     </div>
@@ -120,7 +135,7 @@ export const ServicesSection = () => {
               <p className="text-foreground italic text-lg leading-relaxed">
                 "The future of search isn't just about ranking — it's about being the answer AI systems trust and recommend."
               </p>
-              <p className="text-orange-600 font-semibold mt-4">— DA360 AI SEO Philosophy</p>
+              <p className="text-orange-600 font-semibold mt-4">— The Super 30 AI SEO Philosophy</p>
             </CardContent>
           </Card>
         </div>
@@ -157,7 +172,7 @@ export const ServicesSection = () => {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { v: "85/100", l: "Domain Authority" }, 
+              { v: "30+/100", l: "Domain Authority" }, 
               { v: "78/100", l: "AI Trust Score" }, 
               { v: "92/100", l: "Citation Index", badge: "+23% this quarter" }
             ].map((m, i) => (
