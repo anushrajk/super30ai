@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bot, TrendingDown, FileX, HelpCircle, ArrowRight } from "lucide-react";
+import { Bot, TrendingDown, FileX, DollarSign, ArrowRight } from "lucide-react";
 
 const problems = [
   {
@@ -19,9 +19,9 @@ const problems = [
     description: "You publish quality content, but AI systems don't cite you."
   },
   {
-    icon: HelpCircle,
-    title: "Future-Proofing Anxiety",
-    description: "The search landscape is changing fast. Are you ready?"
+    icon: DollarSign,
+    title: "Rankings ≠ Revenue Anymore",
+    description: "Traditional SEO metrics don't translate to business growth."
   }
 ];
 
@@ -31,11 +31,17 @@ export const ProblemSection = () => {
   };
 
   return (
-    <section className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-muted/30 relative overflow-hidden">
+      {/* Background pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            The Problem No One's Talking About
+          <span className="inline-block px-4 py-1.5 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
+            The Problem
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            SEO Didn't Die. <span className="text-red-500">Control Did.</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             While you focus on traditional SEO, AI is rewriting the rules of discovery
@@ -44,15 +50,19 @@ export const ProblemSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
           {problems.map((problem, index) => (
-            <Card key={index} className="bg-background border-border hover:shadow-lg transition-shadow group">
+            <Card 
+              key={index} 
+              className="bg-background/80 backdrop-blur-sm border-border/50 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 group hover:-translate-y-2"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
               <CardContent className="p-6">
-                <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-red-500 transition-colors">
-                  <problem.icon className="w-6 h-6 text-red-500 group-hover:text-white transition-colors" />
+                <div className="w-14 h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mb-4 group-hover:from-red-500 group-hover:to-red-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <problem.icon className="w-7 h-7 text-red-500 group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-red-600 transition-colors">
                   {problem.title}
                 </h3>
-                <p className="text-muted-foreground text-sm">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   {problem.description}
                 </p>
               </CardContent>
@@ -63,7 +73,8 @@ export const ProblemSection = () => {
         <div className="text-center">
           <Button 
             onClick={scrollToForm}
-            className="bg-orange-500 hover:bg-orange-600 text-white"
+            size="lg"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300"
           >
             See how your site looks to AI
             <ArrowRight className="w-4 h-4 ml-2" />

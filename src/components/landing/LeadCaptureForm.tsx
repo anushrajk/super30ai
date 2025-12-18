@@ -74,15 +74,30 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
   }
 
   return (
-    <Card className="bg-background border border-border shadow-xl">
-      <CardContent className="p-6">
+    <Card className="bg-background/80 backdrop-blur-xl border border-border/50 shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-500 overflow-hidden relative group">
+      {/* Gradient border effect */}
+      <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 via-transparent to-orange-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      
+      <CardContent className="p-6 relative">
+        {/* Progress Indicator */}
+        <div className="flex items-center justify-between mb-6">
+          <span className="text-xs font-medium text-muted-foreground bg-muted/50 px-3 py-1 rounded-full">
+            Step 1 of 2
+          </span>
+          <div className="flex gap-1.5">
+            <div className="w-8 h-1.5 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full" />
+            <div className="w-8 h-1.5 bg-muted rounded-full" />
+          </div>
+        </div>
+
+        {/* Icon with glow */}
         <div className="flex items-center justify-center mb-4">
-          <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-            <Sparkles className="w-6 h-6 text-orange-500" />
+          <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform duration-300">
+            <Sparkles className="w-7 h-7 text-white" />
           </div>
         </div>
         
-        <h3 className="text-xl font-semibold text-foreground text-center mb-2">
+        <h3 className="text-xl font-bold text-foreground text-center mb-2">
           Get Your Free AI SEO Audit
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-6">
@@ -90,14 +105,14 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+          <div className="group/input">
             <Input
               type="url"
               placeholder="https://yourcompany.com"
               value={websiteUrl}
               onChange={(e) => setWebsiteUrl(e.target.value)}
               required
-              className="w-full bg-background border-input h-11"
+              className="w-full bg-background/50 border-border/50 h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 placeholder:text-muted-foreground/60"
             />
           </div>
           
@@ -108,18 +123,18 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full bg-background border-input h-11"
+              className="w-full bg-background/50 border-border/50 h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 placeholder:text-muted-foreground/60"
             />
           </div>
 
           <div>
             <Select value={role} onValueChange={setRole}>
-              <SelectTrigger className="w-full bg-background border-input h-11">
+              <SelectTrigger className="w-full bg-background/50 border-border/50 h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300">
                 <SelectValue placeholder="Your Role" />
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
+                  <SelectItem key={option.value} value={option.value} className="hover:bg-orange-50">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -129,12 +144,12 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
 
           <div>
             <Select value={monthlyRevenue} onValueChange={setMonthlyRevenue}>
-              <SelectTrigger className="w-full bg-background border-input h-11">
+              <SelectTrigger className="w-full bg-background/50 border-border/50 h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300">
                 <SelectValue placeholder="Monthly Revenue" />
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {revenueOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value}>
+                  <SelectItem key={option.value} value={option.value} className="hover:bg-orange-50">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -145,7 +160,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
           <Button 
             type="submit" 
             disabled={loading}
-            className="w-full h-12 bg-orange-500 hover:bg-orange-600 text-white font-semibold"
+            className="w-full h-12 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-[1.02] transition-all duration-300 group/btn"
           >
             {loading ? (
               <>
@@ -155,19 +170,19 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
             ) : (
               <>
                 Start My Free Audit
-                <Sparkles className="w-4 h-4 ml-2" />
+                <Sparkles className="w-4 h-4 ml-2 group-hover/btn:rotate-12 transition-transform" />
               </>
             )}
           </Button>
         </form>
 
-        <div className="flex items-center justify-center gap-4 mt-4 text-xs text-muted-foreground">
-          <div className="flex items-center gap-1">
-            <Clock className="w-3 h-3" />
+        <div className="flex items-center justify-center gap-4 mt-5 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1.5 bg-muted/30 px-3 py-1.5 rounded-full">
+            <Clock className="w-3.5 h-3.5 text-orange-500" />
             <span>Takes &lt; 60 seconds</span>
           </div>
-          <div className="flex items-center gap-1">
-            <Shield className="w-3 h-3" />
+          <div className="flex items-center gap-1.5 bg-muted/30 px-3 py-1.5 rounded-full">
+            <Shield className="w-3.5 h-3.5 text-green-500" />
             <span>Your data is secure</span>
           </div>
         </div>

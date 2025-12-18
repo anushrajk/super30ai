@@ -3,6 +3,7 @@ import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
+import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
 import { AIComparisonSection } from "@/components/landing/AIComparisonSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
 import { TargetAudienceSection } from "@/components/landing/TargetAudienceSection";
@@ -60,6 +61,7 @@ const Index = () => {
       <main className="min-h-screen">
         <HeroSection onSubmit={handleFormSubmit} loading={loading} />
         <ProblemSection />
+        <RelevanceFilterSection />
         <AIComparisonSection />
         <ServicesSection />
         <TargetAudienceSection />

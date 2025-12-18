@@ -49,10 +49,16 @@ export const TargetAudienceSection = () => {
   };
 
   return (
-    <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-background relative overflow-hidden">
+      {/* Subtle background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+            Who We Help
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Who Is This For?
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -64,13 +70,13 @@ export const TargetAudienceSection = () => {
           {audiences.map((audience, index) => (
             <Card 
               key={index} 
-              className="bg-muted/30 border-border hover:border-orange-500/50 hover:shadow-lg transition-all group"
+              className="bg-background/80 backdrop-blur-sm border-border/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 group hover:-translate-y-2"
             >
               <CardContent className="p-6">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 group-hover:bg-orange-500 transition-colors">
-                  <audience.icon className="w-6 h-6 text-orange-500 group-hover:text-white transition-colors" />
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <audience.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-lg font-semibold text-foreground mb-2">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-orange-600 transition-colors">
                   {audience.title}
                 </h3>
                 <p className="text-muted-foreground text-sm">
@@ -84,7 +90,8 @@ export const TargetAudienceSection = () => {
         <div className="text-center">
           <Button 
             onClick={scrollToForm}
-            className="bg-orange-500 hover:bg-orange-600 text-white"
+            size="lg"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300"
           >
             See If You Qualify
             <ArrowRight className="w-4 h-4 ml-2" />
