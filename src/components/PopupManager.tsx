@@ -13,8 +13,8 @@ import { toast } from 'sonner';
 type PopupType = 'callback' | 'quote' | 'exit';
 
 const POPUP_EXPIRY_HOURS = 24;
-const CALLBACK_DELAY_MS = 45000; // 45 seconds after cookie dismissed
-const QUOTE_DELAY_MS = 90000;    // 90 seconds after cookie dismissed
+const CALLBACK_DELAY_MS = 15000; // 15 seconds after cookie dismissed
+const QUOTE_DELAY_MS = 60000;    // 60 seconds after cookie dismissed
 
 const isPopupExpired = (key: string): boolean => {
   const stored = localStorage.getItem(key);
