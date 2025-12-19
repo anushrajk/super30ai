@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Sparkles, Shield, Clock, Loader2, Users, TrendingUp, Star, CheckCircle, AlertCircle, Phone } from "lucide-react";
+import { Sparkles, Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone } from "lucide-react";
 
 interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
@@ -140,21 +140,19 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-400/30 via-transparent to-orange-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
-      {/* Live activity indicator */}
-      <div className="absolute top-3 right-3 z-10">
-        <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 px-2.5 py-1 rounded-full animate-pulse">
-          <div className="w-2 h-2 bg-green-500 rounded-full animate-ping" />
-          <span className="text-xs font-medium text-green-600">{recentSignups} audits today</span>
-        </div>
-      </div>
-      
       <CardContent className="p-6 relative">
         {/* Progress bar */}
         <div className="mb-5">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-medium text-muted-foreground">
-              {filledFields === 0 ? "Start your audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to analyze!"}
-            </span>
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 px-2 py-0.5 rounded-full">
+                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+                <span className="text-xs font-medium text-green-600">{recentSignups} audits today</span>
+              </div>
+              <span className="text-xs font-medium text-muted-foreground">
+                {filledFields === 0 ? "Start your audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to analyze!"}
+              </span>
+            </div>
             <span className="text-xs font-bold text-orange-500">{Math.round(progress)}%</span>
           </div>
           <div className="h-1.5 bg-muted rounded-full overflow-hidden">
@@ -165,13 +163,6 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
           </div>
         </div>
 
-        {/* Icon with value prop */}
-        <div className="flex items-center justify-center mb-4">
-          <div className="w-14 h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-            <TrendingUp className="w-7 h-7 text-white" />
-          </div>
-        </div>
-        
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
           Free AI Visibility Audit
         </h3>
