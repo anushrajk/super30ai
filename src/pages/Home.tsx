@@ -10,7 +10,8 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { GradientWave } from "@/components/ui/gradient-wave";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
-import { ArrowRight, Bot, Target, TrendingUp, Users, Award, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Globe } from "lucide-react";
+import { ArrowRight, Bot, Target, TrendingUp, Users, Award, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Globe, Building2, ShoppingCart, Briefcase, GraduationCap, Stethoscope, Rocket, Home as HomeIcon, Scale, Utensils } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [{
   icon: Bot,
@@ -61,6 +62,95 @@ const whyChooseUs = [{
   title: "Fast Execution",
   description: "Rapid implementation with no long-term lock-ins"
 }];
+
+const audiences = [
+  { icon: Building2, title: "B2B SaaS", description: "Software companies seeking qualified leads through AI-powered visibility" },
+  { icon: ShoppingCart, title: "E-commerce", description: "Online stores wanting AI visibility and high-converting campaigns" },
+  { icon: Briefcase, title: "Professional Services", description: "Consultants and agencies looking to dominate their niche" },
+  { icon: GraduationCap, title: "EdTech", description: "Educational platforms and courses reaching the right audience" },
+  { icon: Stethoscope, title: "Healthcare", description: "Medical and wellness brands building trust online" },
+  { icon: Rocket, title: "Tech Startups", description: "Innovative companies scaling fast with data-driven marketing" },
+  { icon: HomeIcon, title: "Real Estate", description: "Property developers and brokers generating quality leads" },
+  { icon: Scale, title: "Legal Services", description: "Law firms and legal consultants attracting ideal clients" },
+  { icon: Utensils, title: "Hospitality & Travel", description: "Hotels, restaurants, and travel agencies driving bookings" },
+];
+
+const WhoIsThisForSection = () => {
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+
+  return (
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-background relative overflow-hidden"
+    >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/30 to-transparent" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      
+      <div className="container mx-auto px-4 relative">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-600 rounded-full text-sm font-semibold mb-4 shadow-sm">
+            Perfect Fit
+          </span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Who Is This For?
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Our AI-powered marketing solutions work best for ambitious businesses ready to dominate their market
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+          {audiences.map((audience, index) => (
+            <Card 
+              key={index} 
+              className={`group relative bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden transition-all duration-500 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+              style={{ transitionDelay: `${(index + 1) * 75}ms` }}
+            >
+              {/* Hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-orange-500/0 to-orange-500/0 group-hover:from-orange-500/5 group-hover:via-transparent group-hover:to-primary/5 transition-all duration-500" />
+              
+              <CardContent className="relative p-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg group-hover:shadow-orange-500/30">
+                    <audience.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-300" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-orange-600 transition-colors duration-300">
+                      {audience.title}
+                    </h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">
+                      {audience.description}
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Arrow indicator on hover */}
+                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-5 h-5 text-orange-500" />
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className={`text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <p className="text-muted-foreground mb-6">Don't see your industry? We work with all growth-focused businesses.</p>
+          <Link to="/contact">
+            <Button 
+              size="lg"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300"
+            >
+              Let's Talk About Your Business
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const Home = () => {
   return <>
@@ -281,69 +371,7 @@ const Home = () => {
       </section>
 
       {/* Who Is This For? */}
-      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
-              Perfect Fit
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Who Is This For?
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              Our services are designed for growth-focused businesses ready to dominate their market.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              {
-                title: "E-commerce Brands",
-                description: "Scale your online store with AI-powered SEO and high-converting ad campaigns that drive sales.",
-                icon: Globe,
-              },
-              {
-                title: "SaaS Companies",
-                description: "Get found by decision-makers searching for solutions like yours. Convert demos into customers.",
-                icon: Bot,
-              },
-              {
-                title: "D2C Brands",
-                description: "Build brand awareness and drive direct sales with performance marketing that delivers ROI.",
-                icon: Target,
-              },
-              {
-                title: "Service Businesses",
-                description: "Attract qualified leads actively searching for your services in your target markets.",
-                icon: Users,
-              },
-              {
-                title: "Funded Startups",
-                description: "Accelerate growth with data-driven marketing strategies that investors love to see.",
-                icon: TrendingUp,
-              },
-              {
-                title: "Enterprise Teams",
-                description: "Enterprise-grade solutions for complex marketing challenges at scale.",
-                icon: BarChart3,
-              },
-            ].map((item, index) => (
-              <Card 
-                key={index} 
-                className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
-              >
-                <CardContent className="p-6">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                    <item.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhoIsThisForSection />
 
       <ClientLogosSection />
 
