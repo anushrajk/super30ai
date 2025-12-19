@@ -21,15 +21,15 @@ export const UnifiedCTASection = ({
   secondaryCTA = { label: "Free Ads Audit", href: "/performance-marketing" },
 }: UnifiedCTASectionProps) => {
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+    <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+      {/* Subtle grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
       <div className="container relative mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
           {headline}
         </h2>
-        <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
           {subtext}
         </p>
 
@@ -48,7 +48,7 @@ export const UnifiedCTASection = ({
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-white/20 text-white hover:bg-white/10 w-full sm:w-auto"
+                className="border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 w-full sm:w-auto"
               >
                 {secondaryCTA.label}
                 <ArrowRight className="w-5 h-5 ml-2" />
