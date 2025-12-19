@@ -105,7 +105,7 @@ const WhoIsThisForSection = () => {
           {audiences.map((audience, index) => (
             <Card 
               key={index} 
-              className={`group relative bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden transition-all duration-500 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 cursor-pointer ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+              className={`group relative bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden transition-all duration-500 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
               style={{ transitionDelay: `${(index + 1) * 75}ms` }}
             >
               {/* Hover gradient overlay */}
@@ -124,11 +124,6 @@ const WhoIsThisForSection = () => {
                       {audience.description}
                     </p>
                   </div>
-                </div>
-                
-                {/* Arrow indicator on hover */}
-                <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transform translate-x-2 group-hover:translate-x-0 transition-all duration-300">
-                  <ArrowRight className="w-5 h-5 text-orange-500" />
                 </div>
               </CardContent>
             </Card>
