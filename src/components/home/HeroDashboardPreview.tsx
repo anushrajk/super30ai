@@ -1,10 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TrendingUp, Users, Target, Zap, Award, Bot, BarChart3, CheckCircle2 } from "lucide-react";
 
 const AnimatedCounter = ({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) => {
   const [count, setCount] = useState(0);
+  const hasAnimated = useRef(false);
 
   useEffect(() => {
+    if (hasAnimated.current) return;
+    hasAnimated.current = true;
+    
     let startTime: number;
     const startValue = 0;
 
@@ -57,7 +61,7 @@ const CircularProgress = ({ value, size = 120, strokeWidth = 8 }: { value: numbe
           strokeLinecap="round"
           strokeDasharray={circumference}
           strokeDashoffset={offset}
-          className="transition-all duration-1000 ease-out"
+          className="transition-[stroke-dashoffset] duration-1000 ease-out"
         />
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -84,7 +88,7 @@ export const HeroDashboardPreview = () => {
   const metrics = [
     { icon: TrendingUp, label: "Traffic Growth", value: 245, suffix: "%", color: "text-green-500" },
     { icon: Users, label: "New Leads", value: 180, suffix: "%", color: "text-blue-500" },
-    { icon: Target, label: "ROAS", value: 4.2, suffix: "x", color: "text-purple-500" },
+    { icon: Target, label: "ROAS", value: 4, suffix: "x", color: "text-purple-500" },
   ];
 
   const achievements = [
@@ -94,12 +98,12 @@ export const HeroDashboardPreview = () => {
   ];
 
   return (
-    <div className={`relative transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-      {/* Main Dashboard Card */}
-      <div className="relative bg-background/80 backdrop-blur-xl rounded-3xl border border-border/50 shadow-2xl overflow-hidden p-6">
-        {/* Glow effects */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/30 to-orange-600/20 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-3xl" />
+    <div className={`relative transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+      {/* Main Dashboard Card - reduced blur */}
+      <div className="relative bg-background/90 rounded-3xl border border-border/50 shadow-2xl overflow-hidden p-6">
+        {/* Simplified glow effects - reduced blur radius */}
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl" />
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-blue-400/10 to-blue-600/5 rounded-full blur-2xl" />
         
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
@@ -113,7 +117,7 @@ export const HeroDashboardPreview = () => {
             </div>
           </div>
           <div className="flex items-center gap-1.5 bg-green-100 px-2 py-1 rounded-full">
-            <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
+            <div className="w-1.5 h-1.5 bg-green-500 rounded-full" />
             <span className="text-xs font-medium text-green-600">Live</span>
           </div>
         </div>
@@ -126,29 +130,28 @@ export const HeroDashboardPreview = () => {
             {metrics.map((metric, index) => (
               <div 
                 key={index} 
-                className="flex items-center justify-between bg-muted/50 rounded-lg px-3 py-2 hover:bg-muted/80 transition-colors"
-                style={{ animationDelay: `${index * 150}ms` }}
+                className="flex items-center justify-between bg-muted/50 rounded-lg px-3 py-2 transition-colors duration-200 hover:bg-muted/80"
               >
                 <div className="flex items-center gap-2">
                   <metric.icon className={`w-4 h-4 ${metric.color}`} />
                   <span className="text-sm text-muted-foreground">{metric.label}</span>
                 </div>
                 <span className={`font-bold ${metric.color}`}>
-                  +<AnimatedCounter end={typeof metric.value === 'number' ? Math.floor(metric.value) : metric.value} suffix={metric.suffix} />
+                  +<AnimatedCounter end={metric.value} suffix={metric.suffix} />
                 </span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Achievements */}
+        {/* Achievements - simplified hover effects */}
         <div className="grid grid-cols-3 gap-3">
           {achievements.map((achievement, index) => (
             <div 
               key={index}
-              className="flex flex-col items-center p-3 bg-muted/30 rounded-xl hover:bg-muted/50 transition-all duration-300 hover:scale-105 group"
+              className="flex flex-col items-center p-3 bg-muted/30 rounded-xl transition-colors duration-200 hover:bg-muted/50 group"
             >
-              <div className={`w-10 h-10 bg-gradient-to-br ${achievement.color} rounded-xl flex items-center justify-center mb-2 group-hover:scale-110 transition-transform shadow-lg`}>
+              <div className={`w-10 h-10 bg-gradient-to-br ${achievement.color} rounded-xl flex items-center justify-center mb-2 shadow-lg`}>
                 <achievement.icon className="w-5 h-5 text-white" />
               </div>
               <span className="text-xs font-medium text-foreground text-center">{achievement.label}</span>
@@ -173,8 +176,8 @@ export const HeroDashboardPreview = () => {
         </div>
       </div>
 
-      {/* Floating Achievement Badges */}
-      <div className="absolute -top-4 -left-4 bg-background border border-border shadow-xl rounded-xl px-3 py-2 animate-bounce" style={{ animationDuration: '3s' }}>
+      {/* Floating Achievement Badges - removed animate-bounce for performance */}
+      <div className="absolute -top-4 -left-4 bg-background border border-border shadow-xl rounded-xl px-3 py-2">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
             <Award className="w-3 h-3 text-white" />
@@ -183,7 +186,7 @@ export const HeroDashboardPreview = () => {
         </div>
       </div>
 
-      <div className="absolute -bottom-4 -right-4 bg-background border border-border shadow-xl rounded-xl px-3 py-2 animate-bounce" style={{ animationDuration: '2.5s', animationDelay: '0.5s' }}>
+      <div className="absolute -bottom-4 -right-4 bg-background border border-border shadow-xl rounded-xl px-3 py-2">
         <div className="flex items-center gap-2">
           <div className="w-6 h-6 bg-gradient-to-br from-green-400 to-emerald-500 rounded-lg flex items-center justify-center">
             <TrendingUp className="w-3 h-3 text-white" />
