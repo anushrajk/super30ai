@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, Calendar, FileText, Lightbulb, Target } from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
 import { toast } from "sonner";
+import Cal, { getCalApi } from "@calcom/embed-react";
 
 const benefits = [
   {
@@ -49,30 +50,47 @@ const Booking = () => {
     } else {
       navigate("/");
     }
-
-    // Listen for Cal.com booking events
-    const handleMessage = async (event: MessageEvent) => {
-      if (event.data?.type === 'CAL_BOOKING_SUCCESSFUL' || 
-          (typeof event.data === 'string' && event.data.includes('booking_successful'))) {
-        setBookingConfirmed(true);
-        
-        const leadId = location.state?.leadId || localStorage.getItem('seo_lead_id');
-        if (leadId && session && lead) {
-          await updateLead(leadId, { step: 3 });
-          await sendLeadEmail(
-            { ...lead, step: 3 },
-            session,
-            "Step 3 - Consultation Booked"
-          );
-        }
-        
-        toast.success("Consultation booked successfully!");
-      }
-    };
-
-    window.addEventListener('message', handleMessage);
-    return () => window.removeEventListener('message', handleMessage);
   }, []);
+
+  // Cal.com embed event listener
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi();
+      cal("on", {
+        action: "bookingSuccessful",
+        callback: async (e: { detail: { data: any } }) => {
+          const bookingData = e.detail.data;
+          
+          setBookingConfirmed(true);
+          
+          const leadId = location.state?.leadId || localStorage.getItem('seo_lead_id');
+          if (leadId && session && lead) {
+            await updateLead(leadId, { step: 3 });
+            await sendLeadEmail(
+              { ...lead, step: 3 },
+              session,
+              "Step 3 - Consultation Booked"
+            );
+          }
+          
+          toast.success("Consultation booked successfully!");
+          
+          // Redirect to thank you page with booking details
+          navigate("/thank-you", {
+            state: {
+              name: bookingData?.attendees?.[0]?.name || lead?.company_name,
+              email: bookingData?.attendees?.[0]?.email || lead?.email,
+              bookingDate: bookingData?.date,
+              startTime: bookingData?.startTime,
+              endTime: bookingData?.endTime,
+              meetingLink: bookingData?.meetingUrl,
+              source: "booking_calendar"
+            }
+          });
+        },
+      });
+    })();
+  }, [navigate, session, lead]);
 
   return (
     <>
@@ -179,35 +197,14 @@ const Booking = () => {
                         Select a Time
                       </h3>
                     </div>
-                    <div className="h-[600px] flex items-center justify-center bg-slate-50">
-                      {/* 
-                        Cal.com Embed - IMPORTANT: Replace the URL below with your actual Cal.com booking link.
-                        To get your Cal.com link:
-                        1. Sign up at cal.com
-                        2. Create a 30-minute event type
-                        3. Copy your booking URL (e.g., cal.com/your-username/30min)
-                      */}
-                      <div className="text-center p-8">
-                        <Calendar className="w-16 h-16 text-orange-500 mx-auto mb-4" />
-                        <h4 className="text-xl font-semibold text-slate-900 mb-2">
-                          Book Your Strategy Call
-                        </h4>
-                        <p className="text-slate-600 mb-6 max-w-sm">
-                          Click below to schedule your free 30-minute AI SEO strategy session.
-                        </p>
-                        <a 
-                          href="https://cal.com" 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
-                        >
-                          <Calendar className="w-5 h-5" />
-                          Open Booking Calendar
-                        </a>
-                        <p className="text-sm text-slate-500 mt-4">
-                          Opens in a new tab
-                        </p>
-                      </div>
+                    <div className="min-h-[600px]">
+                      <Cal
+                        calLink="thesuper-30-ehlmd6/30min"
+                        style={{ width: "100%", height: "100%", overflow: "scroll", minHeight: "600px" }}
+                        config={{
+                          layout: "month_view"
+                        }}
+                      />
                     </div>
                   </CardContent>
                 </Card>

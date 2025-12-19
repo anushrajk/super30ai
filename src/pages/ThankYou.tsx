@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { CheckCircle, Phone, Calendar, ArrowRight } from "lucide-react";
+import { CheckCircle, Phone, Calendar, ArrowRight, Clock, Video } from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,7 +9,25 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 
 const ThankYou = () => {
   const location = useLocation();
-  const { name, email, source } = location.state || {};
+  const { name, email, source, bookingDate, startTime, endTime, meetingLink } = location.state || {};
+
+  const isBookingConfirmation = source === "booking_calendar" || bookingDate;
+
+  // Format date for display
+  const formatBookingDate = (dateStr: string) => {
+    if (!dateStr) return null;
+    try {
+      const date = new Date(dateStr);
+      return date.toLocaleDateString('en-IN', { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+      });
+    } catch {
+      return dateStr;
+    }
+  };
 
   return (
     <>
@@ -30,11 +48,53 @@ const ThankYou = () => {
               </div>
               
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Thank You{name ? `, ${name}` : ''}!
+                {isBookingConfirmation ? "Booking Confirmed!" : `Thank You${name ? `, ${name}` : ''}!`}
               </h1>
               <p className="text-lg text-muted-foreground mb-8">
-                Your request has been received. Our team will reach out within 24 hours.
+                {isBookingConfirmation 
+                  ? "Your strategy call has been scheduled. Check your email for the calendar invite."
+                  : "Your request has been received. Our team will reach out within 24 hours."
+                }
               </p>
+
+              {/* Booking Confirmation Card */}
+              {isBookingConfirmation && (bookingDate || startTime) && (
+                <Card className="bg-green-50 border-green-200 mb-8 text-left">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                        <Calendar className="w-5 h-5 text-green-600" />
+                      </div>
+                      <h3 className="font-bold text-lg text-green-800">Meeting Details</h3>
+                    </div>
+                    <div className="space-y-3 text-green-700">
+                      {bookingDate && (
+                        <p className="flex items-center gap-2">
+                          <Calendar className="w-4 h-4" />
+                          <span><strong>Date:</strong> {formatBookingDate(bookingDate)}</span>
+                        </p>
+                      )}
+                      {(startTime || endTime) && (
+                        <p className="flex items-center gap-2">
+                          <Clock className="w-4 h-4" />
+                          <span><strong>Time:</strong> {startTime}{endTime ? ` - ${endTime}` : ''}</span>
+                        </p>
+                      )}
+                      {meetingLink && (
+                        <a 
+                          href={meetingLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium"
+                        >
+                          <Video className="w-4 h-4" />
+                          Join Meeting Link
+                        </a>
+                      )}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
 
               {email && (
                 <Card className="bg-background/80 backdrop-blur border-green-200 mb-8">
