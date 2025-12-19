@@ -60,23 +60,42 @@ const Booking = () => {
   const { session, updateCurrentPage } = useSession();
   const { lead, getLead, updateLead, sendLeadEmail } = useLead();
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
-  const [slotsRemaining, setSlotsRemaining] = useState(4);
-  const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 30, seconds: 0 });
+  const [slotsRemaining] = useState(4);
+  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 0, seconds: 0 });
 
-  // Countdown timer for urgency
+  // Countdown timer with localStorage persistence
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) {
-          return { ...prev, seconds: prev.seconds - 1 };
-        } else if (prev.minutes > 0) {
-          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
-        } else if (prev.hours > 0) {
-          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        }
-        return prev;
-      });
-    }, 1000);
+    const TIMER_KEY = 'booking_countdown_end';
+    const TIMER_DURATION = 2.5 * 60 * 60 * 1000; // 2.5 hours in milliseconds
+
+    let endTime = localStorage.getItem(TIMER_KEY);
+    
+    if (!endTime || parseInt(endTime) < Date.now()) {
+      // Set new end time if none exists or expired
+      endTime = String(Date.now() + TIMER_DURATION);
+      localStorage.setItem(TIMER_KEY, endTime);
+    }
+
+    const updateTimer = () => {
+      const remaining = parseInt(endTime!) - Date.now();
+      
+      if (remaining <= 0) {
+        // Reset timer when it expires
+        const newEndTime = Date.now() + TIMER_DURATION;
+        localStorage.setItem(TIMER_KEY, String(newEndTime));
+        setTimeLeft({ hours: 2, minutes: 30, seconds: 0 });
+        return;
+      }
+
+      const hours = Math.floor(remaining / (1000 * 60 * 60));
+      const minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+      
+      setTimeLeft({ hours, minutes, seconds });
+    };
+
+    updateTimer();
+    const timer = setInterval(updateTimer, 1000);
 
     return () => clearInterval(timer);
   }, []);
