@@ -227,7 +227,8 @@ const handler = async (req: Request): Promise<Response> => {
       opportunities,
       diagnostics,
       analyzed_url: targetUrl,
-      analysis_timestamp: new Date().toISOString()
+      analysis_timestamp: new Date().toISOString(),
+      data_source: 'google_pagespeed_v5'
     };
 
     console.log("SEO analysis complete for lead:", leadId);

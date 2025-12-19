@@ -18,8 +18,11 @@ export type Database = {
         Row: {
           accessibility_score: number | null
           ai_visibility_score: number | null
+          analysis_timestamp: string | null
+          analyzed_url: string | null
           best_practices_score: number | null
           created_at: string
+          data_source: string | null
           diagnostics: Json | null
           id: string
           lead_id: string | null
@@ -31,8 +34,11 @@ export type Database = {
         Insert: {
           accessibility_score?: number | null
           ai_visibility_score?: number | null
+          analysis_timestamp?: string | null
+          analyzed_url?: string | null
           best_practices_score?: number | null
           created_at?: string
+          data_source?: string | null
           diagnostics?: Json | null
           id?: string
           lead_id?: string | null
@@ -44,8 +50,11 @@ export type Database = {
         Update: {
           accessibility_score?: number | null
           ai_visibility_score?: number | null
+          analysis_timestamp?: string | null
+          analyzed_url?: string | null
           best_practices_score?: number | null
           created_at?: string
+          data_source?: string | null
           diagnostics?: Json | null
           id?: string
           lead_id?: string | null
