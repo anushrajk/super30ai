@@ -69,7 +69,7 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1 ml-auto mr-4">
             <Link
               to="/"
               className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
