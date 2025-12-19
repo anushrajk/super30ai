@@ -179,16 +179,35 @@ const Booking = () => {
                         Select a Time
                       </h3>
                     </div>
-                    <div className="h-[600px]">
-                      {/* Cal.com Embed - Replace with your actual Cal.com link */}
-                      <iframe
-                        src="https://cal.com/thesuper30/30min?embed=true&hideBranding=true"
-                        width="100%"
-                        height="100%"
-                        frameBorder="0"
-                        title="Book a consultation"
-                        className="min-h-[600px]"
-                      />
+                    <div className="h-[600px] flex items-center justify-center bg-slate-50">
+                      {/* 
+                        Cal.com Embed - IMPORTANT: Replace the URL below with your actual Cal.com booking link.
+                        To get your Cal.com link:
+                        1. Sign up at cal.com
+                        2. Create a 30-minute event type
+                        3. Copy your booking URL (e.g., cal.com/your-username/30min)
+                      */}
+                      <div className="text-center p-8">
+                        <Calendar className="w-16 h-16 text-orange-500 mx-auto mb-4" />
+                        <h4 className="text-xl font-semibold text-slate-900 mb-2">
+                          Book Your Strategy Call
+                        </h4>
+                        <p className="text-slate-600 mb-6 max-w-sm">
+                          Click below to schedule your free 30-minute AI SEO strategy session.
+                        </p>
+                        <a 
+                          href="https://cal.com" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+                        >
+                          <Calendar className="w-5 h-5" />
+                          Open Booking Calendar
+                        </a>
+                        <p className="text-sm text-slate-500 mt-4">
+                          Opens in a new tab
+                        </p>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
