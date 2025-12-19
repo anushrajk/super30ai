@@ -29,38 +29,12 @@ const testimonials = [
 ];
 
 const videoTestimonials = [
-  { 
-    id: 1, 
-    thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=533&fit=crop",
-    video: "https://videos.pexels.com/video-files/3195440/3195440-uhd_2560_1440_25fps.mp4",
-    name: "John D.", 
-    company: "TechCorp", 
-    duration: "2:34" 
-  },
-  { 
-    id: 2, 
-    thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=533&fit=crop",
-    video: "https://videos.pexels.com/video-files/3252118/3252118-uhd_2560_1440_24fps.mp4",
-    name: "Maria S.", 
-    company: "GrowthIQ", 
-    duration: "1:45" 
-  },
-  { 
-    id: 3, 
-    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=533&fit=crop",
-    video: "https://videos.pexels.com/video-files/4065924/4065924-uhd_2560_1440_24fps.mp4",
-    name: "Alex R.", 
-    company: "ScaleUp", 
-    duration: "3:12" 
-  },
-  { 
-    id: 4, 
-    thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=533&fit=crop",
-    video: "https://videos.pexels.com/video-files/4427619/4427619-uhd_2560_1440_25fps.mp4",
-    name: "David K.", 
-    company: "NexGen", 
-    duration: "2:08" 
-  },
+  { id: 1, thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=533&fit=crop", video: "https://videos.pexels.com/video-files/3195440/3195440-uhd_2560_1440_25fps.mp4", name: "John D.", company: "TechCorp", duration: "2:34" },
+  { id: 2, thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=533&fit=crop", video: "https://videos.pexels.com/video-files/3252118/3252118-uhd_2560_1440_24fps.mp4", name: "Maria S.", company: "GrowthIQ", duration: "1:45" },
+  { id: 3, thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=533&fit=crop", video: "https://videos.pexels.com/video-files/4065924/4065924-uhd_2560_1440_24fps.mp4", name: "Alex R.", company: "ScaleUp", duration: "3:12" },
+  { id: 4, thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=533&fit=crop", video: "https://videos.pexels.com/video-files/4427619/4427619-uhd_2560_1440_25fps.mp4", name: "David K.", company: "NexGen", duration: "2:08" },
+  { id: 5, thumbnail: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=533&fit=crop", video: "https://videos.pexels.com/video-files/3195440/3195440-uhd_2560_1440_25fps.mp4", name: "Emily T.", company: "CloudFirst", duration: "2:15" },
+  { id: 6, thumbnail: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=533&fit=crop", video: "https://videos.pexels.com/video-files/3252118/3252118-uhd_2560_1440_24fps.mp4", name: "Michael P.", company: "DataHub", duration: "1:58" },
 ];
 
 interface VideoCardProps {
