@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
+import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -265,38 +266,12 @@ const About = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-24 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-          <div className="container relative mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to Join Our Success Stories?
-            </h2>
-            <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
-              Let's discuss how we can help your business grow.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 w-full sm:w-auto"
-                >
-                  Get in Touch
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-              </Link>
-              <Link to="/work">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-white/20 text-white hover:bg-white/10 w-full sm:w-auto"
-                >
-                  See Our Work
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <UnifiedCTASection
+          headline="Ready to Join Our Success Stories?"
+          subtext="Let's discuss how we can help your business grow."
+          primaryCTA={{ label: "Get in Touch", href: "/contact" }}
+          secondaryCTA={{ label: "See Our Work", href: "/work" }}
+        />
 
         <Footer />
       </main>
