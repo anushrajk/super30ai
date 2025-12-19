@@ -1,1 +1,16 @@
 project_id = "lunltoazmbezbfvozlfb"
+
+[functions.create-session]
+verify_jwt = false
+
+[functions.create-lead]
+verify_jwt = false
+
+[functions.get-ip-info]
+verify_jwt = false
+
+[functions.send-lead-email]
+verify_jwt = false
+
+[functions.analyze-seo]
+verify_jwt = false
