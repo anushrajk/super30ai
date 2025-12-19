@@ -85,9 +85,9 @@ const [isUnlocking, setIsUnlocking] = useState(false);
         throw new Error("No website URL found");
       }
 
-      // Call the SEO analysis edge function
+      // Call the SEO analysis edge function with lead ID for validation
       const { data: analysisData, error } = await supabase.functions.invoke('analyze-seo', {
-        body: { url: leadData.website_url }
+        body: { url: leadData.website_url, leadId }
       });
 
       if (error) throw error;
