@@ -18,22 +18,29 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("Getting IP info for:", clientIp);
 
-    // Use ip-api.com free tier for geolocation
+    // Default response
     let ipInfo = {
       ip: clientIp,
       city: "Unknown",
+      state: "Unknown",
       country: "Unknown"
     };
 
     if (clientIp && clientIp !== "unknown" && clientIp !== "127.0.0.1") {
       try {
-        const geoResponse = await fetch(`http://ip-api.com/json/${clientIp}?fields=status,country,city,query`);
+        // Use ip-api.com with regionName field for state
+        const geoResponse = await fetch(
+          `http://ip-api.com/json/${clientIp}?fields=status,country,regionName,city,query`
+        );
         const geoData = await geoResponse.json();
+        
+        console.log("Geo API response:", geoData);
         
         if (geoData.status === "success") {
           ipInfo = {
             ip: geoData.query || clientIp,
             city: geoData.city || "Unknown",
+            state: geoData.regionName || "Unknown",
             country: geoData.country || "Unknown"
           };
         }
@@ -51,7 +58,13 @@ const handler = async (req: Request): Promise<Response> => {
   } catch (error: any) {
     console.error("Error in get-ip-info function:", error);
     return new Response(
-      JSON.stringify({ error: error.message, ip: "unknown", city: "Unknown", country: "Unknown" }),
+      JSON.stringify({ 
+        error: error.message, 
+        ip: "unknown", 
+        city: "Unknown", 
+        state: "Unknown",
+        country: "Unknown" 
+      }),
       { status: 200, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }

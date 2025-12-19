@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Phone, FileText, Gift, Clock, Users, Shield, CheckCircle2, Loader2 } from 'lucide-react';
 import { useLead } from '@/hooks/useLead';
 import { useSession } from '@/hooks/useSession';
+import { useUrgencyValues } from '@/hooks/useUrgencyValues';
 import { toast } from 'sonner';
 
 type PopupType = 'callback' | 'quote' | 'exit' | null;
@@ -38,10 +39,18 @@ export const PopupManager = () => {
     exit: false,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [exitCountdown, setExitCountdown] = useState(299); // 4:59 in seconds
 
   const { createLead, sendLeadEmail } = useLead();
   const { session } = useSession();
+  const { 
+    callbackSlots, 
+    weeklyRequests, 
+    exitCountdown, 
+    tickExitCountdown, 
+    decrementCallbackSlots,
+    incrementWeeklyRequests,
+    formatCountdown 
+  } = useUrgencyValues();
 
   // Callback Form State
   const [callbackForm, setCallbackForm] = useState({
@@ -112,15 +121,15 @@ export const PopupManager = () => {
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
   }, [shownPopups, activePopup, isMobile]);
 
-  // Exit popup countdown
+  // Exit popup countdown - use persisted hook
   useEffect(() => {
     if (activePopup === 'exit' && exitCountdown > 0) {
       const timer = setInterval(() => {
-        setExitCountdown(prev => prev - 1);
+        tickExitCountdown();
       }, 1000);
       return () => clearInterval(timer);
     }
-  }, [activePopup, exitCountdown]);
+  }, [activePopup, exitCountdown, tickExitCountdown]);
 
   const handleClose = useCallback((type: PopupType) => {
     if (type) {
@@ -128,12 +137,6 @@ export const PopupManager = () => {
     }
     setActivePopup(null);
   }, []);
-
-  const formatCountdown = (seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-  };
 
   // Submit Handlers
   const handleCallbackSubmit = async (e: React.FormEvent) => {
@@ -157,6 +160,7 @@ export const PopupManager = () => {
       await createLead(leadData, session?.id || undefined);
       await sendLeadEmail(leadData as any, session, 'popup_callback');
       
+      decrementCallbackSlots();
       markPopupShown('popup_callback_shown');
       toast.success('Callback requested! We\'ll call you soon.');
       setActivePopup(null);
@@ -188,6 +192,7 @@ export const PopupManager = () => {
       await createLead(leadData, session?.id || undefined);
       await sendLeadEmail(leadData as any, session, 'popup_quote');
       
+      incrementWeeklyRequests();
       markPopupShown('popup_quote_shown');
       toast.success('Quote request received! Check your email within 24 hours.');
       setActivePopup(null);
@@ -293,8 +298,8 @@ export const PopupManager = () => {
           </form>
 
           <div className="flex items-center justify-center gap-4 pt-2 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> Only 3 slots left!</span>
-            <span className="flex items-center gap-1"><Users className="w-3 h-3" /> 47 requests this week</span>
+            <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> Only {callbackSlots} slots left!</span>
+            <span className="flex items-center gap-1"><Users className="w-3 h-3" /> {weeklyRequests} requests this week</span>
           </div>
         </DialogContent>
       </Dialog>

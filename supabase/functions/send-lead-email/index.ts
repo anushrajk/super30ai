@@ -1,8 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 
-const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -24,6 +22,7 @@ interface LeadEmailRequest {
     referrer?: string;
     ip_address?: string;
     ip_city?: string;
+    ip_state?: string;
     ip_country?: string;
     browser?: string;
     user_agent?: string;
@@ -33,15 +32,82 @@ interface LeadEmailRequest {
   form_step: string;
 }
 
+// Convert UTC to IST formatted string
+const formatToIST = (dateString: string | undefined): string => {
+  if (!dateString) return 'N/A';
+  
+  try {
+    const date = new Date(dateString);
+    // IST is UTC+5:30
+    const istOffset = 5.5 * 60 * 60 * 1000;
+    const istDate = new Date(date.getTime() + istOffset);
+    
+    return istDate.toLocaleString('en-IN', {
+      day: '2-digit',
+      month: 'short',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+      timeZone: 'UTC' // Already converted to IST
+    }) + ' IST';
+  } catch {
+    return dateString;
+  }
+};
+
+// Get current time in IST
+const getCurrentIST = (): string => {
+  const now = new Date();
+  const istOffset = 5.5 * 60 * 60 * 1000;
+  const istDate = new Date(now.getTime() + istOffset);
+  
+  return istDate.toLocaleString('en-IN', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+    timeZone: 'UTC'
+  }) + ' IST';
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
+  // Check for API key
+  const apiKey = Deno.env.get("RESEND_API_KEY");
+  if (!apiKey) {
+    console.error("RESEND_API_KEY is not configured");
+    return new Response(
+      JSON.stringify({ error: "Email service not configured" }),
+      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+    );
+  }
+
+  const resend = new Resend(apiKey);
+
   try {
     const { lead, session, submission_time, form_step }: LeadEmailRequest = await req.json();
     
-    console.log("Sending lead email for:", lead.email, "step:", form_step);
+    console.log("========================================");
+    console.log("SEND-LEAD-EMAIL FUNCTION INVOKED");
+    console.log("========================================");
+    console.log("Lead email:", lead.email);
+    console.log("Form step:", form_step);
+    console.log("Session ID exists:", !!session);
+    console.log("Timestamp:", getCurrentIST());
+
+    // Format location with state
+    const location = [
+      session.ip_city || 'Unknown',
+      session.ip_state || '',
+      session.ip_country || 'Unknown'
+    ].filter(Boolean).join(', ');
 
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
@@ -97,19 +163,19 @@ const handler = async (req: Request): Promise<Response> => {
           </tr>
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Location</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.ip_city || 'N/A'}, ${session.ip_country || 'N/A'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${location}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Browser</td>
             <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.browser || 'N/A'}</td>
           </tr>
           <tr style="background: #f9fafb;">
-            <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">First Landed Time</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.first_landed_at || 'N/A'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">First Landed (IST)</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${formatToIST(session.first_landed_at)}</td>
           </tr>
           <tr>
-            <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Submission Time</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${submission_time}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Submission Time (IST)</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${getCurrentIST()}</td>
           </tr>
         </table>
 
@@ -119,6 +185,8 @@ const handler = async (req: Request): Promise<Response> => {
       </div>
     `;
 
+    console.log("Sending email via Resend...");
+    
     const emailResponse = await resend.emails.send({
       from: "AI SEO Agency <onboarding@resend.dev>",
       to: ["thesuper30.ai@gmail.com"],
@@ -126,14 +194,29 @@ const handler = async (req: Request): Promise<Response> => {
       html: emailHtml,
     });
 
-    console.log("Email sent successfully:", emailResponse);
+    console.log("Resend API response:", JSON.stringify(emailResponse));
 
-    return new Response(JSON.stringify(emailResponse), {
+    if (emailResponse.error) {
+      console.error("Resend error:", emailResponse.error);
+      return new Response(
+        JSON.stringify({ error: emailResponse.error }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
+    console.log("Email sent successfully! ID:", emailResponse.data?.id);
+
+    return new Response(JSON.stringify({ success: true, id: emailResponse.data?.id }), {
       status: 200,
       headers: { "Content-Type": "application/json", ...corsHeaders },
     });
   } catch (error: any) {
-    console.error("Error in send-lead-email function:", error);
+    console.error("========================================");
+    console.error("ERROR in send-lead-email function:");
+    console.error("Message:", error.message);
+    console.error("Stack:", error.stack);
+    console.error("========================================");
+    
     return new Response(
       JSON.stringify({ error: error.message }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }

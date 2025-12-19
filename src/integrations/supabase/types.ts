@@ -125,6 +125,7 @@ export type Database = {
           ip_address: string | null
           ip_city: string | null
           ip_country: string | null
+          ip_state: string | null
           referrer: string | null
           user_agent: string | null
         }
@@ -138,6 +139,7 @@ export type Database = {
           ip_address?: string | null
           ip_city?: string | null
           ip_country?: string | null
+          ip_state?: string | null
           referrer?: string | null
           user_agent?: string | null
         }
@@ -151,6 +153,7 @@ export type Database = {
           ip_address?: string | null
           ip_city?: string | null
           ip_country?: string | null
+          ip_state?: string | null
           referrer?: string | null
           user_agent?: string | null
         }
