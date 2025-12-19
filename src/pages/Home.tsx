@@ -240,7 +240,7 @@ const Home = () => {
                 <CardContent className="relative p-8 z-10">
                   {/* Icon with 3D effect */}
                   <div className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl`}>
-                    <service.icon className="w-10 h-10 text-white" />
+                    <service.icon className="w-10 h-10 text-white relative z-10" />
                     {/* Icon glow */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
                   </div>
