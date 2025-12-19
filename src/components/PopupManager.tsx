@@ -67,6 +67,9 @@ export const PopupManager = () => {
     businessType: '',
   });
 
+  // Check if mobile
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
   // Timer Logic for popups
   useEffect(() => {
     const callbackTimer = setTimeout(() => {
@@ -74,14 +77,14 @@ export const PopupManager = () => {
         setActivePopup('callback');
         setShownPopups(prev => ({ ...prev, callback: true }));
       }
-    }, 8000);
+    }, 15000); // Changed from 8s to 15s
 
     const quoteTimer = setTimeout(() => {
       if (!shownPopups.quote && isPopupExpired('popup_quote_shown') && activePopup === null) {
         setActivePopup('quote');
         setShownPopups(prev => ({ ...prev, quote: true }));
       }
-    }, 20000);
+    }, 30000); // Changed from 20s to 30s for better spacing
 
     return () => {
       clearTimeout(callbackTimer);
@@ -89,8 +92,10 @@ export const PopupManager = () => {
     };
   }, [shownPopups, activePopup]);
 
-  // Exit Intent Detection (Desktop only)
+  // Exit Intent Detection (Desktop only - disabled on mobile)
   useEffect(() => {
+    if (isMobile) return; // Skip exit intent on mobile
+
     const handleMouseLeave = (e: MouseEvent) => {
       if (
         e.clientY < 10 &&
@@ -105,7 +110,7 @@ export const PopupManager = () => {
 
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
-  }, [shownPopups, activePopup]);
+  }, [shownPopups, activePopup, isMobile]);
 
   // Exit popup countdown
   useEffect(() => {
@@ -228,7 +233,7 @@ export const PopupManager = () => {
     <>
       {/* Popup 1: Schedule a Callback (8 seconds) */}
       <Dialog open={activePopup === 'callback'} onOpenChange={() => handleClose('callback')}>
-        <DialogContent className="sm:max-w-md border-2 border-primary/20 bg-gradient-to-br from-background via-background to-primary/5">
+        <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-primary/5">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <span className="bg-destructive text-destructive-foreground text-xs font-bold px-4 py-1.5 rounded-full animate-pulse">
               🔥 LIMITED SLOTS TODAY
@@ -296,7 +301,7 @@ export const PopupManager = () => {
 
       {/* Popup 2: Request a Quote (20 seconds) */}
       <Dialog open={activePopup === 'quote'} onOpenChange={() => handleClose('quote')}>
-        <DialogContent className="sm:max-w-md border-2 border-primary/20 bg-gradient-to-br from-background via-background to-accent/5">
+        <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-accent/5">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full">
               💰 CUSTOM PRICING INSIDE
@@ -377,7 +382,7 @@ export const PopupManager = () => {
 
       {/* Popup 3: Exit Intent - Free Marketing Plan */}
       <Dialog open={activePopup === 'exit'} onOpenChange={() => handleClose('exit')}>
-        <DialogContent className="sm:max-w-lg border-2 border-destructive/30 bg-gradient-to-br from-background via-background to-destructive/5">
+        <DialogContent className="w-[95vw] max-w-lg mx-auto border-2 border-destructive/30 bg-gradient-to-br from-background via-background to-destructive/5">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
             <span className="bg-destructive text-destructive-foreground text-xs font-bold px-4 py-1.5 rounded-full animate-pulse">
               🎁 WAIT! DON'T LEAVE YET
