@@ -8,6 +8,7 @@ interface SessionData {
   referrer: string;
   ip_address: string;
   ip_city: string;
+  ip_state: string;
   ip_country: string;
   browser: string;
   user_agent: string;
@@ -25,14 +26,18 @@ export const useSession = () => {
         const existingSessionId = localStorage.getItem('seo_session_id');
         
         if (existingSessionId) {
-          // Fetch existing session
-          const { data: existingSession } = await supabase
+          // Fetch existing session - use maybeSingle to handle missing data gracefully
+          const { data: existingSession, error } = await supabase
             .from('sessions')
             .select('*')
             .eq('id', existingSessionId)
-            .single();
+            .maybeSingle();
           
-          if (existingSession) {
+          if (error) {
+            console.error('Error fetching session:', error);
+            // Clear invalid session and create new one
+            localStorage.removeItem('seo_session_id');
+          } else if (existingSession) {
             // Update current page URL
             await supabase
               .from('sessions')
@@ -41,10 +46,14 @@ export const useSession = () => {
             
             setSession({
               ...existingSession,
-              current_page_url: window.location.href
+              current_page_url: window.location.href,
+              ip_state: existingSession.ip_state || 'Unknown'
             } as SessionData);
             setLoading(false);
             return;
+          } else {
+            // Session not found in DB, clear localStorage
+            localStorage.removeItem('seo_session_id');
           }
         }
 
@@ -52,12 +61,19 @@ export const useSession = () => {
         const userAgent = navigator.userAgent;
         const browser = getBrowserName(userAgent);
 
-        // Get IP info from edge function
-        let ipInfo = { ip: 'unknown', city: 'Unknown', country: 'Unknown' };
+        // Get IP info from edge function (now includes state)
+        let ipInfo = { ip: 'unknown', city: 'Unknown', state: 'Unknown', country: 'Unknown' };
         try {
-          const { data: ipData } = await supabase.functions.invoke('get-ip-info');
-          if (ipData) {
-            ipInfo = ipData;
+          const { data: ipData, error: ipError } = await supabase.functions.invoke('get-ip-info');
+          if (ipError) {
+            console.error('IP info function error:', ipError);
+          } else if (ipData) {
+            ipInfo = {
+              ip: ipData.ip || 'unknown',
+              city: ipData.city || 'Unknown',
+              state: ipData.state || 'Unknown',
+              country: ipData.country || 'Unknown'
+            };
           }
         } catch (e) {
           console.error('Failed to get IP info:', e);
@@ -70,6 +86,7 @@ export const useSession = () => {
           referrer: document.referrer || 'Direct',
           ip_address: ipInfo.ip,
           ip_city: ipInfo.city,
+          ip_state: ipInfo.state,
           ip_country: ipInfo.country,
           browser,
           user_agent: userAgent,
@@ -80,7 +97,7 @@ export const useSession = () => {
           .from('sessions')
           .insert(sessionData)
           .select()
-          .single();
+          .maybeSingle();
 
         if (error) {
           console.error('Failed to create session:', error);
@@ -100,10 +117,16 @@ export const useSession = () => {
 
   const updateCurrentPage = async () => {
     if (session?.id) {
-      await supabase
-        .from('sessions')
-        .update({ current_page_url: window.location.href })
-        .eq('id', session.id);
+      try {
+        await supabase
+          .from('sessions')
+          .update({ current_page_url: window.location.href })
+          .eq('id', session.id);
+        
+        setSession(prev => prev ? { ...prev, current_page_url: window.location.href } : null);
+      } catch (error) {
+        console.error('Failed to update current page:', error);
+      }
     }
   };
 
