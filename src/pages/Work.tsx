@@ -9,6 +9,7 @@ import { TrustBanner } from "@/components/work/TrustBanner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLead } from "@/hooks/useLead";
+import { useSession } from "@/hooks/useSession";
 import {
   ArrowRight,
   TrendingUp,
@@ -111,6 +112,7 @@ const aggregateStats = [
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const { createLead, loading } = useLead();
+  const { session } = useSession();
 
   const filteredStudies = caseStudies.filter((study) => {
     if (activeFilter === "All") return true;
@@ -118,7 +120,7 @@ const Work = () => {
   });
 
   const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
-    await createLead(data);
+    await createLead(data, session?.id);
   };
 
   return (

@@ -61,43 +61,15 @@ export const useSession = () => {
         const userAgent = navigator.userAgent;
         const browser = getBrowserName(userAgent);
 
-        // Get IP info from edge function (now includes state)
-        let ipInfo = { ip: 'unknown', city: 'Unknown', state: 'Unknown', country: 'Unknown' };
-        try {
-          const { data: ipData, error: ipError } = await supabase.functions.invoke('get-ip-info');
-          if (ipError) {
-            console.error('IP info function error:', ipError);
-          } else if (ipData) {
-            ipInfo = {
-              ip: ipData.ip || 'unknown',
-              city: ipData.city || 'Unknown',
-              state: ipData.state || 'Unknown',
-              country: ipData.country || 'Unknown'
-            };
+        // Create new session via rate-limited edge function
+        const { data: newSession, error } = await supabase.functions.invoke('create-session', {
+          body: {
+            first_page_url: window.location.href,
+            referrer: document.referrer || 'Direct',
+            user_agent: userAgent,
+            browser,
           }
-        } catch (e) {
-          console.error('Failed to get IP info:', e);
-        }
-
-        // Create new session
-        const sessionData = {
-          first_page_url: window.location.href,
-          current_page_url: window.location.href,
-          referrer: document.referrer || 'Direct',
-          ip_address: ipInfo.ip,
-          ip_city: ipInfo.city,
-          ip_state: ipInfo.state,
-          ip_country: ipInfo.country,
-          browser,
-          user_agent: userAgent,
-          first_landed_at: new Date().toISOString()
-        };
-
-        const { data: newSession, error } = await supabase
-          .from('sessions')
-          .insert(sessionData)
-          .select()
-          .maybeSingle();
+        });
 
         if (error) {
           console.error('Failed to create session:', error);

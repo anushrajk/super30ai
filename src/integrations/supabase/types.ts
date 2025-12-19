@@ -114,6 +114,27 @@ export type Database = {
           },
         ]
       }
+      rate_limits: {
+        Row: {
+          created_at: string
+          id: string
+          identifier: string
+          operation: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          identifier: string
+          operation: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          identifier?: string
+          operation?: string
+        }
+        Relationships: []
+      }
       sessions: {
         Row: {
           browser: string | null
@@ -164,7 +185,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      cleanup_old_rate_limits: { Args: never; Returns: undefined }
     }
     Enums: {
       [_ in never]: never

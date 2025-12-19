@@ -128,7 +128,7 @@ const Booking = () => {
           
           const leadId = location.state?.leadId || localStorage.getItem('seo_lead_id');
           if (leadId && session && lead) {
-            await updateLead(leadId, { step: 3 });
+            await updateLead(leadId, { step: 3 }, session?.id);
             await sendLeadEmail(
               { ...lead, step: 3 },
               session,

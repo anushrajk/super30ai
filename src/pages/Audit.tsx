@@ -125,7 +125,7 @@ const [isUnlocking, setIsUnlocking] = useState(false);
 
     setIsUnlocking(true);
     try {
-      await updateLead(leadId, { step: 2 });
+      await updateLead(leadId, { step: 2 }, session?.id);
 
       // Send email notification
       if (session && lead) {

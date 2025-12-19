@@ -20,22 +20,19 @@ export const useLead = () => {
   const createLead = async (data: Partial<LeadData>, sessionId?: string) => {
     setLoading(true);
     try {
-      const leadData = {
-        website_url: data.website_url || '',
-        email: data.email || '',
-        role: data.role,
-        monthly_revenue: data.monthly_revenue,
-        phone: data.phone,
-        company_name: data.company_name,
-        session_id: sessionId,
-        step: data.step || 1
-      };
-
-      const { data: newLead, error } = await supabase
-        .from('leads')
-        .insert(leadData)
-        .select()
-        .single();
+      // Use rate-limited edge function for creating leads
+      const { data: newLead, error } = await supabase.functions.invoke('create-lead', {
+        body: {
+          website_url: data.website_url || '',
+          email: data.email || '',
+          role: data.role,
+          monthly_revenue: data.monthly_revenue,
+          phone: data.phone,
+          company_name: data.company_name,
+          step: data.step || 1
+        },
+        headers: sessionId ? { 'x-session-id': sessionId } : undefined
+      });
 
       if (error) throw error;
       
@@ -53,15 +50,23 @@ export const useLead = () => {
     }
   };
 
-  const updateLead = async (id: string, data: Partial<LeadData>) => {
+  const updateLead = async (id: string, data: Partial<LeadData>, sessionId?: string) => {
     setLoading(true);
     try {
-      const { data: updatedLead, error } = await supabase
-        .from('leads')
-        .update({ ...data, updated_at: new Date().toISOString() })
-        .eq('id', id)
-        .select()
-        .single();
+      // Use rate-limited edge function for updating leads
+      const { data: updatedLead, error } = await supabase.functions.invoke('create-lead', {
+        body: {
+          lead_id: id,
+          website_url: data.website_url || '',
+          email: data.email || '',
+          role: data.role,
+          monthly_revenue: data.monthly_revenue,
+          phone: data.phone,
+          company_name: data.company_name,
+          step: data.step || 1
+        },
+        headers: sessionId ? { 'x-session-id': sessionId } : undefined
+      });
 
       if (error) throw error;
       
