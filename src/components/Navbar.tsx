@@ -70,16 +70,6 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 ml-auto mr-4">
-            <Link
-              to="/"
-              className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                location.pathname === "/"
-                  ? "text-orange-600"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
-            >
-              Home
-            </Link>
 
             {/* Services Dropdown */}
             <NavigationMenu>
@@ -128,7 +118,7 @@ export const Navbar = () => {
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              About
+              Team 30
             </Link>
 
             <Link
@@ -188,17 +178,6 @@ export const Navbar = () => {
       >
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col gap-2">
-            <Link
-              to="/"
-              className={`px-4 py-3 rounded-lg font-medium transition-colors ${
-                location.pathname === "/"
-                  ? "bg-orange-100 text-orange-600"
-                  : "text-foreground hover:bg-muted"
-              }`}
-            >
-              Home
-            </Link>
-
             {/* Services Section */}
             <div className="px-4 py-2">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
@@ -229,7 +208,7 @@ export const Navbar = () => {
                   : "text-foreground hover:bg-muted"
               }`}
             >
-              About
+              Team 30
             </Link>
 
             <Link
