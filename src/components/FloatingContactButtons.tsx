@@ -4,20 +4,15 @@ const PHONE_NUMBER = "+917353252526";
 const WHATSAPP_MESSAGE = "Hi! I'm interested in your marketing services.";
 
 export const FloatingContactButtons = () => {
-  const handlePhoneClick = () => {
-    window.open(`tel:${PHONE_NUMBER}`, '_self');
-  };
-
-  const handleWhatsAppClick = () => {
-    const encodedMessage = encodeURIComponent(WHATSAPP_MESSAGE);
-    window.open(`https://wa.me/${PHONE_NUMBER.replace('+', '')}?text=${encodedMessage}`, '_blank');
-  };
+  const whatsappUrl = `https://wa.me/917353252526?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
       {/* WhatsApp Button */}
-      <button
-        onClick={handleWhatsAppClick}
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className="group relative w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 animate-bounce"
         style={{ animationDuration: '2s', animationIterationCount: 'infinite' }}
         aria-label="Chat on WhatsApp"
@@ -31,11 +26,11 @@ export const FloatingContactButtons = () => {
         
         {/* Ripple effect */}
         <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30" />
-      </button>
+      </a>
 
       {/* Phone Button */}
-      <button
-        onClick={handlePhoneClick}
+      <a
+        href={`tel:${PHONE_NUMBER}`}
         className="group relative w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 hover:scale-110"
         style={{ animation: 'wobble 2s ease-in-out infinite' }}
         aria-label="Call us"
@@ -49,7 +44,7 @@ export const FloatingContactButtons = () => {
         
         {/* Pulse ring */}
         <span className="absolute inset-0 rounded-full border-2 border-orange-400 animate-pulse opacity-50" />
-      </button>
+      </a>
 
       {/* CSS for wobble animation */}
       <style>{`
