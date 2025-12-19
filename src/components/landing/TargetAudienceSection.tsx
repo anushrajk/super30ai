@@ -12,6 +12,7 @@ import {
   Scale,
   Utensils
 } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const audiences = [
   {
@@ -62,17 +63,22 @@ const audiences = [
 ];
 
 export const TargetAudienceSection = () => {
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+
   const scrollToForm = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-background relative overflow-hidden"
+    >
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             Who We Help
           </span>
@@ -88,7 +94,8 @@ export const TargetAudienceSection = () => {
           {audiences.map((audience, index) => (
             <Card 
               key={index} 
-              className="bg-background/80 backdrop-blur-sm border-border/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 group hover:-translate-y-2"
+              className={`bg-background/80 backdrop-blur-sm border-border/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 group hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
+              style={{ transitionDelay: `${(index + 1) * 75}ms` }}
             >
               <CardContent className="p-6">
                 <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
@@ -105,7 +112,7 @@ export const TargetAudienceSection = () => {
           ))}
         </div>
 
-        <div className="text-center">
+        <div className={`text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Button 
             onClick={scrollToForm}
             size="lg"

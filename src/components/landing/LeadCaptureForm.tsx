@@ -3,10 +3,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Sparkles, Shield, Clock, Loader2, Users, TrendingUp, Star, CheckCircle } from "lucide-react";
+import { Sparkles, Shield, Clock, Loader2, Users, TrendingUp, Star, CheckCircle, AlertCircle, Phone } from "lucide-react";
 
 interface LeadCaptureFormProps {
-  onSubmit: (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => void;
+  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
   loading?: boolean;
   variant?: "default" | "compact";
 }
@@ -28,13 +28,39 @@ const revenueOptions = [
   { value: "over_1m", label: "Over $1M/month" },
 ];
 
+// Validation functions
+const validateUrl = (url: string): boolean => {
+  if (!url) return false;
+  try {
+    const urlObj = new URL(url);
+    return urlObj.protocol === 'http:' || urlObj.protocol === 'https:';
+  } catch {
+    return false;
+  }
+};
+
+const validateEmail = (email: string): boolean => {
+  if (!email) return false;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+const validatePhone = (phone: string): boolean => {
+  if (!phone) return true; // Phone is optional
+  // Must be 10 digits and start with 6, 7, 8, or 9
+  const phoneRegex = /^[6-9]\d{9}$/;
+  return phoneRegex.test(phone);
+};
+
 export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: LeadCaptureFormProps) => {
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [monthlyRevenue, setMonthlyRevenue] = useState("");
   const [recentSignups, setRecentSignups] = useState(47);
   const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   // Simulate live activity counter
   useEffect(() => {
@@ -47,20 +73,40 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
     return () => clearInterval(interval);
   }, []);
 
+  const handleBlur = (field: string) => {
+    setFocusedField(null);
+    setTouched(prev => ({ ...prev, [field]: true }));
+  };
+
+  const handlePhoneChange = (value: string) => {
+    // Only allow digits and max 10 characters
+    const cleaned = value.replace(/\D/g, '').slice(0, 10);
+    setPhone(cleaned);
+  };
+
+  const isUrlValid = validateUrl(websiteUrl);
+  const isEmailValid = validateEmail(email);
+  const isPhoneValid = validatePhone(phone);
+
+  const canSubmit = isUrlValid && isEmailValid && isPhoneValid;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (websiteUrl && email) {
+    setTouched({ url: true, email: true, phone: true });
+    
+    if (canSubmit) {
       onSubmit({ 
         website_url: websiteUrl, 
-        email, 
+        email,
+        phone: phone ? `+91${phone}` : undefined,
         role: role || undefined, 
         monthly_revenue: monthlyRevenue || undefined 
       });
     }
   };
 
-  const filledFields = [websiteUrl, email, role, monthlyRevenue].filter(Boolean).length;
-  const progress = (filledFields / 4) * 100;
+  const filledFields = [websiteUrl, email, phone, role, monthlyRevenue].filter(Boolean).length;
+  const progress = (filledFields / 5) * 100;
 
   if (variant === "compact") {
     return (
@@ -107,7 +153,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         <div className="mb-5">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-medium text-muted-foreground">
-              {filledFields === 0 ? "Start your audit" : filledFields < 4 ? `${4 - filledFields} fields remaining` : "Ready to analyze!"}
+              {filledFields === 0 ? "Start your audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to analyze!"}
             </span>
             <span className="text-xs font-bold text-orange-500">{Math.round(progress)}%</span>
           </div>
@@ -144,6 +190,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3">
+          {/* Website URL */}
           <div className={`relative transition-all duration-300 ${focusedField === 'url' ? 'scale-[1.02]' : ''}`}>
             <Input
               type="url"
@@ -151,15 +198,26 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               value={websiteUrl}
               onChange={(e) => setWebsiteUrl(e.target.value)}
               onFocus={() => setFocusedField('url')}
-              onBlur={() => setFocusedField(null)}
-              required
-              className="w-full bg-background border-border h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 pl-4"
+              onBlur={() => handleBlur('url')}
+              className={`w-full bg-background h-12 transition-all duration-300 pl-4 pr-10 ${
+                touched.url && !isUrlValid 
+                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                  : 'border-border focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20'
+              }`}
             />
             {websiteUrl && (
-              <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
+              isUrlValid ? (
+                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
+              ) : touched.url && (
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+              )
             )}
           </div>
+          {touched.url && !isUrlValid && websiteUrl && (
+            <p className="text-xs text-red-500 -mt-1 ml-1">Please enter a valid URL (e.g., https://example.com)</p>
+          )}
           
+          {/* Email */}
           <div className={`relative transition-all duration-300 ${focusedField === 'email' ? 'scale-[1.02]' : ''}`}>
             <Input
               type="email"
@@ -167,14 +225,57 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onFocus={() => setFocusedField('email')}
-              onBlur={() => setFocusedField(null)}
-              required
-              className="w-full bg-background border-border h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 pl-4"
+              onBlur={() => handleBlur('email')}
+              className={`w-full bg-background h-12 transition-all duration-300 pl-4 pr-10 ${
+                touched.email && !isEmailValid 
+                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                  : 'border-border focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20'
+              }`}
             />
-            {email && email.includes('@') && (
-              <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
+            {email && (
+              isEmailValid ? (
+                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
+              ) : touched.email && (
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+              )
             )}
           </div>
+          {touched.email && !isEmailValid && email && (
+            <p className="text-xs text-red-500 -mt-1 ml-1">Please enter a valid email address</p>
+          )}
+
+          {/* Phone Number with +91 */}
+          <div className={`relative transition-all duration-300 ${focusedField === 'phone' ? 'scale-[1.02]' : ''}`}>
+            <div className="flex">
+              <div className="flex items-center gap-1 bg-muted border border-r-0 border-border rounded-l-md px-3 h-12">
+                <Phone className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm font-medium text-muted-foreground">+91</span>
+              </div>
+              <Input
+                type="tel"
+                placeholder="9876543210"
+                value={phone}
+                onChange={(e) => handlePhoneChange(e.target.value)}
+                onFocus={() => setFocusedField('phone')}
+                onBlur={() => handleBlur('phone')}
+                className={`w-full bg-background h-12 rounded-l-none transition-all duration-300 pl-3 pr-10 ${
+                  touched.phone && !isPhoneValid 
+                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
+                    : 'border-border focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20'
+                }`}
+              />
+            </div>
+            {phone && (
+              isPhoneValid ? (
+                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
+              ) : touched.phone && (
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+              )
+            )}
+          </div>
+          {touched.phone && !isPhoneValid && phone && (
+            <p className="text-xs text-red-500 -mt-1 ml-1">Enter 10 digit number starting with 6, 7, 8, or 9</p>
+          )}
 
           <div className="grid grid-cols-2 gap-3">
             <Select value={role} onValueChange={setRole}>
@@ -206,7 +307,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
 
           <Button 
             type="submit" 
-            disabled={loading || !websiteUrl || !email}
+            disabled={loading || !canSubmit}
             className="w-full h-14 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg font-semibold shadow-xl shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, Eye, MessageSquare, Users, TrendingUp, BarChart3, Target } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const features = [
   { 
@@ -61,14 +62,18 @@ const features = [
 
 export const DashboardPreview = () => {
   const [activeFeature, setActiveFeature] = useState(features[0]);
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-background relative overflow-hidden"
+    >
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             Analytics
           </span>
@@ -81,8 +86,8 @@ export const DashboardPreview = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
-          <div className="space-y-2">
-            {features.map((feature) => (
+          <div className={`space-y-2 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+            {features.map((feature, index) => (
               <button
                 key={feature.id}
                 onClick={() => setActiveFeature(feature)}
@@ -91,6 +96,7 @@ export const DashboardPreview = () => {
                     ? 'bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30'
                     : 'hover:bg-orange-50/50'
                 }`}
+                style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                   activeFeature.id === feature.id
@@ -106,7 +112,7 @@ export const DashboardPreview = () => {
             ))}
           </div>
 
-          <Card className="bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-500">
+          <Card className={`bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             {/* Browser chrome */}
             <div className="bg-muted/50 px-4 py-3 border-b border-border/50 flex items-center gap-3">
               <div className="flex gap-2">
@@ -127,8 +133,7 @@ export const DashboardPreview = () => {
                 {activeFeature.metrics.map((metric, index) => (
                   <div 
                     key={index} 
-                    className="text-center p-4 bg-muted/30 rounded-xl border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group animate-fade-in"
-                    style={{ animationDelay: `${index * 100}ms` }}
+                    className="text-center p-4 bg-muted/30 rounded-xl border border-border/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group"
                   >
                     <div className={`w-10 h-10 bg-gradient-to-br ${metric.color} rounded-xl flex items-center justify-center mx-auto mb-3 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                       <metric.icon className="w-5 h-5 text-white" />

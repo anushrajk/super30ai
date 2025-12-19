@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Search, Layers, Rocket, TrendingUp } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const steps = [
   {
@@ -29,13 +30,18 @@ const steps = [
 ];
 
 export const ProcessSection = () => {
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+
   return (
-    <section className="py-24 bg-muted/30 relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-muted/30 relative overflow-hidden"
+    >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             How It Works
           </span>
@@ -49,10 +55,16 @@ export const ProcessSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
-            <div key={index} className="relative group">
+            <div 
+              key={index} 
+              className={`relative group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              style={{ transitionDelay: `${(index + 1) * 150}ms` }}
+            >
               {/* Connector Line */}
               {index < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-20 left-[60%] w-[80%] h-1 bg-gradient-to-r from-orange-500 to-orange-300 rounded-full opacity-50 group-hover:opacity-100 transition-opacity" />
+                <div className={`hidden lg:block absolute top-20 left-[60%] w-[80%] h-1 bg-gradient-to-r from-orange-500 to-orange-300 rounded-full transition-all duration-700 ${isVisible ? 'opacity-50 scale-x-100' : 'opacity-0 scale-x-0'}`} 
+                  style={{ transitionDelay: `${(index + 2) * 150}ms`, transformOrigin: 'left' }} 
+                />
               )}
               
               <Card className="bg-background/80 backdrop-blur-sm border-border/50 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 transition-all duration-500 relative z-10 hover:-translate-y-2">

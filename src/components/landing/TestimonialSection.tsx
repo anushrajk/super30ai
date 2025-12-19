@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Quote, TrendingUp, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
@@ -38,6 +39,7 @@ export const TestimonialSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
   const videoScrollRef = useRef<HTMLDivElement>(null);
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % testimonials.length);
@@ -66,12 +68,15 @@ export const TestimonialSection = () => {
   const currentTestimonial = testimonials[currentIndex];
 
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-background relative overflow-hidden"
+    >
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-orange-50/30" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             Testimonials
           </span>
@@ -84,7 +89,7 @@ export const TestimonialSection = () => {
         </div>
 
         {/* Text Testimonial Carousel */}
-        <div className="max-w-4xl mx-auto mb-20">
+        <div className={`max-w-4xl mx-auto mb-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Card className="bg-gradient-to-br from-orange-50 via-orange-100/50 to-orange-50 border-orange-200/50 shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-500 overflow-hidden relative group">
             {/* Decorative elements */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-400/10 to-transparent rounded-full blur-3xl" />
@@ -160,7 +165,7 @@ export const TestimonialSection = () => {
         </div>
 
         {/* Video Testimonials Section */}
-        <div className="text-center mb-8">
+        <div className={`text-center mb-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             Video Stories
           </span>
@@ -172,7 +177,7 @@ export const TestimonialSection = () => {
           </p>
         </div>
         
-        <div className="relative group/carousel">
+        <div className={`relative group/carousel transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           {/* Left Arrow */}
           <Button
             variant="ghost"

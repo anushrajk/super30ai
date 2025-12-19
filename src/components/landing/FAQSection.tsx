@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const faqs = [
   {
@@ -41,13 +42,18 @@ const faqs = [
 ];
 
 export const FAQSection = () => {
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+
   return (
-    <section className="py-24 bg-muted/30 relative overflow-hidden">
+    <section 
+      ref={sectionRef}
+      className="py-24 bg-muted/30 relative overflow-hidden"
+    >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             FAQ
           </span>
@@ -65,7 +71,8 @@ export const FAQSection = () => {
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-xl px-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className={`bg-background/80 backdrop-blur-sm border border-border/50 rounded-xl px-6 shadow-lg hover:shadow-xl transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-orange-600 transition-colors py-5">
                   {faq.question}
