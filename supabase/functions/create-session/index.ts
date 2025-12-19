@@ -6,8 +6,8 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
-// Rate limit: 5 sessions per IP per hour
-const RATE_LIMIT = 5;
+// Rate limit: 50 sessions per IP per hour (allows for dev refreshes)
+const RATE_LIMIT = 50;
 const RATE_WINDOW_MINUTES = 60;
 
 const handler = async (req: Request): Promise<Response> => {
