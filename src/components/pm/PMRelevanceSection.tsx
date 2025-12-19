@@ -16,7 +16,7 @@ const notForYou = [
 ];
 
 export const PMRelevanceSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
   
   return (
     <section ref={ref} className={`py-24 bg-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>

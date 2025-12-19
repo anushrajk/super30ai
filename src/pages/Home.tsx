@@ -6,6 +6,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
+import { GradientWave } from "@/components/ui/gradient-wave";
+import { Marquee } from "@/components/ui/marquee";
+import { HeroServiceCard } from "@/components/home/HeroServiceCard";
 import {
   ArrowRight,
   Bot,
@@ -18,34 +21,25 @@ import {
   Search,
   MousePointerClick,
   CheckCircle2,
+  Sparkles,
+  Globe,
+  Megaphone,
 } from "lucide-react";
 
 const services = [
   {
     icon: Bot,
     title: "AI SEO Services",
-    description:
-      "Dominate Google, AI Overviews, and LLM answers with AI-first SEO strategies",
-    features: [
-      "AI Search Optimization",
-      "LLM Visibility",
-      "Intent Mapping",
-      "Technical AI SEO",
-    ],
+    description: "Dominate Google, AI Overviews, and LLM answers with AI-first SEO strategies",
+    features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO"],
     href: "/ai-seo",
     color: "from-orange-500 to-orange-600",
   },
   {
     icon: Target,
     title: "Performance Marketing",
-    description:
-      "ROI-driven paid advertising that turns ad spend into predictable revenue",
-    features: [
-      "Google Ads",
-      "Meta Ads",
-      "LinkedIn Ads",
-      "Programmatic",
-    ],
+    description: "ROI-driven paid advertising that turns ad spend into predictable revenue",
+    features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Programmatic"],
     href: "/performance-marketing",
     color: "from-blue-500 to-blue-600",
   },
@@ -59,107 +53,156 @@ const stats = [
 ];
 
 const whyChooseUs = [
-  {
-    icon: Bot,
-    title: "AI-First Approach",
-    description: "We leverage AI for optimization, not just talk about it",
-  },
-  {
-    icon: BarChart3,
-    title: "Data-Driven Results",
-    description: "Every decision backed by analytics and measurable outcomes",
-  },
-  {
-    icon: Users,
-    title: "Expert Team",
-    description: "Ex-Google strategists with 10+ years of experience",
-  },
-  {
-    icon: Zap,
-    title: "Fast Execution",
-    description: "Rapid implementation with no long-term lock-ins",
-  },
+  { icon: Bot, title: "AI-First Approach", description: "We leverage AI for optimization, not just talk about it" },
+  { icon: BarChart3, title: "Data-Driven Results", description: "Every decision backed by analytics and measurable outcomes" },
+  { icon: Users, title: "Expert Team", description: "Ex-Google strategists with 10+ years of experience" },
+  { icon: Zap, title: "Fast Execution", description: "Rapid implementation with no long-term lock-ins" },
+];
+
+const heroServiceCards = [
+  { icon: Bot, title: "AI SEO", description: "Rank in AI search results", gradient: "from-orange-500 to-orange-600" },
+  { icon: Target, title: "Google Ads", description: "Maximize your ROAS", gradient: "from-blue-500 to-blue-600" },
+  { icon: Megaphone, title: "Meta Ads", description: "Scale on social", gradient: "from-pink-500 to-purple-600" },
+  { icon: Globe, title: "Technical SEO", description: "Fix crawl issues", gradient: "from-green-500 to-emerald-600" },
+  { icon: TrendingUp, title: "Analytics", description: "Track what matters", gradient: "from-indigo-500 to-violet-600" },
 ];
 
 const Home = () => {
   return (
     <>
       <Helmet>
-        <title>
-          The Super 30 | AI-Powered Digital Marketing Agency Bangalore
-        </title>
-        <meta
-          name="description"
-          content="The Super 30 is Bangalore's leading AI-powered digital marketing agency. Specializing in AI SEO and Performance Marketing to grow your business."
-        />
-        <meta
-          name="keywords"
-          content="digital marketing agency, AI SEO, performance marketing, Bangalore, The Super 30"
-        />
+        <title>The Super 30 | AI-Powered Digital Marketing Agency Bangalore</title>
+        <meta name="description" content="The Super 30 is Bangalore's leading AI-powered digital marketing agency. Specializing in AI SEO and Performance Marketing to grow your business." />
+        <meta name="keywords" content="digital marketing agency, AI SEO, performance marketing, Bangalore, The Super 30" />
         <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app" />
       </Helmet>
 
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* Hero Section */}
-        <section className="relative bg-background overflow-hidden min-h-[85vh] flex items-center">
-          {/* Background */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-blue-50/50" />
-            <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/30 to-orange-600/10 rounded-full blur-3xl animate-pulse" />
-            <div
-              className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-blue-300/20 to-blue-500/10 rounded-full blur-3xl animate-pulse"
-              style={{ animationDelay: "1s" }}
-            />
-          </div>
+        {/* Hero Section - Modern & Engaging */}
+        <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+          {/* Animated Gradient Background */}
+          <GradientWave colors={["#fed7aa", "#ffffff", "#fdba74", "#fef3c7", "#ffffff"]} />
 
-          <div className="container relative mx-auto px-4 py-16 lg:py-24">
-            <div className="max-w-4xl mx-auto text-center">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 px-4 py-1.5 rounded-full mb-6">
-                <Award className="w-4 h-4 text-orange-600" />
-                <span className="text-orange-700 text-sm font-medium">
-                  #1 AI Marketing Agency in India
-                </span>
+          {/* Overlay for better text readability */}
+          <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+
+          {/* Floating decorative elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl animate-pulse" />
+          <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/30 to-yellow-400/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "2s" }} />
+
+          <div className="container relative mx-auto px-4 py-12 lg:py-20">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left Content */}
+              <div className="text-center lg:text-left">
+                {/* Trust Badge */}
+                <div className="inline-flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-orange-200 px-4 py-2 rounded-full mb-6 animate-fade-in">
+                  <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full">
+                    <Award className="w-3.5 h-3.5 text-white" />
+                  </div>
+                  <span className="text-sm font-medium text-foreground">#1 AI Marketing Agency in India</span>
+                  <Sparkles className="w-4 h-4 text-orange-500" />
+                </div>
+
+                {/* Main Headline */}
+                <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight mb-6">
+                  Grow Your Business with{" "}
+                  <span className="relative">
+                    <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+                      AI-Powered
+                    </span>
+                    <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
+                      <path d="M2 10C50 4 150 4 198 10" stroke="url(#underline-gradient)" strokeWidth="3" strokeLinecap="round" />
+                      <defs>
+                        <linearGradient id="underline-gradient" x1="0" y1="0" x2="200" y2="0">
+                          <stop stopColor="#f97316" />
+                          <stop offset="1" stopColor="#ea580c" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </span>{" "}
+                  Marketing
+                </h1>
+
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8">
+                  We combine AI SEO and Performance Marketing to deliver predictable growth — not vanity metrics. Trusted by 300+ businesses across India.
+                </p>
+
+                {/* Platform Logos */}
+                <div className="flex items-center gap-6 justify-center lg:justify-start mb-8">
+                  <span className="text-xs text-muted-foreground uppercase tracking-wider">Certified Partners:</span>
+                  <div className="flex items-center gap-4">
+                    <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center" title="Google Partner">
+                      <Search className="w-4 h-4 text-foreground/70" />
+                    </div>
+                    <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center" title="Meta Partner">
+                      <Globe className="w-4 h-4 text-foreground/70" />
+                    </div>
+                    <div className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center" title="LinkedIn Partner">
+                      <Users className="w-4 h-4 text-foreground/70" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <Link to="/ai-seo">
+                    <Button
+                      size="lg"
+                      className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-base px-8"
+                    >
+                      <Search className="w-5 h-5 mr-2" />
+                      AI SEO Services
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                  </Link>
+                  <Link to="/performance-marketing">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="border-2 bg-background/80 backdrop-blur-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-base px-8"
+                    >
+                      <MousePointerClick className="w-5 h-5 mr-2" />
+                      Performance Marketing
+                    </Button>
+                  </Link>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="flex items-center gap-6 justify-center lg:justify-start mt-10 pt-8 border-t border-border/50">
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">300+</div>
+                    <div className="text-xs text-muted-foreground">Projects</div>
+                  </div>
+                  <div className="h-10 w-px bg-border" />
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">₹50Cr+</div>
+                    <div className="text-xs text-muted-foreground">Revenue Generated</div>
+                  </div>
+                  <div className="h-10 w-px bg-border" />
+                  <div>
+                    <div className="text-2xl font-bold text-foreground">95%</div>
+                    <div className="text-xs text-muted-foreground">Retention</div>
+                  </div>
+                </div>
               </div>
 
-              {/* Headline */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight mb-6">
-                Grow Your Business with{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                  AI-Powered
-                </span>{" "}
-                Marketing
-              </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-8">
-                We combine AI SEO and Performance Marketing to deliver
-                predictable growth — not vanity metrics.
-              </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/ai-seo">
-                  <Button
-                    size="lg"
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 w-full sm:w-auto"
-                  >
-                    <Search className="w-5 h-5 mr-2" />
-                    AI SEO Services
-                  </Button>
-                </Link>
-                <Link to="/performance-marketing">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-2 hover:bg-muted/50 w-full sm:w-auto"
-                  >
-                    <MousePointerClick className="w-5 h-5 mr-2" />
-                    Performance Marketing
-                  </Button>
-                </Link>
+              {/* Right Side - Service Cards Marquee */}
+              <div className="hidden lg:block relative h-[500px] overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background z-10 pointer-events-none" />
+                <Marquee vertical pauseOnHover speed="slow" className="h-full">
+                  {heroServiceCards.map((service, index) => (
+                    <HeroServiceCard
+                      key={index}
+                      icon={service.icon}
+                      title={service.title}
+                      description={service.description}
+                      gradient={service.gradient}
+                    />
+                  ))}
+                </Marquee>
               </div>
             </div>
           </div>
@@ -192,8 +235,7 @@ const Home = () => {
                 Two Powerful Services, One Goal
               </h2>
               <p className="text-lg text-muted-foreground">
-                Whether you need organic AI visibility or paid advertising ROI,
-                we've got you covered.
+                Whether you need organic AI visibility or paid advertising ROI, we've got you covered.
               </p>
             </div>
 
@@ -210,19 +252,12 @@ const Home = () => {
                       <service.icon className="w-8 h-8 text-white" />
                     </div>
 
-                    <h3 className="text-2xl font-bold text-foreground mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-6">
-                      {service.description}
-                    </p>
+                    <h3 className="text-2xl font-bold text-foreground mb-3">{service.title}</h3>
+                    <p className="text-muted-foreground mb-6">{service.description}</p>
 
                     <ul className="space-y-2 mb-6">
                       {service.features.map((feature, i) => (
-                        <li
-                          key={i}
-                          className="flex items-center gap-2 text-sm text-foreground"
-                        >
+                        <li key={i} className="flex items-center gap-2 text-sm text-foreground">
                           <CheckCircle2 className="w-4 h-4 text-orange-500" />
                           {feature}
                         </li>
@@ -269,12 +304,8 @@ const Home = () => {
                     <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300">
                       <item.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors" />
                     </div>
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {item.description}
-                    </p>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -293,8 +324,7 @@ const Home = () => {
               Ready to Grow Your Business?
             </h2>
             <p className="text-lg text-slate-300 max-w-2xl mx-auto mb-8">
-              Choose your path to growth. Get a free audit and discover your
-              untapped potential.
+              Choose your path to growth. Get a free audit and discover your untapped potential.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
