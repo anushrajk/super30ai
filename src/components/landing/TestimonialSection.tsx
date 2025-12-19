@@ -71,7 +71,7 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
 
   return (
     <div
-      className="flex-shrink-0 w-[200px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start shadow-lg hover:shadow-2xl transition-all duration-300"
+      className="flex-shrink-0 w-[160px] sm:w-[200px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start shadow-lg hover:shadow-2xl transition-all duration-300"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
@@ -274,8 +274,11 @@ export const TestimonialSection = () => {
           <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
             Video Testimonials
           </h3>
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground hidden sm:block">
             Hover to preview • Click to watch full video
+          </p>
+          <p className="text-muted-foreground sm:hidden">
+            Tap to play • Swipe to browse
           </p>
         </div>
         
@@ -293,8 +296,8 @@ export const TestimonialSection = () => {
           {/* Video Grid - Portrait Style */}
           <div 
             ref={videoScrollRef}
-            className="flex gap-4 overflow-x-auto pb-4 px-8 snap-x snap-mandatory scrollbar-hide justify-center"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 px-4 sm:px-8 snap-x snap-mandatory scrollbar-hide sm:justify-center -webkit-overflow-scrolling-touch"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
           >
             {videoTestimonials.map((video) => (
               <VideoCard

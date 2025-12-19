@@ -129,7 +129,7 @@ export const DashboardPreview = () => {
 
             <CardContent className="p-6">
               <div className="text-sm text-muted-foreground mb-4 font-medium">{activeFeature.label}</div>
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {activeFeature.metrics.map((metric, index) => (
                   <div 
                     key={index} 

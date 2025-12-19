@@ -268,7 +268,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
             <p className="text-xs text-red-500 -mt-1 ml-1">Enter 10 digit number starting with 6, 7, 8, or 9</p>
           )}
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Select value={role} onValueChange={setRole}>
               <SelectTrigger className={`bg-background border-border h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 ${role ? 'border-green-500/50' : ''}`}>
                 <SelectValue placeholder="Your Role" />

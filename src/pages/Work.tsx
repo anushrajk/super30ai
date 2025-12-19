@@ -145,8 +145,8 @@ const Work = () => {
           </div>
 
           {/* Floating elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-2xl" />
 
           <div className="container relative mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
