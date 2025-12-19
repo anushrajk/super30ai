@@ -179,7 +179,7 @@ const CookiePolicy = () => {
                   <div className="mt-4 p-4 bg-muted/30 rounded-xl">
                     <p className="text-foreground font-semibold">The Super 30</p>
                     <p className="text-muted-foreground">Email: privacy@thesuper30.ai</p>
-                    <p className="text-muted-foreground">Phone: +91 98765 43210</p>
+                    <p className="text-muted-foreground">Phone: +91 73532 52526</p>
                   </div>
                 </div>
               </div>
