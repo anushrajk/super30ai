@@ -244,7 +244,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               </div>
               <Input
                 type="tel"
-                placeholder="9876543210"
+                placeholder="7353252526"
                 value={phone}
                 onChange={(e) => handlePhoneChange(e.target.value)}
                 onFocus={() => setFocusedField('phone')}

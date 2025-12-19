@@ -48,9 +48,9 @@ const ThankYou = () => {
               {/* Call Now CTA */}
               <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 text-white mb-8">
                 <p className="text-orange-100 mb-2">Can't wait? Talk to us now!</p>
-                <a href="tel:+919876543210" className="inline-flex items-center gap-2 text-2xl font-bold hover:underline">
+                <a href="tel:+917353252526" className="inline-flex items-center gap-2 text-2xl font-bold hover:underline">
                   <Phone className="w-6 h-6" />
-                  +91 98765 43210
+                  +91 73532 52526
                 </a>
               </div>
 

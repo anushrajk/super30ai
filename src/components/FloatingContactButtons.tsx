@@ -1,6 +1,6 @@
 import { Phone, MessageCircle } from "lucide-react";
 
-const PHONE_NUMBER = "+919876543210";
+const PHONE_NUMBER = "+917353252526";
 const WHATSAPP_MESSAGE = "Hi! I'm interested in your marketing services.";
 
 export const FloatingContactButtons = () => {

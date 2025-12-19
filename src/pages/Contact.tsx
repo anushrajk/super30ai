@@ -37,8 +37,8 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 98765 43210",
-    link: "tel:+919876543210",
+    value: "+91 73532 52526",
+    link: "tel:+917353252526",
   },
   {
     icon: MapPin,
@@ -206,7 +206,7 @@ const Contact = () => {
                         <Label htmlFor="phone">Phone</Label>
                         <Input
                           id="phone"
-                          placeholder="+91 98765 43210"
+                          placeholder="+91 73532 52526"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         />

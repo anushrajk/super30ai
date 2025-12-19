@@ -111,11 +111,11 @@ export const Footer = () => {
               </li>
               <li>
                 <a
-                  href="tel:+919876543210"
+                  href="tel:+917353252526"
                   className="flex items-center gap-2 text-slate-600 hover:text-orange-500 transition-colors text-sm"
                 >
                   <Phone className="w-4 h-4 text-orange-500" />
-                  +91 98765 43210
+                  +91 73532 52526
                 </a>
               </li>
             </ul>
