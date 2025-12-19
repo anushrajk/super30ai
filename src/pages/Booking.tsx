@@ -150,24 +150,24 @@ const Booking = () => {
               </CardContent>
             </Card>
           ) : (
-            <div className="grid lg:grid-cols-2 gap-12 items-start">
-              {/* Benefits */}
-              <div>
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          <div className="grid lg:grid-cols-5 gap-8 items-start">
+              {/* Benefits - Sticky Left Section */}
+              <div className="lg:col-span-2 lg:sticky lg:top-6">
+                <h2 className="text-2xl font-bold text-slate-900 mb-5">
                   What You'll Get
                 </h2>
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {benefits.map((benefit, index) => (
-                    <Card key={index} className="hover:shadow-md transition-shadow">
-                      <CardContent className="p-6 flex items-start gap-4">
-                        <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                          <benefit.icon className="w-6 h-6 text-orange-500" />
+                    <Card key={index} className="hover:shadow-md transition-shadow border-slate-200">
+                      <CardContent className="p-4 flex items-start gap-3">
+                        <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <benefit.icon className="w-5 h-5 text-orange-500" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-slate-900 mb-1">
+                          <h3 className="font-semibold text-slate-900 text-sm mb-0.5">
                             {benefit.title}
                           </h3>
-                          <p className="text-slate-600 text-sm">
+                          <p className="text-slate-600 text-xs leading-relaxed">
                             {benefit.description}
                           </p>
                         </div>
@@ -176,42 +176,47 @@ const Booking = () => {
                   ))}
                 </div>
 
-                <div className="mt-8 p-6 bg-orange-50 rounded-lg border border-orange-200">
-                  <h3 className="font-semibold text-slate-900 mb-2 flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-orange-500" />
+                <div className="mt-5 p-4 bg-orange-50 rounded-lg border border-orange-200">
+                  <h3 className="font-semibold text-slate-900 mb-1.5 flex items-center gap-2 text-sm">
+                    <Calendar className="w-4 h-4 text-orange-500" />
                     30-Minute Strategy Session
                   </h3>
-                  <p className="text-slate-600 text-sm">
+                  <p className="text-slate-600 text-xs leading-relaxed">
                     No fluff, no hard sell. Just actionable insights about your AI search visibility and a clear path forward.
                   </p>
                 </div>
               </div>
 
-              {/* Cal.com Embed */}
-              <div>
-                <Card className="overflow-hidden">
+              {/* Cal.com Embed - Right Section */}
+              <div className="lg:col-span-3">
+                <Card className="overflow-hidden border-slate-200 shadow-lg">
                   <CardContent className="p-0">
-                    <div className="bg-slate-100 p-4 border-b">
-                      <h3 className="font-semibold text-slate-900 flex items-center gap-2">
-                        <Calendar className="w-5 h-5 text-orange-500" />
+                    <div className="bg-gradient-to-r from-slate-900 to-slate-800 p-4">
+                      <h3 className="font-semibold text-white flex items-center gap-2">
+                        <Calendar className="w-5 h-5 text-orange-400" />
                         Select a Time
                       </h3>
+                      <p className="text-slate-400 text-xs mt-1">Choose a slot that works best for you</p>
                     </div>
-                    <div className="min-h-[600px]">
-                      <Cal
-                        calLink="thesuper-30-ehlmd6/30min"
-                        style={{ width: "100%", height: "100%", overflow: "scroll", minHeight: "600px" }}
-                        config={{
-                          layout: "month_view"
-                        }}
-                      />
-                    </div>
+                    <Cal
+                      calLink="thesuper-30-ehlmd6/30min"
+                      style={{ 
+                        width: "100%", 
+                        height: "480px", 
+                        overflow: "hidden",
+                        minHeight: "480px",
+                        maxHeight: "520px"
+                      }}
+                      config={{
+                        layout: "month_view"
+                      }}
+                    />
                   </CardContent>
                 </Card>
                 
-                <p className="text-center text-slate-500 text-sm mt-4">
+                <p className="text-center text-slate-500 text-xs mt-3">
                   Can't find a suitable time?{" "}
-                  <a href="mailto:thesuper30.ai@gmail.com" className="text-orange-500 hover:underline">
+                  <a href="mailto:thesuper30.ai@gmail.com" className="text-orange-500 hover:underline font-medium">
                     Email us directly
                   </a>
                 </p>
