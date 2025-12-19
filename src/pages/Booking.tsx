@@ -114,6 +114,20 @@ const Booking = () => {
     }
   }, []);
 
+  // Format time from ISO string
+  const formatTime = (isoString: string | undefined) => {
+    if (!isoString) return null;
+    try {
+      return new Date(isoString).toLocaleTimeString('en-IN', { 
+        hour: '2-digit', 
+        minute: '2-digit',
+        hour12: true 
+      });
+    } catch {
+      return null;
+    }
+  };
+
   // Cal.com embed event listener
   useEffect(() => {
     (async () => {
@@ -122,31 +136,35 @@ const Booking = () => {
         action: "bookingSuccessful",
         callback: async (e: { detail: { data: any } }) => {
           const bookingData = e.detail.data;
+          console.log("Cal.com booking data:", bookingData); // Debug
           
           setBookingConfirmed(true);
           decrementSlots(); // Decrement persisted slots
           
           const leadId = location.state?.leadId || localStorage.getItem('seo_lead_id');
           if (leadId && session && lead) {
-            await updateLead(leadId, { step: 3 }, session?.id);
-            await sendLeadEmail(
+            updateLead(leadId, { step: 3 }, session?.id).catch(console.error);
+            sendLeadEmail(
               { ...lead, step: 3 },
               session,
               "Step 3 - Consultation Booked"
-            );
+            ).catch(console.error);
           }
           
           toast.success("Consultation booked successfully!");
           
           // Redirect to thank you page with booking details
+          // Cal.com returns startTime as ISO string, extract date from it
+          const startDateTime = bookingData?.startTime;
+          
           navigate("/thank-you", {
             state: {
-              name: bookingData?.attendees?.[0]?.name || lead?.company_name,
+              name: bookingData?.attendees?.[0]?.name || lead?.company_name || lead?.email?.split('@')[0],
               email: bookingData?.attendees?.[0]?.email || lead?.email,
-              bookingDate: bookingData?.date,
-              startTime: bookingData?.startTime,
-              endTime: bookingData?.endTime,
-              meetingLink: bookingData?.meetingUrl,
+              bookingDate: startDateTime, // Pass full ISO string for formatting
+              startTime: formatTime(bookingData?.startTime),
+              endTime: formatTime(bookingData?.endTime),
+              meetingLink: bookingData?.metadata?.videoCallUrl || bookingData?.meetingUrl || bookingData?.location,
               source: "booking_calendar"
             }
           });
