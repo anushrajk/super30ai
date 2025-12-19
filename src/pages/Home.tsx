@@ -7,6 +7,7 @@ import { Footer } from "@/components/landing/Footer";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
+import { BlogSection } from "@/components/landing/BlogSection";
 import { GradientWave } from "@/components/ui/gradient-wave";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
 import { ArrowRight, Bot, Target, TrendingUp, Users, Award, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Globe } from "lucide-react";
@@ -311,6 +312,8 @@ const Home = () => {
       </section>
 
       <TestimonialSection />
+
+      <BlogSection />
 
       <UnifiedCTASection />
 
