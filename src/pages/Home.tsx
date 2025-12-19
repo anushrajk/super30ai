@@ -83,13 +83,13 @@ const WhoIsThisForSection = () => {
       ref={sectionRef}
       className="py-24 bg-background relative overflow-hidden"
     >
-      {/* Animated background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/30 to-transparent" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/5 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Simplified background elements - removed animate-pulse and heavy blurs */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/5 rounded-full blur-2xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
       
       <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center max-w-3xl mx-auto mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-600 rounded-full text-sm font-semibold mb-4 shadow-sm">
             Perfect Fit
           </span>
@@ -105,15 +105,18 @@ const WhoIsThisForSection = () => {
           {audiences.map((audience, index) => (
             <Card 
               key={index} 
-              className={`group relative bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden transition-all duration-500 hover:border-orange-500/50 hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'}`}
-              style={{ transitionDelay: `${(index + 1) * 75}ms` }}
+              className={`group relative bg-background/95 border-border/50 overflow-hidden transition-[transform,box-shadow,border-color] duration-300 hover:border-orange-500/50 hover:shadow-xl hover:-translate-y-1 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              style={{ 
+                transitionDelay: `${(index + 1) * 50}ms`,
+                transform: "translateZ(0)"
+              }}
             >
-              {/* Hover gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 via-orange-500/0 to-orange-500/0 group-hover:from-orange-500/5 group-hover:via-transparent group-hover:to-primary/5 transition-all duration-500" />
+              {/* Simplified hover gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/0 to-primary/0 group-hover:from-orange-500/5 group-hover:to-primary/5 transition-colors duration-300" />
               
               <CardContent className="relative p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-6 shadow-lg group-hover:shadow-orange-500/30">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-300 shadow-lg group-hover:shadow-orange-500/30">
                     <audience.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div className="flex-1">
@@ -130,15 +133,15 @@ const WhoIsThisForSection = () => {
           ))}
         </div>
 
-        <div className={`text-center transition-all duration-700 delay-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
           <p className="text-muted-foreground mb-6">Don't see your industry? We work with all growth-focused businesses.</p>
           <Link to="/contact">
             <Button 
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 transition-[transform,box-shadow] duration-300 hover:shadow-orange-500/50 hover:scale-105"
             >
               Let's Talk About Your Business
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </Link>
         </div>
@@ -167,21 +170,17 @@ const Home = () => {
         {/* Overlay for better text readability */}
         <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
 
-        {/* Floating decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl animate-pulse" />
-        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-3xl animate-pulse" style={{
-          animationDelay: "1s"
-        }} />
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/30 to-yellow-400/20 rounded-full blur-2xl animate-pulse" style={{
-          animationDelay: "2s"
-        }} />
+        {/* Simplified decorative elements - removed animate-pulse */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/15 to-orange-600/5 rounded-full blur-xl" />
+        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/15 to-blue-600/5 rounded-full blur-xl" />
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/20 to-yellow-400/10 rounded-full blur-xl" />
 
         <div className="container relative mx-auto px-4 py-12 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="text-center lg:text-left">
-              {/* Trust Badge */}
-              <div className="inline-flex items-center gap-2 bg-background/80 backdrop-blur-sm border border-orange-200 px-4 py-2 rounded-full mb-6 animate-fade-in">
+              {/* Trust Badge - removed backdrop-blur */}
+              <div className="inline-flex items-center gap-2 bg-background/95 border border-orange-200 px-4 py-2 rounded-full mb-6 animate-fade-in">
                 <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full">
                   <Award className="w-3.5 h-3.5 text-white" />
                 </div>
@@ -261,7 +260,7 @@ const Home = () => {
                   </Button>
                 </Link>
                 <Link to="/performance-marketing">
-                  <Button size="lg" variant="outline" className="border-2 bg-background/80 backdrop-blur-sm hover:bg-muted/50 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-base px-8">
+                  <Button size="lg" variant="outline" className="border-2 bg-background/95 hover:bg-muted/50 hover:-translate-y-0.5 transition-[transform,background-color] duration-200 w-full sm:w-auto text-base px-8">
                     <MousePointerClick className="w-5 h-5 mr-2" />
                     Performance Marketing
                   </Button>
@@ -310,25 +309,23 @@ const Home = () => {
             {services.map((service, index) => (
               <Card 
                 key={index} 
-                className="relative bg-background/80 backdrop-blur-xl border-2 border-border/50 hover:border-transparent overflow-hidden group transition-all duration-500 hover:shadow-2xl"
-                style={{
-                  transform: "perspective(1000px)",
-                }}
+                className="relative bg-background/95 border-2 border-border/50 hover:border-transparent overflow-hidden group transition-[transform,box-shadow,border-color] duration-300 hover:shadow-2xl"
+                style={{ transform: "translateZ(0)" }}
               >
-                {/* Animated gradient border */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} style={{ padding: "2px", margin: "-2px", borderRadius: "inherit" }}>
+                {/* Simplified gradient border */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} style={{ padding: "2px", margin: "-2px", borderRadius: "inherit" }}>
                   <div className="w-full h-full bg-background rounded-[inherit]" />
                 </div>
                 
-                {/* Glow effect */}
-                <div className={`absolute -inset-1 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500`} />
+                {/* Simplified glow effect - reduced blur */}
+                <div className={`absolute -inset-1 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 blur-lg transition-opacity duration-300`} />
 
                 <CardContent className="relative p-8 z-10">
-                  {/* Icon with 3D effect */}
-                  <div className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-xl`}>
+                  {/* Simplified icon */}
+                  <div className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 shadow-xl`}>
                     <service.icon className="w-10 h-10 text-white relative z-10" />
-                    {/* Icon glow */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-lg opacity-50 group-hover:opacity-100 transition-opacity duration-500`} />
+                    {/* Simplified icon glow - reduced blur */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-300`} />
                   </div>
 
                   <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-orange-600 transition-colors duration-300">
@@ -386,10 +383,10 @@ const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {whyChooseUs.map((item, index) => <Card key={index} className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1">
+            {whyChooseUs.map((item, index) => <Card key={index} className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-[transform,box-shadow,border-color] duration-200 group hover:-translate-y-1">
               <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <item.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors" />
+                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-200">
+                  <item.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-200" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
