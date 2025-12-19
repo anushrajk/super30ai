@@ -1,4 +1,4 @@
-import { LeadCaptureForm } from "@/components/landing/LeadCaptureForm";
+import { PMLeadCaptureForm } from "@/components/pm/PMLeadCaptureForm";
 import { Users, Globe, Bot, Handshake, Award, TrendingUp, Target } from "lucide-react";
 
 interface PMHeroSectionProps {
@@ -34,20 +34,20 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
             <div>
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-5">
                 When Every Rupee Counts,{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
                   We Make It Multiply.
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 AI-powered performance marketing that turns ad spend into{" "}
-                <span className="text-foreground font-semibold">predictable revenue</span>, not wasted budget.
+                <span className="text-blue-600 font-semibold">predictable revenue</span>, not wasted budget.
               </p>
             </div>
 
             <div className="flex flex-col gap-3 py-2">
               {trustSignals.map((signal, index) => (
                 <div key={index} className="flex items-center gap-3 group cursor-default">
-                  <div className="w-7 h-7 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-orange-500/20">
+                  <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-blue-500/20">
                     <signal.icon className="w-3.5 h-3.5 text-white" />
                   </div>
                   <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
@@ -58,7 +58,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
 
           <div className="lg:col-span-5">
             <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-              <LeadCaptureForm onSubmit={onSubmit} loading={loading} />
+              <PMLeadCaptureForm onSubmit={onSubmit} loading={loading} />
             </div>
           </div>
         </div>

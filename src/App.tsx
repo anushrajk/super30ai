@@ -11,11 +11,13 @@ import Work from "./pages/Work";
 import Contact from "./pages/Contact";
 import Audit from "./pages/Audit";
 import Booking from "./pages/Booking";
+import ThankYou from "./pages/ThankYou";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import CookiePolicy from "./pages/CookiePolicy";
 import NotFound from "./pages/NotFound";
 import { CookieConsent } from "./components/CookieConsent";
+import { FloatingContactButtons } from "./components/FloatingContactButtons";
 
 const queryClient = new QueryClient();
 
@@ -34,12 +36,14 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/audit" element={<Audit />} />
           <Route path="/booking" element={<Booking />} />
+          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-of-service" element={<TermsOfService />} />
           <Route path="/cookie-policy" element={<CookiePolicy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <CookieConsent />
+        <FloatingContactButtons />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
