@@ -41,12 +41,13 @@ const PerformanceMarketing = () => {
         await sendLeadEmail(
           { ...leadData, step: 1 },
           session,
-          "Step 1 - Performance Marketing Lead"
+          "Performance Marketing - Ads Consultation Request"
         );
       }
 
-      toast.success("Analyzing your ad potential...");
-      navigate("/audit", { state: { leadId: newLead?.id, service: "pm" } });
+      toast.success("Redirecting to book your ads consultation...");
+      // Skip audit for PM - go directly to booking
+      navigate("/booking", { state: { leadId: newLead?.id, service: "pm" } });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
