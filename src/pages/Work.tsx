@@ -4,8 +4,11 @@ import { Helmet } from "react-helmet";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
+import { LeadCaptureForm } from "@/components/landing/LeadCaptureForm";
+import { TrustBanner } from "@/components/work/TrustBanner";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useLead } from "@/hooks/useLead";
 import {
   ArrowRight,
   TrendingUp,
@@ -107,11 +110,16 @@ const aggregateStats = [
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
+  const { createLead, loading } = useLead();
 
   const filteredStudies = caseStudies.filter((study) => {
     if (activeFilter === "All") return true;
     return study.category.includes(activeFilter);
   });
+
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
+    await createLead(data);
+  };
 
   return (
     <>
@@ -127,41 +135,68 @@ const Work = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* Hero Section */}
+        {/* Hero Section with Form */}
         <section className="relative bg-background overflow-hidden py-24 lg:py-32">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
             <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
           </div>
 
+          {/* Floating elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl animate-pulse" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+
           <div className="container relative mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 px-4 py-1.5 rounded-full mb-6">
-                <BarChart3 className="w-4 h-4 text-orange-600" />
-                <span className="text-orange-700 text-sm font-medium">Our Work</span>
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              {/* Left - Content */}
+              <div className="text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 px-4 py-1.5 rounded-full mb-6">
+                  <BarChart3 className="w-4 h-4 text-orange-600" />
+                  <span className="text-orange-700 text-sm font-medium">Our Work</span>
+                </div>
+
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+                  Results That{" "}
+                  <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                    Speak
+                  </span>
+                </h1>
+
+                <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-xl mb-8">
+                  Real results from real clients. See how we've helped 300+ businesses grow with AI-powered marketing strategies.
+                </p>
+
+                {/* Quick Stats */}
+                <div className="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
+                  {aggregateStats.slice(0, 2).map((stat, index) => (
+                    <div key={index} className="p-4 bg-muted/30 rounded-xl border border-border/50">
+                      <div className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                        {stat.value}
+                      </div>
+                      <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-                Results That{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                  Speak
-                </span>
-              </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Real results from real clients. See how we've helped businesses grow with AI-powered marketing.
-              </p>
+              {/* Right - Form */}
+              <div className="lg:pl-8">
+                <LeadCaptureForm onSubmit={handleFormSubmit} loading={loading} />
+              </div>
             </div>
           </div>
         </section>
+
+        {/* Trust Banner */}
+        <TrustBanner />
 
         {/* Stats Section */}
         <section className="py-16 bg-muted/30 border-y border-border/50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {aggregateStats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1">
+                <div key={index} className="text-center group">
+                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform duration-300">
                     {stat.value}
                   </div>
                   <p className="text-sm text-muted-foreground">{stat.label}</p>
@@ -199,10 +234,12 @@ const Work = () => {
                   className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-2xl transition-all duration-500 group overflow-hidden"
                 >
                   {/* Image placeholder */}
-                  <div className={`h-48 ${study.image} flex items-center justify-center`}>
+                  <div className={`h-48 ${study.image} flex items-center justify-center relative overflow-hidden`}>
                     <span className="text-white/80 text-6xl font-bold opacity-30">
                       {study.title[0]}
                     </span>
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   <CardContent className="p-6">
