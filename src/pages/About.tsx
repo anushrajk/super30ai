@@ -69,9 +69,9 @@ const About = () => {
           </div>
 
           {/* Floating elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/30 to-yellow-400/20 rounded-full blur-2xl animate-pulse" style={{ animationDelay: "2s" }} />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-2xl" />
+          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/30 to-yellow-400/20 rounded-full blur-2xl" />
 
           <div className="container relative mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center">
@@ -161,7 +161,7 @@ const About = () => {
               </div>
 
               {/* Values Grid */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {values.map((value, index) => (
                   <div
                     key={index}

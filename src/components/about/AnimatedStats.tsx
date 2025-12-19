@@ -95,8 +95,8 @@ export const AnimatedStats = () => {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       
       {/* Floating elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-3xl animate-pulse" />
-      <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+      <div className="absolute top-10 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-2xl" />
+      <div className="absolute bottom-10 right-10 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl" />
 
       <div className="container relative mx-auto px-4">
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">

@@ -169,20 +169,25 @@ export const ServicesSection = () => {
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
-          <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-8 shadow-xl">
-            <div className="flex items-center justify-center gap-4">
+          <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-6 md:p-8 shadow-xl">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-4">
               {intentMappingIcons.map((item, i) => (
-                <div key={i} className="flex items-center gap-4">
+                <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
                   <div className="flex flex-col items-center gap-2">
-                    <div className={`w-20 h-20 ${i === 2 ? 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30' : 'bg-gradient-to-br from-orange-100 to-orange-200'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
-                      <item.Icon className={`w-10 h-10 ${i === 2 ? 'text-white' : 'text-orange-500'}`} />
+                    <div className={`w-16 h-16 sm:w-20 sm:h-20 ${i === 2 ? 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30' : 'bg-gradient-to-br from-orange-100 to-orange-200'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
+                      <item.Icon className={`w-8 h-8 sm:w-10 sm:h-10 ${i === 2 ? 'text-white' : 'text-orange-500'}`} />
                     </div>
                     <span className="text-xs text-muted-foreground font-medium">{item.label}</span>
                   </div>
                   {i < 2 && (
-                    <div className="flex items-center mb-6">
+                    <div className="hidden sm:flex items-center mb-6">
                       <div className="w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 rounded-full" />
                       <div className="w-0 h-0 border-t-4 border-b-4 border-l-8 border-transparent border-l-orange-500" />
+                    </div>
+                  )}
+                  {i < 2 && (
+                    <div className="flex sm:hidden items-center my-2">
+                      <div className="w-1 h-6 bg-gradient-to-b from-orange-300 to-orange-500 rounded-full" />
                     </div>
                   )}
                 </div>
@@ -238,7 +243,7 @@ export const ServicesSection = () => {
           </div>
           
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
+          <div className="flex flex-wrap justify-center gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
             {technicalTabs.map((tab) => (
               <button
                 key={tab.id}
