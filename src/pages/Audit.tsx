@@ -127,18 +127,19 @@ const [isUnlocking, setIsUnlocking] = useState(false);
     try {
       await updateLead(leadId, { step: 2 }, session?.id);
 
-      // Send email notification
+      // Send email notification in background (non-blocking)
       if (session && lead) {
-        await sendLeadEmail(
+        sendLeadEmail(
           { ...lead, step: 2 },
           session,
           "Step 2 - Viewed Audit Results"
-        );
+        ).catch((err) => console.error("Email send failed:", err));
       }
 
       toast.success("Redirecting to book your strategy call...");
       navigate("/booking", { state: { leadId } });
     } catch (error) {
+      console.error("Failed to update lead:", error);
       toast.error("Something went wrong. Please try again.");
       setIsUnlocking(false);
     }

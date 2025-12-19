@@ -14,11 +14,12 @@ const ThankYou = () => {
 
   const isBookingConfirmation = source === "booking_calendar" || bookingDate;
 
-  // Format date for display
+  // Format date for display (handles ISO datetime strings)
   const formatBookingDate = (dateStr: string) => {
     if (!dateStr) return null;
     try {
       const date = new Date(dateStr);
+      if (isNaN(date.getTime())) return null;
       return date.toLocaleDateString('en-IN', { 
         weekday: 'long', 
         year: 'numeric', 
@@ -26,7 +27,7 @@ const ThankYou = () => {
         day: 'numeric' 
       });
     } catch {
-      return dateStr;
+      return null;
     }
   };
 
@@ -70,13 +71,13 @@ const ThankYou = () => {
                       <h3 className="font-bold text-lg text-green-800">Meeting Details</h3>
                     </div>
                     <div className="space-y-3 text-green-700">
-                      {bookingDate && (
+                    {bookingDate && (
                         <p className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
-                          <span><strong>Date:</strong> {formatBookingDate(bookingDate)}</span>
+                          <span><strong>Date:</strong> {formatBookingDate(bookingDate) || 'Check your email for details'}</span>
                         </p>
                       )}
-                      {(startTime || endTime) && (
+                      {startTime && (
                         <p className="flex items-center gap-2">
                           <Clock className="w-4 h-4" />
                           <span><strong>Time:</strong> {startTime}{endTime ? ` - ${endTime}` : ''}</span>

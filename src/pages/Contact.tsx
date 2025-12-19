@@ -142,7 +142,7 @@ const Contact = () => {
         website_url: window.location.href,
         email: sanitizeInput(formData.email),
         phone: formData.phone ? sanitizeInput(formData.phone) : undefined,
-        company_name: formData.company ? sanitizeInput(formData.company) : undefined,
+        company_name: formData.company ? sanitizeInput(formData.company) : sanitizeInput(formData.name),
         role: formData.service ? `Contact - ${formData.service}` : 'Contact Form',
         step: 1
       };
