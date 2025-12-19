@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
+import { Navbar } from "@/components/Navbar";
 
 const ThankYou = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const ThankYou = () => {
         <meta name="description" content="Thank you for reaching out. We'll be in touch shortly." />
       </Helmet>
 
+      <Navbar />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-green-50 via-background to-orange-50/30 py-24 lg:py-32 overflow-hidden">
