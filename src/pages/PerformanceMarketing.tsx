@@ -15,6 +15,10 @@ import { PMServicesSection } from "@/components/pm/PMServicesSection";
 import { PMProcessSection } from "@/components/pm/PMProcessSection";
 import { PMFAQSection } from "@/components/pm/PMFAQSection";
 import { PMFinalCTASection } from "@/components/pm/PMFinalCTASection";
+import { PMComparisonSection } from "@/components/pm/PMComparisonSection";
+import { PMTargetAudienceSection } from "@/components/pm/PMTargetAudienceSection";
+import { PMDashboardPreview } from "@/components/pm/PMDashboardPreview";
+import { PMBlogSection } from "@/components/pm/PMBlogSection";
 
 const PerformanceMarketing = () => {
   const navigate = useNavigate();
@@ -64,10 +68,14 @@ const PerformanceMarketing = () => {
         <PMHeroSection onSubmit={handleFormSubmit} loading={loading} />
         <ClientLogosSection />
         <PMProblemSection />
+        <PMComparisonSection />
+        <PMTargetAudienceSection />
         <PMRelevanceSection />
         <PMServicesSection />
+        <PMDashboardPreview />
         <PMProcessSection />
         <TestimonialSection />
+        <PMBlogSection />
         <PMFinalCTASection onSubmit={handleFormSubmit} loading={loading} />
         <PMFAQSection />
         <Footer />

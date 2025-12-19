@@ -8,9 +8,8 @@ import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { GradientWave } from "@/components/ui/gradient-wave";
-import { Marquee } from "@/components/ui/marquee";
-import { HeroServiceCard } from "@/components/home/HeroServiceCard";
-import { ArrowRight, Bot, Target, TrendingUp, Users, Award, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Globe, Megaphone } from "lucide-react";
+import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
+import { ArrowRight, Bot, Target, TrendingUp, Users, Award, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Globe } from "lucide-react";
 const services = [{
   icon: Bot,
   title: "AI SEO Services",
@@ -55,32 +54,6 @@ const whyChooseUs = [{
   icon: Zap,
   title: "Fast Execution",
   description: "Rapid implementation with no long-term lock-ins"
-}];
-const heroServiceCards = [{
-  icon: Bot,
-  title: "AI SEO",
-  description: "Rank in AI search results",
-  gradient: "from-orange-500 to-orange-600"
-}, {
-  icon: Target,
-  title: "Google Ads",
-  description: "Maximize your ROAS",
-  gradient: "from-blue-500 to-blue-600"
-}, {
-  icon: Megaphone,
-  title: "Meta Ads",
-  description: "Scale on social",
-  gradient: "from-pink-500 to-purple-600"
-}, {
-  icon: Globe,
-  title: "Technical SEO",
-  description: "Fix crawl issues",
-  gradient: "from-green-500 to-emerald-600"
-}, {
-  icon: TrendingUp,
-  title: "Analytics",
-  description: "Track what matters",
-  gradient: "from-indigo-500 to-violet-600"
 }];
 const Home = () => {
   return <>
@@ -185,12 +158,9 @@ const Home = () => {
                 
               </div>
 
-              {/* Right Side - Service Cards Marquee */}
-              <div className="hidden lg:block relative h-[500px] overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background z-10 pointer-events-none" />
-                <Marquee vertical pauseOnHover speed="slow" className="h-full">
-                  {heroServiceCards.map((service, index) => <HeroServiceCard key={index} icon={service.icon} title={service.title} description={service.description} gradient={service.gradient} />)}
-                </Marquee>
+              {/* Right Side - Dashboard Preview */}
+              <div className="hidden lg:block">
+                <HeroDashboardPreview />
               </div>
             </div>
           </div>
