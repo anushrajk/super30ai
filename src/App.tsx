@@ -1,4 +1,5 @@
 import { Toaster } from "@/components/ui/toaster";
+import { PopupManager } from "@/components/PopupManager";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -44,6 +45,7 @@ const App = () => (
         </Routes>
         <CookieConsent />
         <FloatingContactButtons />
+        <PopupManager />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
