@@ -70,6 +70,16 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 ml-auto mr-4">
+            <Link
+              to="/about"
+              className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+                location.pathname === "/about"
+                  ? "text-orange-600"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              Team 30
+            </Link>
 
             {/* Services Dropdown */}
             <NavigationMenu>
@@ -109,17 +119,6 @@ export const Navbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
-
-            <Link
-              to="/about"
-              className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
-                location.pathname === "/about"
-                  ? "text-orange-600"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
-            >
-              Team 30
-            </Link>
 
             <Link
               to="/work"
@@ -178,6 +177,17 @@ export const Navbar = () => {
       >
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col gap-2">
+            <Link
+              to="/about"
+              className={`px-4 py-3 rounded-lg font-medium transition-colors ${
+                location.pathname === "/about"
+                  ? "bg-orange-100 text-orange-600"
+                  : "text-foreground hover:bg-muted"
+              }`}
+            >
+              Team 30
+            </Link>
+
             {/* Services Section */}
             <div className="px-4 py-2">
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
@@ -199,17 +209,6 @@ export const Navbar = () => {
                 ))}
               </div>
             </div>
-
-            <Link
-              to="/about"
-              className={`px-4 py-3 rounded-lg font-medium transition-colors ${
-                location.pathname === "/about"
-                  ? "bg-orange-100 text-orange-600"
-                  : "text-foreground hover:bg-muted"
-              }`}
-            >
-              Team 30
-            </Link>
 
             <Link
               to="/work"
