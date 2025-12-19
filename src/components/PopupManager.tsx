@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,17 +7,14 @@ import { Phone, FileText, Gift, Clock, Users, Shield, CheckCircle2, Loader2 } fr
 import { useLead } from '@/hooks/useLead';
 import { useSession } from '@/hooks/useSession';
 import { useUrgencyValues } from '@/hooks/useUrgencyValues';
+import { useNotificationQueue } from '@/hooks/useNotificationQueue';
 import { toast } from 'sonner';
 
-type PopupType = 'callback' | 'quote' | 'exit' | null;
-
-interface PopupState {
-  callback: boolean;
-  quote: boolean;
-  exit: boolean;
-}
+type PopupType = 'callback' | 'quote' | 'exit';
 
 const POPUP_EXPIRY_HOURS = 24;
+const CALLBACK_DELAY_MS = 45000; // 45 seconds after cookie dismissed
+const QUOTE_DELAY_MS = 90000;    // 90 seconds after cookie dismissed
 
 const isPopupExpired = (key: string): boolean => {
   const stored = localStorage.getItem(key);
@@ -32,13 +29,10 @@ const markPopupShown = (key: string) => {
 };
 
 export const PopupManager = () => {
-  const [activePopup, setActivePopup] = useState<PopupType>(null);
-  const [shownPopups, setShownPopups] = useState<PopupState>({
-    callback: false,
-    quote: false,
-    exit: false,
-  });
+  const [activePopup, setActivePopup] = useState<PopupType | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const popupQueueRef = useRef<PopupType[]>([]);
+  const timersRef = useRef<{ callback?: NodeJS.Timeout; quote?: NodeJS.Timeout }>({});
 
   const { createLead, sendLeadEmail } = useLead();
   const { session } = useSession();
@@ -46,97 +40,109 @@ export const PopupManager = () => {
     callbackSlots, 
     weeklyRequests, 
     exitCountdown, 
-    tickExitCountdown, 
+    tickExitCountdown,
     decrementCallbackSlots,
     incrementWeeklyRequests,
     formatCountdown 
   } = useUrgencyValues();
+  const { cookieDismissed, canShowNotification, setActiveNotification, activeNotification } = useNotificationQueue();
 
-  // Callback Form State
-  const [callbackForm, setCallbackForm] = useState({
-    name: '',
-    phone: '',
-    timeSlot: '',
-  });
+  // Form States
+  const [callbackForm, setCallbackForm] = useState({ name: '', phone: '', timeSlot: '' });
+  const [quoteForm, setQuoteForm] = useState({ companyName: '', website: '', email: '', budget: '', services: '' });
+  const [exitForm, setExitForm] = useState({ name: '', email: '', phone: '', businessType: '' });
 
-  // Quote Form State
-  const [quoteForm, setQuoteForm] = useState({
-    companyName: '',
-    website: '',
-    email: '',
-    budget: '',
-    services: '',
-  });
-
-  // Exit Form State
-  const [exitForm, setExitForm] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    businessType: '',
-  });
-
-  // Check if mobile
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
-  // Timer Logic for popups
-  useEffect(() => {
-    const callbackTimer = setTimeout(() => {
-      if (!shownPopups.callback && isPopupExpired('popup_callback_shown') && activePopup === null) {
-        setActivePopup('callback');
-        setShownPopups(prev => ({ ...prev, callback: true }));
-      }
-    }, 15000); // Changed from 8s to 15s
+  // Show next popup from queue
+  const showNextPopup = useCallback(() => {
+    if (popupQueueRef.current.length === 0) return;
+    
+    const nextPopup = popupQueueRef.current[0];
+    if (canShowNotification(nextPopup)) {
+      popupQueueRef.current.shift();
+      setActivePopup(nextPopup);
+      setActiveNotification(nextPopup);
+    }
+  }, [canShowNotification, setActiveNotification]);
 
-    const quoteTimer = setTimeout(() => {
-      if (!shownPopups.quote && isPopupExpired('popup_quote_shown') && activePopup === null) {
-        setActivePopup('quote');
-        setShownPopups(prev => ({ ...prev, quote: true }));
-      }
-    }, 30000); // Changed from 20s to 30s for better spacing
+  // Queue a popup to show
+  const queuePopup = useCallback((type: PopupType) => {
+    const storageKey = `popup_${type}_shown`;
+    if (!isPopupExpired(storageKey) || popupQueueRef.current.includes(type)) return;
+    
+    if (canShowNotification(type)) {
+      setActivePopup(type);
+      setActiveNotification(type);
+    } else {
+      popupQueueRef.current.push(type);
+    }
+  }, [canShowNotification, setActiveNotification]);
+
+  // Schedule popups after cookie is dismissed
+  useEffect(() => {
+    if (!cookieDismissed) return;
+
+    // Clear existing timers
+    if (timersRef.current.callback) clearTimeout(timersRef.current.callback);
+    if (timersRef.current.quote) clearTimeout(timersRef.current.quote);
+
+    // Schedule callback popup
+    if (isPopupExpired('popup_callback_shown')) {
+      timersRef.current.callback = setTimeout(() => {
+        queuePopup('callback');
+      }, CALLBACK_DELAY_MS);
+    }
+
+    // Schedule quote popup
+    if (isPopupExpired('popup_quote_shown')) {
+      timersRef.current.quote = setTimeout(() => {
+        queuePopup('quote');
+      }, QUOTE_DELAY_MS);
+    }
 
     return () => {
-      clearTimeout(callbackTimer);
-      clearTimeout(quoteTimer);
+      if (timersRef.current.callback) clearTimeout(timersRef.current.callback);
+      if (timersRef.current.quote) clearTimeout(timersRef.current.quote);
     };
-  }, [shownPopups, activePopup]);
+  }, [cookieDismissed, queuePopup]);
 
-  // Exit Intent Detection (Desktop only - disabled on mobile)
+  // Try to show queued popups when notification clears
   useEffect(() => {
-    if (isMobile) return; // Skip exit intent on mobile
+    if (activeNotification === null && popupQueueRef.current.length > 0) {
+      const timer = setTimeout(showNextPopup, 2000); // Small delay between popups
+      return () => clearTimeout(timer);
+    }
+  }, [activeNotification, showNextPopup]);
+
+  // Exit Intent Detection (Desktop only)
+  useEffect(() => {
+    if (isMobile || !cookieDismissed) return;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      if (
-        e.clientY < 10 &&
-        !shownPopups.exit &&
-        isPopupExpired('popup_exit_shown') &&
-        activePopup === null
-      ) {
+      if (e.clientY < 10 && isPopupExpired('popup_exit_shown') && canShowNotification('exit')) {
         setActivePopup('exit');
-        setShownPopups(prev => ({ ...prev, exit: true }));
+        setActiveNotification('exit');
       }
     };
 
     document.addEventListener('mouseleave', handleMouseLeave);
     return () => document.removeEventListener('mouseleave', handleMouseLeave);
-  }, [shownPopups, activePopup, isMobile]);
+  }, [isMobile, cookieDismissed, canShowNotification, setActiveNotification]);
 
-  // Exit popup countdown - use persisted hook
+  // Exit countdown timer
   useEffect(() => {
     if (activePopup === 'exit' && exitCountdown > 0) {
-      const timer = setInterval(() => {
-        tickExitCountdown();
-      }, 1000);
+      const timer = setInterval(tickExitCountdown, 1000);
       return () => clearInterval(timer);
     }
   }, [activePopup, exitCountdown, tickExitCountdown]);
 
   const handleClose = useCallback((type: PopupType) => {
-    if (type) {
-      markPopupShown(`popup_${type}_shown`);
-    }
+    markPopupShown(`popup_${type}_shown`);
     setActivePopup(null);
-  }, []);
+    setActiveNotification(null);
+  }, [setActiveNotification]);
 
   // Submit Handlers
   const handleCallbackSubmit = async (e: React.FormEvent) => {
@@ -161,9 +167,8 @@ export const PopupManager = () => {
       await sendLeadEmail(leadData as any, session, 'popup_callback');
       
       decrementCallbackSlots();
-      markPopupShown('popup_callback_shown');
       toast.success('Callback requested! We\'ll call you soon.');
-      setActivePopup(null);
+      handleClose('callback');
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -193,9 +198,8 @@ export const PopupManager = () => {
       await sendLeadEmail(leadData as any, session, 'popup_quote');
       
       incrementWeeklyRequests();
-      markPopupShown('popup_quote_shown');
       toast.success('Quote request received! Check your email within 24 hours.');
-      setActivePopup(null);
+      handleClose('quote');
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -224,9 +228,8 @@ export const PopupManager = () => {
       await createLead(leadData, session?.id || undefined);
       await sendLeadEmail(leadData as any, session, 'popup_exit_marketing_plan');
       
-      markPopupShown('popup_exit_shown');
       toast.success('Your FREE Marketing Plan is on its way!');
-      setActivePopup(null);
+      handleClose('exit');
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -236,7 +239,7 @@ export const PopupManager = () => {
 
   return (
     <>
-      {/* Popup 1: Schedule a Callback (8 seconds) */}
+      {/* Popup 1: Schedule a Callback */}
       <Dialog open={activePopup === 'callback'} onOpenChange={() => handleClose('callback')}>
         <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-primary/5">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -304,7 +307,7 @@ export const PopupManager = () => {
         </DialogContent>
       </Dialog>
 
-      {/* Popup 2: Request a Quote (20 seconds) */}
+      {/* Popup 2: Request a Quote */}
       <Dialog open={activePopup === 'quote'} onOpenChange={() => handleClose('quote')}>
         <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-accent/5">
           <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -446,21 +449,21 @@ export const PopupManager = () => {
               <SelectContent>
                 <SelectItem value="ecommerce">E-commerce</SelectItem>
                 <SelectItem value="saas">SaaS</SelectItem>
-                <SelectItem value="services">Services</SelectItem>
-                <SelectItem value="agency">Agency</SelectItem>
+                <SelectItem value="service">Service Business</SelectItem>
+                <SelectItem value="local">Local Business</SelectItem>
                 <SelectItem value="other">Other</SelectItem>
               </SelectContent>
             </Select>
 
-            <Button type="submit" className="w-full h-14 text-lg font-bold" disabled={isSubmitting}>
-              {isSubmitting ? <Loader2 className="w-6 h-6 animate-spin mr-2" /> : <Gift className="w-6 h-6 mr-2" />}
-              🚀 Get My FREE Marketing Plan
+            <Button type="submit" className="w-full h-12 text-base font-semibold bg-gradient-to-r from-destructive to-primary hover:opacity-90" disabled={isSubmitting}>
+              {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin mr-2" /> : <Gift className="w-5 h-5 mr-2" />}
+              Get My FREE Marketing Plan
             </Button>
           </form>
 
-          <div className="flex items-center justify-center gap-1 pt-2 text-xs text-muted-foreground">
-            <Users className="w-3 h-3" />
-            <span>1,200+ businesses already have theirs</span>
+          <div className="flex items-center justify-center gap-4 pt-2 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1"><CheckCircle2 className="w-3 h-3" /> Instant download</span>
+            <span className="flex items-center gap-1"><Shield className="w-3 h-3" /> No spam, ever</span>
           </div>
         </DialogContent>
       </Dialog>

@@ -1,24 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
-import { Cookie, Shield, BarChart3, Megaphone, Settings2, ChevronDown, ChevronUp, X } from "lucide-react";
+import { Cookie, Shield, BarChart3, Megaphone, Settings2, ChevronDown, ChevronUp } from "lucide-react";
 import { useCookieConsent, CookiePreferences } from "@/hooks/useCookieConsent";
+import { useNotificationQueue } from "@/hooks/useNotificationQueue";
 import { Link } from "react-router-dom";
+
+const COOKIE_DELAY_MS = 3000; // Show after 3 seconds
 
 export const CookieConsent = () => {
   const { showBanner, preferences, acceptAll, rejectAll, saveCustomPreferences } = useCookieConsent();
+  const { setActiveNotification, setCookieDismissed, activeNotification } = useNotificationQueue();
   const [showPreferences, setShowPreferences] = useState(false);
   const [customPreferences, setCustomPreferences] = useState<CookiePreferences>(preferences);
   const [isClosing, setIsClosing] = useState(false);
+  const [isReady, setIsReady] = useState(false);
+
+  // Delay showing cookie banner
+  useEffect(() => {
+    if (!showBanner) {
+      setCookieDismissed(true);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setIsReady(true);
+      setActiveNotification('cookie');
+    }, COOKIE_DELAY_MS);
+
+    return () => clearTimeout(timer);
+  }, [showBanner, setActiveNotification, setCookieDismissed]);
 
   const handleClose = (action: () => void) => {
     setIsClosing(true);
     setTimeout(() => {
       action();
+      setActiveNotification(null);
+      setCookieDismissed(true);
     }, 300);
   };
 
-  if (!showBanner) return null;
+  // Don't render if banner shouldn't show or not ready yet
+  if (!showBanner || !isReady || activeNotification !== 'cookie') return null;
 
   const cookieCategories = [
     {
