@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { Mail, Phone, Bot } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
+import super30Logo from "@/assets/super30-logo.png";
 
 const services = [
   { name: "AI SEO Services", href: "/ai-seo" },
@@ -34,11 +35,12 @@ export const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
           {/* Column 1: Company Branding */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center">
-                <Bot className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-lg font-bold text-slate-900">The Super 30</span>
+            <Link to="/" className="flex items-center mb-4">
+              <img 
+                src={super30Logo} 
+                alt="Super 30 Marketing Agency" 
+                className="h-10 w-auto"
+              />
             </Link>
             <p className="text-slate-600 text-sm leading-relaxed mb-4">
               AI-powered digital marketing agency helping businesses grow with data-driven SEO and performance marketing.

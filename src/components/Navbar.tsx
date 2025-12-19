@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown } from "lucide-react";
+import super30Logo from "@/assets/super30-logo.png";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -59,13 +60,12 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-orange-600 rounded-xl flex items-center justify-center shadow-lg shadow-orange-500/20">
-              <span className="text-white font-bold text-lg">S30</span>
-            </div>
-            <span className="font-bold text-lg text-foreground hidden sm:block">
-              The Super 30
-            </span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src={super30Logo} 
+              alt="Super 30 Marketing Agency" 
+              className="h-10 md:h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}
