@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Quote, TrendingUp, ChevronLeft, ChevronRight, Play, Volume2 } from "lucide-react";
+import { Star, Quote, TrendingUp, ChevronLeft, ChevronRight, Play, Volume2, VolumeX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -29,11 +29,139 @@ const testimonials = [
 ];
 
 const videoTestimonials = [
-  { id: 1, thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=533&fit=crop", name: "John D.", company: "TechCorp", duration: "2:34" },
-  { id: 2, thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=533&fit=crop", name: "Maria S.", company: "GrowthIQ", duration: "1:45" },
-  { id: 3, thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=533&fit=crop", name: "Alex R.", company: "ScaleUp", duration: "3:12" },
-  { id: 4, thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=533&fit=crop", name: "David K.", company: "NexGen", duration: "2:08" },
+  { 
+    id: 1, 
+    thumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=533&fit=crop",
+    video: "https://videos.pexels.com/video-files/3195440/3195440-uhd_2560_1440_25fps.mp4",
+    name: "John D.", 
+    company: "TechCorp", 
+    duration: "2:34" 
+  },
+  { 
+    id: 2, 
+    thumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=533&fit=crop",
+    video: "https://videos.pexels.com/video-files/3252118/3252118-uhd_2560_1440_24fps.mp4",
+    name: "Maria S.", 
+    company: "GrowthIQ", 
+    duration: "1:45" 
+  },
+  { 
+    id: 3, 
+    thumbnail: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=533&fit=crop",
+    video: "https://videos.pexels.com/video-files/4065924/4065924-uhd_2560_1440_24fps.mp4",
+    name: "Alex R.", 
+    company: "ScaleUp", 
+    duration: "3:12" 
+  },
+  { 
+    id: 4, 
+    thumbnail: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&h=533&fit=crop",
+    video: "https://videos.pexels.com/video-files/4427619/4427619-uhd_2560_1440_25fps.mp4",
+    name: "David K.", 
+    company: "NexGen", 
+    duration: "2:08" 
+  },
 ];
+
+interface VideoCardProps {
+  video: typeof videoTestimonials[0];
+  isHovered: boolean;
+  onHover: () => void;
+  onLeave: () => void;
+}
+
+const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isHovered) {
+        videoRef.current.play().catch(() => {
+          // Autoplay might be blocked by browser
+        });
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isHovered]);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  return (
+    <div
+      className="flex-shrink-0 w-[200px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start shadow-lg hover:shadow-2xl transition-all duration-300"
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+    >
+      <div className="aspect-[9/16] relative bg-muted">
+        {/* Thumbnail Image */}
+        <img 
+          src={video.thumbnail} 
+          alt={`${video.name} testimonial`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+        />
+        
+        {/* Video Element */}
+        <video
+          ref={videoRef}
+          src={video.video}
+          muted={isMuted}
+          loop
+          playsInline
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+        />
+        
+        {/* Overlay */}
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-60' : 'opacity-70'}`} />
+        
+        {/* Play button - only show when not hovered */}
+        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`}>
+          <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+            <Play className="w-6 h-6 text-orange-500 ml-1" />
+          </div>
+        </div>
+
+        {/* Duration badge */}
+        <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-medium">
+          {video.duration}
+        </div>
+
+        {/* Sound control on hover */}
+        {isHovered && (
+          <button
+            onClick={toggleMute}
+            className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm p-2 rounded-full text-white hover:bg-black/80 transition-colors"
+          >
+            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+          </button>
+        )}
+
+        {/* Progress bar on hover */}
+        {isHovered && (
+          <div className="absolute bottom-16 left-3 right-3 flex items-center gap-2">
+            <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
+              <div className="w-1/3 h-full bg-orange-500 rounded-full animate-pulse" />
+            </div>
+          </div>
+        )}
+
+        {/* Info */}
+        <div className="absolute bottom-3 left-3 right-3">
+          <p className="text-white font-bold text-sm">{video.name}</p>
+          <p className="text-white/70 text-xs">{video.company}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export const TestimonialSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -57,7 +185,7 @@ export const TestimonialSection = () => {
 
   const scrollVideos = (direction: 'left' | 'right') => {
     if (videoScrollRef.current) {
-      const scrollAmount = 200;
+      const scrollAmount = 220;
       videoScrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -173,7 +301,7 @@ export const TestimonialSection = () => {
             Video Testimonials
           </h3>
           <p className="text-muted-foreground">
-            Hear directly from our clients about their AI SEO journey
+            Hover to preview • Click to watch full video
           </p>
         </div>
         
@@ -191,55 +319,17 @@ export const TestimonialSection = () => {
           {/* Video Grid - Portrait Style */}
           <div 
             ref={videoScrollRef}
-            className="flex gap-4 overflow-x-auto pb-4 px-8 snap-x snap-mandatory scrollbar-hide"
+            className="flex gap-4 overflow-x-auto pb-4 px-8 snap-x snap-mandatory scrollbar-hide justify-center"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {videoTestimonials.map((video) => (
-              <div
+              <VideoCard
                 key={video.id}
-                className="flex-shrink-0 w-[180px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start"
-                onMouseEnter={() => setHoveredVideo(video.id)}
-                onMouseLeave={() => setHoveredVideo(null)}
-              >
-                <div className="aspect-[9/16] relative">
-                  <img 
-                    src={video.thumbnail} 
-                    alt={`${video.name} testimonial`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover/video:scale-110"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${hoveredVideo === video.id ? 'opacity-100' : 'opacity-70'}`} />
-                  
-                  {/* Play button */}
-                  <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${hoveredVideo === video.id ? 'scale-100 opacity-100' : 'scale-90 opacity-70'}`}>
-                    <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl">
-                      <Play className="w-6 h-6 text-orange-500 ml-1" />
-                    </div>
-                  </div>
-
-                  {/* Duration badge */}
-                  <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-medium">
-                    {video.duration}
-                  </div>
-
-                  {/* Controls on hover */}
-                  {hoveredVideo === video.id && (
-                    <div className="absolute bottom-16 left-3 right-3 flex items-center gap-2">
-                      <div className="flex-1 h-1 bg-white/30 rounded-full">
-                        <div className="w-0 h-full bg-orange-500 rounded-full" />
-                      </div>
-                      <Volume2 className="w-4 h-4 text-white" />
-                    </div>
-                  )}
-
-                  {/* Info */}
-                  <div className="absolute bottom-3 left-3 right-3">
-                    <p className="text-white font-bold text-sm">{video.name}</p>
-                    <p className="text-white/70 text-xs">{video.company}</p>
-                  </div>
-                </div>
-              </div>
+                video={video}
+                isHovered={hoveredVideo === video.id}
+                onHover={() => setHoveredVideo(video.id)}
+                onLeave={() => setHoveredVideo(null)}
+              />
             ))}
           </div>
 
@@ -252,13 +342,6 @@ export const TestimonialSection = () => {
           >
             <ChevronRight className="w-6 h-6" />
           </Button>
-
-          {/* Mobile scroll indicator */}
-          <div className="flex justify-center gap-2 mt-4 lg:hidden">
-            <div className="w-8 h-1 bg-orange-500 rounded-full" />
-            <div className="w-8 h-1 bg-orange-200 rounded-full" />
-            <div className="w-8 h-1 bg-orange-200 rounded-full" />
-          </div>
         </div>
       </div>
     </section>
