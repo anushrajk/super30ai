@@ -72,7 +72,8 @@ export const useSession = () => {
         });
 
         if (error) {
-          console.error('Failed to create session:', error);
+          console.warn('Session creation skipped (rate limited or error):', error.message);
+          // Continue without session - graceful degradation
         } else if (newSession) {
           localStorage.setItem('seo_session_id', newSession.id);
           setSession(newSession as SessionData);
