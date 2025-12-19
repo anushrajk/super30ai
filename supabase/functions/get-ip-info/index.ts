@@ -28,20 +28,20 @@ const handler = async (req: Request): Promise<Response> => {
 
     if (clientIp && clientIp !== "unknown" && clientIp !== "127.0.0.1") {
       try {
-        // Use ip-api.com with regionName field for state
+        // Use ipapi.co which supports HTTPS on free tier
         const geoResponse = await fetch(
-          `http://ip-api.com/json/${clientIp}?fields=status,country,regionName,city,query`
+          `https://ipapi.co/${clientIp}/json/`
         );
         const geoData = await geoResponse.json();
         
         console.log("Geo API response:", geoData);
         
-        if (geoData.status === "success") {
+        if (!geoData.error) {
           ipInfo = {
-            ip: geoData.query || clientIp,
+            ip: geoData.ip || clientIp,
             city: geoData.city || "Unknown",
-            state: geoData.regionName || "Unknown",
-            country: geoData.country || "Unknown"
+            state: geoData.region || "Unknown",
+            country: geoData.country_name || "Unknown"
           };
         }
       } catch (geoError) {
@@ -59,7 +59,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.error("Error in get-ip-info function:", error);
     return new Response(
       JSON.stringify({ 
-        error: error.message, 
+        error: "Failed to get IP info", 
         ip: "unknown", 
         city: "Unknown", 
         state: "Unknown",
