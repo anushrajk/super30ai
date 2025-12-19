@@ -8,7 +8,7 @@ import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
 import { AIComparisonSection } from "@/components/landing/AIComparisonSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
-import { TargetAudienceSection } from "@/components/landing/TargetAudienceSection";
+import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { ProcessSection } from "@/components/landing/ProcessSection";
 import { DashboardPreview } from "@/components/landing/DashboardPreview";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
@@ -71,7 +71,7 @@ const AiSeo = () => {
         <RelevanceFilterSection />
         <AIComparisonSection />
         <ServicesSection />
-        <TargetAudienceSection />
+        <WhoIsThisForSection />
         <ProcessSection />
         <DashboardPreview />
         <TestimonialSection />
