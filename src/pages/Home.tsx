@@ -280,6 +280,71 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Who Is This For? */}
+      <section className="py-24 bg-gradient-to-b from-background to-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+              Perfect Fit
+            </span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+              Who Is This For?
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Our services are designed for growth-focused businesses ready to dominate their market.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                title: "E-commerce Brands",
+                description: "Scale your online store with AI-powered SEO and high-converting ad campaigns that drive sales.",
+                icon: Globe,
+              },
+              {
+                title: "SaaS Companies",
+                description: "Get found by decision-makers searching for solutions like yours. Convert demos into customers.",
+                icon: Bot,
+              },
+              {
+                title: "D2C Brands",
+                description: "Build brand awareness and drive direct sales with performance marketing that delivers ROI.",
+                icon: Target,
+              },
+              {
+                title: "Service Businesses",
+                description: "Attract qualified leads actively searching for your services in your target markets.",
+                icon: Users,
+              },
+              {
+                title: "Funded Startups",
+                description: "Accelerate growth with data-driven marketing strategies that investors love to see.",
+                icon: TrendingUp,
+              },
+              {
+                title: "Enterprise Teams",
+                description: "Enterprise-grade solutions for complex marketing challenges at scale.",
+                icon: BarChart3,
+              },
+            ].map((item, index) => (
+              <Card 
+                key={index} 
+                className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-all duration-300 group hover:-translate-y-1"
+              >
+                <CardContent className="p-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                    <item.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground mb-2">{item.title}</h3>
+                  <p className="text-muted-foreground">{item.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <ClientLogosSection />
 
       {/* Why Choose Us */}
