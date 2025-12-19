@@ -5,7 +5,7 @@ import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CheckCircle, Calendar, FileText, Lightbulb, Target } from "lucide-react";
+import { CheckCircle, Calendar, FileText, Lightbulb, Target, Clock, Star, Users } from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
 import { toast } from "sonner";
 import Cal, { getCalApi } from "@calcom/embed-react";
@@ -33,12 +33,53 @@ const benefits = [
   }
 ];
 
+const recentBookings = [
+  { name: "Sarah M.", company: "TechFlow Solutions", time: "2 hours ago" },
+  { name: "James R.", company: "GrowthPeak Agency", time: "5 hours ago" },
+  { name: "Priya K.", company: "DataDriven Inc.", time: "Yesterday" },
+];
+
+const testimonials = [
+  {
+    quote: "The audit revealed issues we had no idea existed. Game changer!",
+    author: "Mark Chen",
+    role: "CEO, Nexus Digital",
+    rating: 5
+  },
+  {
+    quote: "Finally understood why we weren't showing up in AI recommendations.",
+    author: "Lisa Thompson",
+    role: "Marketing Director, CloudFirst",
+    rating: 5
+  }
+];
+
 const Booking = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { session, updateCurrentPage } = useSession();
   const { lead, getLead, updateLead, sendLeadEmail } = useLead();
   const [bookingConfirmed, setBookingConfirmed] = useState(false);
+  const [slotsRemaining, setSlotsRemaining] = useState(4);
+  const [timeLeft, setTimeLeft] = useState({ hours: 2, minutes: 30, seconds: 0 });
+
+  // Countdown timer for urgency
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) {
+          return { ...prev, seconds: prev.seconds - 1 };
+        } else if (prev.minutes > 0) {
+          return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        } else if (prev.hours > 0) {
+          return { hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        }
+        return prev;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     updateCurrentPage();
@@ -109,9 +150,21 @@ const Booking = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Not a Sales Call. A Business Visibility Review.
             </h1>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-6">
               In 30 minutes, we'll walk you through your audit results, share actionable insights, and give you a clear recommendation—whether we're the right fit or not.
             </p>
+
+            {/* Countdown Timer */}
+            <div className="inline-flex items-center gap-3 bg-red-500/10 border border-red-500/20 rounded-full px-5 py-2.5">
+              <Clock className="w-5 h-5 text-red-400 animate-pulse" />
+              <span className="text-red-400 font-medium text-sm">
+                Only <span className="font-bold text-red-300">{slotsRemaining} slots</span> left today
+              </span>
+              <span className="text-slate-500">|</span>
+              <span className="font-mono text-red-300 font-bold">
+                {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
+              </span>
+            </div>
           </div>
         </header>
 
@@ -184,6 +237,51 @@ const Booking = () => {
                   <p className="text-slate-600 text-xs leading-relaxed">
                     No fluff, no hard sell. Just actionable insights about your AI search visibility and a clear path forward.
                   </p>
+                </div>
+
+                {/* Social Proof Section */}
+                <div className="mt-6">
+                  {/* Recent Bookings */}
+                  <div className="mb-4">
+                    <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-3 flex items-center gap-2">
+                      <Users className="w-3.5 h-3.5" />
+                      Recent Bookings
+                    </h4>
+                    <div className="space-y-2">
+                      {recentBookings.map((booking, index) => (
+                        <div key={index} className="flex items-center gap-2 text-xs">
+                          <div className="w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-semibold text-[10px]">
+                            {booking.name.charAt(0)}
+                          </div>
+                          <div className="flex-1">
+                            <span className="font-medium text-slate-700">{booking.name}</span>
+                            <span className="text-slate-400"> from {booking.company}</span>
+                          </div>
+                          <span className="text-slate-400 text-[10px]">{booking.time}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Testimonials */}
+                  <div className="space-y-3">
+                    {testimonials.map((testimonial, index) => (
+                      <Card key={index} className="border-slate-200 bg-slate-50/50">
+                        <CardContent className="p-3">
+                          <div className="flex gap-0.5 mb-2">
+                            {[...Array(testimonial.rating)].map((_, i) => (
+                              <Star key={i} className="w-3 h-3 fill-yellow-400 text-yellow-400" />
+                            ))}
+                          </div>
+                          <p className="text-xs text-slate-600 italic mb-2">"{testimonial.quote}"</p>
+                          <div className="text-[10px]">
+                            <span className="font-semibold text-slate-700">{testimonial.author}</span>
+                            <span className="text-slate-400"> · {testimonial.role}</span>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
               </div>
 
