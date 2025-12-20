@@ -71,18 +71,20 @@ async function fetchWithRetry(
   initialDelay = 1000
 ): Promise<Response> {
   let lastError: Error | null = null;
+  let lastResponse: Response | null = null;
   
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       const response = await fetch(url, {
         ...options,
-        signal: AbortSignal.timeout(45000) // 45 second timeout
+        signal: AbortSignal.timeout(60000) // 60 second timeout
       });
       
-      // If rate limited, wait and retry
-      if (response.status === 429 && attempt < maxRetries - 1) {
+      // If rate limited (429) or server error (500), wait and retry
+      if ((response.status === 429 || response.status === 500) && attempt < maxRetries - 1) {
+        lastResponse = response.clone();
         const delay = initialDelay * Math.pow(2, attempt);
-        console.log(`Rate limited, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
+        console.log(`API error ${response.status}, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
         await new Promise(resolve => setTimeout(resolve, delay));
         continue;
       }
@@ -100,6 +102,8 @@ async function fetchWithRetry(
     }
   }
   
+  // Return last response if we have one (for proper error handling)
+  if (lastResponse) return lastResponse;
   throw lastError || new Error('All retry attempts failed');
 }
 
@@ -187,6 +191,19 @@ const handler = async (req: Request): Promise<Response> => {
           JSON.stringify({ error: "Invalid URL or the website could not be accessed." }),
           { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
         );
+      }
+      
+      // Handle Lighthouse internal errors (500) - some sites block Google's crawler
+      if (response.status === 500) {
+        const isLighthouseError = errorText.includes('lighthouseError') || errorText.includes('Lighthouse returned error');
+        if (isLighthouseError) {
+          return new Response(
+            JSON.stringify({ 
+              error: "This website could not be analyzed. Some websites block automated analysis tools. Please try a different URL or contact support for manual analysis." 
+            }),
+            { status: 422, headers: { "Content-Type": "application/json", ...corsHeaders } }
+          );
+        }
       }
       
       throw new Error(`PageSpeed API returned ${response.status}: ${errorText}`);
