@@ -106,4 +106,28 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Custom horizontal scrollbar for slider sections */
+  .custom-scrollbar::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, hsl(24 95% 53%), hsl(24 90% 48%));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, hsl(24 90% 48%), hsl(24 85% 43%));
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(24 95% 53%) hsl(var(--muted));
+  }
 }

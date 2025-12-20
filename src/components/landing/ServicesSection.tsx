@@ -243,7 +243,7 @@ export const ServicesSection = () => {
           </div>
           
           {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex flex-wrap justify-center gap-2 mb-8 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 custom-scrollbar">
             {technicalTabs.map((tab) => (
               <button
                 key={tab.id}
