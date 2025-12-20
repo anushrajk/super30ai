@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { PopupManager } from "@/components/PopupManager";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -8,23 +9,44 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
 import { EngagementTracker } from "@/components/EngagementTracker";
-import Home from "./pages/Home";
-import AiSeo from "./pages/AiSeo";
-import PerformanceMarketing from "./pages/PerformanceMarketing";
-import About from "./pages/About";
-import Work from "./pages/Work";
-import Contact from "./pages/Contact";
-import Audit from "./pages/Audit";
-import Booking from "./pages/Booking";
-import ThankYou from "./pages/ThankYou";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsOfService from "./pages/TermsOfService";
-import CookiePolicy from "./pages/CookiePolicy";
-import NotFound from "./pages/NotFound";
 import { CookieConsent } from "./components/CookieConsent";
 import { FloatingContactButtons } from "./components/FloatingContactButtons";
+import { Loader2 } from "lucide-react";
 
-const queryClient = new QueryClient();
+// Lazy load all pages for code splitting
+const Home = lazy(() => import("./pages/Home"));
+const AiSeo = lazy(() => import("./pages/AiSeo"));
+const PerformanceMarketing = lazy(() => import("./pages/PerformanceMarketing"));
+const About = lazy(() => import("./pages/About"));
+const Work = lazy(() => import("./pages/Work"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Audit = lazy(() => import("./pages/Audit"));
+const Booking = lazy(() => import("./pages/Booking"));
+const ThankYou = lazy(() => import("./pages/ThankYou"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService"));
+const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const NotFound = lazy(() => import("./pages/NotFound"));
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 10 * 60 * 1000,   // 10 minutes
+      retry: 2,
+    },
+  },
+});
+
+// Loading fallback component
+const PageLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="flex flex-col items-center gap-4">
+      <Loader2 className="w-8 h-8 animate-spin text-primary" />
+      <p className="text-muted-foreground text-sm">Loading...</p>
+    </div>
+  </div>
+);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -35,21 +57,23 @@ const App = () => (
         <ScrollProgressBar />
         <EngagementTracker />
         <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/ai-seo" element={<AiSeo />} />
-          <Route path="/performance-marketing" element={<PerformanceMarketing />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/work" element={<Work />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/audit" element={<Audit />} />
-          <Route path="/booking" element={<Booking />} />
-          <Route path="/thank-you" element={<ThankYou />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-          <Route path="/terms-of-service" element={<TermsOfService />} />
-          <Route path="/cookie-policy" element={<CookiePolicy />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/ai-seo" element={<AiSeo />} />
+            <Route path="/performance-marketing" element={<PerformanceMarketing />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/work" element={<Work />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/audit" element={<Audit />} />
+            <Route path="/booking" element={<Booking />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
         <CookieConsent />
         <FloatingContactButtons />
         <ScrollToTopButton />
