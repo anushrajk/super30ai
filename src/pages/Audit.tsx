@@ -7,7 +7,6 @@ import { useLead } from "@/hooks/useLead";
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { 
   Loader2, 
@@ -21,7 +20,6 @@ import {
   Eye,
   Settings,
   RefreshCw,
-  Info,
   ExternalLink,
   Clock,
   AlertCircle,
@@ -34,11 +32,16 @@ import {
 import { toast } from "sonner";
 import { Footer } from "@/components/landing/Footer";
 import {
-  Tooltip,
-  TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
 } from "@/components/ui/tooltip";
+
+// Import new components
+import ScoreGauge from "@/components/audit/ScoreGauge";
+import CompetitorRadarChart from "@/components/audit/CompetitorRadarChart";
+import OpportunityCard from "@/components/audit/OpportunityCard";
+import RevenueImpactCard from "@/components/audit/RevenueImpactCard";
+import ScoreBreakdownTabs from "@/components/audit/ScoreBreakdownTabs";
+import MissedOpportunityGauge from "@/components/audit/MissedOpportunityGauge";
 
 interface AuditResults {
   seo_score: number;
@@ -96,7 +99,7 @@ const Audit = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const { session, updateCurrentPage } = useSession();
-  const { lead, getLead, updateLead, sendLeadEmail, loading: leadLoading } = useLead();
+  const { lead, getLead, updateLead, sendLeadEmail } = useLead();
   const { setAuditData, setCompetitorData: saveFunnelCompetitorData, leadData: funnelLeadData } = useFunnelData();
   
   const [analyzing, setAnalyzing] = useState(true);
@@ -127,7 +130,6 @@ const Audit = () => {
       getLead(leadId);
       runAnalysis(leadId);
     } else if (formData?.website_url) {
-      // If no leadId but we have form data, still run analysis
       runAnalysisWithUrl(formData.website_url);
     } else {
       navigate("/ai-seo");
@@ -139,14 +141,12 @@ const Audit = () => {
     setAnalyzing(true);
     setAnalyzedUrl(url);
     
-    // Animate through loading steps
     for (let i = 0; i < loadingSteps.length; i++) {
       setCurrentStep(i);
       await new Promise(resolve => setTimeout(resolve, 1500));
     }
 
     try {
-      // Call the SEO analysis edge function
       const { data: analysisData, error } = await supabase.functions.invoke('analyze-seo', {
         body: { url }
       });
@@ -161,15 +161,9 @@ const Audit = () => {
         throw new Error("Invalid analysis response");
       }
 
-      const results = {
-        ...analysisData,
-        data_source: 'google_pagespeed_v5'
-      };
-
+      const results = { ...analysisData };
       setAuditResults(results);
       setAuditData(results);
-
-      // Run AI competitor analysis
       runCompetitorAnalysis(url, results);
 
     } catch (error: any) {
@@ -184,14 +178,12 @@ const Audit = () => {
     setAnalysisError(null);
     setAnalyzing(true);
     
-    // Animate through loading steps
     for (let i = 0; i < loadingSteps.length; i++) {
       setCurrentStep(i);
       await new Promise(resolve => setTimeout(resolve, 1500));
     }
 
     try {
-      // First try to get URL from lead data
       let websiteUrl = formData?.website_url;
       
       if (!websiteUrl) {
@@ -210,7 +202,6 @@ const Audit = () => {
 
       setAnalyzedUrl(websiteUrl);
 
-      // Call the SEO analysis edge function
       const { data: analysisData, error } = await supabase.functions.invoke('analyze-seo', {
         body: { url: websiteUrl, leadId }
       });
@@ -225,15 +216,10 @@ const Audit = () => {
         throw new Error("Invalid analysis response");
       }
 
-      const results = {
-        ...analysisData,
-        data_source: 'google_pagespeed_v5'
-      };
-
+      const results = { ...analysisData };
       setAuditResults(results);
       setAuditData(results);
 
-      // Save audit results to database
       const { data: auditRecord, error: insertError } = await supabase.from('audit_results').insert({
         lead_id: leadId,
         seo_score: analysisData.seo_score,
@@ -246,14 +232,13 @@ const Audit = () => {
         diagnostics: analysisData.diagnostics,
         analyzed_url: analysisData.analyzed_url,
         analysis_timestamp: analysisData.analysis_timestamp,
-        data_source: 'google_pagespeed_v5'
+        data_source: analysisData.data_source
       }).select().single();
 
       if (auditRecord) {
         setCurrentAuditId(auditRecord.id);
       }
 
-      // Run AI competitor analysis
       runCompetitorAnalysis(websiteUrl, results, leadId, auditRecord?.id);
 
     } catch (error: any) {
@@ -268,7 +253,6 @@ const Audit = () => {
     setAnalyzingCompetitors(true);
     setCompetitorError(null);
     
-    // Animate through AI analysis steps
     for (let i = 0; i < aiAnalysisSteps.length; i++) {
       setAiAnalysisStep(i);
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -329,7 +313,6 @@ const Audit = () => {
 
       toast.success("Redirecting to book your strategy call...");
       
-      // Navigate with complete data bundle
       navigate("/booking", { 
         state: { 
           leadId,
@@ -340,7 +323,6 @@ const Audit = () => {
       });
     } catch (error) {
       console.error("Failed to update lead:", error);
-      // Still navigate even if update fails
       navigate("/booking", { 
         state: { 
           leadId,
@@ -360,12 +342,6 @@ const Audit = () => {
     return "text-red-500";
   };
 
-  const getScoreBg = (score: number) => {
-    if (score >= 80) return "bg-green-500";
-    if (score >= 50) return "bg-yellow-500";
-    return "bg-red-500";
-  };
-
   const formatTimestamp = (timestamp: string) => {
     try {
       return new Date(timestamp).toLocaleString();
@@ -374,15 +350,48 @@ const Audit = () => {
     }
   };
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0
-    }).format(amount);
-  };
+  // Loading State
+  const LoadingState = () => (
+    <Card className="max-w-2xl mx-auto">
+      <CardContent className="p-8 text-center">
+        <Loader2 className="w-16 h-16 animate-spin text-orange-500 mx-auto mb-6" />
+        <h2 className="text-2xl font-bold text-foreground mb-4">
+          Analyzing Your Website
+        </h2>
+        {analyzedUrl && (
+          <p className="text-muted-foreground mb-6">{analyzedUrl}</p>
+        )}
+        
+        <div className="space-y-4">
+          {loadingSteps.map((step, index) => (
+            <div 
+              key={index}
+              className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
+                index === currentStep 
+                  ? "bg-orange-50 border border-orange-200" 
+                  : index < currentStep 
+                    ? "bg-green-50 border border-green-200"
+                    : "bg-muted"
+              }`}
+            >
+              {index < currentStep ? (
+                <CheckCircle className="w-5 h-5 text-green-500" />
+              ) : index === currentStep ? (
+                <Loader2 className="w-5 h-5 animate-spin text-orange-500" />
+              ) : (
+                <div className="w-5 h-5 rounded-full border-2 border-muted-foreground/30" />
+              )}
+              <span className={index <= currentStep ? "text-foreground" : "text-muted-foreground"}>
+                {step.text}
+              </span>
+            </div>
+          ))}
+        </div>
+      </CardContent>
+    </Card>
+  );
 
-  // Error State Component
+  // Error State
   const ErrorState = () => (
     <Card className="max-w-2xl mx-auto">
       <CardContent className="p-8 text-center">
@@ -410,62 +419,28 @@ const Audit = () => {
     </Card>
   );
 
-  // Data Disclaimer Component
-  const DataDisclaimer = () => {
-    const isEstimation = auditResults?.data_source === 'smart_estimation';
-    
-    return (
-      <Card className={isEstimation ? "border-amber-300 bg-amber-50" : "border-blue-200 bg-blue-50"}>
-        <CardContent className="p-4">
-          <div className="flex items-start gap-3">
-            <Info className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isEstimation ? "text-amber-600" : "text-blue-600"}`} />
-            <div className="text-sm">
-              <p className={`font-semibold mb-1 ${isEstimation ? "text-amber-800" : "text-blue-800"}`}>
-                {isEstimation ? "AI Estimation Mode" : "Live Analysis Results"}
-              </p>
-              <p className={isEstimation ? "text-amber-700" : "text-blue-700"}>
-                {isEstimation 
-                  ? "Due to high demand, this report uses AI-powered estimation based on your website URL. The scores are indicative and may vary from actual PageSpeed results."
-                  : "This report is generated using Google PageSpeed Insights API. Scores represent real-time automated analysis."
-                }
-                {' '}For the most accurate assessment, <button onClick={handleUnlockClick} className="underline font-medium hover:opacity-80">book a FREE manual audit</button> with our expert team.
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    );
-  };
+  // Data Source Badge
+  const DataSourceBadge = () => (
+    <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
+      {analyzedUrl && (
+        <div className="flex items-center gap-1">
+          <ExternalLink className="w-4 h-4" />
+          <span className="font-medium">{analyzedUrl}</span>
+        </div>
+      )}
+      {auditResults?.analysis_timestamp && (
+        <div className="flex items-center gap-1">
+          <Clock className="w-4 h-4" />
+          <span>Analyzed: {formatTimestamp(auditResults.analysis_timestamp)}</span>
+        </div>
+      )}
+      <Badge variant="secondary" className="text-xs">
+        Powered by Google PageSpeed Insights
+      </Badge>
+    </div>
+  );
 
-  // Data Source Badge Component
-  const DataSourceBadge = () => {
-    const isEstimation = auditResults?.data_source === 'smart_estimation';
-    
-    return (
-      <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
-        {analyzedUrl && (
-          <div className="flex items-center gap-1">
-            <ExternalLink className="w-4 h-4" />
-            <span className="font-medium">{analyzedUrl}</span>
-          </div>
-        )}
-        {auditResults?.analysis_timestamp && (
-          <div className="flex items-center gap-1">
-            <Clock className="w-4 h-4" />
-            <span>Analyzed: {formatTimestamp(auditResults.analysis_timestamp)}</span>
-          </div>
-        )}
-        <Badge 
-          variant={isEstimation ? "outline" : "secondary"} 
-          className={`text-xs ${isEstimation ? "border-amber-500 text-amber-600" : ""}`}
-        >
-          {isEstimation ? "AI Estimation" : "Powered by Google PageSpeed Insights"}
-        </Badge>
-      </div>
-    );
-  };
-
-  // AI Analysis Loading Component
+  // AI Analysis Loading
   const AIAnalysisLoading = () => (
     <Card className="border-purple-200 bg-purple-50/50">
       <CardContent className="p-6">
@@ -502,7 +477,7 @@ const Audit = () => {
     </Card>
   );
 
-  // Competitor Analysis Results Component
+  // Competitor Results
   const CompetitorAnalysisResults = () => {
     if (!competitorData) return null;
 
@@ -531,85 +506,46 @@ const Audit = () => {
           </CardContent>
         </Card>
 
-        {/* Missed Opportunity Score */}
-        <Card className="border-red-200 bg-gradient-to-br from-red-50 to-orange-50">
-          <CardContent className="p-6">
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="relative w-32 h-32">
-                <svg className="w-32 h-32 transform -rotate-90">
-                  <circle
-                    cx="64"
-                    cy="64"
-                    r="56"
-                    stroke="currentColor"
-                    strokeWidth="12"
-                    fill="none"
-                    className="text-red-100"
-                  />
-                  <circle
-                    cx="64"
-                    cy="64"
-                    r="56"
-                    stroke="currentColor"
-                    strokeWidth="12"
-                    fill="none"
-                    strokeDasharray={352}
-                    strokeDashoffset={352 - (352 * competitorData.missed_opportunity_score) / 100}
-                    className="text-red-500"
-                  />
-                </svg>
-                <span className="absolute inset-0 flex items-center justify-center text-3xl font-bold text-red-600">
-                  {competitorData.missed_opportunity_score}
-                </span>
-              </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="text-xl font-bold text-red-800 mb-2">Missed Opportunity Score</h3>
-                <p className="text-red-700 mb-4">
-                  You're missing <span className="font-bold">{competitorData.missed_opportunity_score}%</span> of potential visibility compared to competitors
-                </p>
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="bg-white/80 rounded-lg p-3">
-                    <p className="text-xs text-muted-foreground">AI Visibility Gap</p>
-                    <p className="font-bold text-red-600">{competitorData.opportunity_breakdown.ai_visibility_gap}%</p>
-                  </div>
-                  <div className="bg-white/80 rounded-lg p-3">
-                    <p className="text-xs text-muted-foreground">Content Gap</p>
-                    <p className="font-bold text-red-600">{competitorData.opportunity_breakdown.content_gap}%</p>
-                  </div>
-                  <div className="bg-white/80 rounded-lg p-3">
-                    <p className="text-xs text-muted-foreground">Technical Gap</p>
-                    <p className="font-bold text-red-600">{competitorData.opportunity_breakdown.technical_gap}%</p>
-                  </div>
-                  <div className="bg-white/80 rounded-lg p-3">
-                    <p className="text-xs text-muted-foreground">Authority Gap</p>
-                    <p className="font-bold text-red-600">{competitorData.opportunity_breakdown.authority_gap}%</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Missed Opportunity Gauge */}
+        <MissedOpportunityGauge 
+          score={competitorData.missed_opportunity_score}
+          breakdown={competitorData.opportunity_breakdown}
+        />
+
+        {/* Revenue Impact */}
+        <RevenueImpactCard 
+          amount={competitorData.estimated_monthly_loss.amount}
+          currency={competitorData.estimated_monthly_loss.currency}
+          calculationBasis={competitorData.estimated_monthly_loss.calculation_basis}
+          breakdown={{
+            aiVisibilityGap: competitorData.opportunity_breakdown.ai_visibility_gap,
+            contentGap: competitorData.opportunity_breakdown.content_gap,
+            technicalGap: competitorData.opportunity_breakdown.technical_gap,
+            authorityGap: competitorData.opportunity_breakdown.authority_gap
+          }}
+        />
+
+        {/* Competitor Radar Chart */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Target className="w-5 h-5 text-blue-500" />
+              Your Position vs Competitors
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CompetitorRadarChart 
+              yourScores={{
+                aiVisibility: 100 - competitorData.opportunity_breakdown.ai_visibility_gap,
+                content: 100 - competitorData.opportunity_breakdown.content_gap,
+                technical: 100 - competitorData.opportunity_breakdown.technical_gap,
+                authority: 100 - competitorData.opportunity_breakdown.authority_gap
+              }}
+            />
           </CardContent>
         </Card>
 
-        {/* Estimated Monthly Loss */}
-        <Card className="border-orange-200 bg-gradient-to-br from-orange-50 to-yellow-50">
-          <CardContent className="p-6">
-            <div className="flex items-center gap-2 mb-4">
-              <IndianRupee className="w-6 h-6 text-orange-500" />
-              <h3 className="text-lg font-semibold text-orange-900">Estimated Monthly Revenue Loss</h3>
-            </div>
-            <div className="text-center py-4">
-              <p className="text-5xl font-bold text-orange-600 mb-2">
-                {formatCurrency(competitorData.estimated_monthly_loss.amount)}
-              </p>
-              <p className="text-sm text-orange-700">/month</p>
-            </div>
-            <p className="text-sm text-orange-700 mt-4 p-3 bg-orange-100 rounded-lg">
-              <strong>Calculation basis:</strong> {competitorData.estimated_monthly_loss.calculation_basis}
-            </p>
-          </CardContent>
-        </Card>
-
-        {/* Competitors */}
+        {/* Competitors List */}
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -620,7 +556,7 @@ const Audit = () => {
           <CardContent>
             <div className="space-y-3">
               {competitorData.competitors.map((competitor, index) => (
-                <div key={index} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+                <div key={index} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg hover:bg-muted/70 transition-colors">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="font-semibold text-foreground">{competitor.name}</span>
@@ -672,7 +608,7 @@ const Audit = () => {
 
       <main className="min-h-screen bg-muted/30">
         {/* Header */}
-        <header id="audit-header" className="bg-slate-900 py-8">
+        <header className="bg-slate-900 py-8">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Your AI SEO Visibility Report
@@ -683,160 +619,65 @@ const Audit = () => {
           </div>
         </header>
 
-        <div id="audit-content" className="container mx-auto px-4 py-12">
+        <div className="container mx-auto px-4 py-12">
           {analyzing ? (
-            /* Loading State */
-            <Card className="max-w-2xl mx-auto">
-              <CardContent className="p-8 text-center">
-                <Loader2 className="w-16 h-16 animate-spin text-orange-500 mx-auto mb-6" />
-                <h2 className="text-2xl font-bold text-foreground mb-4">
-                  Analyzing Your Website
-                </h2>
-                {analyzedUrl && (
-                  <p className="text-muted-foreground mb-6">{analyzedUrl}</p>
-                )}
-                
-                <div className="space-y-4">
-                  {loadingSteps.map((step, index) => (
-                    <div 
-                      key={index}
-                      className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
-                        index === currentStep 
-                          ? "bg-orange-50 border border-orange-200" 
-                          : index < currentStep 
-                            ? "bg-green-50 border border-green-200"
-                            : "bg-muted"
-                      }`}
-                    >
-                      {index < currentStep ? (
-                        <CheckCircle className="w-5 h-5 text-green-500" />
-                      ) : index === currentStep ? (
-                        <Loader2 className="w-5 h-5 animate-spin text-orange-500" />
-                      ) : (
-                        <div className="w-5 h-5 rounded-full border-2 border-muted-foreground/30" />
-                      )}
-                      <span className={index <= currentStep ? "text-foreground" : "text-muted-foreground"}>
-                        {step.text}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+            <LoadingState />
           ) : analysisError ? (
-            /* Error State */
             <ErrorState />
           ) : auditResults && (
-            /* Results */
             <TooltipProvider>
               <div className="space-y-8">
                 {/* Data Source Info */}
                 <DataSourceBadge />
 
-                {/* Disclaimer */}
-                <DataDisclaimer />
-
-                {/* Score Cards */}
-                <div className="grid md:grid-cols-4 gap-6">
-                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
-                    <CardContent className="p-6 text-center">
-                      <div className="relative w-24 h-24 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                        <svg className="w-24 h-24 transform -rotate-90">
-                          <circle
-                            cx="48"
-                            cy="48"
-                            r="40"
-                            stroke="currentColor"
-                            strokeWidth="8"
-                            fill="none"
-                            className="text-muted"
-                          />
-                          <circle
-                            cx="48"
-                            cy="48"
-                            r="40"
-                            stroke="currentColor"
-                            strokeWidth="8"
-                            fill="none"
-                            strokeDasharray={251}
-                            strokeDashoffset={251 - (251 * auditResults.seo_score) / 100}
-                            className={getScoreColor(auditResults.seo_score)}
-                            style={{ transition: 'stroke-dashoffset 1s ease-out' }}
-                          />
-                        </svg>
-                        <span className={`absolute inset-0 flex items-center justify-center text-2xl font-bold ${getScoreColor(auditResults.seo_score)}`}>
-                          {auditResults.seo_score}
-                        </span>
-                      </div>
-                      <h3 className="font-semibold text-foreground">SEO Health</h3>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {auditResults.data_source === 'smart_estimation' ? 'AI Estimate' : 'Google PageSpeed'}
-                      </p>
+                {/* Main Score Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                    <CardContent className="p-4 md:p-6">
+                      <ScoreGauge 
+                        score={auditResults.seo_score}
+                        label="SEO Health"
+                        sublabel="Google PageSpeed"
+                        size="md"
+                      />
                     </CardContent>
                   </Card>
 
-                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
-                    <CardContent className="p-6 text-center">
-                      <div className="group-hover:scale-110 transition-transform duration-300">
-                        <div className={`text-5xl font-bold mb-4 ${getScoreColor(auditResults.ai_visibility_score)}`}>
-                          {auditResults.ai_visibility_score}%
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-center gap-1">
-                        <h3 className="font-semibold text-foreground">AI Visibility</h3>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <Info className="w-4 h-4 text-muted-foreground" />
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-xs">
-                            <p>Estimated score based on: SEO (40%), Performance (30%), Accessibility (20%), Best Practices (10%)</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
-                      <Badge variant="outline" className="text-xs mt-1">Composite Score</Badge>
+                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                    <CardContent className="p-4 md:p-6">
+                      <ScoreGauge 
+                        score={auditResults.ai_visibility_score}
+                        label="AI Visibility"
+                        sublabel="Composite Score"
+                        size="md"
+                        showTooltip
+                        tooltipContent="Calculated from SEO (40%), Performance (30%), Accessibility (20%), Best Practices (10%)"
+                      />
                     </CardContent>
                   </Card>
 
-                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
-                    <CardContent className="p-6 text-center">
-                      <div className="group-hover:scale-110 transition-transform duration-300">
-                        <div className="text-5xl font-bold text-red-500 mb-4">
-                          {auditResults.technical_issues}
-                        </div>
+                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                    <CardContent className="p-4 md:p-6 flex flex-col items-center">
+                      <div className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
+                        {auditResults.technical_issues}
                       </div>
-                      <h3 className="font-semibold text-foreground">Technical Issues</h3>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        {auditResults.data_source === 'smart_estimation' ? 'AI Estimate' : 'From PageSpeed audit'}
-                      </p>
+                      <h3 className="font-semibold text-foreground text-sm">Technical Issues</h3>
+                      <p className="text-xs text-muted-foreground">From PageSpeed audit</p>
                     </CardContent>
                   </Card>
 
-                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
-                    <CardContent className="p-6 text-center">
-                      <div className="group-hover:scale-110 transition-transform duration-300">
-                        <div className="text-3xl font-bold text-orange-600 mb-4">
-                          {competitorData 
-                            ? formatCurrency(competitorData.estimated_monthly_loss.amount)
-                            : `₹${Math.round(auditResults.technical_issues * 25000).toLocaleString('en-IN')}`
-                          }
-                        </div>
+                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
+                    <CardContent className="p-4 md:p-6 flex flex-col items-center">
+                      <div className="flex items-center gap-1 text-2xl md:text-3xl font-bold text-orange-600 mb-2">
+                        <IndianRupee className="w-5 h-5 md:w-6 md:h-6" />
+                        {competitorData 
+                          ? competitorData.estimated_monthly_loss.amount.toLocaleString('en-IN')
+                          : Math.round(auditResults.technical_issues * 25000).toLocaleString('en-IN')
+                        }
                       </div>
-                      <div className="flex items-center justify-center gap-1">
-                        <h3 className="font-semibold text-foreground">Revenue Impact</h3>
-                        <Tooltip>
-                          <TooltipTrigger>
-                            <Info className="w-4 h-4 text-muted-foreground" />
-                          </TooltipTrigger>
-                          <TooltipContent className="max-w-xs">
-                            <p>{competitorData 
-                              ? "AI-calculated based on industry analysis and competitor comparison"
-                              : "Projected monthly revenue impact based on industry averages"
-                            }</p>
-                          </TooltipContent>
-                        </Tooltip>
-                      </div>
+                      <h3 className="font-semibold text-foreground text-sm">Revenue Impact</h3>
                       <Badge variant="outline" className="text-xs mt-1 border-orange-300 text-orange-600">
-                        {competitorData ? "AI Calculated" : "Projected Monthly"}
+                        {competitorData ? "AI Calculated" : "Projected"}/mo
                       </Badge>
                     </CardContent>
                   </Card>
@@ -870,44 +711,38 @@ const Audit = () => {
                   <CompetitorAnalysisResults />
                 ) : null}
 
-                {/* Detailed Scores */}
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="flex items-center gap-2">
-                      Performance Breakdown
-                      <Badge variant="secondary" className="text-xs font-normal">Live Data</Badge>
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-6">
-                    <div>
-                      <div className="flex justify-between mb-2">
-                        <span className="text-foreground">Performance</span>
-                        <span className={`font-semibold ${getScoreColor(auditResults.performance_score)}`}>
-                          {auditResults.performance_score}%
-                        </span>
-                      </div>
-                      <Progress value={auditResults.performance_score} className="h-3" />
-                    </div>
-                    <div>
-                      <div className="flex justify-between mb-2">
-                        <span className="text-foreground">Accessibility</span>
-                        <span className={`font-semibold ${getScoreColor(auditResults.accessibility_score)}`}>
-                          {auditResults.accessibility_score}%
-                        </span>
-                      </div>
-                      <Progress value={auditResults.accessibility_score} className="h-3" />
-                    </div>
-                    <div>
-                      <div className="flex justify-between mb-2">
-                        <span className="text-foreground">Best Practices</span>
-                        <span className={`font-semibold ${getScoreColor(auditResults.best_practices_score)}`}>
-                          {auditResults.best_practices_score}%
-                        </span>
-                      </div>
-                      <Progress value={auditResults.best_practices_score} className="h-3" />
-                    </div>
-                  </CardContent>
-                </Card>
+                {/* Detailed Score Breakdown Tabs */}
+                <ScoreBreakdownTabs 
+                  performance={auditResults.performance_score}
+                  seo={auditResults.seo_score}
+                  accessibility={auditResults.accessibility_score}
+                  bestPractices={auditResults.best_practices_score}
+                  opportunities={auditResults.opportunities || []}
+                  diagnostics={auditResults.diagnostics || []}
+                />
+
+                {/* Opportunities Section */}
+                {auditResults.opportunities && auditResults.opportunities.length > 0 && (
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-2">
+                        <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                        Improvement Opportunities
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-3">
+                      {auditResults.opportunities.map((opp, idx) => (
+                        <OpportunityCard 
+                          key={idx}
+                          title={opp.title}
+                          description={opp.description}
+                          score={opp.score}
+                          displayValue={opp.displayValue}
+                        />
+                      ))}
+                    </CardContent>
+                  </Card>
+                )}
 
                 {/* Locked Sections */}
                 <div className="grid md:grid-cols-2 gap-6">
@@ -922,32 +757,18 @@ const Audit = () => {
                     <CardContent className="p-6 filter blur-sm">
                       <h3 className="font-semibold mb-4">Top Issues to Fix</h3>
                       <ul className="space-y-2">
-                        {auditResults.opportunities && auditResults.opportunities.length > 0 ? (
-                          auditResults.opportunities.slice(0, 3).map((opp, idx) => (
-                            <li key={idx} className="flex items-center gap-2">
-                              <AlertTriangle className={`w-4 h-4 ${opp.score < 50 ? 'text-red-500' : 'text-yellow-500'}`} />
-                              <span>{opp.title}{opp.displayValue ? ` (${opp.displayValue})` : ''}</span>
-                            </li>
-                          ))
-                        ) : auditResults.diagnostics && auditResults.diagnostics.length > 0 ? (
-                          auditResults.diagnostics.slice(0, 3).map((diag, idx) => (
-                            <li key={idx} className="flex items-center gap-2">
-                              <AlertTriangle className={`w-4 h-4 ${diag.score < 50 ? 'text-red-500' : 'text-yellow-500'}`} />
-                              <span>{diag.title}</span>
-                            </li>
-                          ))
-                        ) : (
-                          <>
-                            <li className="flex items-center gap-2">
-                              <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                              <span>Performance optimization opportunities</span>
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                              <span>SEO improvements identified</span>
-                            </li>
-                          </>
-                        )}
+                        <li className="flex items-center gap-2">
+                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                          <span>Performance optimization opportunities</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                          <span>SEO improvements identified</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                          <AlertTriangle className="w-4 h-4 text-red-500" />
+                          <span>Critical issues requiring attention</span>
+                        </li>
                       </ul>
                     </CardContent>
                   </Card>
@@ -976,15 +797,12 @@ const Audit = () => {
                           <span className="font-semibold text-muted-foreground">Authority building</span>
                         </div>
                       </div>
-                      <p className="text-xs text-muted-foreground mt-4">
-                        Projections calculated during strategy call
-                      </p>
                     </CardContent>
                   </Card>
                 </div>
 
                 {/* Unlock CTA */}
-                <Card className="bg-gradient-to-br from-orange-500 to-orange-600">
+                <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0">
                   <CardContent className="p-8 text-center">
                     <Zap className="w-12 h-12 text-white mx-auto mb-4" />
                     <h2 className="text-2xl font-bold text-white mb-2">
