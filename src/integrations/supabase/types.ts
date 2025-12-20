@@ -73,6 +73,53 @@ export type Database = {
           },
         ]
       }
+      engagement_metrics: {
+        Row: {
+          created_at: string | null
+          id: string
+          interactions: Json | null
+          max_scroll_depth: number | null
+          page_url: string
+          scroll_milestones: Json | null
+          sections_viewed: Json | null
+          session_id: string | null
+          time_on_page: number | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          interactions?: Json | null
+          max_scroll_depth?: number | null
+          page_url: string
+          scroll_milestones?: Json | null
+          sections_viewed?: Json | null
+          session_id?: string | null
+          time_on_page?: number | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          interactions?: Json | null
+          max_scroll_depth?: number | null
+          page_url?: string
+          scroll_milestones?: Json | null
+          sections_viewed?: Json | null
+          session_id?: string | null
+          time_on_page?: number | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "engagement_metrics_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           company_name: string | null
