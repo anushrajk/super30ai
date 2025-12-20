@@ -6,12 +6,12 @@ interface SessionData {
   first_page_url: string;
   current_page_url: string;
   referrer: string;
-  ip_address: string;
+  ip_address?: string;
   ip_city: string;
   ip_state: string;
   ip_country: string;
   browser: string;
-  user_agent: string;
+  user_agent?: string;
   first_landed_at: string;
 }
 
@@ -26,33 +26,25 @@ export const useSession = () => {
         const existingSessionId = localStorage.getItem('seo_session_id');
         
         if (existingSessionId) {
-          // Fetch existing session - use maybeSingle to handle missing data gracefully
-          const { data: existingSession, error } = await supabase
-            .from('sessions')
-            .select('*')
-            .eq('id', existingSessionId)
-            .maybeSingle();
+          // Validate existing session via secure edge function
+          const { data: validationResult, error } = await supabase.functions.invoke('validate-session', {
+            headers: { 'x-session-id': existingSessionId }
+          });
           
           if (error) {
-            console.error('Error fetching session:', error);
+            console.error('Error validating session:', error);
             // Clear invalid session and create new one
             localStorage.removeItem('seo_session_id');
-          } else if (existingSession) {
-            // Update current page URL
-            await supabase
-              .from('sessions')
-              .update({ current_page_url: window.location.href })
-              .eq('id', existingSessionId);
-            
+          } else if (validationResult?.valid && validationResult?.session) {
             setSession({
-              ...existingSession,
+              ...validationResult.session,
               current_page_url: window.location.href,
-              ip_state: existingSession.ip_state || 'Unknown'
+              ip_state: validationResult.session.ip_state || 'Unknown'
             } as SessionData);
             setLoading(false);
             return;
           } else {
-            // Session not found in DB, clear localStorage
+            // Session not found or invalid, clear localStorage
             localStorage.removeItem('seo_session_id');
           }
         }
@@ -89,17 +81,10 @@ export const useSession = () => {
   }, []);
 
   const updateCurrentPage = async () => {
+    // Current page updates now happen only client-side
+    // Server-side tracking can be done via edge function if needed
     if (session?.id) {
-      try {
-        await supabase
-          .from('sessions')
-          .update({ current_page_url: window.location.href })
-          .eq('id', session.id);
-        
-        setSession(prev => prev ? { ...prev, current_page_url: window.location.href } : null);
-      } catch (error) {
-        console.error('Failed to update current page:', error);
-      }
+      setSession(prev => prev ? { ...prev, current_page_url: window.location.href } : null);
     }
   };
 

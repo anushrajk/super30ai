@@ -83,21 +83,23 @@ export const useLead = () => {
     }
   };
 
-  const getLead = async (id: string) => {
+  const getLead = async (id: string, sessionId?: string) => {
     try {
-      const { data, error } = await supabase
-        .from('leads')
-        .select('*')
-        .eq('id', id)
-        .single();
+      // Use secure edge function to get lead data
+      const { data, error } = await supabase.functions.invoke('get-session-data', {
+        body: { type: 'leads' },
+        headers: sessionId ? { 'x-session-id': sessionId } : undefined
+      });
 
       if (error) throw error;
       
-      if (data) {
-        setLead(data as LeadData);
+      // Find the specific lead in the results
+      const foundLead = data?.leads?.find((l: LeadData) => l.id === id);
+      if (foundLead) {
+        setLead(foundLead as LeadData);
       }
       
-      return data;
+      return foundLead || null;
     } catch (error) {
       console.error('Failed to get lead:', error);
       return null;
