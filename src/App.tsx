@@ -6,6 +6,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
+import { ScrollProgressBar } from "@/components/ScrollProgressBar";
+import { EngagementTracker } from "@/components/EngagementTracker";
 import Home from "./pages/Home";
 import AiSeo from "./pages/AiSeo";
 import PerformanceMarketing from "./pages/PerformanceMarketing";
@@ -30,6 +32,8 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollProgressBar />
+        <EngagementTracker />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
