@@ -17,3 +17,9 @@ verify_jwt = false
 
 [functions.analyze-competitor]
 verify_jwt = false
+
+[functions.validate-session]
+verify_jwt = false
+
+[functions.get-session-data]
+verify_jwt = false
