@@ -189,19 +189,10 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section id="home-stats" className="py-16 bg-muted/30 border-y border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => <div key={index} className="text-center group">
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform duration-300">
-                {stat.value}
-              </div>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </div>)}
-          </div>
-        </div>
-      </section>
+      {/* Client Logos - Moved above services */}
+      <div id="home-logos">
+        <ClientLogosSection />
+      </div>
 
       {/* Services Section - Enhanced Cards */}
       <section id="home-services" className="py-24 bg-background">
@@ -280,9 +271,19 @@ const Home = () => {
         <WhoIsThisForSection />
       </div>
 
-      <div id="home-logos">
-        <ClientLogosSection />
-      </div>
+      {/* Stats Section - Moved below Who Is This For */}
+      <section id="home-stats" className="py-16 bg-muted/30 border-y border-border/50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => <div key={index} className="text-center group">
+              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform duration-300">
+                {stat.value}
+              </div>
+              <p className="text-sm text-muted-foreground">{stat.label}</p>
+            </div>)}
+          </div>
+        </div>
+      </section>
 
       {/* Why Choose Us */}
       <section id="home-why-us" className="py-24 bg-muted/30">
