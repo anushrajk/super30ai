@@ -893,7 +893,7 @@ const Audit = () => {
                 <AIAnalysisLoading />
               ) : isTransitioning ? (
                 <TransitionCelebration />
-              ) : showResults || !competitorData ? (
+              ) : (
                 <TooltipProvider>
                   <div className="space-y-8">
                     {/* Deep Page Warning */}
@@ -1124,7 +1124,7 @@ const Audit = () => {
                     </Tabs>
                   </div>
                 </TooltipProvider>
-              ) : null}
+              )}
             </>
           )}
         </div>
