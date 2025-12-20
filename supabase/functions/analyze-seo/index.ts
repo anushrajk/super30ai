@@ -63,119 +63,44 @@ function validateUrl(url: string): { valid: boolean; error?: string; sanitizedUr
   }
 }
 
-// Generate smart fallback scores based on URL characteristics
-function generateSmartFallback(url: string): {
-  seo_score: number;
-  performance_score: number;
-  accessibility_score: number;
-  best_practices_score: number;
-  ai_visibility_score: number;
-  technical_issues: number;
-  opportunities: any[];
-  diagnostics: any[];
-  analyzed_url: string;
-  analysis_timestamp: string;
-  data_source: string;
-} {
-  // Seed based on URL for consistent results
-  const urlHash = url.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const random = (min: number, max: number) => {
-    const seed = urlHash % 100;
-    return Math.round(min + (seed / 100) * (max - min));
-  };
-
-  // Check for common patterns that might indicate quality
-  const hasWww = url.includes('www.');
-  const hasHttps = url.startsWith('https');
-  const isCommonTLD = url.includes('.com') || url.includes('.org') || url.includes('.in');
+// Retry with exponential backoff
+async function fetchWithRetry(
+  url: string, 
+  options: RequestInit = {}, 
+  maxRetries = 3, 
+  initialDelay = 1000
+): Promise<Response> {
+  let lastError: Error | null = null;
   
-  // Base scores with some variance
-  let seoBase = random(40, 70);
-  let perfBase = random(30, 60);
-  let accessBase = random(50, 80);
-  let bpBase = random(50, 75);
-
-  // Adjust based on URL characteristics
-  if (hasHttps) {
-    seoBase += 10;
-    bpBase += 10;
-  }
-  if (hasWww) {
-    seoBase += 5;
-  }
-  if (isCommonTLD) {
-    seoBase += 5;
-  }
-
-  // Cap at 100
-  seoBase = Math.min(seoBase, 95);
-  perfBase = Math.min(perfBase, 90);
-  accessBase = Math.min(accessBase, 95);
-  bpBase = Math.min(bpBase, 95);
-
-  const aiVisibility = Math.round(seoBase * 0.4 + perfBase * 0.3 + accessBase * 0.2 + bpBase * 0.1);
-  const technicalIssues = Math.round((100 - seoBase) / 10) + Math.round((100 - perfBase) / 15);
-
-  return {
-    seo_score: seoBase,
-    performance_score: perfBase,
-    accessibility_score: accessBase,
-    best_practices_score: bpBase,
-    ai_visibility_score: aiVisibility,
-    technical_issues: Math.max(technicalIssues, 3),
-    opportunities: [
-      {
-        title: "Reduce initial server response time",
-        description: "Initial server response was too slow. Consider optimizing server configuration.",
-        score: random(20, 50),
-        displayValue: `${random(800, 2000)}ms`
-      },
-      {
-        title: "Eliminate render-blocking resources",
-        description: "Resources are blocking the first paint of your page.",
-        score: random(30, 60),
-        displayValue: `${random(500, 1500)}ms potential savings`
-      },
-      {
-        title: "Serve images in next-gen formats",
-        description: "Image formats like WebP provide better compression than PNG or JPEG.",
-        score: random(40, 70),
-        displayValue: `${random(100, 500)}KB potential savings`
-      },
-      {
-        title: "Properly size images",
-        description: "Serve images that are appropriately-sized to save cellular data.",
-        score: random(35, 65),
-        displayValue: `${random(50, 200)}KB potential savings`
-      },
-      {
-        title: "Enable text compression",
-        description: "Text-based resources should be served with compression.",
-        score: random(45, 75),
-        displayValue: `${random(30, 150)}KB potential savings`
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      const response = await fetch(url, {
+        ...options,
+        signal: AbortSignal.timeout(45000) // 45 second timeout
+      });
+      
+      // If rate limited, wait and retry
+      if (response.status === 429 && attempt < maxRetries - 1) {
+        const delay = initialDelay * Math.pow(2, attempt);
+        console.log(`Rate limited, retrying in ${delay}ms (attempt ${attempt + 1}/${maxRetries})`);
+        await new Promise(resolve => setTimeout(resolve, delay));
+        continue;
       }
-    ],
-    diagnostics: [
-      {
-        title: "Largest Contentful Paint",
-        description: "Marks the time at which the largest content element is rendered.",
-        score: random(30, 60)
-      },
-      {
-        title: "Total Blocking Time",
-        description: "Sum of all time periods when the main thread was blocked long enough to prevent input responsiveness.",
-        score: random(35, 65)
-      },
-      {
-        title: "Cumulative Layout Shift",
-        description: "Measures visual stability as elements shift during page load.",
-        score: random(50, 80)
+      
+      return response;
+    } catch (error) {
+      lastError = error as Error;
+      console.log(`Fetch attempt ${attempt + 1} failed:`, error);
+      
+      if (attempt < maxRetries - 1) {
+        const delay = initialDelay * Math.pow(2, attempt);
+        console.log(`Retrying in ${delay}ms...`);
+        await new Promise(resolve => setTimeout(resolve, delay));
       }
-    ],
-    analyzed_url: url,
-    analysis_timestamp: new Date().toISOString(),
-    data_source: 'smart_estimation'
-  };
+    }
+  }
+  
+  throw lastError || new Error('All retry attempts failed');
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -207,6 +132,16 @@ const handler = async (req: Request): Promise<Response> => {
     const targetUrl = urlValidation.sanitizedUrl!;
     console.log("Analyzing SEO for:", targetUrl, "Lead ID:", leadId || "N/A");
 
+    // Check for API key
+    const apiKey = Deno.env.get('GOOGLE_PAGESPEED_API_KEY');
+    if (!apiKey) {
+      console.error("GOOGLE_PAGESPEED_API_KEY is not configured");
+      return new Response(
+        JSON.stringify({ error: "PageSpeed API key not configured. Please contact support." }),
+        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
+
     // Create Supabase client
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
     const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
@@ -229,93 +164,102 @@ const handler = async (req: Request): Promise<Response> => {
       }
     }
 
-    // Try Google PageSpeed Insights API first
-    let result;
-    let usedFallback = false;
-
-    try {
-      const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&category=performance&category=accessibility&category=best-practices&category=seo`;
+    // Call Google PageSpeed Insights API with API key
+    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&key=${apiKey}&category=performance&category=accessibility&category=best-practices&category=seo`;
+    
+    console.log("Calling PageSpeed API with API key for:", targetUrl);
+    
+    const response = await fetchWithRetry(apiUrl);
+    
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("PageSpeed API error:", response.status, errorText);
       
-      console.log("Calling PageSpeed API for:", targetUrl);
-      
-      const response = await fetch(apiUrl, {
-        signal: AbortSignal.timeout(30000) // 30 second timeout
-      });
-      
-      if (response.ok) {
-        const data = await response.json();
-        const lighthouseResult = data.lighthouseResult;
-        const categories = lighthouseResult?.categories || {};
-        
-        // Extract scores (multiply by 100 to get percentage)
-        const performanceScore = Math.round((categories.performance?.score || 0) * 100);
-        const accessibilityScore = Math.round((categories.accessibility?.score || 0) * 100);
-        const bestPracticesScore = Math.round((categories['best-practices']?.score || 0) * 100);
-        const seoScore = Math.round((categories.seo?.score || 0) * 100);
-        
-        // Calculate AI visibility score based on various factors
-        const aiVisibilityScore = Math.round((seoScore * 0.4 + performanceScore * 0.3 + accessibilityScore * 0.2 + bestPracticesScore * 0.1));
-        
-        // Extract audits for opportunities and diagnostics
-        const audits = lighthouseResult?.audits || {};
-        
-        // Count technical issues (failed audits)
-        let technicalIssues = 0;
-        const opportunities: any[] = [];
-        const diagnostics: any[] = [];
-        
-        Object.entries(audits).forEach(([key, audit]: [string, any]) => {
-          if (audit.score !== null && audit.score < 0.9) {
-            technicalIssues++;
-            
-            if (audit.details?.type === 'opportunity' && opportunities.length < 5) {
-              opportunities.push({
-                title: audit.title,
-                description: audit.description,
-                score: Math.round((audit.score || 0) * 100),
-                displayValue: audit.displayValue
-              });
-            } else if (audit.details?.type === 'table' && diagnostics.length < 5) {
-              diagnostics.push({
-                title: audit.title,
-                description: audit.description,
-                score: Math.round((audit.score || 0) * 100)
-              });
-            }
-          }
-        });
-
-        result = {
-          seo_score: seoScore,
-          performance_score: performanceScore,
-          accessibility_score: accessibilityScore,
-          best_practices_score: bestPracticesScore,
-          ai_visibility_score: aiVisibilityScore,
-          technical_issues: technicalIssues,
-          opportunities,
-          diagnostics,
-          analyzed_url: targetUrl,
-          analysis_timestamp: new Date().toISOString(),
-          data_source: 'google_pagespeed_v5'
-        };
-        
-        console.log("PageSpeed API success for:", targetUrl);
-      } else {
-        console.log(`PageSpeed API returned ${response.status}, using smart fallback`);
-        usedFallback = true;
-        result = generateSmartFallback(targetUrl);
+      if (response.status === 429) {
+        return new Response(
+          JSON.stringify({ error: "API rate limit exceeded. Please try again in a few minutes." }),
+          { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
       }
-    } catch (apiError) {
-      console.log("PageSpeed API error, using smart fallback:", apiError);
-      usedFallback = true;
-      result = generateSmartFallback(targetUrl);
+      
+      if (response.status === 400) {
+        return new Response(
+          JSON.stringify({ error: "Invalid URL or the website could not be accessed." }),
+          { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        );
+      }
+      
+      throw new Error(`PageSpeed API returned ${response.status}: ${errorText}`);
     }
-
-    if (usedFallback) {
-      console.log("Using smart estimation for:", targetUrl);
+    
+    const data = await response.json();
+    const lighthouseResult = data.lighthouseResult;
+    
+    if (!lighthouseResult) {
+      throw new Error("Invalid response from PageSpeed API - no lighthouse result");
     }
+    
+    const categories = lighthouseResult.categories || {};
+    
+    // Extract scores (multiply by 100 to get percentage)
+    const performanceScore = Math.round((categories.performance?.score || 0) * 100);
+    const accessibilityScore = Math.round((categories.accessibility?.score || 0) * 100);
+    const bestPracticesScore = Math.round((categories['best-practices']?.score || 0) * 100);
+    const seoScore = Math.round((categories.seo?.score || 0) * 100);
+    
+    // Calculate AI visibility score based on various factors
+    const aiVisibilityScore = Math.round((seoScore * 0.4 + performanceScore * 0.3 + accessibilityScore * 0.2 + bestPracticesScore * 0.1));
+    
+    // Extract audits for opportunities and diagnostics
+    const audits = lighthouseResult.audits || {};
+    
+    // Count technical issues (failed audits)
+    let technicalIssues = 0;
+    const opportunities: any[] = [];
+    const diagnostics: any[] = [];
+    
+    Object.entries(audits).forEach(([key, audit]: [string, any]) => {
+      if (audit.score !== null && audit.score < 0.9) {
+        technicalIssues++;
+        
+        if (audit.details?.type === 'opportunity' && opportunities.length < 5) {
+          opportunities.push({
+            title: audit.title,
+            description: audit.description,
+            score: Math.round((audit.score || 0) * 100),
+            displayValue: audit.displayValue
+          });
+        } else if (audit.details?.type === 'table' && diagnostics.length < 5) {
+          diagnostics.push({
+            title: audit.title,
+            description: audit.description,
+            score: Math.round((audit.score || 0) * 100)
+          });
+        }
+      }
+    });
 
-    console.log("SEO analysis complete for:", targetUrl, "Data source:", result.data_source);
+    const result = {
+      seo_score: seoScore,
+      performance_score: performanceScore,
+      accessibility_score: accessibilityScore,
+      best_practices_score: bestPracticesScore,
+      ai_visibility_score: aiVisibilityScore,
+      technical_issues: technicalIssues,
+      opportunities,
+      diagnostics,
+      analyzed_url: targetUrl,
+      analysis_timestamp: new Date().toISOString(),
+      data_source: 'google_pagespeed_v5'
+    };
+    
+    console.log("PageSpeed API success for:", targetUrl, "Scores:", {
+      seo: seoScore,
+      performance: performanceScore,
+      accessibility: accessibilityScore,
+      bestPractices: bestPracticesScore,
+      aiVisibility: aiVisibilityScore
+    });
 
     return new Response(JSON.stringify(result), {
       status: 200,
@@ -323,10 +267,21 @@ const handler = async (req: Request): Promise<Response> => {
     });
   } catch (error: any) {
     console.error("Error in analyze-seo function:", error);
-    // Return generic error message - don't expose internal details
+    
+    // Provide more specific error messages
+    let errorMessage = "An error occurred while analyzing your website.";
+    let statusCode = 500;
+    
+    if (error.message?.includes('timeout') || error.name === 'TimeoutError') {
+      errorMessage = "The analysis timed out. The website may be slow or unresponsive.";
+      statusCode = 408;
+    } else if (error.message?.includes('fetch')) {
+      errorMessage = "Could not reach the PageSpeed API. Please try again.";
+    }
+    
     return new Response(
-      JSON.stringify({ error: "An error occurred processing your request" }),
-      { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      JSON.stringify({ error: errorMessage }),
+      { status: statusCode, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }
 };
