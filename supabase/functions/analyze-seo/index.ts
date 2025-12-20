@@ -11,6 +11,18 @@ interface SEOAnalysisRequest {
   leadId?: string;
 }
 
+// Extract homepage from deep URL
+function extractHomepage(url: string): { homepage: string; originalUrl: string; isDeepPage: boolean } {
+  try {
+    const urlObj = new URL(url);
+    const homepage = `${urlObj.protocol}//${urlObj.hostname}`;
+    const isDeepPage = urlObj.pathname !== '/' && urlObj.pathname !== '' && urlObj.pathname.length > 1;
+    return { homepage, originalUrl: url, isDeepPage };
+  } catch {
+    return { homepage: url, originalUrl: url, isDeepPage: false };
+  }
+}
+
 // URL validation to prevent SSRF attacks
 function validateUrl(url: string): { valid: boolean; error?: string; sanitizedUrl?: string } {
   try {
@@ -134,7 +146,10 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const targetUrl = urlValidation.sanitizedUrl!;
-    console.log("Analyzing SEO for:", targetUrl, "Lead ID:", leadId || "N/A");
+    
+    // Extract homepage for analysis (strip deep page paths)
+    const { homepage, originalUrl, isDeepPage } = extractHomepage(targetUrl);
+    console.log("Analyzing SEO for:", homepage, "Original URL:", originalUrl, "Is Deep Page:", isDeepPage, "Lead ID:", leadId || "N/A");
 
     // Check for API key
     const apiKey = Deno.env.get('GOOGLE_PAGESPEED_API_KEY');
@@ -168,10 +183,10 @@ const handler = async (req: Request): Promise<Response> => {
       }
     }
 
-    // Call Google PageSpeed Insights API with API key
-    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(targetUrl)}&key=${apiKey}&category=performance&category=accessibility&category=best-practices&category=seo`;
+    // Call Google PageSpeed Insights API with API key - use HOMEPAGE for analysis
+    const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(homepage)}&key=${apiKey}&category=performance&category=accessibility&category=best-practices&category=seo`;
     
-    console.log("Calling PageSpeed API with API key for:", targetUrl);
+    console.log("Calling PageSpeed API with API key for homepage:", homepage);
     
     const response = await fetchWithRetry(apiUrl);
     
@@ -265,17 +280,20 @@ const handler = async (req: Request): Promise<Response> => {
       technical_issues: technicalIssues,
       opportunities,
       diagnostics,
-      analyzed_url: targetUrl,
+      analyzed_url: homepage,
+      original_url: originalUrl,
+      is_deep_page: isDeepPage,
       analysis_timestamp: new Date().toISOString(),
       data_source: 'google_pagespeed_v5'
     };
     
-    console.log("PageSpeed API success for:", targetUrl, "Scores:", {
+    console.log("PageSpeed API success for homepage:", homepage, "Scores:", {
       seo: seoScore,
       performance: performanceScore,
       accessibility: accessibilityScore,
       bestPractices: bestPracticesScore,
-      aiVisibility: aiVisibilityScore
+      aiVisibility: aiVisibilityScore,
+      isDeepPage
     });
 
     return new Response(JSON.stringify(result), {

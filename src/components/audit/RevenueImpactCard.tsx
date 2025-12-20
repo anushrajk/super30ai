@@ -57,11 +57,12 @@ const RevenueImpactCard = ({
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-amber-100 rounded-full translate-y-1/2 -translate-x-1/2 opacity-50" />
       
       <CardHeader className="relative pb-2">
-        <CardTitle className="flex items-center gap-2 text-lg">
+        <CardTitle className="flex items-center gap-2 text-lg flex-wrap">
           <div className="p-2 bg-orange-100 rounded-lg">
             <TrendingDown className="w-5 h-5 text-orange-600" />
           </div>
           <span className="text-orange-900">Estimated Monthly Revenue Loss</span>
+          <Badge className="bg-purple-100 text-purple-700 text-xs font-medium">AI-Powered</Badge>
         </CardTitle>
       </CardHeader>
       
