@@ -46,6 +46,10 @@ const stats = [{
 }];
 
 const whyChooseUs = [{
+  icon: Users,
+  title: "Team 30",
+  description: "Ex-Google strategists with 10+ years of experience"
+}, {
   icon: Bot,
   title: "AI-First Approach",
   description: "We leverage AI for optimization, not just talk about it"
@@ -53,10 +57,6 @@ const whyChooseUs = [{
   icon: BarChart3,
   title: "Data-Driven Results",
   description: "Every decision backed by analytics and measurable outcomes"
-}, {
-  icon: Users,
-  title: "Expert Team",
-  description: "Ex-Google strategists with 10+ years of experience"
 }, {
   icon: Zap,
   title: "Fast Execution",
