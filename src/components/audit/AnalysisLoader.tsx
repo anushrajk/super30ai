@@ -85,7 +85,7 @@ const AnalysisLoader = ({
   const circumference = 2 * Math.PI * 58;
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
-  const estimatedTimeRemaining = Math.max(0, Math.ceil((totalSteps - currentStep) * 2));
+  const estimatedTimeRemaining = Math.max(5, Math.ceil((totalSteps - currentStep) * 8));
 
   return (
     <div className="max-w-3xl mx-auto space-y-6">
