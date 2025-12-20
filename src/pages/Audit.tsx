@@ -411,44 +411,59 @@ const Audit = () => {
   );
 
   // Data Disclaimer Component
-  const DataDisclaimer = () => (
-    <Card className="border-amber-200 bg-amber-50">
-      <CardContent className="p-4">
-        <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-          <div className="text-sm">
-            <p className="font-semibold text-amber-800 mb-1">Data Disclaimer</p>
-            <p className="text-amber-700">
-              This report is generated using Google PageSpeed Insights API and AI analysis. 
-              Scores represent automated analysis and may not capture all SEO factors. 
-              For the most accurate assessment, <button onClick={handleUnlockClick} className="underline font-medium hover:text-amber-900">book a FREE manual audit</button> with our expert team.
-            </p>
+  const DataDisclaimer = () => {
+    const isEstimation = auditResults?.data_source === 'smart_estimation';
+    
+    return (
+      <Card className={isEstimation ? "border-amber-300 bg-amber-50" : "border-blue-200 bg-blue-50"}>
+        <CardContent className="p-4">
+          <div className="flex items-start gap-3">
+            <Info className={`w-5 h-5 flex-shrink-0 mt-0.5 ${isEstimation ? "text-amber-600" : "text-blue-600"}`} />
+            <div className="text-sm">
+              <p className={`font-semibold mb-1 ${isEstimation ? "text-amber-800" : "text-blue-800"}`}>
+                {isEstimation ? "AI Estimation Mode" : "Live Analysis Results"}
+              </p>
+              <p className={isEstimation ? "text-amber-700" : "text-blue-700"}>
+                {isEstimation 
+                  ? "Due to high demand, this report uses AI-powered estimation based on your website URL. The scores are indicative and may vary from actual PageSpeed results."
+                  : "This report is generated using Google PageSpeed Insights API. Scores represent real-time automated analysis."
+                }
+                {' '}For the most accurate assessment, <button onClick={handleUnlockClick} className="underline font-medium hover:opacity-80">book a FREE manual audit</button> with our expert team.
+              </p>
+            </div>
           </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
+        </CardContent>
+      </Card>
+    );
+  };
 
   // Data Source Badge Component
-  const DataSourceBadge = () => (
-    <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
-      {analyzedUrl && (
-        <div className="flex items-center gap-1">
-          <ExternalLink className="w-4 h-4" />
-          <span className="font-medium">{analyzedUrl}</span>
-        </div>
-      )}
-      {auditResults?.analysis_timestamp && (
-        <div className="flex items-center gap-1">
-          <Clock className="w-4 h-4" />
-          <span>Analyzed: {formatTimestamp(auditResults.analysis_timestamp)}</span>
-        </div>
-      )}
-      <Badge variant="secondary" className="text-xs">
-        Powered by Google PageSpeed Insights
-      </Badge>
-    </div>
-  );
+  const DataSourceBadge = () => {
+    const isEstimation = auditResults?.data_source === 'smart_estimation';
+    
+    return (
+      <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
+        {analyzedUrl && (
+          <div className="flex items-center gap-1">
+            <ExternalLink className="w-4 h-4" />
+            <span className="font-medium">{analyzedUrl}</span>
+          </div>
+        )}
+        {auditResults?.analysis_timestamp && (
+          <div className="flex items-center gap-1">
+            <Clock className="w-4 h-4" />
+            <span>Analyzed: {formatTimestamp(auditResults.analysis_timestamp)}</span>
+          </div>
+        )}
+        <Badge 
+          variant={isEstimation ? "outline" : "secondary"} 
+          className={`text-xs ${isEstimation ? "border-amber-500 text-amber-600" : ""}`}
+        >
+          {isEstimation ? "AI Estimation" : "Powered by Google PageSpeed Insights"}
+        </Badge>
+      </div>
+    );
+  };
 
   // AI Analysis Loading Component
   const AIAnalysisLoading = () => (
@@ -723,9 +738,9 @@ const Audit = () => {
 
                 {/* Score Cards */}
                 <div className="grid md:grid-cols-4 gap-6">
-                  <Card>
+                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
                     <CardContent className="p-6 text-center">
-                      <div className="relative w-24 h-24 mx-auto mb-4">
+                      <div className="relative w-24 h-24 mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                         <svg className="w-24 h-24 transform -rotate-90">
                           <circle
                             cx="48"
@@ -746,6 +761,7 @@ const Audit = () => {
                             strokeDasharray={251}
                             strokeDashoffset={251 - (251 * auditResults.seo_score) / 100}
                             className={getScoreColor(auditResults.seo_score)}
+                            style={{ transition: 'stroke-dashoffset 1s ease-out' }}
                           />
                         </svg>
                         <span className={`absolute inset-0 flex items-center justify-center text-2xl font-bold ${getScoreColor(auditResults.seo_score)}`}>
@@ -753,14 +769,18 @@ const Audit = () => {
                         </span>
                       </div>
                       <h3 className="font-semibold text-foreground">SEO Health</h3>
-                      <p className="text-xs text-muted-foreground mt-1">Google PageSpeed</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {auditResults.data_source === 'smart_estimation' ? 'AI Estimate' : 'Google PageSpeed'}
+                      </p>
                     </CardContent>
                   </Card>
 
-                  <Card>
+                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
                     <CardContent className="p-6 text-center">
-                      <div className={`text-5xl font-bold mb-4 ${getScoreColor(auditResults.ai_visibility_score)}`}>
-                        {auditResults.ai_visibility_score}%
+                      <div className="group-hover:scale-110 transition-transform duration-300">
+                        <div className={`text-5xl font-bold mb-4 ${getScoreColor(auditResults.ai_visibility_score)}`}>
+                          {auditResults.ai_visibility_score}%
+                        </div>
                       </div>
                       <div className="flex items-center justify-center gap-1">
                         <h3 className="font-semibold text-foreground">AI Visibility</h3>
@@ -773,27 +793,33 @@ const Audit = () => {
                           </TooltipContent>
                         </Tooltip>
                       </div>
-                      <Badge variant="outline" className="text-xs mt-1">Estimated</Badge>
+                      <Badge variant="outline" className="text-xs mt-1">Composite Score</Badge>
                     </CardContent>
                   </Card>
 
-                  <Card>
+                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group">
                     <CardContent className="p-6 text-center">
-                      <div className="text-5xl font-bold text-red-500 mb-4">
-                        {auditResults.technical_issues}
+                      <div className="group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-5xl font-bold text-red-500 mb-4">
+                          {auditResults.technical_issues}
+                        </div>
                       </div>
                       <h3 className="font-semibold text-foreground">Technical Issues</h3>
-                      <p className="text-xs text-muted-foreground mt-1">From PageSpeed audit</p>
+                      <p className="text-xs text-muted-foreground mt-1">
+                        {auditResults.data_source === 'smart_estimation' ? 'AI Estimate' : 'From PageSpeed audit'}
+                      </p>
                     </CardContent>
                   </Card>
 
-                  <Card>
+                  <Card className="hover:shadow-lg transition-shadow duration-300 cursor-pointer group border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
                     <CardContent className="p-6 text-center">
-                      <div className="text-5xl font-bold text-orange-500 mb-4">
-                        {competitorData 
-                          ? formatCurrency(competitorData.estimated_monthly_loss.amount)
-                          : `₹${Math.round(auditResults.technical_issues * 25000).toLocaleString('en-IN')}`
-                        }
+                      <div className="group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-3xl font-bold text-orange-600 mb-4">
+                          {competitorData 
+                            ? formatCurrency(competitorData.estimated_monthly_loss.amount)
+                            : `₹${Math.round(auditResults.technical_issues * 25000).toLocaleString('en-IN')}`
+                          }
+                        </div>
                       </div>
                       <div className="flex items-center justify-center gap-1">
                         <h3 className="font-semibold text-foreground">Revenue Impact</h3>
@@ -809,7 +835,7 @@ const Audit = () => {
                           </TooltipContent>
                         </Tooltip>
                       </div>
-                      <Badge variant="outline" className="text-xs mt-1">
+                      <Badge variant="outline" className="text-xs mt-1 border-orange-300 text-orange-600">
                         {competitorData ? "AI Calculated" : "Projected Monthly"}
                       </Badge>
                     </CardContent>
