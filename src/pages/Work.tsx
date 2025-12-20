@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+import { ClientLogosGrid } from "@/components/work/ClientLogosGrid";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { FinalCTASection } from "@/components/landing/FinalCTASection";
 import { BlogSection } from "@/components/landing/BlogSection";
@@ -16,7 +17,6 @@ import { useSession } from "@/hooks/useSession";
 import { toast } from "sonner";
 import {
   BarChart3,
-  Filter,
 } from "lucide-react";
 
 const filters = ["All", "AI SEO", "Performance Marketing", "E-commerce", "B2B", "SaaS"];
@@ -285,6 +285,11 @@ const Work = () => {
             </div>
           </div>
         </section>
+
+        {/* Client Logos Grid - Infinite Loading */}
+        <div id="work-client-logos-grid">
+          <ClientLogosGrid />
+        </div>
 
         {/* Testimonials Section */}
         <div id="work-testimonials">
