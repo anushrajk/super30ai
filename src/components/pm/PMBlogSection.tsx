@@ -32,13 +32,13 @@ const articles = [
 
 export const PMBlogSection = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-12 md:py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
             Insights
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Performance Marketing Insights
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -46,7 +46,7 @@ export const PMBlogSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {articles.map((article, index) => (
             <Card 
               key={index}
@@ -61,7 +61,7 @@ export const PMBlogSection = () => {
                 </div>
               </div>
 
-              <CardContent className="p-6">
+              <CardContent className="p-4 md:p-6">
                 <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
                   {article.title}
                 </h3>
@@ -84,7 +84,7 @@ export const PMBlogSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 md:mt-12">
           <Button variant="outline" className="border-blue-200 hover:bg-blue-50 hover:border-blue-400">
             View All Articles
             <ArrowRight className="w-4 h-4 ml-2" />

@@ -140,7 +140,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-br from-orange-400/30 via-transparent to-orange-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
-      <CardContent className="p-6 relative">
+      <CardContent className="p-4 sm:p-6 relative">
         {/* Progress bar */}
         <div className="mb-5">
           <div className="flex items-center justify-between mb-2">
@@ -317,7 +317,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
 
         {/* Trust indicators */}
         <div className="mt-4 pt-4 border-t border-border/50">
-          <div className="flex items-center justify-between text-xs text-muted-foreground">
+          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2 text-xs text-muted-foreground">
             <div className="flex items-center gap-1.5">
               <Clock className="w-3.5 h-3.5 text-orange-500" />
               <span>60 sec setup</span>
