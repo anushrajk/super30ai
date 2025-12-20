@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, Bot, Target } from "lucide-react";
 import super30Logo from "@/assets/super30-logo.png";
 import {
   NavigationMenu,
@@ -17,11 +17,15 @@ const services = [
     title: "AI SEO Services",
     description: "Dominate AI search results and LLM citations",
     href: "/ai-seo",
+    icon: Bot,
+    color: "from-orange-500 to-orange-600",
   },
   {
     title: "Performance Marketing",
     description: "ROI-driven paid advertising across all platforms",
     href: "/performance-marketing",
+    icon: Target,
+    color: "from-blue-500 to-blue-600",
   },
 ];
 
@@ -102,14 +106,19 @@ export const Navbar = () => {
                           <NavigationMenuLink asChild>
                             <Link
                               to={service.href}
-                              className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              className="flex items-start gap-3 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                             >
-                              <div className="text-sm font-medium leading-none">
-                                {service.title}
+                              <div className={`w-10 h-10 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                                <service.icon className="w-5 h-5 text-white" />
                               </div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                                {service.description}
-                              </p>
+                              <div className="space-y-1">
+                                <div className="text-sm font-medium leading-none">
+                                  {service.title}
+                                </div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  {service.description}
+                                </p>
+                              </div>
                             </Link>
                           </NavigationMenuLink>
                         </li>
@@ -193,17 +202,20 @@ export const Navbar = () => {
               <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
                 Services
               </p>
-              <div className="flex flex-col gap-1 pl-2">
+              <div className="flex flex-col gap-2 pl-2">
                 {services.map((service) => (
                   <Link
                     key={service.href}
                     to={service.href}
-                    className={`px-3 py-2 rounded-lg text-sm transition-colors ${
+                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                       location.pathname === service.href
                         ? "bg-accent text-primary"
                         : "text-foreground hover:bg-muted"
                     }`}
                   >
+                    <div className={`w-8 h-8 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                      <service.icon className="w-4 h-4 text-white" />
+                    </div>
                     {service.title}
                   </Link>
                 ))}
