@@ -207,7 +207,7 @@ const Home = () => {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
               Our Services
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -284,7 +284,7 @@ const Home = () => {
       <section className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
               Why Us
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -296,10 +296,10 @@ const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {whyChooseUs.map((item, index) => <Card key={index} className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-[transform,box-shadow,border-color] duration-200 group hover:-translate-y-1">
+            {whyChooseUs.map((item, index) => <Card key={index} className="bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-[transform,box-shadow,border-color] duration-200 group hover:-translate-y-1">
               <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-200">
-                  <item.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-200" />
+                <div className="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-200">
+                  <item.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-200" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>

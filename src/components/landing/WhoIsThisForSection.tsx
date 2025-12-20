@@ -36,13 +36,13 @@ export const WhoIsThisForSection = () => {
       className="py-24 bg-background relative overflow-hidden"
     >
       {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent dark:via-orange-950/10" />
       <div className="absolute top-20 left-10 w-72 h-72 bg-orange-500/5 rounded-full blur-2xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
       
       <div className="container mx-auto px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-orange-100 to-orange-200 text-orange-600 rounded-full text-sm font-semibold mb-4 shadow-sm">
+          <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-semibold mb-4 shadow-sm">
             Perfect Fit
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -68,8 +68,8 @@ export const WhoIsThisForSection = () => {
               
               <CardContent className="relative p-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-300 shadow-lg group-hover:shadow-orange-500/30">
-                    <audience.icon className="w-7 h-7 text-orange-500 group-hover:text-white transition-colors duration-300" />
+                  <div className="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-300 shadow-lg group-hover:shadow-orange-500/30">
+                    <audience.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-300" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-foreground mb-1 group-hover:text-orange-600 transition-colors duration-300">
