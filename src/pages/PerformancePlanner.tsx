@@ -190,7 +190,7 @@ export default function PerformancePlanner() {
   if (isLoading) {
     const circumference = 2 * Math.PI * 58;
     const strokeDashoffset = circumference - (progress / 100) * circumference;
-    const estimatedTimeRemaining = Math.max(5, Math.ceil((loadingSteps.length - loadingStep) * 8));
+    const estimatedTimeRemaining = Math.max(10, Math.ceil((loadingSteps.length - loadingStep) * 15));
 
     return (
       <>
