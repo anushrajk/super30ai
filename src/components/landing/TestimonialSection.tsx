@@ -283,21 +283,21 @@ export const TestimonialSection = () => {
         </div>
         
         <div className={`relative group/carousel transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {/* Left Arrow */}
+          {/* Left Arrow - Hidden on mobile */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('left')}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
           >
             <ChevronLeft className="w-6 h-6" />
           </Button>
 
-          {/* Video Grid - Portrait Style */}
+          {/* Video Grid - Portrait Style with custom scrollbar */}
           <div 
             ref={videoScrollRef}
-            className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 px-4 sm:px-8 snap-x snap-mandatory scrollbar-hide sm:justify-center -webkit-overflow-scrolling-touch"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none', WebkitOverflowScrolling: 'touch' }}
+            className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 px-4 sm:px-8 snap-x snap-mandatory custom-scrollbar sm:justify-center"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {videoTestimonials.map((video) => (
               <VideoCard
@@ -310,12 +310,12 @@ export const TestimonialSection = () => {
             ))}
           </div>
 
-          {/* Right Arrow */}
+          {/* Right Arrow - Hidden on mobile */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('right')}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
           >
             <ChevronRight className="w-6 h-6" />
           </Button>
