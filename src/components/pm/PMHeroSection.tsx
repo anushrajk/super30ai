@@ -8,8 +8,6 @@ interface PMHeroSectionProps {
     phone?: string; 
     role?: string; 
     monthly_revenue?: string;
-    business_type: "b2b" | "b2c" | "both";
-    preferred_platforms: string[];
   }) => void;
   loading?: boolean;
 }

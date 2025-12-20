@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
@@ -19,21 +20,27 @@ import { PMComparisonSection } from "@/components/pm/PMComparisonSection";
 import { PMTargetAudienceSection } from "@/components/pm/PMTargetAudienceSection";
 import { PMDashboardPreview } from "@/components/pm/PMDashboardPreview";
 import { PMBlogSection } from "@/components/pm/PMBlogSection";
+import { PMPreAuditQuestionnaire } from "@/components/pm/PMPreAuditQuestionnaire";
+import { supabase } from "@/integrations/supabase/client";
 
-interface FormData {
+interface InitialFormData {
   website_url: string;
   email: string;
   phone?: string;
   role?: string;
   monthly_revenue?: string;
-  business_type: "b2b" | "b2c" | "both";
-  preferred_platforms: string[];
 }
 
 const PerformanceMarketing = () => {
   const navigate = useNavigate();
   const { session } = useSession();
   const { createLead, sendLeadEmail, loading } = useLead();
+  
+  // State for the questionnaire flow
+  const [showQuestionnaire, setShowQuestionnaire] = useState(false);
+  const [initialFormData, setInitialFormData] = useState<InitialFormData | null>(null);
+  const [leadId, setLeadId] = useState<string | null>(null);
+  const [processingComplete, setProcessingComplete] = useState(false);
 
   const scrollToForm = () => {
     const heroSection = document.getElementById("pm-hero");
@@ -42,43 +49,87 @@ const PerformanceMarketing = () => {
     }
   };
 
-  const handleHeroFormSubmit = async (data: FormData) => {
+  // Step 1: Handle initial form submission
+  const handleHeroFormSubmit = async (data: InitialFormData) => {
     try {
+      // Create lead with initial data (without business_type and platforms yet)
       const leadData = {
         website_url: data.website_url,
         email: data.email,
         phone: data.phone,
         role: data.role,
         monthly_revenue: data.monthly_revenue,
-        business_type: data.business_type,
-        preferred_platforms: data.preferred_platforms,
         service_type: "pm",
         step: 1
       };
 
       const newLead = await createLead(leadData, session?.id);
       
-      if (newLead && session) {
+      if (newLead) {
+        setLeadId(newLead.id);
+        setInitialFormData(data);
+        // Show the questionnaire for business type and platforms
+        setShowQuestionnaire(true);
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    }
+  };
+
+  // Step 2: Handle questionnaire completion
+  const handleQuestionnaireComplete = async (questionnaireData: {
+    business_type: "b2b" | "b2c" | "both";
+    preferred_platforms: string[];
+  }) => {
+    if (!leadId || !initialFormData) return;
+
+    setProcessingComplete(true);
+
+    try {
+      // Update the lead with business_type and preferred_platforms
+      const { error: updateError } = await supabase
+        .from('leads')
+        .update({
+          business_type: questionnaireData.business_type,
+          preferred_platforms: questionnaireData.preferred_platforms
+        })
+        .eq('id', leadId);
+
+      if (updateError) {
+        console.error("Failed to update lead:", updateError);
+      }
+
+      // Combine all data for email and navigation
+      const fullFormData = {
+        ...initialFormData,
+        business_type: questionnaireData.business_type,
+        preferred_platforms: questionnaireData.preferred_platforms
+      };
+
+      // Send lead email
+      if (session) {
         await sendLeadEmail(
-          { ...leadData, step: 1 },
+          { ...fullFormData, step: 1 },
           session,
           "Performance Marketing - Ads Audit Request"
         );
       }
 
-      toast.success("Analyzing your ad opportunity...");
+      toast.success("Starting your personalized ads audit...");
       
       // Navigate to performance planner with all data
       navigate("/performance-planner", { 
         state: { 
-          leadId: newLead?.id, 
-          formData: data,
+          leadId, 
+          formData: fullFormData,
           service: "pm" 
         } 
       });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
+      setProcessingComplete(false);
     }
   };
 
@@ -137,6 +188,15 @@ const PerformanceMarketing = () => {
       </main>
       
       <StickyCTA onClick={scrollToForm} />
+
+      {/* Pre-Audit Questionnaire Overlay */}
+      {showQuestionnaire && (
+        <PMPreAuditQuestionnaire
+          onComplete={handleQuestionnaireComplete}
+          loading={processingComplete}
+          websiteUrl={initialFormData?.website_url}
+        />
+      )}
     </>
   );
 };
