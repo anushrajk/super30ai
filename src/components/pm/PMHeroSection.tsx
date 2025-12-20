@@ -15,7 +15,7 @@ const trustSignals = [
 
 export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
   return (
-    <section className="relative bg-background overflow-hidden min-h-[90vh] flex items-center">
+    <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-background to-background" />
@@ -23,16 +23,16 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-orange-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
       </div>
 
-      <div className="container relative mx-auto px-4 py-12 lg:py-16">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-          <div className="lg:col-span-7 space-y-6">
+      <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
+          <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
             <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-4 py-1.5 rounded-full">
               <TrendingUp className="w-4 h-4 text-blue-600" />
               <span className="text-blue-700 text-sm font-medium">Performance Marketing Agency</span>
             </div>
 
             <div>
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-5">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
                 When Every Rupee Counts,{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
                   We Make It Multiply.
@@ -56,7 +56,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="md:col-span-1 lg:col-span-5">
             <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
               <PMLeadCaptureForm onSubmit={onSubmit} loading={loading} />
             </div>

@@ -47,7 +47,7 @@ export const FAQSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-muted/30 relative overflow-hidden"
+      className="py-12 md:py-16 lg:py-24 bg-muted/30 relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
