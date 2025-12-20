@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
@@ -19,19 +20,25 @@ import { PMComparisonSection } from "@/components/pm/PMComparisonSection";
 import { PMTargetAudienceSection } from "@/components/pm/PMTargetAudienceSection";
 import { PMDashboardPreview } from "@/components/pm/PMDashboardPreview";
 import { PMBlogSection } from "@/components/pm/PMBlogSection";
+import { PMSurveyPopup, SurveyData } from "@/components/performance/PMSurveyPopup";
 
 const PerformanceMarketing = () => {
   const navigate = useNavigate();
   const { session } = useSession();
   const { createLead, sendLeadEmail, loading } = useLead();
+  const [surveyOpen, setSurveyOpen] = useState(false);
 
-  const handleFormSubmit = async (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => {
+  const handleSurveyComplete = async (data: SurveyData) => {
     try {
       const leadData = {
         website_url: data.website_url,
         email: data.email,
+        phone: data.phone,
         role: data.role,
         monthly_revenue: data.monthly_revenue,
+        business_type: data.business_type,
+        preferred_platforms: data.preferred_platforms,
+        service_type: "pm",
         step: 1
       };
 
@@ -41,13 +48,21 @@ const PerformanceMarketing = () => {
         await sendLeadEmail(
           { ...leadData, step: 1 },
           session,
-          "Performance Marketing - Ads Consultation Request"
+          "Performance Marketing - Ads Audit Request"
         );
       }
 
-      toast.success("Redirecting to book your ads consultation...");
-      // Skip audit for PM - go directly to booking
-      navigate("/booking", { state: { leadId: newLead?.id, service: "pm" } });
+      setSurveyOpen(false);
+      toast.success("Analyzing your ad opportunity...");
+      
+      // Navigate to performance planner with all data
+      navigate("/performance-planner", { 
+        state: { 
+          leadId: newLead?.id, 
+          formData: data,
+          service: "pm" 
+        } 
+      });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
@@ -67,7 +82,7 @@ const PerformanceMarketing = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         <div id="pm-hero">
-          <PMHeroSection onSubmit={handleFormSubmit} loading={loading} />
+          <PMHeroSection onOpenSurvey={() => setSurveyOpen(true)} />
         </div>
         <div id="pm-logos">
           <ClientLogosSection />
@@ -100,7 +115,7 @@ const PerformanceMarketing = () => {
           <PMBlogSection />
         </div>
         <div id="pm-final-cta">
-          <PMFinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+          <PMFinalCTASection onOpenSurvey={() => setSurveyOpen(true)} />
         </div>
         <div id="pm-faq">
           <PMFAQSection />
@@ -108,7 +123,14 @@ const PerformanceMarketing = () => {
         <Footer />
       </main>
       
-      <StickyCTA onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+      <StickyCTA onClick={() => setSurveyOpen(true)} />
+      
+      <PMSurveyPopup 
+        open={surveyOpen} 
+        onOpenChange={setSurveyOpen}
+        onComplete={handleSurveyComplete}
+        loading={loading}
+      />
     </>
   );
 };

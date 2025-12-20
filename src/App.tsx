@@ -23,6 +23,7 @@ const Contact = lazy(() => import("./pages/Contact"));
 const Audit = lazy(() => import("./pages/Audit"));
 const Booking = lazy(() => import("./pages/Booking"));
 const ThankYou = lazy(() => import("./pages/ThankYou"));
+const PerformancePlanner = lazy(() => import("./pages/PerformancePlanner"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
@@ -62,6 +63,7 @@ const App = () => (
             <Route path="/" element={<Home />} />
             <Route path="/ai-seo" element={<AiSeo />} />
             <Route path="/performance-marketing" element={<PerformanceMarketing />} />
+            <Route path="/performance-planner" element={<PerformancePlanner />} />
             <Route path="/about" element={<About />} />
             <Route path="/work" element={<Work />} />
             <Route path="/contact" element={<Contact />} />
