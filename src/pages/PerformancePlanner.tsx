@@ -88,7 +88,7 @@ export default function PerformancePlanner() {
       state: {
         leadId,
         formData,
-        auditData,
+        performanceAuditData: auditData,
         service: "pm",
       },
     });

@@ -1,9 +1,8 @@
-import { PMLeadCaptureForm } from "@/components/pm/PMLeadCaptureForm";
-import { Users, Globe, Bot, Handshake, Award, TrendingUp, Target } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Globe, Bot, Handshake, TrendingUp, Target, ArrowRight, Sparkles } from "lucide-react";
 
 interface PMHeroSectionProps {
-  onSubmit: (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => void;
-  loading?: boolean;
+  onOpenSurvey: () => void;
 }
 
 const trustSignals = [
@@ -13,7 +12,7 @@ const trustSignals = [
   { icon: Handshake, text: "No long-term lock-ins" },
 ];
 
-export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
+export const PMHeroSection = ({ onOpenSurvey }: PMHeroSectionProps) => {
   return (
     <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
       <div className="absolute inset-0">
@@ -24,42 +23,47 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
       </div>
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
-          <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
-            <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-4 py-1.5 rounded-full">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
-              <span className="text-blue-700 text-sm font-medium">Performance Marketing Agency</span>
-            </div>
-
-            <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                When Every Rupee Counts,{" "}
-                <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
-                  We Make It Multiply.
-                </span>
-              </h1>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                AI-powered performance marketing that turns ad spend into{" "}
-                <span className="text-blue-600 font-semibold">predictable revenue</span>, not wasted budget.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 py-2">
-              {trustSignals.map((signal, index) => (
-                <div key={index} className="flex items-center gap-3 group cursor-default">
-                  <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-blue-500/20">
-                    <signal.icon className="w-3.5 h-3.5 text-white" />
-                  </div>
-                  <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
-                </div>
-              ))}
-            </div>
+        <div className="max-w-4xl mx-auto text-center space-y-6 md:space-y-8">
+          <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-4 py-1.5 rounded-full">
+            <TrendingUp className="w-4 h-4 text-blue-600" />
+            <span className="text-blue-700 text-sm font-medium">Performance Marketing Agency</span>
           </div>
 
-          <div className="md:col-span-1 lg:col-span-5">
-            <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-              <PMLeadCaptureForm onSubmit={onSubmit} loading={loading} />
-            </div>
+          <div>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight mb-4 md:mb-6">
+              When Every Rupee Counts,{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
+                We Make It Multiply.
+              </span>
+            </h1>
+            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              AI-powered performance marketing that turns ad spend into{" "}
+              <span className="text-blue-600 font-semibold">predictable revenue</span>, not wasted budget.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-4 py-4">
+            {trustSignals.map((signal, index) => (
+              <div key={index} className="flex items-center gap-2 group cursor-default bg-background/80 backdrop-blur-sm border border-border rounded-full px-4 py-2">
+                <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-blue-500/20">
+                  <signal.icon className="w-3 h-3 text-white" />
+                </div>
+                <span className="font-medium text-foreground text-sm">{signal.text}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-4">
+            <Button 
+              onClick={onOpenSurvey}
+              size="lg"
+              className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-blue-500/25 group"
+            >
+              <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+              Get Your Free Ads Audit
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <p className="text-muted-foreground text-sm mt-3">Takes 2 minutes • No credit card required</p>
           </div>
         </div>
       </div>
