@@ -66,19 +66,45 @@ const PerformanceMarketing = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        <PMHeroSection onSubmit={handleFormSubmit} loading={loading} />
-        <ClientLogosSection />
-        <PMProblemSection />
-        <PMComparisonSection />
-        <PMTargetAudienceSection />
-        <PMRelevanceSection />
-        <PMServicesSection />
-        <PMDashboardPreview />
-        <PMProcessSection />
-        <TestimonialSection />
-        <PMBlogSection />
-        <PMFinalCTASection onSubmit={handleFormSubmit} loading={loading} />
-        <PMFAQSection />
+        <div id="pm-hero">
+          <PMHeroSection onSubmit={handleFormSubmit} loading={loading} />
+        </div>
+        <div id="pm-logos">
+          <ClientLogosSection />
+        </div>
+        <div id="pm-problem">
+          <PMProblemSection />
+        </div>
+        <div id="pm-comparison">
+          <PMComparisonSection />
+        </div>
+        <div id="pm-audience">
+          <PMTargetAudienceSection />
+        </div>
+        <div id="pm-relevance">
+          <PMRelevanceSection />
+        </div>
+        <div id="pm-services">
+          <PMServicesSection />
+        </div>
+        <div id="pm-dashboard">
+          <PMDashboardPreview />
+        </div>
+        <div id="pm-process">
+          <PMProcessSection />
+        </div>
+        <div id="pm-testimonials">
+          <TestimonialSection />
+        </div>
+        <div id="pm-blog">
+          <PMBlogSection />
+        </div>
+        <div id="pm-final-cta">
+          <PMFinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+        </div>
+        <div id="pm-faq">
+          <PMFAQSection />
+        </div>
         <Footer />
       </main>
       

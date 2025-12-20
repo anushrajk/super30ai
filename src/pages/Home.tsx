@@ -76,7 +76,7 @@ const Home = () => {
 
     <main className="min-h-screen pt-16 md:pt-20">
       {/* Hero Section - Modern & Engaging */}
-      <section className="relative overflow-hidden min-h-[90vh] flex items-center">
+      <section id="home-hero" className="relative overflow-hidden min-h-[90vh] flex items-center">
         {/* Animated Gradient Background */}
         <GradientWave colors={["#fed7aa", "#ffffff", "#fdba74", "#fef3c7", "#ffffff"]} />
 
@@ -190,7 +190,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-muted/30 border-y border-border/50">
+      <section id="home-stats" className="py-16 bg-muted/30 border-y border-border/50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => <div key={index} className="text-center group">
@@ -204,7 +204,7 @@ const Home = () => {
       </section>
 
       {/* Services Section - Enhanced Cards */}
-      <section className="py-24 bg-background">
+      <section id="home-services" className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
@@ -276,12 +276,16 @@ const Home = () => {
       </section>
 
       {/* Who Is This For? */}
-      <WhoIsThisForSection />
+      <div id="home-audience">
+        <WhoIsThisForSection />
+      </div>
 
-      <ClientLogosSection />
+      <div id="home-logos">
+        <ClientLogosSection />
+      </div>
 
       {/* Why Choose Us */}
-      <section className="py-24 bg-muted/30">
+      <section id="home-why-us" className="py-24 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
@@ -309,11 +313,17 @@ const Home = () => {
         </div>
       </section>
 
-      <TestimonialSection />
+      <div id="home-testimonials">
+        <TestimonialSection />
+      </div>
 
-      <BlogSection />
+      <div id="home-blog">
+        <BlogSection />
+      </div>
 
-      <UnifiedCTASection />
+      <div id="home-cta">
+        <UnifiedCTASection />
+      </div>
 
       <Footer />
     </main>

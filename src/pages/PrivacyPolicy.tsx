@@ -16,7 +16,7 @@ const PrivacyPolicy = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero */}
-        <section className="relative bg-background py-16 lg:py-24">
+        <section id="privacy-hero" className="relative bg-background py-16 lg:py-24">
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
           <div className="container relative mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
         </section>
 
         {/* Content */}
-        <section className="py-16 bg-background">
+        <section id="privacy-content" className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto prose prose-slate">
               <div className="space-y-8">
@@ -163,7 +163,9 @@ const PrivacyPolicy = () => {
           </div>
         </section>
 
-        <UnifiedCTASection />
+        <div id="privacy-cta">
+          <UnifiedCTASection />
+        </div>
         <Footer />
       </main>
     </>

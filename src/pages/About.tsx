@@ -61,7 +61,7 @@ const About = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero Section - Advanced with parallax effect */}
-        <section className="relative bg-background overflow-hidden py-24 lg:py-32">
+        <section id="about-hero" className="relative bg-background overflow-hidden py-24 lg:py-32">
           {/* Animated background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
@@ -124,10 +124,12 @@ const About = () => {
         </section>
 
         {/* Animated Stats Counter */}
-        <AnimatedStats />
+        <div id="about-stats">
+          <AnimatedStats />
+        </div>
 
         {/* Mission Section */}
-        <section className="py-24 bg-background">
+        <section id="about-mission" className="py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
               <div>
@@ -180,23 +182,33 @@ const About = () => {
         </section>
 
         {/* Interactive Timeline */}
-        <InteractiveTimeline />
+        <div id="about-timeline">
+          <InteractiveTimeline />
+        </div>
 
         {/* Team Section */}
-        <TeamSection />
+        <div id="about-team">
+          <TeamSection />
+        </div>
 
         {/* Awards Section */}
-        <AwardsSection />
+        <div id="about-awards">
+          <AwardsSection />
+        </div>
 
         {/* Culture Section */}
-        <CultureSection />
+        <div id="about-culture">
+          <CultureSection />
+        </div>
 
-        <UnifiedCTASection
-          headline="Ready to Join Our Success Stories?"
-          subtext="Let's discuss how we can help your business grow."
-          primaryCTA={{ label: "Get in Touch", href: "/contact" }}
-          secondaryCTA={{ label: "See Our Work", href: "/work" }}
-        />
+        <div id="about-cta">
+          <UnifiedCTASection
+            headline="Ready to Join Our Success Stories?"
+            subtext="Let's discuss how we can help your business grow."
+            primaryCTA={{ label: "Get in Touch", href: "/contact" }}
+            secondaryCTA={{ label: "See Our Work", href: "/work" }}
+          />
+        </div>
 
         <Footer />
       </main>

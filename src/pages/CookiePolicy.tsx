@@ -49,7 +49,7 @@ const CookiePolicy = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero */}
-        <section className="relative bg-background py-16 lg:py-24">
+        <section id="cookie-hero" className="relative bg-background py-16 lg:py-24">
           <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
           <div className="container relative mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
@@ -64,7 +64,7 @@ const CookiePolicy = () => {
         </section>
 
         {/* Content */}
-        <section className="py-16 bg-background">
+        <section id="cookie-content" className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="space-y-8">
@@ -187,7 +187,9 @@ const CookiePolicy = () => {
           </div>
         </section>
 
-        <UnifiedCTASection />
+        <div id="cookie-cta">
+          <UnifiedCTASection />
+        </div>
         <Footer />
       </main>
     </>

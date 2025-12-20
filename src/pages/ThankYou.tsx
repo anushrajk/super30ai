@@ -41,7 +41,7 @@ const ThankYou = () => {
       <Navbar />
       <main className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-green-50 via-background to-orange-50/30 py-24 lg:py-32 overflow-hidden">
+        <section id="thankyou-hero" className="relative bg-gradient-to-br from-green-50 via-background to-orange-50/30 py-24 lg:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
           
           <div className="container relative mx-auto px-4 text-center">
@@ -130,7 +130,7 @@ const ThankYou = () => {
         </section>
 
         {/* FOMO Section */}
-        <section className="py-12 bg-muted/30">
+        <section id="thankyou-fomo" className="py-12 bg-muted/30">
           <div className="container mx-auto px-4 text-center">
             <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 px-4 py-2 rounded-full">
               <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
@@ -141,8 +141,12 @@ const ThankYou = () => {
           </div>
         </section>
 
-        <ClientLogosSection />
-        <TestimonialSection />
+        <div id="thankyou-logos">
+          <ClientLogosSection />
+        </div>
+        <div id="thankyou-testimonials">
+          <TestimonialSection />
+        </div>
         <Footer />
       </main>
     </>

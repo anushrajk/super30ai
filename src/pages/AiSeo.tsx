@@ -65,19 +65,45 @@ const AiSeo = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        <HeroSection onSubmit={handleFormSubmit} loading={loading} />
-        <ClientLogosSection />
-        <ProblemSection />
-        <RelevanceFilterSection />
-        <AIComparisonSection />
-        <ServicesSection />
-        <WhoIsThisForSection />
-        <ProcessSection />
-        <DashboardPreview />
-        <TestimonialSection />
-        <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
-        <FAQSection />
-        <BlogSection />
+        <div id="ai-seo-hero">
+          <HeroSection onSubmit={handleFormSubmit} loading={loading} />
+        </div>
+        <div id="ai-seo-logos">
+          <ClientLogosSection />
+        </div>
+        <div id="ai-seo-problem">
+          <ProblemSection />
+        </div>
+        <div id="ai-seo-relevance">
+          <RelevanceFilterSection />
+        </div>
+        <div id="ai-seo-comparison">
+          <AIComparisonSection />
+        </div>
+        <div id="ai-seo-services">
+          <ServicesSection />
+        </div>
+        <div id="ai-seo-audience">
+          <WhoIsThisForSection />
+        </div>
+        <div id="ai-seo-process">
+          <ProcessSection />
+        </div>
+        <div id="ai-seo-dashboard">
+          <DashboardPreview />
+        </div>
+        <div id="ai-seo-testimonials">
+          <TestimonialSection />
+        </div>
+        <div id="ai-seo-final-cta">
+          <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+        </div>
+        <div id="ai-seo-faq">
+          <FAQSection />
+        </div>
+        <div id="ai-seo-blog">
+          <BlogSection />
+        </div>
         <Footer />
       </main>
       
