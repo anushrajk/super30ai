@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";

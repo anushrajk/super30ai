@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { CheckCircle, Phone, Calendar, ArrowRight, Clock, Video, Download, Globe, Mail, IndianRupee, Target, TrendingDown } from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, startTransition } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
 interface SessionData {
@@ -15,81 +15,9 @@ interface SessionData {
   first_landed_at: string;
 }
 
-export const useSession = () => {
-  const [session, setSession] = useState<SessionData | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const initSession = async () => {
-      try {
-        // Check if session already exists in localStorage
-        const existingSessionId = localStorage.getItem('seo_session_id');
-        
-        if (existingSessionId) {
-          // Validate existing session via secure edge function
-          const { data: validationResult, error } = await supabase.functions.invoke('validate-session', {
-            headers: { 'x-session-id': existingSessionId }
-          });
-          
-          if (error) {
-            console.error('Error validating session:', error);
-            // Clear invalid session and create new one
-            localStorage.removeItem('seo_session_id');
-          } else if (validationResult?.valid && validationResult?.session) {
-            setSession({
-              ...validationResult.session,
-              current_page_url: window.location.href,
-              ip_state: validationResult.session.ip_state || 'Unknown'
-            } as SessionData);
-            setLoading(false);
-            return;
-          } else {
-            // Session not found or invalid, clear localStorage
-            localStorage.removeItem('seo_session_id');
-          }
-        }
-
-        // Get browser info
-        const userAgent = navigator.userAgent;
-        const browser = getBrowserName(userAgent);
-
-        // Create new session via rate-limited edge function
-        const { data: newSession, error } = await supabase.functions.invoke('create-session', {
-          body: {
-            first_page_url: window.location.href,
-            referrer: document.referrer || 'Direct',
-            user_agent: userAgent,
-            browser,
-          }
-        });
-
-        if (error) {
-          console.warn('Session creation skipped (rate limited or error):', error.message);
-          // Continue without session - graceful degradation
-        } else if (newSession) {
-          localStorage.setItem('seo_session_id', newSession.id);
-          setSession(newSession as SessionData);
-        }
-      } catch (error) {
-        console.error('Session initialization error:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    initSession();
-  }, []);
-
-  const updateCurrentPage = async () => {
-    // Current page updates now happen only client-side
-    // Server-side tracking can be done via edge function if needed
-    if (session?.id) {
-      setSession(prev => prev ? { ...prev, current_page_url: window.location.href } : null);
-    }
-  };
-
-  return { session, loading, updateCurrentPage };
-};
+// Cache session data in memory to avoid repeated API calls
+let cachedSession: SessionData | null = null;
+let sessionInitPromise: Promise<SessionData | null> | null = null;
 
 function getBrowserName(userAgent: string): string {
   if (userAgent.includes('Firefox')) return 'Firefox';
@@ -102,3 +30,91 @@ function getBrowserName(userAgent: string): string {
   if (userAgent.includes('Safari')) return 'Safari';
   return 'Unknown';
 }
+
+// Initialize session in background - non-blocking
+async function initSessionBackground(): Promise<SessionData | null> {
+  try {
+    const existingSessionId = localStorage.getItem('seo_session_id');
+    
+    if (existingSessionId) {
+      // Validate existing session via edge function
+      const { data: validationResult, error } = await supabase.functions.invoke('validate-session', {
+        headers: { 'x-session-id': existingSessionId }
+      });
+      
+      if (!error && validationResult?.valid && validationResult?.session) {
+        const sessionData: SessionData = {
+          ...validationResult.session,
+          current_page_url: window.location.href,
+          ip_state: validationResult.session.ip_state || 'Unknown'
+        };
+        cachedSession = sessionData;
+        return sessionData;
+      }
+      
+      // Session invalid, clear it
+      localStorage.removeItem('seo_session_id');
+    }
+
+    // Create new session
+    const userAgent = navigator.userAgent;
+    const browser = getBrowserName(userAgent);
+
+    const { data: newSession, error } = await supabase.functions.invoke('create-session', {
+      body: {
+        first_page_url: window.location.href,
+        referrer: document.referrer || 'Direct',
+        user_agent: userAgent,
+        browser,
+      }
+    });
+
+    if (!error && newSession) {
+      localStorage.setItem('seo_session_id', newSession.id);
+      cachedSession = newSession as SessionData;
+      return newSession as SessionData;
+    }
+  } catch (error) {
+    console.warn('Session initialization error:', error);
+  }
+  
+  return null;
+}
+
+export const useSession = () => {
+  // Initialize with cached session immediately - no loading state
+  const [session, setSession] = useState<SessionData | null>(cachedSession);
+  const [loading, setLoading] = useState(!cachedSession);
+
+  useEffect(() => {
+    // If we already have a cached session, we're done
+    if (cachedSession) {
+      setSession(cachedSession);
+      setLoading(false);
+      return;
+    }
+
+    // Use shared promise to avoid duplicate API calls
+    if (!sessionInitPromise) {
+      sessionInitPromise = initSessionBackground();
+    }
+
+    // Run session initialization in background with low priority
+    sessionInitPromise.then((sessionData) => {
+      startTransition(() => {
+        if (sessionData) {
+          setSession(sessionData);
+        }
+        setLoading(false);
+      });
+    });
+  }, []);
+
+  const updateCurrentPage = useCallback(() => {
+    if (session?.id) {
+      setSession(prev => prev ? { ...prev, current_page_url: window.location.href } : null);
+    }
+  }, [session?.id]);
+
+  return { session, loading, updateCurrentPage };
+};

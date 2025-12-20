@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { PopupManager } from "@/components/PopupManager";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -8,10 +8,16 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
 import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { ScrollProgressBar } from "@/components/ScrollProgressBar";
-import { EngagementTracker } from "@/components/EngagementTracker";
 import { CookieConsent } from "./components/CookieConsent";
 import { FloatingContactButtons } from "./components/FloatingContactButtons";
+import { ErrorBoundary } from "@/components/ErrorBoundary";
+import { HelmetProvider } from "react-helmet-async";
 import { Loader2 } from "lucide-react";
+
+// Lazy load EngagementTracker - non-critical, can load after initial render
+const EngagementTracker = lazy(() => 
+  import("@/components/EngagementTracker").then(m => ({ default: m.EngagementTracker }))
+);
 
 // Lazy load all pages for code splitting
 const Home = lazy(() => import("./pages/Home"));
@@ -49,40 +55,62 @@ const PageLoader = () => (
   </div>
 );
 
+// Deferred engagement tracker - loads after 3 seconds
+const DeferredEngagementTracker = () => {
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShouldLoad(true), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (!shouldLoad) return null;
+
+  return (
+    <Suspense fallback={null}>
+      <EngagementTracker />
+    </Suspense>
+  );
+};
+
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollProgressBar />
-        <EngagementTracker />
-        <ScrollToTop />
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/ai-seo" element={<AiSeo />} />
-            <Route path="/performance-marketing" element={<PerformanceMarketing />} />
-            <Route path="/performance-planner" element={<PerformancePlanner />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/work" element={<Work />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/audit" element={<Audit />} />
-            <Route path="/booking" element={<Booking />} />
-            <Route path="/thank-you" element={<ThankYou />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/cookie-policy" element={<CookiePolicy />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-        <CookieConsent />
-        <FloatingContactButtons />
-        <ScrollToTopButton />
-        <PopupManager />
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollProgressBar />
+          <DeferredEngagementTracker />
+          <ScrollToTop />
+          <ErrorBoundary>
+            <Suspense fallback={<PageLoader />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/ai-seo" element={<AiSeo />} />
+                <Route path="/performance-marketing" element={<PerformanceMarketing />} />
+                <Route path="/performance-planner" element={<PerformancePlanner />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/work" element={<Work />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/audit" element={<Audit />} />
+                <Route path="/booking" element={<Booking />} />
+                <Route path="/thank-you" element={<ThankYou />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/terms-of-service" element={<TermsOfService />} />
+                <Route path="/cookie-policy" element={<CookiePolicy />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </ErrorBoundary>
+          <CookieConsent />
+          <FloatingContactButtons />
+          <ScrollToTopButton />
+          <PopupManager />
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

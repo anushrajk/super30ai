@@ -16,7 +16,8 @@ import { FAQSection } from "@/components/landing/FAQSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
-import { Helmet } from "react-helmet";
+import { Suspense } from "react";
+import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
 
 const Index = () => {

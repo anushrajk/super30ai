@@ -7,7 +7,7 @@ import { Footer } from "@/components/landing/Footer";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
 import { PMHeroSection } from "@/components/pm/PMHeroSection";
 import { PMProblemSection } from "@/components/pm/PMProblemSection";
