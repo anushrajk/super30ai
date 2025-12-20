@@ -8,11 +8,14 @@ import {
   Stethoscope,
   Rocket,
   Home as HomeIcon,
-  Scale
+  Scale,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useRef, useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
 
 const audiences = [
   {
@@ -84,14 +87,13 @@ export const PMTargetAudienceSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [isPaused, setIsPaused] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container || !isVisible) return;
 
     let animationId: number;
-    const scrollSpeed = 0.5; // pixels per frame
+    const scrollSpeed = 0.5;
 
     const autoScroll = () => {
       if (!isPaused && container) {
@@ -102,9 +104,6 @@ export const PMTargetAudienceSection = () => {
         } else {
           container.scrollLeft += scrollSpeed;
         }
-        
-        // Update scroll progress
-        setScrollProgress((container.scrollLeft / maxScroll) * 100);
       }
       animationId = requestAnimationFrame(autoScroll);
     };
@@ -116,12 +115,13 @@ export const PMTargetAudienceSection = () => {
     };
   }, [isPaused, isVisible]);
 
-  // Update progress on manual scroll
-  const handleScroll = () => {
-    const container = scrollContainerRef.current;
-    if (container) {
-      const maxScroll = container.scrollWidth - container.clientWidth;
-      setScrollProgress((container.scrollLeft / maxScroll) * 100);
+  const scrollCards = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 320;
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -148,16 +148,26 @@ export const PMTargetAudienceSection = () => {
           </p>
         </div>
 
-        {/* Scrollable container */}
-        <div className="relative">
+        {/* Scrollable container with arrows */}
+        <div className="relative group/carousel">
+          {/* Left Arrow - Hidden on mobile */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => scrollCards('left')}
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </Button>
+
           <div 
             ref={scrollContainerRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}
             onTouchEnd={() => setIsPaused(false)}
-            onScroll={handleScroll}
-            className="flex gap-4 md:gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
+            className="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-4 sm:px-8 snap-x snap-mandatory custom-scrollbar-blue"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {audiences.map((audience, index) => (
               <Card 
@@ -188,27 +198,22 @@ export const PMTargetAudienceSection = () => {
               </Card>
             ))}
           </div>
-          
-          {/* Mobile scroll progress bar */}
-          <div className="mt-4 md:hidden">
-            <div className="h-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full overflow-hidden mx-auto max-w-xs">
-              <div 
-                className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-150 ease-out"
-                style={{ width: `${Math.max(10, scrollProgress)}%` }}
-              />
-            </div>
-            <p className="text-center mt-2 text-xs text-muted-foreground">
-              Swipe to explore more
-            </p>
-          </div>
-          
-          {/* Desktop scroll indicator */}
-          <div className={`hidden md:block text-center mt-4 text-sm text-muted-foreground transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <span className="inline-flex items-center gap-2">
-              ← Scroll to explore more →
-            </span>
-          </div>
+
+          {/* Right Arrow - Hidden on mobile */}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => scrollCards('right')}
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </Button>
         </div>
+
+        {/* Mobile swipe hint */}
+        <p className="text-center mt-4 text-sm text-muted-foreground sm:hidden">
+          Swipe to explore more
+        </p>
       </div>
     </section>
   );
