@@ -491,7 +491,78 @@ const Audit = () => {
           </CardContent>
         </Card>
 
-        {/* Missed Opportunity Gauge */}
+        {/* Quick Fix CTA Section */}
+        <Card className="border-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden relative">
+          {/* Decorative elements */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl" />
+          
+          <CardContent className="p-6 md:p-8 relative">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6">
+              {/* Left: Issues & Hook */}
+              <div className="flex-1 space-y-4">
+                <div className="flex items-center gap-2">
+                  <div className="p-2 bg-orange-500/20 rounded-lg">
+                    <AlertTriangle className="w-5 h-5 text-orange-400" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white">
+                    Critical Issues Found
+                  </h3>
+                </div>
+                
+                {/* Key Issues List */}
+                <div className="flex flex-wrap gap-2">
+                  {competitorData.opportunity_breakdown.ai_visibility_gap > 30 && (
+                    <Badge className="bg-red-500/20 text-red-300 border border-red-500/30 hover:bg-red-500/30">
+                      Low AI Visibility ({competitorData.opportunity_breakdown.ai_visibility_gap}% gap)
+                    </Badge>
+                  )}
+                  {competitorData.opportunity_breakdown.content_gap > 30 && (
+                    <Badge className="bg-amber-500/20 text-amber-300 border border-amber-500/30 hover:bg-amber-500/30">
+                      Content Gap ({competitorData.opportunity_breakdown.content_gap}%)
+                    </Badge>
+                  )}
+                  {competitorData.opportunity_breakdown.technical_gap > 30 && (
+                    <Badge className="bg-blue-500/20 text-blue-300 border border-blue-500/30 hover:bg-blue-500/30">
+                      Technical Issues ({competitorData.opportunity_breakdown.technical_gap}%)
+                    </Badge>
+                  )}
+                  {competitorData.opportunity_breakdown.authority_gap > 30 && (
+                    <Badge className="bg-purple-500/20 text-purple-300 border border-purple-500/30 hover:bg-purple-500/30">
+                      Authority Gap ({competitorData.opportunity_breakdown.authority_gap}%)
+                    </Badge>
+                  )}
+                  {auditResults && auditResults.technical_issues > 0 && (
+                    <Badge className="bg-rose-500/20 text-rose-300 border border-rose-500/30 hover:bg-rose-500/30">
+                      {auditResults.technical_issues} Technical Errors
+                    </Badge>
+                  )}
+                </div>
+
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  Your website is losing <span className="text-orange-400 font-semibold">₹{competitorData.estimated_monthly_loss.amount.toLocaleString("en-IN")}/month</span> in potential revenue. 
+                  Our SEO experts can fix these issues and help you outrank competitors.
+                </p>
+              </div>
+
+              {/* Right: CTA Button */}
+              <div className="flex-shrink-0 w-full lg:w-auto">
+                <Button 
+                  onClick={handleUnlockClick}
+                  size="lg"
+                  className="w-full lg:w-auto bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 px-8"
+                >
+                  <Zap className="w-5 h-5 mr-2" />
+                  Get Expert Help
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+                <p className="text-xs text-slate-500 mt-2 text-center lg:text-left">
+                  Free 30-min strategy call
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
         <MissedOpportunityGauge 
           score={competitorData.missed_opportunity_score}
           breakdown={competitorData.opportunity_breakdown}
