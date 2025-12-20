@@ -106,10 +106,10 @@ export const Navbar = () => {
                           <NavigationMenuLink asChild>
                             <Link
                               to={service.href}
-                              className="flex items-start gap-3 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              className="group/item flex items-start gap-3 select-none rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
                             >
-                              <div className={`w-10 h-10 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                                <service.icon className="w-5 h-5 text-white" />
+                              <div className={`w-10 h-10 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover/item:scale-110 group-hover/item:shadow-lg group-hover/item:shadow-orange-500/20`}>
+                                <service.icon className="w-5 h-5 text-white transition-transform duration-300 group-hover/item:scale-110" />
                               </div>
                               <div className="space-y-1">
                                 <div className="text-sm font-medium leading-none">
@@ -207,14 +207,14 @@ export const Navbar = () => {
                   <Link
                     key={service.href}
                     to={service.href}
-                    className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                    className={`group/mobile flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
                       location.pathname === service.href
                         ? "bg-accent text-primary"
                         : "text-foreground hover:bg-muted"
                     }`}
                   >
-                    <div className={`w-8 h-8 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                      <service.icon className="w-4 h-4 text-white" />
+                    <div className={`w-8 h-8 bg-gradient-to-br ${service.color} rounded-lg flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover/mobile:scale-110 group-hover/mobile:shadow-md`}>
+                      <service.icon className="w-4 h-4 text-white transition-transform duration-300 group-hover/mobile:scale-110" />
                     </div>
                     {service.title}
                   </Link>
