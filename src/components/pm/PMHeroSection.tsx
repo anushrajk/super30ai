@@ -53,11 +53,8 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
                 When Every Rupee Counts,{" "}
-                <span className="relative">
-                  <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
-                    We Make It Multiply.
-                  </span>
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-blue-400 to-orange-500 rounded-full opacity-50" />
+                <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
+                  We Make It Multiply.
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
