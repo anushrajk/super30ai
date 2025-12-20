@@ -8,6 +8,7 @@ import { useFunnelData } from "@/hooks/useFunnelData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
   Loader2, 
   CheckCircle, 
@@ -27,7 +28,14 @@ import {
   Users,
   TrendingDown,
   IndianRupee,
-  Lightbulb
+  Lightbulb,
+  FileText,
+  Search,
+  Smartphone,
+  BarChart,
+  Shield,
+  Mic,
+  Sparkles
 } from "lucide-react";
 import { toast } from "sonner";
 import { Footer } from "@/components/landing/Footer";
@@ -43,6 +51,18 @@ import RevenueImpactCard from "@/components/audit/RevenueImpactCard";
 import ScoreBreakdownTabs from "@/components/audit/ScoreBreakdownTabs";
 import MissedOpportunityGauge from "@/components/audit/MissedOpportunityGauge";
 import AnalysisLoader from "@/components/audit/AnalysisLoader";
+
+// SEO Insights data for the insights tab
+const seoInsights = [
+  { fact: "68% of online experiences begin with a search engine", source: "BrightEdge", icon: Search },
+  { fact: "AI-powered search now handles 25% of all queries", source: "Gartner 2024", icon: Sparkles },
+  { fact: "The average first-page result contains 1,447 words", source: "Backlinko", icon: FileText },
+  { fact: "Mobile devices generate 58% of global website traffic", source: "Statista", icon: Smartphone },
+  { fact: "Pages loading in under 3 seconds have 32% higher conversion", source: "Google", icon: Zap },
+  { fact: "75% of users never scroll past the first page of search", source: "HubSpot", icon: BarChart },
+  { fact: "Core Web Vitals are a confirmed Google ranking factor", source: "Google", icon: Shield },
+  { fact: "Voice search accounts for 20% of mobile queries", source: "Think with Google", icon: Mic },
+];
 
 interface AuditResults {
   seo_score: number;
@@ -120,6 +140,10 @@ const Audit = () => {
   const [competitorData, setCompetitorData] = useState<CompetitorData | null>(null);
   const [competitorError, setCompetitorError] = useState<string | null>(null);
 
+  // Transition state for smooth loading-to-results animation
+  const [showResults, setShowResults] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
   // Get form data from navigation state or funnel storage
   const formData = location.state?.formData || funnelLeadData;
 
@@ -138,6 +162,17 @@ const Audit = () => {
       navigate("/ai-seo");
     }
   }, []);
+
+  // Trigger transition celebration when competitor analysis completes
+  useEffect(() => {
+    if (!analyzing && !analyzingCompetitors && auditResults && competitorData && !showResults) {
+      setIsTransitioning(true);
+      setTimeout(() => {
+        setShowResults(true);
+        setIsTransitioning(false);
+      }, 1500);
+    }
+  }, [analyzing, analyzingCompetitors, auditResults, competitorData, showResults]);
 
   const runAnalysisWithUrl = async (url: string) => {
     setAnalysisError(null);
@@ -391,7 +426,7 @@ const Audit = () => {
     </Card>
   );
 
-  // Data Source Badge with Google Logo
+  // Data Source Badge with Google + Gemini Logos
   const DataSourceBadge = () => (
     <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
       {analyzedUrl && (
@@ -413,7 +448,106 @@ const Audit = () => {
           alt="Google" 
           className="h-4 w-auto"
         />
+        <span className="text-muted-foreground">+</span>
+        <img 
+          src="https://www.gstatic.com/lamda/images/gemini_sparkle_v002_d4735304ff6292a690345.svg" 
+          alt="Gemini" 
+          className="h-4 w-auto"
+        />
       </Badge>
+    </div>
+  );
+
+  // Transition Celebration Component
+  const TransitionCelebration = () => (
+    <div className="max-w-2xl mx-auto text-center py-12">
+      <div className="animate-celebrate-in">
+        {/* Animated checkmark */}
+        <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center shadow-lg shadow-green-500/30">
+          <svg className="w-12 h-12 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+            <path className="animate-checkmark" d="M5 13l4 4L19 7" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </div>
+        
+        <h2 className="text-3xl font-bold text-foreground mb-3">
+          Analysis Complete!
+        </h2>
+        
+        {auditResults && (
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="text-center">
+              <div className={`text-4xl font-bold ${getScoreColor(auditResults.seo_score)}`}>
+                {auditResults.seo_score}
+              </div>
+              <p className="text-sm text-muted-foreground">SEO Score</p>
+            </div>
+            <div className="w-px h-12 bg-border" />
+            <div className="text-center">
+              <div className={`text-4xl font-bold ${getScoreColor(auditResults.ai_visibility_score)}`}>
+                {auditResults.ai_visibility_score}
+              </div>
+              <p className="text-sm text-muted-foreground">AI Visibility</p>
+            </div>
+          </div>
+        )}
+        
+        <p className="text-muted-foreground">
+          Loading your detailed report...
+        </p>
+      </div>
+    </div>
+  );
+
+  // SEO Insights Tab Content
+  const SEOInsightsContent = () => (
+    <div className="space-y-6 animate-fade-slide-up">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold text-foreground mb-2">SEO Industry Insights</h2>
+        <p className="text-muted-foreground">Key facts that shape modern search optimization</p>
+      </div>
+      
+      <div className="grid md:grid-cols-2 gap-4">
+        {seoInsights.map((insight, idx) => {
+          const InsightIcon = insight.icon;
+          return (
+            <Card key={idx} className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]" style={{ animationDelay: `${idx * 50}ms` }}>
+              <CardContent className="p-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-orange-100 rounded-xl flex-shrink-0">
+                    <InsightIcon className="w-6 h-6 text-orange-600" />
+                  </div>
+                  <div className="flex-1">
+                    <p className="font-medium text-foreground mb-2">{insight.fact}</p>
+                    <p className="text-xs text-muted-foreground">Source: {insight.source}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          );
+        })}
+      </div>
+      
+      {/* How This Affects Your Website */}
+      <Card className="bg-gradient-to-br from-slate-900 to-slate-800 border-0">
+        <CardContent className="p-6">
+          <div className="flex items-start gap-4">
+            <div className="p-3 bg-orange-500/20 rounded-xl flex-shrink-0">
+              <Lightbulb className="w-6 h-6 text-orange-400" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-bold text-white mb-2">What This Means For Your Website</h3>
+              <p className="text-slate-300 text-sm mb-4">
+                Based on these industry benchmarks, your website needs to be optimized for both traditional search engines and AI-powered assistants. 
+                Our analysis shows exactly where you stand and what improvements can drive the most impact.
+              </p>
+              <Button onClick={handleUnlockClick} className="bg-orange-500 hover:bg-orange-600 text-white">
+                Get Personalized Recommendations
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 
@@ -703,216 +837,245 @@ const Audit = () => {
           ) : analysisError ? (
             <ErrorState />
           ) : auditResults && (
-            <TooltipProvider>
-              <div className="space-y-8">
-                {/* Deep Page Warning */}
-                <DeepPageWarning />
+            <>
+              {/* Show loading for competitor analysis or transition */}
+              {analyzingCompetitors ? (
+                <AIAnalysisLoading />
+              ) : isTransitioning ? (
+                <TransitionCelebration />
+              ) : showResults || !competitorData ? (
+                <TooltipProvider>
+                  <div className="space-y-8">
+                    {/* Deep Page Warning */}
+                    <DeepPageWarning />
 
-                {/* Data Source Info */}
-                <DataSourceBadge />
+                    {/* Data Source Info */}
+                    <DataSourceBadge />
 
-                {/* Main Score Cards */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                    <CardContent className="p-4 md:p-6">
-                      <ScoreGauge 
-                        score={auditResults.seo_score}
-                        label="SEO Health"
-                        sublabel="Google PageSpeed"
-                        size="md"
-                      />
-                    </CardContent>
-                  </Card>
+                    {/* Tabs for Report and SEO Insights */}
+                    <Tabs defaultValue="report" className="w-full">
+                      <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
+                        <TabsTrigger value="report" className="flex items-center gap-2">
+                          <FileText className="w-4 h-4" />
+                          Report
+                        </TabsTrigger>
+                        <TabsTrigger value="insights" className="flex items-center gap-2">
+                          <Lightbulb className="w-4 h-4" />
+                          SEO Insights
+                        </TabsTrigger>
+                      </TabsList>
 
-                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                    <CardContent className="p-4 md:p-6">
-                      <ScoreGauge 
-                        score={auditResults.ai_visibility_score}
-                        label="AI Visibility"
-                        sublabel="Composite Score"
-                        size="md"
-                        showTooltip
-                        tooltipContent="Calculated from SEO (40%), Performance (30%), Accessibility (20%), Best Practices (10%)"
-                      />
-                    </CardContent>
-                  </Card>
+                      <TabsContent value="report" className="animate-fade-slide-up">
+                        <div className="space-y-8">
+                          {/* Main Score Cards */}
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                              <CardContent className="p-4 md:p-6">
+                                <ScoreGauge 
+                                  score={auditResults.seo_score}
+                                  label="SEO Health"
+                                  sublabel="Google PageSpeed"
+                                  size="md"
+                                />
+                              </CardContent>
+                            </Card>
 
-                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                    <CardContent className="p-4 md:p-6 flex flex-col items-center">
-                      <div className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
-                        {auditResults.technical_issues}
-                      </div>
-                      <h3 className="font-semibold text-foreground text-sm">Technical Issues</h3>
-                      <p className="text-xs text-muted-foreground">From PageSpeed audit</p>
-                    </CardContent>
-                  </Card>
+                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                              <CardContent className="p-4 md:p-6">
+                                <ScoreGauge 
+                                  score={auditResults.ai_visibility_score}
+                                  label="AI Visibility"
+                                  sublabel="Composite Score"
+                                  size="md"
+                                  showTooltip
+                                  tooltipContent="Calculated from SEO (40%), Performance (30%), Accessibility (20%), Best Practices (10%)"
+                                />
+                              </CardContent>
+                            </Card>
 
-                  <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
-                    <CardContent className="p-4 md:p-6 flex flex-col items-center">
-                      <div className="flex items-center gap-1 text-2xl md:text-3xl font-bold text-orange-600 mb-2">
-                        <IndianRupee className="w-5 h-5 md:w-6 md:h-6" />
-                        {competitorData 
-                          ? competitorData.estimated_monthly_loss.amount.toLocaleString('en-IN')
-                          : Math.round(auditResults.technical_issues * 25000).toLocaleString('en-IN')
-                        }
-                      </div>
-                      <h3 className="font-semibold text-foreground text-sm">Revenue Impact</h3>
-                      <Badge variant="outline" className="text-xs mt-1 border-orange-300 text-orange-600">
-                        {competitorData ? "AI Calculated" : "Projected"}/mo
-                      </Badge>
-                    </CardContent>
-                  </Card>
-                </div>
+                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                              <CardContent className="p-4 md:p-6 flex flex-col items-center">
+                                <div className="text-4xl md:text-5xl font-bold text-red-500 mb-2">
+                                  {auditResults.technical_issues}
+                                </div>
+                                <h3 className="font-semibold text-foreground text-sm">Technical Issues</h3>
+                                <p className="text-xs text-muted-foreground">From PageSpeed audit</p>
+                              </CardContent>
+                            </Card>
 
-                {/* AI Competitor Analysis Section */}
-                {analyzingCompetitors ? (
-                  <AIAnalysisLoading />
-                ) : competitorError ? (
-                  <Card className="border-red-200 bg-red-50">
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-3">
-                        <AlertCircle className="w-5 h-5 text-red-500" />
-                        <div>
-                          <p className="font-semibold text-red-800">AI Analysis Failed</p>
-                          <p className="text-sm text-red-700">{competitorError}</p>
+                            <Card className="hover:shadow-lg transition-all duration-300 hover:scale-[1.02] border-orange-200 bg-gradient-to-br from-orange-50 to-amber-50">
+                              <CardContent className="p-4 md:p-6 flex flex-col items-center">
+                                <div className="flex items-center gap-1 text-2xl md:text-3xl font-bold text-orange-600 mb-2">
+                                  <IndianRupee className="w-5 h-5 md:w-6 md:h-6" />
+                                  {competitorData 
+                                    ? competitorData.estimated_monthly_loss.amount.toLocaleString('en-IN')
+                                    : Math.round(auditResults.technical_issues * 25000).toLocaleString('en-IN')
+                                  }
+                                </div>
+                                <h3 className="font-semibold text-foreground text-sm">Revenue Impact</h3>
+                                <Badge variant="outline" className="text-xs mt-1 border-orange-300 text-orange-600">
+                                  {competitorData ? "AI Calculated" : "Projected"}/mo
+                                </Badge>
+                              </CardContent>
+                            </Card>
+                          </div>
+
+                          {/* AI Competitor Analysis Section */}
+                          {competitorError ? (
+                            <Card className="border-red-200 bg-red-50">
+                              <CardContent className="p-4">
+                                <div className="flex items-center gap-3">
+                                  <AlertCircle className="w-5 h-5 text-red-500" />
+                                  <div>
+                                    <p className="font-semibold text-red-800">AI Analysis Failed</p>
+                                    <p className="text-sm text-red-700">{competitorError}</p>
+                                  </div>
+                                  <Button 
+                                    variant="outline" 
+                                    size="sm"
+                                    onClick={() => auditResults && analyzedUrl && runCompetitorAnalysis(analyzedUrl, auditResults)}
+                                    className="ml-auto"
+                                  >
+                                    <RefreshCw className="w-4 h-4 mr-2" />
+                                    Retry
+                                  </Button>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          ) : competitorData ? (
+                            <CompetitorAnalysisResults />
+                          ) : null}
+
+                          {/* Detailed Score Breakdown Tabs */}
+                          <ScoreBreakdownTabs 
+                            performance={auditResults.performance_score}
+                            seo={auditResults.seo_score}
+                            accessibility={auditResults.accessibility_score}
+                            bestPractices={auditResults.best_practices_score}
+                            opportunities={auditResults.opportunities || []}
+                            diagnostics={auditResults.diagnostics || []}
+                          />
+
+                          {/* Opportunities Section */}
+                          {auditResults.opportunities && auditResults.opportunities.length > 0 && (
+                            <Card>
+                              <CardHeader>
+                                <CardTitle className="flex items-center gap-2">
+                                  <AlertTriangle className="w-5 h-5 text-yellow-500" />
+                                  Improvement Opportunities
+                                </CardTitle>
+                              </CardHeader>
+                              <CardContent className="space-y-3">
+                                {auditResults.opportunities.map((opp, idx) => (
+                                  <OpportunityCard 
+                                    key={idx}
+                                    title={opp.title}
+                                    description={opp.description}
+                                    score={opp.score}
+                                    displayValue={opp.displayValue}
+                                  />
+                                ))}
+                              </CardContent>
+                            </Card>
+                          )}
+
+                          {/* Locked Sections */}
+                          <div className="grid md:grid-cols-2 gap-6">
+                            <Card className="relative overflow-hidden">
+                              <div className="absolute inset-0 backdrop-blur-sm bg-background/80 z-10 flex items-center justify-center">
+                                <div className="text-center p-6">
+                                  <Lock className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                                  <h3 className="font-semibold text-foreground mb-2">Exact Fixes & Recommendations</h3>
+                                  <p className="text-sm text-muted-foreground">Unlock to see step-by-step fixes</p>
+                                </div>
+                              </div>
+                              <CardContent className="p-6 filter blur-sm">
+                                <h3 className="font-semibold mb-4">Top Issues to Fix</h3>
+                                <ul className="space-y-2">
+                                  <li className="flex items-center gap-2">
+                                    <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                                    <span>Performance optimization opportunities</span>
+                                  </li>
+                                  <li className="flex items-center gap-2">
+                                    <AlertTriangle className="w-4 h-4 text-yellow-500" />
+                                    <span>SEO improvements identified</span>
+                                  </li>
+                                  <li className="flex items-center gap-2">
+                                    <AlertTriangle className="w-4 h-4 text-red-500" />
+                                    <span>Critical issues requiring attention</span>
+                                  </li>
+                                </ul>
+                              </CardContent>
+                            </Card>
+
+                            <Card className="relative overflow-hidden">
+                              <div className="absolute inset-0 backdrop-blur-sm bg-background/80 z-10 flex items-center justify-center">
+                                <div className="text-center p-6">
+                                  <Lock className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                                  <h3 className="font-semibold text-foreground mb-2">90-Day Growth Roadmap</h3>
+                                  <p className="text-sm text-muted-foreground">Unlock to see your personalized plan</p>
+                                </div>
+                              </div>
+                              <CardContent className="p-6 filter blur-sm">
+                                <h3 className="font-semibold mb-4">Personalized Growth Plan</h3>
+                                <div className="space-y-4">
+                                  <div className="flex justify-between">
+                                    <span>Month 1</span>
+                                    <span className="font-semibold text-muted-foreground">Technical fixes</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span>Month 2</span>
+                                    <span className="font-semibold text-muted-foreground">Content optimization</span>
+                                  </div>
+                                  <div className="flex justify-between">
+                                    <span>Month 3</span>
+                                    <span className="font-semibold text-muted-foreground">Authority building</span>
+                                  </div>
+                                </div>
+                              </CardContent>
+                            </Card>
+                          </div>
+
+                          {/* Unlock CTA */}
+                          <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0">
+                            <CardContent className="p-8 text-center">
+                              <Zap className="w-12 h-12 text-white mx-auto mb-4" />
+                              <h2 className="text-2xl font-bold text-white mb-2">
+                                Get Your Complete Analysis & Action Plan
+                              </h2>
+                              <p className="text-orange-100 mb-6 max-w-lg mx-auto">
+                                Book a FREE strategy call to unlock detailed recommendations, step-by-step fixes, and a personalized 90-day growth roadmap from our SEO experts.
+                              </p>
+                              <Button 
+                                onClick={handleUnlockClick}
+                                disabled={isUnlocking}
+                                className="bg-white text-orange-500 hover:bg-orange-50 px-8 py-6 text-lg"
+                              >
+                                {isUnlocking ? (
+                                  <>
+                                    <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                                    Processing...
+                                  </>
+                                ) : (
+                                  <>
+                                    Book Free Strategy Call
+                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                  </>
+                                )}
+                              </Button>
+                            </CardContent>
+                          </Card>
                         </div>
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={() => auditResults && analyzedUrl && runCompetitorAnalysis(analyzedUrl, auditResults)}
-                          className="ml-auto"
-                        >
-                          <RefreshCw className="w-4 h-4 mr-2" />
-                          Retry
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ) : competitorData ? (
-                  <CompetitorAnalysisResults />
-                ) : null}
+                      </TabsContent>
 
-                {/* Detailed Score Breakdown Tabs */}
-                <ScoreBreakdownTabs 
-                  performance={auditResults.performance_score}
-                  seo={auditResults.seo_score}
-                  accessibility={auditResults.accessibility_score}
-                  bestPractices={auditResults.best_practices_score}
-                  opportunities={auditResults.opportunities || []}
-                  diagnostics={auditResults.diagnostics || []}
-                />
-
-                {/* Opportunities Section */}
-                {auditResults.opportunities && auditResults.opportunities.length > 0 && (
-                  <Card>
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-2">
-                        <AlertTriangle className="w-5 h-5 text-yellow-500" />
-                        Improvement Opportunities
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-3">
-                      {auditResults.opportunities.map((opp, idx) => (
-                        <OpportunityCard 
-                          key={idx}
-                          title={opp.title}
-                          description={opp.description}
-                          score={opp.score}
-                          displayValue={opp.displayValue}
-                        />
-                      ))}
-                    </CardContent>
-                  </Card>
-                )}
-
-                {/* Locked Sections */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <Card className="relative overflow-hidden">
-                    <div className="absolute inset-0 backdrop-blur-sm bg-background/80 z-10 flex items-center justify-center">
-                      <div className="text-center p-6">
-                        <Lock className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                        <h3 className="font-semibold text-foreground mb-2">Exact Fixes & Recommendations</h3>
-                        <p className="text-sm text-muted-foreground">Unlock to see step-by-step fixes</p>
-                      </div>
-                    </div>
-                    <CardContent className="p-6 filter blur-sm">
-                      <h3 className="font-semibold mb-4">Top Issues to Fix</h3>
-                      <ul className="space-y-2">
-                        <li className="flex items-center gap-2">
-                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                          <span>Performance optimization opportunities</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <AlertTriangle className="w-4 h-4 text-yellow-500" />
-                          <span>SEO improvements identified</span>
-                        </li>
-                        <li className="flex items-center gap-2">
-                          <AlertTriangle className="w-4 h-4 text-red-500" />
-                          <span>Critical issues requiring attention</span>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="relative overflow-hidden">
-                    <div className="absolute inset-0 backdrop-blur-sm bg-background/80 z-10 flex items-center justify-center">
-                      <div className="text-center p-6">
-                        <Lock className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                        <h3 className="font-semibold text-foreground mb-2">90-Day Growth Roadmap</h3>
-                        <p className="text-sm text-muted-foreground">Unlock to see your personalized plan</p>
-                      </div>
-                    </div>
-                    <CardContent className="p-6 filter blur-sm">
-                      <h3 className="font-semibold mb-4">Personalized Growth Plan</h3>
-                      <div className="space-y-4">
-                        <div className="flex justify-between">
-                          <span>Month 1</span>
-                          <span className="font-semibold text-muted-foreground">Technical fixes</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Month 2</span>
-                          <span className="font-semibold text-muted-foreground">Content optimization</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Month 3</span>
-                          <span className="font-semibold text-muted-foreground">Authority building</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                {/* Unlock CTA */}
-                <Card className="bg-gradient-to-br from-orange-500 to-orange-600 border-0">
-                  <CardContent className="p-8 text-center">
-                    <Zap className="w-12 h-12 text-white mx-auto mb-4" />
-                    <h2 className="text-2xl font-bold text-white mb-2">
-                      Get Your Complete Analysis & Action Plan
-                    </h2>
-                    <p className="text-orange-100 mb-6 max-w-lg mx-auto">
-                      Book a FREE strategy call to unlock detailed recommendations, step-by-step fixes, and a personalized 90-day growth roadmap from our SEO experts.
-                    </p>
-                    <Button 
-                      onClick={handleUnlockClick}
-                      disabled={isUnlocking}
-                      className="bg-white text-orange-500 hover:bg-orange-50 px-8 py-6 text-lg"
-                    >
-                      {isUnlocking ? (
-                        <>
-                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                          Processing...
-                        </>
-                      ) : (
-                        <>
-                          Book Free Strategy Call
-                          <ArrowRight className="w-5 h-5 ml-2" />
-                        </>
-                      )}
-                    </Button>
-                  </CardContent>
-                </Card>
-              </div>
-            </TooltipProvider>
+                      <TabsContent value="insights">
+                        <SEOInsightsContent />
+                      </TabsContent>
+                    </Tabs>
+                  </div>
+                </TooltipProvider>
+              ) : null}
+            </>
           )}
         </div>
 

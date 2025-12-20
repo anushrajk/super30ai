@@ -148,4 +148,35 @@ All colors MUST be HSL.
   .animate-shimmer {
     animation: shimmer 2s infinite;
   }
+
+  /* Transition celebration animation */
+  @keyframes celebrate-in {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes fade-slide-up {
+    0% { transform: translateY(20px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+
+  @keyframes checkmark-draw {
+    0% { stroke-dashoffset: 50; }
+    100% { stroke-dashoffset: 0; }
+  }
+
+  .animate-celebrate-in {
+    animation: celebrate-in 0.5s ease-out forwards;
+  }
+
+  .animate-fade-slide-up {
+    animation: fade-slide-up 0.4s ease-out forwards;
+  }
+
+  .animate-checkmark {
+    stroke-dasharray: 50;
+    stroke-dashoffset: 50;
+    animation: checkmark-draw 0.5s ease-out 0.3s forwards;
+  }
 }
