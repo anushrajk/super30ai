@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useRef, useEffect, useState } from "react";
 
 const audiences = [
   {
@@ -81,6 +82,48 @@ const audiences = [
 
 export const PMTargetAudienceSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container || !isVisible) return;
+
+    let animationId: number;
+    const scrollSpeed = 0.5; // pixels per frame
+
+    const autoScroll = () => {
+      if (!isPaused && container) {
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        
+        if (container.scrollLeft >= maxScroll) {
+          container.scrollLeft = 0;
+        } else {
+          container.scrollLeft += scrollSpeed;
+        }
+        
+        // Update scroll progress
+        setScrollProgress((container.scrollLeft / maxScroll) * 100);
+      }
+      animationId = requestAnimationFrame(autoScroll);
+    };
+
+    animationId = requestAnimationFrame(autoScroll);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+    };
+  }, [isPaused, isVisible]);
+
+  // Update progress on manual scroll
+  const handleScroll = () => {
+    const container = scrollContainerRef.current;
+    if (container) {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      setScrollProgress((container.scrollLeft / maxScroll) * 100);
+    }
+  };
 
   return (
     <section 
@@ -107,7 +150,15 @@ export const PMTargetAudienceSection = () => {
 
         {/* Scrollable container */}
         <div className="relative">
-          <div className="flex gap-4 md:gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0">
+          <div 
+            ref={scrollContainerRef}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            onScroll={handleScroll}
+            className="flex gap-4 md:gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
+          >
             {audiences.map((audience, index) => (
               <Card 
                 key={index}
@@ -138,11 +189,23 @@ export const PMTargetAudienceSection = () => {
             ))}
           </div>
           
-          {/* Scroll indicator */}
-          <div className={`text-center mt-4 text-sm text-muted-foreground transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Mobile scroll progress bar */}
+          <div className="mt-4 md:hidden">
+            <div className="h-1.5 bg-blue-100 dark:bg-blue-900/30 rounded-full overflow-hidden mx-auto max-w-xs">
+              <div 
+                className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 rounded-full transition-all duration-150 ease-out"
+                style={{ width: `${Math.max(10, scrollProgress)}%` }}
+              />
+            </div>
+            <p className="text-center mt-2 text-xs text-muted-foreground">
+              Swipe to explore more
+            </p>
+          </div>
+          
+          {/* Desktop scroll indicator */}
+          <div className={`hidden md:block text-center mt-4 text-sm text-muted-foreground transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             <span className="inline-flex items-center gap-2">
-              <span className="hidden sm:inline">← Scroll to explore more →</span>
-              <span className="sm:hidden">← Swipe to explore →</span>
+              ← Scroll to explore more →
             </span>
           </div>
         </div>
