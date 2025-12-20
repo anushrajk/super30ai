@@ -50,7 +50,7 @@ export const PMDashboardPreview = () => {
   ];
 
   return (
-    <section className="py-24 bg-muted/30 overflow-hidden">
+    <section className="py-12 md:py-16 lg:py-24 bg-muted/30 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">

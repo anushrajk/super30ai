@@ -33,7 +33,7 @@ export const WhoIsThisForSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-background relative overflow-hidden"
+      className="py-12 md:py-16 lg:py-24 bg-background relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent dark:via-orange-950/10" />
@@ -41,11 +41,11 @@ export const WhoIsThisForSection = () => {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
       
       <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`text-center max-w-3xl mx-auto mb-10 md:mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-semibold mb-4 shadow-sm">
             Perfect Fit
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Who Is This For?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -53,7 +53,7 @@ export const WhoIsThisForSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto mb-10 md:mb-12">
           {audiences.map((audience, index) => (
             <Card 
               key={index} 

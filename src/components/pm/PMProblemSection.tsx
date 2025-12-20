@@ -12,16 +12,16 @@ export const PMProblemSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   
   return (
-    <section ref={ref} className={`py-24 bg-slate-900 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section ref={ref} className={`py-12 md:py-16 lg:py-24 bg-slate-900 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <span className="inline-block px-4 py-1.5 bg-red-500/20 text-red-400 rounded-full text-sm font-medium mb-4">The Problem</span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Your Ads Burn Money Without Results</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Your Ads Burn Money Without Results</h2>
           <p className="text-lg text-slate-400">Most businesses waste 40-60% of their ad budget on ineffective campaigns</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
           {problems.map((problem, index) => (
-            <div key={index} className="bg-slate-800/50 border border-slate-700 rounded-2xl p-6 hover:border-red-500/50 transition-all duration-300 group">
+            <div key={index} className="bg-slate-800/50 border border-slate-700 rounded-2xl p-4 md:p-6 hover:border-red-500/50 transition-all duration-300 group">
               <div className="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-500/30 transition-colors">
                 <problem.icon className="w-6 h-6 text-red-400" />
               </div>

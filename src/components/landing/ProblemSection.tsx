@@ -36,17 +36,17 @@ export const ProblemSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-muted/30 relative overflow-hidden"
+      className="py-12 md:py-16 lg:py-24 bg-muted/30 relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
       
       <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center max-w-3xl mx-auto mb-10 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
             The Problem
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             SEO Didn't Die. <span className="text-red-500">Control Did.</span>
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -54,15 +54,15 @@ export const ProblemSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-10 md:mb-12">
           {problems.map((problem, index) => (
             <Card 
               key={index} 
               className={`bg-background/80 backdrop-blur-sm border-border/50 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 group hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${(index + 1) * 100}ms` }}
             >
-              <CardContent className="p-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mb-4 group-hover:from-red-500 group-hover:to-red-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+              <CardContent className="p-4 md:p-6">
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mb-3 md:mb-4 group-hover:from-red-500 group-hover:to-red-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
                   <problem.icon className="w-7 h-7 text-red-500 group-hover:text-white transition-colors duration-300" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-red-600 transition-colors">

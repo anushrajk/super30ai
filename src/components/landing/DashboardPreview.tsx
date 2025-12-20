@@ -67,7 +67,7 @@ export const DashboardPreview = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-24 bg-background relative overflow-hidden"
+      className="py-12 md:py-16 lg:py-24 bg-background relative overflow-hidden"
     >
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />

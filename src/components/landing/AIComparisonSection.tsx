@@ -17,16 +17,16 @@ const journeySteps = [
 
 export const AIComparisonSection = () => {
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
+    <section className="py-12 md:py-16 lg:py-24 bg-background relative overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/30 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             The Difference
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What is <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">AI SEO</span>?
           </h2>
           <p className="text-lg text-muted-foreground">
@@ -35,13 +35,13 @@ export const AIComparisonSection = () => {
         </div>
 
         {/* 50/50 Layout: Comparison Table + AI Search Journey */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-stretch">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch">
           {/* Left: Comparison Table */}
           <Card className="border-border/50 overflow-hidden shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500 h-full">
             <CardContent className="p-0 h-full flex flex-col">
               <div className="grid md:grid-cols-2 flex-1">
                 {/* Traditional SEO Column */}
-                <div className="p-6 bg-muted/50 backdrop-blur-sm border-b md:border-b-0 md:border-r border-border/50 flex flex-col">
+                <div className="p-4 md:p-6 bg-muted/50 backdrop-blur-sm border-b md:border-b-0 md:border-r border-border/50 flex flex-col">
                   <h3 className="text-lg font-bold text-muted-foreground mb-4 text-center">
                     Traditional SEO
                   </h3>
@@ -61,7 +61,7 @@ export const AIComparisonSection = () => {
                 </div>
 
                 {/* AI SEO Column */}
-                <div className="p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 flex flex-col">
+                <div className="p-4 md:p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 flex flex-col">
                   <h3 className="text-lg font-bold text-orange-600 mb-4 text-center">
                     The Super 30 AI SEO
                   </h3>
@@ -85,7 +85,7 @@ export const AIComparisonSection = () => {
 
           {/* Right: AI Search Journey */}
           <Card className="border-border/50 shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500 h-full">
-            <CardContent className="p-6 h-full flex flex-col justify-center">
+            <CardContent className="p-4 md:p-6 h-full flex flex-col justify-center">
               <h3 className="text-lg font-bold text-foreground mb-6 text-center">
                 The AI Search Journey
               </h3>
