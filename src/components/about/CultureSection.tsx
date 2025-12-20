@@ -51,7 +51,7 @@ export const CultureSection = () => {
               At The Super 30, we believe great results come from great people. Our culture is built on trust, innovation, and an obsession with client success.
             </p>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {cultureHighlights.slice(0, 4).map((item, index) => (
                 <div
                   key={index}
