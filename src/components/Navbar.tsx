@@ -169,7 +169,7 @@ export const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed inset-x-0 top-16 md:top-20 bg-background/98 backdrop-blur-lg border-b border-border shadow-xl transition-all duration-300 ${
+        className={`lg:hidden fixed inset-x-0 top-16 md:top-20 bg-background border-b-2 border-border shadow-2xl transition-all duration-300 z-50 ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-4 pointer-events-none"
@@ -181,7 +181,7 @@ export const Navbar = () => {
               to="/about"
               className={`px-4 py-3 rounded-lg font-medium transition-colors ${
                 location.pathname === "/about"
-                  ? "bg-orange-100 text-orange-600"
+                  ? "bg-accent text-primary"
                   : "text-foreground hover:bg-muted"
               }`}
             >
@@ -200,7 +200,7 @@ export const Navbar = () => {
                     to={service.href}
                     className={`px-3 py-2 rounded-lg text-sm transition-colors ${
                       location.pathname === service.href
-                        ? "bg-orange-100 text-orange-600"
+                        ? "bg-accent text-primary"
                         : "text-foreground hover:bg-muted"
                     }`}
                   >
@@ -214,7 +214,7 @@ export const Navbar = () => {
               to="/work"
               className={`px-4 py-3 rounded-lg font-medium transition-colors ${
                 location.pathname === "/work"
-                  ? "bg-orange-100 text-orange-600"
+                  ? "bg-accent text-primary"
                   : "text-foreground hover:bg-muted"
               }`}
             >
@@ -225,7 +225,7 @@ export const Navbar = () => {
               to="/contact"
               className={`px-4 py-3 rounded-lg font-medium transition-colors ${
                 location.pathname === "/contact"
-                  ? "bg-orange-100 text-orange-600"
+                  ? "bg-accent text-primary"
                   : "text-foreground hover:bg-muted"
               }`}
             >

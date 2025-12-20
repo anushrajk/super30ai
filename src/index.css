@@ -99,6 +99,10 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html, body {
+    @apply overflow-x-hidden;
+  }
+
   body {
     @apply bg-background text-foreground;
   }

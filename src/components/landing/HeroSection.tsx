@@ -28,7 +28,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
         
         {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
+        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background dark:from-orange-950/30 dark:via-background dark:to-background" />
         
         {/* Animated orbs */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/30 to-orange-600/10 rounded-full blur-2xl" />
@@ -42,9 +42,9 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
           {/* Left Column - Content */}
           <div className="lg:col-span-7 space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 px-4 py-1.5 rounded-full">
-              <TrendingUp className="w-4 h-4 text-orange-600" />
-              <span className="text-orange-700 text-sm font-medium">
+            <div className="inline-flex items-center gap-2 bg-accent border border-border px-4 py-1.5 rounded-full">
+              <TrendingUp className="w-4 h-4 text-primary" />
+              <span className="text-foreground text-sm font-medium">
                 #1 AI SEO Agency in India
               </span>
             </div>
@@ -86,9 +86,9 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
               {expertCredentials.map((cred, i) => (
                 <span 
                   key={i}
-                  className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full text-xs font-medium"
+                  className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
                 >
-                  <Award className="w-3 h-3 text-orange-500" />
+                  <Award className="w-3 h-3 text-primary" />
                   {cred}
                 </span>
               ))}
@@ -106,9 +106,9 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
               {expertCredentials.map((cred, i) => (
                 <span 
                   key={i}
-                  className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-700 px-3 py-1.5 rounded-full text-xs font-medium"
+                  className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
                 >
-                  <Award className="w-3 h-3 text-orange-500" />
+                  <Award className="w-3 h-3 text-primary" />
                   {cred}
                 </span>
               ))}

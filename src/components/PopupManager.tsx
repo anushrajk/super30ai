@@ -241,9 +241,9 @@ export const PopupManager = () => {
     <>
       {/* Popup 1: Schedule a Callback */}
       <Dialog open={activePopup === 'callback'} onOpenChange={() => handleClose('callback')}>
-        <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-primary/5">
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span className="bg-destructive text-destructive-foreground text-xs font-bold px-4 py-1.5 rounded-full animate-pulse">
+        <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-primary/5 pt-8">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <span className="bg-destructive text-destructive-foreground text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full animate-pulse whitespace-nowrap shadow-lg">
               🔥 LIMITED SLOTS TODAY
             </span>
           </div>
@@ -309,9 +309,9 @@ export const PopupManager = () => {
 
       {/* Popup 2: Request a Quote */}
       <Dialog open={activePopup === 'quote'} onOpenChange={() => handleClose('quote')}>
-        <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-accent/5">
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span className="bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full">
+        <DialogContent className="w-[95vw] max-w-md mx-auto border-2 border-primary/20 bg-gradient-to-br from-background via-background to-accent/5 pt-8">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <span className="bg-primary text-primary-foreground text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full whitespace-nowrap shadow-lg">
               💰 CUSTOM PRICING INSIDE
             </span>
           </div>
@@ -390,9 +390,9 @@ export const PopupManager = () => {
 
       {/* Popup 3: Exit Intent - Free Marketing Plan */}
       <Dialog open={activePopup === 'exit'} onOpenChange={() => handleClose('exit')}>
-        <DialogContent className="w-[95vw] max-w-lg mx-auto border-2 border-destructive/30 bg-gradient-to-br from-background via-background to-destructive/5">
-          <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-            <span className="bg-destructive text-destructive-foreground text-xs font-bold px-4 py-1.5 rounded-full animate-pulse">
+        <DialogContent className="w-[95vw] max-w-lg mx-auto border-2 border-destructive/30 bg-gradient-to-br from-background via-background to-destructive/5 pt-8">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <span className="bg-destructive text-destructive-foreground text-[10px] sm:text-xs font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full animate-pulse whitespace-nowrap shadow-lg">
               🎁 WAIT! DON'T LEAVE YET
             </span>
           </div>
