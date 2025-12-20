@@ -281,7 +281,7 @@ const Audit = () => {
 
       <main className="min-h-screen bg-slate-50">
         {/* Header */}
-        <header className="bg-slate-900 py-8">
+        <header id="audit-header" className="bg-slate-900 py-8">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">
               Your AI SEO Visibility Report
@@ -292,7 +292,7 @@ const Audit = () => {
           </div>
         </header>
 
-        <div className="container mx-auto px-4 py-12">
+        <div id="audit-content" className="container mx-auto px-4 py-12">
           {analyzing ? (
             /* Loading State */
             <Card className="max-w-2xl mx-auto">

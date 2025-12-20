@@ -184,7 +184,7 @@ const Booking = () => {
 
       <main className="min-h-screen bg-muted/30 pt-16 md:pt-20">
         {/* Header */}
-        <header className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12">
+        <header id="booking-header" className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 py-12">
           <div className="container mx-auto px-4 text-center">
             <Badge className="mb-4 bg-orange-500/10 text-orange-400 border-orange-500/20">
               Final Step
@@ -210,7 +210,7 @@ const Booking = () => {
           </div>
         </header>
 
-        <div className="container mx-auto px-4 py-12">
+        <div id="booking-content" className="container mx-auto px-4 py-12">
           {bookingConfirmed ? (
             /* Confirmation State */
             <Card className="max-w-2xl mx-auto">

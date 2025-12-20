@@ -138,7 +138,7 @@ const Work = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero Section with Form */}
-        <section className="relative bg-background overflow-hidden py-24 lg:py-32">
+        <section id="work-hero" className="relative bg-background overflow-hidden py-24 lg:py-32">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
             <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
@@ -190,10 +190,12 @@ const Work = () => {
         </section>
 
         {/* Trust Banner */}
-        <TrustBanner />
+        <div id="work-trust">
+          <TrustBanner />
+        </div>
 
         {/* Stats Section */}
-        <section className="py-16 bg-muted/30 border-y border-border/50">
+        <section id="work-stats" className="py-16 bg-muted/30 border-y border-border/50">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {aggregateStats.map((stat, index) => (
@@ -209,7 +211,7 @@ const Work = () => {
         </section>
 
         {/* Case Studies Section */}
-        <section className="py-24 bg-background">
+        <section id="work-cases" className="py-24 bg-background">
           <div className="container mx-auto px-4">
             {/* Filters */}
             <div className="flex flex-wrap justify-center gap-2 mb-12">
@@ -277,12 +279,14 @@ const Work = () => {
           </div>
         </section>
 
-        <UnifiedCTASection
-          headline="Want Results Like These?"
-          subtext="Let's discuss how we can achieve similar results for your business."
-          primaryCTA={{ label: "Get Free Audit", href: "/ai-seo" }}
-          secondaryCTA={{ label: "Contact Us", href: "/contact" }}
-        />
+        <div id="work-cta">
+          <UnifiedCTASection
+            headline="Want Results Like These?"
+            subtext="Let's discuss how we can achieve similar results for your business."
+            primaryCTA={{ label: "Get Free Audit", href: "/ai-seo" }}
+            secondaryCTA={{ label: "Contact Us", href: "/contact" }}
+          />
+        </div>
 
         <Footer />
       </main>

@@ -199,7 +199,7 @@ const Contact = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero Section */}
-        <section className="relative bg-background overflow-hidden py-24 lg:py-32">
+        <section id="contact-hero" className="relative bg-background overflow-hidden py-24 lg:py-32">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
             <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
@@ -227,7 +227,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-24 bg-muted/30">
+        <section id="contact-form" className="py-24 bg-muted/30">
           <div className="container mx-auto px-4">
             <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
