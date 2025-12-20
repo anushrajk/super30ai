@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
@@ -20,29 +19,30 @@ import { PMComparisonSection } from "@/components/pm/PMComparisonSection";
 import { PMTargetAudienceSection } from "@/components/pm/PMTargetAudienceSection";
 import { PMDashboardPreview } from "@/components/pm/PMDashboardPreview";
 import { PMBlogSection } from "@/components/pm/PMBlogSection";
-import { PMSurveyPopup, SurveyData } from "@/components/performance/PMSurveyPopup";
+
+interface FormData {
+  website_url: string;
+  email: string;
+  phone?: string;
+  role?: string;
+  monthly_revenue?: string;
+  business_type: "b2b" | "b2c" | "both";
+  preferred_platforms: string[];
+}
 
 const PerformanceMarketing = () => {
   const navigate = useNavigate();
   const { session } = useSession();
   const { createLead, sendLeadEmail, loading } = useLead();
-  const [surveyOpen, setSurveyOpen] = useState(false);
 
-  // Initial form data captured from hero form
-  const [initialFormData, setInitialFormData] = useState<{
-    website_url: string;
-    email: string;
-    phone?: string;
-    role?: string;
-    monthly_revenue?: string;
-  } | null>(null);
-
-  const handleHeroFormSubmit = (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
-    setInitialFormData(data);
-    setSurveyOpen(true);
+  const scrollToForm = () => {
+    const heroSection = document.getElementById("pm-hero");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
-  const handleSurveyComplete = async (data: SurveyData) => {
+  const handleHeroFormSubmit = async (data: FormData) => {
     try {
       const leadData = {
         website_url: data.website_url,
@@ -66,7 +66,6 @@ const PerformanceMarketing = () => {
         );
       }
 
-      setSurveyOpen(false);
       toast.success("Analyzing your ad opportunity...");
       
       // Navigate to performance planner with all data
@@ -129,7 +128,7 @@ const PerformanceMarketing = () => {
           <PMBlogSection />
         </div>
         <div id="pm-final-cta">
-          <PMFinalCTASection onOpenSurvey={() => setSurveyOpen(true)} />
+          <PMFinalCTASection />
         </div>
         <div id="pm-faq">
           <PMFAQSection />
@@ -137,15 +136,7 @@ const PerformanceMarketing = () => {
         <Footer />
       </main>
       
-      <StickyCTA onClick={() => setSurveyOpen(true)} />
-      
-      <PMSurveyPopup 
-        open={surveyOpen} 
-        onOpenChange={setSurveyOpen}
-        onComplete={handleSurveyComplete}
-        loading={loading}
-        initialData={initialFormData || undefined}
-      />
+      <StickyCTA onClick={scrollToForm} />
     </>
   );
 };

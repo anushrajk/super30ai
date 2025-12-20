@@ -2,7 +2,15 @@ import { Globe, Bot, Handshake, TrendingUp, Target, Award } from "lucide-react";
 import { PMLeadCaptureForm } from "./PMLeadCaptureForm";
 
 interface PMHeroSectionProps {
-  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
+  onSubmit: (data: { 
+    website_url: string; 
+    email: string; 
+    phone?: string; 
+    role?: string; 
+    monthly_revenue?: string;
+    business_type: "b2b" | "b2c" | "both";
+    preferred_platforms: string[];
+  }) => void;
   loading?: boolean;
 }
 

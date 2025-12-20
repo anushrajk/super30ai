@@ -6,7 +6,15 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Sparkles, Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
 
 interface PMLeadCaptureFormProps {
-  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
+  onSubmit: (data: { 
+    website_url: string; 
+    email: string; 
+    phone?: string; 
+    role?: string; 
+    monthly_revenue?: string;
+    business_type: "b2b" | "b2c" | "both";
+    preferred_platforms: string[];
+  }) => void;
   loading?: boolean;
 }
 
@@ -25,6 +33,18 @@ const adBudgetOptions = [
   { value: "50k_1L", label: "₹50k-₹1L/month" },
   { value: "1L_5L", label: "₹1L-₹5L/month" },
   { value: "over_5L", label: "Over ₹5L/month" },
+];
+
+const businessTypeOptions = [
+  { value: "b2b", label: "B2B", description: "Selling to businesses" },
+  { value: "b2c", label: "B2C", description: "Selling to consumers" },
+  { value: "both", label: "Both", description: "B2B and B2C" },
+];
+
+const platformOptions = [
+  { value: "meta_ads", label: "Meta Ads" },
+  { value: "google_ads", label: "Google Ads" },
+  { value: "linkedin_ads", label: "LinkedIn Ads" },
 ];
 
 // Validation functions
@@ -56,6 +76,8 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [adBudget, setAdBudget] = useState("");
+  const [businessType, setBusinessType] = useState<"b2b" | "b2c" | "both" | "">("");
+  const [platforms, setPlatforms] = useState<string[]>([]);
   const [recentSignups, setRecentSignups] = useState(32);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
@@ -83,12 +105,22 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const isUrlValid = validateUrl(websiteUrl);
   const isEmailValid = validateEmail(email);
   const isPhoneValid = validatePhone(phone);
+  const isBusinessTypeValid = businessType !== "";
+  const isPlatformsValid = platforms.length > 0;
 
-  const canSubmit = isUrlValid && isEmailValid && isPhoneValid;
+  const canSubmit = isUrlValid && isEmailValid && isPhoneValid && isBusinessTypeValid && isPlatformsValid;
+
+  const togglePlatform = (platform: string) => {
+    setPlatforms(prev => 
+      prev.includes(platform) 
+        ? prev.filter(p => p !== platform)
+        : [...prev, platform]
+    );
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setTouched({ url: true, email: true, phone: true });
+    setTouched({ url: true, email: true, phone: true, businessType: true, platforms: true });
     
     if (canSubmit) {
       onSubmit({ 
@@ -96,13 +128,15 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         email,
         phone: phone ? `+91${phone}` : undefined,
         role: role || undefined, 
-        monthly_revenue: adBudget || undefined 
+        monthly_revenue: adBudget || undefined,
+        business_type: businessType as "b2b" | "b2c" | "both",
+        preferred_platforms: platforms
       });
     }
   };
 
-  const filledFields = [websiteUrl, email, phone, role, adBudget].filter(Boolean).length;
-  const progress = (filledFields / 5) * 100;
+  const filledFields = [websiteUrl, email, phone, role, adBudget, businessType, platforms.length > 0].filter(Boolean).length;
+  const progress = (filledFields / 7) * 100;
 
   return (
     <Card className="bg-background/95 backdrop-blur-xl border-2 border-blue-500/20 shadow-2xl shadow-blue-500/10 overflow-hidden relative group">
@@ -118,9 +152,9 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
                 <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
                 <span className="text-xs font-medium text-green-600">{recentSignups} audits today</span>
               </div>
-              <span className="text-xs font-medium text-muted-foreground">
-                {filledFields === 0 ? "Start your ads audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to analyze!"}
-              </span>
+            <span className="text-xs font-medium text-muted-foreground">
+              {filledFields === 0 ? "Start your ads audit" : filledFields < 7 ? `${7 - filledFields} fields remaining` : "Ready to analyze!"}
+            </span>
             </div>
             <span className="text-xs font-bold text-blue-600">{Math.round(progress)}%</span>
           </div>
@@ -266,6 +300,54 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
                 ))}
               </SelectContent>
             </Select>
+          </div>
+
+          {/* Business Type Selection */}
+          <div>
+            <p className="text-sm font-medium text-muted-foreground mb-2">Business Type *</p>
+            <div className="grid grid-cols-3 gap-2">
+              {businessTypeOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setBusinessType(option.value as "b2b" | "b2c" | "both")}
+                  className={`p-2.5 rounded-lg border-2 text-center transition-all duration-200 ${
+                    businessType === option.value
+                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                      : "border-border hover:border-blue-300"
+                  }`}
+                >
+                  <span className="text-sm font-medium text-foreground">{option.label}</span>
+                </button>
+              ))}
+            </div>
+            {touched.businessType && !isBusinessTypeValid && (
+              <p className="text-xs text-red-500 mt-1">Please select your business type</p>
+            )}
+          </div>
+
+          {/* Platform Selection */}
+          <div>
+            <p className="text-sm font-medium text-muted-foreground mb-2">Platforms of Interest * (select all that apply)</p>
+            <div className="grid grid-cols-3 gap-2">
+              {platformOptions.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => togglePlatform(option.value)}
+                  className={`p-2.5 rounded-lg border-2 text-center transition-all duration-200 ${
+                    platforms.includes(option.value)
+                      ? "border-blue-500 bg-blue-50 dark:bg-blue-900/20"
+                      : "border-border hover:border-blue-300"
+                  }`}
+                >
+                  <span className="text-sm font-medium text-foreground">{option.label}</span>
+                </button>
+              ))}
+            </div>
+            {touched.platforms && !isPlatformsValid && (
+              <p className="text-xs text-red-500 mt-1">Please select at least one platform</p>
+            )}
           </div>
 
           <Button 

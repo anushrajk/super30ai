@@ -2,10 +2,6 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Target, TrendingUp, BarChart3, Zap, Sparkles } from "lucide-react";
 
-interface PMFinalCTASectionProps {
-  onOpenSurvey: () => void;
-}
-
 const benefits = [
   { icon: BarChart3, text: "Complete ads account audit" },
   { icon: Target, text: "Custom campaign strategy" },
@@ -13,8 +9,15 @@ const benefits = [
   { icon: Zap, text: "Quick wins identification" },
 ];
 
-export const PMFinalCTASection = ({ onOpenSurvey }: PMFinalCTASectionProps) => {
+export const PMFinalCTASection = () => {
   const [ref, isVisible] = useScrollAnimation();
+
+  const scrollToForm = () => {
+    const heroSection = document.getElementById("pm-hero");
+    if (heroSection) {
+      heroSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   
   return (
     <section ref={ref} className={`py-12 md:py-16 lg:py-24 relative bg-slate-900 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -49,7 +52,7 @@ export const PMFinalCTASection = ({ onOpenSurvey }: PMFinalCTASectionProps) => {
           </div>
 
           <Button 
-            onClick={onOpenSurvey}
+            onClick={scrollToForm}
             size="lg"
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-orange-500/25 group"
           >
