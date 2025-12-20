@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Suspense, lazy } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
@@ -9,7 +9,7 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
-import { PMHeroSection } from "@/components/pm/PMHeroSection";
+import { PMHeroSectionSkeleton } from "@/components/pm/PMHeroSectionSkeleton";
 import { PMProblemSection } from "@/components/pm/PMProblemSection";
 import { PMRelevanceSection } from "@/components/pm/PMRelevanceSection";
 import { PMServicesSection } from "@/components/pm/PMServicesSection";
@@ -22,6 +22,9 @@ import { PMDashboardPreview } from "@/components/pm/PMDashboardPreview";
 import { PMBlogSection } from "@/components/pm/PMBlogSection";
 import { PMPreAuditQuestionnaire } from "@/components/pm/PMPreAuditQuestionnaire";
 import { supabase } from "@/integrations/supabase/client";
+
+// Lazy load hero section for better initial load
+const PMHeroSection = lazy(() => import("@/components/pm/PMHeroSection").then(m => ({ default: m.PMHeroSection })));
 
 interface InitialFormData {
   website_url: string;
@@ -146,7 +149,9 @@ const PerformanceMarketing = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         <div id="pm-hero">
-          <PMHeroSection onSubmit={handleHeroFormSubmit} loading={loading} />
+          <Suspense fallback={<PMHeroSectionSkeleton />}>
+            <PMHeroSection onSubmit={handleHeroFormSubmit} loading={loading} />
+          </Suspense>
         </div>
         <div id="pm-logos">
           <ClientLogosSection />
