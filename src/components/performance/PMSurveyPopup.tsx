@@ -14,6 +14,13 @@ interface PMSurveyPopupProps {
   onOpenChange: (open: boolean) => void;
   onComplete: (data: SurveyData) => void;
   loading?: boolean;
+  initialData?: {
+    website_url?: string;
+    email?: string;
+    phone?: string;
+    role?: string;
+    monthly_revenue?: string;
+  };
 }
 
 export interface SurveyData {
@@ -69,7 +76,7 @@ const platformOptions = [
   },
 ];
 
-export const PMSurveyPopup = ({ open, onOpenChange, onComplete, loading }: PMSurveyPopupProps) => {
+export const PMSurveyPopup = ({ open, onOpenChange, onComplete, loading, initialData }: PMSurveyPopupProps) => {
   const [step, setStep] = useState(1);
   const [animating, setAnimating] = useState(false);
   const [direction, setDirection] = useState<"forward" | "backward">("forward");
@@ -85,6 +92,17 @@ export const PMSurveyPopup = ({ open, onOpenChange, onComplete, loading }: PMSur
   
   // Validation
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  // Pre-fill from initialData when popup opens
+  useEffect(() => {
+    if (open && initialData) {
+      if (initialData.website_url) setWebsiteUrl(initialData.website_url);
+      if (initialData.email) setEmail(initialData.email);
+      if (initialData.phone) setPhone(initialData.phone.replace('+91', ''));
+      if (initialData.role) setRole(initialData.role);
+      if (initialData.monthly_revenue) setAdBudget(initialData.monthly_revenue);
+    }
+  }, [open, initialData]);
 
   // Reset on close
   useEffect(() => {

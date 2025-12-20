@@ -1,8 +1,9 @@
-import { Button } from "@/components/ui/button";
-import { Globe, Bot, Handshake, TrendingUp, Target, ArrowRight, Sparkles, Award } from "lucide-react";
+import { Globe, Bot, Handshake, TrendingUp, Target, Award } from "lucide-react";
+import { PMLeadCaptureForm } from "./PMLeadCaptureForm";
 
 interface PMHeroSectionProps {
-  onOpenSurvey: () => void;
+  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
+  loading?: boolean;
 }
 
 const trustSignals = [
@@ -18,7 +19,7 @@ const expertCredentials = [
   "₹50Cr+ Ad Spend Managed",
 ];
 
-export const PMHeroSection = ({ onOpenSurvey }: PMHeroSectionProps) => {
+export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
   return (
     <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
       {/* Animated Background */}
@@ -94,29 +95,10 @@ export const PMHeroSection = ({ onOpenSurvey }: PMHeroSectionProps) => {
             </div>
           </div>
 
-          {/* Right Column - CTA Card */}
+          {/* Right Column - Form */}
           <div className="md:col-span-1 lg:col-span-5">
-            <div className="animate-fade-in bg-card border border-border rounded-2xl p-6 md:p-8 shadow-xl" style={{ animationDelay: '200ms' }}>
-              <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg shadow-blue-500/25">
-                  <Sparkles className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-foreground">
-                  Get Your Free Ads Audit
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  Discover how much revenue you're leaving on the table with our AI-powered performance analysis.
-                </p>
-                <Button 
-                  onClick={onOpenSurvey}
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white text-lg py-6 h-auto rounded-xl shadow-lg shadow-blue-500/25 group"
-                >
-                  Start Free Audit
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-                <p className="text-muted-foreground text-xs">Takes 2 minutes • No credit card required</p>
-              </div>
+            <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
+              <PMLeadCaptureForm onSubmit={onSubmit} loading={loading} />
             </div>
             
             {/* Expert credentials - Desktop only */}

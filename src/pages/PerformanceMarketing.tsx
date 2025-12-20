@@ -28,6 +28,20 @@ const PerformanceMarketing = () => {
   const { createLead, sendLeadEmail, loading } = useLead();
   const [surveyOpen, setSurveyOpen] = useState(false);
 
+  // Initial form data captured from hero form
+  const [initialFormData, setInitialFormData] = useState<{
+    website_url: string;
+    email: string;
+    phone?: string;
+    role?: string;
+    monthly_revenue?: string;
+  } | null>(null);
+
+  const handleHeroFormSubmit = (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
+    setInitialFormData(data);
+    setSurveyOpen(true);
+  };
+
   const handleSurveyComplete = async (data: SurveyData) => {
     try {
       const leadData = {
@@ -82,7 +96,7 @@ const PerformanceMarketing = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         <div id="pm-hero">
-          <PMHeroSection onOpenSurvey={() => setSurveyOpen(true)} />
+          <PMHeroSection onSubmit={handleHeroFormSubmit} loading={loading} />
         </div>
         <div id="pm-logos">
           <ClientLogosSection />
@@ -130,6 +144,7 @@ const PerformanceMarketing = () => {
         onOpenChange={setSurveyOpen}
         onComplete={handleSurveyComplete}
         loading={loading}
+        initialData={initialFormData || undefined}
       />
     </>
   );
