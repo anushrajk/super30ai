@@ -73,6 +73,66 @@ export type Database = {
           },
         ]
       }
+      competitor_analysis: {
+        Row: {
+          analyzed_url: string | null
+          audit_id: string | null
+          business_niche: string | null
+          competitors: Json | null
+          created_at: string
+          estimated_monthly_loss: Json | null
+          id: string
+          industry_category: string | null
+          lead_id: string | null
+          missed_opportunity_score: number | null
+          opportunity_breakdown: Json | null
+          recommendations: Json | null
+        }
+        Insert: {
+          analyzed_url?: string | null
+          audit_id?: string | null
+          business_niche?: string | null
+          competitors?: Json | null
+          created_at?: string
+          estimated_monthly_loss?: Json | null
+          id?: string
+          industry_category?: string | null
+          lead_id?: string | null
+          missed_opportunity_score?: number | null
+          opportunity_breakdown?: Json | null
+          recommendations?: Json | null
+        }
+        Update: {
+          analyzed_url?: string | null
+          audit_id?: string | null
+          business_niche?: string | null
+          competitors?: Json | null
+          created_at?: string
+          estimated_monthly_loss?: Json | null
+          id?: string
+          industry_category?: string | null
+          lead_id?: string | null
+          missed_opportunity_score?: number | null
+          opportunity_breakdown?: Json | null
+          recommendations?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "competitor_analysis_audit_id_fkey"
+            columns: ["audit_id"]
+            isOneToOne: false
+            referencedRelation: "audit_results"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "competitor_analysis_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       engagement_metrics: {
         Row: {
           created_at: string | null

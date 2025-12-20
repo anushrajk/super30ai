@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
+import { useFunnelData } from "@/hooks/useFunnelData";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
@@ -24,16 +25,27 @@ const AiSeo = () => {
   const navigate = useNavigate();
   const { session } = useSession();
   const { createLead, sendLeadEmail, loading } = useLead();
+  const { setLeadData } = useFunnelData();
 
-  const handleFormSubmit = async (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => {
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
     try {
       const leadData = {
         website_url: data.website_url,
         email: data.email,
+        phone: data.phone,
         role: data.role,
         monthly_revenue: data.monthly_revenue,
         step: 1
       };
+
+      // Store in funnel data for persistence
+      setLeadData({
+        website_url: data.website_url,
+        email: data.email,
+        phone: data.phone,
+        role: data.role,
+        monthly_revenue: data.monthly_revenue,
+      });
 
       const newLead = await createLead(leadData, session?.id);
       
@@ -46,7 +58,20 @@ const AiSeo = () => {
       }
 
       toast.success("Analyzing your website...");
-      navigate("/audit", { state: { leadId: newLead?.id } });
+      
+      // Navigate with complete form data for reliability
+      navigate("/audit", { 
+        state: { 
+          leadId: newLead?.id,
+          formData: {
+            website_url: data.website_url,
+            email: data.email,
+            phone: data.phone,
+            role: data.role,
+            monthly_revenue: data.monthly_revenue,
+          }
+        } 
+      });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
