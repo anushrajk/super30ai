@@ -63,17 +63,17 @@ const Home = () => {
 
     <main className="min-h-screen pt-16 md:pt-20">
       {/* Hero Section - Modern & Engaging */}
-      <section id="home-hero" className="relative overflow-hidden min-h-[90vh] flex items-center bg-gradient-to-br from-orange-50/50 via-background to-amber-50/30">
-        {/* Subtle grid pattern */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-
-        {/* Light gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background" />
-
-        {/* Simplified decorative elements */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/10 to-orange-600/5 rounded-full blur-xl" />
-        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-br from-amber-400/10 to-yellow-600/5 rounded-full blur-xl" />
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/10 to-yellow-400/5 rounded-full blur-xl" />
+      <section id="home-hero" className="relative overflow-hidden min-h-[90vh] flex items-center bg-background">
+        {/* Animated Background - Matching SEO/Work pages */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background dark:from-orange-950/30 dark:via-background dark:to-background" />
+          
+          {/* Animated orbs */}
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/30 to-orange-600/10 rounded-full blur-2xl" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-orange-500/10 rounded-full blur-2xl" />
+          <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-orange-200/20 to-transparent rounded-full blur-2xl" />
+        </div>
 
         <div className="container relative mx-auto px-4 py-12 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
