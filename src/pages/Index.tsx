@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
-import { HeroSection } from "@/components/landing/HeroSection";
+import { HeroSectionSkeleton } from "@/components/landing/HeroSectionSkeleton";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
@@ -16,9 +17,11 @@ import { FAQSection } from "@/components/landing/FAQSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
-import { Suspense } from "react";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
+
+// Lazy load hero section for better initial load
+const HeroSection = lazy(() => import("@/components/landing/HeroSection").then(m => ({ default: m.HeroSection })));
 
 const Index = () => {
   const navigate = useNavigate();
@@ -64,7 +67,9 @@ const Index = () => {
       </Helmet>
 
       <main className="min-h-screen">
-        <HeroSection onSubmit={handleFormSubmit} loading={loading} />
+        <Suspense fallback={<HeroSectionSkeleton />}>
+          <HeroSection onSubmit={handleFormSubmit} loading={loading} />
+        </Suspense>
         <ClientLogosSection />
         <ProblemSection />
         <RelevanceFilterSection />
