@@ -42,6 +42,7 @@ import OpportunityCard from "@/components/audit/OpportunityCard";
 import RevenueImpactCard from "@/components/audit/RevenueImpactCard";
 import ScoreBreakdownTabs from "@/components/audit/ScoreBreakdownTabs";
 import MissedOpportunityGauge from "@/components/audit/MissedOpportunityGauge";
+import AnalysisLoader from "@/components/audit/AnalysisLoader";
 
 interface AuditResults {
   seo_score: number;
@@ -352,45 +353,14 @@ const Audit = () => {
     }
   };
 
-  // Loading State
+  // Loading State - Using advanced AnalysisLoader
   const LoadingState = () => (
-    <Card className="max-w-2xl mx-auto">
-      <CardContent className="p-8 text-center">
-        <Loader2 className="w-16 h-16 animate-spin text-orange-500 mx-auto mb-6" />
-        <h2 className="text-2xl font-bold text-foreground mb-4">
-          Analyzing Your Website
-        </h2>
-        {analyzedUrl && (
-          <p className="text-muted-foreground mb-6">{analyzedUrl}</p>
-        )}
-        
-        <div className="space-y-4">
-          {loadingSteps.map((step, index) => (
-            <div 
-              key={index}
-              className={`flex items-center gap-3 p-3 rounded-lg transition-all ${
-                index === currentStep 
-                  ? "bg-orange-50 border border-orange-200" 
-                  : index < currentStep 
-                    ? "bg-green-50 border border-green-200"
-                    : "bg-muted"
-              }`}
-            >
-              {index < currentStep ? (
-                <CheckCircle className="w-5 h-5 text-green-500" />
-              ) : index === currentStep ? (
-                <Loader2 className="w-5 h-5 animate-spin text-orange-500" />
-              ) : (
-                <div className="w-5 h-5 rounded-full border-2 border-muted-foreground/30" />
-              )}
-              <span className={index <= currentStep ? "text-foreground" : "text-muted-foreground"}>
-                {step.text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+    <AnalysisLoader
+      currentStep={currentStep}
+      steps={loadingSteps}
+      analyzedUrl={analyzedUrl}
+      variant="primary"
+    />
   );
 
   // Error State
@@ -482,41 +452,14 @@ const Audit = () => {
     );
   };
 
-  // AI Analysis Loading
+  // AI Analysis Loading - Using advanced AnalysisLoader
   const AIAnalysisLoading = () => (
-    <Card className="border-purple-200 bg-purple-50/50">
-      <CardContent className="p-6">
-        <div className="flex items-center gap-3 mb-4">
-          <Loader2 className="w-6 h-6 animate-spin text-purple-500" />
-          <h3 className="font-semibold text-purple-900">AI Competitor Analysis</h3>
-        </div>
-        <div className="space-y-3">
-          {aiAnalysisSteps.map((step, index) => (
-            <div 
-              key={index}
-              className={`flex items-center gap-3 p-2 rounded-lg transition-all ${
-                index === aiAnalysisStep 
-                  ? "bg-purple-100 border border-purple-200" 
-                  : index < aiAnalysisStep 
-                    ? "bg-green-50 border border-green-200"
-                    : "bg-white/50"
-              }`}
-            >
-              {index < aiAnalysisStep ? (
-                <CheckCircle className="w-4 h-4 text-green-500" />
-              ) : index === aiAnalysisStep ? (
-                <Loader2 className="w-4 h-4 animate-spin text-purple-500" />
-              ) : (
-                <div className="w-4 h-4 rounded-full border-2 border-purple-300" />
-              )}
-              <span className={`text-sm ${index <= aiAnalysisStep ? "text-purple-900" : "text-purple-400"}`}>
-                {step.text}
-              </span>
-            </div>
-          ))}
-        </div>
-      </CardContent>
-    </Card>
+    <AnalysisLoader
+      currentStep={aiAnalysisStep}
+      steps={aiAnalysisSteps}
+      analyzedUrl={analyzedUrl}
+      variant="ai"
+    />
   );
 
   // Competitor Results
