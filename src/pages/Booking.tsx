@@ -193,7 +193,7 @@ const Booking = () => {
               Not a Sales Call. A Business Visibility Review.
             </h1>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto mb-6">
-              In 30 minutes, we'll walk you through your audit results, share actionable insights, and give you a clear recommendation—whether we're the right fit or not.
+              Book a 30-minute call. Get your audit insights, clear recommendations, and a straight answer. You'll leave with a clear answer on what makes sense.
             </p>
 
             {/* Countdown Timer */}
