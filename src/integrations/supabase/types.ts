@@ -182,39 +182,48 @@ export type Database = {
       }
       leads: {
         Row: {
+          business_type: string | null
           company_name: string | null
           created_at: string
           email: string
           id: string
           monthly_revenue: string | null
           phone: string | null
+          preferred_platforms: Json | null
           role: string | null
+          service_type: string | null
           session_id: string | null
           step: number
           updated_at: string
           website_url: string
         }
         Insert: {
+          business_type?: string | null
           company_name?: string | null
           created_at?: string
           email: string
           id?: string
           monthly_revenue?: string | null
           phone?: string | null
+          preferred_platforms?: Json | null
           role?: string | null
+          service_type?: string | null
           session_id?: string | null
           step?: number
           updated_at?: string
           website_url: string
         }
         Update: {
+          business_type?: string | null
           company_name?: string | null
           created_at?: string
           email?: string
           id?: string
           monthly_revenue?: string | null
           phone?: string | null
+          preferred_platforms?: Json | null
           role?: string | null
+          service_type?: string | null
           session_id?: string | null
           step?: number
           updated_at?: string
@@ -226,6 +235,83 @@ export type Database = {
             columns: ["session_id"]
             isOneToOne: false
             referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      performance_audit_results: {
+        Row: {
+          action_plan: Json | null
+          ai_recommendations: Json | null
+          analysis_timestamp: string | null
+          analyzed_url: string | null
+          business_niche: string | null
+          business_type: string | null
+          competitive_gap: Json | null
+          competitive_rank: string | null
+          competitors: Json | null
+          created_at: string | null
+          data_source: string | null
+          estimated_monthly_loss: Json | null
+          expected_roi: Json | null
+          id: string
+          industry_category: string | null
+          lead_id: string | null
+          opportunity_score: number | null
+          platform_recommendations: Json | null
+          preferred_platforms: Json | null
+          recommended_budget: Json | null
+        }
+        Insert: {
+          action_plan?: Json | null
+          ai_recommendations?: Json | null
+          analysis_timestamp?: string | null
+          analyzed_url?: string | null
+          business_niche?: string | null
+          business_type?: string | null
+          competitive_gap?: Json | null
+          competitive_rank?: string | null
+          competitors?: Json | null
+          created_at?: string | null
+          data_source?: string | null
+          estimated_monthly_loss?: Json | null
+          expected_roi?: Json | null
+          id?: string
+          industry_category?: string | null
+          lead_id?: string | null
+          opportunity_score?: number | null
+          platform_recommendations?: Json | null
+          preferred_platforms?: Json | null
+          recommended_budget?: Json | null
+        }
+        Update: {
+          action_plan?: Json | null
+          ai_recommendations?: Json | null
+          analysis_timestamp?: string | null
+          analyzed_url?: string | null
+          business_niche?: string | null
+          business_type?: string | null
+          competitive_gap?: Json | null
+          competitive_rank?: string | null
+          competitors?: Json | null
+          created_at?: string | null
+          data_source?: string | null
+          estimated_monthly_loss?: Json | null
+          expected_roi?: Json | null
+          id?: string
+          industry_category?: string | null
+          lead_id?: string | null
+          opportunity_score?: number | null
+          platform_recommendations?: Json | null
+          preferred_platforms?: Json | null
+          recommended_budget?: Json | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "performance_audit_results_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
             referencedColumns: ["id"]
           },
         ]
