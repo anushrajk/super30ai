@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, lazy, Suspense } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { supabase } from "@/integrations/supabase/client";
@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Skeleton } from "@/components/ui/skeleton";
 import { 
   Loader2, 
   CheckCircle, 
@@ -43,9 +44,9 @@ import {
   TooltipProvider,
 } from "@/components/ui/tooltip";
 
-// Import new components
+// Import components - lazy load the heavy recharts component
 import ScoreGauge from "@/components/audit/ScoreGauge";
-import CompetitorRadarChart from "@/components/audit/CompetitorRadarChart";
+const CompetitorRadarChart = lazy(() => import("@/components/audit/CompetitorRadarChart"));
 import OpportunityCard from "@/components/audit/OpportunityCard";
 import RevenueImpactCard from "@/components/audit/RevenueImpactCard";
 import ScoreBreakdownTabs from "@/components/audit/ScoreBreakdownTabs";
@@ -725,14 +726,20 @@ const Audit = () => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <CompetitorRadarChart 
-              yourScores={{
-                aiVisibility: 100 - competitorData.opportunity_breakdown.ai_visibility_gap,
-                content: 100 - competitorData.opportunity_breakdown.content_gap,
-                technical: 100 - competitorData.opportunity_breakdown.technical_gap,
-                authority: 100 - competitorData.opportunity_breakdown.authority_gap
-              }}
-            />
+            <Suspense fallback={
+              <div className="h-[300px] flex items-center justify-center">
+                <Skeleton className="w-full h-full rounded-lg" />
+              </div>
+            }>
+              <CompetitorRadarChart 
+                yourScores={{
+                  aiVisibility: 100 - competitorData.opportunity_breakdown.ai_visibility_gap,
+                  content: 100 - competitorData.opportunity_breakdown.content_gap,
+                  technical: 100 - competitorData.opportunity_breakdown.technical_gap,
+                  authority: 100 - competitorData.opportunity_breakdown.authority_gap
+                }}
+              />
+            </Suspense>
           </CardContent>
         </Card>
 
