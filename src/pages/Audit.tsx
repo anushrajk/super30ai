@@ -81,6 +81,13 @@ interface AuditResults {
   data_source?: string;
 }
 
+interface AnalysisError {
+  message: string;
+  errorCode?: string;
+  suggestion?: string;
+  checkedUrl?: string;
+}
+
 interface CompetitorData {
   business_niche: string;
   industry_category: string;
@@ -130,7 +137,7 @@ const Audit = () => {
   const [currentStep, setCurrentStep] = useState(0);
   const [auditResults, setAuditResults] = useState<AuditResults | null>(null);
   const [isUnlocking, setIsUnlocking] = useState(false);
-  const [analysisError, setAnalysisError] = useState<string | null>(null);
+  const [analysisError, setAnalysisError] = useState<AnalysisError | null>(null);
   const [analyzedUrl, setAnalyzedUrl] = useState<string | null>(null);
   const [currentLeadId, setCurrentLeadId] = useState<string | null>(null);
   const [currentAuditId, setCurrentAuditId] = useState<string | null>(null);
@@ -193,11 +200,18 @@ const Audit = () => {
       if (error) throw error;
 
       if (!analysisData || analysisData.error) {
-        throw new Error(analysisData?.error || "Analysis failed");
+        // Handle structured error response from edge function
+        const errorData = analysisData || {};
+        throw {
+          message: errorData.error || "Analysis failed",
+          errorCode: errorData.errorCode,
+          suggestion: errorData.suggestion,
+          checkedUrl: errorData.checkedUrl
+        };
       }
 
       if (typeof analysisData.seo_score !== 'number') {
-        throw new Error("Invalid analysis response");
+        throw { message: "Invalid analysis response" };
       }
 
       const results = { ...analysisData };
@@ -207,7 +221,12 @@ const Audit = () => {
 
     } catch (error: any) {
       console.error("Analysis error:", error);
-      setAnalysisError(error.message || "Failed to analyze website. Please try again.");
+      setAnalysisError({
+        message: error.message || "Failed to analyze website. Please try again.",
+        errorCode: error.errorCode,
+        suggestion: error.suggestion,
+        checkedUrl: error.checkedUrl
+      });
     } finally {
       setAnalyzing(false);
     }
@@ -237,7 +256,7 @@ const Audit = () => {
       }
 
       if (!websiteUrl) {
-        throw new Error("No website URL found. Please go back and enter your URL.");
+        throw { message: "No website URL found. Please go back and enter your URL." };
       }
 
       setAnalyzedUrl(websiteUrl);
@@ -249,11 +268,18 @@ const Audit = () => {
       if (error) throw error;
 
       if (!analysisData || analysisData.error) {
-        throw new Error(analysisData?.error || "Analysis failed");
+        // Handle structured error response from edge function
+        const errorData = analysisData || {};
+        throw {
+          message: errorData.error || "Analysis failed",
+          errorCode: errorData.errorCode,
+          suggestion: errorData.suggestion,
+          checkedUrl: errorData.checkedUrl
+        };
       }
 
       if (typeof analysisData.seo_score !== 'number') {
-        throw new Error("Invalid analysis response");
+        throw { message: "Invalid analysis response" };
       }
 
       const results = { ...analysisData };
@@ -283,7 +309,12 @@ const Audit = () => {
 
     } catch (error: any) {
       console.error("Analysis error:", error);
-      setAnalysisError(error.message || "Failed to analyze website. Please try again.");
+      setAnalysisError({
+        message: error.message || "Failed to analyze website. Please try again.",
+        errorCode: error.errorCode,
+        suggestion: error.suggestion,
+        checkedUrl: error.checkedUrl
+      });
     } finally {
       setAnalyzing(false);
     }
@@ -408,9 +439,20 @@ const Audit = () => {
         <h2 className="text-2xl font-bold text-foreground mb-4">
           Analysis Failed
         </h2>
-        <p className="text-muted-foreground mb-6">
-          {analysisError || "We couldn't analyze your website at this time."}
+        <p className="text-muted-foreground mb-4">
+          {analysisError?.message || "We couldn't analyze your website at this time."}
         </p>
+        {analysisError?.suggestion && (
+          <p className="text-sm text-muted-foreground mb-4 bg-muted/50 p-3 rounded-lg">
+            <Lightbulb className="w-4 h-4 inline mr-1" />
+            {analysisError.suggestion}
+          </p>
+        )}
+        {analysisError?.checkedUrl && (
+          <p className="text-xs text-muted-foreground mb-4">
+            Attempted to analyze: <code className="bg-muted px-1 rounded">{analysisError.checkedUrl}</code>
+          </p>
+        )}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button onClick={handleRetry} variant="default">
             <RefreshCw className="w-4 h-4 mr-2" />

@@ -11,6 +11,38 @@ interface SEOAnalysisRequest {
   leadId?: string;
 }
 
+// Error code mapping for user-friendly messages
+const ERROR_MESSAGES: Record<string, { message: string; suggestion: string }> = {
+  'CONNECTION_FAILED': {
+    message: 'Unable to connect to the website.',
+    suggestion: 'The server may be down, blocking analysis tools, or behind a firewall. Please verify the site is accessible.'
+  },
+  'DNS_FAILURE': {
+    message: 'Could not find this domain.',
+    suggestion: 'Please check the URL spelling. The domain may not exist or DNS is not configured.'
+  },
+  'DOCUMENT_REQUEST_FAILED': {
+    message: 'The website could not be loaded for analysis.',
+    suggestion: 'The site may be blocking automated tools or requires authentication.'
+  },
+  'PROTOCOL_ERROR': {
+    message: 'SSL/HTTPS error detected.',
+    suggestion: 'The website may have an invalid or expired SSL certificate.'
+  },
+  'TIMEOUT': {
+    message: 'The website took too long to respond.',
+    suggestion: 'The site may be slow or experiencing high traffic. Try again in a few minutes.'
+  },
+  'RATE_LIMITED': {
+    message: 'Too many analysis requests.',
+    suggestion: 'Please wait a few minutes before trying again.'
+  },
+  'UNKNOWN': {
+    message: 'An unexpected error occurred while analyzing this website.',
+    suggestion: 'Please try again or contact support if the issue persists.'
+  }
+};
+
 // Extract homepage from deep URL
 function extractHomepage(url: string): { homepage: string; originalUrl: string; isDeepPage: boolean } {
   try {
@@ -75,6 +107,92 @@ function validateUrl(url: string): { valid: boolean; error?: string; sanitizedUr
   }
 }
 
+// Check if website is accessible before PageSpeed analysis
+async function checkWebsiteAccessibility(url: string): Promise<{ accessible: boolean; errorCode?: string; alternateUrl?: string }> {
+  const urlsToTry: string[] = [url];
+  
+  // Generate alternate URLs (www/non-www, https/http)
+  try {
+    const urlObj = new URL(url);
+    const hasWww = urlObj.hostname.startsWith('www.');
+    
+    // Try www/non-www variant
+    if (hasWww) {
+      urlsToTry.push(url.replace('://www.', '://'));
+    } else {
+      urlsToTry.push(url.replace('://', '://www.'));
+    }
+    
+    // Try http if https fails
+    if (urlObj.protocol === 'https:') {
+      urlsToTry.push(url.replace('https://', 'http://'));
+    }
+  } catch {
+    // Ignore URL parsing errors
+  }
+  
+  for (const testUrl of urlsToTry) {
+    try {
+      console.log(`Checking accessibility: ${testUrl}`);
+      const response = await fetch(testUrl, {
+        method: 'HEAD',
+        signal: AbortSignal.timeout(15000),
+        headers: { 
+          'User-Agent': 'Mozilla/5.0 (compatible; Super30-SEO-Checker/1.0; +https://super30.io)'
+        },
+        redirect: 'follow'
+      });
+      
+      // Consider 2xx and 3xx as accessible, also some 4xx pages are still valid
+      if (response.ok || response.status < 500) {
+        console.log(`Website accessible at: ${testUrl} (status: ${response.status})`);
+        return { 
+          accessible: true, 
+          alternateUrl: testUrl !== url ? testUrl : undefined 
+        };
+      }
+    } catch (error: any) {
+      console.log(`Accessibility check failed for ${testUrl}:`, error.message);
+      
+      // Determine error type
+      if (error.message?.includes('timeout') || error.name === 'TimeoutError') {
+        continue; // Try next URL
+      }
+    }
+  }
+  
+  return { accessible: false, errorCode: 'CONNECTION_FAILED' };
+}
+
+// Parse Lighthouse error messages to get specific error codes
+function parseLighthouseError(errorText: string): string {
+  if (errorText.includes('FAILED_DOCUMENT_REQUEST')) {
+    if (errorText.includes('ERR_CONNECTION_FAILED') || errorText.includes('ERR_CONNECTION_REFUSED')) {
+      return 'CONNECTION_FAILED';
+    }
+    if (errorText.includes('ERR_NAME_NOT_RESOLVED') || errorText.includes('DNS')) {
+      return 'DNS_FAILURE';
+    }
+    if (errorText.includes('ERR_CERT') || errorText.includes('SSL') || errorText.includes('ERR_SSL')) {
+      return 'PROTOCOL_ERROR';
+    }
+    if (errorText.includes('TIMED_OUT') || errorText.includes('ERR_TIMED_OUT')) {
+      return 'TIMEOUT';
+    }
+    return 'DOCUMENT_REQUEST_FAILED';
+  }
+  if (errorText.includes('DNS_FAILURE') || errorText.includes('ERR_NAME_NOT_RESOLVED')) {
+    return 'DNS_FAILURE';
+  }
+  if (errorText.includes('PROTOCOL_ERROR') || errorText.includes('SSL')) {
+    return 'PROTOCOL_ERROR';
+  }
+  if (errorText.includes('timeout') || errorText.includes('TIMEOUT')) {
+    return 'TIMEOUT';
+  }
+  return 'UNKNOWN';
+}
+
 // Retry with exponential backoff
 async function fetchWithRetry(
   url: string, 
@@ -119,6 +237,21 @@ async function fetchWithRetry(
   throw lastError || new Error('All retry attempts failed');
 }
 
+// Create error response with structured data
+function createErrorResponse(errorCode: string, statusCode: number = 400, additionalInfo?: Record<string, any>) {
+  const errorInfo = ERROR_MESSAGES[errorCode] || ERROR_MESSAGES['UNKNOWN'];
+  
+  return new Response(
+    JSON.stringify({
+      error: errorInfo.message,
+      errorCode,
+      suggestion: errorInfo.suggestion,
+      ...additionalInfo
+    }),
+    { status: statusCode, headers: { "Content-Type": "application/json", ...corsHeaders } }
+  );
+}
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -148,7 +281,7 @@ const handler = async (req: Request): Promise<Response> => {
     const targetUrl = urlValidation.sanitizedUrl!;
     
     // Extract homepage for analysis (strip deep page paths)
-    const { homepage, originalUrl, isDeepPage } = extractHomepage(targetUrl);
+    let { homepage, originalUrl, isDeepPage } = extractHomepage(targetUrl);
     console.log("Analyzing SEO for:", homepage, "Original URL:", originalUrl, "Is Deep Page:", isDeepPage, "Lead ID:", leadId || "N/A");
 
     // Check for API key
@@ -159,6 +292,24 @@ const handler = async (req: Request): Promise<Response> => {
         JSON.stringify({ error: "PageSpeed API key not configured. Please contact support." }),
         { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
+    }
+
+    // Pre-check website accessibility
+    console.log("Running accessibility pre-check for:", homepage);
+    const accessibilityCheck = await checkWebsiteAccessibility(homepage);
+    
+    if (!accessibilityCheck.accessible) {
+      console.error("Website accessibility check failed:", accessibilityCheck.errorCode);
+      return createErrorResponse(accessibilityCheck.errorCode || 'CONNECTION_FAILED', 422, {
+        checkedUrl: homepage
+      });
+    }
+    
+    // Use alternate URL if found to be working
+    if (accessibilityCheck.alternateUrl) {
+      console.log(`Using alternate URL: ${accessibilityCheck.alternateUrl} (original: ${homepage})`);
+      const altExtract = extractHomepage(accessibilityCheck.alternateUrl);
+      homepage = altExtract.homepage;
     }
 
     // Create Supabase client
@@ -186,7 +337,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Call Google PageSpeed Insights API with API key - use HOMEPAGE for analysis
     const apiUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(homepage)}&key=${apiKey}&category=performance&category=accessibility&category=best-practices&category=seo`;
     
-    console.log("Calling PageSpeed API with API key for homepage:", homepage);
+    console.log("Calling PageSpeed API for homepage:", homepage);
     
     const response = await fetchWithRetry(apiUrl);
     
@@ -195,33 +346,17 @@ const handler = async (req: Request): Promise<Response> => {
       console.error("PageSpeed API error:", response.status, errorText);
       
       if (response.status === 429) {
-        return new Response(
-          JSON.stringify({ error: "API rate limit exceeded. Please try again in a few minutes." }),
-          { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
+        return createErrorResponse('RATE_LIMITED', 429);
       }
       
-      if (response.status === 400) {
-        return new Response(
-          JSON.stringify({ error: "Invalid URL or the website could not be accessed." }),
-          { status: 400, headers: { "Content-Type": "application/json", ...corsHeaders } }
-        );
-      }
+      // Parse Lighthouse-specific errors for better messaging
+      const errorCode = parseLighthouseError(errorText);
+      console.log("Parsed error code:", errorCode);
       
-      // Handle Lighthouse internal errors (500) - some sites block Google's crawler
-      if (response.status === 500) {
-        const isLighthouseError = errorText.includes('lighthouseError') || errorText.includes('Lighthouse returned error');
-        if (isLighthouseError) {
-          return new Response(
-            JSON.stringify({ 
-              error: "This website could not be analyzed. Some websites block automated analysis tools. Please try a different URL or contact support for manual analysis." 
-            }),
-            { status: 422, headers: { "Content-Type": "application/json", ...corsHeaders } }
-          );
-        }
-      }
-      
-      throw new Error(`PageSpeed API returned ${response.status}: ${errorText}`);
+      return createErrorResponse(errorCode, 422, {
+        checkedUrl: homepage,
+        rawError: response.status
+      });
     }
     
     const data = await response.json();
@@ -304,20 +439,15 @@ const handler = async (req: Request): Promise<Response> => {
     console.error("Error in analyze-seo function:", error);
     
     // Provide more specific error messages
-    let errorMessage = "An error occurred while analyzing your website.";
-    let statusCode = 500;
+    let errorCode = 'UNKNOWN';
     
     if (error.message?.includes('timeout') || error.name === 'TimeoutError') {
-      errorMessage = "The analysis timed out. The website may be slow or unresponsive.";
-      statusCode = 408;
-    } else if (error.message?.includes('fetch')) {
-      errorMessage = "Could not reach the PageSpeed API. Please try again.";
+      errorCode = 'TIMEOUT';
+    } else if (error.message?.includes('fetch') || error.message?.includes('network')) {
+      errorCode = 'CONNECTION_FAILED';
     }
     
-    return new Response(
-      JSON.stringify({ error: errorMessage }),
-      { status: statusCode, headers: { "Content-Type": "application/json", ...corsHeaders } }
-    );
+    return createErrorResponse(errorCode, 500);
   }
 };
 
