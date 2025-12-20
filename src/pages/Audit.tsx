@@ -224,13 +224,14 @@ const Audit = () => {
     try {
       let websiteUrl = formData?.website_url;
       
-      if (!websiteUrl) {
-        const { data: leadData } = await supabase
-          .from('leads')
-          .select('website_url')
-          .eq('id', leadId)
-          .single();
+      if (!websiteUrl && session?.id) {
+        // Use secure edge function to get lead data
+        const { data: sessionData } = await supabase.functions.invoke('get-session-data', {
+          body: { type: 'leads' },
+          headers: { 'x-session-id': session.id }
+        });
 
+        const leadData = sessionData?.leads?.find((l: any) => l.id === leadId);
         websiteUrl = leadData?.website_url;
       }
 
