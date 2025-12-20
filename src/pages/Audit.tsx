@@ -53,6 +53,8 @@ interface AuditResults {
   opportunities: any[];
   diagnostics: any[];
   analyzed_url?: string;
+  original_url?: string;
+  is_deep_page?: boolean;
   analysis_timestamp?: string;
   data_source?: string;
 }
@@ -419,7 +421,7 @@ const Audit = () => {
     </Card>
   );
 
-  // Data Source Badge
+  // Data Source Badge with Google Logo
   const DataSourceBadge = () => (
     <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground mb-6">
       {analyzedUrl && (
@@ -434,11 +436,51 @@ const Audit = () => {
           <span>Analyzed: {formatTimestamp(auditResults.analysis_timestamp)}</span>
         </div>
       )}
-      <Badge variant="secondary" className="text-xs">
-        Powered by Google PageSpeed Insights
+      <Badge variant="secondary" className="text-xs flex items-center gap-1.5">
+        Powered by
+        <img 
+          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" 
+          alt="Google" 
+          className="h-4 w-auto"
+        />
       </Badge>
     </div>
   );
+
+  // Deep Page Warning CTA
+  const DeepPageWarning = () => {
+    if (!auditResults?.is_deep_page || !auditResults?.original_url) return null;
+    
+    return (
+      <Card className="border-amber-300 bg-amber-50 mb-6">
+        <CardContent className="p-4 md:p-6">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
+            <div className="p-3 bg-amber-100 rounded-full">
+              <AlertTriangle className="w-6 h-6 text-amber-600" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-amber-900 mb-1">
+                Partial Analysis Notice
+              </h3>
+              <p className="text-sm text-amber-700 mb-2">
+                You submitted a specific page URL: <span className="font-medium break-all">{auditResults.original_url}</span>
+              </p>
+              <p className="text-sm text-amber-700">
+                This audit was performed on your <strong>homepage only</strong>. To get a comprehensive audit of your entire website including all pages, book a consultation with our experts.
+              </p>
+            </div>
+            <Button 
+              onClick={handleUnlockClick}
+              className="bg-amber-600 hover:bg-amber-700 text-white whitespace-nowrap"
+            >
+              Book Full Website Audit
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
+    );
+  };
 
   // AI Analysis Loading
   const AIAnalysisLoading = () => (
@@ -576,20 +618,42 @@ const Audit = () => {
           </CardContent>
         </Card>
 
-        {/* AI Recommendations */}
-        <Card className="border-green-200 bg-green-50/50">
+        {/* AI Recommendations - Blurred/Locked */}
+        <Card className="border-green-200 bg-green-50/50 relative overflow-hidden">
+          {/* Blur overlay with lock */}
+          <div className="absolute inset-0 backdrop-blur-md bg-green-50/70 z-10 flex items-center justify-center">
+            <div className="text-center p-6">
+              <Lock className="w-12 h-12 text-green-600 mx-auto mb-4" />
+              <h3 className="font-semibold text-green-800 mb-2">
+                AI Recommendations Locked
+              </h3>
+              <p className="text-sm text-green-700 mb-4 max-w-xs mx-auto">
+                Book a strategy call to unlock personalized AI-powered recommendations for your website
+              </p>
+              <Button onClick={handleUnlockClick} className="bg-green-600 hover:bg-green-700">
+                Unlock Recommendations
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+          </div>
+          
+          {/* Blurred placeholder content (no real data) */}
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Lightbulb className="w-5 h-5 text-green-500" />
               AI Recommendations
+              <Badge className="bg-purple-100 text-purple-700 text-xs">AI-Powered</Badge>
             </CardTitle>
           </CardHeader>
-          <CardContent>
+          <CardContent className="filter blur-sm pointer-events-none select-none">
             <ul className="space-y-3">
-              {competitorData.recommendations.map((rec, index) => (
-                <li key={index} className="flex items-start gap-3 p-3 bg-white rounded-lg">
+              {[1, 2, 3, 4].map((_, idx) => (
+                <li key={idx} className="flex items-start gap-3 p-3 bg-white rounded-lg">
                   <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
-                  <span className="text-foreground">{rec}</span>
+                  <div className="flex-1 space-y-2">
+                    <div className="h-4 bg-muted rounded w-full" />
+                    <div className="h-3 bg-muted/70 rounded w-3/4" />
+                  </div>
                 </li>
               ))}
             </ul>
@@ -627,6 +691,9 @@ const Audit = () => {
           ) : auditResults && (
             <TooltipProvider>
               <div className="space-y-8">
+                {/* Deep Page Warning */}
+                <DeepPageWarning />
+
                 {/* Data Source Info */}
                 <DataSourceBadge />
 
