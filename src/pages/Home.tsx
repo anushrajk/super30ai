@@ -12,6 +12,8 @@ import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { StatsSection, defaultStats } from "@/components/common/StatsSection";
 import { GradientWave } from "@/components/ui/gradient-wave";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
+import { HeroVariantPAS } from "@/components/home/HeroVariantPAS";
+import { HeroVariantSocialProof } from "@/components/home/HeroVariantSocialProof";
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award } from "lucide-react";
 
 const services = [{
@@ -175,6 +177,21 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* ============================================
+          HERO VARIANT OPTIONS FOR A/B TESTING
+          Research-backed alternative designs (2025 studies)
+          ============================================ */}
+      
+      {/* Hero Variant 1: Problem-Agitation-Solution (PAS) */}
+      <div id="home-hero-variant-1">
+        <HeroVariantPAS />
+      </div>
+
+      {/* Hero Variant 2: Social Proof First */}
+      <div id="home-hero-variant-2">
+        <HeroVariantSocialProof />
+      </div>
 
       {/* Client Logos - Moved above services */}
       <div id="home-logos">
