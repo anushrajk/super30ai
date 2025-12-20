@@ -21,11 +21,11 @@ const roleOptions = [
 ];
 
 const revenueOptions = [
-  { value: "under_50k", label: "Under $50k/month" },
-  { value: "50k_100k", label: "$50k-$100k/month" },
-  { value: "100k_500k", label: "$100k-$500k/month" },
-  { value: "500k_1m", label: "$500k-$1M/month" },
-  { value: "over_1m", label: "Over $1M/month" },
+  { value: "under_50k", label: "Under ₹50L/month" },
+  { value: "50k_100k", label: "₹50L-₹1Cr/month" },
+  { value: "100k_500k", label: "₹1Cr-₹5Cr/month" },
+  { value: "500k_1m", label: "₹5Cr-₹10Cr/month" },
+  { value: "over_1m", label: "Over ₹10Cr/month" },
 ];
 
 // Validation functions
