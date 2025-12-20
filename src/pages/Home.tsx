@@ -9,9 +9,10 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
+import { StatsSection, defaultStats } from "@/components/common/StatsSection";
 import { GradientWave } from "@/components/ui/gradient-wave";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
-import { ArrowRight, Bot, Target, Users, Award, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award } from "lucide-react";
 
 const services = [{
   icon: Bot,
@@ -29,20 +30,6 @@ const services = [{
   href: "/performance-marketing",
   color: "from-blue-500 to-blue-600",
   glowColor: "blue"
-}];
-
-const stats = [{
-  value: "300+",
-  label: "Successful Projects"
-}, {
-  value: "₹50Cr+",
-  label: "Revenue Generated"
-}, {
-  value: "10+",
-  label: "Years Experience"
-}, {
-  value: "95%",
-  label: "Client Retention"
 }];
 
 const whyChooseUs = [{
@@ -271,19 +258,10 @@ const Home = () => {
         <WhoIsThisForSection />
       </div>
 
-      {/* Stats Section - Moved below Who Is This For */}
-      <section id="home-stats" className="py-16 bg-muted/30 border-y border-border/50">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, index) => <div key={index} className="text-center group">
-              <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform duration-300">
-                {stat.value}
-              </div>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
-            </div>)}
-          </div>
-        </div>
-      </section>
+      {/* Stats Section - Using global component */}
+      <div id="home-stats">
+        <StatsSection stats={defaultStats} />
+      </div>
 
       {/* Why Choose Us */}
       <section id="home-why-us" className="py-24 bg-muted/30">

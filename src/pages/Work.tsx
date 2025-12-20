@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+import { TestimonialSection } from "@/components/landing/TestimonialSection";
+import { FinalCTASection } from "@/components/landing/FinalCTASection";
+import { BlogSection } from "@/components/landing/BlogSection";
+import { FAQSection } from "@/components/landing/FAQSection";
+import { StatsSection, workPageStats } from "@/components/common/StatsSection";
 import { LeadCaptureForm } from "@/components/landing/LeadCaptureForm";
-import { TrustBanner } from "@/components/work/TrustBanner";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { useLead } from "@/hooks/useLead";
 import { useSession } from "@/hooks/useSession";
+import { toast } from "sonner";
 import {
-  ArrowRight,
-  TrendingUp,
   BarChart3,
-  Users,
-  ExternalLink,
   Filter,
 } from "lucide-react";
 
@@ -102,16 +102,10 @@ const caseStudies = [
   },
 ];
 
-const aggregateStats = [
-  { value: "₹50Cr+", label: "Revenue Generated for Clients" },
-  { value: "300+", label: "Successful Projects" },
-  { value: "4.2x", label: "Average ROAS" },
-  { value: "280%", label: "Avg. Traffic Growth" },
-];
-
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const { createLead, loading } = useLead();
+  const navigate = useNavigate();
+  const { createLead, sendLeadEmail, loading } = useLead();
   const { session } = useSession();
 
   const filteredStudies = caseStudies.filter((study) => {
@@ -120,7 +114,31 @@ const Work = () => {
   });
 
   const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
-    await createLead(data, session?.id);
+    try {
+      const leadData = {
+        website_url: data.website_url,
+        email: data.email,
+        role: data.role,
+        monthly_revenue: data.monthly_revenue,
+        step: 1
+      };
+
+      const newLead = await createLead(leadData, session?.id);
+      
+      if (newLead && session) {
+        await sendLeadEmail(
+          { ...leadData, step: 1 },
+          session,
+          "Work Page - Free AI SEO Audit Request"
+        );
+      }
+
+      toast.success("Analyzing your website...");
+      navigate("/audit", { state: { leadId: newLead?.id } });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    }
   };
 
   return (
@@ -170,7 +188,7 @@ const Work = () => {
 
                 {/* Quick Stats */}
                 <div className="grid grid-cols-2 gap-4 max-w-md mx-auto lg:mx-0">
-                  {aggregateStats.slice(0, 2).map((stat, index) => (
+                  {workPageStats.slice(0, 2).map((stat, index) => (
                     <div key={index} className="p-4 bg-muted/30 rounded-xl border border-border/50">
                       <div className="text-2xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
                         {stat.value}
@@ -189,26 +207,15 @@ const Work = () => {
           </div>
         </section>
 
-        {/* Trust Banner */}
-        <div id="work-trust">
-          <TrustBanner />
+        {/* Client Logos Section - Using global component */}
+        <div id="work-logos">
+          <ClientLogosSection />
         </div>
 
-        {/* Stats Section */}
-        <section id="work-stats" className="py-16 bg-muted/30 border-y border-border/50">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              {aggregateStats.map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent mb-1 group-hover:scale-110 transition-transform duration-300">
-                    {stat.value}
-                  </div>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Stats Section - Using global component */}
+        <div id="work-stats">
+          <StatsSection stats={workPageStats} />
+        </div>
 
         {/* Case Studies Section */}
         <section id="work-cases" className="py-24 bg-background">
@@ -279,13 +286,24 @@ const Work = () => {
           </div>
         </section>
 
+        {/* Testimonials Section */}
+        <div id="work-testimonials">
+          <TestimonialSection />
+        </div>
+
+        {/* CTA Section with Form */}
         <div id="work-cta">
-          <UnifiedCTASection
-            headline="Want Results Like These?"
-            subtext="Let's discuss how we can achieve similar results for your business."
-            primaryCTA={{ label: "Get Free Audit", href: "/ai-seo" }}
-            secondaryCTA={{ label: "Contact Us", href: "/contact" }}
-          />
+          <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+        </div>
+
+        {/* Blog Section */}
+        <div id="work-blog">
+          <BlogSection />
+        </div>
+
+        {/* FAQ Section */}
+        <div id="work-faq">
+          <FAQSection />
         </div>
 
         <Footer />
