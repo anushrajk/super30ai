@@ -111,7 +111,7 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 
-  /* Custom horizontal scrollbar for slider sections */
+  /* Custom horizontal scrollbar for slider sections - Orange */
   .custom-scrollbar::-webkit-scrollbar {
     height: 6px;
   }
@@ -133,6 +133,30 @@ All colors MUST be HSL.
   .custom-scrollbar {
     scrollbar-width: thin;
     scrollbar-color: hsl(24 95% 53%) hsl(var(--muted));
+  }
+
+  /* Custom horizontal scrollbar for slider sections - Blue */
+  .custom-scrollbar-blue::-webkit-scrollbar {
+    height: 6px;
+  }
+  
+  .custom-scrollbar-blue::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar-blue::-webkit-scrollbar-thumb {
+    background: linear-gradient(to right, hsl(217 91% 60%), hsl(226 70% 55%));
+    border-radius: 3px;
+  }
+  
+  .custom-scrollbar-blue::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to right, hsl(217 91% 55%), hsl(226 70% 50%));
+  }
+
+  .custom-scrollbar-blue {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(217 91% 60%) hsl(var(--muted));
   }
 
   /* Shimmer animation for skeleton loaders */
