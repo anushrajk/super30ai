@@ -88,7 +88,6 @@ export const PlatformBadges = ({ platforms, size = "sm" }: PlatformBadgeProps) =
 interface RecommendedPlatformCardProps {
   platform: string;
   budgetAllocation: number;
-  expectedLeads: number;
   expectedROI: number;
   isB2B: boolean;
 }
@@ -96,7 +95,6 @@ interface RecommendedPlatformCardProps {
 export const RecommendedPlatformCard = ({ 
   platform, 
   budgetAllocation, 
-  expectedLeads, 
   expectedROI,
   isB2B 
 }: RecommendedPlatformCardProps) => {
@@ -119,17 +117,13 @@ export const RecommendedPlatformCard = ({
         <PlatformLogo platform={platform} size="md" />
         <div className="flex-1">
           <h4 className="font-semibold text-foreground">{data.label}</h4>
-          <div className="grid grid-cols-3 gap-2 mt-3">
+          <div className="grid grid-cols-2 gap-2 mt-3">
             <div>
               <div className="text-xs text-muted-foreground">Budget</div>
               <div className="font-semibold text-foreground">{budgetAllocation}%</div>
             </div>
             <div>
-              <div className="text-xs text-muted-foreground">Leads/mo</div>
-              <div className="font-semibold text-foreground">{expectedLeads}</div>
-            </div>
-            <div>
-              <div className="text-xs text-muted-foreground">ROI</div>
+              <div className="text-xs text-muted-foreground">Expected ROI</div>
               <div className="font-semibold text-green-600">{expectedROI}x</div>
             </div>
           </div>
