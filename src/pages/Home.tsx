@@ -10,10 +10,7 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { StatsSection, defaultStats } from "@/components/common/StatsSection";
-import { GradientWave } from "@/components/ui/gradient-wave";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
-import { HeroVariantPAS } from "@/components/home/HeroVariantPAS";
-import { HeroVariantSocialProof } from "@/components/home/HeroVariantSocialProof";
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award } from "lucide-react";
 
 const services = [{
@@ -65,17 +62,17 @@ const Home = () => {
 
     <main className="min-h-screen pt-16 md:pt-20">
       {/* Hero Section - Modern & Engaging */}
-      <section id="home-hero" className="relative overflow-hidden min-h-[90vh] flex items-center">
-        {/* Animated Gradient Background */}
-        <GradientWave colors={["#fed7aa", "#ffffff", "#fdba74", "#fef3c7", "#ffffff"]} />
+      <section id="home-hero" className="relative overflow-hidden min-h-[90vh] flex items-center bg-gradient-to-br from-orange-50/50 via-background to-amber-50/30">
+        {/* Subtle grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
 
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+        {/* Light gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background" />
 
-        {/* Simplified decorative elements - removed animate-pulse */}
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/15 to-orange-600/5 rounded-full blur-xl" />
-        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-br from-blue-400/15 to-blue-600/5 rounded-full blur-xl" />
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/20 to-yellow-400/10 rounded-full blur-xl" />
+        {/* Simplified decorative elements */}
+        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-orange-400/10 to-orange-600/5 rounded-full blur-xl" />
+        <div className="absolute bottom-40 right-20 w-48 h-48 bg-gradient-to-br from-amber-400/10 to-yellow-600/5 rounded-full blur-xl" />
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-br from-orange-300/10 to-yellow-400/5 rounded-full blur-xl" />
 
         <div className="container relative mx-auto px-4 py-12 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
@@ -177,21 +174,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      {/* ============================================
-          HERO VARIANT OPTIONS FOR A/B TESTING
-          Research-backed alternative designs (2025 studies)
-          ============================================ */}
-      
-      {/* Hero Variant 1: Problem-Agitation-Solution (PAS) */}
-      <div id="home-hero-variant-1">
-        <HeroVariantPAS />
-      </div>
-
-      {/* Hero Variant 2: Social Proof First */}
-      <div id="home-hero-variant-2">
-        <HeroVariantSocialProof />
-      </div>
 
       {/* Client Logos - Moved above services */}
       <div id="home-logos">
