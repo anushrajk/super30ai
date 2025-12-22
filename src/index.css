@@ -210,7 +210,7 @@ All colors MUST be HSL.
 
   /* Badge styling */
   .badge-brand {
-    @apply inline-block px-4 py-1.5 rounded-full text-sm font-medium;
+    @apply inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium;
     background: hsl(var(--brand-light));
     color: hsl(var(--brand));
   }

@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Check, X, ArrowRight, Sparkles } from "lucide-react";
+import { Check, X, ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const forYou = [
   "You spend ₹1L+/month on ads",
@@ -18,6 +20,7 @@ const notForYou = [
 
 export const PMRelevanceSection = () => {
   const [ref, isVisible] = useScrollAnimation();
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   
   const scrollToForm = () => {
     document.getElementById('pm-hero')?.scrollIntoView({ behavior: 'smooth' });
@@ -59,7 +62,7 @@ export const PMRelevanceSection = () => {
             </ul>
           </div>
         </div>
-        <div className="text-center mt-8 md:mt-12">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8 md:mt-12">
           <Button 
             onClick={scrollToForm}
             size="lg"
@@ -69,8 +72,21 @@ export const PMRelevanceSection = () => {
             Start Free Audit Now
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
+          <Button 
+            variant="outline"
+            size="lg"
+            onClick={() => setShowEnquiryPopup(true)}
+            className="border-2 border-white/50 text-white hover:bg-white/10 px-8 py-5 h-auto rounded-xl group"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Enquire Now
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </section>
   );
 };

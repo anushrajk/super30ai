@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { AlertTriangle, TrendingDown, Users, DollarSign, ArrowRight, Sparkles } from "lucide-react";
+import { AlertTriangle, TrendingDown, Users, DollarSign, ArrowRight, Sparkles, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const problems = [
   { icon: DollarSign, title: "High CPC, Low Returns", description: "Your cost-per-click keeps rising but conversions stay flat" },
@@ -11,6 +13,7 @@ const problems = [
 
 export const PMProblemSection = () => {
   const [ref, isVisible] = useScrollAnimation();
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   
   const scrollToForm = () => {
     document.getElementById('pm-hero')?.scrollIntoView({ behavior: 'smooth' });
@@ -41,7 +44,7 @@ export const PMProblemSection = () => {
             </div>
           ))}
         </div>
-        <div className="text-center mt-8 md:mt-12">
+        <div className="flex flex-col sm:flex-row gap-3 justify-center mt-8 md:mt-12">
           <Button 
             onClick={scrollToForm}
             size="lg"
@@ -51,8 +54,21 @@ export const PMProblemSection = () => {
             Start Free Audit Now
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
+          <Button 
+            variant="outline"
+            size="lg"
+            onClick={() => setShowEnquiryPopup(true)}
+            className="border-2 border-white/50 text-white hover:bg-white/10 px-8 py-5 h-auto rounded-xl group"
+          >
+            <MessageCircle className="w-5 h-5 mr-2" />
+            Enquire Now
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </section>
   );
 };

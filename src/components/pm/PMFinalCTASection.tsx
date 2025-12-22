@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Target, TrendingUp, BarChart3, Zap, Sparkles } from "lucide-react";
+import { ArrowRight, Target, TrendingUp, BarChart3, Zap, Sparkles, MessageCircle } from "lucide-react";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const benefits = [
   { icon: BarChart3, text: "Complete ads account audit" },
@@ -11,6 +13,7 @@ const benefits = [
 
 export const PMFinalCTASection = () => {
   const [ref, isVisible] = useScrollAnimation();
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   const scrollToForm = () => {
     const heroSection = document.getElementById("pm-hero");
@@ -52,18 +55,33 @@ export const PMFinalCTASection = () => {
             ))}
           </div>
 
-          <Button 
-            onClick={scrollToForm}
-            size="lg"
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-orange-500/25 group"
-          >
-            <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
-            Start Free Audit Now
-            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button 
+              onClick={scrollToForm}
+              size="lg"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-orange-500/25 group"
+            >
+              <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+              Start Free Audit Now
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+            <Button 
+              variant="outline"
+              size="lg"
+              onClick={() => setShowEnquiryPopup(true)}
+              className="border-2 border-white/50 text-white hover:bg-white/10 text-lg px-8 py-6 h-auto rounded-xl group"
+            >
+              <MessageCircle className="w-5 h-5 mr-2" />
+              Enquire Now
+              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
           <p className="text-slate-400 text-sm mt-4">Takes 2 minutes • No credit card required</p>
         </div>
       </div>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </section>
   );
 };
