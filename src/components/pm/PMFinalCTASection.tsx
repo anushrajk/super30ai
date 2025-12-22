@@ -59,21 +59,21 @@ export const PMFinalCTASection = () => {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg px-8 py-6 h-auto rounded-xl shadow-lg shadow-orange-500/25 group"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 hover:scale-105 transition-all duration-300 group"
             >
-              <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+              <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
               Start Free Audit Now
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
               variant="outline-white"
               size="lg"
               onClick={() => setShowEnquiryPopup(true)}
-              className="text-lg px-8 py-6 h-auto rounded-xl group"
+              className="hover:scale-105 transition-all duration-300 group"
             >
-              <MessageCircle className="w-5 h-5 mr-2" />
+              <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
-              <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
           <p className="text-slate-400 text-sm mt-4">Takes 2 minutes • No credit card required</p>
