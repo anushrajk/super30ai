@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Search, Facebook, Linkedin, Youtube, RefreshCw, BarChart3, Palette, Target } from "lucide-react";
+import { BentoGrid, BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
 
 const services = [
   { icon: Search, title: "Google Ads", description: "Search, Display, Shopping & YouTube campaigns" },
@@ -14,26 +14,30 @@ const services = [
 
 export const PMServicesSection = () => {
   return (
-    <section className="py-8 md:py-14 lg:py-20 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">Our Services</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Performance Marketing Services</h2>
-          <p className="text-lg text-muted-foreground">Full-funnel paid advertising across all major platforms</p>
+    <section className="py-6 md:py-10 lg:py-16 bg-background">
+      <div className="container mx-auto px-3 md:px-4">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
+          <BentoBadge className="mb-4">Our Services</BentoBadge>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+            Performance Marketing Services
+          </h2>
+          <p className="text-base md:text-lg text-muted-foreground">
+            Full-funnel paid advertising across all major platforms
+          </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+        <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
           {services.map((service, index) => (
-            <Card key={index} className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-all duration-300 group">
-              <CardContent className="p-4 md:p-6">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center mb-3 md:mb-4 group-hover:from-orange-500 group-hover:to-orange-600 transition-all">
-                  <service.icon className="w-5 h-5 md:w-6 md:h-6 text-orange-500 group-hover:text-white transition-colors" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-2">{service.title}</h3>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
-              </CardContent>
-            </Card>
+            <BentoCard key={index} className="group">
+              <BentoIcon size="md">
+                <service.icon className="w-5 h-5 md:w-6 md:h-6 text-brand group-hover:text-white transition-colors duration-300" />
+              </BentoIcon>
+              <h3 className="text-base md:text-lg font-bold text-foreground mt-3 mb-2 group-hover:text-brand transition-colors duration-300">
+                {service.title}
+              </h3>
+              <p className="text-muted-foreground text-sm">{service.description}</p>
+            </BentoCard>
           ))}
-        </div>
+        </BentoGrid>
       </div>
     </section>
   );
