@@ -19,12 +19,12 @@ export const PMRelevanceSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   
   return (
-    <section ref={ref} className={`py-10 md:py-14 lg:py-20 bg-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section ref={ref} className={`py-8 md:py-14 lg:py-20 bg-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Is This Right For You?</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
           <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-2xl p-6 md:p-8">
             <h3 className="text-xl font-bold text-green-700 dark:text-green-400 mb-6">This is for you if:</h3>
             <ul className="space-y-4">

@@ -14,14 +14,14 @@ const services = [
 
 export const PMServicesSection = () => {
   return (
-    <section className="py-10 md:py-14 lg:py-20 bg-background">
+    <section className="py-8 md:py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">Our Services</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Performance Marketing Services</h2>
           <p className="text-lg text-muted-foreground">Full-funnel paid advertising across all major platforms</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
           {services.map((service, index) => (
             <Card key={index} className="bg-background border-border/50 hover:border-orange-500/50 hover:shadow-xl transition-all duration-300 group">
               <CardContent className="p-4 md:p-6">

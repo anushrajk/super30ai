@@ -19,12 +19,12 @@ const aiPoweredItems = [
 
 export const PMComparisonSection = () => {
   return (
-    <section className="py-10 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden">
+    <section className="py-8 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-orange-50/50" />
       
       <div className="container relative mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
             Why Choose AI
           </span>
@@ -36,7 +36,7 @@ export const PMComparisonSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
           {/* Traditional Ads */}
           <Card className="bg-background border-border/50 relative overflow-hidden group">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-400 to-slate-500" />

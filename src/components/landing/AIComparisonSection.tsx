@@ -17,12 +17,12 @@ const journeySteps = [
 
 export const AIComparisonSection = () => {
   return (
-    <section className="py-10 md:py-14 lg:py-20 bg-background relative overflow-hidden">
+    <section className="py-8 md:py-14 lg:py-20 bg-background relative overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/30 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
+        <div className="text-center max-w-3xl mx-auto mb-5 md:mb-10">
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             The Difference
           </span>

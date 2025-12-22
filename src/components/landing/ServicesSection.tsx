@@ -109,12 +109,12 @@ export const ServicesSection = () => {
   const activeTabData = technicalTabs.find(tab => tab.id === activeTab);
 
   return (
-    <section className="py-10 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden">
+    <section className="py-8 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
       
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             Our Services
           </span>
@@ -126,7 +126,7 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-10 md:mb-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 mb-8 md:mb-14">
           {coreServices.map((service, index) => (
             <Card 
               key={index} 
@@ -144,7 +144,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* AI Search & Intent Mapping */}
-        <div className="grid lg:grid-cols-2 gap-6 md:gap-10 items-center mb-10 md:mb-14">
+        <div className="grid lg:grid-cols-2 gap-5 md:gap-10 items-center mb-8 md:mb-14">
           <div>
             <span className="inline-block px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-medium mb-3">
               Featured Service
@@ -197,7 +197,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Enhanced AI Prompt & Generative Search Optimization */}
-        <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-4 md:p-8 mb-10 md:mb-14 shadow-xl">
+        <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-4 md:p-8 mb-8 md:mb-14 shadow-xl">
           <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-4 text-center">
             AI Prompt & Generative Search Optimization
           </h3>
@@ -233,8 +233,8 @@ export const ServicesSection = () => {
         </div>
 
         {/* Interactive Technical AI SEO Tabs */}
-        <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-4 md:p-8 mb-10 md:mb-14 shadow-xl">
-          <div className="text-center mb-6">
+        <div className="bg-background/80 backdrop-blur-sm border border-border/50 rounded-2xl p-4 md:p-8 mb-8 md:mb-14 shadow-xl">
+          <div className="text-center mb-5 md:mb-6">
             <span className="inline-block px-3 py-1 bg-orange-100 text-orange-600 rounded-full text-xs font-medium mb-3">
               Foundation
             </span>

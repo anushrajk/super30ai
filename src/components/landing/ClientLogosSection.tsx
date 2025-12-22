@@ -71,13 +71,13 @@ export const ClientLogosSection = () => {
   }, [isVisible]);
 
   return (
-    <section className="py-6 bg-background border-b border-border/30 relative overflow-hidden">
+    <section className="py-4 md:py-6 bg-background border-b border-border/30 relative overflow-hidden">
       {/* Simplified gradient - removed backdrop-blur */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-50/30 via-transparent to-orange-50/30 pointer-events-none" />
       
       <div className="container mx-auto px-4 relative">
         {/* Trust header */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-6">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4 md:mb-6">
           <div className="flex items-center gap-1">
             {[1,2,3,4,5].map((i) => (
               <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
@@ -114,7 +114,7 @@ export const ClientLogosSection = () => {
         </div>
 
         {/* Results proof */}
-        <div className="flex flex-wrap items-center justify-center gap-6 mt-6 pt-4 border-t border-border/50">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/50">
           <div className="text-center">
             <p className="text-2xl font-bold text-foreground">300%+</p>
             <p className="text-xs text-muted-foreground">Avg. Traffic Growth</p>
