@@ -216,15 +216,6 @@ export const ServicesSection = () => {
             ))}
           </div>
 
-          <Card className="glass border-brand/20 max-w-2xl mx-auto">
-            <CardContent className="p-5">
-              <Quote className="w-7 h-7 text-brand mb-2" />
-              <p className="text-foreground italic text-sm md:text-base leading-relaxed">
-                "The future of search isn't just about ranking — it's about being the answer AI systems trust and recommend."
-              </p>
-              <p className="text-brand font-semibold mt-2 text-sm">— The Super 30 AI SEO Philosophy</p>
-            </CardContent>
-          </Card>
         </div>
 
         {/* Interactive Technical AI SEO Tabs */}
