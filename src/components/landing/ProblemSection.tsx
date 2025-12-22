@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bot, TrendingDown, FileX, DollarSign, ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { BentoGrid, BentoBadge } from "@/components/ui/bento-grid";
 
 const problems = [
   {
@@ -43,29 +44,29 @@ export const ProblemSection = () => {
       
       <div className="container mx-auto px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
+          <BentoBadge className="bg-destructive/10 text-destructive mb-4">
             The Problem
-          </span>
+          </BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            SEO Didn't Die. <span className="text-red-500">Control Did.</span>
+            SEO Didn't Die. <span className="text-destructive">Control Did.</span>
           </h2>
           <p className="text-lg text-muted-foreground">
             While you focus on traditional SEO, AI is rewriting the rules of discovery
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-10">
+        <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-6 md:mb-10">
           {problems.map((problem, index) => (
             <Card 
               key={index} 
-              className={`bg-background/80 backdrop-blur-sm border-border/50 hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 group hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+              className={`bento-card hover:border-destructive/50 hover:shadow-2xl transition-all duration-500 group hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${(index + 1) * 100}ms` }}
             >
               <CardContent className="p-4 md:p-6">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-red-100 to-red-200 rounded-2xl flex items-center justify-center mb-3 md:mb-4 group-hover:from-red-500 group-hover:to-red-600 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
-                  <problem.icon className="w-7 h-7 text-red-500 group-hover:text-white transition-colors duration-300" />
+                <div className="w-12 h-12 md:w-14 md:h-14 bg-destructive/10 rounded-2xl flex items-center justify-center mb-3 md:mb-4 group-hover:bg-destructive transition-all duration-300 group-hover:scale-110 group-hover:rotate-3">
+                  <problem.icon className="w-7 h-7 text-destructive group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-red-600 transition-colors">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-destructive transition-colors">
                   {problem.title}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
@@ -74,13 +75,13 @@ export const ProblemSection = () => {
               </CardContent>
             </Card>
           ))}
-        </div>
+        </BentoGrid>
 
         <div className={`text-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Button 
             onClick={scrollToForm}
             size="lg"
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300"
+            className="bg-brand-gradient hover:opacity-90 text-white shadow-brand hover:shadow-brand-lg hover:scale-105 transition-all duration-300"
           >
             See how your site looks to AI
             <ArrowRight className="w-4 h-4 ml-2" />

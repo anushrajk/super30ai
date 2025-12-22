@@ -28,12 +28,12 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
         
         {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background dark:from-orange-950/30 dark:via-background dark:to-background" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-light via-background to-background" />
         
-        {/* Animated orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-orange-400/30 to-orange-600/10 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-orange-500/10 rounded-full blur-2xl" />
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-orange-200/20 to-transparent rounded-full blur-2xl" />
+        {/* Animated orbs with brand color */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-brand/30 to-brand-dark/10 rounded-full blur-2xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-brand/20 to-brand-dark/10 rounded-full blur-2xl" />
+        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-brand-light to-transparent rounded-full blur-2xl" />
       </div>
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
@@ -43,7 +43,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
           <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-accent border border-border px-4 py-1.5 rounded-full">
-              <TrendingUp className="w-4 h-4 text-primary" />
+              <TrendingUp className="w-4 h-4 text-brand" />
               <span className="text-foreground text-sm font-medium">
                 #1 AI SEO Agency in India
               </span>
@@ -54,10 +54,10 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
                 When AI Decides Who Ranks,{" "}
                 <span className="relative">
-                  <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                  <span className="text-brand-gradient">
                     We Decide Who Wins.
                   </span>
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full opacity-50" />
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
@@ -73,8 +73,8 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                   key={index}
                   className="flex items-center gap-3 group cursor-default"
                 >
-                  <div className="w-7 h-7 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-orange-500/20">
-                    <signal.icon className="w-3.5 h-3.5 text-white" />
+                  <div className="w-8 h-8 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-brand">
+                    <signal.icon className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
                 </div>
@@ -88,7 +88,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                   key={i}
                   className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
                 >
-                  <Award className="w-3 h-3 text-primary" />
+                  <Award className="w-3 h-3 text-brand" />
                   {cred}
                 </span>
               ))}
@@ -108,7 +108,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                   key={i}
                   className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
                 >
-                  <Award className="w-3 h-3 text-primary" />
+                  <Award className="w-3 h-3 text-brand" />
                   {cred}
                 </span>
               ))}
