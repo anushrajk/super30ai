@@ -169,9 +169,8 @@ export const Navbar = () => {
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
             <Button 
-              variant="outline"
+              variant="outline-brand"
               onClick={() => setShowEnquiryPopup(true)}
-              className="border-2 border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
@@ -276,12 +275,12 @@ export const Navbar = () => {
 
             <div className="pt-4 mt-2 border-t border-border/50 space-y-3">
               <Button 
-                variant="outline"
+                variant="outline-brand"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
                   setShowEnquiryPopup(true);
                 }}
-                className="w-full border-2 border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
+                className="w-full"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Enquire Now
