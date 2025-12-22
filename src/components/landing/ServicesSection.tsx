@@ -140,55 +140,62 @@ export const ServicesSection = () => {
           ))}
         </BentoGrid>
 
-        {/* AI Search & Intent Mapping */}
-        <div className="grid lg:grid-cols-2 gap-4 md:gap-8 items-center mb-6 md:mb-12">
-          <div>
-            <span className="badge-brand mb-3">
-              Featured Service
-            </span>
-            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-3">AI Search & Intent Mapping</h3>
-            <p className="text-muted-foreground mb-5 leading-relaxed text-sm md:text-base">
-              Understand how AI systems interpret search queries and map your content to user intent.
-            </p>
-            <ul className="space-y-2.5 mb-5">
-              {["AI query analysis and intent classification", "Semantic search optimization", "User journey mapping for AI platforms"].map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-foreground text-sm md:text-base group">
-                  <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <Button 
-              onClick={scrollToForm} 
-              className="bg-brand-gradient hover:opacity-90 text-white shadow-brand hover:shadow-brand-lg hover:scale-105 transition-all duration-300"
-            >
-              Map My AI Visibility
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-          </div>
-          <div className="bento-card p-5 md:p-8">
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              {intentMappingIcons.map((item, i) => (
-                <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
-                  <div className="flex flex-col items-center gap-2">
-                    <div className={`w-14 h-14 sm:w-18 sm:h-18 ${i === 2 ? 'bg-brand-gradient shadow-brand' : 'icon-bg-glow'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
-                      <item.Icon className={`w-7 h-7 sm:w-9 sm:h-9 ${i === 2 ? 'text-white' : 'text-brand'}`} />
+        {/* AI Search & Intent Mapping - Dark Section */}
+        <div className="bg-[#0a0a0a] rounded-2xl p-6 md:p-10 mb-6 md:mb-12 relative overflow-hidden">
+          {/* Background elements */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="absolute top-10 left-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+          
+          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 items-center relative">
+            <div>
+              <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-3 border border-orange-500/30">
+                Featured Service
+              </span>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">AI Search & Intent Mapping</h3>
+              <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
+                Understand how AI systems interpret search queries and map your content to user intent.
+              </p>
+              <ul className="space-y-2.5 mb-5">
+                {["AI query analysis and intent classification", "Semantic search optimization", "User journey mapping for AI platforms"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
+                    <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Button 
+                onClick={scrollToForm} 
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 hover:scale-105 transition-all duration-300"
+              >
+                Map My AI Visibility
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-8 backdrop-blur-sm">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                {intentMappingIcons.map((item, i) => (
+                  <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
+                    <div className="flex flex-col items-center gap-2">
+                      <div className={`w-14 h-14 sm:w-18 sm:h-18 ${i === 2 ? 'bg-brand-gradient shadow-brand' : 'bg-brand/20'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
+                        <item.Icon className={`w-7 h-7 sm:w-9 sm:h-9 ${i === 2 ? 'text-white' : 'text-brand'}`} />
+                      </div>
+                      <span className="text-xs text-gray-400 font-medium">{item.label}</span>
                     </div>
-                    <span className="text-xs text-muted-foreground font-medium">{item.label}</span>
+                    {i < 2 && (
+                      <div className="hidden sm:flex items-center mb-6">
+                        <div className="w-6 h-1 bg-gradient-to-r from-brand/30 to-brand rounded-full" />
+                        <div className="w-0 h-0 border-t-4 border-b-4 border-l-6 border-transparent border-l-brand" />
+                      </div>
+                    )}
+                    {i < 2 && (
+                      <div className="flex sm:hidden items-center my-2">
+                        <div className="w-1 h-5 bg-gradient-to-b from-brand/30 to-brand rounded-full" />
+                      </div>
+                    )}
                   </div>
-                  {i < 2 && (
-                    <div className="hidden sm:flex items-center mb-6">
-                      <div className="w-6 h-1 bg-gradient-to-r from-brand/30 to-brand rounded-full" />
-                      <div className="w-0 h-0 border-t-4 border-b-4 border-l-6 border-transparent border-l-brand" />
-                    </div>
-                  )}
-                  {i < 2 && (
-                    <div className="flex sm:hidden items-center my-2">
-                      <div className="w-1 h-5 bg-gradient-to-b from-brand/30 to-brand rounded-full" />
-                    </div>
-                  )}
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </div>
