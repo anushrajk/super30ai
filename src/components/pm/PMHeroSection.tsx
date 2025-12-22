@@ -48,9 +48,9 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
           {/* Left Column - Content */}
           <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-4 py-1.5 rounded-full">
-              <TrendingUp className="w-4 h-4 text-blue-600" />
-              <span className="text-blue-700 text-sm font-medium">
+            <div className="badge-brand">
+              <TrendingUp className="w-4 h-4" />
+              <span className="text-sm font-medium">
                 Performance Marketing Agency
               </span>
             </div>
@@ -76,8 +76,8 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
                   key={index}
                   className="flex items-center gap-3 group cursor-default"
                 >
-                  <div className="w-7 h-7 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-md shadow-blue-500/20">
-                    <signal.icon className="w-3.5 h-3.5 text-white" />
+                  <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-gradient group-hover:scale-110 transition-all duration-300 shadow-md shadow-brand/20">
+                    <signal.icon className="w-3.5 h-3.5 text-brand group-hover:text-white transition-colors" />
                   </div>
                   <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
                 </div>
@@ -91,7 +91,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
                   key={i}
                   className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
                 >
-                  <Award className="w-3 h-3 text-blue-600" />
+                  <Award className="w-3 h-3 text-brand" />
                   {cred}
                 </span>
               ))}
@@ -111,7 +111,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
                   key={i}
                   className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
                 >
-                  <Award className="w-3 h-3 text-blue-600" />
+                  <Award className="w-3 h-3 text-brand" />
                   {cred}
                 </span>
               ))}
