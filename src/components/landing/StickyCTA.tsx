@@ -24,31 +24,36 @@ export const StickyCTA = forwardRef<HTMLDivElement, StickyCTAProps>(({ onClick }
   if (!isVisible) return null;
 
   return (
-    <div ref={ref} className="fixed bottom-0 left-0 right-0 z-50 lg:hidden animate-fade-in">
-      <div className="bg-gradient-to-r from-orange-500 to-orange-600 p-3 shadow-2xl shadow-orange-500/30 border-t border-orange-400/30">
-        <div className="container mx-auto flex items-center justify-between gap-3">
+    <div
+      ref={ref}
+      className="fixed bottom-0 left-0 right-0 z-40 p-3 sm:p-4 lg:hidden animate-in slide-in-from-bottom-4 duration-300"
+    >
+      <div className="bg-background/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-border/50 p-3 sm:p-4">
+        <div className="flex items-center justify-between gap-3">
           <div className="flex-1 min-w-0">
-            <p className="text-white font-semibold text-sm truncate">
+            <h4 className="font-semibold text-foreground text-sm sm:text-base truncate">
               Get Your Free AI SEO Audit
-            </p>
-            <p className="text-orange-100 text-xs truncate">
+            </h4>
+            <p className="text-xs sm:text-sm text-muted-foreground truncate">
               Worth $500 • Takes 60 seconds
             </p>
           </div>
-          <Button 
-            onClick={onClick}
-            className="bg-white text-orange-600 hover:bg-orange-50 font-semibold px-4 py-2 h-auto shadow-lg flex-shrink-0"
-          >
-            Start Free
-            <Sparkles className="w-4 h-4 ml-1.5" />
-          </Button>
-          <button 
-            onClick={() => setIsDismissed(true)}
-            className="text-white/70 hover:text-white p-1 flex-shrink-0"
-            aria-label="Dismiss"
-          >
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            <Button
+              onClick={onClick}
+              className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25 hover:shadow-[hsl(var(--brand-orange))]/40 text-sm px-4"
+            >
+              <Sparkles className="w-4 h-4 mr-1.5" />
+              Start Free
+            </Button>
+            <button
+              onClick={() => setIsDismissed(true)}
+              className="p-2 rounded-xl hover:bg-muted/50 border border-transparent hover:border-border/50 transition-all duration-300"
+              aria-label="Dismiss"
+            >
+              <X className="w-4 h-4 text-muted-foreground" />
+            </button>
+          </div>
         </div>
       </div>
     </div>

@@ -13,51 +13,36 @@ export const FloatingContactButtons = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative w-14 h-14 bg-green-500 hover:bg-green-600 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 animate-bounce"
-        style={{ animationDuration: '2s', animationIterationCount: 'infinite' }}
+        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 border border-green-400/30"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6 text-white animate-pulse" />
+        <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         
-        {/* Tooltip */}
-        <span className="absolute left-full ml-3 px-3 py-1.5 bg-foreground text-background text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+        {/* Tooltip with glass effect */}
+        <span className="absolute left-full ml-3 px-3 py-2 bg-background/90 backdrop-blur-sm text-foreground text-sm font-medium rounded-xl border border-border/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg">
           Chat on WhatsApp
         </span>
         
-        {/* Ripple effect */}
-        <span className="absolute inset-0 rounded-full bg-green-400 animate-ping opacity-30" />
+        {/* Subtle pulse ring */}
+        <span className="absolute inset-0 rounded-2xl border-2 border-green-400/50 animate-ping opacity-20" style={{ animationDuration: '2s' }} />
       </a>
 
       {/* Phone Button */}
       <a
         href={`tel:${PHONE_NUMBER}`}
-        className="group relative w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 rounded-full flex items-center justify-center shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 hover:scale-110"
-        style={{ animation: 'wobble 2s ease-in-out infinite' }}
+        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 rounded-2xl flex items-center justify-center shadow-lg shadow-[hsl(var(--brand-orange))]/30 hover:shadow-[hsl(var(--brand-orange))]/50 transition-all duration-300 hover:scale-110 border border-[hsl(var(--brand-orange))]/30"
         aria-label="Call us"
       >
-        <Phone className="w-6 h-6 text-white" />
+        <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
         
-        {/* Tooltip */}
-        <span className="absolute left-full ml-3 px-3 py-1.5 bg-foreground text-background text-sm font-medium rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none">
+        {/* Tooltip with glass effect */}
+        <span className="absolute left-full ml-3 px-3 py-2 bg-background/90 backdrop-blur-sm text-foreground text-sm font-medium rounded-xl border border-border/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg">
           Call Now
         </span>
         
-        {/* Pulse ring */}
-        <span className="absolute inset-0 rounded-full border-2 border-orange-400 animate-pulse opacity-50" />
+        {/* Subtle glow ring */}
+        <span className="absolute inset-0 rounded-2xl border border-[hsl(var(--brand-orange))]/50 animate-pulse opacity-50" />
       </a>
-
-      {/* CSS for wobble animation */}
-      <style>{`
-        @keyframes wobble {
-          0%, 100% { transform: rotate(0deg); }
-          15% { transform: rotate(-12deg); }
-          30% { transform: rotate(10deg); }
-          45% { transform: rotate(-8deg); }
-          60% { transform: rotate(6deg); }
-          75% { transform: rotate(-4deg); }
-          90% { transform: rotate(2deg); }
-        }
-      `}</style>
     </div>
   );
 };

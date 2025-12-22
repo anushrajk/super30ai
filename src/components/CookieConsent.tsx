@@ -76,110 +76,107 @@ export const CookieConsent = () => {
 
   return (
     <div 
-      className={`fixed bottom-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${
-        isClosing ? 'translate-y-full opacity-0' : 'translate-y-0 opacity-100'
+      className={`fixed bottom-4 left-4 right-4 md:left-auto md:right-6 md:bottom-6 md:max-w-md z-[100] transition-all duration-300 ${
+        isClosing ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'
       }`}
     >
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-background border border-border rounded-2xl shadow-2xl overflow-hidden">
-          {/* Main Banner */}
-          <div className="p-6">
-            <div className="flex items-start gap-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Cookie className="w-6 h-6 text-orange-500" />
-              </div>
-              
-              <div className="flex-1">
-                <h3 className="text-lg font-bold text-foreground mb-2">
-                  We value your privacy
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
-                  By clicking "Accept All", you consent to our use of cookies.{" "}
-                  <Link to="/cookie-policy" className="text-orange-500 hover:underline">
-                    Learn more
-                  </Link>
-                </p>
-
-                {/* Quick Actions */}
-                <div className="flex flex-wrap items-center gap-3">
-                  <Button 
-                    onClick={() => handleClose(acceptAll)}
-                    className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30"
-                  >
-                    Accept All
-                  </Button>
-                  <Button 
-                    variant="outline" 
-                    onClick={() => handleClose(rejectAll)}
-                    className="border-border hover:bg-muted"
-                  >
-                    Reject All
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    onClick={() => setShowPreferences(!showPreferences)}
-                    className="text-muted-foreground hover:text-foreground"
-                  >
-                    Customize
-                    {showPreferences ? (
-                      <ChevronUp className="w-4 h-4 ml-1" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 ml-1" />
-                    )}
-                  </Button>
-                </div>
-              </div>
+      <div className="bg-background/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-border/50 overflow-hidden">
+        {/* Header */}
+        <div className="p-4 sm:p-5">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-orange))]/10 border border-[hsl(var(--brand-orange))]/30 flex items-center justify-center flex-shrink-0">
+              <Cookie className="w-5 h-5 text-[hsl(var(--brand-orange))]" />
+            </div>
+            <div className="flex-1">
+              <h3 className="font-semibold text-foreground text-sm sm:text-base">
+                We value your privacy
+              </h3>
+              <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
+                We use cookies to enhance your browsing experience.{" "}
+                <Link to="/cookie-policy" className="text-[hsl(var(--brand-orange))] hover:underline">
+                  Learn more
+                </Link>
+              </p>
             </div>
           </div>
+        </div>
 
-          {/* Preferences Panel */}
-          {showPreferences && (
-            <div className="border-t border-border bg-muted/30 p-6 animate-fade-in">
-              <h4 className="font-semibold text-foreground mb-4">Cookie Preferences</h4>
-              <div className="space-y-4">
-                {cookieCategories.map((category) => (
-                  <div 
-                    key={category.id}
-                    className="flex items-center justify-between p-4 bg-background rounded-xl border border-border/50"
-                  >
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center">
-                        <category.icon className="w-5 h-5 text-muted-foreground" />
-                      </div>
-                      <div>
-                        <div className="font-medium text-foreground">{category.name}</div>
-                        <div className="text-xs text-muted-foreground">{category.description}</div>
-                      </div>
-                    </div>
-                    <Switch
-                      checked={customPreferences[category.id as keyof CookiePreferences]}
-                      disabled={category.disabled}
-                      onCheckedChange={(checked) => {
-                        setCustomPreferences(prev => ({
-                          ...prev,
-                          [category.id]: checked,
-                        }));
-                      }}
-                    />
+        {/* Preferences Panel */}
+        {showPreferences && (
+          <div className="border-t border-border/50 p-4 sm:p-5 space-y-3 animate-in slide-in-from-top-2 duration-300">
+            <h4 className="font-semibold text-foreground text-sm">Cookie Preferences</h4>
+            {cookieCategories.map((category) => (
+              <div 
+                key={category.id}
+                className="flex items-center justify-between gap-3 p-3 rounded-xl bg-muted/30 border border-border/50 hover:border-border transition-colors duration-300"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 rounded-lg bg-background border border-border/50 flex items-center justify-center">
+                    <category.icon className="w-4 h-4 text-muted-foreground" />
                   </div>
-                ))}
+                  <div>
+                    <span className="font-medium text-foreground text-sm">{category.name}</span>
+                    <p className="text-xs text-muted-foreground">{category.description}</p>
+                  </div>
+                </div>
+                <Switch
+                  checked={customPreferences[category.id as keyof CookiePreferences]}
+                  disabled={category.disabled}
+                  onCheckedChange={(checked) => {
+                    setCustomPreferences(prev => ({
+                      ...prev,
+                      [category.id]: checked,
+                    }));
+                  }}
+                  className="data-[state=checked]:bg-[hsl(var(--brand-orange))]"
+                />
               </div>
+            ))}
+          </div>
+        )}
 
-              <div className="flex justify-end gap-3 mt-6">
-                <Button 
-                  variant="outline"
-                  onClick={() => setShowPreferences(false)}
-                >
-                  Cancel
-                </Button>
-                <Button 
-                  onClick={() => handleClose(() => saveCustomPreferences(customPreferences))}
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white"
-                >
-                  Save Preferences
-                </Button>
-              </div>
+        {/* Actions */}
+        <div className="p-4 sm:p-5 border-t border-border/50">
+          {!showPreferences ? (
+            <div className="flex flex-col sm:flex-row gap-2">
+              <Button
+                onClick={() => handleClose(acceptAll)}
+                className="flex-1 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25"
+              >
+                Accept All
+              </Button>
+              <Button
+                onClick={() => handleClose(rejectAll)}
+                variant="outline"
+                className="flex-1 border-border/50 hover:bg-muted/50"
+              >
+                Reject All
+              </Button>
+              <Button
+                onClick={() => setShowPreferences(true)}
+                variant="ghost"
+                className="flex-1 hover:bg-muted/50"
+              >
+                Customize
+                <ChevronDown className="w-4 h-4 ml-1" />
+              </Button>
+            </div>
+          ) : (
+            <div className="flex gap-2">
+              <Button
+                onClick={() => handleClose(() => saveCustomPreferences(customPreferences))}
+                className="flex-1 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25"
+              >
+                Save Preferences
+              </Button>
+              <Button
+                onClick={() => setShowPreferences(false)}
+                variant="outline"
+                className="border-border/50 hover:bg-muted/50"
+              >
+                <ChevronUp className="w-4 h-4 mr-1" />
+                Back
+              </Button>
             </div>
           )}
         </div>
