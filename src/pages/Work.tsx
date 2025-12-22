@@ -278,7 +278,7 @@ const Work = () => {
               {filteredStudies.map((study) => (
                 <Card
                   key={study.id}
-                  className="bento-card group overflow-hidden"
+                  className="bento-card group overflow-hidden hover:shadow-brand transition-shadow duration-300"
                 >
                   {/* Image placeholder */}
                   <div className="h-40 md:h-48 bg-brand-gradient flex items-center justify-center relative overflow-hidden">
