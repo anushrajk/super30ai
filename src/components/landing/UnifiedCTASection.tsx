@@ -21,7 +21,7 @@ export const UnifiedCTASection = ({
   secondaryCTA = { label: "Free Ads Audit", href: "/performance-marketing" },
 }: UnifiedCTASectionProps) => {
   return (
-    <section className="py-24 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
       {/* Subtle grid pattern overlay */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       

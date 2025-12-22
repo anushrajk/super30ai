@@ -32,9 +32,9 @@ const articles = [
 
 export const PMBlogSection = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-background">
+    <section className="py-10 md:py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-8 md:mb-12 lg:mb-16">
+        <div className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-6 md:mb-10">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
             Insights
           </span>
@@ -84,7 +84,7 @@ export const PMBlogSection = () => {
           ))}
         </div>
 
-        <div className="text-center mt-8 md:mt-12">
+        <div className="text-center mt-6 md:mt-10">
           <Button variant="outline" className="border-blue-200 hover:bg-blue-50 hover:border-blue-400">
             View All Articles
             <ArrowRight className="w-4 h-4 ml-2" />

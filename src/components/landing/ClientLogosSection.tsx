@@ -71,7 +71,7 @@ export const ClientLogosSection = () => {
   }, [isVisible]);
 
   return (
-    <section className="py-10 bg-background border-b border-border/30 relative overflow-hidden">
+    <section className="py-6 bg-background border-b border-border/30 relative overflow-hidden">
       {/* Simplified gradient - removed backdrop-blur */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-50/30 via-transparent to-orange-50/30 pointer-events-none" />
       
@@ -114,7 +114,7 @@ export const ClientLogosSection = () => {
         </div>
 
         {/* Results proof */}
-        <div className="flex flex-wrap items-center justify-center gap-6 mt-8 pt-6 border-t border-border/50">
+        <div className="flex flex-wrap items-center justify-center gap-6 mt-6 pt-4 border-t border-border/50">
           <div className="text-center">
             <p className="text-2xl font-bold text-foreground">300%+</p>
             <p className="text-xs text-muted-foreground">Avg. Traffic Growth</p>

@@ -14,9 +14,9 @@ const services = [
 
 export const PMServicesSection = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-background">
+    <section className="py-10 md:py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">Our Services</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Performance Marketing Services</h2>
           <p className="text-lg text-muted-foreground">Full-funnel paid advertising across all major platforms</p>

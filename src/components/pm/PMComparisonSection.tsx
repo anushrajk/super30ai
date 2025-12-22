@@ -19,12 +19,12 @@ const aiPoweredItems = [
 
 export const PMComparisonSection = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-muted/30 relative overflow-hidden">
+    <section className="py-10 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-transparent to-orange-50/50" />
       
       <div className="container relative mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
             Why Choose AI
           </span>
