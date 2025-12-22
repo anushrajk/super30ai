@@ -1,5 +1,8 @@
-import { Globe, Bot, Handshake, TrendingUp, Target, Award } from "lucide-react";
+import { useState } from "react";
+import { Globe, Bot, Handshake, TrendingUp, Target, Award, MessageCircle, ArrowRight } from "lucide-react";
 import { PMLeadCaptureForm } from "./PMLeadCaptureForm";
+import { Button } from "@/components/ui/button";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 interface PMHeroSectionProps {
   onSubmit: (data: { 
@@ -26,6 +29,8 @@ const expertCredentials = [
 ];
 
 export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+
   return (
     <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
       {/* Animated Background */}
@@ -84,6 +89,20 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
               ))}
             </div>
 
+            {/* Enquire Now CTA */}
+            <div className="pt-2">
+              <Button 
+                variant="outline"
+                size="lg"
+                onClick={() => setShowEnquiryPopup(true)}
+                className="border-2 border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10 px-6 py-3 h-auto rounded-xl group"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Enquire Now
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+
             {/* Expert credentials - Mobile only */}
             <div className="lg:hidden flex flex-wrap gap-2 pt-2">
               {expertCredentials.map((cred, i) => (
@@ -119,6 +138,9 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
           </div>
         </div>
       </div>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </section>
   );
 };

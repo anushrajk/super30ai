@@ -1,5 +1,8 @@
+import { useState } from "react";
 import { LeadCaptureForm } from "./LeadCaptureForm";
-import { Users, Globe, Bot, Handshake, Award, TrendingUp } from "lucide-react";
+import { Users, Globe, Bot, Handshake, Award, TrendingUp, MessageCircle, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 interface HeroSectionProps {
   onSubmit: (data: { website_url: string; email: string; role?: string; monthly_revenue?: string }) => void;
@@ -20,6 +23,8 @@ const expertCredentials = [
 ];
 
 export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+
   return (
     <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
       {/* Animated Background */}
@@ -81,6 +86,20 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
               ))}
             </div>
 
+            {/* Enquire Now CTA */}
+            <div className="pt-2">
+              <Button 
+                variant="outline"
+                size="lg"
+                onClick={() => setShowEnquiryPopup(true)}
+                className="border-2 border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10 px-6 py-3 h-auto rounded-xl group"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Enquire Now
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </div>
+
             {/* Expert credentials - Mobile only */}
             <div className="lg:hidden flex flex-wrap gap-2 pt-2">
               {expertCredentials.map((cred, i) => (
@@ -116,6 +135,9 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
           </div>
         </div>
       </div>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </section>
   );
 };

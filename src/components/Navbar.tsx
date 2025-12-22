@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Bot, Target, Sparkles, ArrowRight } from "lucide-react";
+import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
 import super30Logo from "@/assets/super30-logo.png";
 import {
   NavigationMenu,
@@ -11,6 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const services = [
   {
@@ -39,6 +40,7 @@ const navLinks = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -164,8 +166,16 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden lg:block">
+          {/* CTA Buttons */}
+          <div className="hidden lg:flex items-center gap-3">
+            <Button 
+              variant="outline"
+              onClick={() => setShowEnquiryPopup(true)}
+              className="border-2 border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
+            >
+              <MessageCircle className="w-4 h-4 mr-2" />
+              Enquire Now
+            </Button>
             <Link to="/ai-seo">
               <Button className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25 hover:shadow-[hsl(var(--brand-orange))]/40 hover:scale-105 transition-all duration-300">
                 <Sparkles className="w-4 h-4 mr-2" />
@@ -264,7 +274,18 @@ export const Navbar = () => {
               Contact
             </Link>
 
-            <div className="pt-4 mt-2 border-t border-border/50">
+            <div className="pt-4 mt-2 border-t border-border/50 space-y-3">
+              <Button 
+                variant="outline"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setShowEnquiryPopup(true);
+                }}
+                className="w-full border-2 border-[hsl(var(--brand-orange))] text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" />
+                Enquire Now
+              </Button>
               <Link to="/ai-seo" className="block">
                 <Button className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25">
                   <Sparkles className="w-4 h-4 mr-2" />
@@ -275,6 +296,9 @@ export const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </header>
   );
 };
