@@ -9,6 +9,7 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { Navbar } from "@/components/Navbar";
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { Badge } from "@/components/ui/badge";
+import { BentoCard, BentoIcon } from "@/components/ui/bento-grid";
 
 const ThankYou = () => {
   const location = useLocation();
@@ -19,7 +20,6 @@ const ThankYou = () => {
     leadData: stateLeadData, auditData: stateAuditData, competitorData: stateCompetitorData 
   } = location.state || {};
 
-  // Use state data first, then fall back to funnel storage
   const leadData = stateLeadData || funnelLeadData;
   const auditData = stateAuditData || funnelAuditData;
   const competitorData = stateCompetitorData || funnelCompetitorData;
@@ -101,49 +101,54 @@ For questions, contact: thesuper30.ai@gmail.com
       </Helmet>
 
       <Navbar />
-      <main className="min-h-screen bg-background">
-        <section className="relative bg-gradient-to-br from-green-50 via-background to-orange-50/30 py-24 lg:py-32 overflow-hidden">
+      <main className="min-h-screen bg-background pt-16 md:pt-20">
+        <section className="relative bg-background py-16 lg:py-24 overflow-hidden">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+          <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-background to-brand/5" />
           
-          <div className="container relative mx-auto px-4">
+          {/* Floating elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-green-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
+          
+          <div className="container relative mx-auto px-3 md:px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-8">
-                <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 animate-scale-in">
-                  <CheckCircle className="w-10 h-10 text-green-500" />
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 animate-celebrate-in">
+                  <CheckCircle className="w-8 h-8 md:w-10 md:h-10 text-green-500" />
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4">
                   {isBookingConfirmation ? "Booking Confirmed!" : `Thank You${name ? `, ${name}` : ''}!`}
                 </h1>
-                <p className="text-lg text-muted-foreground">
+                <p className="text-base md:text-lg text-muted-foreground">
                   {isBookingConfirmation ? "Your strategy call has been scheduled. Check your email for the calendar invite." : "Your request has been received."}
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-4 md:gap-6">
                 {/* Booking Details */}
                 {isBookingConfirmation && (bookingDate || startTime) && (
-                  <Card className="bg-green-50 border-green-200">
+                  <Card className="bento-card border-green-500/30 bg-green-500/5">
                     <CardHeader className="pb-3">
-                      <CardTitle className="flex items-center gap-2 text-green-800">
+                      <CardTitle className="flex items-center gap-2 text-green-600 text-base md:text-lg">
                         <Calendar className="w-5 h-5" />
                         Meeting Details
                       </CardTitle>
                     </CardHeader>
-                    <CardContent className="space-y-3 text-green-700">
+                    <CardContent className="space-y-3 text-foreground text-sm">
                       {bookingDate && (
                         <p className="flex items-center gap-2">
-                          <Calendar className="w-4 h-4" />
+                          <Calendar className="w-4 h-4 text-muted-foreground" />
                           <span><strong>Date:</strong> {formatBookingDate(bookingDate) || 'Check your email'}</span>
                         </p>
                       )}
                       {startTime && (
                         <p className="flex items-center gap-2">
-                          <Clock className="w-4 h-4" />
+                          <Clock className="w-4 h-4 text-muted-foreground" />
                           <span><strong>Time:</strong> {startTime}{endTime ? ` - ${endTime}` : ''}</span>
                         </p>
                       )}
                       {meetingLink && (
-                        <a href={meetingLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-orange-600 hover:text-orange-700 font-medium">
+                        <a href={meetingLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-brand hover:opacity-80 font-medium">
                           <Video className="w-4 h-4" />
                           Join Meeting Link
                         </a>
@@ -153,9 +158,9 @@ For questions, contact: thesuper30.ai@gmail.com
                 )}
 
                 {/* Contact Info */}
-                <Card className="border-border">
+                <Card className="bento-card">
                   <CardHeader className="pb-3">
-                    <CardTitle className="flex items-center gap-2">
+                    <CardTitle className="flex items-center gap-2 text-base md:text-lg">
                       <Mail className="w-5 h-5 text-blue-500" />
                       Your Information
                     </CardTitle>
@@ -175,30 +180,30 @@ For questions, contact: thesuper30.ai@gmail.com
 
                 {/* Audit Summary */}
                 {auditData && (
-                  <Card className="border-orange-200 bg-orange-50/50">
+                  <Card className="bento-card border-brand/30 bg-brand/5">
                     <CardHeader className="pb-3">
-                      <CardTitle className="flex items-center gap-2 text-orange-800">
+                      <CardTitle className="flex items-center gap-2 text-brand text-base md:text-lg">
                         <Target className="w-5 h-5" />
                         Audit Summary
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="grid grid-cols-2 gap-3 text-sm">
-                        <div className="bg-white rounded-lg p-3 text-center">
+                        <div className="bg-background rounded-lg p-3 text-center">
                           <p className="text-muted-foreground text-xs">AI Visibility</p>
-                          <p className="text-2xl font-bold text-orange-600">{auditData.ai_visibility_score}%</p>
+                          <p className="text-xl md:text-2xl font-bold text-brand">{auditData.ai_visibility_score}%</p>
                         </div>
-                        <div className="bg-white rounded-lg p-3 text-center">
+                        <div className="bg-background rounded-lg p-3 text-center">
                           <p className="text-muted-foreground text-xs">SEO Score</p>
-                          <p className="text-2xl font-bold text-blue-600">{auditData.seo_score}%</p>
+                          <p className="text-xl md:text-2xl font-bold text-blue-600">{auditData.seo_score}%</p>
                         </div>
-                        <div className="bg-white rounded-lg p-3 text-center">
+                        <div className="bg-background rounded-lg p-3 text-center">
                           <p className="text-muted-foreground text-xs">Performance</p>
-                          <p className="text-2xl font-bold text-green-600">{auditData.performance_score}%</p>
+                          <p className="text-xl md:text-2xl font-bold text-green-600">{auditData.performance_score}%</p>
                         </div>
-                        <div className="bg-white rounded-lg p-3 text-center">
+                        <div className="bg-background rounded-lg p-3 text-center">
                           <p className="text-muted-foreground text-xs">Issues Found</p>
-                          <p className="text-2xl font-bold text-red-600">{auditData.technical_issues}</p>
+                          <p className="text-xl md:text-2xl font-bold text-red-600">{auditData.technical_issues}</p>
                         </div>
                       </div>
                     </CardContent>
@@ -207,27 +212,27 @@ For questions, contact: thesuper30.ai@gmail.com
 
                 {/* Competitor Analysis */}
                 {competitorData && (
-                  <Card className="border-purple-200 bg-purple-50/50">
+                  <Card className="bento-card border-purple-500/30 bg-purple-500/5">
                     <CardHeader className="pb-3">
-                      <CardTitle className="flex items-center gap-2 text-purple-800">
+                      <CardTitle className="flex items-center gap-2 text-purple-600 text-base md:text-lg">
                         <TrendingDown className="w-5 h-5" />
                         Competitor Insights
-                        <Badge className="bg-purple-100 text-purple-700 text-xs">AI</Badge>
+                        <Badge className="bg-purple-100 text-purple-700 text-xs dark:bg-purple-900/30">AI</Badge>
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
-                      <div className="bg-white rounded-lg p-3">
+                      <div className="bg-background rounded-lg p-3">
                         <p className="text-xs text-muted-foreground">Business Niche</p>
                         <p className="font-semibold text-foreground">{competitorData.business_niche}</p>
                       </div>
-                      <div className="bg-red-100 rounded-lg p-3 text-center">
-                        <p className="text-xs text-red-700">Estimated Monthly Loss</p>
-                        <p className="text-2xl font-bold text-red-600 flex items-center justify-center gap-1">
+                      <div className="bg-red-100 dark:bg-red-900/20 rounded-lg p-3 text-center">
+                        <p className="text-xs text-red-700 dark:text-red-400">Estimated Monthly Loss</p>
+                        <p className="text-xl md:text-2xl font-bold text-red-600 flex items-center justify-center gap-1">
                           <IndianRupee className="w-5 h-5" />
                           {formatCurrency(competitorData.estimated_monthly_loss.amount)}
                         </p>
                       </div>
-                      <div className="bg-white rounded-lg p-3">
+                      <div className="bg-background rounded-lg p-3">
                         <p className="text-xs text-muted-foreground mb-2">Top Competitors</p>
                         {competitorData.competitors.slice(0, 3).map((c: any, i: number) => (
                           <p key={i} className="text-sm">{c.name} <span className="text-muted-foreground">({c.estimated_strength}%)</span></p>
@@ -247,15 +252,15 @@ For questions, contact: thesuper30.ai@gmail.com
                   </Button>
                 )}
                 
-                <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-2xl p-6 text-white">
-                  <p className="text-orange-100 mb-2">Can't wait? Talk to us now!</p>
-                  <a href="tel:+917353252526" className="inline-flex items-center gap-2 text-2xl font-bold hover:underline">
-                    <Phone className="w-6 h-6" />
+                <div className="bg-brand-gradient rounded-2xl p-6 text-white">
+                  <p className="text-white/80 mb-2">Can't wait? Talk to us now!</p>
+                  <a href="tel:+917353252526" className="inline-flex items-center gap-2 text-xl md:text-2xl font-bold hover:opacity-80 transition-opacity">
+                    <Phone className="w-5 h-5 md:w-6 md:h-6" />
                     +91 73532 52526
                   </a>
                 </div>
 
-                <Button asChild className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700">
+                <Button asChild className="bg-brand-gradient hover:opacity-90">
                   <a href="/">Explore Our Services <ArrowRight className="w-4 h-4 ml-2" /></a>
                 </Button>
               </div>
