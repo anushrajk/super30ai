@@ -12,8 +12,14 @@ export const PMProblemSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   
   return (
-    <section ref={ref} className={`py-8 md:py-14 lg:py-20 bg-slate-900 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      <div className="container mx-auto px-4">
+    <section ref={ref} className={`py-8 md:py-14 lg:py-20 bg-[#0a0a0a] relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      {/* Grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      {/* Floating blur elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-red-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-48 h-48 bg-red-500/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-red-500/20 text-red-400 rounded-full text-sm font-medium mb-4">The Problem</span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Your Ads Burn Money Without Results</h2>

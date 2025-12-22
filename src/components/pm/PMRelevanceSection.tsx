@@ -19,28 +19,34 @@ export const PMRelevanceSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   
   return (
-    <section ref={ref} className={`py-8 md:py-14 lg:py-20 bg-muted/30 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      <div className="container mx-auto px-4">
+    <section ref={ref} className={`py-8 md:py-14 lg:py-20 bg-[#0a0a0a] relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      {/* Grid pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      {/* Floating blur elements */}
+      <div className="absolute top-10 left-10 w-32 h-32 bg-brand/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4">Is This Right For You?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Is This Right For You?</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
-          <div className="bg-green-50 dark:bg-green-950/30 border border-green-200 dark:border-green-800 rounded-2xl p-6 md:p-8">
-            <h3 className="text-xl font-bold text-green-700 dark:text-green-400 mb-6">This is for you if:</h3>
+          <div className="bg-green-950/50 border border-green-800 rounded-2xl p-6 md:p-8">
+            <h3 className="text-xl font-bold text-green-400 mb-6">This is for you if:</h3>
             <ul className="space-y-4">
               {forYou.map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                <li key={i} className="flex items-center gap-3 text-slate-300">
                   <Check className="w-5 h-5 text-green-500" />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-          <div className="bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-2xl p-6 md:p-8">
-            <h3 className="text-xl font-bold text-red-700 dark:text-red-400 mb-6">This is NOT for you if:</h3>
+          <div className="bg-red-950/50 border border-red-800 rounded-2xl p-6 md:p-8">
+            <h3 className="text-xl font-bold text-red-400 mb-6">This is NOT for you if:</h3>
             <ul className="space-y-4">
               {notForYou.map((item, i) => (
-                <li key={i} className="flex items-center gap-3 text-slate-700 dark:text-slate-300">
+                <li key={i} className="flex items-center gap-3 text-slate-300">
                   <X className="w-5 h-5 text-red-500" />
                   {item}
                 </li>
