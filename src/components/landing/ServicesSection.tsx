@@ -193,29 +193,117 @@ export const ServicesSection = () => {
           </div>
         </div>
 
-        {/* Enhanced AI Prompt & Generative Search Optimization */}
-        <div className="bento-card p-4 md:p-6 mb-6 md:mb-12">
-          <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3 text-center">
-            AI Prompt & Generative Search Optimization
-          </h3>
-          <p className="text-muted-foreground text-center mb-6 max-w-2xl mx-auto text-sm md:text-base">
-            Optimize your content to appear in AI-generated answers and become the trusted source LLMs cite.
-          </p>
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
-            {aiPromptFeatures.map((feature, index) => (
-              <Card key={index} className="bento-card group">
-                <CardContent className="p-4 text-center">
-                  <BentoIcon size="sm" className="mx-auto mb-2">
-                    <feature.icon className="w-5 h-5 text-brand group-hover:text-white transition-colors" />
-                  </BentoIcon>
-                  <h4 className="font-semibold text-foreground mb-1 text-sm">{feature.title}</h4>
-                  <p className="text-xs text-muted-foreground">{feature.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+        {/* Enhanced AI Prompt & Generative Search Optimization - Infographic Style */}
+        <div className="bento-card p-4 md:p-8 mb-6 md:mb-12 relative overflow-hidden">
+          {/* Animated background elements */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl animate-pulse" />
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand/3 rounded-full blur-3xl" />
           </div>
-
+          
+          <div className="relative">
+            <div className="text-center mb-8">
+              <span className="badge-brand mb-3">
+                AI Visibility
+              </span>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">
+                AI Prompt & Generative Search Optimization
+              </h3>
+              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
+                Optimize your content to appear in AI-generated answers and become the trusted source LLMs cite.
+              </p>
+            </div>
+            
+            {/* Infographic Flow Design */}
+            <div className="relative max-w-4xl mx-auto">
+              {/* Connection lines - Desktop */}
+              <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 z-0">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/40 to-transparent animate-pulse" style={{ animationDuration: '2s' }} />
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
+                {aiPromptFeatures.map((feature, index) => (
+                  <div 
+                    key={index} 
+                    className="group relative"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    {/* Step number badge */}
+                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center text-white text-xs font-bold shadow-brand z-20 group-hover:scale-125 transition-transform duration-300">
+                      {index + 1}
+                    </div>
+                    
+                    {/* Card with enhanced interactions */}
+                    <Card className="bento-card group-hover:border-brand/50 group-hover:shadow-brand transition-all duration-500 h-full overflow-hidden">
+                      {/* Hover gradient overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:via-brand/10 group-hover:to-brand/5 transition-all duration-500" />
+                      
+                      <CardContent className="p-5 text-center relative">
+                        {/* Animated icon container */}
+                        <div className="relative mx-auto mb-4 w-16 h-16">
+                          {/* Pulse ring animation */}
+                          <div className="absolute inset-0 rounded-2xl bg-brand/10 group-hover:animate-ping opacity-0 group-hover:opacity-100" style={{ animationDuration: '1.5s' }} />
+                          
+                          {/* Icon background with hover effects */}
+                          <div className="relative w-16 h-16 bg-brand/10 group-hover:bg-brand-gradient rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg group-hover:shadow-brand">
+                            <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
+                          </div>
+                        </div>
+                        
+                        <h4 className="font-bold text-foreground mb-2 text-sm md:text-base group-hover:text-brand transition-colors duration-300">
+                          {feature.title}
+                        </h4>
+                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
+                          {feature.description}
+                        </p>
+                        
+                        {/* Bottom accent line */}
+                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      </CardContent>
+                    </Card>
+                    
+                    {/* Arrow connector - Desktop only */}
+                    {index < 3 && (
+                      <div className="hidden lg:flex absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
+                        <div className="w-6 h-6 flex items-center justify-center">
+                          <ArrowRight className="w-4 h-4 text-brand/50 group-hover:text-brand group-hover:translate-x-1 transition-all duration-300" />
+                        </div>
+                      </div>
+                    )}
+                    
+                    {/* Arrow connector - Mobile/Tablet */}
+                    {index < 3 && (
+                      <div className="flex lg:hidden justify-center py-2 sm:hidden">
+                        <div className="w-1 h-6 bg-gradient-to-b from-brand/30 to-brand rounded-full" />
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Bottom CTA area with stats */}
+            <div className="mt-8 pt-6 border-t border-border/50">
+              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
+                <div className="text-center group cursor-default">
+                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">95%</div>
+                  <div className="text-xs text-muted-foreground">AI Citation Rate</div>
+                </div>
+                <div className="w-px h-8 bg-border/50 hidden sm:block" />
+                <div className="text-center group cursor-default">
+                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">3x</div>
+                  <div className="text-xs text-muted-foreground">Visibility Boost</div>
+                </div>
+                <div className="w-px h-8 bg-border/50 hidden sm:block" />
+                <div className="text-center group cursor-default">
+                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">24/7</div>
+                  <div className="text-xs text-muted-foreground">AI Monitoring</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Interactive Technical AI SEO Tabs */}
