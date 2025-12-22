@@ -10,9 +10,9 @@ const faqs = [
 
 export const PMFAQSection = () => {
   return (
-    <section id="faq" className="py-12 md:py-16 lg:py-24 bg-background">
+    <section id="faq" className="py-10 md:py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">FAQ</span>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Frequently Asked Questions</h2>
         </div>

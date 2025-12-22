@@ -128,7 +128,7 @@ export const PMTargetAudienceSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-12 md:py-16 lg:py-24 bg-background relative overflow-hidden"
+      className="py-10 md:py-14 lg:py-20 bg-background relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-50/20 to-transparent dark:via-blue-950/10" />
@@ -136,7 +136,7 @@ export const PMTargetAudienceSection = () => {
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/5 rounded-full blur-2xl" />
 
       <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-10 md:mb-16 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
             Who We Help
           </span>
