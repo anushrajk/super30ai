@@ -127,7 +127,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
           required
           className="flex-1 bg-background border-input h-12"
         />
-        <Button type="submit" disabled={loading} className="h-12 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-6 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-[1.02] transition-all duration-300">
+        <Button type="submit" disabled={loading} className="h-12 bg-brand-gradient hover:opacity-90 text-white px-6 shadow-brand hover:shadow-brand-lg hover:scale-[1.02] transition-all duration-300">
           {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Get Free Audit"}
           {!loading && <Sparkles className="w-4 h-4 ml-2" />}
         </Button>
@@ -136,9 +136,9 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
   }
 
   return (
-    <Card className="bg-background/95 backdrop-blur-xl border-2 border-orange-500/20 shadow-2xl shadow-orange-500/10 overflow-hidden relative group">
+    <Card className="glass border-2 border-brand/20 shadow-2xl shadow-brand/10 overflow-hidden relative group rounded-2xl">
       {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-400/30 via-transparent to-orange-600/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-brand/30 via-transparent to-brand-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <CardContent className="p-4 sm:p-6 relative">
         {/* Progress bar */}
@@ -153,11 +153,11 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
                 {filledFields === 0 ? "Start your audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to analyze!"}
               </span>
             </div>
-            <span className="text-xs font-bold text-orange-500">{Math.round(progress)}%</span>
+            <span className="text-xs font-bold text-brand">{Math.round(progress)}%</span>
           </div>
           <div className="h-1.5 bg-muted rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-orange-400 to-orange-600 rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-brand-gradient rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -172,7 +172,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         
         {/* Value badges */}
         <div className="flex items-center justify-center gap-2 mb-5">
-          <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">
+          <span className="text-xs bg-brand-light text-brand px-2 py-0.5 rounded-full font-medium">
             Worth $500
           </span>
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
@@ -192,20 +192,20 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               onBlur={() => handleBlur('url')}
               className={`w-full bg-background h-12 transition-all duration-300 pl-4 pr-10 ${
                 touched.url && !isUrlValid 
-                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-                  : 'border-border focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20'
+                  ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
+                  : 'border-border focus:border-brand focus:ring-2 focus:ring-brand/20'
               }`}
             />
             {websiteUrl && (
               isUrlValid ? (
                 <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
               ) : touched.url && (
-                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive animate-scale-in" />
               )
             )}
           </div>
           {touched.url && !isUrlValid && websiteUrl && (
-            <p className="text-xs text-red-500 -mt-1 ml-1">Please enter a valid URL (e.g., https://example.com)</p>
+            <p className="text-xs text-destructive -mt-1 ml-1">Please enter a valid URL (e.g., https://example.com)</p>
           )}
           
           {/* Email */}
@@ -219,20 +219,20 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               onBlur={() => handleBlur('email')}
               className={`w-full bg-background h-12 transition-all duration-300 pl-4 pr-10 ${
                 touched.email && !isEmailValid 
-                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-                  : 'border-border focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20'
+                  ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
+                  : 'border-border focus:border-brand focus:ring-2 focus:ring-brand/20'
               }`}
             />
             {email && (
               isEmailValid ? (
                 <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
               ) : touched.email && (
-                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive animate-scale-in" />
               )
             )}
           </div>
           {touched.email && !isEmailValid && email && (
-            <p className="text-xs text-red-500 -mt-1 ml-1">Please enter a valid email address</p>
+            <p className="text-xs text-destructive -mt-1 ml-1">Please enter a valid email address</p>
           )}
 
           {/* Phone Number with +91 */}
@@ -251,8 +251,8 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
                 onBlur={() => handleBlur('phone')}
                 className={`w-full bg-background h-12 rounded-l-none transition-all duration-300 pl-3 pr-10 ${
                   touched.phone && !isPhoneValid 
-                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-                    : 'border-border focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20'
+                    ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
+                    : 'border-border focus:border-brand focus:ring-2 focus:ring-brand/20'
                 }`}
               />
             </div>
@@ -260,22 +260,22 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               isPhoneValid ? (
                 <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
               ) : touched.phone && (
-                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive animate-scale-in" />
               )
             )}
           </div>
           {touched.phone && !isPhoneValid && phone && (
-            <p className="text-xs text-red-500 -mt-1 ml-1">Enter 10 digit number starting with 6, 7, 8, or 9</p>
+            <p className="text-xs text-destructive -mt-1 ml-1">Enter 10 digit number starting with 6, 7, 8, or 9</p>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Select value={role} onValueChange={setRole}>
-              <SelectTrigger className={`bg-background border-border h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 ${role ? 'border-green-500/50' : ''}`}>
+              <SelectTrigger className={`bg-background border-border h-12 focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300 ${role ? 'border-green-500/50' : ''}`}>
                 <SelectValue placeholder="Your Role" />
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-orange-50 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="hover:bg-brand-light cursor-pointer">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -283,12 +283,12 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
             </Select>
 
             <Select value={monthlyRevenue} onValueChange={setMonthlyRevenue}>
-              <SelectTrigger className={`bg-background border-border h-12 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 transition-all duration-300 ${monthlyRevenue ? 'border-green-500/50' : ''}`}>
+              <SelectTrigger className={`bg-background border-border h-12 focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300 ${monthlyRevenue ? 'border-green-500/50' : ''}`}>
                 <SelectValue placeholder="Revenue" />
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {revenueOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-orange-50 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="hover:bg-brand-light cursor-pointer">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -299,7 +299,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
           <Button 
             type="submit" 
             disabled={loading || !canSubmit}
-            className="w-full h-14 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-lg font-semibold shadow-xl shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-brand-gradient hover:opacity-90 text-white text-lg font-semibold shadow-brand-lg hover:shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -319,7 +319,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         <div className="mt-4 pt-4 border-t border-border/50">
           <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2 text-xs text-muted-foreground">
             <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-orange-500" />
+              <Clock className="w-3.5 h-3.5 text-brand" />
               <span>60 sec setup</span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -339,9 +339,9 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
             {[1,2,3,4].map((i) => (
               <div 
                 key={i} 
-                className="w-7 h-7 rounded-full bg-gradient-to-br from-slate-200 to-slate-300 border-2 border-background flex items-center justify-center"
+                className="w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 border-2 border-background flex items-center justify-center"
               >
-                <Users className="w-3 h-3 text-slate-600" />
+                <Users className="w-3 h-3 text-muted-foreground" />
               </div>
             ))}
           </div>
