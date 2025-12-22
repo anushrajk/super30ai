@@ -8,6 +8,7 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
 import { AIComparisonSection } from "@/components/landing/AIComparisonSection";
+import { SEOBenefitsSection } from "@/components/landing/SEOBenefitsSection";
 import { ServicesSection } from "@/components/landing/ServicesSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { ProcessSection } from "@/components/landing/ProcessSection";
@@ -104,6 +105,9 @@ const AiSeo = () => {
         </div>
         <div id="ai-seo-comparison">
           <AIComparisonSection />
+        </div>
+        <div id="ai-seo-benefits">
+          <SEOBenefitsSection />
         </div>
         <div id="ai-seo-services">
           <ServicesSection />
