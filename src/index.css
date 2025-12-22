@@ -40,6 +40,7 @@ All colors MUST be HSL.
 
     /* Brand Orange - #f54a00 converted to HSL: 18 100% 48% */
     --brand: 18 100% 48%;
+    --brand-orange: 18 100% 48%;
     --brand-light: 18 100% 95%;
     --brand-dark: 18 100% 38%;
 
@@ -84,6 +85,7 @@ All colors MUST be HSL.
     --ring: 212.7 26.8% 83.9%;
 
     --brand: 18 100% 48%;
+    --brand-orange: 18 100% 48%;
     --brand-light: 18 100% 25%;
     --brand-dark: 18 100% 38%;
 
