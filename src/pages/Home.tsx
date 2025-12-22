@@ -79,13 +79,13 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="text-center lg:text-left">
-              {/* Trust Badge - removed backdrop-blur */}
-              <div className="inline-flex items-center gap-2 bg-background/95 border border-orange-200 px-4 py-2 rounded-full mb-6 animate-fade-in">
-                <div className="flex items-center justify-center w-6 h-6 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full">
-                  <Award className="w-3.5 h-3.5 text-white" />
+              {/* Trust Badge - with icon glow */}
+              <div className="inline-flex items-center gap-2 bg-background/95 border border-brand/20 px-4 py-2 rounded-full mb-6 animate-fade-in">
+                <div className="flex items-center justify-center w-6 h-6 icon-bg-glow rounded-full">
+                  <Award className="w-3.5 h-3.5 text-brand" />
                 </div>
                 <span className="text-sm font-medium text-foreground">#1 AI Marketing Agency in India</span>
-                <Sparkles className="w-4 h-4 text-orange-500" />
+                <Sparkles className="w-4 h-4 text-brand" />
               </div>
 
               {/* Main Headline */}
@@ -197,10 +197,10 @@ const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {whyChooseUs.map((item, index) => <Card key={index} className="bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-[transform,box-shadow,border-color] duration-200 group hover:-translate-y-1">
+            {whyChooseUs.map((item, index) => <Card key={index} className="bento-card group hover:-translate-y-1 group-hover:shadow-brand transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-accent rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-gradient-to-br group-hover:from-orange-500 group-hover:to-orange-600 transition-colors duration-200">
-                  <item.icon className="w-7 h-7 text-primary group-hover:text-white transition-colors duration-200" />
+                <div className="w-14 h-14 icon-bg-glow rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:bg-brand-gradient group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg group-hover:shadow-brand">
+                  <item.icon className="w-7 h-7 text-brand group-hover:text-white transition-colors duration-200" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
                 <p className="text-sm text-muted-foreground">{item.description}</p>
