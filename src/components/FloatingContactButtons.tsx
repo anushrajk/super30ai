@@ -13,7 +13,7 @@ export const FloatingContactButtons = () => {
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30 hover:shadow-green-500/50 transition-all duration-300 hover:scale-110 border border-green-400/30"
+        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-green-500 hover:bg-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/30 hover:shadow-[0_0_25px_rgba(34,197,94,0.6)] transition-all duration-300 hover:scale-110 border border-green-400/30"
         aria-label="Chat on WhatsApp"
       >
         <MessageCircle className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -30,7 +30,7 @@ export const FloatingContactButtons = () => {
       {/* Phone Button */}
       <a
         href={`tel:${PHONE_NUMBER}`}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 rounded-2xl flex items-center justify-center shadow-lg shadow-[hsl(var(--brand-orange))]/30 hover:shadow-[hsl(var(--brand-orange))]/50 transition-all duration-300 hover:scale-110 border border-[hsl(var(--brand-orange))]/30"
+        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 rounded-2xl flex items-center justify-center shadow-lg shadow-[hsl(var(--brand-orange))]/30 hover:shadow-[0_0_25px_hsl(var(--brand-orange)/0.6)] transition-all duration-300 hover:scale-110 border border-[hsl(var(--brand-orange))]/30"
         aria-label="Call us"
       >
         <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
