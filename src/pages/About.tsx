@@ -76,10 +76,10 @@ const About = () => {
 
           <div className="container relative mx-auto px-3 md:px-4">
             <div className="max-w-4xl mx-auto text-center">
-              <BentoBadge className="mb-4 md:mb-6">
-                <Award className="w-4 h-4" />
-                10+ Years of Excellence
-                <Sparkles className="w-4 h-4" />
+              <BentoBadge className="mb-4 md:mb-6 text-xs sm:text-sm whitespace-nowrap">
+                <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+                <span>10+ Years of Excellence</span>
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
               </BentoBadge>
 
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-6">
@@ -156,16 +156,16 @@ const About = () => {
               </div>
 
               {/* Values Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                 {values.map((value, index) => (
-                  <BentoCard key={index} className="group">
-                    <BentoIcon size="md">
-                      <value.icon className="w-6 h-6 text-brand group-hover:text-white transition-colors" />
+                  <BentoCard key={index} className="group p-3 sm:p-4 md:p-6">
+                    <BentoIcon size="sm" className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12">
+                      <value.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-brand group-hover:text-white transition-colors" />
                     </BentoIcon>
-                    <h3 className="font-bold text-foreground mt-3 mb-2 group-hover:text-brand transition-colors">
+                    <h3 className="font-bold text-foreground mt-2 sm:mt-3 mb-1 sm:mb-2 text-sm sm:text-base group-hover:text-brand transition-colors">
                       {value.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{value.description}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{value.description}</p>
                   </BentoCard>
                 ))}
               </div>
