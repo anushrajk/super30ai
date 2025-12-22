@@ -1,5 +1,6 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { AlertTriangle, TrendingDown, Users, DollarSign } from "lucide-react";
+import { AlertTriangle, TrendingDown, Users, DollarSign, ArrowRight, Sparkles } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const problems = [
   { icon: DollarSign, title: "High CPC, Low Returns", description: "Your cost-per-click keeps rising but conversions stay flat" },
@@ -10,6 +11,10 @@ const problems = [
 
 export const PMProblemSection = () => {
   const [ref, isVisible] = useScrollAnimation();
+  
+  const scrollToForm = () => {
+    document.getElementById('pm-hero')?.scrollIntoView({ behavior: 'smooth' });
+  };
   
   return (
     <section ref={ref} className={`py-8 md:py-14 lg:py-20 bg-[#0a0a0a] relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -35,6 +40,17 @@ export const PMProblemSection = () => {
               <p className="text-slate-400 text-sm">{problem.description}</p>
             </div>
           ))}
+        </div>
+        <div className="text-center mt-8 md:mt-12">
+          <Button 
+            onClick={scrollToForm}
+            size="lg"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-5 h-auto rounded-xl shadow-lg shadow-orange-500/25 group"
+          >
+            <Sparkles className="w-5 h-5 mr-2 group-hover:animate-pulse" />
+            Start Free Audit Now
+            <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
     </section>
