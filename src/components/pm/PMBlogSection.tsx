@@ -32,9 +32,9 @@ const articles = [
 
 export const PMBlogSection = () => {
   return (
-    <section className="py-10 md:py-14 lg:py-20 bg-background">
+    <section className="py-8 md:py-14 lg:py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-6 md:mb-10">
+        <div className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-5 md:mb-10">
           <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
             Insights
           </span>
@@ -46,7 +46,7 @@ export const PMBlogSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8 max-w-6xl mx-auto">
           {articles.map((article, index) => (
             <Card 
               key={index}

@@ -27,7 +27,7 @@ export const RelevanceFilterSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-10 md:py-14 lg:py-20 bg-background relative overflow-hidden"
+      className="py-8 md:py-14 lg:py-20 bg-background relative overflow-hidden"
     >
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-30">
@@ -36,7 +36,7 @@ export const RelevanceFilterSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
             Instant Relevance Filter
           </span>
@@ -48,7 +48,7 @@ export const RelevanceFilterSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
           {/* This is for you */}
           <div
             ref={leftCardRef}

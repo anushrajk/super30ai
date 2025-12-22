@@ -36,13 +36,13 @@ export const ProblemSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-10 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden"
+      className="py-8 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden"
     >
       {/* Background pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
       
       <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">
             The Problem
           </span>
@@ -54,7 +54,7 @@ export const ProblemSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8 md:mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-10">
           {problems.map((problem, index) => (
             <Card 
               key={index} 

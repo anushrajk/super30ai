@@ -26,7 +26,7 @@ export const FinalCTASection = ({ onSubmit, loading }: FinalCTASectionProps) => 
   return (
     <section 
       ref={sectionRef}
-      className="py-10 md:py-16 lg:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden"
+      className="py-8 md:py-16 lg:py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden"
     >
       {/* Animated background */}
       <div className="absolute inset-0">
