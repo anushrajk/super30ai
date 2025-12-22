@@ -51,9 +51,7 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
   useEffect(() => {
     if (videoRef.current) {
       if (isHovered) {
-        videoRef.current.play().catch(() => {
-          // Autoplay might be blocked by browser
-        });
+        videoRef.current.play().catch(() => {});
       } else {
         videoRef.current.pause();
         videoRef.current.currentTime = 0;
@@ -71,19 +69,17 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
 
   return (
     <div
-      className="flex-shrink-0 w-[160px] sm:w-[200px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start shadow-lg hover:shadow-2xl transition-all duration-300"
+      className="flex-shrink-0 w-[140px] sm:w-[180px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start shadow-lg hover:shadow-2xl transition-all duration-300"
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
       <div className="aspect-[9/16] relative bg-muted">
-        {/* Thumbnail Image */}
         <img 
           src={video.thumbnail} 
           alt={`${video.name} testimonial`}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
         />
         
-        {/* Video Element */}
         <video
           ref={videoRef}
           src={video.video}
@@ -93,43 +89,37 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
         />
         
-        {/* Overlay */}
         <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-60' : 'opacity-70'}`} />
         
-        {/* Play button - only show when not hovered */}
         <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`}>
-          <div className="w-14 h-14 bg-white/90 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
-            <Play className="w-6 h-6 text-orange-500 ml-1" />
+          <div className="w-12 h-12 bg-background/90 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
+            <Play className="w-5 h-5 text-brand ml-0.5" />
           </div>
         </div>
 
-        {/* Duration badge */}
-        <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-medium">
+        <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-medium">
           {video.duration}
         </div>
 
-        {/* Sound control on hover */}
         {isHovered && (
           <button
             onClick={toggleMute}
-            className="absolute top-3 left-3 bg-black/60 backdrop-blur-sm p-2 rounded-full text-white hover:bg-black/80 transition-colors"
+            className="absolute top-2 left-2 bg-black/60 backdrop-blur-sm p-1.5 rounded-full text-white hover:bg-black/80 transition-colors"
           >
-            {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
+            {isMuted ? <VolumeX className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
           </button>
         )}
 
-        {/* Progress bar on hover */}
         {isHovered && (
-          <div className="absolute bottom-16 left-3 right-3 flex items-center gap-2">
+          <div className="absolute bottom-14 left-2 right-2 flex items-center gap-2">
             <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
-              <div className="w-1/3 h-full bg-orange-500 rounded-full animate-pulse" />
+              <div className="w-1/3 h-full bg-brand rounded-full animate-pulse" />
             </div>
           </div>
         )}
 
-        {/* Info */}
-        <div className="absolute bottom-3 left-3 right-3">
-          <p className="text-white font-bold text-sm">{video.name}</p>
+        <div className="absolute bottom-2 left-2 right-2">
+          <p className="text-white font-bold text-xs">{video.name}</p>
           <p className="text-white/70 text-xs">{video.company}</p>
         </div>
       </div>
@@ -151,7 +141,6 @@ export const TestimonialSection = () => {
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
-  // Auto-rotate testimonials
   useEffect(() => {
     const interval = setInterval(nextTestimonial, 5000);
     return () => clearInterval(interval);
@@ -159,7 +148,7 @@ export const TestimonialSection = () => {
 
   const scrollVideos = (direction: 'left' | 'right') => {
     if (videoScrollRef.current) {
-      const scrollAmount = 220;
+      const scrollAmount = 200;
       videoScrollRef.current.scrollBy({
         left: direction === 'left' ? -scrollAmount : scrollAmount,
         behavior: 'smooth'
@@ -172,73 +161,69 @@ export const TestimonialSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-8 md:py-14 lg:py-20 bg-background relative overflow-hidden"
+      className="py-6 md:py-10 lg:py-16 bg-background relative overflow-hidden"
     >
-      {/* Subtle background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50/30 via-transparent to-orange-50/30" />
+      <div className="absolute inset-0 bg-brand-gradient-light dark:bg-transparent" />
       
-      <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+      <div className="container mx-auto px-3 md:px-4 relative">
+        <div className={`text-center max-w-3xl mx-auto mb-5 md:mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="badge-brand mb-4">
             Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
             What Our Clients Say
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground">
             Real results from real businesses
           </p>
         </div>
 
         {/* Text Testimonial Carousel */}
-        <div className={`max-w-4xl mx-auto mb-8 md:mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Card className="bg-gradient-to-br from-orange-50 via-orange-100/50 to-orange-50 border-orange-200/50 shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-500 overflow-hidden relative group">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-orange-400/10 to-transparent rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-orange-400/10 to-transparent rounded-full blur-3xl" />
+        <div className={`max-w-4xl mx-auto mb-6 md:mb-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <Card className="glass border-brand/20 shadow-brand hover:shadow-brand-lg transition-all duration-500 overflow-hidden relative group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
             
-            <CardContent className="p-8 md:p-12 relative">
-              <Quote className="w-14 h-14 text-orange-500 mb-6 opacity-50" />
+            <CardContent className="p-5 md:p-10 relative">
+              <Quote className="w-10 h-10 md:w-12 md:h-12 text-brand mb-4 opacity-50" />
               
-              <blockquote className="text-xl md:text-2xl text-foreground mb-8 leading-relaxed font-medium min-h-[100px]">
+              <blockquote className="text-lg md:text-xl lg:text-2xl text-foreground mb-6 leading-relaxed font-medium min-h-[80px]">
                 "{currentTestimonial.quote}"
               </blockquote>
 
-              <div className="flex flex-col md:flex-row md:items-center gap-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-orange-500/30 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-brand-gradient rounded-2xl flex items-center justify-center text-white text-lg font-bold shadow-brand group-hover:scale-110 transition-transform duration-300">
                     {currentTestimonial.initials}
                   </div>
                   <div>
-                    <div className="font-bold text-foreground text-lg">{currentTestimonial.author}</div>
-                    <div className="text-muted-foreground">{currentTestimonial.role}</div>
+                    <div className="font-bold text-foreground text-base md:text-lg">{currentTestimonial.author}</div>
+                    <div className="text-muted-foreground text-sm">{currentTestimonial.role}</div>
                   </div>
                 </div>
 
                 <div className="md:ml-auto flex items-center gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-5 h-5 fill-orange-500 text-orange-500" />
+                    <Star key={star} className="w-4 h-4 fill-brand text-brand" />
                   ))}
                 </div>
               </div>
 
-              {/* Results Badge */}
-              <div className="mt-8 pt-8 border-t border-orange-200/50 flex justify-center">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-2xl shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 hover:scale-105 transition-all duration-300">
-                  <TrendingUp className="w-6 h-6" />
-                  <span className="font-bold text-lg">{currentTestimonial.result}</span>
+              <div className="mt-6 pt-6 border-t border-border/50 flex justify-center">
+                <div className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-3 rounded-2xl shadow-brand hover:shadow-brand-lg hover:scale-105 transition-all duration-300">
+                  <TrendingUp className="w-5 h-5" />
+                  <span className="font-bold text-base">{currentTestimonial.result}</span>
                 </div>
               </div>
 
-              {/* Navigation */}
-              <div className="flex justify-center gap-4 mt-8">
+              <div className="flex justify-center gap-3 mt-6">
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={prevTestimonial}
-                  className="rounded-full border-orange-200 hover:bg-orange-100 hover:border-orange-400"
+                  className="rounded-full border-brand/30 hover:bg-brand/10 hover:border-brand h-9 w-9"
                 >
-                  <ChevronLeft className="w-5 h-5" />
+                  <ChevronLeft className="w-4 h-4" />
                 </Button>
                 <div className="flex items-center gap-2">
                   {testimonials.map((_, index) => (
@@ -247,8 +232,8 @@ export const TestimonialSection = () => {
                       onClick={() => setCurrentIndex(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === currentIndex 
-                          ? 'bg-orange-500 w-6' 
-                          : 'bg-orange-200 hover:bg-orange-300'
+                          ? 'bg-brand w-6' 
+                          : 'bg-brand/30 hover:bg-brand/50'
                       }`}
                     />
                   ))}
@@ -257,9 +242,9 @@ export const TestimonialSection = () => {
                   variant="outline"
                   size="icon"
                   onClick={nextTestimonial}
-                  className="rounded-full border-orange-200 hover:bg-orange-100 hover:border-orange-400"
+                  className="rounded-full border-brand/30 hover:bg-brand/10 hover:border-brand h-9 w-9"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-4 h-4" />
                 </Button>
               </div>
             </CardContent>
@@ -267,36 +252,34 @@ export const TestimonialSection = () => {
         </div>
 
         {/* Video Testimonials Section */}
-        <div className={`text-center mb-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+        <div className={`text-center mb-6 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="badge-brand mb-3">
             Video Stories
           </span>
-          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-2">
+          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-2">
             Video Testimonials
           </h3>
-          <p className="text-muted-foreground hidden sm:block">
+          <p className="text-muted-foreground text-sm hidden sm:block">
             Hover to preview • Click to watch full video
           </p>
-          <p className="text-muted-foreground sm:hidden">
+          <p className="text-muted-foreground text-sm sm:hidden">
             Tap to play • Swipe to browse
           </p>
         </div>
         
         <div className={`relative group/carousel transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          {/* Left Arrow - Hidden on mobile */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('left')}
-            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background h-9 w-9"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </Button>
 
-          {/* Video Grid - Portrait Style with custom scrollbar */}
           <div 
             ref={videoScrollRef}
-            className="flex gap-3 sm:gap-4 overflow-x-auto pb-4 px-4 sm:px-8 snap-x snap-mandatory custom-scrollbar sm:justify-center"
+            className="flex gap-3 overflow-x-auto pb-4 px-3 sm:px-6 snap-x snap-mandatory custom-scrollbar sm:justify-center"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {videoTestimonials.map((video) => (
@@ -310,14 +293,13 @@ export const TestimonialSection = () => {
             ))}
           </div>
 
-          {/* Right Arrow - Hidden on mobile */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('right')}
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background"
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background h-9 w-9"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </Button>
         </div>
       </div>

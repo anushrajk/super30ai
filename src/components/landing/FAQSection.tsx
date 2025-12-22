@@ -47,37 +47,37 @@ export const FAQSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-8 md:py-14 lg:py-20 bg-muted/30 relative overflow-hidden"
+      className="py-6 md:py-10 lg:py-16 bg-muted/30 relative overflow-hidden"
     >
       {/* Background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-20" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
       
-      <div className="container mx-auto px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+      <div className="container mx-auto px-3 md:px-4 relative">
+        <div className={`text-center max-w-3xl mx-auto mb-5 md:mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="badge-brand mb-4">
             FAQ
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
             Frequently Asked Questions
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground">
             Everything you need to know about AI SEO
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-3">
             {faqs.map((faq, index) => (
               <AccordionItem 
                 key={index} 
                 value={`item-${index}`}
-                className={`bg-background/80 backdrop-blur-sm border border-border/50 rounded-xl px-6 shadow-lg hover:shadow-xl transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`bento-card px-4 md:px-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
-                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-orange-600 transition-colors py-5">
+                <AccordionTrigger className="text-left font-semibold text-foreground hover:text-brand transition-colors py-4 text-sm md:text-base">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5 leading-relaxed">
+                <AccordionContent className="text-muted-foreground pb-4 leading-relaxed text-sm md:text-base">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
