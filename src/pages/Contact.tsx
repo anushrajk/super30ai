@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -27,6 +26,7 @@ import { useNavigate } from "react-router-dom";
 import { useLead } from "@/hooks/useLead";
 import { useSession } from "@/hooks/useSession";
 import { validateEmail, validatePhone, validateMessage, sanitizeInput } from "@/lib/validation";
+import { BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
 
 const contactInfo = [
   {
@@ -137,7 +137,6 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      // Create lead in database with correct field mapping
       const leadData = {
         website_url: window.location.href,
         email: sanitizeInput(formData.email),
@@ -168,7 +167,6 @@ const Contact = () => {
       });
       setErrors({});
       
-      // Redirect to thank you page
       navigate("/thank-you", { 
         state: { 
           name: formData.name,
@@ -199,27 +197,29 @@ const Contact = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero Section */}
-        <section id="contact-hero" className="relative bg-background overflow-hidden py-24 lg:py-32">
+        <section id="contact-hero" className="relative bg-background overflow-hidden py-16 lg:py-24">
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background" />
+            <div className="absolute inset-0 bg-gradient-to-br from-brand/5 via-background to-background" />
           </div>
 
-          <div className="container relative mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-orange-100 border border-orange-200 px-4 py-1.5 rounded-full mb-6">
-                <MessageCircle className="w-4 h-4 text-orange-600" />
-                <span className="text-orange-700 text-sm font-medium">Contact Us</span>
-              </div>
+          {/* Floating elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-brand/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+          <div className="container relative mx-auto px-3 md:px-4">
+            <div className="max-w-4xl mx-auto text-center">
+              <BentoBadge className="mb-4 md:mb-6">
+                <MessageCircle className="w-4 h-4" />
+                Contact Us
+              </BentoBadge>
+
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-6">
                 Let's{" "}
-                <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                  Talk Growth
-                </span>
+                <span className="text-brand-gradient">Talk Growth</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
                 Ready to transform your digital presence? Get in touch and let's discuss your goals.
               </p>
             </div>
@@ -227,146 +227,144 @@ const Contact = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact-form" className="py-24 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <section id="contact-form" className="py-12 md:py-16 lg:py-20 bg-muted/30">
+          <div className="container mx-auto px-3 md:px-4">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
-              <Card className="bg-background border-border/50">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Send us a message</h2>
+              <div className="bento-card p-6 md:p-8">
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Send us a message</h2>
 
-                  <form onSubmit={handleSubmit} className="space-y-6" id="contact-form">
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-name">Full Name *</Label>
-                        <Input
-                          id="contact-name"
-                          name="name"
-                          placeholder="John Doe"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          required
-                          className={errors.name ? "border-destructive" : ""}
-                        />
-                        {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-email">Email *</Label>
-                        <Input
-                          id="contact-email"
-                          name="email"
-                          type="email"
-                          placeholder="john@company.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          required
-                          className={errors.email ? "border-destructive" : ""}
-                        />
-                        {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-phone">Phone</Label>
-                        <Input
-                          id="contact-phone"
-                          name="phone"
-                          placeholder="+91 73532 52526"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className={errors.phone ? "border-destructive" : ""}
-                        />
-                        {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="contact-company">Company</Label>
-                        <Input
-                          id="contact-company"
-                          name="company"
-                          placeholder="Company Name"
-                          value={formData.company}
-                          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                        />
-                      </div>
-                    </div>
-
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" id="contact-form">
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="contact-service">Service Interest</Label>
-                      <Select
-                        value={formData.service}
-                        onValueChange={(value) => setFormData({ ...formData, service: value })}
-                      >
-                        <SelectTrigger id="contact-service" name="service">
-                          <SelectValue placeholder="Select a service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="ai-seo">AI SEO Services</SelectItem>
-                          <SelectItem value="performance-marketing">Performance Marketing</SelectItem>
-                          <SelectItem value="both">Both Services</SelectItem>
-                          <SelectItem value="other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="contact-message">Message *</Label>
-                      <Textarea
-                        id="contact-message"
-                        name="message"
-                        placeholder="Tell us about your project and goals..."
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      <Label htmlFor="contact-name">Full Name *</Label>
+                      <Input
+                        id="contact-name"
+                        name="name"
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
-                        className={errors.message ? "border-destructive" : ""}
+                        className={errors.name ? "border-destructive" : ""}
                       />
-                      {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
-                      <p className="text-xs text-muted-foreground">{formData.message.length}/1000 characters</p>
+                      {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
                     </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-email">Email *</Label>
+                      <Input
+                        id="contact-email"
+                        name="email"
+                        type="email"
+                        placeholder="john@company.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        required
+                        className={errors.email ? "border-destructive" : ""}
+                      />
+                      {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+                    </div>
+                  </div>
 
-                    <Button
-                      id="btn-contact-form-submit"
-                      name="submit-contact-form"
-                      type="submit"
-                      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30"
-                      disabled={loading}
+                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-phone">Phone</Label>
+                      <Input
+                        id="contact-phone"
+                        name="phone"
+                        placeholder="+91 73532 52526"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        className={errors.phone ? "border-destructive" : ""}
+                      />
+                      {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-company">Company</Label>
+                      <Input
+                        id="contact-company"
+                        name="company"
+                        placeholder="Company Name"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-service">Service Interest</Label>
+                    <Select
+                      value={formData.service}
+                      onValueChange={(value) => setFormData({ ...formData, service: value })}
                     >
-                      {loading ? (
-                        "Sending..."
-                      ) : (
-                        <>
-                          Send Message
-                          <Send className="w-4 h-4 ml-2" />
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+                      <SelectTrigger id="contact-service" name="service">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="ai-seo">AI SEO Services</SelectItem>
+                        <SelectItem value="performance-marketing">Performance Marketing</SelectItem>
+                        <SelectItem value="both">Both Services</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-message">Message *</Label>
+                    <Textarea
+                      id="contact-message"
+                      name="message"
+                      placeholder="Tell us about your project and goals..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
+                      className={errors.message ? "border-destructive" : ""}
+                    />
+                    {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
+                    <p className="text-xs text-muted-foreground">{formData.message.length}/1000 characters</p>
+                  </div>
+
+                  <Button
+                    id="btn-contact-form-submit"
+                    name="submit-contact-form"
+                    type="submit"
+                    className="w-full bg-brand-gradient hover:opacity-90 text-white shadow-lg shadow-brand/30"
+                    disabled={loading}
+                  >
+                    {loading ? (
+                      "Sending..."
+                    ) : (
+                      <>
+                        Send Message
+                        <Send className="w-4 h-4 ml-2" />
+                      </>
+                    )}
+                  </Button>
+                </form>
+              </div>
 
               {/* Contact Info */}
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 <div>
-                  <h2 className="text-2xl font-bold text-foreground mb-6">Get in touch</h2>
-                  <p className="text-muted-foreground mb-8">
+                  <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">Get in touch</h2>
+                  <p className="text-muted-foreground mb-6">
                     Have a question or ready to start? Reach out through any of these channels and we'll respond within 24 hours.
                   </p>
 
-                  <div className="space-y-4">
+                  <div className="space-y-3">
                     {contactInfo.map((info, index) => (
-                      <Card key={index} className="bg-background border-border/50">
-                        <CardContent className="p-4 flex items-center gap-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl flex items-center justify-center">
-                            <info.icon className="w-6 h-6 text-orange-500" />
-                          </div>
+                      <BentoCard key={index} className="group !p-4">
+                        <div className="flex items-center gap-4">
+                          <BentoIcon size="sm">
+                            <info.icon className="w-5 h-5 text-brand group-hover:text-white transition-colors" />
+                          </BentoIcon>
                           <div>
                             <p className="text-sm text-muted-foreground">{info.title}</p>
                             {info.link ? (
                               <a
                                 href={info.link}
                                 id={`contact-info-${info.title.toLowerCase()}`}
-                                className="text-foreground font-medium hover:text-orange-500 transition-colors"
+                                className="text-foreground font-medium hover:text-brand transition-colors"
                               >
                                 {info.value}
                               </a>
@@ -374,16 +372,16 @@ const Contact = () => {
                               <p className="text-foreground font-medium">{info.value}</p>
                             )}
                           </div>
-                        </CardContent>
-                      </Card>
+                        </div>
+                      </BentoCard>
                     ))}
                   </div>
                 </div>
 
                 {/* Social Links */}
                 <div>
-                  <h3 className="text-lg font-bold text-foreground mb-4">Follow Us</h3>
-                  <div className="flex gap-3">
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-4">Follow Us</h3>
+                  <div className="flex flex-wrap gap-3">
                     {socialLinks.map((social) => (
                       <a
                         key={social.name}
@@ -391,7 +389,7 @@ const Contact = () => {
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 bg-muted rounded-xl flex items-center justify-center hover:bg-orange-100 hover:text-orange-500 transition-colors"
+                        className="w-10 h-10 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
                         aria-label={social.name}
                       >
                         {social.icon}
@@ -400,36 +398,40 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* FAQ Preview */}
-                <Card className="bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200/50">
-                  <CardContent className="p-6">
-                    <h3 className="text-lg font-bold text-foreground mb-2">
-                      Have questions?
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      Check out our FAQ sections on our service pages for quick answers.
-                    </p>
-                    <div className="flex gap-2">
-                      <a 
-                        href="/ai-seo#faq" 
-                        id="contact-faq-ai-seo"
-                        className="text-orange-500 text-sm font-medium hover:underline"
-                      >
-                        AI SEO FAQ →
-                      </a>
-                      <span className="text-muted-foreground">|</span>
-                      <a 
-                        href="/performance-marketing#faq" 
-                        id="contact-faq-pm"
-                        className="text-orange-500 text-sm font-medium hover:underline"
-                      >
-                        PM FAQ →
-                      </a>
+                {/* Map placeholder */}
+                <div className="bento-card overflow-hidden">
+                  <div className="h-48 md:h-64 bg-gradient-to-br from-brand/10 to-brand/5 flex items-center justify-center">
+                    <div className="text-center">
+                      <MapPin className="w-10 h-10 text-brand mx-auto mb-2" />
+                      <p className="text-muted-foreground text-sm">Bangalore, India</p>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* CTA Section - Dark background */}
+        <section className="py-12 md:py-16 bg-[#0a0a0a] relative overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="absolute top-10 left-10 w-32 h-32 bg-brand/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
+          
+          <div className="container relative mx-auto px-3 md:px-4 text-center">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
+              Prefer a Call?
+            </h2>
+            <p className="text-white/70 mb-6 max-w-xl mx-auto">
+              Speak directly with our team for immediate assistance.
+            </p>
+            <a 
+              href="tel:+917353252526" 
+              className="inline-flex items-center gap-2 text-2xl md:text-3xl font-bold text-brand-gradient hover:opacity-80 transition-opacity"
+            >
+              <Phone className="w-6 h-6 md:w-8 md:h-8 text-brand" />
+              +91 73532 52526
+            </a>
           </div>
         </section>
 
