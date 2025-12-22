@@ -196,14 +196,14 @@ All colors MUST be HSL.
     background: linear-gradient(135deg, hsl(var(--brand-light)) 0%, hsl(var(--brand) / 0.1) 100%);
   }
 
-  /* Bento card styling */
+  /* Bento card styling with micro-animations */
   .bento-card {
-    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl transition-all duration-500;
+    @apply bg-card/80 backdrop-blur-sm border border-border/50 rounded-2xl transition-all duration-300;
   }
 
   .bento-card:hover {
-    @apply border-[hsl(var(--brand))]/50 shadow-2xl;
-    box-shadow: 0 25px 50px -12px hsl(var(--brand) / 0.15);
+    @apply border-[hsl(var(--brand))]/50 -translate-y-1;
+    box-shadow: 0 25px 50px -12px hsl(var(--brand) / 0.2);
   }
 
   /* Badge styling */
@@ -211,6 +211,70 @@ All colors MUST be HSL.
     @apply inline-block px-4 py-1.5 rounded-full text-sm font-medium;
     background: hsl(var(--brand-light));
     color: hsl(var(--brand));
+  }
+
+  /* Hover lift effect for cards */
+  .hover-lift {
+    @apply transition-all duration-300;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px -15px hsl(var(--foreground) / 0.1);
+  }
+
+  /* Icon bounce on hover */
+  .icon-bounce {
+    @apply transition-transform duration-300;
+  }
+
+  .icon-bounce:hover {
+    animation: bounce-subtle 0.4s ease-out;
+  }
+
+  /* Link underline slide animation */
+  .link-underline {
+    @apply relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300;
+    background: hsl(var(--brand));
+  }
+
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  /* CTA glow pulse */
+  .cta-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Floating animation for decorative elements */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite;
+  }
+
+  /* Icon bg glow with hover enhancement */
+  .icon-bg-glow {
+    background: color-mix(in oklab, hsl(var(--brand)) 10%, transparent);
+    @apply transition-all duration-300;
+  }
+
+  .icon-bg-glow:hover {
+    background: color-mix(in oklab, hsl(var(--brand)) 20%, transparent);
+    @apply scale-110;
   }
 }
 

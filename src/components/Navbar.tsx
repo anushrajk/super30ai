@@ -76,15 +76,15 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center gap-1 ml-auto mr-4">
             <Link
               to="/about"
-              className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/about"
-                  ? "text-[hsl(var(--brand-orange))]"
+                  ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              Team 30
+              <span className="link-underline">Team 30</span>
               {location.pathname === "/about" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[hsl(var(--brand-orange))]" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
               )}
             </Link>
 
@@ -137,29 +137,29 @@ export const Navbar = () => {
 
             <Link
               to="/work"
-              className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/work"
-                  ? "text-[hsl(var(--brand-orange))]"
+                  ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              Our Work
+              <span className="link-underline">Our Work</span>
               {location.pathname === "/work" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[hsl(var(--brand-orange))]" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
               )}
             </Link>
 
             <Link
               to="/contact"
-              className={`relative px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/contact"
-                  ? "text-[hsl(var(--brand-orange))]"
+                  ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              Contact
+              <span className="link-underline">Contact</span>
               {location.pathname === "/contact" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[hsl(var(--brand-orange))]" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
               )}
             </Link>
           </div>
