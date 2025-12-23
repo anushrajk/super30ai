@@ -153,14 +153,18 @@ export const SEOBenefitsSection = () => {
 
         {/* Scrollable container with arrows */}
         <div className="relative group/carousel">
-          {/* Left Arrow - Hidden on mobile */}
+          {/* Gradient fade edges */}
+          <div className="absolute left-0 top-0 bottom-4 w-8 md:w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-4 w-8 md:w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+
+          {/* Left Arrow */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollCards('left')}
-            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-white/20 text-white"
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/30 hover:scale-110 text-white"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-5 h-5" />
           </Button>
 
           <div 
@@ -169,32 +173,45 @@ export const SEOBenefitsSection = () => {
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}
             onTouchEnd={() => setIsPaused(false)}
-            className="flex gap-3 md:gap-4 overflow-x-auto pb-4 px-4 sm:px-8 snap-x snap-mandatory custom-scrollbar"
-            style={{ WebkitOverflowScrolling: 'touch' }}
+            className="flex gap-4 md:gap-5 overflow-x-auto pb-6 px-6 sm:px-12 snap-x snap-mandatory scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20"
+            style={{ 
+              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: 'thin',
+              scrollbarColor: 'rgba(255,255,255,0.1) transparent'
+            }}
           >
             {benefits.map((benefit, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[260px] sm:w-[280px] bg-white/5 border-white/10 hover:border-brand/30 transition-all duration-500 group overflow-hidden snap-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-sm border border-white/10 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:to-brand/10 transition-colors duration-300" />
+                {/* Animated gradient border on hover */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/10 group-hover:via-transparent group-hover:to-brand/5 transition-all duration-500" />
                 
-                <CardContent className="p-4 md:p-5 relative">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 bg-brand/20 group-hover:bg-brand-gradient group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                    <benefit.icon className="w-6 h-6 text-brand group-hover:text-white transition-colors duration-300" />
+                {/* Glow effect on hover */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-brand/0 via-brand/20 to-brand/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
+                
+                <CardContent className="p-5 md:p-6 relative">
+                  {/* Icon with animated ring */}
+                  <div className="relative mb-4">
+                    <div className="absolute inset-0 w-14 h-14 bg-brand/20 rounded-xl blur-lg group-hover:bg-brand/40 transition-all duration-300" />
+                    <div className="relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br from-white/10 to-white/5 border border-white/10 group-hover:border-brand/30 group-hover:from-brand/20 group-hover:to-brand/10 group-hover:scale-105 transition-all duration-300">
+                      <benefit.icon className="w-7 h-7 text-brand group-hover:text-white transition-colors duration-300" />
+                    </div>
                   </div>
 
-                  <h3 className="text-base md:text-lg font-bold text-white mb-2 group-hover:text-brand transition-colors duration-300">
+                  <h3 className="text-lg md:text-xl font-bold text-white mb-2 group-hover:text-brand transition-colors duration-300">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-gray-400 mb-3">{benefit.description}</p>
+                  <p className="text-sm text-gray-400 mb-4 leading-relaxed">{benefit.description}</p>
 
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
-                        <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
+                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-300 group-hover:text-white/90 transition-colors duration-300">
+                        <div className="w-5 h-5 rounded-full bg-brand/20 flex items-center justify-center flex-shrink-0 group-hover:bg-brand/30 transition-colors">
+                          <CheckCircle2 className="w-3 h-3 text-brand" />
+                        </div>
                         {feature}
                       </li>
                     ))}
@@ -204,20 +221,29 @@ export const SEOBenefitsSection = () => {
             ))}
           </div>
 
-          {/* Right Arrow - Hidden on mobile */}
+          {/* Right Arrow */}
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollCards('right')}
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/10 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-white/20 text-white"
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/30 hover:scale-110 text-white"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-5 h-5" />
           </Button>
         </div>
 
+        {/* Scroll indicator dots - mobile */}
+        <div className="flex justify-center gap-1.5 mt-4 sm:hidden">
+          <div className="w-8 h-1 rounded-full bg-brand/50" />
+          <div className="w-2 h-1 rounded-full bg-white/20" />
+          <div className="w-2 h-1 rounded-full bg-white/20" />
+        </div>
+        
         {/* Mobile swipe hint */}
-        <p className="text-center mt-3 text-sm text-gray-400 sm:hidden">
-          Swipe to explore more
+        <p className="text-center mt-3 text-sm text-gray-500 sm:hidden flex items-center justify-center gap-2">
+          <ChevronLeft className="w-4 h-4" />
+          Swipe to explore
+          <ChevronRight className="w-4 h-4" />
         </p>
 
         {/* Dual CTA */}
