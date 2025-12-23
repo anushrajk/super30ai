@@ -248,11 +248,6 @@ const Work = () => {
           <ClientLogosSection />
         </div>
 
-        {/* Stats Section */}
-        <div id="work-stats">
-          <StatsSection stats={workPageStats} />
-        </div>
-
         {/* Case Studies Section */}
         <section id="work-cases" className="py-12 md:py-16 lg:py-20 bg-background">
           <div className="container mx-auto px-3 md:px-4">
@@ -325,6 +320,11 @@ const Work = () => {
         {/* Client Logos Grid */}
         <div id="work-client-logos-grid">
           <ClientLogosGrid />
+        </div>
+
+        {/* Stats Section - moved above Testimonials with white background */}
+        <div id="work-stats">
+          <StatsSection stats={workPageStats} className="bg-background border-y-0" />
         </div>
 
         {/* Testimonials Section */}
