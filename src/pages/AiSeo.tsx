@@ -15,6 +15,7 @@ import { ProcessSection } from "@/components/landing/ProcessSection";
 import { DashboardPreview } from "@/components/landing/DashboardPreview";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { FinalCTASection } from "@/components/landing/FinalCTASection";
+import { SEOFinalCTASection } from "@/components/landing/SEOFinalCTASection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Footer } from "@/components/landing/Footer";
@@ -131,7 +132,7 @@ const AiSeo = () => {
           <BlogSection />
         </div>
         <div id="ai-seo-final-cta-bottom">
-          <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+          <SEOFinalCTASection />
         </div>
         <div id="ai-seo-faq">
           <FAQSection />
