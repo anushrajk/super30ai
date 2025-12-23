@@ -171,6 +171,9 @@ const PerformanceMarketing = () => {
         <div id="pm-services">
           <PMServicesSection />
         </div>
+        <div id="pm-final-cta-mid">
+          <PMFinalCTASection />
+        </div>
         <div id="pm-dashboard">
           <PMDashboardPreview />
         </div>
