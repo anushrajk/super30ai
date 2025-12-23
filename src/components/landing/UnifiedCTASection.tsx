@@ -12,6 +12,7 @@ interface UnifiedCTASectionProps {
   subtext?: string;
   primaryCTA?: CTAButton;
   secondaryCTA?: CTAButton;
+  variant?: "light" | "dark";
 }
 
 export const UnifiedCTASection = ({
@@ -19,17 +20,20 @@ export const UnifiedCTASection = ({
   subtext = "Choose your path to growth. Get a free audit and discover your untapped potential.",
   primaryCTA = { label: "Get Free AI SEO Audit", href: "/ai-seo" },
   secondaryCTA = { label: "Free Ads Audit", href: "/performance-marketing" },
+  variant = "light",
 }: UnifiedCTASectionProps) => {
+  const isDark = variant === "dark";
+  
   return (
-    <section className="py-10 md:py-16 bg-white relative overflow-hidden">
+    <section className={`py-10 md:py-16 relative overflow-hidden ${isDark ? "bg-[#0a0a0a]" : "bg-white"}`}>
       {/* Subtle grid pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className={`absolute inset-0 bg-[linear-gradient(to_right,${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}_1px,transparent_1px),linear-gradient(to_bottom,${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}_1px,transparent_1px)] bg-[size:4rem_4rem]`} />
       
       <div className="container relative mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+        <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${isDark ? "text-white" : "text-slate-900"}`}>
           {headline}
         </h2>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
+        <p className={`text-lg max-w-2xl mx-auto mb-8 ${isDark ? "text-white/70" : "text-slate-600"}`}>
           {subtext}
         </p>
 
@@ -48,7 +52,7 @@ export const UnifiedCTASection = ({
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 w-full sm:w-auto"
+                className={`w-full sm:w-auto ${isDark ? "border-white/20 text-white hover:bg-white/10" : "border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400"}`}
               >
                 {secondaryCTA.label}
                 <ArrowRight className="w-5 h-5 ml-2" />
