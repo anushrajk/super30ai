@@ -40,7 +40,7 @@ export const PMComparisonSection = () => {
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
           {/* Traditional Ads */}
-          <Card className="bg-white/5 border-white/10 relative overflow-hidden group">
+          <Card className="bg-white/5 border-white/10 relative overflow-hidden group hover:-translate-y-2 transition-all duration-500">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-slate-400 to-slate-500" />
             <CardContent className="p-6 md:p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -72,7 +72,7 @@ export const PMComparisonSection = () => {
           </Card>
 
           {/* AI-Powered Ads */}
-          <Card className="bg-white/5 border-blue-500/30 relative overflow-hidden group shadow-xl shadow-blue-500/10">
+          <Card className="bg-white/5 border-blue-500/30 relative overflow-hidden group shadow-xl shadow-blue-500/10 hover:-translate-y-2 transition-all duration-500">
             <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-blue-600" />
             <div className="absolute -right-8 -top-8 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-blue-600/10 rounded-full blur-2xl" />
             <CardContent className="p-6 md:p-8 relative">
