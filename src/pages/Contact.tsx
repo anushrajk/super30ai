@@ -197,15 +197,11 @@ const Contact = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero Section */}
-        <section id="contact-hero" className="relative bg-background overflow-hidden py-16 lg:py-24">
+        <section id="contact-hero" className="relative bg-white overflow-hidden py-16 lg:py-24">
+          {/* Background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-br from-brand/5 via-background to-background" />
           </div>
-
-          {/* Floating elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-brand/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
 
           <div className="container relative mx-auto px-3 md:px-4">
             <div className="max-w-4xl mx-auto text-center">
