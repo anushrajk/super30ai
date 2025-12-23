@@ -20,6 +20,8 @@ import {
   Clock,
   Send,
   MessageCircle,
+  ArrowRight,
+  Award,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -197,27 +199,87 @@ const Contact = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         {/* Hero Section */}
-        <section id="contact-hero" className="relative bg-white overflow-hidden py-16 lg:py-24">
+        <section id="contact-hero" className="relative bg-white overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center">
           {/* Background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
           </div>
 
-          <div className="container relative mx-auto px-3 md:px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <BentoBadge className="mb-4 md:mb-6">
+          <div className="container relative mx-auto px-3 md:px-4 py-8 md:py-12 lg:py-16">
+            <div className="max-w-4xl mx-auto text-center space-y-6">
+              {/* Badge */}
+              <BentoBadge>
                 <MessageCircle className="w-4 h-4" />
-                Contact Us
+                Get in Touch
               </BentoBadge>
 
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-6">
-                Let's{" "}
-                <span className="text-brand-gradient">Talk Growth</span>
-              </h1>
+              {/* H1 and Description */}
+              <div>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
+                  Let's{" "}
+                  <span className="relative inline-block">
+                    <span className="text-brand-gradient">Talk Growth</span>
+                    <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
+                  </span>
+                </h1>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                  Ready to transform your digital presence? Get in touch and let's{" "}
+                  <span className="text-foreground font-semibold">discuss your goals</span>.
+                </p>
+              </div>
 
-              <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                Ready to transform your digital presence? Get in touch and let's discuss your goals.
-              </p>
+              {/* Trust Signals - Horizontal */}
+              <div className="flex flex-wrap justify-center gap-4 py-4">
+                {[
+                  { icon: Clock, text: "24hr Response" },
+                  { icon: Phone, text: "Free Consultation" },
+                  { icon: Mail, text: "Expert Support" },
+                  { icon: MapPin, text: "Bangalore, India" },
+                ].map((signal, index) => (
+                  <div 
+                    key={index}
+                    className="flex items-center gap-2 bg-background border border-border rounded-full px-4 py-2"
+                  >
+                    <signal.icon className="w-4 h-4 text-brand" />
+                    <span className="font-medium text-foreground text-sm">{signal.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dual CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+                <a href="tel:+917353252526">
+                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Call Us Now
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </a>
+                <a href="mailto:hello@thesuper30.ai">
+                  <Button 
+                    size="lg" 
+                    variant="outline" 
+                    className="border-border text-foreground hover:bg-muted transition-all duration-300 w-full sm:w-auto"
+                  >
+                    <Mail className="w-4 h-4 mr-2" />
+                    Email Us
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </a>
+              </div>
+
+              {/* Expert credentials */}
+              <div className="flex flex-wrap gap-2 justify-center pt-2">
+                {["AI SEO Experts", "Performance Marketing", "Free Consultation"].map((cred, i) => (
+                  <span 
+                    key={i}
+                    className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
+                  >
+                    <Award className="w-3 h-3 text-brand" />
+                    {cred}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
         </section>
