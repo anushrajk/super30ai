@@ -18,17 +18,17 @@ import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BentoBadge } from "@/components/ui/bento-grid";
 
-// Color palette for multi-colored icons - SOLID colors
+// Color palette for multi-colored icons - SOLID colors with solid checkmarks
 const iconColors = [
-  { bg: "from-violet-500 to-purple-600", glow: "bg-violet-500/50", text: "text-white", checkBg: "bg-violet-500/30", checkText: "text-violet-500" },
-  { bg: "from-emerald-500 to-teal-600", glow: "bg-emerald-500/50", text: "text-white", checkBg: "bg-emerald-500/30", checkText: "text-emerald-500" },
-  { bg: "from-amber-500 to-orange-600", glow: "bg-amber-500/50", text: "text-white", checkBg: "bg-amber-500/30", checkText: "text-amber-500" },
-  { bg: "from-cyan-500 to-blue-600", glow: "bg-cyan-500/50", text: "text-white", checkBg: "bg-cyan-500/30", checkText: "text-cyan-500" },
-  { bg: "from-rose-500 to-pink-600", glow: "bg-rose-500/50", text: "text-white", checkBg: "bg-rose-500/30", checkText: "text-rose-500" },
-  { bg: "from-indigo-500 to-blue-600", glow: "bg-indigo-500/50", text: "text-white", checkBg: "bg-indigo-500/30", checkText: "text-indigo-500" },
-  { bg: "from-lime-500 to-green-600", glow: "bg-lime-500/50", text: "text-white", checkBg: "bg-lime-500/30", checkText: "text-lime-500" },
-  { bg: "from-fuchsia-500 to-purple-600", glow: "bg-fuchsia-500/50", text: "text-white", checkBg: "bg-fuchsia-500/30", checkText: "text-fuchsia-500" },
-  { bg: "from-sky-500 to-cyan-600", glow: "bg-sky-500/50", text: "text-white", checkBg: "bg-sky-500/30", checkText: "text-sky-500" },
+  { bg: "from-violet-500 to-purple-600", glow: "bg-violet-500/50", text: "text-white", checkBg: "bg-violet-500", checkText: "text-white" },
+  { bg: "from-emerald-500 to-teal-600", glow: "bg-emerald-500/50", text: "text-white", checkBg: "bg-emerald-500", checkText: "text-white" },
+  { bg: "from-amber-500 to-orange-600", glow: "bg-amber-500/50", text: "text-white", checkBg: "bg-amber-500", checkText: "text-white" },
+  { bg: "from-cyan-500 to-blue-600", glow: "bg-cyan-500/50", text: "text-white", checkBg: "bg-cyan-500", checkText: "text-white" },
+  { bg: "from-rose-500 to-pink-600", glow: "bg-rose-500/50", text: "text-white", checkBg: "bg-rose-500", checkText: "text-white" },
+  { bg: "from-indigo-500 to-blue-600", glow: "bg-indigo-500/50", text: "text-white", checkBg: "bg-indigo-500", checkText: "text-white" },
+  { bg: "from-lime-500 to-green-600", glow: "bg-lime-500/50", text: "text-white", checkBg: "bg-lime-500", checkText: "text-white" },
+  { bg: "from-fuchsia-500 to-purple-600", glow: "bg-fuchsia-500/50", text: "text-white", checkBg: "bg-fuchsia-500", checkText: "text-white" },
+  { bg: "from-sky-500 to-cyan-600", glow: "bg-sky-500/50", text: "text-white", checkBg: "bg-sky-500", checkText: "text-white" },
 ];
 
 const audiences = [
@@ -175,7 +175,7 @@ export const PMTargetAudienceSection = () => {
             {audiences.map((audience, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[260px] sm:w-[280px] bento-card border-border/50 hover:border-brand/30 transition-all duration-500 group overflow-hidden snap-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[260px] sm:w-[280px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:border-brand/30 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 {/* Hover gradient overlay */}
@@ -190,16 +190,16 @@ export const PMTargetAudienceSection = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 mb-2">
                     {audience.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-3">{audience.description}</p>
+                  <p className="text-sm text-gray-600 mb-3">{audience.description}</p>
 
                   <ul className="space-y-1.5">
                     {audience.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm text-foreground">
-                        <div className={`w-4 h-4 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0`}>
-                          <CheckCircle2 className={`w-2.5 h-2.5 ${iconColors[index % iconColors.length].checkText}`} />
+                      <li key={i} className="flex items-center gap-2 text-sm text-gray-800 font-medium">
+                        <div className={`w-5 h-5 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                          <CheckCircle2 className={`w-3 h-3 ${iconColors[index % iconColors.length].checkText}`} />
                         </div>
                         {feature}
                       </li>

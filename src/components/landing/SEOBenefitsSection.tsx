@@ -196,7 +196,7 @@ export const SEOBenefitsSection = () => {
             {benefits.map((benefit, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:border-brand/40 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 {/* Animated gradient border on hover */}
