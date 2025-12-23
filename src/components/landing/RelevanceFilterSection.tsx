@@ -66,7 +66,7 @@ export const RelevanceFilterSection = () => {
             ref={leftCardRef}
             className={`transition-all duration-700 delay-100 ${leftCardVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
           >
-            <Card className="bg-green-950/50 backdrop-blur-sm border-green-800 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500 group h-full">
+            <Card className="bg-green-950/50 backdrop-blur-sm border-green-800 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/10 hover:-translate-y-2 transition-all duration-500 group h-full">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30">
@@ -97,7 +97,7 @@ export const RelevanceFilterSection = () => {
             ref={rightCardRef}
             className={`transition-all duration-700 delay-200 ${rightCardVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
           >
-            <Card className="bg-red-950/50 backdrop-blur-sm border-red-800 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/10 transition-all duration-500 group h-full">
+            <Card className="bg-red-950/50 backdrop-blur-sm border-red-800 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-2 transition-all duration-500 group h-full">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/30">
