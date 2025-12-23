@@ -470,28 +470,6 @@ const Contact = () => {
           </div>
         </section>
 
-        {/* CTA Section - Dark background */}
-        <section className="py-12 md:py-16 bg-[#0a0a0a] relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          <div className="absolute top-10 left-10 w-32 h-32 bg-brand/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
-          
-          <div className="container relative mx-auto px-3 md:px-4 text-center">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4">
-              Prefer a Call?
-            </h2>
-            <p className="text-white/70 mb-6 max-w-xl mx-auto">
-              Speak directly with our team for immediate assistance.
-            </p>
-            <a 
-              href="tel:+917353252526" 
-              className="inline-flex items-center gap-2 text-2xl md:text-3xl font-bold text-brand-gradient hover:opacity-80 transition-opacity"
-            >
-              <Phone className="w-6 h-6 md:w-8 md:h-8 text-brand" />
-              +91 73532 52526
-            </a>
-          </div>
-        </section>
 
         <Footer />
       </main>

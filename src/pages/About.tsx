@@ -223,12 +223,7 @@ const About = () => {
         </div>
 
         <div id="about-cta">
-          <UnifiedCTASection
-            headline="Ready to Join Our Success Stories?"
-            subtext="Let's discuss how we can help your business grow."
-            primaryCTA={{ label: "Get in Touch", href: "/contact" }}
-            secondaryCTA={{ label: "See Our Work", href: "/work" }}
-          />
+          <UnifiedCTASection />
         </div>
 
         <Footer />
