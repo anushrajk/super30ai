@@ -42,9 +42,10 @@ interface VideoCardProps {
   isHovered: boolean;
   onHover: () => void;
   onLeave: () => void;
+  index: number;
 }
 
-const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
+const VideoCard = ({ video, isHovered, onHover, onLeave, index }: VideoCardProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -69,15 +70,21 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
 
   return (
     <div
-      className="flex-shrink-0 w-[140px] sm:w-[180px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start shadow-lg hover:shadow-2xl transition-all duration-300"
+      className="flex-shrink-0 w-[140px] sm:w-[180px] relative rounded-2xl overflow-hidden cursor-pointer group/video snap-start transition-all duration-500 hover:-translate-y-3 hover:scale-105"
+      style={{ 
+        animationDelay: `${index * 100}ms`,
+        boxShadow: isHovered 
+          ? '0 25px 50px -12px rgba(255, 107, 0, 0.25), 0 0 0 1px rgba(255, 107, 0, 0.1)' 
+          : '0 10px 40px -10px rgba(0, 0, 0, 0.5)'
+      }}
       onMouseEnter={onHover}
       onMouseLeave={onLeave}
     >
-      <div className="aspect-[9/16] relative bg-muted">
+      <div className="aspect-[9/16] relative bg-black/50">
         <img 
           src={video.thumbnail} 
           alt={`${video.name} testimonial`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 ${isHovered ? 'opacity-0 scale-110' : 'opacity-100 scale-100'}`}
         />
         
         <video
@@ -86,25 +93,25 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
           muted={isMuted}
           loop
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${isHovered ? 'opacity-100' : 'opacity-0'}`}
         />
         
-        <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-60' : 'opacity-70'}`} />
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-60' : 'opacity-80'}`} />
         
-        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`}>
-          <div className="w-12 h-12 bg-background/90 rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition-transform">
-            <Play className="w-5 h-5 text-brand ml-0.5" />
+        <div className={`absolute inset-0 flex items-center justify-center transition-all duration-500 ${isHovered ? 'opacity-0 scale-0' : 'opacity-100 scale-100'}`}>
+          <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center shadow-xl border border-white/20 group-hover/video:scale-110 transition-transform">
+            <Play className="w-5 h-5 text-white ml-0.5" />
           </div>
         </div>
 
-        <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-xs text-white font-medium">
+        <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-md px-2 py-1 rounded-lg text-xs text-white font-medium border border-white/10">
           {video.duration}
         </div>
 
         {isHovered && (
           <button
             onClick={toggleMute}
-            className="absolute top-2 left-2 bg-black/60 backdrop-blur-sm p-1.5 rounded-full text-white hover:bg-black/80 transition-colors"
+            className="absolute top-2 left-2 bg-black/60 backdrop-blur-md p-1.5 rounded-full text-white hover:bg-white/20 transition-all duration-300 border border-white/10"
           >
             {isMuted ? <VolumeX className="w-3 h-3" /> : <Volume2 className="w-3 h-3" />}
           </button>
@@ -112,15 +119,15 @@ const VideoCard = ({ video, isHovered, onHover, onLeave }: VideoCardProps) => {
 
         {isHovered && (
           <div className="absolute bottom-14 left-2 right-2 flex items-center gap-2">
-            <div className="flex-1 h-1 bg-white/30 rounded-full overflow-hidden">
+            <div className="flex-1 h-1 bg-white/20 rounded-full overflow-hidden backdrop-blur-sm">
               <div className="w-1/3 h-full bg-brand rounded-full animate-pulse" />
             </div>
           </div>
         )}
 
-        <div className="absolute bottom-2 left-2 right-2">
+        <div className="absolute bottom-2 left-2 right-2 transition-transform duration-300 group-hover/video:translate-y-0">
           <p className="text-white font-bold text-xs">{video.name}</p>
-          <p className="text-white/70 text-xs">{video.company}</p>
+          <p className="text-white/60 text-xs">{video.company}</p>
         </div>
       </div>
     </div>
@@ -161,79 +168,102 @@ export const TestimonialSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-6 md:py-10 lg:py-16 bg-background relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 bg-[#0a0a0a] relative overflow-hidden"
     >
-      <div className="absolute inset-0 bg-brand-gradient-light dark:bg-transparent" />
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
       
-      <div className="container mx-auto px-3 md:px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-5 md:mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="badge-brand mb-4">
+      {/* Animated Glowing Orbs */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-[120px] animate-pulse" />
+      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-[150px]" />
+      
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 relative">
+        {/* Section Header */}
+        <div className={`text-center max-w-3xl mx-auto mb-10 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-6">
+            <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
             Testimonials
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
             What Our Clients Say
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
+          <p className="text-lg md:text-xl text-gray-400">
             Real results from real businesses
           </p>
         </div>
 
         {/* Text Testimonial Carousel */}
-        <div className={`max-w-4xl mx-auto mb-6 md:mb-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Card className="glass border-brand/20 shadow-brand hover:shadow-brand-lg transition-all duration-500 overflow-hidden relative group">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-brand/5 rounded-full blur-3xl" />
+        <div className={`max-w-5xl mx-auto mb-16 md:mb-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <Card className="bg-white/[0.03] backdrop-blur-xl border-white/10 shadow-2xl shadow-black/40 overflow-hidden relative group hover:border-brand/30 transition-all duration-500">
+            {/* Glow Effects */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
-            <CardContent className="p-5 md:p-10 relative">
-              <Quote className="w-10 h-10 md:w-12 md:h-12 text-brand mb-4 opacity-50" />
+            <CardContent className="p-6 sm:p-8 md:p-12 relative">
+              {/* Quote Icon with Hover Effect */}
+              <div className="mb-6 group-hover:scale-110 transition-transform duration-500">
+                <Quote className="w-12 h-12 md:w-14 md:h-14 text-brand/50 group-hover:text-brand transition-colors duration-500" />
+              </div>
               
-              <blockquote className="text-lg md:text-xl lg:text-2xl text-foreground mb-6 leading-relaxed font-medium min-h-[80px]">
+              <blockquote className="text-xl md:text-2xl lg:text-3xl text-white mb-8 leading-relaxed font-medium min-h-[100px]">
                 "{currentTestimonial.quote}"
               </blockquote>
 
-              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 md:w-14 md:h-14 bg-brand-gradient rounded-2xl flex items-center justify-center text-white text-lg font-bold shadow-brand group-hover:scale-110 transition-transform duration-300">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-brand to-orange-600 rounded-2xl flex items-center justify-center text-white text-lg md:text-xl font-bold shadow-lg shadow-brand/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                     {currentTestimonial.initials}
                   </div>
                   <div>
-                    <div className="font-bold text-foreground text-base md:text-lg">{currentTestimonial.author}</div>
-                    <div className="text-muted-foreground text-sm">{currentTestimonial.role}</div>
+                    <div className="font-bold text-white text-lg md:text-xl">{currentTestimonial.author}</div>
+                    <div className="text-gray-400 text-sm md:text-base">{currentTestimonial.role}</div>
                   </div>
                 </div>
 
-                <div className="md:ml-auto flex items-center gap-1">
-                  {[1, 2, 3, 4, 5].map((star) => (
-                    <Star key={star} className="w-4 h-4 fill-brand text-brand" />
+                {/* Stars with Staggered Animation */}
+                <div className="md:ml-auto flex items-center gap-1.5">
+                  {[1, 2, 3, 4, 5].map((star, i) => (
+                    <Star 
+                      key={star} 
+                      className="w-5 h-5 fill-brand text-brand transition-all duration-300 hover:scale-125"
+                      style={{ 
+                        animationDelay: `${i * 100}ms`,
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? 'scale(1)' : 'scale(0)'
+                      }}
+                    />
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-6 border-t border-border/50 flex justify-center">
-                <div className="inline-flex items-center gap-2 bg-brand-gradient text-white px-6 py-3 rounded-2xl shadow-brand hover:shadow-brand-lg hover:scale-105 transition-all duration-300">
+              {/* Result Badge */}
+              <div className="mt-8 pt-8 border-t border-white/10 flex justify-center">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand to-orange-600 text-white px-8 py-4 rounded-2xl shadow-lg shadow-brand/30 hover:shadow-brand/50 hover:scale-105 hover:-translate-y-1 transition-all duration-500 cursor-default">
                   <TrendingUp className="w-5 h-5" />
-                  <span className="font-bold text-base">{currentTestimonial.result}</span>
+                  <span className="font-bold text-lg">{currentTestimonial.result}</span>
                 </div>
               </div>
 
-              <div className="flex justify-center gap-3 mt-6">
+              {/* Navigation */}
+              <div className="flex justify-center gap-4 mt-8">
                 <Button
                   variant="outline"
                   size="icon"
                   onClick={prevTestimonial}
-                  className="rounded-full border-brand/30 hover:bg-brand/10 hover:border-brand h-9 w-9"
+                  className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 hover:border-brand/50 text-white h-10 w-10 transition-all duration-300 hover:scale-110"
                 >
-                  <ChevronLeft className="w-4 h-4" />
+                  <ChevronLeft className="w-5 h-5" />
                 </Button>
                 <div className="flex items-center gap-2">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
                       onClick={() => setCurrentIndex(index)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      className={`h-2 rounded-full transition-all duration-500 ${
                         index === currentIndex 
-                          ? 'bg-brand w-6' 
-                          : 'bg-brand/30 hover:bg-brand/50'
+                          ? 'bg-brand w-8' 
+                          : 'bg-white/20 w-2 hover:bg-white/40'
                       }`}
                     />
                   ))}
@@ -242,9 +272,9 @@ export const TestimonialSection = () => {
                   variant="outline"
                   size="icon"
                   onClick={nextTestimonial}
-                  className="rounded-full border-brand/30 hover:bg-brand/10 hover:border-brand h-9 w-9"
+                  className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 hover:border-brand/50 text-white h-10 w-10 transition-all duration-300 hover:scale-110"
                 >
-                  <ChevronRight className="w-4 h-4" />
+                  <ChevronRight className="w-5 h-5" />
                 </Button>
               </div>
             </CardContent>
@@ -252,43 +282,52 @@ export const TestimonialSection = () => {
         </div>
 
         {/* Video Testimonials Section */}
-        <div className={`text-center mb-6 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="badge-brand mb-3">
+        <div className={`text-center mb-8 transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-4">
+            <Play className="w-3 h-3" />
             Video Stories
           </span>
-          <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-2">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-3">
             Video Testimonials
           </h3>
-          <p className="text-muted-foreground text-sm hidden sm:block">
+          <p className="text-gray-400 text-sm md:text-base hidden sm:block">
             Hover to preview • Click to watch full video
           </p>
-          <p className="text-muted-foreground text-sm sm:hidden">
+          <p className="text-gray-400 text-sm md:text-base sm:hidden">
             Tap to play • Swipe to browse
           </p>
         </div>
         
+        {/* Video Carousel with Edge Fading */}
         <div className={`relative group/carousel transition-all duration-700 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          {/* Left Gradient Fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+          
+          {/* Right Gradient Fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
+          
           <Button
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('left')}
-            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background h-9 w-9"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/50 hover:scale-110 h-10 w-10 text-white"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
 
           <div 
             ref={videoScrollRef}
-            className="flex gap-3 overflow-x-auto pb-4 px-3 sm:px-6 snap-x snap-mandatory custom-scrollbar sm:justify-center"
+            className="flex gap-4 overflow-x-auto pb-4 px-8 sm:px-12 snap-x snap-mandatory custom-scrollbar sm:justify-center"
             style={{ WebkitOverflowScrolling: 'touch' }}
           >
-            {videoTestimonials.map((video) => (
+            {videoTestimonials.map((video, index) => (
               <VideoCard
                 key={video.id}
                 video={video}
                 isHovered={hoveredVideo === video.id}
                 onHover={() => setHoveredVideo(video.id)}
                 onLeave={() => setHoveredVideo(null)}
+                index={index}
               />
             ))}
           </div>
@@ -297,7 +336,7 @@ export const TestimonialSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('right')}
-            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-background/80 backdrop-blur-sm rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-opacity duration-300 hover:bg-background h-9 w-9"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/50 hover:scale-110 h-10 w-10 text-white"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
