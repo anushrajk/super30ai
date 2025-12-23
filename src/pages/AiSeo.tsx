@@ -130,6 +130,9 @@ const AiSeo = () => {
         <div id="ai-seo-faq">
           <FAQSection />
         </div>
+        <div id="ai-seo-final-cta-bottom">
+          <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+        </div>
         <div id="ai-seo-blog">
           <BlogSection />
         </div>
