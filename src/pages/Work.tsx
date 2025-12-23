@@ -1,22 +1,21 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { ClientLogosGrid } from "@/components/work/ClientLogosGrid";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
-import { FinalCTASection } from "@/components/landing/FinalCTASection";
+import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
+import { WorkFinalCTASection } from "@/components/work/WorkFinalCTASection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { FAQSection } from "@/components/landing/FAQSection";
 import { StatsSection, workPageStats } from "@/components/common/StatsSection";
-import { LeadCaptureForm } from "@/components/landing/LeadCaptureForm";
 import { Card, CardContent } from "@/components/ui/card";
-import { useLead } from "@/hooks/useLead";
-import { useSession } from "@/hooks/useSession";
-import { toast } from "sonner";
-import { BarChart3, TrendingUp, Award, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BarChart3, TrendingUp, Award, Users, Search, ArrowRight, MessageCircle } from "lucide-react";
 import { BentoBadge } from "@/components/ui/bento-grid";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const filters = ["All", "AI SEO", "Performance Marketing", "E-commerce", "B2B", "SaaS"];
 
@@ -97,42 +96,12 @@ const caseStudies = [
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
-  const navigate = useNavigate();
-  const { createLead, sendLeadEmail, loading } = useLead();
-  const { session } = useSession();
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   const filteredStudies = caseStudies.filter((study) => {
     if (activeFilter === "All") return true;
     return study.category.includes(activeFilter);
   });
-
-  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
-    try {
-      const leadData = {
-        website_url: data.website_url,
-        email: data.email,
-        role: data.role,
-        monthly_revenue: data.monthly_revenue,
-        step: 1
-      };
-
-      const newLead = await createLead(leadData, session?.id);
-      
-      if (newLead && session) {
-        await sendLeadEmail(
-          { ...leadData, step: 1 },
-          session,
-          "Work Page - Free AI SEO Audit Request"
-        );
-      }
-
-      toast.success("Analyzing your website...");
-      navigate("/audit", { state: { leadId: newLead?.id } });
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error(error);
-    }
-  };
 
   return (
     <>
@@ -148,96 +117,86 @@ const Work = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* Hero Section with Form */}
-        <section id="work-hero" className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
-          {/* Animated Background */}
+        {/* Hero Section */}
+        <section id="work-hero" className="relative bg-background overflow-hidden min-h-[70vh] md:min-h-[80vh] flex items-center">
+          {/* Background */}
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-            <div className="absolute inset-0 bg-gradient-to-br from-brand/5 via-background to-background" />
-            
-            {/* Animated orbs */}
-            <div className="absolute top-20 left-10 w-72 h-72 bg-brand/10 rounded-full blur-3xl" />
-            <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand/10 rounded-full blur-3xl" />
-            <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-brand/10 rounded-full blur-3xl" />
           </div>
 
           <div className="container relative mx-auto px-3 md:px-4 py-8 md:py-12 lg:py-16">
-            <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-12 items-center">
-              {/* Left Column - Content */}
-              <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
-                {/* Badge */}
-                <BentoBadge>
-                  <BarChart3 className="w-4 h-4" />
-                  300+ Success Stories
-                </BentoBadge>
+            <div className="max-w-4xl mx-auto text-center space-y-6">
+              {/* Badge */}
+              <BentoBadge>
+                <BarChart3 className="w-4 h-4" />
+                300+ Success Stories
+              </BentoBadge>
 
-                {/* H1 and Description */}
-                <div>
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                    Numbers Don't Lie.{" "}
-                    <span className="relative">
-                      <span className="text-brand-gradient">Neither Do We.</span>
-                      <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
-                    </span>
-                  </h1>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                    Real results from real businesses. See how we've helped 300+ companies{" "}
-                    <span className="text-foreground font-semibold">dominate their markets</span> with AI-powered marketing.
-                  </p>
-                </div>
-
-                {/* Trust Signals */}
-                <div className="flex flex-col gap-3 py-2">
-                  {[
-                    { icon: TrendingUp, text: "₹50Cr+ Revenue Generated" },
-                    { icon: Award, text: "Average 4.2x ROAS Across Clients" },
-                    { icon: Users, text: "300+ Businesses Transformed" },
-                    { icon: BarChart3, text: "92% Client Retention Rate" },
-                  ].map((signal, index) => (
-                    <div 
-                      key={index}
-                      className="flex items-center gap-3 group cursor-default"
-                    >
-                      <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-gradient group-hover:scale-110 transition-all duration-300 shadow-md shadow-brand/20">
-                        <signal.icon className="w-3.5 h-3.5 text-brand group-hover:text-white transition-colors" />
-                      </div>
-                      <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Expert credentials - Mobile only */}
-                <div className="lg:hidden flex flex-wrap gap-2 pt-2">
-                  {["AI SEO Experts", "Performance Marketing", "Data-Driven Results"].map((cred, i) => (
-                    <span 
-                      key={i}
-                      className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
-                    >
-                      <Award className="w-3 h-3 text-brand" />
-                      {cred}
-                    </span>
-                  ))}
-                </div>
+              {/* H1 and Description */}
+              <div>
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
+                  Numbers Don't Lie.{" "}
+                  <span className="relative inline-block">
+                    <span className="text-brand-gradient">Neither Do We.</span>
+                    <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
+                  </span>
+                </h1>
+                <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                  Real results from real businesses. See how we've helped 300+ companies{" "}
+                  <span className="text-foreground font-semibold">dominate their markets</span> with AI-powered marketing.
+                </p>
               </div>
 
-              {/* Right Column - Form */}
-              <div className="md:col-span-1 lg:col-span-5">
-                <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-                  <LeadCaptureForm onSubmit={handleFormSubmit} loading={loading} />
-                </div>
-                
-                {/* Expert credentials - Desktop only */}
-                <div className="hidden lg:flex flex-wrap gap-2 mt-4 justify-center">
-                  {["AI SEO Experts", "Performance Marketing", "Data-Driven Results"].map((cred, i) => (
-                    <span 
-                      key={i}
-                      className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
-                    >
-                      <Award className="w-3 h-3 text-brand" />
-                      {cred}
-                    </span>
-                  ))}
-                </div>
+              {/* Trust Signals - Horizontal */}
+              <div className="flex flex-wrap justify-center gap-4 py-4">
+                {[
+                  { icon: TrendingUp, text: "₹50Cr+ Revenue" },
+                  { icon: Award, text: "4.2x Avg ROAS" },
+                  { icon: Users, text: "300+ Clients" },
+                  { icon: BarChart3, text: "92% Retention" },
+                ].map((signal, index) => (
+                  <div 
+                    key={index}
+                    className="flex items-center gap-2 bg-background border border-border rounded-full px-4 py-2"
+                  >
+                    <signal.icon className="w-4 h-4 text-brand" />
+                    <span className="font-medium text-foreground text-sm">{signal.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Dual CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
+                <Link to="/ai-seo">
+                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
+                    <Search className="w-4 h-4 mr-2" />
+                    Get Free AI SEO Audit
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  onClick={() => setShowEnquiryPopup(true)}
+                  className="border-border text-foreground hover:bg-muted transition-all duration-300 w-full sm:w-auto"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Enquire Now
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+
+              {/* Expert credentials */}
+              <div className="flex flex-wrap gap-2 justify-center pt-2">
+                {["AI SEO Experts", "Performance Marketing", "Data-Driven Results"].map((cred, i) => (
+                  <span 
+                    key={i}
+                    className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
+                  >
+                    <Award className="w-3 h-3 text-brand" />
+                    {cred}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -317,12 +276,22 @@ const Work = () => {
           </div>
         </section>
 
+        {/* Unified CTA Section - moved above Client Logos Grid */}
+        <div id="work-cta">
+          <UnifiedCTASection 
+            headline="Stop Guessing. Start Dominating."
+            subtext="Your competitors are already optimizing for AI search. Get your free visibility audit and discover exactly what you're missing."
+            primaryCTA={{ label: "Get Free AI SEO Audit", href: "/ai-seo" }}
+            secondaryCTA={{ label: "Free Ads Audit", href: "/performance-marketing" }}
+          />
+        </div>
+
         {/* Client Logos Grid */}
         <div id="work-client-logos-grid">
           <ClientLogosGrid />
         </div>
 
-        {/* Stats Section - moved above Testimonials with white background */}
+        {/* Stats Section */}
         <div id="work-stats">
           <StatsSection stats={workPageStats} className="bg-background border-y-0" />
         </div>
@@ -332,14 +301,14 @@ const Work = () => {
           <TestimonialSection />
         </div>
 
-        {/* CTA Section with Form */}
-        <div id="work-cta">
-          <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
-        </div>
-
         {/* Blog Section */}
         <div id="work-blog">
           <BlogSection />
+        </div>
+
+        {/* Work Final CTA Section - above FAQ */}
+        <div id="work-final-cta">
+          <WorkFinalCTASection />
         </div>
 
         {/* FAQ Section */}
@@ -349,6 +318,9 @@ const Work = () => {
 
         <Footer />
       </main>
+
+      {/* Enquiry Popup */}
+      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </>
   );
 };
