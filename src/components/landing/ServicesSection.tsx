@@ -306,45 +306,7 @@ export const ServicesSection = () => {
         </div>
 
         {/* Interactive Technical AI SEO Tabs */}
-        <div className="bento-card p-4 md:p-6 mb-6 md:mb-12">
-          <div className="text-center mb-4 md:mb-5">
-            <span className="badge-brand mb-3">
-              Foundation
-            </span>
-            <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">Technical AI SEO</h3>
-            <p className="text-muted-foreground text-sm md:text-base">The foundation that makes AI optimization possible</p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center gap-2 mb-5 md:mb-6 overflow-x-auto pb-2 -mx-4 px-4 sm:mx-0 sm:px-0 custom-scrollbar">
-            {technicalTabs.map(tab => <button key={tab.id} onClick={() => setActiveTab(tab.id)} className={`px-3 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 flex items-center gap-1.5 ${activeTab === tab.id ? 'bg-brand-gradient text-white shadow-brand' : 'icon-bg-glow text-brand hover:bg-brand/20'}`}>
-                <tab.icon className="w-3.5 h-3.5" />
-                {tab.label}
-              </button>)}
-          </div>
-
-          {activeTabData && <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 items-center animate-fade-in">
-              <div>
-                <h4 className="text-lg md:text-xl font-bold text-foreground mb-2">{activeTabData.title}</h4>
-                <p className="text-muted-foreground mb-4 text-sm md:text-base">{activeTabData.description}</p>
-                <ul className="space-y-2.5">
-                  {activeTabData.benefits.map((benefit, i) => <li key={i} className="flex items-center gap-2.5 text-foreground text-sm md:text-base">
-                      <div className="w-5 h-5 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0">
-                        <Zap className="w-2.5 h-2.5 text-white" />
-                      </div>
-                      {benefit}
-                    </li>)}
-                </ul>
-              </div>
-              <div className="glass rounded-2xl p-6 md:p-8 flex items-center justify-center min-h-[200px] border-brand/20">
-                <div className="text-center">
-                  <div className="w-20 h-20 md:w-24 md:h-24 bg-brand-gradient rounded-3xl flex items-center justify-center mx-auto mb-3 shadow-brand">
-                    <activeTabData.icon className="w-10 h-10 md:w-12 md:h-12 text-white" />
-                  </div>
-                  <p className="text-brand font-semibold text-sm">{activeTabData.label}</p>
-                </div>
-              </div>
-            </div>}
-        </div>
+        
 
         {/* AI Link & Brand Signal */}
         
