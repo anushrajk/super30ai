@@ -18,6 +18,19 @@ import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BentoBadge } from "@/components/ui/bento-grid";
 
+// Color palette for multi-colored icons
+const iconColors = [
+  { bg: "from-violet-500/20 to-purple-500/20", border: "border-violet-500/30", glow: "bg-violet-500/30", text: "text-violet-400", hoverBg: "group-hover:from-violet-500 group-hover:to-purple-500" },
+  { bg: "from-emerald-500/20 to-teal-500/20", border: "border-emerald-500/30", glow: "bg-emerald-500/30", text: "text-emerald-400", hoverBg: "group-hover:from-emerald-500 group-hover:to-teal-500" },
+  { bg: "from-amber-500/20 to-orange-500/20", border: "border-amber-500/30", glow: "bg-amber-500/30", text: "text-amber-400", hoverBg: "group-hover:from-amber-500 group-hover:to-orange-500" },
+  { bg: "from-cyan-500/20 to-blue-500/20", border: "border-cyan-500/30", glow: "bg-cyan-500/30", text: "text-cyan-400", hoverBg: "group-hover:from-cyan-500 group-hover:to-blue-500" },
+  { bg: "from-rose-500/20 to-pink-500/20", border: "border-rose-500/30", glow: "bg-rose-500/30", text: "text-rose-400", hoverBg: "group-hover:from-rose-500 group-hover:to-pink-500" },
+  { bg: "from-indigo-500/20 to-blue-500/20", border: "border-indigo-500/30", glow: "bg-indigo-500/30", text: "text-indigo-400", hoverBg: "group-hover:from-indigo-500 group-hover:to-blue-500" },
+  { bg: "from-lime-500/20 to-green-500/20", border: "border-lime-500/30", glow: "bg-lime-500/30", text: "text-lime-400", hoverBg: "group-hover:from-lime-500 group-hover:to-green-500" },
+  { bg: "from-fuchsia-500/20 to-purple-500/20", border: "border-fuchsia-500/30", glow: "bg-fuchsia-500/30", text: "text-fuchsia-400", hoverBg: "group-hover:from-fuchsia-500 group-hover:to-purple-500" },
+  { bg: "from-sky-500/20 to-cyan-500/20", border: "border-sky-500/30", glow: "bg-sky-500/30", text: "text-sky-400", hoverBg: "group-hover:from-sky-500 group-hover:to-cyan-500" },
+];
+
 const audiences = [
   {
     icon: ShoppingCart,
@@ -169,11 +182,15 @@ export const PMTargetAudienceSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:to-brand/10 transition-colors duration-300" />
                 
                 <CardContent className="p-4 md:p-5 relative">
-                  <div className="icon-bg-glow w-12 h-12 rounded-xl flex items-center justify-center mb-3 group-hover:bg-brand-gradient group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
-                    <audience.icon className="w-6 h-6 text-brand group-hover:text-white transition-colors duration-300" />
+                  {/* Multi-colored icon */}
+                  <div className="relative mb-3">
+                    <div className={`absolute inset-0 w-12 h-12 ${iconColors[index % iconColors.length].glow} rounded-xl blur-lg group-hover:blur-xl transition-all duration-300`} />
+                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} border ${iconColors[index % iconColors.length].border} ${iconColors[index % iconColors.length].hoverBg} group-hover:scale-110 group-hover:rotate-3 group-hover:border-white/30 transition-all duration-300 shadow-lg`}>
+                      <audience.icon className={`w-6 h-6 ${iconColors[index % iconColors.length].text} group-hover:text-white transition-colors duration-300`} />
+                    </div>
                   </div>
 
-                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2 group-hover:text-brand transition-colors duration-300">
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2 group-hover:text-foreground transition-colors duration-300">
                     {audience.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-3">{audience.description}</p>
@@ -181,7 +198,9 @@ export const PMTargetAudienceSection = () => {
                   <ul className="space-y-1.5">
                     {audience.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-foreground">
-                        <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
+                        <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${iconColors[index % iconColors.length].bg} flex items-center justify-center flex-shrink-0`}>
+                          <CheckCircle2 className={`w-2.5 h-2.5 ${iconColors[index % iconColors.length].text}`} />
+                        </div>
                         {feature}
                       </li>
                     ))}
