@@ -176,7 +176,7 @@ export const Navbar = () => {
               Enquire Now
             </Button>
             <Link to="/ai-seo">
-              <Button className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25 hover:shadow-[hsl(var(--brand-orange))]/40 hover:scale-105 transition-all duration-300">
+              <Button className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
                 <Sparkles className="w-4 h-4 mr-2" />
                 Get Free Audit
               </Button>
@@ -286,7 +286,7 @@ export const Navbar = () => {
                 Enquire Now
               </Button>
               <Link to="/ai-seo" className="block">
-                <Button className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25">
+                <Button className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg">
                   <Sparkles className="w-4 h-4 mr-2" />
                   Get Free Audit
                 </Button>

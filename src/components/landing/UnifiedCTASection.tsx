@@ -37,7 +37,7 @@ export const UnifiedCTASection = ({
           <Link to={primaryCTA.href}>
             <Button
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300 w-full sm:w-auto"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg transition-all duration-300 w-full sm:w-auto"
             >
               {primaryCTA.label}
               <ArrowRight className="w-5 h-5 ml-2" />
