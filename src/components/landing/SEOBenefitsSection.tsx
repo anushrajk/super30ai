@@ -196,14 +196,11 @@ export const SEOBenefitsSection = () => {
             {benefits.map((benefit, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-sm border border-white/10 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 hover:border-brand/40 hover:shadow-xl hover:shadow-brand/10 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 {/* Animated gradient border on hover */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/10 group-hover:via-transparent group-hover:to-brand/5 transition-all duration-500" />
-                
-                {/* Glow effect on hover */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-brand/0 via-brand/20 to-brand/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
                 
                 <CardContent className="p-5 md:p-6 relative">
                   {/* Solid color icon */}
@@ -214,14 +211,14 @@ export const SEOBenefitsSection = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-bold text-white mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-white/80 mb-4 leading-relaxed">{benefit.description}</p>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
 
                   <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-sm text-white font-medium">
+                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 font-medium">
                         <div className={`w-5 h-5 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
                           <CheckCircle2 className={`w-3 h-3 ${iconColors[index % iconColors.length].checkText}`} />
                         </div>
