@@ -18,17 +18,17 @@ import { useRef, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { BentoBadge } from "@/components/ui/bento-grid";
 
-// Color palette for multi-colored icons
+// Color palette for multi-colored icons - SOLID colors
 const iconColors = [
-  { bg: "from-violet-500/20 to-purple-500/20", border: "border-violet-500/30", glow: "bg-violet-500/30", text: "text-violet-400", hoverBg: "group-hover:from-violet-500 group-hover:to-purple-500" },
-  { bg: "from-emerald-500/20 to-teal-500/20", border: "border-emerald-500/30", glow: "bg-emerald-500/30", text: "text-emerald-400", hoverBg: "group-hover:from-emerald-500 group-hover:to-teal-500" },
-  { bg: "from-amber-500/20 to-orange-500/20", border: "border-amber-500/30", glow: "bg-amber-500/30", text: "text-amber-400", hoverBg: "group-hover:from-amber-500 group-hover:to-orange-500" },
-  { bg: "from-cyan-500/20 to-blue-500/20", border: "border-cyan-500/30", glow: "bg-cyan-500/30", text: "text-cyan-400", hoverBg: "group-hover:from-cyan-500 group-hover:to-blue-500" },
-  { bg: "from-rose-500/20 to-pink-500/20", border: "border-rose-500/30", glow: "bg-rose-500/30", text: "text-rose-400", hoverBg: "group-hover:from-rose-500 group-hover:to-pink-500" },
-  { bg: "from-indigo-500/20 to-blue-500/20", border: "border-indigo-500/30", glow: "bg-indigo-500/30", text: "text-indigo-400", hoverBg: "group-hover:from-indigo-500 group-hover:to-blue-500" },
-  { bg: "from-lime-500/20 to-green-500/20", border: "border-lime-500/30", glow: "bg-lime-500/30", text: "text-lime-400", hoverBg: "group-hover:from-lime-500 group-hover:to-green-500" },
-  { bg: "from-fuchsia-500/20 to-purple-500/20", border: "border-fuchsia-500/30", glow: "bg-fuchsia-500/30", text: "text-fuchsia-400", hoverBg: "group-hover:from-fuchsia-500 group-hover:to-purple-500" },
-  { bg: "from-sky-500/20 to-cyan-500/20", border: "border-sky-500/30", glow: "bg-sky-500/30", text: "text-sky-400", hoverBg: "group-hover:from-sky-500 group-hover:to-cyan-500" },
+  { bg: "from-violet-500 to-purple-600", glow: "bg-violet-500/50", text: "text-white", checkBg: "bg-violet-500/30", checkText: "text-violet-500" },
+  { bg: "from-emerald-500 to-teal-600", glow: "bg-emerald-500/50", text: "text-white", checkBg: "bg-emerald-500/30", checkText: "text-emerald-500" },
+  { bg: "from-amber-500 to-orange-600", glow: "bg-amber-500/50", text: "text-white", checkBg: "bg-amber-500/30", checkText: "text-amber-500" },
+  { bg: "from-cyan-500 to-blue-600", glow: "bg-cyan-500/50", text: "text-white", checkBg: "bg-cyan-500/30", checkText: "text-cyan-500" },
+  { bg: "from-rose-500 to-pink-600", glow: "bg-rose-500/50", text: "text-white", checkBg: "bg-rose-500/30", checkText: "text-rose-500" },
+  { bg: "from-indigo-500 to-blue-600", glow: "bg-indigo-500/50", text: "text-white", checkBg: "bg-indigo-500/30", checkText: "text-indigo-500" },
+  { bg: "from-lime-500 to-green-600", glow: "bg-lime-500/50", text: "text-white", checkBg: "bg-lime-500/30", checkText: "text-lime-500" },
+  { bg: "from-fuchsia-500 to-purple-600", glow: "bg-fuchsia-500/50", text: "text-white", checkBg: "bg-fuchsia-500/30", checkText: "text-fuchsia-500" },
+  { bg: "from-sky-500 to-cyan-600", glow: "bg-sky-500/50", text: "text-white", checkBg: "bg-sky-500/30", checkText: "text-sky-500" },
 ];
 
 const audiences = [
@@ -182,15 +182,15 @@ export const PMTargetAudienceSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-br from-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:to-brand/10 transition-colors duration-300" />
                 
                 <CardContent className="p-4 md:p-5 relative">
-                  {/* Multi-colored icon */}
+                  {/* Solid color icon */}
                   <div className="relative mb-3">
-                    <div className={`absolute inset-0 w-12 h-12 ${iconColors[index % iconColors.length].glow} rounded-xl blur-lg group-hover:blur-xl transition-all duration-300`} />
-                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} border ${iconColors[index % iconColors.length].border} ${iconColors[index % iconColors.length].hoverBg} group-hover:scale-110 group-hover:rotate-3 group-hover:border-white/30 transition-all duration-300 shadow-lg`}>
-                      <audience.icon className={`w-6 h-6 ${iconColors[index % iconColors.length].text} group-hover:text-white transition-colors duration-300`} />
+                    <div className={`absolute inset-0 w-12 h-12 ${iconColors[index % iconColors.length].glow} rounded-xl blur-xl transition-all duration-300`} />
+                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-300`}>
+                      <audience.icon className={`w-6 h-6 ${iconColors[index % iconColors.length].text}`} />
                     </div>
                   </div>
 
-                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2 group-hover:text-foreground transition-colors duration-300">
+                  <h3 className="text-base md:text-lg font-bold text-foreground mb-2">
                     {audience.title}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-3">{audience.description}</p>
@@ -198,8 +198,8 @@ export const PMTargetAudienceSection = () => {
                   <ul className="space-y-1.5">
                     {audience.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-foreground">
-                        <div className={`w-4 h-4 rounded-full bg-gradient-to-br ${iconColors[index % iconColors.length].bg} flex items-center justify-center flex-shrink-0`}>
-                          <CheckCircle2 className={`w-2.5 h-2.5 ${iconColors[index % iconColors.length].text}`} />
+                        <div className={`w-4 h-4 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0`}>
+                          <CheckCircle2 className={`w-2.5 h-2.5 ${iconColors[index % iconColors.length].checkText}`} />
                         </div>
                         {feature}
                       </li>
