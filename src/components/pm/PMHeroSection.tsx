@@ -33,18 +33,10 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
 
   return (
     <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
-      {/* Animated Background */}
+      {/* Background */}
       <div className="absolute inset-0">
         {/* Grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-        
-        {/* Gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/80 via-background to-background dark:from-blue-950/30 dark:via-background dark:to-background" />
-        
-        {/* Animated orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-br from-blue-400/30 to-blue-600/10 rounded-full blur-2xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-br from-orange-300/20 to-orange-500/10 rounded-full blur-2xl" />
-        <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-200/20 to-transparent rounded-full blur-2xl" />
       </div>
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">

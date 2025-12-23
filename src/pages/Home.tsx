@@ -64,15 +64,9 @@ const Home = () => {
     <main className="min-h-screen pt-16 md:pt-20">
       {/* Hero Section - Modern & Engaging */}
       <section id="home-hero" className="relative overflow-hidden min-h-[70vh] md:min-h-[80vh] lg:min-h-[85vh] flex items-center bg-background">
-        {/* Animated Background - Matching SEO/Work pages */}
+        {/* Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-50/80 via-background to-background dark:from-orange-950/30 dark:via-background dark:to-background" />
-          
-          {/* Animated orbs */}
-          <div className="absolute top-10 md:top-20 left-5 md:left-10 w-48 md:w-72 h-48 md:h-72 bg-gradient-to-br from-orange-400/30 to-orange-600/10 rounded-full blur-2xl" />
-          <div className="absolute bottom-10 md:bottom-20 right-5 md:right-10 w-64 md:w-96 h-64 md:h-96 bg-gradient-to-br from-orange-300/20 to-orange-500/10 rounded-full blur-2xl" />
-          <div className="absolute top-1/2 left-1/3 w-48 md:w-64 h-48 md:h-64 bg-gradient-to-br from-orange-200/20 to-transparent rounded-full blur-2xl hidden md:block" />
         </div>
 
         <div className="container relative mx-auto px-3 md:px-4 py-6 md:py-10 lg:py-16">
@@ -153,7 +147,7 @@ const Home = () => {
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
                 <Link to="/ai-seo">
-                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/30 hover:shadow-xl hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
+                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                     AI SEO Services
                     <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-2" />

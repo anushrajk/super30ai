@@ -23,7 +23,7 @@ export const SEOFinalCTASection = () => {
   };
   
   return (
-    <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-white overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-background overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
@@ -34,16 +34,16 @@ export const SEOFinalCTASection = () => {
             <span className="text-brand text-sm font-medium">Free AI SEO Strategy Session</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
             Ready to <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Dominate AI Search?</span>
           </h2>
-          <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto">
+          <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
             Book a free consultation with our SEO experts. Get a complete audit of your AI visibility and discover hidden ranking opportunities.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {benefits.map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-slate-700 bg-slate-100 border border-slate-200 rounded-full px-4 py-2 hover:bg-slate-200 hover:border-brand/30 transition-all duration-300">
+              <div key={i} className="flex items-center gap-2 text-foreground bg-background border border-border rounded-full px-4 py-2 hover:bg-muted/50 hover:border-brand/30 transition-all duration-300">
                 <item.icon className="w-4 h-4 text-brand" />
                 <span className="text-sm">{item.text}</span>
               </div>
@@ -54,7 +54,7 @@ export const SEOFinalCTASection = () => {
             <Button 
               onClick={scrollToForm}
               size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 hover:scale-105 transition-all duration-300 group"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
               Start Free Audit Now
@@ -64,14 +64,14 @@ export const SEOFinalCTASection = () => {
               variant="outline"
               size="lg"
               onClick={() => setShowEnquiryPopup(true)}
-              className="border-slate-300 text-slate-700 hover:bg-slate-100 hover:scale-105 transition-all duration-300 group"
+              className="border-border text-foreground hover:bg-muted hover:scale-105 transition-all duration-300 group"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
-          <p className="text-slate-500 text-sm mt-4">Takes 2 minutes • No credit card required</p>
+          <p className="text-muted-foreground text-sm mt-4">Takes 2 minutes • No credit card required</p>
         </div>
       </div>
 
