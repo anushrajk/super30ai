@@ -77,9 +77,9 @@ const Index = () => {
         <ServicesSection />
         <WhoIsThisForSection />
         <ProcessSection />
+        <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
         <DashboardPreview />
         <TestimonialSection />
-        <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
         <FAQSection />
         <BlogSection />
         <Footer />
