@@ -283,6 +283,7 @@ const Work = () => {
             subtext="Your competitors are already optimizing for AI search. Get your free visibility audit and discover exactly what you're missing."
             primaryCTA={{ label: "Get Free AI SEO Audit", href: "/ai-seo" }}
             secondaryCTA={{ label: "Free Ads Audit", href: "/performance-marketing" }}
+            variant="dark"
           />
         </div>
 
