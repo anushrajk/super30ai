@@ -71,9 +71,11 @@ export const ClientLogosSection = () => {
   }, [isVisible]);
 
   return (
-    <section className="py-4 md:py-6 bg-background border-b border-border/30 relative overflow-hidden">
-      {/* Simplified gradient - removed backdrop-blur */}
-      <div className="absolute inset-0 bg-gradient-to-r from-orange-50/30 via-transparent to-orange-50/30 pointer-events-none" />
+    <section className="py-6 md:py-10 bg-[#0a0a0a] relative overflow-hidden">
+      {/* Background elements - consistent with dark sections */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute top-10 left-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative">
         {/* Trust header */}
@@ -83,8 +85,8 @@ export const ClientLogosSection = () => {
               <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
             ))}
           </div>
-          <p className="text-sm font-medium text-foreground">
-            Trusted by <span className="text-orange-500 font-bold">50+ leading companies</span> across industries
+          <p className="text-sm font-medium text-white">
+            Trusted by <span className="text-brand font-bold">50+ leading companies</span> across industries
           </p>
         </div>
 
@@ -99,14 +101,14 @@ export const ClientLogosSection = () => {
             {[...clientLogos, ...clientLogos].map((client, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-background rounded-xl border border-border/50 transition-colors duration-200 hover:border-orange-500/50"
+                className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-white/5 rounded-xl border border-white/10 transition-colors duration-200 hover:border-brand/50"
               >
-                <div className="w-10 h-10 bg-gradient-to-br from-slate-100 to-slate-200 rounded-lg flex items-center justify-center">
-                  <span className="text-slate-700 font-bold text-sm">{client.initials}</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-white/10 to-white/5 rounded-lg flex items-center justify-center border border-white/10">
+                  <span className="text-white font-bold text-sm">{client.initials}</span>
                 </div>
                 <div>
-                  <span className="text-foreground font-medium whitespace-nowrap block text-sm">{client.name}</span>
-                  <span className="text-muted-foreground text-xs">{client.industry}</span>
+                  <span className="text-white font-medium whitespace-nowrap block text-sm">{client.name}</span>
+                  <span className="text-gray-400 text-xs">{client.industry}</span>
                 </div>
               </div>
             ))}
@@ -114,25 +116,25 @@ export const ClientLogosSection = () => {
         </div>
 
         {/* Results proof */}
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-border/50">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/10">
           <div className="text-center">
-            <p className="text-2xl font-bold text-foreground">300%+</p>
-            <p className="text-xs text-muted-foreground">Avg. Traffic Growth</p>
+            <p className="text-2xl font-bold text-white">300%+</p>
+            <p className="text-xs text-gray-400">Avg. Traffic Growth</p>
           </div>
-          <div className="w-px h-8 bg-border hidden sm:block" />
+          <div className="w-px h-8 bg-white/20 hidden sm:block" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-foreground">50+</p>
-            <p className="text-xs text-muted-foreground">AI Audits Delivered</p>
+            <p className="text-2xl font-bold text-white">50+</p>
+            <p className="text-xs text-gray-400">AI Audits Delivered</p>
           </div>
-          <div className="w-px h-8 bg-border hidden sm:block" />
+          <div className="w-px h-8 bg-white/20 hidden sm:block" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-foreground">$2M+</p>
-            <p className="text-xs text-muted-foreground">Revenue Generated</p>
+            <p className="text-2xl font-bold text-white">$2M+</p>
+            <p className="text-xs text-gray-400">Revenue Generated</p>
           </div>
-          <div className="w-px h-8 bg-border hidden sm:block" />
+          <div className="w-px h-8 bg-white/20 hidden sm:block" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-foreground">4.9/5</p>
-            <p className="text-xs text-muted-foreground">Client Rating</p>
+            <p className="text-2xl font-bold text-white">4.9/5</p>
+            <p className="text-xs text-gray-400">Client Rating</p>
           </div>
         </div>
       </div>
