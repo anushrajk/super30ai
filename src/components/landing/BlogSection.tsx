@@ -1,3 +1,4 @@
+import React, { forwardRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
@@ -32,9 +33,9 @@ const blogs = [
   }
 ];
 
-export const BlogSection = () => {
+export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section className="py-8 md:py-14 lg:py-20 bg-background relative overflow-hidden">
+    <section ref={ref} className="py-8 md:py-14 lg:py-20 bg-background relative overflow-hidden">
       {/* Subtle background */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
       
@@ -61,6 +62,8 @@ export const BlogSection = () => {
                 <img 
                   src={blog.image} 
                   alt={blog.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute top-4 left-4">
@@ -108,4 +111,6 @@ export const BlogSection = () => {
       </div>
     </section>
   );
-};
+});
+
+BlogSection.displayName = "BlogSection";
