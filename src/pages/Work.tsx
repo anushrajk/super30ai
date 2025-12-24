@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
@@ -16,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { BarChart3, TrendingUp, Award, Users, Search, ArrowRight, MessageCircle } from "lucide-react";
 import { BentoBadge } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const filters = ["All", "AI SEO", "Performance Marketing", "E-commerce", "B2B", "SaaS"];
 
@@ -97,6 +97,7 @@ const caseStudies = [
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const [showAuditPopup, setShowAuditPopup] = useState(false);
 
   const filteredStudies = caseStudies.filter((study) => {
     if (activeFilter === "All") return true;
@@ -167,13 +168,15 @@ const Work = () => {
 
               {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <Link to="/ai-seo">
-                  <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
-                    <Search className="w-4 h-4 mr-2" />
-                    Get Free AI SEO Audit
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  onClick={() => setShowAuditPopup(true)}
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto"
+                >
+                  <Search className="w-4 h-4 mr-2" />
+                  Get Free Audit & Strategy
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
@@ -322,6 +325,7 @@ const Work = () => {
 
       {/* Enquiry Popup */}
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
     </>
   );
 };

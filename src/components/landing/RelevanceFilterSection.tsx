@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, X, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const forYou = [
   "Spending ₹1L+/mo but can't predict ROI",
@@ -27,13 +28,7 @@ export const RelevanceFilterSection = () => {
   const [leftCardRef, leftCardVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
   const [rightCardRef, rightCardVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.2 });
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
-
-  const scrollToForm = () => {
-    const heroSection = document.getElementById('seo-hero');
-    if (heroSection) {
-      heroSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const [showAuditPopup, setShowAuditPopup] = useState(false);
 
   return (
     <section 
@@ -127,7 +122,7 @@ export const RelevanceFilterSection = () => {
         {/* Dual CTA */}
         <div className={`flex flex-col sm:flex-row gap-3 justify-center mt-8 md:mt-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`} style={{ transitionDelay: '400ms' }}>
           <Button 
-            onClick={scrollToForm}
+            onClick={() => setShowAuditPopup(true)}
             size="lg"
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 hover:scale-105 transition-all duration-300 group"
           >
@@ -151,6 +146,10 @@ export const RelevanceFilterSection = () => {
       <EnquiryPopup 
         open={showEnquiryPopup} 
         onOpenChange={setShowEnquiryPopup} 
+      />
+      <AuditChoicePopup 
+        open={showAuditPopup} 
+        onOpenChange={setShowAuditPopup} 
       />
     </section>
   );
