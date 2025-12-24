@@ -7,7 +7,19 @@ import { FileText, Loader2, ArrowRight } from 'lucide-react';
 import { useLead } from '@/hooks/useLead';
 import { useSession } from '@/hooks/useSession';
 import { toast } from 'sonner';
+import { usePopupValidation, type ValidationRule } from './usePopupValidation';
+import { FormError } from './FormError';
 import type { QuotePopupProps } from './types';
+
+const validationRules: Record<string, ValidationRule> = {
+  companyName: { required: true, type: 'name' },
+  website: { required: true, type: 'url' },
+  email: { required: true, type: 'email' },
+  budget: { required: true, type: 'select' },
+  services: { required: true, type: 'select' },
+};
+
+const baseInputClass = "h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60";
 
 export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,11 +33,24 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
   
   const { createLead, sendLeadEmail } = useLead();
   const { session } = useSession();
+  const { errors, touched, setFieldTouched, validateField, validateAllFields, clearErrors, getInputClassName } = usePopupValidation();
+
+  const handleBlur = (field: string) => {
+    setFieldTouched(field);
+    validateField(field, form[field as keyof typeof form], validationRules[field]);
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setForm(prev => ({ ...prev, [field]: value }));
+    if (touched[field]) {
+      validateField(field, value, validationRules[field]);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.companyName || !form.website || !form.email || !form.budget || !form.services) {
-      toast.error('Please fill all fields');
+    
+    if (!validateAllFields(form, validationRules)) {
       return;
     }
 
@@ -47,6 +72,7 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
       toast.success('Quote request received! Check your email within 24 hours.');
       onClose();
       setForm({ companyName: '', website: '', email: '', budget: '', services: '' });
+      clearErrors();
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -57,7 +83,6 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-md mx-auto bg-background/95 backdrop-blur-xl border border-border/40 shadow-2xl rounded-2xl p-6 sm:p-8">
-        {/* Modern icon treatment */}
         <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-xl bg-primary/10">
           <FileText className="w-6 h-6 text-primary" />
         </div>
@@ -72,50 +97,86 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-3 mt-4">
-          <Input
-            placeholder="Company name"
-            value={form.companyName}
-            onChange={(e) => setForm(prev => ({ ...prev, companyName: e.target.value }))}
-            className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60"
-          />
+          <div>
+            <Input
+              placeholder="Company name"
+              value={form.companyName}
+              onChange={(e) => handleChange('companyName', e.target.value)}
+              onBlur={() => handleBlur('companyName')}
+              className={getInputClassName('companyName', baseInputClass)}
+            />
+            <FormError message={errors.companyName} show={touched.companyName} />
+          </div>
           
-          <Input
-            placeholder="Website URL"
-            value={form.website}
-            onChange={(e) => setForm(prev => ({ ...prev, website: e.target.value }))}
-            className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60"
-          />
+          <div>
+            <Input
+              placeholder="Website URL"
+              value={form.website}
+              onChange={(e) => handleChange('website', e.target.value)}
+              onBlur={() => handleBlur('website')}
+              className={getInputClassName('website', baseInputClass)}
+            />
+            <FormError message={errors.website} show={touched.website} />
+          </div>
           
-          <Input
-            type="email"
-            placeholder="Work email"
-            value={form.email}
-            onChange={(e) => setForm(prev => ({ ...prev, email: e.target.value }))}
-            className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60"
-          />
+          <div>
+            <Input
+              type="email"
+              placeholder="Work email"
+              value={form.email}
+              onChange={(e) => handleChange('email', e.target.value)}
+              onBlur={() => handleBlur('email')}
+              className={getInputClassName('email', baseInputClass)}
+            />
+            <FormError message={errors.email} show={touched.email} />
+          </div>
           
-          <Select value={form.budget} onValueChange={(value) => setForm(prev => ({ ...prev, budget: value }))}>
-            <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
-              <SelectValue placeholder="Monthly budget" />
-            </SelectTrigger>
-            <SelectContent className="rounded-xl">
-              <SelectItem value="25k-50k">₹25,000 - ₹50,000</SelectItem>
-              <SelectItem value="50k-1l">₹50,000 - ₹1,00,000</SelectItem>
-              <SelectItem value="1l-2l">₹1,00,000 - ₹2,00,000</SelectItem>
-              <SelectItem value="2l+">₹2,00,000+</SelectItem>
-            </SelectContent>
-          </Select>
+          <div>
+            <Select 
+              value={form.budget} 
+              onValueChange={(value) => {
+                handleChange('budget', value);
+                setFieldTouched('budget');
+              }}
+            >
+              <SelectTrigger 
+                className={getInputClassName('budget', "h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20")}
+                onBlur={() => handleBlur('budget')}
+              >
+                <SelectValue placeholder="Monthly budget" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                <SelectItem value="25k-50k">₹25,000 - ₹50,000</SelectItem>
+                <SelectItem value="50k-1l">₹50,000 - ₹1,00,000</SelectItem>
+                <SelectItem value="1l-2l">₹1,00,000 - ₹2,00,000</SelectItem>
+                <SelectItem value="2l+">₹2,00,000+</SelectItem>
+              </SelectContent>
+            </Select>
+            <FormError message={errors.budget} show={touched.budget} />
+          </div>
           
-          <Select value={form.services} onValueChange={(value) => setForm(prev => ({ ...prev, services: value }))}>
-            <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
-              <SelectValue placeholder="Services needed" />
-            </SelectTrigger>
-            <SelectContent className="rounded-xl">
-              <SelectItem value="ai-seo">AI SEO</SelectItem>
-              <SelectItem value="performance-ads">Performance Ads</SelectItem>
-              <SelectItem value="both">Both</SelectItem>
-            </SelectContent>
-          </Select>
+          <div>
+            <Select 
+              value={form.services} 
+              onValueChange={(value) => {
+                handleChange('services', value);
+                setFieldTouched('services');
+              }}
+            >
+              <SelectTrigger 
+                className={getInputClassName('services', "h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20")}
+                onBlur={() => handleBlur('services')}
+              >
+                <SelectValue placeholder="Services needed" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                <SelectItem value="ai-seo">AI SEO</SelectItem>
+                <SelectItem value="performance-ads">Performance Ads</SelectItem>
+                <SelectItem value="both">Both</SelectItem>
+              </SelectContent>
+            </Select>
+            <FormError message={errors.services} show={touched.services} />
+          </div>
 
           <Button 
             type="submit" 

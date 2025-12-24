@@ -1,8 +1,8 @@
 export type PopupType = 'callback' | 'quote' | 'exit';
 
 export const POPUP_EXPIRY_HOURS = 24;
-export const CALLBACK_DELAY_MS = 15000; // 15 seconds after cookie dismissed
-export const QUOTE_DELAY_MS = 60000; // 60 seconds after cookie dismissed
+export const FIRST_POPUP_DELAY_MS = 15000; // 15 seconds after cookie dismissed
+export const BETWEEN_POPUP_DELAY_MS = 45000; // 45 seconds between popups
 
 export interface BasePopupProps {
   open: boolean;
