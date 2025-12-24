@@ -45,9 +45,17 @@ export const ExitIntentPopup = ({
   };
 
   const handleChange = (field: string, value: string) => {
-    setForm(prev => ({ ...prev, [field]: value }));
+    let processedValue = value;
+    if (field === 'phone') {
+      // Only allow digits, max 10, must start with 6-9
+      processedValue = value.replace(/\D/g, '').slice(0, 10);
+      if (processedValue.length > 0 && !/^[6-9]/.test(processedValue)) {
+        processedValue = '';
+      }
+    }
+    setForm(prev => ({ ...prev, [field]: processedValue }));
     if (touched[field]) {
-      validateField(field, value, validationRules[field]);
+      validateField(field, processedValue, validationRules[field]);
     }
   };
 
@@ -141,9 +149,9 @@ export const ExitIntentPopup = ({
                 +91
               </span>
               <Input
-                placeholder="Phone number"
+                placeholder="9876543210"
                 value={form.phone}
-                onChange={(e) => handleChange('phone', e.target.value.replace(/\D/g, '').slice(0, 10))}
+                onChange={(e) => handleChange('phone', e.target.value)}
                 onBlur={() => handleBlur('phone')}
                 className={getInputClassName('phone', `${baseInputClass} rounded-l-none`)}
               />

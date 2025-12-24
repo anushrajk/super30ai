@@ -99,6 +99,10 @@ const Contact = () => {
     email: "",
     phone: "",
     company: "",
+    website: "",
+    budget: "",
+    teamSize: "",
+    source: "",
     service: "",
     message: "",
   });
@@ -117,7 +121,7 @@ const Contact = () => {
     }
     
     if (formData.phone && !validatePhone(formData.phone)) {
-      newErrors.phone = "Please enter a valid 10-digit phone number";
+      newErrors.phone = "Enter 10 digit number starting with 6, 7, 8, or 9";
     }
     
     if (!validateMessage(formData.message, 10, 1000)) {
@@ -140,11 +144,12 @@ const Contact = () => {
 
     try {
       const leadData = {
-        website_url: window.location.href,
+        website_url: formData.website || window.location.href,
         email: sanitizeInput(formData.email),
-        phone: formData.phone ? sanitizeInput(formData.phone) : undefined,
+        phone: formData.phone ? `+91${sanitizeInput(formData.phone)}` : undefined,
         company_name: formData.company ? sanitizeInput(formData.company) : sanitizeInput(formData.name),
         role: formData.service ? `Contact - ${formData.service}` : 'Contact Form',
+        monthly_revenue: formData.budget || undefined,
         step: 1
       };
 
@@ -164,6 +169,10 @@ const Contact = () => {
         email: "",
         phone: "",
         company: "",
+        website: "",
+        budget: "",
+        teamSize: "",
+        source: "",
         service: "",
         message: "",
       });
@@ -289,11 +298,11 @@ const Contact = () => {
           <div className="container mx-auto px-3 md:px-4">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
-              <div className="bento-card p-6 md:p-8">
+              <div className="bento-card p-6 md:p-8 h-full flex flex-col">
                 <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Send us a message</h2>
 
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6" id="contact-form">
-                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+                <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-4" id="contact-form">
+                  <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="contact-name">Full Name *</Label>
                       <Input
@@ -323,17 +332,29 @@ const Contact = () => {
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-3 md:gap-4">
+                  <div className="grid md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label htmlFor="contact-phone">Phone</Label>
-                      <Input
-                        id="contact-phone"
-                        name="phone"
-                        placeholder="+91 73532 52526"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className={errors.phone ? "border-destructive" : ""}
-                      />
+                      <div className="flex">
+                        <span className="inline-flex items-center gap-1 px-3 rounded-l-md bg-muted border border-r-0 border-input text-muted-foreground text-sm font-medium">
+                          <Phone className="w-3.5 h-3.5" />
+                          +91
+                        </span>
+                        <Input
+                          id="contact-phone"
+                          name="phone"
+                          placeholder="9876543210"
+                          value={formData.phone}
+                          onChange={(e) => {
+                            let cleaned = e.target.value.replace(/\D/g, '').slice(0, 10);
+                            if (cleaned.length > 0 && !/^[6-9]/.test(cleaned)) {
+                              cleaned = '';
+                            }
+                            setFormData({ ...formData, phone: cleaned });
+                          }}
+                          className={`rounded-l-none ${errors.phone ? "border-destructive" : ""}`}
+                        />
+                      </div>
                       {errors.phone && <p className="text-xs text-destructive">{errors.phone}</p>}
                     </div>
                     <div className="space-y-2">
@@ -345,6 +366,75 @@ const Contact = () => {
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       />
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-website">Website URL</Label>
+                      <Input
+                        id="contact-website"
+                        name="website"
+                        placeholder="https://yourcompany.com"
+                        value={formData.website}
+                        onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-budget">Budget Range</Label>
+                      <Select
+                        value={formData.budget}
+                        onValueChange={(value) => setFormData({ ...formData, budget: value })}
+                      >
+                        <SelectTrigger id="contact-budget" name="budget">
+                          <SelectValue placeholder="Select budget range" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="under_50k">Under ₹50,000/month</SelectItem>
+                          <SelectItem value="50k_1L">₹50,000 - ₹1 Lakh/month</SelectItem>
+                          <SelectItem value="1L_5L">₹1 - 5 Lakhs/month</SelectItem>
+                          <SelectItem value="5L_10L">₹5 - 10 Lakhs/month</SelectItem>
+                          <SelectItem value="over_10L">Over ₹10 Lakhs/month</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  </div>
+
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-teamsize">Team Size</Label>
+                      <Select
+                        value={formData.teamSize}
+                        onValueChange={(value) => setFormData({ ...formData, teamSize: value })}
+                      >
+                        <SelectTrigger id="contact-teamsize" name="teamSize">
+                          <SelectValue placeholder="Select team size" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="1-10">1 - 10 employees</SelectItem>
+                          <SelectItem value="10-50">10 - 50 employees</SelectItem>
+                          <SelectItem value="50-200">50 - 200 employees</SelectItem>
+                          <SelectItem value="200+">200+ employees</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="contact-source">How did you hear about us?</Label>
+                      <Select
+                        value={formData.source}
+                        onValueChange={(value) => setFormData({ ...formData, source: value })}
+                      >
+                        <SelectTrigger id="contact-source" name="source">
+                          <SelectValue placeholder="Select source" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="google">Google Search</SelectItem>
+                          <SelectItem value="social">Social Media</SelectItem>
+                          <SelectItem value="referral">Referral</SelectItem>
+                          <SelectItem value="ads">Paid Ads</SelectItem>
+                          <SelectItem value="other">Other</SelectItem>
+                        </SelectContent>
+                      </Select>
                     </div>
                   </div>
 
@@ -366,17 +456,16 @@ const Contact = () => {
                     </Select>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex-1 flex flex-col">
                     <Label htmlFor="contact-message">Message *</Label>
                     <Textarea
                       id="contact-message"
                       name="message"
                       placeholder="Tell us about your project and goals..."
-                      rows={5}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
-                      className={errors.message ? "border-destructive" : ""}
+                      className={`flex-1 min-h-[100px] ${errors.message ? "border-destructive" : ""}`}
                     />
                     {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
                     <p className="text-xs text-muted-foreground">{formData.message.length}/1000 characters</p>
@@ -402,7 +491,7 @@ const Contact = () => {
               </div>
 
               {/* Contact Info */}
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-6 md:space-y-8 h-full flex flex-col">
                 <div>
                   <h2 className="text-xl md:text-2xl font-bold text-foreground mb-4 md:mb-6">Get in touch</h2>
                   <p className="text-muted-foreground mb-6">
@@ -457,8 +546,8 @@ const Contact = () => {
                 </div>
 
                 {/* Map placeholder */}
-                <div className="bento-card overflow-hidden">
-                  <div className="h-48 md:h-64 bg-gradient-to-br from-brand/10 to-brand/5 flex items-center justify-center">
+                <div className="bento-card overflow-hidden flex-1">
+                  <div className="h-full min-h-48 bg-gradient-to-br from-brand/10 to-brand/5 flex items-center justify-center">
                     <div className="text-center">
                       <MapPin className="w-10 h-10 text-brand mx-auto mb-2" />
                       <p className="text-muted-foreground text-sm">Bangalore, India</p>
