@@ -10,6 +10,7 @@ import { Navbar } from "@/components/Navbar";
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { Badge } from "@/components/ui/badge";
 import { BentoCard, BentoIcon } from "@/components/ui/bento-grid";
+import { formatDateOnly } from "@/lib/timeUtils";
 
 const ThankYou = () => {
   const location = useLocation();
@@ -31,7 +32,13 @@ const ThankYou = () => {
     try {
       const date = new Date(dateStr);
       if (isNaN(date.getTime())) return null;
-      return date.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+      // Get weekday in IST
+      const weekday = new Intl.DateTimeFormat('en-IN', { 
+        weekday: 'long', 
+        timeZone: 'Asia/Kolkata' 
+      }).format(date);
+      // Use centralized DD MM YYYY format
+      return `${weekday}, ${formatDateOnly(date)}`;
     } catch { return null; }
   };
 
