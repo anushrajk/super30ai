@@ -1,148 +1,201 @@
-import { useState, useEffect } from "react";
-import { TrendingUp, DollarSign, MousePointerClick, Target, BarChart3 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { useState } from "react";
+import { Card } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { 
+  Target, 
+  BarChart3, 
+  Users, 
+  TrendingUp, 
+  Sparkles, 
+  GitBranch,
+  type LucideIcon
+} from "lucide-react";
 
-const AnimatedValue = ({ end, prefix = "", suffix = "" }: { end: number; prefix?: string; suffix?: string }) => {
-  const [value, setValue] = useState(0);
+interface Metric {
+  label: string;
+  value: string;
+  icon: LucideIcon;
+  color: string;
+}
 
-  useEffect(() => {
-    let start = 0;
-    const duration = 2000;
-    const startTime = Date.now();
+interface Feature {
+  label: string;
+  metrics: Metric[];
+}
 
-    const animate = () => {
-      const elapsed = Date.now() - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const easeOut = 1 - Math.pow(1 - progress, 3);
-      setValue(Math.floor(start + (end - start) * easeOut));
-
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
-    };
-
-    requestAnimationFrame(animate);
-  }, [end]);
-
-  return <span>{prefix}{value.toLocaleString()}{suffix}</span>;
-};
+const features: Feature[] = [
+  {
+    label: "AI Bid Optimization",
+    metrics: [
+      { label: "Smart Bids", value: "2,847", icon: Target, color: "text-blue-500" },
+      { label: "Cost Savings", value: "34%", icon: TrendingUp, color: "text-green-500" },
+      { label: "Efficiency Score", value: "94/100", icon: Sparkles, color: "text-purple-500" },
+    ],
+  },
+  {
+    label: "Cross-Platform Performance",
+    metrics: [
+      { label: "Google Ads", value: "₹4.2L", icon: BarChart3, color: "text-red-500" },
+      { label: "Meta Ads", value: "₹2.8L", icon: BarChart3, color: "text-blue-600" },
+      { label: "LinkedIn Ads", value: "₹1.1L", icon: BarChart3, color: "text-sky-500" },
+    ],
+  },
+  {
+    label: "AI Audience Targeting",
+    metrics: [
+      { label: "Reach", value: "1.2M", icon: Users, color: "text-indigo-500" },
+      { label: "Engagement", value: "8.4%", icon: TrendingUp, color: "text-emerald-500" },
+      { label: "Conversion Rate", value: "3.2%", icon: Target, color: "text-orange-500" },
+    ],
+  },
+  {
+    label: "Real-Time ROAS Tracking",
+    metrics: [
+      { label: "ROAS", value: "4.8x", icon: TrendingUp, color: "text-green-500" },
+      { label: "Revenue", value: "₹18.6L", icon: BarChart3, color: "text-blue-500" },
+      { label: "Ad Spend", value: "₹3.9L", icon: Target, color: "text-amber-500" },
+    ],
+  },
+  {
+    label: "AI Creative Insights",
+    metrics: [
+      { label: "CTR", value: "5.7%", icon: Target, color: "text-pink-500" },
+      { label: "Ad Score", value: "92/100", icon: Sparkles, color: "text-violet-500" },
+      { label: "Impressions", value: "3.4M", icon: BarChart3, color: "text-cyan-500" },
+    ],
+  },
+  {
+    label: "Conversion Attribution",
+    metrics: [
+      { label: "Conversions", value: "1,247", icon: GitBranch, color: "text-emerald-500" },
+      { label: "Leads", value: "3,892", icon: Users, color: "text-blue-500" },
+      { label: "Cost per Lead", value: "₹284", icon: Target, color: "text-orange-500" },
+    ],
+  },
+];
 
 export const PMDashboardPreview = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 200);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const metrics = [
-    { icon: DollarSign, label: "Ad Spend", value: 25000, prefix: "₹", color: "text-blue-500", bgColor: "bg-blue-100" },
-    { icon: Target, label: "ROAS", value: 4.2, suffix: "x", color: "text-green-500", bgColor: "bg-green-100" },
-    { icon: MousePointerClick, label: "Conversions", value: 847, color: "text-purple-500", bgColor: "bg-purple-100" },
-    { icon: TrendingUp, label: "Cost/Lead", value: 295, prefix: "₹", color: "text-orange-500", bgColor: "bg-orange-100" },
-  ];
-
-  const campaigns = [
-    { name: "Google Search", status: "Active", spend: "₹8,500", conv: "312", roas: "4.8x", color: "bg-green-500" },
-    { name: "Meta Retargeting", status: "Active", spend: "₹6,200", conv: "245", roas: "5.2x", color: "bg-green-500" },
-    { name: "LinkedIn B2B", status: "Learning", spend: "₹4,800", conv: "89", roas: "3.4x", color: "bg-yellow-500" },
-    { name: "Display Network", status: "Active", spend: "₹5,500", conv: "201", roas: "3.9x", color: "bg-green-500" },
-  ];
+  const [activeFeature, setActiveFeature] = useState(0);
+  const [ref, isVisible] = useScrollAnimation();
 
   return (
-    <section className="py-12 md:py-16 lg:py-24 bg-muted/30 overflow-hidden">
+    <section
+      ref={ref}
+      className={`py-16 md:py-24 bg-muted/30 transition-all duration-700 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      }`}
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
-            Real-Time Dashboard
+        <div className="text-center mb-12">
+          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+            AI-Powered Analytics
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             See Your Campaigns in Action
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Track performance across all platforms in one unified dashboard
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+            Get real-time insights into your campaign performance with AI-driven analytics 
+            that optimize your ad spend and maximize conversions.
           </p>
         </div>
 
-        <div className={`max-w-5xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Card className="bg-background border-border/50 shadow-2xl overflow-hidden">
-            {/* Dashboard Header */}
-            <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-4">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center backdrop-blur-sm">
-                    <BarChart3 className="w-5 h-5 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-white">Campaign Performance</h4>
-                    <p className="text-sm text-white/80">Last 30 days</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2 bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-sm">
-                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                  <span className="text-sm text-white font-medium">Live</span>
-                </div>
+        <div className="grid lg:grid-cols-2 gap-8 items-start max-w-6xl mx-auto">
+          {/* Feature Buttons */}
+          <div className="space-y-3">
+            {features.map((feature, index) => (
+              <button
+                key={feature.label}
+                onClick={() => setActiveFeature(index)}
+                className={`w-full text-left px-6 py-4 rounded-xl border transition-all duration-300 ${
+                  activeFeature === index
+                    ? "bg-gradient-to-r from-primary/20 to-primary/5 border-primary/50 shadow-lg shadow-primary/10"
+                    : "bg-card/50 border-border/50 hover:bg-card hover:border-border"
+                }`}
+              >
+                <span
+                  className={`font-medium ${
+                    activeFeature === index
+                      ? "text-primary"
+                      : "text-muted-foreground"
+                  }`}
+                >
+                  {feature.label}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Dashboard Card */}
+          <Card className="overflow-hidden border-border/50 shadow-xl">
+            {/* Browser Chrome */}
+            <div className="bg-muted/50 px-4 py-3 border-b border-border/50 flex items-center gap-3">
+              <div className="flex gap-1.5">
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+              </div>
+              <div className="flex-1 bg-background/50 rounded-md px-3 py-1.5 text-xs text-muted-foreground">
+                campaigns.thesuper30.ai
               </div>
             </div>
 
-            <CardContent className="p-6">
-              {/* Metrics Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                {metrics.map((metric, index) => (
-                  <div 
-                    key={index}
-                    className="bg-muted/50 rounded-xl p-4 hover:bg-muted/80 transition-colors"
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className={`w-8 h-8 ${metric.bgColor} rounded-lg flex items-center justify-center`}>
-                        <metric.icon className={`w-4 h-4 ${metric.color}`} />
-                      </div>
-                      <span className="text-sm text-muted-foreground">{metric.label}</span>
-                    </div>
-                    <div className={`text-2xl font-bold ${metric.color}`}>
-                      {metric.suffix === "x" ? (
-                        <span>{metric.value}x</span>
-                      ) : (
-                        <AnimatedValue end={metric.value} prefix={metric.prefix} suffix={metric.suffix} />
-                      )}
-                    </div>
-                  </div>
-                ))}
+            {/* Dashboard Content */}
+            <div className="p-6 bg-gradient-to-br from-card to-muted/20">
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="font-semibold text-foreground">
+                    {features[activeFeature].label}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    Real-time metrics
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                  <span className="text-xs text-muted-foreground">Live</span>
+                </div>
               </div>
 
-              {/* Campaign Table */}
-              <div className="border border-border rounded-xl overflow-hidden">
-                <div className="bg-muted/50 px-4 py-3 border-b border-border">
-                  <span className="font-semibold text-foreground">Active Campaigns</span>
-                </div>
-                <div className="divide-y divide-border">
-                  {campaigns.map((campaign, index) => (
-                    <div key={index} className="px-4 py-3 flex items-center justify-between hover:bg-muted/30 transition-colors">
-                      <div className="flex items-center gap-3">
-                        <div className={`w-2 h-2 ${campaign.color} rounded-full`} />
-                        <div>
-                          <span className="font-medium text-foreground">{campaign.name}</span>
-                          <span className="text-xs text-muted-foreground ml-2">{campaign.status}</span>
+              <div className="grid gap-4">
+                {features[activeFeature].metrics.map((metric, index) => {
+                  const Icon = metric.icon;
+                  return (
+                    <div
+                      key={metric.label}
+                      className="bg-background/60 backdrop-blur-sm rounded-lg p-4 border border-border/30 hover:border-primary/30 transition-all duration-300 hover:shadow-md"
+                      style={{
+                        animationDelay: `${index * 100}ms`,
+                      }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className={`p-2 rounded-lg bg-muted/50 ${metric.color}`}>
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <span className="text-sm text-muted-foreground">
+                            {metric.label}
+                          </span>
                         </div>
-                      </div>
-                      <div className="flex items-center gap-6 text-sm">
-                        <div className="text-right">
-                          <span className="text-muted-foreground">Spend:</span>
-                          <span className="font-medium text-foreground ml-1">{campaign.spend}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-muted-foreground">Conv:</span>
-                          <span className="font-medium text-foreground ml-1">{campaign.conv}</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="font-bold text-green-500">{campaign.roas}</span>
-                        </div>
+                        <span className="text-lg font-bold text-foreground">
+                          {metric.value}
+                        </span>
                       </div>
                     </div>
-                  ))}
+                  );
+                })}
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-border/30">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">
+                    Last updated: Just now
+                  </span>
+                  <span className="text-primary font-medium">
+                    AI Optimized ✨
+                  </span>
                 </div>
               </div>
-            </CardContent>
+            </div>
           </Card>
         </div>
       </div>
