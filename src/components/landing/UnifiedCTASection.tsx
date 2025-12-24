@@ -1,3 +1,4 @@
+import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -15,17 +16,17 @@ interface UnifiedCTASectionProps {
   variant?: "light" | "dark";
 }
 
-export const UnifiedCTASection = ({
+export const UnifiedCTASection = forwardRef<HTMLElement, UnifiedCTASectionProps>(({
   headline = "Ready to Grow Your Business?",
   subtext = "Choose your path to growth. Get a free audit and discover your untapped potential.",
   primaryCTA = { label: "Get Free AI SEO Audit", href: "/ai-seo" },
   secondaryCTA = { label: "Free Ads Audit", href: "/performance-marketing" },
   variant = "light",
-}: UnifiedCTASectionProps) => {
+}, ref) => {
   const isDark = variant === "dark";
   
   return (
-    <section className={`py-10 md:py-16 relative overflow-hidden ${isDark ? "bg-[#0a0a0a]" : "bg-white"}`}>
+    <section ref={ref} className={`py-10 md:py-16 relative overflow-hidden ${isDark ? "bg-[#0a0a0a]" : "bg-white"}`}>
       {/* Subtle grid pattern overlay */}
       <div className={`absolute inset-0 bg-[linear-gradient(to_right,${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}_1px,transparent_1px),linear-gradient(to_bottom,${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}_1px,transparent_1px)] bg-[size:4rem_4rem]`} />
       
@@ -63,4 +64,6 @@ export const UnifiedCTASection = ({
       </div>
     </section>
   );
-};
+});
+
+UnifiedCTASection.displayName = "UnifiedCTASection";

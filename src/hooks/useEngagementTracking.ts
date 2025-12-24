@@ -29,6 +29,7 @@ export const useEngagementTracking = () => {
   const metricIdRef = useRef<string | null>(null);
   const syncIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const lastSyncRef = useRef<number>(Date.now());
+  const lastDataHashRef = useRef<string>("");
 
   const getSessionId = useCallback((): string | null => {
     try {
@@ -43,10 +44,27 @@ export const useEngagementTracking = () => {
     return null;
   }, []);
 
+  // Create a simple hash to check if data has changed
+  const getDataHash = useCallback((data: EngagementData): string => {
+    return `${data.maxScrollDepth}-${data.scrollMilestones.length}-${data.sectionsViewed.length}-${data.interactions.length}`;
+  }, []);
+
   const syncToDatabase = useCallback(async () => {
     const sessionId = getSessionId();
+    
+    // Don't sync if no session ID - prevents RLS failures
+    if (!sessionId) {
+      return;
+    }
+
     const data = engagementRef.current;
     data.timeOnPage = Math.floor((Date.now() - startTimeRef.current) / 1000);
+
+    // Check if data has actually changed since last sync
+    const currentHash = getDataHash(data);
+    if (currentHash === lastDataHashRef.current && metricIdRef.current) {
+      return; // No changes, skip sync
+    }
 
     const payload = {
       session_id: sessionId,
@@ -76,10 +94,14 @@ export const useEngagementTracking = () => {
         }
       }
       lastSyncRef.current = Date.now();
+      lastDataHashRef.current = currentHash;
     } catch (error) {
-      console.error("Failed to sync engagement metrics:", error);
+      // Silently handle errors - don't spam console in production
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Failed to sync engagement metrics:", error);
+      }
     }
-  }, [location.pathname, getSessionId]);
+  }, [location.pathname, getSessionId, getDataHash]);
 
   const trackInteraction = useCallback((type: string, element: string) => {
     engagementRef.current.interactions.push({
@@ -170,6 +192,7 @@ export const useEngagementTracking = () => {
     // Reset on page change
     startTimeRef.current = Date.now();
     metricIdRef.current = null;
+    lastDataHashRef.current = "";
     engagementRef.current = {
       maxScrollDepth: 0,
       scrollMilestones: [],

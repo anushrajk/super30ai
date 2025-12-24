@@ -180,13 +180,27 @@ All colors MUST be HSL.
     border: 1px solid hsl(0 0% 100% / 0.1);
   }
 
-  /* Icon background with color-mix for brand glow */
+  /* Icon background with brand glow - with fallback for older browsers */
   .icon-bg-glow {
-    background: color-mix(in oklab, hsl(var(--brand)) 10%, transparent);
+    /* Fallback for browsers without color-mix support */
+    background: hsl(var(--brand) / 0.1);
+  }
+
+  @supports (background: color-mix(in oklab, red 50%, blue)) {
+    .icon-bg-glow {
+      background: color-mix(in oklab, hsl(var(--brand)) 10%, transparent);
+    }
   }
 
   .icon-bg-glow-hover:hover {
-    background: color-mix(in oklab, hsl(var(--brand)) 20%, transparent);
+    /* Fallback for browsers without color-mix support */
+    background: hsl(var(--brand) / 0.2);
+  }
+
+  @supports (background: color-mix(in oklab, red 50%, blue)) {
+    .icon-bg-glow-hover:hover {
+      background: color-mix(in oklab, hsl(var(--brand)) 20%, transparent);
+    }
   }
 
   /* Brand gradient backgrounds */
@@ -268,15 +282,26 @@ All colors MUST be HSL.
     animation: float 8s ease-in-out infinite;
   }
 
-  /* Icon bg glow with hover enhancement */
+  /* Icon bg glow with hover enhancement - uses fallback defined above */
   .icon-bg-glow {
-    background: color-mix(in oklab, hsl(var(--brand)) 10%, transparent);
     @apply transition-all duration-300;
   }
 
   .icon-bg-glow:hover {
-    background: color-mix(in oklab, hsl(var(--brand)) 20%, transparent);
     @apply scale-110;
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    .hover-lift:hover,
+    .icon-bounce:hover,
+    .bento-card:hover,
+    .animate-float,
+    .animate-float-delayed,
+    .animate-float-slow {
+      animation: none;
+      transform: none;
+    }
   }
 }
 
