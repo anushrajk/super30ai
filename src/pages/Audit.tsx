@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
+import { formatToIST } from "@/lib/timeUtils";
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -413,12 +414,9 @@ const Audit = () => {
     return "text-red-500";
   };
 
+  // Use centralized IST formatting
   const formatTimestamp = (timestamp: string) => {
-    try {
-      return new Date(timestamp).toLocaleString();
-    } catch {
-      return timestamp;
-    }
+    return formatToIST(timestamp);
   };
 
   // Loading State - Using advanced AnalysisLoader

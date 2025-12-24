@@ -32,46 +32,46 @@ interface LeadEmailRequest {
   form_step: string;
 }
 
-// Convert UTC to IST formatted string
+// Convert UTC to IST formatted string (DD MM YYYY HH:MM AM/PM IST)
 const formatToIST = (dateString: string | undefined): string => {
   if (!dateString) return 'N/A';
   
   try {
     const date = new Date(dateString);
-    // IST is UTC+5:30
-    const istOffset = 5.5 * 60 * 60 * 1000;
-    const istDate = new Date(date.getTime() + istOffset);
     
-    return istDate.toLocaleString('en-IN', {
+    // Use Intl.DateTimeFormat for reliable IST conversion
+    const formatter = new Intl.DateTimeFormat('en-IN', {
       day: '2-digit',
-      month: 'short',
+      month: '2-digit',
       year: 'numeric',
       hour: '2-digit',
       minute: '2-digit',
       hour12: true,
-      timeZone: 'UTC' // Already converted to IST
-    }) + ' IST';
+      timeZone: 'Asia/Kolkata'
+    });
+    
+    return formatter.format(date) + ' IST';
   } catch {
     return dateString;
   }
 };
 
-// Get current time in IST
+// Get current time in IST (DD MM YYYY HH:MM:SS AM/PM IST)
 const getCurrentIST = (): string => {
   const now = new Date();
-  const istOffset = 5.5 * 60 * 60 * 1000;
-  const istDate = new Date(now.getTime() + istOffset);
   
-  return istDate.toLocaleString('en-IN', {
+  const formatter = new Intl.DateTimeFormat('en-IN', {
     day: '2-digit',
-    month: 'short',
+    month: '2-digit',
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
     second: '2-digit',
     hour12: true,
-    timeZone: 'UTC'
-  }) + ' IST';
+    timeZone: 'Asia/Kolkata'
+  });
+  
+  return formatter.format(now) + ' IST';
 };
 
 const handler = async (req: Request): Promise<Response> => {
