@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 
 type NotificationType = 'cookie' | 'callback' | 'quote' | 'exit' | null;
 
@@ -21,13 +21,21 @@ const notifyListeners = () => {
 
 export const useNotificationQueue = () => {
   const [, forceUpdate] = useState({});
-  const listenerRef = useRef<() => void>();
+  const listenerRef = useRef<(() => void) | null>(null);
 
-  // Subscribe to global state changes
-  if (!listenerRef.current) {
-    listenerRef.current = () => forceUpdate({});
-    listeners.add(listenerRef.current);
-  }
+  // Subscribe to global state changes - must be in useEffect, not during render
+  useEffect(() => {
+    const listener = () => forceUpdate({});
+    listenerRef.current = listener;
+    listeners.add(listener);
+
+    return () => {
+      if (listenerRef.current) {
+        listeners.delete(listenerRef.current);
+        listenerRef.current = null;
+      }
+    };
+  }, []);
 
   const setActiveNotification = useCallback((type: NotificationType) => {
     globalState = { ...globalState, activeNotification: type };
