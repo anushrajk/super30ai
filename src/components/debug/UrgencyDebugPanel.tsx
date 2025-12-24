@@ -52,12 +52,23 @@ export const UrgencyDebugPanel = () => {
 
     const channel = new BroadcastChannel('urgency_sync');
     const handleBroadcast = (e: MessageEvent) => {
-      const event: SyncEvent = {
-        timestamp: new Date().toLocaleTimeString(),
-        type: 'broadcast',
-        field: e.data.field,
-        value: e.data.value,
-      };
+      let event: SyncEvent;
+      
+      if (e.data.type === 'COUNTDOWN_RESET') {
+        event = {
+          timestamp: new Date().toLocaleTimeString(),
+          type: 'broadcast',
+          field: 'countdown_reset',
+          value: 299,
+        };
+      } else {
+        event = {
+          timestamp: new Date().toLocaleTimeString(),
+          type: 'broadcast',
+          field: Object.keys(e.data.values || {})[0] || 'unknown',
+          value: Object.values(e.data.values || {})[0] as number || 0,
+        };
+      }
       setSyncEvents(prev => [event, ...prev].slice(0, 20));
       refreshLocalStorage();
     };
@@ -139,6 +150,9 @@ export const UrgencyDebugPanel = () => {
             </Button>
             <Button size="sm" variant="outline" onClick={urgencyValues.decrementCallbackSlots}>
               -1 Callback
+            </Button>
+            <Button size="sm" variant="outline" onClick={urgencyValues.resetExitCountdown}>
+              Reset Timer
             </Button>
           </div>
         </div>

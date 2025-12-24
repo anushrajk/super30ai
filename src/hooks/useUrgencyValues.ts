@@ -103,14 +103,22 @@ export const useUrgencyValues = () => {
     exitCountdown: DEFAULT_VALUES.EXIT_COUNTDOWN_DURATION,
   }));
 
+  // Calculate countdown from shared end timestamp
+  const getCountdownFromStorage = useCallback((): number => {
+    const storedEnd = localStorage.getItem(STORAGE_KEYS.EXIT_COUNTDOWN_END);
+    if (storedEnd) {
+      const endTime = parseInt(storedEnd, 10);
+      return Math.max(0, Math.floor((endTime - Date.now()) / 1000));
+    }
+    return DEFAULT_VALUES.EXIT_COUNTDOWN_DURATION;
+  }, []);
+
   // Initialize exit countdown from localStorage
   useEffect(() => {
     const storedEnd = localStorage.getItem(STORAGE_KEYS.EXIT_COUNTDOWN_END);
     
     if (storedEnd) {
-      const endTime = parseInt(storedEnd, 10);
-      const remaining = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
-      
+      const remaining = getCountdownFromStorage();
       if (remaining > 0) {
         setValues(prev => ({ ...prev, exitCountdown: remaining }));
       } else {
@@ -124,22 +132,43 @@ export const useUrgencyValues = () => {
       const endTime = Date.now() + (DEFAULT_VALUES.EXIT_COUNTDOWN_DURATION * 1000);
       localStorage.setItem(STORAGE_KEYS.EXIT_COUNTDOWN_END, String(endTime));
     }
-  }, []);
+  }, [getCountdownFromStorage]);
+
+  // Tick countdown every second - reads from shared end timestamp for sync
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const remaining = getCountdownFromStorage();
+      setValues(prev => {
+        if (prev.exitCountdown !== remaining) {
+          return { ...prev, exitCountdown: remaining };
+        }
+        return prev;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [getCountdownFromStorage]);
 
   // Cross-tab synchronization via storage event
   useEffect(() => {
     const handleStorageChange = (e: StorageEvent) => {
-      // Only react to urgency-related keys
-      if (e.key && e.key.startsWith('urgency_')) {
-        // Re-read all values from storage
-        const updatedValues = readAllValuesFromStorage();
-        setValues(prev => ({ ...prev, ...updatedValues }));
+      if (!e.key || !e.key.startsWith('urgency_')) return;
+
+      // Handle exit countdown end time changes
+      if (e.key === STORAGE_KEYS.EXIT_COUNTDOWN_END) {
+        const remaining = getCountdownFromStorage();
+        setValues(prev => ({ ...prev, exitCountdown: remaining }));
+        return;
       }
+
+      // Re-read all other values from storage
+      const updatedValues = readAllValuesFromStorage();
+      setValues(prev => ({ ...prev, ...updatedValues }));
     };
 
     window.addEventListener('storage', handleStorageChange);
     return () => window.removeEventListener('storage', handleStorageChange);
-  }, []);
+  }, [getCountdownFromStorage]);
 
   // Cross-tab synchronization via BroadcastChannel (more real-time)
   useEffect(() => {
@@ -152,6 +181,11 @@ export const useUrgencyValues = () => {
         if (event.data?.type === 'URGENCY_UPDATE') {
           setValues(prev => ({ ...prev, ...event.data.values }));
         }
+        // Handle countdown reset broadcast
+        if (event.data?.type === 'COUNTDOWN_RESET') {
+          const remaining = getCountdownFromStorage();
+          setValues(prev => ({ ...prev, exitCountdown: remaining }));
+        }
       };
     } catch {
       // BroadcastChannel not supported in this browser
@@ -162,7 +196,7 @@ export const useUrgencyValues = () => {
         channel.close();
       }
     };
-  }, []);
+  }, [getCountdownFromStorage]);
 
   // Broadcast updates to other tabs
   const broadcastUpdate = useCallback((updates: Partial<UrgencyValues>) => {
@@ -219,17 +253,14 @@ export const useUrgencyValues = () => {
   }, [broadcastUpdate]);
 
   /**
-   * Start/tick the exit countdown
+   * Tick is now handled by the interval - kept for backwards compatibility
    */
   const tickExitCountdown = useCallback(() => {
-    setValues(prev => ({
-      ...prev,
-      exitCountdown: Math.max(0, prev.exitCountdown - 1),
-    }));
+    // No-op: countdown is now driven by interval reading from localStorage
   }, []);
 
   /**
-   * Reset exit countdown
+   * Reset exit countdown and broadcast to other tabs
    */
   const resetExitCountdown = useCallback(() => {
     const newEndTime = Date.now() + (DEFAULT_VALUES.EXIT_COUNTDOWN_DURATION * 1000);
@@ -238,6 +269,15 @@ export const useUrgencyValues = () => {
       ...prev,
       exitCountdown: DEFAULT_VALUES.EXIT_COUNTDOWN_DURATION,
     }));
+    
+    // Broadcast reset to other tabs
+    try {
+      const channel = new BroadcastChannel(BROADCAST_CHANNEL_NAME);
+      channel.postMessage({ type: 'COUNTDOWN_RESET' });
+      channel.close();
+    } catch {
+      // BroadcastChannel not supported
+    }
   }, []);
 
   /**
