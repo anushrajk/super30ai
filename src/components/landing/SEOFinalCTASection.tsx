@@ -23,27 +23,27 @@ export const SEOFinalCTASection = () => {
   };
   
   return (
-    <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-background overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+    <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-[#0a0a0a] overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
       {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       <div className="container mx-auto px-4 relative">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-brand/10 border border-brand/20 px-4 py-1.5 rounded-full mb-6">
+          <div className="inline-flex items-center gap-2 bg-brand/20 border border-brand/30 px-4 py-1.5 rounded-full mb-6">
             <Search className="w-4 h-4 text-brand" />
             <span className="text-brand text-sm font-medium">Free AI SEO Strategy Session</span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             Ready to <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Dominate AI Search?</span>
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
+          <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
             Book a free consultation with our SEO experts. Get a complete audit of your AI visibility and discover hidden ranking opportunities.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {benefits.map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-foreground bg-background border border-border rounded-full px-4 py-2 hover:bg-muted/50 hover:border-brand/30 transition-all duration-300">
+              <div key={i} className="flex items-center gap-2 text-white bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand/30 transition-all duration-300">
                 <item.icon className="w-4 h-4 text-brand" />
                 <span className="text-sm">{item.text}</span>
               </div>
@@ -64,14 +64,14 @@ export const SEOFinalCTASection = () => {
               variant="outline"
               size="lg"
               onClick={() => setShowEnquiryPopup(true)}
-              className="border-border text-foreground hover:bg-muted hover:scale-105 transition-all duration-300 group"
+              className="border-white/20 text-white hover:bg-white/10 hover:scale-105 transition-all duration-300 group"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
-          <p className="text-muted-foreground text-sm mt-4">Takes 2 minutes • No credit card required</p>
+          <p className="text-white/60 text-sm mt-4">Takes 2 minutes • No credit card required</p>
         </div>
       </div>
 
