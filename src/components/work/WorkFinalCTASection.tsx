@@ -3,7 +3,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BarChart3, TrendingUp, Award, Zap, Sparkles, MessageCircle } from "lucide-react";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
-import { Link } from "react-router-dom";
+import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const benefits = [
   { icon: BarChart3, text: "Free growth audit" },
@@ -15,6 +15,7 @@ const benefits = [
 export const WorkFinalCTASection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const [showAuditPopup, setShowAuditPopup] = useState(false);
   
   return (
     <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-[#0a0a0a] overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -45,16 +46,15 @@ export const WorkFinalCTASection = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to="/ai-seo">
-              <Button 
-                size="lg"
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
-              >
-                <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-                Get Free AI SEO Audit
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+            <Button 
+              onClick={() => setShowAuditPopup(true)}
+              size="lg"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
+            >
+              <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+              Get Free Audit & Strategy
+              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            </Button>
             <Button 
               variant="outline"
               size="lg"
@@ -72,6 +72,7 @@ export const WorkFinalCTASection = () => {
 
       {/* Enquiry Popup */}
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
     </section>
   );
 };
