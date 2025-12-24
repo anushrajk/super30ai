@@ -79,8 +79,11 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
   };
 
   const handlePhoneChange = (value: string) => {
-    // Only allow digits and max 10 characters
-    const cleaned = value.replace(/\D/g, '').slice(0, 10);
+    // Only allow digits, max 10, must start with 6-9
+    let cleaned = value.replace(/\D/g, '').slice(0, 10);
+    if (cleaned.length > 0 && !/^[6-9]/.test(cleaned)) {
+      cleaned = '';
+    }
     setPhone(cleaned);
   };
 

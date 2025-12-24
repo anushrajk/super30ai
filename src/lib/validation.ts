@@ -32,12 +32,13 @@ export const validateEmail = (email: string): boolean => {
 };
 
 /**
- * Validate phone number (10 digits for Indian format)
+ * Validate phone number (10 digits for Indian format, starting with 6/7/8/9)
  */
 export const validatePhone = (phone: string): boolean => {
   if (!phone) return false;
   const digitsOnly = phone.replace(/\D/g, '');
-  return digitsOnly.length === 10;
+  const phoneRegex = /^[6-9]\d{9}$/;
+  return phoneRegex.test(digitsOnly);
 };
 
 /**

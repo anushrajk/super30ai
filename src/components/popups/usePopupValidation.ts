@@ -58,7 +58,7 @@ export const usePopupValidation = (): UsePopupValidationReturn => {
         break;
       case 'phone':
         if (!validatePhone(value)) {
-          error = 'Please enter a valid 10-digit phone number';
+          error = 'Enter 10 digit number starting with 6, 7, 8, or 9';
         }
         break;
       case 'url':
@@ -118,7 +118,7 @@ export const usePopupValidation = (): UsePopupValidationReturn => {
           break;
         case 'phone':
           if (!validatePhone(value)) {
-            newErrors[field] = 'Please enter a valid 10-digit phone number';
+            newErrors[field] = 'Enter 10 digit number starting with 6, 7, 8, or 9';
             isValid = false;
           }
           break;
