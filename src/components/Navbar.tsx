@@ -12,6 +12,7 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const services = [
   {
@@ -41,6 +42,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const [showAuditPopup, setShowAuditPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -175,12 +177,13 @@ export const Navbar = () => {
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
             </Button>
-            <Link to="/ai-seo">
-              <Button className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300">
-                <Sparkles className="w-4 h-4 mr-2" />
-                Get Free Audit
-              </Button>
-            </Link>
+            <Button 
+              onClick={() => setShowAuditPopup(true)}
+              className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <Sparkles className="w-4 h-4 mr-2" />
+              Get Free Audit
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -285,12 +288,16 @@ export const Navbar = () => {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Enquire Now
               </Button>
-              <Link to="/ai-seo" className="block">
-                <Button className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Get Free Audit
-                </Button>
-              </Link>
+              <Button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setShowAuditPopup(true);
+                }}
+                className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                Get Free Audit
+              </Button>
             </div>
           </div>
         </div>
@@ -298,6 +305,9 @@ export const Navbar = () => {
 
       {/* Enquiry Popup */}
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+
+      {/* Audit Choice Popup */}
+      <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
     </header>
   );
 };
