@@ -64,7 +64,7 @@ export const SEOFinalCTASection = () => {
               variant="outline"
               size="lg"
               onClick={() => setShowEnquiryPopup(true)}
-              className="border-white/20 text-white hover:bg-white/10 hover:scale-105 transition-all duration-300 group"
+              className="bg-white text-gray-900 border-white hover:bg-gray-100 hover:scale-105 transition-all duration-300 group"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
