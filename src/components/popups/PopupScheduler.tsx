@@ -1,16 +1,19 @@
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react';
 import { useUrgencyValues } from '@/hooks/useUrgencyValues';
 import { useNotificationQueue } from '@/hooks/useNotificationQueue';
-import { CallbackPopup } from './CallbackPopup';
-import { QuotePopup } from './QuotePopup';
-import { ExitIntentPopup } from './ExitIntentPopup';
 import { isPopupExpired, markPopupShown } from './utils';
-import { CALLBACK_DELAY_MS, QUOTE_DELAY_MS, type PopupType } from './types';
+import { FIRST_POPUP_DELAY_MS, BETWEEN_POPUP_DELAY_MS, type PopupType } from './types';
+
+// Lazy load popup components
+const CallbackPopup = lazy(() => import('./CallbackPopup').then(m => ({ default: m.CallbackPopup })));
+const QuotePopup = lazy(() => import('./QuotePopup').then(m => ({ default: m.QuotePopup })));
+const ExitIntentPopup = lazy(() => import('./ExitIntentPopup').then(m => ({ default: m.ExitIntentPopup })));
 
 export const PopupScheduler = () => {
   const [activePopup, setActivePopup] = useState<PopupType | null>(null);
-  const popupQueueRef = useRef<PopupType[]>([]);
-  const timersRef = useRef<{ callback?: NodeJS.Timeout; quote?: NodeJS.Timeout }>({});
+  const popupQueueRef = useRef<PopupType[]>(['callback', 'quote']);
+  const nextPopupTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const firstPopupScheduledRef = useRef(false);
 
   const { 
     callbackSlots, 
@@ -28,64 +31,54 @@ export const PopupScheduler = () => {
 
   // Show next popup from queue
   const showNextPopup = useCallback(() => {
-    if (popupQueueRef.current.length === 0) return;
+    // Filter queue to only show popups that haven't expired
+    const validQueue = popupQueueRef.current.filter(type => 
+      isPopupExpired(`popup_${type}_shown`)
+    );
+    popupQueueRef.current = validQueue;
+
+    if (validQueue.length === 0) return;
     
-    const nextPopup = popupQueueRef.current[0];
+    const nextPopup = validQueue[0];
     if (canShowNotification(nextPopup)) {
-      popupQueueRef.current.shift();
+      popupQueueRef.current = validQueue.slice(1);
       setActivePopup(nextPopup);
       setActiveNotification(nextPopup);
     }
   }, [canShowNotification, setActiveNotification]);
 
-  // Queue a popup to show
-  const queuePopup = useCallback((type: PopupType) => {
-    const storageKey = `popup_${type}_shown`;
-    if (!isPopupExpired(storageKey) || popupQueueRef.current.includes(type)) return;
-    
-    if (canShowNotification(type)) {
-      setActivePopup(type);
-      setActiveNotification(type);
-    } else {
-      popupQueueRef.current.push(type);
-    }
-  }, [canShowNotification, setActiveNotification]);
-
-  // Schedule popups after cookie is dismissed
+  // Schedule first popup after cookie is dismissed
   useEffect(() => {
-    if (!cookieDismissed) return;
+    if (!cookieDismissed || firstPopupScheduledRef.current) return;
 
-    // Clear existing timers
-    if (timersRef.current.callback) clearTimeout(timersRef.current.callback);
-    if (timersRef.current.quote) clearTimeout(timersRef.current.quote);
+    firstPopupScheduledRef.current = true;
 
-    // Schedule callback popup
-    if (isPopupExpired('popup_callback_shown')) {
-      timersRef.current.callback = setTimeout(() => {
-        queuePopup('callback');
-      }, CALLBACK_DELAY_MS);
+    // Wait 15 seconds for first popup
+    const timer = setTimeout(() => {
+      showNextPopup();
+    }, FIRST_POPUP_DELAY_MS);
+
+    return () => clearTimeout(timer);
+  }, [cookieDismissed, showNextPopup]);
+
+  // Schedule next popup when current one closes
+  const handleClose = useCallback((type: PopupType) => {
+    markPopupShown(`popup_${type}_shown`);
+    setActivePopup(null);
+    setActiveNotification(null);
+
+    // Clear any existing timer
+    if (nextPopupTimerRef.current) {
+      clearTimeout(nextPopupTimerRef.current);
     }
 
-    // Schedule quote popup
-    if (isPopupExpired('popup_quote_shown')) {
-      timersRef.current.quote = setTimeout(() => {
-        queuePopup('quote');
-      }, QUOTE_DELAY_MS);
+    // Schedule next popup after 45 seconds if there are more in queue
+    if (popupQueueRef.current.length > 0) {
+      nextPopupTimerRef.current = setTimeout(() => {
+        showNextPopup();
+      }, BETWEEN_POPUP_DELAY_MS);
     }
-
-    return () => {
-      if (timersRef.current.callback) clearTimeout(timersRef.current.callback);
-      if (timersRef.current.quote) clearTimeout(timersRef.current.quote);
-    };
-  }, [cookieDismissed, queuePopup]);
-
-  // Try to show queued popups when notification clears
-  useEffect(() => {
-    if (activeNotification === null && popupQueueRef.current.length > 0) {
-      const timer = setTimeout(showNextPopup, 2000);
-      return () => clearTimeout(timer);
-    }
-  }, [activeNotification, showNextPopup]);
+  }, [setActiveNotification, showNextPopup]);
 
   // Exit Intent Detection (Desktop only)
   useEffect(() => {
@@ -110,11 +103,14 @@ export const PopupScheduler = () => {
     }
   }, [activePopup, exitCountdown, tickExitCountdown]);
 
-  const handleClose = useCallback((type: PopupType) => {
-    markPopupShown(`popup_${type}_shown`);
-    setActivePopup(null);
-    setActiveNotification(null);
-  }, [setActiveNotification]);
+  // Cleanup timers on unmount
+  useEffect(() => {
+    return () => {
+      if (nextPopupTimerRef.current) {
+        clearTimeout(nextPopupTimerRef.current);
+      }
+    };
+  }, []);
 
   const handleCallbackSuccess = useCallback(() => {
     decrementCallbackSlots();
@@ -129,7 +125,7 @@ export const PopupScheduler = () => {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={null}>
       <CallbackPopup
         open={activePopup === 'callback'}
         onClose={() => handleClose('callback')}
@@ -151,6 +147,6 @@ export const PopupScheduler = () => {
         formatCountdown={formatCountdown}
         onSuccess={handleExitSuccess}
       />
-    </>
+    </Suspense>
   );
 };

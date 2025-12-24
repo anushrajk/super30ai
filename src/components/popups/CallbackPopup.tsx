@@ -7,7 +7,17 @@ import { Phone, Loader2, ArrowRight } from 'lucide-react';
 import { useLead } from '@/hooks/useLead';
 import { useSession } from '@/hooks/useSession';
 import { toast } from 'sonner';
+import { usePopupValidation, type ValidationRule } from './usePopupValidation';
+import { FormError } from './FormError';
 import type { CallbackPopupProps } from './types';
+
+const validationRules: Record<string, ValidationRule> = {
+  name: { required: true, type: 'name' },
+  phone: { required: true, type: 'phone' },
+  timeSlot: { required: true, type: 'select' },
+};
+
+const baseInputClass = "h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60";
 
 export const CallbackPopup = ({ 
   open, 
@@ -21,11 +31,24 @@ export const CallbackPopup = ({
   
   const { createLead, sendLeadEmail } = useLead();
   const { session } = useSession();
+  const { errors, touched, setFieldTouched, validateField, validateAllFields, clearErrors, getInputClassName } = usePopupValidation();
+
+  const handleBlur = (field: string) => {
+    setFieldTouched(field);
+    validateField(field, form[field as keyof typeof form], validationRules[field]);
+  };
+
+  const handleChange = (field: string, value: string) => {
+    setForm(prev => ({ ...prev, [field]: value }));
+    if (touched[field]) {
+      validateField(field, value, validationRules[field]);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.phone || !form.timeSlot) {
-      toast.error('Please fill all fields');
+    
+    if (!validateAllFields(form, validationRules)) {
       return;
     }
 
@@ -47,6 +70,7 @@ export const CallbackPopup = ({
       toast.success('Callback requested! We\'ll call you soon.');
       onClose();
       setForm({ name: '', phone: '', timeSlot: '' });
+      clearErrors();
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
@@ -57,7 +81,6 @@ export const CallbackPopup = ({
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="w-[95vw] max-w-md mx-auto bg-background/95 backdrop-blur-xl border border-border/40 shadow-2xl rounded-2xl p-6 sm:p-8">
-        {/* Modern icon treatment */}
         <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-xl bg-primary/10">
           <Phone className="w-6 h-6 text-primary" />
         </div>
@@ -72,35 +95,55 @@ export const CallbackPopup = ({
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-4 mt-4">
-          <Input
-            placeholder="Your name"
-            value={form.name}
-            onChange={(e) => setForm(prev => ({ ...prev, name: e.target.value }))}
-            className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60"
-          />
-          
-          <div className="flex">
-            <span className="inline-flex items-center px-3 rounded-l-xl bg-muted/60 text-muted-foreground text-sm font-medium">
-              +91
-            </span>
+          <div>
             <Input
-              placeholder="Phone number"
-              value={form.phone}
-              onChange={(e) => setForm(prev => ({ ...prev, phone: e.target.value.replace(/\D/g, '').slice(0, 10) }))}
-              className="h-11 bg-muted/40 border-0 rounded-l-none rounded-r-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60"
+              placeholder="Your name"
+              value={form.name}
+              onChange={(e) => handleChange('name', e.target.value)}
+              onBlur={() => handleBlur('name')}
+              className={getInputClassName('name', baseInputClass)}
             />
+            <FormError message={errors.name} show={touched.name} />
           </div>
           
-          <Select value={form.timeSlot} onValueChange={(value) => setForm(prev => ({ ...prev, timeSlot: value }))}>
-            <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
-              <SelectValue placeholder="Preferred time" />
-            </SelectTrigger>
-            <SelectContent className="rounded-xl">
-              <SelectItem value="morning">Morning (9 AM - 12 PM)</SelectItem>
-              <SelectItem value="afternoon">Afternoon (12 PM - 5 PM)</SelectItem>
-              <SelectItem value="evening">Evening (5 PM - 8 PM)</SelectItem>
-            </SelectContent>
-          </Select>
+          <div>
+            <div className="flex">
+              <span className="inline-flex items-center px-3 rounded-l-xl bg-muted/60 text-muted-foreground text-sm font-medium">
+                +91
+              </span>
+              <Input
+                placeholder="Phone number"
+                value={form.phone}
+                onChange={(e) => handleChange('phone', e.target.value.replace(/\D/g, '').slice(0, 10))}
+                onBlur={() => handleBlur('phone')}
+                className={getInputClassName('phone', `${baseInputClass} rounded-l-none`)}
+              />
+            </div>
+            <FormError message={errors.phone} show={touched.phone} />
+          </div>
+          
+          <div>
+            <Select 
+              value={form.timeSlot} 
+              onValueChange={(value) => {
+                handleChange('timeSlot', value);
+                setFieldTouched('timeSlot');
+              }}
+            >
+              <SelectTrigger 
+                className={getInputClassName('timeSlot', "h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20")}
+                onBlur={() => handleBlur('timeSlot')}
+              >
+                <SelectValue placeholder="Preferred time" />
+              </SelectTrigger>
+              <SelectContent className="rounded-xl">
+                <SelectItem value="morning">Morning (9 AM - 12 PM)</SelectItem>
+                <SelectItem value="afternoon">Afternoon (12 PM - 5 PM)</SelectItem>
+                <SelectItem value="evening">Evening (5 PM - 8 PM)</SelectItem>
+              </SelectContent>
+            </Select>
+            <FormError message={errors.timeSlot} show={touched.timeSlot} />
+          </div>
 
           <Button 
             type="submit" 
