@@ -21,6 +21,7 @@ import { PMTargetAudienceSection } from "@/components/pm/PMTargetAudienceSection
 import { PMDashboardPreview } from "@/components/pm/PMDashboardPreview";
 import { PMBlogSection } from "@/components/pm/PMBlogSection";
 import { PMAISections } from "@/components/pm/PMAISections";
+import { PMWhoIsThisForSection } from "@/components/pm/PMWhoIsThisForSection";
 import { PMPreAuditQuestionnaire } from "@/components/pm/PMPreAuditQuestionnaire";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -174,6 +175,9 @@ const PerformanceMarketing = () => {
         </div>
         <div id="pm-ai-sections">
           <PMAISections />
+        </div>
+        <div id="pm-who-is-this-for">
+          <PMWhoIsThisForSection />
         </div>
         <div id="pm-final-cta-mid">
           <PMFinalCTASection />
