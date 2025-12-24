@@ -141,15 +141,17 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
         onOpenChange(isOpen);
       }}
     >
-      <DialogContent className="sm:max-w-md bg-background border-border">
-        <DialogHeader>
-          <div className="flex items-center gap-2 justify-center mb-2">
-            <MessageCircle className="w-5 h-5 text-[hsl(var(--brand-orange))]" />
-            <DialogTitle className="text-xl font-bold">
-              Get in Touch
-            </DialogTitle>
-          </div>
-          <p className="text-muted-foreground text-center text-sm">
+      <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-xl border border-border/40 shadow-2xl rounded-2xl p-6 sm:p-8">
+        {/* Modern icon treatment */}
+        <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-xl bg-primary/10">
+          <MessageCircle className="w-6 h-6 text-primary" />
+        </div>
+
+        <DialogHeader className="text-center space-y-2">
+          <DialogTitle className="text-xl font-semibold tracking-tight">
+            Get in Touch
+          </DialogTitle>
+          <p className="text-sm text-muted-foreground">
             Tell us about your needs and we'll get back to you shortly
           </p>
         </DialogHeader>
@@ -159,18 +161,18 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
           <div className="relative">
             <Input
               type="text"
-              placeholder="Your Name"
+              placeholder="Your name"
               value={name}
               onChange={(e) => setName(e.target.value)}
               onBlur={() => handleBlur("name")}
-              className={`w-full bg-background h-12 ${
+              className={`w-full h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 placeholder:text-muted-foreground/60 ${
                 touched.name && !isNameValid
-                  ? "border-destructive focus:border-destructive"
-                  : "border-border focus:border-[hsl(var(--brand-orange))]"
+                  ? "ring-2 ring-destructive/50"
+                  : "focus:ring-primary/20"
               }`}
             />
             {name && isNameValid && (
-              <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
+              <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
             )}
           </div>
           {touched.name && !isNameValid && (
@@ -187,18 +189,18 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onBlur={() => handleBlur("email")}
-              className={`w-full bg-background h-12 ${
+              className={`w-full h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 placeholder:text-muted-foreground/60 ${
                 touched.email && !isEmailValid
-                  ? "border-destructive focus:border-destructive"
-                  : "border-border focus:border-[hsl(var(--brand-orange))]"
+                  ? "ring-2 ring-destructive/50"
+                  : "focus:ring-primary/20"
               }`}
             />
             {email &&
               (isEmailValid ? (
-                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
+                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
               ) : (
                 touched.email && (
-                  <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive" />
+                  <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-destructive" />
                 )
               ))}
           </div>
@@ -211,31 +213,29 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
           {/* Phone */}
           <div className="relative">
             <div className="flex">
-              <div className="flex items-center gap-1 bg-muted border border-r-0 border-border rounded-l-md px-3 h-12">
-                <Phone className="w-4 h-4 text-muted-foreground" />
-                <span className="text-sm font-medium text-muted-foreground">
-                  +91
-                </span>
-              </div>
+              <span className="inline-flex items-center gap-1 px-3 rounded-l-xl bg-muted/60 text-muted-foreground text-sm font-medium h-11">
+                <Phone className="w-3.5 h-3.5" />
+                +91
+              </span>
               <Input
                 type="tel"
                 placeholder="7353252526"
                 value={phone}
                 onChange={(e) => handlePhoneChange(e.target.value)}
                 onBlur={() => handleBlur("phone")}
-                className={`w-full bg-background h-12 rounded-l-none ${
+                className={`w-full h-11 bg-muted/40 border-0 rounded-l-none rounded-r-xl focus:ring-2 placeholder:text-muted-foreground/60 ${
                   touched.phone && !isPhoneValid
-                    ? "border-destructive focus:border-destructive"
-                    : "border-border focus:border-[hsl(var(--brand-orange))]"
+                    ? "ring-2 ring-destructive/50"
+                    : "focus:ring-primary/20"
                 }`}
               />
             </div>
             {phone &&
               (isPhoneValid ? (
-                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500" />
+                <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary" />
               ) : (
                 touched.phone && (
-                  <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive" />
+                  <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-destructive" />
                 )
               ))}
           </div>
@@ -247,10 +247,10 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
 
           {/* Role */}
           <Select value={role} onValueChange={setRole}>
-            <SelectTrigger className="bg-background border-border h-12 focus:border-[hsl(var(--brand-orange))]">
-              <SelectValue placeholder="Your Role" />
+            <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
+              <SelectValue placeholder="Your role" />
             </SelectTrigger>
-            <SelectContent className="bg-background border-border z-50">
+            <SelectContent className="rounded-xl">
               {roleOptions.map((option) => (
                 <SelectItem
                   key={option.value}
@@ -265,10 +265,10 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
 
           {/* Service Interest */}
           <Select value={serviceInterest} onValueChange={setServiceInterest}>
-            <SelectTrigger className="bg-background border-border h-12 focus:border-[hsl(var(--brand-orange))]">
-              <SelectValue placeholder="Service Interest" />
+            <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
+              <SelectValue placeholder="Service interest" />
             </SelectTrigger>
-            <SelectContent className="bg-background border-border z-50">
+            <SelectContent className="rounded-xl">
               {serviceOptions.map((option) => (
                 <SelectItem
                   key={option.value}
@@ -284,17 +284,14 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
           <Button
             type="submit"
             disabled={loading || !canSubmit}
-            className="w-full h-12 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25 group"
+            className="w-full h-11 bg-foreground text-background rounded-xl font-medium hover:bg-foreground/90 transition-all duration-200 group"
           >
             {loading ? (
-              <>
-                <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                Submitting...
-              </>
+              <Loader2 className="w-4 h-4 animate-spin" />
             ) : (
               <>
                 Submit Enquiry
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 transition-transform" />
               </>
             )}
           </Button>

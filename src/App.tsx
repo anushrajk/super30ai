@@ -1,6 +1,6 @@
 import { lazy, Suspense, useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { PopupManager } from "@/components/PopupManager";
+import { PopupScheduler } from "@/components/popups";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -106,7 +106,7 @@ const App = () => (
           <CookieConsent />
           <FloatingContactButtons />
           <ScrollToTopButton />
-          <PopupManager />
+          <PopupScheduler />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
