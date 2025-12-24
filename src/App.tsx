@@ -13,7 +13,6 @@ import { FloatingContactButtons } from "./components/FloatingContactButtons";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
 import { Loader2 } from "lucide-react";
-import { UrgencyDebugPanel } from "@/components/debug/UrgencyDebugPanel";
 
 // Lazy load EngagementTracker - non-critical, can load after initial render
 const EngagementTracker = lazy(() => 
@@ -108,7 +107,6 @@ const App = () => (
           <FloatingContactButtons />
           <ScrollToTopButton />
           <PopupManager />
-          <UrgencyDebugPanel />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
