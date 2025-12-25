@@ -4,6 +4,7 @@ import { Footer } from "@/components/landing/Footer";
 import { CourseHeroSection } from "@/components/course/CourseHeroSection";
 import { CourseProblemSection } from "@/components/course/CourseProblemSection";
 import { CourseSocialProofSection } from "@/components/course/CourseSocialProofSection";
+import { CourseStudentGallerySection } from "@/components/course/CourseStudentGallerySection";
 import { CourseLearningOutcomesSection } from "@/components/course/CourseLearningOutcomesSection";
 import { CourseCurriculumSection } from "@/components/course/CourseCurriculumSection";
 import { CourseTimelineSection } from "@/components/course/CourseTimelineSection";
@@ -81,6 +82,7 @@ const SeoCourse = () => {
         <CourseProjectsSection />
         <CourseCredentialsSection />
         <CourseAlumniSuccessSection />
+        <CourseStudentGallerySection />
         <CourseVideoTestimonialsSection />
         <CourseInvestmentSection />
         <CourseGuaranteeSection />
