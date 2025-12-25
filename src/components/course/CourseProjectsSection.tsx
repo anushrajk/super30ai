@@ -61,24 +61,28 @@ export const CourseProjectsSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section ref={ref} className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-1/2 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[hsl(var(--brand-orange))]/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
+          <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/20 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
             Hands-On Learning
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Real Projects & <span className="text-gradient">Industry Case Studies</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
             Learn by doing. Work on real projects and study actual client transformations.
           </p>
         </div>
 
         {/* Projects Grid */}
         <div className={`mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
             <Bot className="w-5 h-5 text-[hsl(var(--brand-orange))]" />
             Capstone Projects
           </h3>
@@ -86,25 +90,25 @@ export const CourseProjectsSection = () => {
             {projects.map((project, index) => (
               <Card 
                 key={index}
-                className="bg-card border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 group"
+                className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 group"
               >
                 <CardContent className="p-5">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-orange))]/10 border border-[hsl(var(--brand-orange))]/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-10 h-10 rounded-xl bg-[hsl(var(--brand-orange))]/20 border border-[hsl(var(--brand-orange))]/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                       <project.icon className="w-5 h-5 text-[hsl(var(--brand-orange))]" />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
-                        <h4 className="font-semibold text-foreground">{project.title}</h4>
+                        <h4 className="font-semibold text-white">{project.title}</h4>
                         <span className={`text-xs px-2 py-0.5 rounded ${
                           project.difficulty === 'Advanced' 
-                            ? 'bg-red-500/10 text-red-500' 
-                            : 'bg-amber-500/10 text-amber-500'
+                            ? 'bg-red-500/20 text-red-400' 
+                            : 'bg-amber-500/20 text-amber-400'
                         }`}>
                           {project.difficulty}
                         </span>
                       </div>
-                      <p className="text-sm text-muted-foreground mb-2">{project.description}</p>
+                      <p className="text-sm text-slate-400 mb-2">{project.description}</p>
                       <p className="text-xs text-[hsl(var(--brand-orange))] font-medium">
                         Deliverable: {project.outcome}
                       </p>
@@ -118,7 +122,7 @@ export const CourseProjectsSection = () => {
 
         {/* Case Studies */}
         <div className={`transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
+          <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
             <FileText className="w-5 h-5 text-[hsl(var(--brand-orange))]" />
             Industry Case Studies
           </h3>
@@ -126,22 +130,22 @@ export const CourseProjectsSection = () => {
             {caseStudies.map((study, index) => (
               <Card 
                 key={index}
-                className="bg-muted/30 border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 group"
+                className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 group"
               >
                 <CardContent className="p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <study.icon className="w-4 h-4 text-[hsl(var(--brand-orange))]" />
-                    <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
                       {study.industry}
                     </span>
                   </div>
-                  <h4 className="font-semibold text-foreground mb-2">{study.title}</h4>
-                  <p className="text-sm text-muted-foreground mb-4">{study.description}</p>
+                  <h4 className="font-semibold text-white mb-2">{study.title}</h4>
+                  <p className="text-sm text-slate-400 mb-4">{study.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {study.metrics.map((metric, i) => (
                       <span 
                         key={i}
-                        className="px-2 py-1 bg-emerald-500/10 text-emerald-500 rounded text-xs font-medium border border-emerald-500/30"
+                        className="px-2 py-1 bg-emerald-500/20 text-emerald-400 rounded text-xs font-medium border border-emerald-500/30"
                       >
                         {metric}
                       </span>

@@ -123,7 +123,7 @@ const VideoCard = ({ testimonial, isHovered, onHover }: VideoCardProps) => {
 
   return (
     <div
-      className="relative flex-shrink-0 w-[280px] md:w-[320px] rounded-xl overflow-hidden bg-card border border-border/50 transition-all duration-300 hover:border-primary/50 hover:shadow-lg group"
+      className="relative flex-shrink-0 w-[280px] md:w-[320px] rounded-xl overflow-hidden bg-white/5 backdrop-blur-sm border border-white/10 transition-all duration-300 hover:border-[hsl(var(--brand-orange))]/50 hover:shadow-lg group"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
@@ -153,8 +153,8 @@ const VideoCard = ({ testimonial, isHovered, onHover }: VideoCardProps) => {
         {/* Play Icon Overlay */}
         {!isHovered && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/30">
-            <div className="w-14 h-14 rounded-full bg-primary/90 flex items-center justify-center">
-              <Play className="w-6 h-6 text-primary-foreground fill-primary-foreground ml-1" />
+            <div className="w-14 h-14 rounded-full bg-[hsl(var(--brand-orange))]/90 flex items-center justify-center">
+              <Play className="w-6 h-6 text-white fill-white ml-1" />
             </div>
           </div>
         )}
@@ -183,11 +183,11 @@ const VideoCard = ({ testimonial, isHovered, onHover }: VideoCardProps) => {
       </div>
 
       {/* Info Section */}
-      <div className="p-4 bg-card">
-        <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-        <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-        <div className="mt-2 inline-block px-3 py-1 bg-primary/10 rounded-full">
-          <span className="text-sm font-medium text-primary">{testimonial.transformation}</span>
+      <div className="p-4 bg-white/5">
+        <h4 className="font-semibold text-white">{testimonial.name}</h4>
+        <p className="text-sm text-slate-400">{testimonial.role}</p>
+        <div className="mt-2 inline-block px-3 py-1 bg-[hsl(var(--brand-orange))]/20 rounded-full">
+          <span className="text-sm font-medium text-[hsl(var(--brand-orange))]">{testimonial.transformation}</span>
         </div>
       </div>
     </div>
@@ -209,17 +209,21 @@ export const CourseVideoTestimonialsSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-muted/30 overflow-hidden">
-      <div className="container mx-auto px-4">
+    <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden relative">
+      {/* Decorative elements */}
+      <div className="absolute top-0 right-0 w-80 h-80 bg-[hsl(var(--brand-orange))]/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
         <div className="text-center mb-12">
-          <span className="inline-block px-4 py-1.5 bg-primary/10 rounded-full text-primary font-medium text-sm mb-4">
+          <span className="inline-block px-4 py-1.5 bg-[hsl(var(--brand-orange))]/20 rounded-full text-[hsl(var(--brand-orange))] font-medium text-sm mb-4 border border-[hsl(var(--brand-orange))]/30">
             Video Testimonials
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Hear From Our Alumni
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
             Real stories from real graduates who transformed their careers with The Super 30
           </p>
         </div>
@@ -227,16 +231,16 @@ export const CourseVideoTestimonialsSection = () => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Left Gradient Fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none" />
           
           {/* Right Gradient Fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-slate-800 to-transparent z-10 pointer-events-none" />
 
           {/* Navigation Buttons */}
           <Button
             variant="outline"
             size="icon"
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm border-border hover:bg-background"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
             onClick={() => scroll("left")}
           >
             <ChevronLeft className="w-5 h-5" />
@@ -245,7 +249,7 @@ export const CourseVideoTestimonialsSection = () => {
           <Button
             variant="outline"
             size="icon"
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm border-border hover:bg-background"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 backdrop-blur-sm border-white/20 hover:bg-white/20 text-white"
             onClick={() => scroll("right")}
           >
             <ChevronRight className="w-5 h-5" />
