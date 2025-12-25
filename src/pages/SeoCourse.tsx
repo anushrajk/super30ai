@@ -4,15 +4,19 @@ import { Footer } from "@/components/landing/Footer";
 import { CourseHeroSection } from "@/components/course/CourseHeroSection";
 import { CourseProblemSection } from "@/components/course/CourseProblemSection";
 import { CourseSocialProofSection } from "@/components/course/CourseSocialProofSection";
+import { CourseLearningOutcomesSection } from "@/components/course/CourseLearningOutcomesSection";
 import { CourseCurriculumSection } from "@/components/course/CourseCurriculumSection";
 import { CourseTimelineSection } from "@/components/course/CourseTimelineSection";
 import { CourseSpecializationSection } from "@/components/course/CourseSpecializationSection";
+import { CourseComparisonSection } from "@/components/course/CourseComparisonSection";
 import { CourseProjectsSection } from "@/components/course/CourseProjectsSection";
-import { CourseInvestmentSection } from "@/components/course/CourseInvestmentSection";
-import { CourseFAQSection } from "@/components/course/CourseFAQSection";
 import { CourseCredentialsSection } from "@/components/course/CourseCredentialsSection";
+import { CourseAlumniSuccessSection } from "@/components/course/CourseAlumniSuccessSection";
+import { CourseInvestmentSection } from "@/components/course/CourseInvestmentSection";
+import { CourseGuaranteeSection } from "@/components/course/CourseGuaranteeSection";
 import { CourseScarcitySection } from "@/components/course/CourseScarcitySection";
 import { CourseApplicationSection } from "@/components/course/CourseApplicationSection";
+import { CourseFAQSection } from "@/components/course/CourseFAQSection";
 
 const SeoCourse = () => {
   return (
@@ -54,7 +58,7 @@ const SeoCourse = () => {
             "duration": "P6M",
             "offers": {
               "@type": "Offer",
-              "price": "199000",
+              "price": "59999",
               "priceCurrency": "INR"
             }
           })}
@@ -67,15 +71,19 @@ const SeoCourse = () => {
         <CourseHeroSection />
         <CourseProblemSection />
         <CourseSocialProofSection />
+        <CourseLearningOutcomesSection />
         <CourseCurriculumSection />
         <CourseTimelineSection />
         <CourseSpecializationSection />
+        <CourseComparisonSection />
         <CourseProjectsSection />
-        <CourseInvestmentSection />
-        <CourseFAQSection />
         <CourseCredentialsSection />
+        <CourseAlumniSuccessSection />
+        <CourseInvestmentSection />
+        <CourseGuaranteeSection />
         <CourseScarcitySection />
         <CourseApplicationSection />
+        <CourseFAQSection />
       </main>
       
       <Footer />

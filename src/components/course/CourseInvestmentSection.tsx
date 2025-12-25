@@ -29,7 +29,7 @@ export const CourseInvestmentSection = () => {
 
   // Calculate ROI
   const expectedSalary = 700000; // 7L average after course
-  const courseFee = 199000; // 1.99L
+  const courseFee = 59999; // Updated price
   const salaryIncrease = expectedSalary - currentSalary;
   const roi = Math.round((salaryIncrease / courseFee) * 100);
   const paybackMonths = Math.round(courseFee / (salaryIncrease / 12));
@@ -46,9 +46,9 @@ export const CourseInvestmentSection = () => {
   ];
 
   const paymentOptions = [
-    { title: "Full Payment", price: "₹1,99,000", discount: "Save ₹20,000", badge: "Best Value" },
-    { title: "2 Installments", price: "₹1,09,500 x 2", discount: "₹2,19,000 total", badge: null },
-    { title: "EMI (6 months)", price: "₹36,500/month", discount: "0% interest", badge: "Popular" },
+    { title: "Full Payment", price: "₹59,999", discount: "Save ₹2,000", badge: "Best Value" },
+    { title: "3 Installments", price: "₹21,333 x 3", discount: "₹64,000 total", badge: null },
+    { title: "EMI (6 months)", price: "₹10,833/month", discount: "0% interest", badge: "Popular" },
   ];
 
   return (
@@ -74,10 +74,10 @@ export const CourseInvestmentSection = () => {
               <div className="bg-gradient-to-r from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange))]/80 p-6 text-white">
                 <p className="text-sm font-medium opacity-90 mb-1">Complete AI SEO Course</p>
                 <div className="flex items-end gap-2">
-                  <span className="text-4xl md:text-5xl font-bold">₹1,99,000</span>
-                  <span className="text-lg line-through opacity-70 mb-1">₹2,49,000</span>
+                  <span className="text-4xl md:text-5xl font-bold">₹59,999</span>
+                  <span className="text-lg line-through opacity-70 mb-1">₹1,29,999</span>
                 </div>
-                <p className="text-sm opacity-90 mt-2">Early Bird Discount: Save ₹50,000</p>
+                <p className="text-sm opacity-90 mt-2">Early Bird Discount: Save ₹4,999</p>
               </div>
               <CardContent className="p-6">
                 <h4 className="font-semibold text-foreground mb-4">What's Included:</h4>
@@ -131,8 +131,8 @@ export const CourseInvestmentSection = () => {
             </div>
           </div>
 
-          {/* ROI Calculator */}
-          <div>
+          {/* ROI Calculator - Sticky */}
+          <div className="lg:sticky lg:top-24 lg:self-start">
             <Card className="bg-card border-border/50">
               <CardContent className="p-6">
                 <div className="flex items-center gap-2 mb-6">
@@ -176,7 +176,7 @@ export const CourseInvestmentSection = () => {
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Course investment</span>
-                      <span className="font-semibold text-foreground">₹1.99L</span>
+                      <span className="font-semibold text-foreground">₹59,999</span>
                     </div>
                   </div>
 
