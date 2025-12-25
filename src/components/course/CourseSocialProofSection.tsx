@@ -1,5 +1,7 @@
-import { Quote, TrendingUp, Briefcase, DollarSign, Clock } from "lucide-react";
+import { useRef } from "react";
+import { Quote, TrendingUp, Briefcase, DollarSign, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Import alumni images
@@ -7,9 +9,23 @@ import rahulDesaiImg from "@/assets/alumni/rahul-desai.jpg";
 import priyaSharmaImg from "@/assets/alumni/priya-sharma.jpg";
 import arjunVermaImg from "@/assets/alumni/arjun-verma.jpg";
 import deepakKumarImg from "@/assets/alumni/deepak-kumar.jpg";
+import kavitaReddyImg from "@/assets/alumni/kavita-reddy.jpg";
+import amitSaxenaImg from "@/assets/alumni/amit-saxena.jpg";
+import meeraJoshiImg from "@/assets/alumni/meera-joshi.jpg";
 
 export const CourseSocialProofSection = () => {
   const [ref, isVisible] = useScrollAnimation();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = scrollContainerRef.current.offsetWidth * 0.8;
+      scrollContainerRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   const testimonials = [
     {
@@ -60,6 +76,42 @@ export const CourseSocialProofSection = () => {
       increase: "1500%+",
       quote: "I'm from a Tier-2 city. Hindi-medium background. No IIT degree. This course taught me skills that helped me start an agency. Now I have 4 employees. Best ₹60K I ever spent.",
     },
+    {
+      name: "Kavita Reddy",
+      role: "Head of Growth",
+      company: "Razorpay",
+      city: "Hyderabad",
+      image: kavitaReddyImg,
+      before: "Marketing Manager (₹55K/month)",
+      after: "Head of Growth (₹1.5L/month)",
+      salary: "₹18L/year + ESOPs",
+      increase: "173%",
+      quote: "Coming from a traditional marketing role, I was skeptical about AI. This course didn't just teach me tools—it transformed how I think about growth. Now I lead a team of 8.",
+    },
+    {
+      name: "Amit Saxena",
+      role: "AI Content Director",
+      company: "Swiggy",
+      city: "Pune",
+      image: amitSaxenaImg,
+      before: "Content Lead (₹50K/month)",
+      after: "AI Content Director (₹1.1L/month)",
+      salary: "₹13.2L/year + bonus",
+      increase: "120%",
+      quote: "I was a journalism grad with zero tech background. The course broke down complex AI concepts so simply. Within 4 months, I was managing AI-driven content for 15 cities.",
+    },
+    {
+      name: "Meera Joshi",
+      role: "GEO Specialist",
+      company: "Zepto",
+      city: "Mumbai",
+      image: meeraJoshiImg,
+      before: "SEO Executive (₹30K/month)",
+      after: "GEO Specialist (₹85K/month)",
+      salary: "₹10.2L/year",
+      increase: "183%",
+      quote: "Fresh out of college with no connections. This course gave me skills that 10-year veterans don't have. Got placed in Zepto within 30 days of completing the program.",
+    },
   ];
 
   const stats = [
@@ -70,7 +122,7 @@ export const CourseSocialProofSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-background">
+    <section ref={ref} className="py-16 md:py-24 bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
@@ -101,62 +153,103 @@ export const CourseSocialProofSection = () => {
           ))}
         </div>
 
-        {/* Testimonial Cards */}
-        <div className={`grid md:grid-cols-2 gap-6 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {testimonials.map((testimonial, index) => (
-            <Card 
-              key={index}
-              className="bg-card border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 group"
-            >
-              <CardContent className="p-6">
-                {/* Quote */}
-                <div className="relative mb-6">
-                  <Quote className="absolute -top-2 -left-2 w-8 h-8 text-[hsl(var(--brand-orange))]/20" />
-                  <p className="text-foreground/80 pl-6 text-sm md:text-base leading-relaxed">
-                    "{testimonial.quote}"
-                  </p>
-                </div>
+        {/* Carousel Container */}
+        <div className={`relative transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Left Gradient Fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          
+          {/* Right Gradient Fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-                {/* Journey */}
-                <div className="flex items-center gap-3 mb-6 p-3 bg-muted/30 rounded-lg">
-                  <div className="flex-1">
-                    <p className="text-xs text-muted-foreground uppercase mb-1">Before</p>
-                    <p className="text-xs md:text-sm font-medium text-foreground">{testimonial.before}</p>
-                  </div>
-                  <div className="text-[hsl(var(--brand-orange))] font-bold">→</div>
-                  <div className="flex-1">
-                    <p className="text-xs text-muted-foreground uppercase mb-1">After</p>
-                    <p className="text-xs md:text-sm font-medium text-foreground">{testimonial.after}</p>
-                  </div>
-                </div>
+          {/* Navigation Buttons */}
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => scroll("left")}
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:scale-110 hover:bg-background hover:shadow-xl hover:border-[hsl(var(--brand-orange))]/30 active:scale-95 transition-all duration-200"
+          >
+            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+          </Button>
+          
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => scroll("right")}
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/80 backdrop-blur-sm border-border/50 shadow-lg hover:scale-110 hover:bg-background hover:shadow-xl hover:border-[hsl(var(--brand-orange))]/30 active:scale-95 transition-all duration-200"
+          >
+            <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+          </Button>
 
-                {/* Profile & Stats */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <img 
-                      src={testimonial.image} 
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full border-2 border-[hsl(var(--brand-orange))]/30 object-cover"
-                    />
-                    <div>
-                      <p className="font-semibold text-foreground">{testimonial.name}</p>
-                      <p className="text-xs text-muted-foreground">
-                        {testimonial.role} @ {testimonial.company} • {testimonial.city}
-                      </p>
+          {/* Scrollable Carousel */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory pb-4 px-4 md:px-8"
+            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <Card 
+                key={index}
+                className="flex-shrink-0 w-[85%] md:w-[calc((100%-1.5rem)/2.15)] lg:w-[calc((100%-3rem)/3.1)] snap-start bg-card border-border/50 hover:border-[hsl(var(--brand-orange))]/50 hover:scale-[1.02] hover:shadow-xl transition-all duration-300 ease-out group cursor-pointer"
+              >
+                <CardContent className="p-5 md:p-6">
+                  {/* Quote */}
+                  <div className="relative mb-5">
+                    <Quote className="absolute -top-2 -left-2 w-7 h-7 text-[hsl(var(--brand-orange))]/20 group-hover:text-[hsl(var(--brand-orange))]/40 transition-colors duration-300" />
+                    <p className="text-foreground/80 pl-5 text-sm leading-relaxed line-clamp-4">
+                      "{testimonial.quote}"
+                    </p>
+                  </div>
+
+                  {/* Journey */}
+                  <div className="flex items-center gap-2 mb-5 p-3 bg-muted/30 rounded-lg group-hover:bg-muted/50 transition-colors duration-300">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-muted-foreground uppercase mb-1">Before</p>
+                      <p className="text-xs font-medium text-foreground truncate">{testimonial.before}</p>
+                    </div>
+                    <div className="text-[hsl(var(--brand-orange))] font-bold shrink-0 group-hover:scale-125 transition-transform duration-300">→</div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs text-muted-foreground uppercase mb-1">After</p>
+                      <p className="text-xs font-medium text-foreground truncate">{testimonial.after}</p>
                     </div>
                   </div>
-                  <div className="text-right">
-                    <p className="text-sm md:text-base font-bold text-[hsl(var(--brand-orange))]">{testimonial.salary}</p>
-                    <p className="text-xs text-emerald-500 font-medium">↑ {testimonial.increase} hike</p>
+
+                  {/* Profile & Stats */}
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div className="relative shrink-0">
+                        <img 
+                          src={testimonial.image} 
+                          alt={testimonial.name}
+                          className="w-11 h-11 rounded-full border-2 border-[hsl(var(--brand-orange))]/30 object-cover group-hover:scale-110 group-hover:border-[hsl(var(--brand-orange))]/60 transition-all duration-300"
+                        />
+                        <div className="absolute inset-0 rounded-full bg-[hsl(var(--brand-orange))]/0 group-hover:bg-[hsl(var(--brand-orange))]/10 transition-colors duration-300" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="font-semibold text-foreground text-sm truncate">{testimonial.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">
+                          {testimonial.role} @ {testimonial.company}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-sm font-bold text-[hsl(var(--brand-orange))]">{testimonial.salary}</p>
+                      <p className="text-xs text-emerald-500 font-medium">↑ {testimonial.increase}</p>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Scroll Hint */}
+        <div className={`flex justify-center mt-6 gap-2 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <span className="text-xs text-muted-foreground">Swipe to see more success stories</span>
+          <ChevronRight className="w-4 h-4 text-muted-foreground animate-pulse" />
         </div>
 
         {/* Bottom Note */}
-        <div className={`text-center mt-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`text-center mt-8 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-muted-foreground text-sm">
             These aren't exceptional cases. <span className="text-foreground font-medium">This is what's possible when you learn the right skills at the right time.</span>
           </p>
