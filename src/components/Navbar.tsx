@@ -148,6 +148,7 @@ export const Navbar = () => {
               }`}
             >
               <span className="link-underline">SEO Course</span>
+              <span className="ml-1.5 px-1.5 py-0.5 text-[10px] font-bold uppercase bg-emerald-500 text-white rounded">New</span>
               {location.pathname === "/seo-course" && (
                 <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
               )}
@@ -277,6 +278,7 @@ export const Navbar = () => {
               }`}
             >
               SEO Course
+              <span className="ml-2 px-1.5 py-0.5 text-[10px] font-bold uppercase bg-emerald-500 text-white rounded">New</span>
             </Link>
 
             <Link
