@@ -12,11 +12,13 @@ import { CourseComparisonSection } from "@/components/course/CourseComparisonSec
 import { CourseProjectsSection } from "@/components/course/CourseProjectsSection";
 import { CourseCredentialsSection } from "@/components/course/CourseCredentialsSection";
 import { CourseAlumniSuccessSection } from "@/components/course/CourseAlumniSuccessSection";
+import { CourseVideoTestimonialsSection } from "@/components/course/CourseVideoTestimonialsSection";
 import { CourseInvestmentSection } from "@/components/course/CourseInvestmentSection";
 import { CourseGuaranteeSection } from "@/components/course/CourseGuaranteeSection";
 import { CourseScarcitySection } from "@/components/course/CourseScarcitySection";
 import { CourseApplicationSection } from "@/components/course/CourseApplicationSection";
 import { CourseFAQSection } from "@/components/course/CourseFAQSection";
+import { CourseStickyCTA } from "@/components/course/CourseStickyCTA";
 
 const SeoCourse = () => {
   return (
@@ -79,12 +81,15 @@ const SeoCourse = () => {
         <CourseProjectsSection />
         <CourseCredentialsSection />
         <CourseAlumniSuccessSection />
+        <CourseVideoTestimonialsSection />
         <CourseInvestmentSection />
         <CourseGuaranteeSection />
         <CourseScarcitySection />
         <CourseApplicationSection />
         <CourseFAQSection />
       </main>
+      
+      <CourseStickyCTA />
       
       <Footer />
     </>
