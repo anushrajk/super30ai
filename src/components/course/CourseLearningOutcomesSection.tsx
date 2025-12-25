@@ -73,7 +73,9 @@ export const CourseLearningOutcomesSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+    <section ref={ref} className="py-16 md:py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       {/* Decorative elements */}
       <div className="absolute top-0 left-0 w-72 h-72 bg-[hsl(var(--brand-orange))]/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
@@ -87,9 +89,9 @@ export const CourseLearningOutcomesSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             6 Months From Now, <span className="text-gradient">You'll Be Able To...</span>
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-            These aren't just skills. They're your new superpowers. <span className="text-white">Imagine telling your parents "I work in AI" 😊</span>
-          </p>
+        <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+          These aren't just skills. They're your new superpowers. <span className="text-white">Imagine telling your parents "I work in AI" 😊</span>
+        </p>
         </div>
 
         {/* Quick Stats */}
@@ -98,7 +100,7 @@ export const CourseLearningOutcomesSection = () => {
             <div key={index} className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
               <outcome.icon className="w-6 h-6 mx-auto mb-2 text-[hsl(var(--brand-orange))]" />
               <p className="text-2xl font-bold text-white">{outcome.value}</p>
-              <p className="text-xs text-slate-400">{outcome.text}</p>
+              <p className="text-xs text-gray-400">{outcome.text}</p>
             </div>
           ))}
         </div>
@@ -116,7 +118,7 @@ export const CourseLearningOutcomesSection = () => {
                   {category.skills.map((skill, skillIndex) => (
                     <li key={skillIndex} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--brand-orange))]" />
-                      <span className="text-sm text-slate-300">{skill}</span>
+                      <span className="text-sm text-gray-300">{skill}</span>
                     </li>
                   ))}
                 </ul>
@@ -127,7 +129,7 @@ export const CourseLearningOutcomesSection = () => {
 
         {/* Bottom CTA */}
         <div className={`text-center mt-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-slate-400">
+          <p className="text-gray-400">
             <span className="text-white font-semibold">₹50,000+ worth of premium tool access</span> included free with your enrollment
           </p>
         </div>

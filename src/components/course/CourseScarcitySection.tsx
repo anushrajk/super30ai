@@ -56,7 +56,9 @@ export const CourseScarcitySection = () => {
   };
 
   return (
-    <section ref={ref} className="py-12 md:py-16 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+    <section ref={ref} className="py-12 md:py-16 bg-[#0a0a0a] text-white relative overflow-hidden">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       {/* Decorative elements */}
       <div className="absolute top-0 left-1/4 w-72 h-72 bg-[hsl(var(--brand-orange))]/15 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl" />
@@ -70,7 +72,7 @@ export const CourseScarcitySection = () => {
               <h3 className="text-xl md:text-2xl font-bold text-white mb-2">
                 Why We Only Take <span className="text-[hsl(var(--brand-orange))]">15 Students</span> Per Batch
               </h3>
-              <p className="text-sm text-slate-400 max-w-xl mx-auto">
+              <p className="text-sm text-gray-400 max-w-xl mx-auto">
                 It's not a marketing gimmick. It's because we personally mentor each student, review every assignment, and track every job application. Can't do that with 100 students.
               </p>
             </div>
@@ -95,8 +97,8 @@ export const CourseScarcitySection = () => {
 
               {/* Batch Size */}
               <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full border border-white/20">
-                <Users className="w-4 h-4 text-slate-300" />
-                <span className="text-slate-300 font-medium text-sm">
+                <Users className="w-4 h-4 text-gray-300" />
+                <span className="text-gray-300 font-medium text-sm">
                   Max 15 per batch
                 </span>
               </div>
@@ -104,7 +106,7 @@ export const CourseScarcitySection = () => {
 
             {/* Countdown Timer */}
             <div className="text-center mb-8">
-              <p className="text-sm text-slate-400 mb-2 flex items-center justify-center gap-2">
+              <p className="text-sm text-gray-400 mb-2 flex items-center justify-center gap-2">
                 <Calendar className="w-4 h-4" />
                 January 2025 batch starts in:
               </p>
@@ -121,7 +123,7 @@ export const CourseScarcitySection = () => {
                         {item.value.toString().padStart(2, '0')}
                       </span>
                     </div>
-                    <p className="text-xs text-slate-400 mt-2 font-medium">{item.label}</p>
+                    <p className="text-xs text-gray-400 mt-2 font-medium">{item.label}</p>
                   </div>
                 ))}
               </div>
@@ -137,7 +139,7 @@ export const CourseScarcitySection = () => {
                 <Clock className="w-5 h-5 mr-2" />
                 Join the January 2025 Batch
               </Button>
-              <p className="text-sm text-slate-400 mt-4">
+              <p className="text-sm text-gray-400 mt-4">
                 Early bird price: <span className="line-through">₹1,29,999</span> → <span className="text-[hsl(var(--brand-orange))] font-bold">₹59,999</span> (Save ₹70,000)
               </p>
             </div>
@@ -148,7 +150,7 @@ export const CourseScarcitySection = () => {
                 <HelpCircle className="w-5 h-5 text-[hsl(var(--brand-orange))] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm font-medium text-white">What if I miss this batch?</p>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-gray-400 mt-1">
                     Next batch starts in March 2025. But early bird pricing ends when January batch fills up. 
                     You'll pay ₹30,000 more for the same course.
                   </p>
