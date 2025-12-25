@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from "lucide-react";
+import { getNextBatchStartDate, formatBatchMonth } from "@/lib/timeUtils";
 
 export const CourseStickyCTA = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
+  
+  // Calculate batch date dynamically
+  const batchStartDate = useMemo(() => getNextBatchStartDate(), []);
+  const batchMonthDisplay = useMemo(() => formatBatchMonth(batchStartDate), [batchStartDate]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,7 +44,7 @@ export const CourseStickyCTA = () => {
             <div className="text-center sm:text-left">
               <p className="text-primary-foreground font-semibold text-sm md:text-base">
                 <span className="hidden sm:inline">🔥 </span>
-                Only 2 Seats Left for January Batch
+                Only 2 Seats Left for {batchMonthDisplay} Batch
               </p>
               <p className="text-primary-foreground/80 text-xs md:text-sm hidden sm:block">
                 Early bird pricing ends soon

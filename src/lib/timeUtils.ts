@@ -155,3 +155,78 @@ export const getStartOfWeekIST = (): number => {
   // Subtract IST offset to get actual UTC time
   return startOfWeekDate.getTime() - IST_OFFSET_MS;
 };
+
+/**
+ * Get the next Monday on or after a given date
+ */
+export const getNextMonday = (date: Date): Date => {
+  const result = new Date(date);
+  const dayOfWeek = result.getDay(); // 0 = Sunday, 1 = Monday, etc.
+  
+  if (dayOfWeek === 1) {
+    // Already Monday, return as is
+    return result;
+  }
+  
+  // Calculate days until next Monday
+  const daysUntilMonday = dayOfWeek === 0 ? 1 : (8 - dayOfWeek);
+  result.setDate(result.getDate() + daysUntilMonday);
+  return result;
+};
+
+/**
+ * Get the next batch start date
+ * Logic: If today >= batchDate, calculate new date = today + 14 days, 
+ * then find the next Monday
+ */
+export const getNextBatchStartDate = (batchDate: Date = new Date("2025-01-15T10:00:00+05:30")): Date => {
+  const today = new Date();
+  
+  // Set both to start of day for accurate comparison
+  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+  const batchStart = new Date(batchDate.getFullYear(), batchDate.getMonth(), batchDate.getDate());
+  
+  // If batch date is still in the future, use it
+  if (batchStart > todayStart) {
+    return batchDate;
+  }
+  
+  // Otherwise, calculate new date: today + 14 days, then find next Monday
+  const futureDate = new Date(todayStart);
+  futureDate.setDate(futureDate.getDate() + 14);
+  
+  return getNextMonday(futureDate);
+};
+
+/**
+ * Format batch date for display (e.g., "January 2025")
+ */
+export const formatBatchMonth = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-IN', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Asia/Kolkata'
+  }).format(date);
+};
+
+/**
+ * Format batch date for display (e.g., "13 January 2025")
+ */
+export const formatBatchFullDate = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-IN', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'Asia/Kolkata'
+  }).format(date);
+};
+
+/**
+ * Get the batch after the next one (for "What if I miss this batch?" messaging)
+ * Returns a date ~8 weeks after the current batch date
+ */
+export const getFollowingBatchDate = (currentBatchDate: Date): Date => {
+  const followingDate = new Date(currentBatchDate);
+  followingDate.setDate(followingDate.getDate() + 56); // ~8 weeks later
+  return getNextMonday(followingDate);
+};
