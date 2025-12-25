@@ -1,12 +1,19 @@
-import { useState, useEffect } from "react";
-import { Clock, Users, Calendar, AlertTriangle, Eye, MessageCircle, HelpCircle } from "lucide-react";
+import { useState, useEffect, useMemo } from "react";
+import { Clock, Users, Calendar, AlertTriangle, Eye, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { getNextBatchStartDate, formatBatchMonth, getFollowingBatchDate } from "@/lib/timeUtils";
 
 export const CourseScarcitySection = () => {
   const [ref, isVisible] = useScrollAnimation();
   
-  // Countdown timer to next batch (January 15, 2025)
+  // Calculate batch dates dynamically
+  const batchStartDate = useMemo(() => getNextBatchStartDate(), []);
+  const followingBatchDate = useMemo(() => getFollowingBatchDate(batchStartDate), [batchStartDate]);
+  const batchMonthDisplay = useMemo(() => formatBatchMonth(batchStartDate), [batchStartDate]);
+  const followingBatchMonthDisplay = useMemo(() => formatBatchMonth(followingBatchDate), [followingBatchDate]);
+  
+  // Countdown timer to next batch
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -18,7 +25,7 @@ export const CourseScarcitySection = () => {
   const [viewers, setViewers] = useState(47);
 
   useEffect(() => {
-    const targetDate = new Date("2025-01-15T10:00:00+05:30").getTime();
+    const targetDate = batchStartDate.getTime();
 
     const interval = setInterval(() => {
       const now = new Date().getTime();
@@ -108,7 +115,7 @@ export const CourseScarcitySection = () => {
             <div className="text-center mb-8">
               <p className="text-sm text-gray-400 mb-2 flex items-center justify-center gap-2">
                 <Calendar className="w-4 h-4" />
-                January 2025 batch starts in:
+                {batchMonthDisplay} batch starts in:
               </p>
               <div className="flex items-center justify-center gap-3 md:gap-4">
                 {[
@@ -137,7 +144,7 @@ export const CourseScarcitySection = () => {
                 className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-8"
               >
                 <Clock className="w-5 h-5 mr-2" />
-                Join the January 2025 Batch
+                Join the {batchMonthDisplay} Batch
               </Button>
               <p className="text-sm text-gray-400 mt-4">
                 Early bird price: <span className="line-through">₹1,29,999</span> → <span className="text-[hsl(var(--brand-orange))] font-bold">₹59,999</span> (Save ₹70,000)
@@ -151,7 +158,7 @@ export const CourseScarcitySection = () => {
                 <div>
                   <p className="text-sm font-medium text-white">What if I miss this batch?</p>
                   <p className="text-xs text-gray-400 mt-1">
-                    Next batch starts in March 2025. But early bird pricing ends when January batch fills up. 
+                    Next batch starts in {followingBatchMonthDisplay}. But early bird pricing ends when {batchMonthDisplay} batch fills up. 
                     You'll pay ₹30,000 more for the same course.
                   </p>
                 </div>
