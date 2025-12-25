@@ -69,7 +69,7 @@ export const CourseTimelineSection = () => {
           <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-emerald-500 transform md:-translate-x-1/2" />
 
           {/* Milestones */}
-          <div className="space-y-4 md:space-y-6">
+          <div className="space-y-2 md:space-y-3">
             {milestones.map((milestone, index) => (
               <div 
                 key={index}
