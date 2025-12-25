@@ -11,9 +11,27 @@ import {
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { CourseEnquiryForm } from "./CourseEnquiryForm";
+import { useMemo } from "react";
+import { 
+  getNextBatchStartDate, 
+  formatBatchDayName, 
+  formatBatchMonthShort, 
+  getBatchDay,
+  formatBatchMonth 
+} from "@/lib/timeUtils";
 
 export const CourseHeroSection = () => {
   const [ref, isVisible] = useScrollAnimation();
+
+  const batchInfo = useMemo(() => {
+    const batchStartDate = getNextBatchStartDate();
+    return {
+      day: getBatchDay(batchStartDate),
+      monthShort: formatBatchMonthShort(batchStartDate),
+      dayName: formatBatchDayName(batchStartDate),
+      monthYear: formatBatchMonth(batchStartDate)
+    };
+  }, []);
 
   const trustBadges = [
     { icon: Award, text: "Get Placed in 90 Days or 50% Refund" },
@@ -92,10 +110,32 @@ export const CourseHeroSection = () => {
               ))}
             </div>
 
+            {/* Batch Start Date - Horizontal Calendar */}
+            <div className="inline-flex items-center gap-4 p-3 bg-[hsl(var(--brand-orange))]/10 border border-[hsl(var(--brand-orange))]/30 rounded-xl">
+              {/* Calendar Tile */}
+              <div className="flex flex-col items-center justify-center bg-[hsl(var(--brand-orange))] text-primary-foreground rounded-lg w-14 h-14 shadow-lg">
+                <span className="text-[10px] font-bold tracking-wider uppercase">{batchInfo.monthShort}</span>
+                <span className="text-xl font-bold leading-none">{batchInfo.day}</span>
+              </div>
+              
+              {/* Date Details */}
+              <div className="flex flex-col">
+                <span className="text-foreground font-semibold text-sm md:text-base">
+                  {batchInfo.monthYear}
+                </span>
+                <span className="text-muted-foreground text-xs md:text-sm">
+                  {batchInfo.dayName} • Batch Starts
+                </span>
+              </div>
+              
+              {/* Calendar Icon */}
+              <Calendar className="w-5 h-5 text-[hsl(var(--brand-orange))] hidden sm:block" />
+            </div>
+
             {/* Scarcity */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/30 rounded-full animate-pulse">
-              <span className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
-              <span className="text-red-500 font-semibold text-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-destructive/10 border border-destructive/30 rounded-full animate-pulse">
+              <span className="w-2 h-2 bg-destructive rounded-full animate-ping" />
+              <span className="text-destructive font-semibold text-sm">
                 Only 2 seats left • 847 applied this month
               </span>
             </div>
