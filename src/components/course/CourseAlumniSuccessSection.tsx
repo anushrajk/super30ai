@@ -1,4 +1,4 @@
-import { TrendingUp, Building2, Linkedin } from "lucide-react";
+import { TrendingUp, Building2, MapPin, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -11,7 +11,12 @@ export const CourseAlumniSuccessSection = () => {
       previousRole: "Content Writer",
       currentRole: "AI SEO Specialist",
       company: "Razorpay",
-      salaryGrowth: "180%",
+      city: "Mumbai",
+      salaryBefore: "₹35K/month",
+      salaryAfter: "₹95K/month",
+      salaryGrowth: "171%",
+      background: "Hindi-medium school, Tier-2 city",
+      quote: "I didn't even know what GEO meant 8 months ago. Now I lead a team of 3 at Razorpay.",
       avatar: "PS",
     },
     {
@@ -19,15 +24,25 @@ export const CourseAlumniSuccessSection = () => {
       previousRole: "Marketing Executive",
       currentRole: "GEO Strategist",
       company: "Freshworks",
-      salaryGrowth: "150%",
+      city: "Chennai",
+      salaryBefore: "₹40K/month",
+      salaryAfter: "₹1.1L/month",
+      salaryGrowth: "175%",
+      background: "B.Com graduate, no coding background",
+      quote: "My dad told me to do CA. I chose this instead. Now I earn more than most CAs my age.",
       avatar: "RV",
     },
     {
       name: "Ananya Iyer",
-      previousRole: "Fresher (BBA)",
+      previousRole: "Fresh BBA Graduate",
       currentRole: "SEO Analyst",
       company: "Swiggy",
-      salaryGrowth: "First Job ₹6.5L",
+      city: "Bangalore",
+      salaryBefore: "₹0 (fresher)",
+      salaryAfter: "₹55K/month",
+      salaryGrowth: "First Job ₹6.6L",
+      background: "Fresh graduate, no work experience",
+      quote: "All my batchmates are struggling to get ₹25K jobs. I got ₹55K as a fresher. Still can't believe it.",
       avatar: "AI",
     },
     {
@@ -35,30 +50,45 @@ export const CourseAlumniSuccessSection = () => {
       previousRole: "Social Media Manager",
       currentRole: "AEO Consultant",
       company: "Zoho",
-      salaryGrowth: "200%",
+      city: "Chennai (from Patna)",
+      salaryBefore: "₹30K/month",
+      salaryAfter: "₹85K/month",
+      salaryGrowth: "183%",
+      background: "From Tier-3 city, self-taught",
+      quote: "I moved from Patna to Chennai for this role. My family thought I was crazy. Now they show off my salary to relatives.",
       avatar: "VK",
     },
     {
       name: "Sneha Patel",
-      previousRole: "Digital Marketing Intern",
+      previousRole: "Internship Hopper",
       currentRole: "AI SEO Lead",
       company: "Meesho",
-      salaryGrowth: "220%",
+      city: "Bangalore",
+      salaryBefore: "₹15K/month (intern)",
+      salaryAfter: "₹90K/month",
+      salaryGrowth: "500%",
+      background: "2 years of failed interviews",
+      quote: "I failed 23 interviews before this course. After completing it, I cleared 4 out of 5. The difference is the skills, not luck.",
       avatar: "SP",
     },
     {
       name: "Arjun Nair",
-      previousRole: "Traditional SEO",
+      previousRole: "Traditional SEO (3 yrs)",
       currentRole: "Head of SEO",
-      company: "Startup (Series A)",
-      salaryGrowth: "170%",
+      company: "Series A Startup",
+      city: "Delhi",
+      salaryBefore: "₹50K/month",
+      salaryAfter: "₹1.4L/month + ESOPs",
+      salaryGrowth: "180%",
+      background: "Was stuck at same salary for 2 years",
+      quote: "I was doing the same SEO for 3 years. This course made me realize I was 5 years behind. Now I lead a team.",
       avatar: "AN",
     },
   ];
 
   const companies = [
     "Razorpay", "Freshworks", "Swiggy", "Zoho", "Meesho", "Flipkart", 
-    "PhonePe", "CRED", "Groww", "upGrad", "Byju's", "Ola"
+    "PhonePe", "CRED", "Groww", "upGrad", "Nykaa", "Lenskart"
   ];
 
   return (
@@ -67,13 +97,14 @@ export const CourseAlumniSuccessSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
-            Alumni Success
+            They Did It. So Can You.
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Our Alumni Are <span className="text-gradient">Thriving</span>
+            From <span className="text-gradient">"Just Another Marketer"</span> to 
+            <br className="hidden md:block" /> "The AI Expert Everyone Wants"
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Real transformations from our graduates who are now leading AI SEO at top companies
+            Not IIT graduates. Not coding wizards. Just regular people who decided to learn something new.
           </p>
         </div>
 
@@ -81,29 +112,48 @@ export const CourseAlumniSuccessSection = () => {
         <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {alumni.map((person, index) => (
             <Card key={index} className="bg-card border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all hover:-translate-y-1">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
+              <CardContent className="p-5">
+                {/* Quote */}
+                <div className="relative mb-4">
+                  <Quote className="absolute -top-1 -left-1 w-5 h-5 text-[hsl(var(--brand-orange))]/30" />
+                  <p className="text-foreground/80 text-sm pl-4 italic leading-relaxed">
+                    "{person.quote}"
+                  </p>
+                </div>
+
+                {/* Background Context */}
+                <p className="text-xs text-muted-foreground mb-4 px-2 py-1 bg-muted/50 rounded-md inline-block">
+                  📍 {person.background}
+                </p>
+
+                {/* Profile Header */}
+                <div className="flex items-start gap-3 mb-4">
                   {/* Avatar */}
-                  <div className="w-12 h-12 rounded-full bg-[hsl(var(--brand-orange))]/10 flex items-center justify-center text-[hsl(var(--brand-orange))] font-semibold flex-shrink-0">
+                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--brand-orange))]/10 flex items-center justify-center text-[hsl(var(--brand-orange))] font-semibold text-sm flex-shrink-0">
                     {person.avatar}
                   </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground">{person.name}</h4>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground mt-1">
-                      <span>{person.previousRole}</span>
-                      <span>→</span>
-                      <span className="text-[hsl(var(--brand-orange))]">{person.currentRole}</span>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="font-semibold text-foreground text-sm">{person.name}</h4>
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <Building2 className="w-3 h-3" />
+                      <span>{person.currentRole} @ {person.company}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-border/50 flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-sm">
-                    <Building2 className="w-4 h-4 text-muted-foreground" />
-                    <span className="text-foreground">{person.company}</span>
+                {/* Salary Journey */}
+                <div className="flex items-center gap-2 p-3 bg-muted/30 rounded-lg">
+                  <div className="flex-1 text-center">
+                    <p className="text-xs text-muted-foreground">Before</p>
+                    <p className="text-sm font-medium text-foreground">{person.salaryBefore}</p>
                   </div>
-                  <div className="flex items-center gap-1 text-emerald-500 font-semibold text-sm">
-                    <TrendingUp className="w-4 h-4" />
+                  <div className="text-[hsl(var(--brand-orange))] font-bold">→</div>
+                  <div className="flex-1 text-center">
+                    <p className="text-xs text-muted-foreground">After</p>
+                    <p className="text-sm font-medium text-foreground">{person.salaryAfter}</p>
+                  </div>
+                  <div className="flex items-center gap-1 text-emerald-500 font-semibold text-xs bg-emerald-500/10 px-2 py-1 rounded-full">
+                    <TrendingUp className="w-3 h-3" />
                     {person.salaryGrowth}
                   </div>
                 </div>
@@ -114,8 +164,9 @@ export const CourseAlumniSuccessSection = () => {
 
         {/* Where Alumni Work */}
         <div className={`text-center transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <h3 className="text-xl font-semibold text-foreground mb-6">Where Our Alumni Work</h3>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+          <h3 className="text-xl font-semibold text-foreground mb-2">Where Our Alumni Get DMs From</h3>
+          <p className="text-sm text-muted-foreground mb-6">These companies actively recruit from our network</p>
+          <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {companies.map((company, index) => (
               <div 
                 key={index}

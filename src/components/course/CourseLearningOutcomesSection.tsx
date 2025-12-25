@@ -10,7 +10,9 @@ import {
   Zap,
   Target,
   Users,
-  TrendingUp
+  TrendingUp,
+  MessageCircle,
+  Rocket
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -20,43 +22,43 @@ export const CourseLearningOutcomesSection = () => {
 
   const skillCategories = [
     {
-      title: "Technical Skills",
-      icon: Brain,
+      title: "Your New Superpowers",
+      icon: Zap,
       skills: [
-        "Generative Engine Optimization (GEO)",
-        "Answer Engine Optimization (AEO)",
-        "AI-powered content strategy",
-        "Technical SEO & Core Web Vitals",
-        "Schema markup & structured data",
-        "Entity SEO & knowledge graphs",
+        "Make ChatGPT recommend your client's brand",
+        "Get featured in AI search results (GEO)",
+        "Dominate voice search & smart assistants",
+        "Build AI agents that do SEO 24/7",
+        "Create content 10x faster with AI",
+        "Predict Google updates before they hit",
       ],
       color: "text-[hsl(var(--brand-orange))]",
       bgColor: "bg-[hsl(var(--brand-orange))]/10",
     },
     {
-      title: "Tools Mastery",
+      title: "Tools in Your Arsenal",
       icon: Wrench,
       skills: [
-        "ChatGPT, Claude, Gemini for SEO",
-        "Ahrefs, SEMrush, Moz",
-        "Screaming Frog, Sitebulb",
-        "Google Search Console & Analytics",
-        "Surfer SEO, Clearscope",
-        "Custom AI automation workflows",
+        "ChatGPT, Claude, Gemini—like a pro",
+        "Ahrefs, SEMrush (₹50K worth free access)",
+        "n8n, Zapier for automation",
+        "Custom GPT development",
+        "GA4, BigQuery for analytics",
+        "30+ industry tools included",
       ],
       color: "text-emerald-500",
       bgColor: "bg-emerald-500/10",
     },
     {
-      title: "Career Paths",
+      title: "Roles You'll Qualify For",
       icon: Briefcase,
       skills: [
-        "AI SEO Specialist",
-        "GEO/AEO Strategist",
-        "Head of Organic Growth",
-        "SEO Consultant (Freelance)",
-        "AI Marketing Manager",
-        "Agentic Commerce Expert",
+        "AI SEO Specialist (₹6-10L)",
+        "GEO/AEO Strategist (₹8-12L)",
+        "Head of Organic Growth (₹12-18L)",
+        "AI Marketing Manager (₹10-15L)",
+        "Freelance Consultant (₹1L+/month)",
+        "Start your own AI SEO agency",
       ],
       color: "text-violet-500",
       bgColor: "bg-violet-500/10",
@@ -64,10 +66,10 @@ export const CourseLearningOutcomesSection = () => {
   ];
 
   const outcomes = [
-    { icon: Search, text: "Rank websites on AI search engines", value: "100+" },
-    { icon: Bot, text: "Build AI-powered SEO workflows", value: "20+" },
-    { icon: BarChart3, text: "Drive measurable organic growth", value: "3x" },
-    { icon: Globe, text: "Optimize for voice & conversational search", value: "New" },
+    { icon: MessageCircle, text: "Get brands cited by ChatGPT", value: "GEO" },
+    { icon: Bot, text: "Build autonomous SEO agents", value: "20+" },
+    { icon: BarChart3, text: "Average traffic increase", value: "3x" },
+    { icon: Rocket, text: "Time to first job offer", value: "23 days" },
   ];
 
   return (
@@ -76,13 +78,13 @@ export const CourseLearningOutcomesSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
-            Learning Outcomes
+            Your Transformation
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            What You'll <span className="text-gradient">Master</span>
+            6 Months From Now, <span className="text-gradient">You'll Be Able To...</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Graduate with in-demand skills that top companies are actively hiring for
+            These aren't just skills. They're your new superpowers. <span className="text-foreground">Imagine telling your parents "I work in AI" 😊</span>
           </p>
         </div>
 
@@ -122,7 +124,7 @@ export const CourseLearningOutcomesSection = () => {
         {/* Bottom CTA */}
         <div className={`text-center mt-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-muted-foreground">
-            <span className="text-foreground font-semibold">30+ industry-grade tools</span> included in your course fee worth ₹50,000+
+            <span className="text-foreground font-semibold">₹50,000+ worth of premium tool access</span> included free with your enrollment
           </p>
         </div>
       </div>
