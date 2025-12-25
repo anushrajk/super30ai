@@ -3,16 +3,21 @@ import { Play, Volume2, VolumeX, X, ChevronLeft, ChevronRight } from "lucide-rea
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+// Import gallery images
+import studentsStudying from "@/assets/gallery/students-studying.jpg";
+import studentsProject from "@/assets/gallery/students-project.jpg";
+import studentsGroupPhoto from "@/assets/gallery/students-group-photo.jpg";
+import studentsSeminar from "@/assets/gallery/students-seminar.jpg";
+import campusAmbassadors from "@/assets/gallery/campus-ambassadors.jpg";
+import graduationCeremony from "@/assets/gallery/graduation-ceremony.jpg";
+import studentsSports from "@/assets/gallery/students-sports.jpg";
+import studentsHackathon from "@/assets/gallery/students-hackathon.jpg";
+
 // Import alumni images for variety
 import priyaSharma from "@/assets/alumni/priya-sharma.jpg";
 import rahulVerma from "@/assets/alumni/rahul-verma.jpg";
 import ananyaIyer from "@/assets/alumni/ananya-iyer.jpg";
 import vikashKumar from "@/assets/alumni/vikash-kumar.jpg";
-import arjunNair from "@/assets/alumni/arjun-nair.jpg";
-import snehaPatel from "@/assets/alumni/sneha-patel.jpg";
-import deepakKumar from "@/assets/alumni/deepak-kumar.jpg";
-import arjunVerma from "@/assets/alumni/arjun-verma.jpg";
-import rahulDesai from "@/assets/alumni/rahul-desai.jpg";
 
 interface GalleryItem {
   id: number;
@@ -25,20 +30,20 @@ interface GalleryItem {
 }
 
 const galleryItems: GalleryItem[] = [
-  { id: 1, type: 'image', src: priyaSharma, size: 'small', caption: 'Workshop Day 1', name: 'Priya S.' },
-  { id: 2, type: 'video', src: 'https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4', thumbnail: rahulVerma, size: 'large', caption: 'Live Project Review' },
-  { id: 3, type: 'image', src: ananyaIyer, size: 'medium', caption: 'Group Discussion', name: 'Ananya I.' },
-  { id: 4, type: 'image', src: vikashKumar, size: 'small', caption: 'Certification Day', name: 'Vikash K.' },
-  { id: 5, type: 'video', src: 'https://videos.pexels.com/video-files/5927673/5927673-uhd_2732_1440_25fps.mp4', thumbnail: arjunNair, size: 'small', caption: 'Success Story' },
-  { id: 6, type: 'image', src: snehaPatel, size: 'large', caption: 'Mumbai Cohort 2024', name: 'Sneha P.' },
-  { id: 7, type: 'image', src: deepakKumar, size: 'small', caption: '1:1 Mentoring', name: 'Deepak K.' },
-  { id: 8, type: 'video', src: 'https://videos.pexels.com/video-files/7989582/7989582-uhd_2560_1440_25fps.mp4', thumbnail: arjunVerma, size: 'medium', caption: 'First Placement Call' },
-  { id: 9, type: 'image', src: rahulDesai, size: 'small', caption: 'Weekend Workshop', name: 'Rahul D.' },
-  { id: 10, type: 'image', src: priyaSharma, size: 'medium', caption: 'Team Collaboration' },
-  { id: 11, type: 'video', src: 'https://videos.pexels.com/video-files/4065388/4065388-uhd_2560_1440_30fps.mp4', thumbnail: vikashKumar, size: 'small', caption: 'Student Testimonial' },
-  { id: 12, type: 'image', src: ananyaIyer, size: 'large', caption: 'Graduation Ceremony' },
-  { id: 13, type: 'image', src: arjunNair, size: 'small', caption: 'Hackathon Winners', name: 'Arjun N.' },
-  { id: 14, type: 'video', src: 'https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4', thumbnail: snehaPatel, size: 'medium', caption: 'Career Transition' },
+  { id: 1, type: 'image', src: studentsStudying, size: 'large', caption: 'Study Session' },
+  { id: 2, type: 'video', src: 'https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4', thumbnail: studentsProject, size: 'medium', caption: 'Live Project Review' },
+  { id: 3, type: 'image', src: studentsGroupPhoto, size: 'large', caption: 'Batch 2024 Team' },
+  { id: 4, type: 'image', src: studentsSeminar, size: 'medium', caption: 'Industry Seminar' },
+  { id: 5, type: 'video', src: 'https://videos.pexels.com/video-files/5927673/5927673-uhd_2732_1440_25fps.mp4', thumbnail: priyaSharma, size: 'small', caption: 'Success Story', name: 'Priya S.' },
+  { id: 6, type: 'image', src: campusAmbassadors, size: 'medium', caption: 'Campus Ambassadors' },
+  { id: 7, type: 'image', src: graduationCeremony, size: 'large', caption: 'Graduation Day 2024' },
+  { id: 8, type: 'video', src: 'https://videos.pexels.com/video-files/7989582/7989582-uhd_2560_1440_25fps.mp4', thumbnail: rahulVerma, size: 'small', caption: 'Placement Call', name: 'Rahul V.' },
+  { id: 9, type: 'image', src: studentsSports, size: 'medium', caption: 'Sports Day' },
+  { id: 10, type: 'image', src: studentsHackathon, size: 'large', caption: 'Hackathon 2024' },
+  { id: 11, type: 'video', src: 'https://videos.pexels.com/video-files/4065388/4065388-uhd_2560_1440_30fps.mp4', thumbnail: vikashKumar, size: 'small', caption: 'My Journey', name: 'Vikash K.' },
+  { id: 12, type: 'image', src: studentsProject, size: 'medium', caption: 'Team Collaboration' },
+  { id: 13, type: 'image', src: ananyaIyer, size: 'small', caption: 'Mentoring Session', name: 'Ananya I.' },
+  { id: 14, type: 'video', src: 'https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4', thumbnail: studentsGroupPhoto, size: 'medium', caption: 'Alumni Meetup' },
 ];
 
 interface LightboxProps {
