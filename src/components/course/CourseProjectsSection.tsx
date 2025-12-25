@@ -61,7 +61,9 @@ export const CourseProjectsSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+    <section ref={ref} className="py-16 md:py-24 bg-[#0a0a0a] text-white relative overflow-hidden">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       {/* Decorative elements */}
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-[hsl(var(--brand-orange))]/10 rounded-full blur-3xl" />
@@ -75,7 +77,7 @@ export const CourseProjectsSection = () => {
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Real Projects & <span className="text-gradient">Industry Case Studies</span>
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Learn by doing. Work on real projects and study actual client transformations.
           </p>
         </div>
@@ -108,7 +110,7 @@ export const CourseProjectsSection = () => {
                           {project.difficulty}
                         </span>
                       </div>
-                      <p className="text-sm text-slate-400 mb-2">{project.description}</p>
+                      <p className="text-sm text-gray-400 mb-2">{project.description}</p>
                       <p className="text-xs text-[hsl(var(--brand-orange))] font-medium">
                         Deliverable: {project.outcome}
                       </p>
@@ -135,12 +137,12 @@ export const CourseProjectsSection = () => {
                 <CardContent className="p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <study.icon className="w-4 h-4 text-[hsl(var(--brand-orange))]" />
-                    <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                    <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
                       {study.industry}
                     </span>
                   </div>
                   <h4 className="font-semibold text-white mb-2">{study.title}</h4>
-                  <p className="text-sm text-slate-400 mb-4">{study.description}</p>
+                  <p className="text-sm text-gray-400 mb-4">{study.description}</p>
                   <div className="flex flex-wrap gap-2">
                     {study.metrics.map((metric, i) => (
                       <span 

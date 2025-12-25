@@ -185,7 +185,7 @@ const VideoCard = ({ testimonial, isHovered, onHover }: VideoCardProps) => {
       {/* Info Section */}
       <div className="p-4 bg-white/5">
         <h4 className="font-semibold text-white">{testimonial.name}</h4>
-        <p className="text-sm text-slate-400">{testimonial.role}</p>
+        <p className="text-sm text-gray-400">{testimonial.role}</p>
         <div className="mt-2 inline-block px-3 py-1 bg-[hsl(var(--brand-orange))]/20 rounded-full">
           <span className="text-sm font-medium text-[hsl(var(--brand-orange))]">{testimonial.transformation}</span>
         </div>
@@ -209,7 +209,9 @@ export const CourseVideoTestimonialsSection = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white overflow-hidden relative">
+    <section className="py-16 md:py-24 bg-[#0a0a0a] text-white overflow-hidden relative">
+      {/* Grid pattern overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       {/* Decorative elements */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-[hsl(var(--brand-orange))]/10 rounded-full blur-3xl" />
       <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl" />
@@ -223,7 +225,7 @@ export const CourseVideoTestimonialsSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Hear From Our Alumni
           </h2>
-          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Real stories from real graduates who transformed their careers with The Super 30
           </p>
         </div>
@@ -231,10 +233,10 @@ export const CourseVideoTestimonialsSection = () => {
         {/* Carousel Container */}
         <div className="relative">
           {/* Left Gradient Fade */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-slate-900 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
           
           {/* Right Gradient Fade */}
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-slate-800 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
           {/* Navigation Buttons */}
           <Button
