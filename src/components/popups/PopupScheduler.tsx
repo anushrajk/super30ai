@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useUrgencyValues } from '@/hooks/useUrgencyValues';
 import { useNotificationQueue } from '@/hooks/useNotificationQueue';
 import { isPopupExpired, markPopupShown } from './utils';
@@ -9,11 +10,23 @@ const CallbackPopup = lazy(() => import('./CallbackPopup').then(m => ({ default:
 const QuotePopup = lazy(() => import('./QuotePopup').then(m => ({ default: m.QuotePopup })));
 const ExitIntentPopup = lazy(() => import('./ExitIntentPopup').then(m => ({ default: m.ExitIntentPopup })));
 
+// Pages where popups should be disabled
+const POPUP_DISABLED_ROUTES = ['/seo-course'];
+
 export const PopupScheduler = () => {
+  const location = useLocation();
   const [activePopup, setActivePopup] = useState<PopupType | null>(null);
   const popupQueueRef = useRef<PopupType[]>(['callback', 'quote']);
   const nextPopupTimerRef = useRef<NodeJS.Timeout | null>(null);
   const firstPopupScheduledRef = useRef(false);
+
+  // Check if popups are disabled on current route
+  const isPopupDisabled = POPUP_DISABLED_ROUTES.includes(location.pathname);
+
+  // If on a disabled route, don't render anything
+  if (isPopupDisabled) {
+    return null;
+  }
 
   const { 
     callbackSlots, 
