@@ -65,61 +65,61 @@ export const CourseTimelineSection = () => {
 
         {/* Timeline */}
         <div className={`relative transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          {/* Timeline container with line */}
-          <div className="relative">
-            {/* Center Line - only spans the milestones */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-emerald-500 transform md:-translate-x-1/2" />
+          {/* Center Line - extends full height */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-emerald-500 transform md:-translate-x-1/2" />
 
-            {/* Milestones */}
-            <div className="space-y-2 md:space-y-3">
-              {milestones.map((milestone, index) => (
-                <div 
-                  key={index}
-                  className={`relative flex items-start gap-4 md:gap-0 ${
-                    index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-                  }`}
-                >
-                  {/* Content Card */}
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                    <div className={`bg-card p-4 rounded-xl border border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 ${
-                      index % 2 === 0 ? 'md:ml-auto md:mr-0' : 'md:mr-auto md:ml-0'
-                    } max-w-sm`}>
-                      <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
-                        {milestone.week}
-                      </span>
-                      <h3 className="text-base font-bold text-foreground mt-0.5 mb-1">{milestone.title}</h3>
-                      <p className="text-muted-foreground text-xs mb-2">{milestone.description}</p>
-                      <div className={`flex flex-wrap gap-1.5 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
-                        {milestone.achievements.map((achievement, i) => (
-                          <span 
-                            key={i}
-                            className="flex items-center gap-1 px-1.5 py-0.5 bg-muted/50 rounded text-[10px] font-medium text-foreground/80"
-                          >
-                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
-                            {achievement}
-                          </span>
-                        ))}
-                      </div>
+          {/* Milestones */}
+          <div className="space-y-2 md:space-y-3">
+            {milestones.map((milestone, index) => (
+              <div 
+                key={index}
+                className={`relative flex items-start gap-4 md:gap-0 ${
+                  index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+                }`}
+              >
+                {/* Content Card */}
+                <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
+                  <div className={`bg-card p-4 rounded-xl border border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 ${
+                    index % 2 === 0 ? 'md:ml-auto md:mr-0' : 'md:mr-auto md:ml-0'
+                  } max-w-sm`}>
+                    <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                      {milestone.week}
+                    </span>
+                    <h3 className="text-base font-bold text-foreground mt-0.5 mb-1">{milestone.title}</h3>
+                    <p className="text-muted-foreground text-xs mb-2">{milestone.description}</p>
+                    <div className={`flex flex-wrap gap-1.5 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
+                      {milestone.achievements.map((achievement, i) => (
+                        <span 
+                          key={i}
+                          className="flex items-center gap-1 px-1.5 py-0.5 bg-muted/50 rounded text-[10px] font-medium text-foreground/80"
+                        >
+                          <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
+                          {achievement}
+                        </span>
+                      ))}
                     </div>
                   </div>
-
-                  {/* Timeline Node */}
-                  <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center">
-                    <div className={`w-7 h-7 rounded-full ${milestone.color} flex items-center justify-center shadow-lg`}>
-                      <milestone.icon className="w-3.5 h-3.5 text-white" />
-                    </div>
-                  </div>
-
-                  {/* Spacer for alternate layout */}
-                  <div className="hidden md:block flex-1" />
                 </div>
-              ))}
-            </div>
+
+                {/* Timeline Node */}
+                <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center">
+                  <div className={`w-7 h-7 rounded-full ${milestone.color} flex items-center justify-center shadow-lg`}>
+                    <milestone.icon className="w-3.5 h-3.5 text-white" />
+                  </div>
+                </div>
+
+                {/* Spacer for alternate layout */}
+                <div className="hidden md:block flex-1" />
+              </div>
+            ))}
           </div>
 
-          {/* Final CTA - outside the timeline line container */}
-          <div className="text-center mt-6">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
+          {/* Final CTA - positioned on timeline */}
+          <div className="relative flex items-center justify-center mt-4 pt-2">
+            {/* Final node on timeline */}
+            <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-3 h-3 rounded-full bg-emerald-500 shadow-lg" />
+            
+            <div className="ml-8 md:ml-0 inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
               <CheckCircle2 className="w-4 h-4 text-emerald-500" />
               <span className="text-emerald-500 font-semibold text-sm">
                 Job-ready in 6 months with guaranteed placement support
