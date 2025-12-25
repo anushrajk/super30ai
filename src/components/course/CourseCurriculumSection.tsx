@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { 
   BookOpen, 
   Brain, 
@@ -10,7 +10,8 @@ import {
   CheckCircle2,
   Wrench,
   Zap,
-  Target
+  Target,
+  Calendar
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
@@ -19,10 +20,27 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { 
+  getNextBatchStartDate, 
+  formatBatchDayName, 
+  formatBatchMonthShort, 
+  getBatchDay, 
+  formatBatchMonth 
+} from "@/lib/timeUtils";
 
 export const CourseCurriculumSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const [activePhase, setActivePhase] = useState("phase1");
+
+  const batchInfo = useMemo(() => {
+    const batchDate = getNextBatchStartDate();
+    return {
+      dayName: formatBatchDayName(batchDate),
+      monthShort: formatBatchMonthShort(batchDate),
+      day: getBatchDay(batchDate),
+      monthYear: formatBatchMonth(batchDate),
+    };
+  }, []);
 
   const phases = [
     {
@@ -186,6 +204,25 @@ export const CourseCurriculumSection = () => {
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Here's exactly how that transformation happens. No fluff, no filler.
           </p>
+
+          {/* Batch Start Date Calendar */}
+          <div className={`flex justify-center mt-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'}`}>
+            <div className="inline-flex items-center gap-4 p-3 bg-[hsl(var(--brand-orange))]/10 border border-[hsl(var(--brand-orange))]/30 rounded-xl">
+              {/* Calendar Tile */}
+              <div className="flex flex-col items-center justify-center bg-[hsl(var(--brand-orange))] text-primary-foreground rounded-lg w-14 h-14 shadow-lg">
+                <span className="text-[10px] font-bold tracking-wider uppercase">{batchInfo.monthShort}</span>
+                <span className="text-2xl font-bold leading-none">{batchInfo.day}</span>
+              </div>
+              {/* Date Details */}
+              <div className="flex flex-col">
+                <span className="text-sm font-semibold text-foreground">Next Batch Starts</span>
+                <span className="text-base font-bold text-[hsl(var(--brand-orange))]">{batchInfo.monthYear}</span>
+                <span className="text-xs text-muted-foreground">{batchInfo.dayName}</span>
+              </div>
+              {/* Calendar Icon */}
+              <Calendar className="w-5 h-5 text-[hsl(var(--brand-orange))] ml-2" />
+            </div>
+          </div>
         </div>
 
         {/* Phase Tabs */}
