@@ -1,5 +1,5 @@
-import { useRef, useState } from "react";
-import { Play, Volume2, VolumeX } from "lucide-react";
+import { useRef, useState, useEffect, useCallback } from "react";
+import { Play, Volume2, VolumeX, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -41,13 +41,131 @@ const galleryItems: GalleryItem[] = [
   { id: 14, type: 'video', src: 'https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4', thumbnail: snehaPatel, size: 'medium', caption: 'Career Transition' },
 ];
 
+interface LightboxProps {
+  item: GalleryItem;
+  onClose: () => void;
+  onPrev: () => void;
+  onNext: () => void;
+}
+
+const Lightbox = ({ item, onClose, onPrev, onNext }: LightboxProps) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = useState(false);
+
+  // Auto-play video when lightbox opens
+  useEffect(() => {
+    if (item.type === 'video' && videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, [item]);
+
+  // Handle keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'ArrowLeft') onPrev();
+      if (e.key === 'ArrowRight') onNext();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [onClose, onPrev, onNext]);
+
+  // Prevent body scroll when lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  return (
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md animate-fade-in"
+      onClick={onClose}
+    >
+      {/* Close button */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 z-50 w-12 h-12 rounded-full bg-muted/80 backdrop-blur-sm flex items-center justify-center hover:bg-muted transition-colors"
+      >
+        <X className="w-6 h-6 text-foreground" />
+      </button>
+
+      {/* Previous button */}
+      <button
+        onClick={(e) => { e.stopPropagation(); onPrev(); }}
+        className="absolute left-4 md:left-8 z-50 w-12 h-12 rounded-full bg-muted/80 backdrop-blur-sm flex items-center justify-center hover:bg-muted transition-colors"
+      >
+        <ChevronLeft className="w-6 h-6 text-foreground" />
+      </button>
+
+      {/* Next button */}
+      <button
+        onClick={(e) => { e.stopPropagation(); onNext(); }}
+        className="absolute right-4 md:right-8 z-50 w-12 h-12 rounded-full bg-muted/80 backdrop-blur-sm flex items-center justify-center hover:bg-muted transition-colors"
+      >
+        <ChevronRight className="w-6 h-6 text-foreground" />
+      </button>
+
+      {/* Content */}
+      <div 
+        className="relative max-w-5xl max-h-[85vh] w-full mx-4 md:mx-8"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {item.type === 'image' ? (
+          <img
+            src={item.src}
+            alt={item.caption}
+            className="w-full h-auto max-h-[75vh] object-contain rounded-xl"
+          />
+        ) : (
+          <div className="relative">
+            <video
+              ref={videoRef}
+              src={item.src}
+              muted={isMuted}
+              controls
+              loop
+              playsInline
+              className="w-full h-auto max-h-[75vh] object-contain rounded-xl"
+            />
+            {/* Mute toggle */}
+            <button
+              onClick={() => {
+                setIsMuted(!isMuted);
+                if (videoRef.current) videoRef.current.muted = !isMuted;
+              }}
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-sm flex items-center justify-center hover:bg-background transition-colors"
+            >
+              {isMuted ? (
+                <VolumeX className="w-5 h-5 text-foreground" />
+              ) : (
+                <Volume2 className="w-5 h-5 text-foreground" />
+              )}
+            </button>
+          </div>
+        )}
+
+        {/* Caption */}
+        <div className="mt-4 text-center">
+          {item.name && (
+            <p className="text-sm font-medium text-primary mb-1">{item.name}</p>
+          )}
+          <p className="text-lg font-medium text-foreground">{item.caption}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 interface GalleryTileProps {
   item: GalleryItem;
   isHovered: boolean;
   onHover: (id: number | null) => void;
+  onClick: () => void;
 }
 
-const GalleryTile = ({ item, isHovered, onHover }: GalleryTileProps) => {
+const GalleryTile = ({ item, isHovered, onHover, onClick }: GalleryTileProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
 
@@ -86,6 +204,7 @@ const GalleryTile = ({ item, isHovered, onHover }: GalleryTileProps) => {
       className={`relative ${sizeClasses[item.size]} flex-shrink-0 rounded-xl overflow-hidden group cursor-pointer`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onClick={onClick}
     >
       {/* Background Image/Thumbnail */}
       <img
@@ -156,9 +275,33 @@ export const CourseStudentGallerySection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Duplicate items for seamless loop
   const duplicatedItems = [...galleryItems, ...galleryItems];
+
+  const openLightbox = useCallback((itemId: number) => {
+    const index = galleryItems.findIndex(item => item.id === itemId);
+    if (index !== -1) {
+      setLightboxIndex(index);
+    }
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxIndex(null);
+  }, []);
+
+  const goToPrev = useCallback(() => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex - 1 + galleryItems.length) % galleryItems.length);
+    }
+  }, [lightboxIndex]);
+
+  const goToNext = useCallback(() => {
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex + 1) % galleryItems.length);
+    }
+  }, [lightboxIndex]);
 
   return (
     <section 
@@ -207,6 +350,7 @@ export const CourseStudentGallerySection = () => {
               item={item}
               isHovered={hoveredId === item.id}
               onHover={setHoveredId}
+              onClick={() => openLightbox(item.id)}
             />
           ))}
         </div>
@@ -226,10 +370,21 @@ export const CourseStudentGallerySection = () => {
               item={item}
               isHovered={hoveredId === item.id}
               onHover={setHoveredId}
+              onClick={() => openLightbox(item.id)}
             />
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal */}
+      {lightboxIndex !== null && (
+        <Lightbox
+          item={galleryItems[lightboxIndex]}
+          onClose={closeLightbox}
+          onPrev={goToPrev}
+          onNext={goToNext}
+        />
+      )}
 
       {/* CSS for marquee animation */}
       <style>{`
