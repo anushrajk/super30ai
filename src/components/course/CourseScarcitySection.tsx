@@ -64,7 +64,7 @@ export const CourseScarcitySection = () => {
       <div className="absolute bottom-0 right-0 w-64 h-64 bg-red-500/10 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 relative z-10 flex items-center justify-center">
-        <div className={`max-w-4xl w-full transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div className={`max-w-4xl w-full mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Urgency Banner */}
           <div className="bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 p-6 md:p-8 shadow-lg">
             {/* Why Limited Seats - Explanation */}
