@@ -33,7 +33,7 @@ export const CourseLearningOutcomesSection = () => {
         "Predict Google updates before they hit",
       ],
       color: "text-[hsl(var(--brand-orange))]",
-      bgColor: "bg-[hsl(var(--brand-orange))]/10",
+      bgColor: "bg-[hsl(var(--brand-orange))]/20",
     },
     {
       title: "Tools in Your Arsenal",
@@ -46,8 +46,8 @@ export const CourseLearningOutcomesSection = () => {
         "GA4, BigQuery for analytics",
         "30+ industry tools included",
       ],
-      color: "text-emerald-500",
-      bgColor: "bg-emerald-500/10",
+      color: "text-emerald-400",
+      bgColor: "bg-emerald-500/20",
     },
     {
       title: "Roles You'll Qualify For",
@@ -60,8 +60,8 @@ export const CourseLearningOutcomesSection = () => {
         "Freelance Consultant (₹1L+/month)",
         "Start your own AI SEO agency",
       ],
-      color: "text-violet-500",
-      bgColor: "bg-violet-500/10",
+      color: "text-violet-400",
+      bgColor: "bg-violet-500/20",
     },
   ];
 
@@ -73,28 +73,32 @@ export const CourseLearningOutcomesSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-16 md:py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section ref={ref} className="py-16 md:py-24 bg-gradient-to-br from-slate-900 to-slate-800 text-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-[hsl(var(--brand-orange))]/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-violet-500/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
+          <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/20 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
             Your Transformation
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             6 Months From Now, <span className="text-gradient">You'll Be Able To...</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            These aren't just skills. They're your new superpowers. <span className="text-foreground">Imagine telling your parents "I work in AI" 😊</span>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+            These aren't just skills. They're your new superpowers. <span className="text-white">Imagine telling your parents "I work in AI" 😊</span>
           </p>
         </div>
 
         {/* Quick Stats */}
         <div className={`grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 transition-all duration-1000 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {outcomes.map((outcome, index) => (
-            <div key={index} className="text-center p-4 bg-card rounded-xl border border-border/50">
+            <div key={index} className="text-center p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
               <outcome.icon className="w-6 h-6 mx-auto mb-2 text-[hsl(var(--brand-orange))]" />
-              <p className="text-2xl font-bold text-foreground">{outcome.value}</p>
-              <p className="text-xs text-muted-foreground">{outcome.text}</p>
+              <p className="text-2xl font-bold text-white">{outcome.value}</p>
+              <p className="text-xs text-slate-400">{outcome.text}</p>
             </div>
           ))}
         </div>
@@ -102,17 +106,17 @@ export const CourseLearningOutcomesSection = () => {
         {/* Skills Categories Grid */}
         <div className={`grid md:grid-cols-3 gap-6 transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {skillCategories.map((category, index) => (
-            <Card key={index} className="bg-card border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all">
+            <Card key={index} className="bg-white/5 backdrop-blur-sm border-white/10 hover:border-[hsl(var(--brand-orange))]/30 transition-all">
               <CardContent className="p-6">
                 <div className={`w-12 h-12 rounded-xl ${category.bgColor} flex items-center justify-center mb-4`}>
                   <category.icon className={`w-6 h-6 ${category.color}`} />
                 </div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">{category.title}</h3>
+                <h3 className="text-xl font-semibold text-white mb-4">{category.title}</h3>
                 <ul className="space-y-3">
                   {category.skills.map((skill, skillIndex) => (
                     <li key={skillIndex} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--brand-orange))]" />
-                      <span className="text-sm text-muted-foreground">{skill}</span>
+                      <span className="text-sm text-slate-300">{skill}</span>
                     </li>
                   ))}
                 </ul>
@@ -123,8 +127,8 @@ export const CourseLearningOutcomesSection = () => {
 
         {/* Bottom CTA */}
         <div className={`text-center mt-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-muted-foreground">
-            <span className="text-foreground font-semibold">₹50,000+ worth of premium tool access</span> included free with your enrollment
+          <p className="text-slate-400">
+            <span className="text-white font-semibold">₹50,000+ worth of premium tool access</span> included free with your enrollment
           </p>
         </div>
       </div>

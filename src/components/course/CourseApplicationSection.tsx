@@ -154,7 +154,7 @@ export const CourseApplicationSection = () => {
       <section 
         ref={ref} 
         id="course-application" 
-        className="py-16 md:py-24 bg-background"
+        className="py-16 md:py-24 bg-muted/30"
       >
         <div className="container mx-auto px-4">
           <div className="max-w-2xl mx-auto text-center">
@@ -212,7 +212,7 @@ export const CourseApplicationSection = () => {
     <section 
       ref={ref} 
       id="course-application" 
-      className="py-16 md:py-24 bg-background"
+      className="py-16 md:py-24 bg-muted/30"
     >
       <div className="container mx-auto px-4">
         {/* Section Header */}
