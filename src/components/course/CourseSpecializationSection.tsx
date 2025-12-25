@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { MapPin, MessageSquare, ShoppingCart, Wrench, Briefcase, TrendingUp } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 export const CourseSpecializationSection = () => {
   const [ref, isVisible] = useScrollAnimation();
+  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   const specializations = [
     {
@@ -152,6 +156,23 @@ export const CourseSpecializationSection = () => {
             All students learn foundations across all tracks. Choose 1-2 specializations for deep expertise.
           </p>
         </div>
+
+        {/* Enquire Now CTA */}
+        <div className={`flex justify-center mt-10 transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <Button 
+            size="lg"
+            className="bg-gradient-to-r from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange))]/80 hover:from-[hsl(var(--brand-orange))]/90 hover:to-[hsl(var(--brand-orange))]/70 text-white font-semibold px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all"
+            onClick={() => setShowEnquiryPopup(true)}
+          >
+            Enquire Now
+          </Button>
+        </div>
+
+        {/* Enquiry Popup */}
+        <EnquiryPopup 
+          open={showEnquiryPopup} 
+          onOpenChange={setShowEnquiryPopup} 
+        />
       </div>
     </section>
   );
