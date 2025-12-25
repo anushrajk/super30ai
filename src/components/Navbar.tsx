@@ -29,13 +29,6 @@ const services = [
     icon: Target,
     color: "text-blue-500",
   },
-  {
-    title: "SEO Course",
-    description: "Master AI SEO, GEO, AEO & Agentic Commerce",
-    href: "/seo-course",
-    icon: Sparkles,
-    color: "text-emerald-500",
-  },
 ];
 
 const navLinks = [
@@ -145,6 +138,20 @@ export const Navbar = () => {
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
+
+            <Link
+              to="/seo-course"
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+                location.pathname === "/seo-course"
+                  ? "text-brand"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              <span className="link-underline">SEO Course</span>
+              {location.pathname === "/seo-course" && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
+              )}
+            </Link>
 
             <Link
               to="/work"
@@ -260,6 +267,17 @@ export const Navbar = () => {
                 ))}
               </div>
             </div>
+
+            <Link
+              to="/seo-course"
+              className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 border ${
+                location.pathname === "/seo-course"
+                  ? "bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))]/30"
+                  : "text-foreground border-transparent hover:bg-muted/50 hover:border-border/50"
+              }`}
+            >
+              SEO Course
+            </Link>
 
             <Link
               to="/work"
