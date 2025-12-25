@@ -2,7 +2,7 @@ import { AlertTriangle, TrendingUp, X, Check, Clock, Brain, Award, DollarSign } 
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CourseProblemSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
 
   const problems = [
     { icon: Clock, text: "Traditional SEO takes 6-12 months to show results" },

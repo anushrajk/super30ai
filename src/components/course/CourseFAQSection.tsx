@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/accordion";
 
 export const CourseFAQSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
 
   const faqs = [
     {

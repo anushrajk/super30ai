@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/accordion";
 
 export const CourseCurriculumSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
   const [activePhase, setActivePhase] = useState("phase1");
 
   const phases = [

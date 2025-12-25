@@ -17,7 +17,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CourseInvestmentSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
   const [currentSalary, setCurrentSalary] = useState(300000); // 3L default
 
   const scrollToApplication = () => {

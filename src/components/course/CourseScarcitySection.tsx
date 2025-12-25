@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CourseScarcitySection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
   
   // Countdown timer to next batch (January 15, 2025)
   const [timeLeft, setTimeLeft] = useState({
