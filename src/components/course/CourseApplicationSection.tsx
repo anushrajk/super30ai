@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { 
   User, 
   Mail, 
@@ -30,11 +30,28 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useToast } from "@/hooks/use-toast";
 import { useSession } from "@/hooks/useSession";
 import { supabase } from "@/integrations/supabase/client";
+import { 
+  getNextBatchStartDate, 
+  formatBatchDayName, 
+  formatBatchMonthShort, 
+  getBatchDay, 
+  formatBatchMonth 
+} from "@/lib/timeUtils";
 
 export const CourseApplicationSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const { toast } = useToast();
   const { session } = useSession();
+
+  const batchInfo = useMemo(() => {
+    const batchStartDate = getNextBatchStartDate();
+    return {
+      dayName: formatBatchDayName(batchStartDate),
+      monthShort: formatBatchMonthShort(batchStartDate),
+      day: getBatchDay(batchStartDate),
+      monthYear: formatBatchMonth(batchStartDate),
+    };
+  }, []);
   
   const [formData, setFormData] = useState({
     fullName: "",
@@ -276,6 +293,22 @@ export const CourseApplicationSection = () => {
                       <div>
                         <p className="font-semibold text-foreground">No Spam Promise</p>
                         <p className="text-xs text-muted-foreground">We hate spam calls too</p>
+                      </div>
+                    </div>
+
+                    {/* Batch Start Date */}
+                    <div className="flex items-center gap-3 mt-4 pt-4 border-t border-border/50">
+                      <div className="flex flex-col items-center justify-center bg-[hsl(var(--brand-orange))] text-primary-foreground rounded-lg w-10 h-10 shadow-lg">
+                        <span className="text-[8px] font-bold tracking-wider uppercase">{batchInfo.monthShort}</span>
+                        <span className="text-base font-bold leading-none">{batchInfo.day}</span>
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-foreground font-semibold text-sm">
+                          {batchInfo.monthYear}
+                        </span>
+                        <span className="text-muted-foreground text-xs">
+                          {batchInfo.dayName} • Batch Starts
+                        </span>
                       </div>
                     </div>
                   </div>
