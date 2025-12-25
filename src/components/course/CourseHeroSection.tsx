@@ -111,7 +111,7 @@ export const CourseHeroSection = () => {
             </div>
 
             {/* Batch Start Date - Horizontal Calendar */}
-            <div className="inline-flex items-center gap-4 p-3 bg-[hsl(var(--brand-orange))]/10 border border-[hsl(var(--brand-orange))]/30 rounded-xl">
+            <div className="inline-flex items-center gap-4 p-3 bg-[hsl(var(--brand-orange))]/10 border border-[hsl(var(--brand-orange))]/30 rounded-xl animate-fade-in" style={{ animationDelay: '300ms', animationFillMode: 'backwards' }}>
               {/* Calendar Tile */}
               <div className="flex flex-col items-center justify-center bg-[hsl(var(--brand-orange))] text-primary-foreground rounded-lg w-14 h-14 shadow-lg">
                 <span className="text-[10px] font-bold tracking-wider uppercase">{batchInfo.monthShort}</span>
