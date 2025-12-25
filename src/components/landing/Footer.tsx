@@ -6,6 +6,7 @@ import super30Logo from "@/assets/super30-logo.png";
 const services = [
   { name: "AI SEO Services", href: "/ai-seo" },
   { name: "Performance Marketing", href: "/performance-marketing" },
+  { name: "SEO Course", href: "/seo-course" },
 ];
 
 const company = [

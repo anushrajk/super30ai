@@ -15,7 +15,7 @@ import {
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CourseHeroSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
 
   const scrollToApplication = () => {
     const element = document.getElementById("course-application");

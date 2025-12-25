@@ -29,6 +29,13 @@ const services = [
     icon: Target,
     color: "text-blue-500",
   },
+  {
+    title: "SEO Course",
+    description: "Master AI SEO, GEO, AEO & Agentic Commerce",
+    href: "/seo-course",
+    icon: Sparkles,
+    color: "text-emerald-500",
+  },
 ];
 
 const navLinks = [

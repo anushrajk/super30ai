@@ -30,7 +30,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useToast } from "@/hooks/use-toast";
 
 export const CourseApplicationSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
   const { toast } = useToast();
   
   const [formData, setFormData] = useState({

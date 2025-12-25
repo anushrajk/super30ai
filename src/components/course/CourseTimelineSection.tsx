@@ -2,7 +2,7 @@ import { BookOpen, Brain, Rocket, Trophy, Briefcase, CheckCircle2 } from "lucide
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CourseTimelineSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation();
 
   const milestones = [
     {
