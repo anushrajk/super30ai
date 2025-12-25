@@ -10,7 +10,8 @@ import {
   CheckCircle2,
   ArrowRight,
   Sparkles,
-  Calendar
+  Calendar,
+  TrendingUp
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -25,16 +26,16 @@ export const CourseHeroSection = () => {
   };
 
   const trustBadges = [
-    { icon: Award, text: "Applied AI Institute Certified" },
-    { icon: Clock, text: "100+ Hours Live Instruction" },
-    { icon: Briefcase, text: "Job Placement Guarantee" },
-    { icon: Users, text: "95% Graduate Employment" },
+    { icon: Award, text: "Get Placed in 90 Days or 50% Refund" },
+    { icon: Clock, text: "380+ Hours of Live Training" },
+    { icon: Briefcase, text: "Earn ₹5-10L+ After 6 Months" },
+    { icon: Users, text: "Join 500+ Successful Alumni" },
   ];
 
   const courseMeta = [
     { icon: Calendar, label: "Duration", value: "6 Months" },
-    { icon: Monitor, label: "Delivery", value: "Live Online" },
-    { icon: Briefcase, label: "Career Outcomes", value: "₹5-10L+ Starting" },
+    { icon: Monitor, label: "Format", value: "Live Online (Weekends)" },
+    { icon: TrendingUp, label: "Avg. Salary Hike", value: "140%" },
   ];
 
   return (
@@ -62,26 +63,28 @@ export const CourseHeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          {/* Pre-headline - Pain Point */}
+          <p className="text-muted-foreground text-base md:text-lg mb-4 max-w-xl mx-auto">
+            Tired of learning SEO skills that become outdated in 6 months?
+          </p>
+
           {/* Badge */}
           <Badge className="mb-6 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))]/30 px-4 py-2 text-sm font-medium">
             <GraduationCap className="w-4 h-4 mr-2" />
             India's First Applied AI SEO Course
           </Badge>
 
-          {/* Headline */}
-          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-6">
-            Master <span className="text-gradient">AI SEO, GEO, AEO</span> &{" "}
-            <span className="text-gradient">Agentic Commerce</span>
+          {/* Headline - Outcome Focused */}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
+            Become <span className="text-gradient">India's Most In-Demand</span>
             <br className="hidden md:block" />
-            <span className="text-muted-foreground text-2xl md:text-3xl lg:text-4xl block mt-2">
-              The 6-Month Course That Teaches AI-Powered Marketing's Future
-            </span>
+            Marketing Professional
           </h1>
 
-          {/* Subheadline */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Learn traditional SEO foundations + AI-enhanced strategies + autonomous commerce systems. 
-            Join the next generation of marketers with skills that are actually in demand.
+          {/* Subheadline - Unique Value Proposition */}
+          <p className="text-lg md:text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            The only course that teaches you to build{" "}
+            <span className="text-foreground font-medium">AI systems that do SEO for you</span>—while you sleep.
           </p>
 
           {/* Trust Badges */}
@@ -105,7 +108,7 @@ export const CourseHeroSection = () => {
               className="w-full sm:w-auto bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-8 py-6 text-lg"
             >
               <Sparkles className="w-5 h-5 mr-2" />
-              Secure Your Spot
+              Start My AI Career
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button 
@@ -114,7 +117,7 @@ export const CourseHeroSection = () => {
               onClick={scrollToApplication}
               className="w-full sm:w-auto border-border hover:bg-muted/50 px-8 py-6 text-lg"
             >
-              Schedule Free Strategy Session
+              Talk to an Advisor First
             </Button>
           </div>
 
@@ -122,7 +125,7 @@ export const CourseHeroSection = () => {
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-red-500/10 border border-red-500/30 rounded-full animate-pulse">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-ping" />
             <span className="text-red-500 font-semibold text-sm">
-              Only 15 seats per batch • 2 seats remaining for January 2025
+              Only 2 seats left • 847 people applied this month
             </span>
           </div>
 

@@ -12,7 +12,8 @@ import {
   Shield,
   Users,
   Calendar,
-  Sparkles
+  Sparkles,
+  Heart
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -45,7 +46,7 @@ export const CourseApplicationSection = () => {
   const [loading, setLoading] = useState(false);
 
   const experienceOptions = [
-    { value: "0-1", label: "0-1 years" },
+    { value: "0-1", label: "0-1 years (Fresher/Student)" },
     { value: "1-3", label: "1-3 years" },
     { value: "3-5", label: "3-5 years" },
     { value: "5-10", label: "5-10 years" },
@@ -55,20 +56,21 @@ export const CourseApplicationSection = () => {
   const roleOptions = [
     { value: "seo-specialist", label: "SEO Specialist" },
     { value: "digital-marketer", label: "Digital Marketer" },
-    { value: "content-creator", label: "Content Creator" },
+    { value: "content-creator", label: "Content Writer/Creator" },
     { value: "business-owner", label: "Business Owner" },
     { value: "student", label: "Student/Fresh Graduate" },
     { value: "career-switcher", label: "Career Switcher" },
+    { value: "freelancer", label: "Freelancer" },
     { value: "other", label: "Other" },
   ];
 
   const benefits = [
-    "95% job placement rate",
-    "₹5-10L+ starting salaries",
-    "100+ hours live instruction",
-    "Real industry projects",
-    "Lifetime alumni access",
-    "Money-back guarantee",
+    "95% job placement in 90 days",
+    "Earn ₹7-12L+ starting salary",
+    "380+ hours live training (not videos)",
+    "Real client projects, not dummy sites",
+    "Lifetime alumni access & support",
+    "50% refund if not placed",
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -79,8 +81,8 @@ export const CourseApplicationSection = () => {
     await new Promise(resolve => setTimeout(resolve, 1500));
 
     toast({
-      title: "Application Submitted!",
-      description: "We'll contact you within 24 hours to schedule your strategy session.",
+      title: "Application Received! 🎉",
+      description: "We'll call you within 24 hours. Check your WhatsApp too!",
     });
 
     setFormData({
@@ -105,13 +107,14 @@ export const CourseApplicationSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
-            Start Your Journey
+            Your Turn Now
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Apply for the <span className="text-gradient">January 2025 Batch</span>
+            Ready to <span className="text-gradient">Change Your Career Story?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Take the first step towards your AI marketing career. Applications are reviewed within 24 hours.
+            Fill this form. We'll call you within 24 hours to discuss if this is right for you. 
+            <span className="text-foreground"> No pressure, no annoying sales calls.</span>
           </p>
         </div>
 
@@ -123,7 +126,7 @@ export const CourseApplicationSection = () => {
                 <CardContent className="p-6">
                   <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                     <Sparkles className="w-5 h-5 text-[hsl(var(--brand-orange))]" />
-                    Why Join This Course?
+                    What You're Signing Up For
                   </h3>
                   
                   <ul className="space-y-4 mb-8">
@@ -143,7 +146,7 @@ export const CourseApplicationSection = () => {
                       </div>
                       <div>
                         <p className="font-semibold text-foreground">847 Applications</p>
-                        <p className="text-xs text-muted-foreground">Received this month</p>
+                        <p className="text-xs text-muted-foreground">This month (only 15 seats)</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -151,8 +154,8 @@ export const CourseApplicationSection = () => {
                         <Calendar className="w-5 h-5 text-emerald-500" />
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground">24-hour response</p>
-                        <p className="text-xs text-muted-foreground">Average response time</p>
+                        <p className="font-semibold text-foreground">24-Hour Response</p>
+                        <p className="text-xs text-muted-foreground">We call, not just email</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -160,8 +163,8 @@ export const CourseApplicationSection = () => {
                         <Shield className="w-5 h-5 text-blue-500" />
                       </div>
                       <div>
-                        <p className="font-semibold text-foreground">Secure Application</p>
-                        <p className="text-xs text-muted-foreground">Your data is protected</p>
+                        <p className="font-semibold text-foreground">No Spam Promise</p>
+                        <p className="text-xs text-muted-foreground">We hate spam calls too</p>
                       </div>
                     </div>
                   </div>
@@ -174,16 +177,25 @@ export const CourseApplicationSection = () => {
           <div className="order-1 lg:order-2">
             <Card className="bg-card border-border/50">
               <CardContent className="p-6 md:p-8">
+                {/* Progress Indicator */}
+                <div className="flex items-center gap-2 mb-6 text-sm text-muted-foreground">
+                  <span className="w-6 h-6 rounded-full bg-[hsl(var(--brand-orange))] text-white flex items-center justify-center text-xs font-bold">1</span>
+                  <span>Fill this form (2 mins)</span>
+                  <span className="mx-2">→</span>
+                  <span className="w-6 h-6 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-xs font-bold">2</span>
+                  <span>We call you</span>
+                </div>
+
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Full Name */}
                   <div className="space-y-2">
                     <Label htmlFor="fullName" className="flex items-center gap-2">
                       <User className="w-4 h-4 text-muted-foreground" />
-                      Full Name *
+                      Your Name *
                     </Label>
                     <Input
                       id="fullName"
-                      placeholder="Enter your full name"
+                      placeholder="What should we call you?"
                       value={formData.fullName}
                       onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                       required
@@ -195,12 +207,12 @@ export const CourseApplicationSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="email" className="flex items-center gap-2">
                       <Mail className="w-4 h-4 text-muted-foreground" />
-                      Email Address *
+                      Email *
                     </Label>
                     <Input
                       id="email"
                       type="email"
-                      placeholder="your@email.com"
+                      placeholder="Where should we send course details?"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
@@ -212,7 +224,7 @@ export const CourseApplicationSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="phone" className="flex items-center gap-2">
                       <Phone className="w-4 h-4 text-muted-foreground" />
-                      Phone Number *
+                      WhatsApp Number *
                     </Label>
                     <div className="flex">
                       <span className="inline-flex items-center px-3 bg-muted border border-r-0 border-border rounded-l-md text-muted-foreground text-sm">
@@ -221,7 +233,7 @@ export const CourseApplicationSection = () => {
                       <Input
                         id="phone"
                         type="tel"
-                        placeholder="98765 43210"
+                        placeholder="We prefer WhatsApp over calls"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         required
@@ -234,14 +246,14 @@ export const CourseApplicationSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="currentRole" className="flex items-center gap-2">
                       <Briefcase className="w-4 h-4 text-muted-foreground" />
-                      Current Role *
+                      What do you do right now? *
                     </Label>
                     <Select
                       value={formData.currentRole}
                       onValueChange={(value) => setFormData({ ...formData, currentRole: value })}
                     >
                       <SelectTrigger className="bg-background">
-                        <SelectValue placeholder="Select your current role" />
+                        <SelectValue placeholder="Pick the closest option" />
                       </SelectTrigger>
                       <SelectContent>
                         {roleOptions.map((option) => (
@@ -257,14 +269,14 @@ export const CourseApplicationSection = () => {
                   <div className="space-y-2">
                     <Label htmlFor="experience" className="flex items-center gap-2">
                       <Clock className="w-4 h-4 text-muted-foreground" />
-                      Years of Experience *
+                      Years of experience *
                     </Label>
                     <Select
                       value={formData.experience}
                       onValueChange={(value) => setFormData({ ...formData, experience: value })}
                     >
                       <SelectTrigger className="bg-background">
-                        <SelectValue placeholder="Select experience level" />
+                        <SelectValue placeholder="Freshers are welcome too!" />
                       </SelectTrigger>
                       <SelectContent>
                         {experienceOptions.map((option) => (
@@ -276,35 +288,21 @@ export const CourseApplicationSection = () => {
                     </Select>
                   </div>
 
-                  {/* LinkedIn (Optional) */}
-                  <div className="space-y-2">
-                    <Label htmlFor="linkedin" className="flex items-center gap-2">
-                      <Linkedin className="w-4 h-4 text-muted-foreground" />
-                      LinkedIn Profile (Optional)
-                    </Label>
-                    <Input
-                      id="linkedin"
-                      placeholder="linkedin.com/in/yourprofile"
-                      value={formData.linkedin}
-                      onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-                      className="bg-background"
-                    />
-                  </div>
-
-                  {/* Motivation */}
+                  {/* Motivation - Reframed */}
                   <div className="space-y-2">
                     <Label htmlFor="motivation" className="flex items-center gap-2">
-                      <MessageSquare className="w-4 h-4 text-muted-foreground" />
-                      Why do you want to join? *
+                      <Heart className="w-4 h-4 text-muted-foreground" />
+                      What's holding you back right now? *
                     </Label>
                     <Textarea
                       id="motivation"
-                      placeholder="Tell us about your goals and why this course interests you..."
+                      placeholder="Is it salary? Skills feeling outdated? Stuck in same role? Be honest—we've heard it all..."
                       value={formData.motivation}
                       onChange={(e) => setFormData({ ...formData, motivation: e.target.value })}
                       required
-                      className="bg-background min-h-[100px]"
+                      className="bg-background min-h-[80px]"
                     />
+                    <p className="text-xs text-muted-foreground">This helps us understand if we can actually help you</p>
                   </div>
 
                   {/* Submit Button */}
@@ -318,24 +316,29 @@ export const CourseApplicationSection = () => {
                       "Submitting..."
                     ) : (
                       <>
-                        Submit Application
+                        Yes, I Want to Transform My Career
                         <ArrowRight className="w-5 h-5 ml-2" />
                       </>
                     )}
                   </Button>
 
+                  {/* No Spam Promise */}
+                  <p className="text-xs text-center text-muted-foreground">
+                    🔒 We're not going to spam you. Promise. One call, that's it.
+                  </p>
+
                   {/* Alternative CTA */}
                   <div className="text-center pt-4 border-t border-border/50">
                     <p className="text-sm text-muted-foreground mb-3">
-                      Prefer to talk first?
+                      Have questions before applying?
                     </p>
                     <Button 
                       type="button"
                       variant="outline"
                       className="border-[hsl(var(--brand-orange))]/30 text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
-                      onClick={() => window.open('https://calendly.com', '_blank')}
+                      onClick={() => window.open('https://wa.me/919876543210?text=Hi, I have questions about the AI SEO course', '_blank')}
                     >
-                      Schedule Free Strategy Session
+                      Chat on WhatsApp First
                     </Button>
                   </div>
                 </form>

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Clock, Users, Calendar, AlertTriangle, Eye } from "lucide-react";
+import { Clock, Users, Calendar, AlertTriangle, Eye, MessageCircle, HelpCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -61,13 +61,23 @@ export const CourseScarcitySection = () => {
         <div className={`max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           {/* Urgency Banner */}
           <div className="bg-card rounded-2xl border border-[hsl(var(--brand-orange))]/30 p-6 md:p-8 shadow-lg">
+            {/* Why Limited Seats - Explanation */}
+            <div className="text-center mb-6">
+              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+                Why We Only Take <span className="text-[hsl(var(--brand-orange))]">15 Students</span> Per Batch
+              </h3>
+              <p className="text-sm text-muted-foreground max-w-xl mx-auto">
+                It's not a marketing gimmick. It's because we personally mentor each student, review every assignment, and track every job application. Can't do that with 100 students.
+              </p>
+            </div>
+
             {/* Top Row: Scarcity Indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 mb-8">
+            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8">
               {/* Seats Remaining */}
               <div className="flex items-center gap-2 px-4 py-2 bg-red-500/10 rounded-full border border-red-500/30 animate-pulse">
                 <AlertTriangle className="w-4 h-4 text-red-500" />
                 <span className="text-red-500 font-semibold text-sm">
-                  Only 2 seats remaining
+                  Only 2 seats left (13 filled)
                 </span>
               </div>
 
@@ -75,7 +85,7 @@ export const CourseScarcitySection = () => {
               <div className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 rounded-full border border-emerald-500/30">
                 <Eye className="w-4 h-4 text-emerald-500" />
                 <span className="text-emerald-500 font-semibold text-sm">
-                  {viewers} people viewing now
+                  {viewers} people viewing right now
                 </span>
               </div>
 
@@ -83,7 +93,7 @@ export const CourseScarcitySection = () => {
               <div className="flex items-center gap-2 px-4 py-2 bg-muted rounded-full border border-border/50">
                 <Users className="w-4 h-4 text-muted-foreground" />
                 <span className="text-muted-foreground font-medium text-sm">
-                  15 seats per batch
+                  Max 15 per batch
                 </span>
               </div>
             </div>
@@ -92,7 +102,7 @@ export const CourseScarcitySection = () => {
             <div className="text-center mb-8">
               <p className="text-sm text-muted-foreground mb-2 flex items-center justify-center gap-2">
                 <Calendar className="w-4 h-4" />
-                Next batch starts January 15, 2025
+                January 2025 batch starts in:
               </p>
               <div className="flex items-center justify-center gap-3 md:gap-4">
                 {[
@@ -121,11 +131,25 @@ export const CourseScarcitySection = () => {
                 className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 px-8"
               >
                 <Clock className="w-5 h-5 mr-2" />
-                Secure Your Spot Before It's Gone
+                Join the January 2025 Batch
               </Button>
               <p className="text-sm text-muted-foreground mt-4">
-                Early bird pricing ends when seats fill up
+                Early bird price: <span className="line-through">₹1,29,999</span> → <span className="text-[hsl(var(--brand-orange))] font-bold">₹59,999</span> (Save ₹70,000)
               </p>
+            </div>
+
+            {/* What if I miss this batch */}
+            <div className="mt-6 p-4 bg-muted/30 rounded-lg border border-border/50">
+              <div className="flex items-start gap-3">
+                <HelpCircle className="w-5 h-5 text-[hsl(var(--brand-orange))] flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="text-sm font-medium text-foreground">What if I miss this batch?</p>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Next batch starts in March 2025. But early bird pricing ends when January batch fills up. 
+                    You'll pay ₹30,000 more for the same course.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

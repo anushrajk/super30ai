@@ -1,21 +1,21 @@
-import { AlertTriangle, TrendingUp, X, Check, Clock, Brain, Award, DollarSign } from "lucide-react";
+import { AlertTriangle, TrendingUp, X, Check, Clock, Brain, Award, DollarSign, Zap } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 export const CourseProblemSection = () => {
   const [ref, isVisible] = useScrollAnimation();
 
   const problems = [
-    { icon: Clock, text: "Traditional SEO takes 6-12 months to show results" },
-    { icon: X, text: "Manual keyword research is becoming obsolete" },
-    { icon: AlertTriangle, text: "Google algorithm changes every week" },
-    { icon: Brain, text: "Your current skills will be obsolete by 2026" },
+    { icon: Clock, text: "Working 12-hour days but rankings keep dropping?" },
+    { icon: X, text: "Spending lakhs on courses that teach 2019 SEO tactics?" },
+    { icon: AlertTriangle, text: "Watching juniors with AI skills get promoted over you?" },
+    { icon: Brain, text: "Feeling like ChatGPT might replace your job soon?" },
   ];
 
   const opportunities = [
-    { icon: TrendingUp, text: "AI-native strategies deliver results 3x faster" },
-    { icon: Brain, text: "Autonomous agents work 24/7 optimizing your campaigns" },
-    { icon: DollarSign, text: "AI SEO specialists earn ₹5-10L+ starting salary" },
-    { icon: Award, text: "First-mover advantage in a $100B opportunity" },
+    { icon: Zap, text: "AI does 80% of the grunt work while you strategize" },
+    { icon: Brain, text: "Your AI agents work 24/7 optimizing campaigns" },
+    { icon: DollarSign, text: "AI SEO specialists start at ₹7-12L in India" },
+    { icon: Award, text: "Be the expert everyone calls when AI breaks things" },
   ];
 
   return (
@@ -24,10 +24,10 @@ export const CourseProblemSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            The <span className="text-red-500">Problem</span> vs The <span className="text-gradient">Opportunity</span>
+            Are You Still Doing SEO <span className="text-red-500">the 2019 Way?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            The marketing landscape is shifting faster than ever. Where do you stand?
+            The marketing game changed. The question is—will you adapt or get left behind?
           </p>
         </div>
 
@@ -37,13 +37,16 @@ export const CourseProblemSection = () => {
           <div className="relative p-6 md:p-8 rounded-2xl bg-red-500/5 border border-red-500/20">
             <div className="absolute -top-4 left-6">
               <span className="px-4 py-1 bg-red-500/20 text-red-500 text-sm font-semibold rounded-full border border-red-500/30">
-                ⚠️ The Problem
+                😰 The Painful Truth
               </span>
             </div>
             
-            <h3 className="text-2xl md:text-3xl font-bold text-red-500 mt-4 mb-6">
-              Traditional SEO is Dying
+            <h3 className="text-2xl md:text-3xl font-bold text-red-500 mt-4 mb-2">
+              Sound Familiar?
             </h3>
+            <p className="text-muted-foreground mb-6 text-sm">
+              If you said yes to even one of these, you're not alone.
+            </p>
             
             <ul className="space-y-4 mb-8">
               {problems.map((item, index) => (
@@ -58,7 +61,7 @@ export const CourseProblemSection = () => {
 
             <div className="p-4 bg-red-500/10 rounded-xl border border-red-500/20">
               <p className="text-sm text-red-400 font-medium">
-                📊 <strong>67%</strong> of SEO professionals report their skills becoming obsolete by 2026
+                📊 <strong>78%</strong> of Indian SEO professionals fear their skills will be obsolete by 2026
               </p>
             </div>
           </div>
@@ -67,13 +70,16 @@ export const CourseProblemSection = () => {
           <div className="relative p-6 md:p-8 rounded-2xl bg-emerald-500/5 border border-emerald-500/20">
             <div className="absolute -top-4 left-6">
               <span className="px-4 py-1 bg-emerald-500/20 text-emerald-500 text-sm font-semibold rounded-full border border-emerald-500/30">
-                ✨ The Opportunity
+                🚀 What Smart Marketers Do
               </span>
             </div>
             
-            <h3 className="text-2xl md:text-3xl font-bold text-emerald-500 mt-4 mb-6">
-              AI SEO is the $100B Opportunity
+            <h3 className="text-2xl md:text-3xl font-bold text-emerald-500 mt-4 mb-2">
+              Imagine This Instead
             </h3>
+            <p className="text-muted-foreground mb-6 text-sm">
+              This is what life looks like when you master AI SEO.
+            </p>
             
             <ul className="space-y-4 mb-8">
               {opportunities.map((item, index) => (
@@ -88,7 +94,7 @@ export const CourseProblemSection = () => {
 
             <div className="p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
               <p className="text-sm text-emerald-400 font-medium">
-                💰 AI SEO specialists earn <strong>60% more</strong> than traditional SEO professionals
+                💰 AI SEO specialists earn <strong>60% more</strong> than traditional SEO pros. That's ₹3-5L extra per year.
               </p>
             </div>
           </div>
@@ -96,8 +102,8 @@ export const CourseProblemSection = () => {
 
         {/* Bottom CTA */}
         <div className={`text-center mt-12 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <p className="text-lg text-muted-foreground">
-            The question isn't <em>whether</em> AI will transform marketing—it's whether <strong>you'll be leading the change</strong> or left behind.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <span className="text-foreground font-semibold">The question isn't whether AI will change marketing.</span> It's whether you'll be leading that change—or updating your resume.
           </p>
         </div>
       </div>

@@ -8,7 +8,9 @@ import {
   ChevronDown,
   Clock,
   CheckCircle2,
-  Wrench
+  Wrench,
+  Zap,
+  Target
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
@@ -27,6 +29,7 @@ export const CourseCurriculumSection = () => {
       id: "phase1",
       title: "Foundation",
       subtitle: "Weeks 1-4",
+      outcome: "You'll understand SEO better than 90% of marketers",
       hours: "80 hours",
       icon: BookOpen,
       color: "text-blue-500",
@@ -34,26 +37,30 @@ export const CourseCurriculumSection = () => {
       borderColor: "border-blue-500/30",
       modules: [
         {
-          title: "SEO Fundamentals Mastery",
-          topics: ["Technical SEO deep dive", "On-page optimization", "Content strategy fundamentals", "Link building essentials"],
+          title: "SEO Fundamentals (The Right Way)",
+          topics: ["Technical SEO that actually matters", "On-page optimization secrets", "Content strategy that converts", "Link building without spamming"],
           tools: ["Ahrefs", "SEMrush", "Screaming Frog"],
+          outcome: "Audit any website in 30 minutes"
         },
         {
-          title: "Introduction to AI in Marketing",
-          topics: ["AI/ML basics for marketers", "Prompt engineering fundamentals", "Understanding LLMs & transformers", "AI tool landscape overview"],
+          title: "AI Basics for Marketers (No Coding)",
+          topics: ["How ChatGPT actually works (simple version)", "Prompt engineering to 10x your output", "When to use AI vs when not to", "AI tool landscape—what's worth paying for"],
           tools: ["ChatGPT", "Claude", "Gemini"],
+          outcome: "Use AI like a power user, not a noob"
         },
         {
-          title: "Data Analytics for SEO",
-          topics: ["Google Analytics 4 mastery", "Search Console advanced usage", "Data visualization basics", "Attribution modeling"],
+          title: "Analytics That Drive Decisions",
+          topics: ["GA4 setup that makes sense", "Search Console hacks nobody teaches", "Attribution without the headache", "Dashboards that impress clients"],
           tools: ["GA4", "GSC", "Looker Studio"],
+          outcome: "Prove ROI to any skeptical client"
         },
       ],
     },
     {
       id: "phase2",
-      title: "Specialization",
+      title: "AI Specialization",
       subtitle: "Weeks 5-16",
+      outcome: "You'll have skills that 95% of SEOs don't have yet",
       hours: "120 hours",
       icon: Brain,
       color: "text-purple-500",
@@ -62,30 +69,35 @@ export const CourseCurriculumSection = () => {
       modules: [
         {
           title: "GEO (Generative Engine Optimization)",
-          topics: ["Local SEO + AI integration", "Visual search optimization", "Voice search strategy", "Schema markup for AI"],
+          topics: ["Get your brand cited by ChatGPT", "Optimize for AI Overview results", "Voice search domination", "Schema that AI actually reads"],
           tools: ["Google Business", "Bing Places", "Schema.org"],
+          outcome: "Clients ranked in AI search results"
         },
         {
           title: "AEO (Answer Engine Optimization)",
-          topics: ["Featured snippets domination", "People Also Ask optimization", "Knowledge graph optimization", "Conversational query targeting"],
+          topics: ["Own featured snippets at scale", "People Also Ask domination", "Knowledge graph hacking", "Conversational query targeting"],
           tools: ["AnswerThePublic", "AlsoAsked", "Clearscope"],
+          outcome: "Position zero for money keywords"
         },
         {
-          title: "AI Content Strategy",
-          topics: ["AI-assisted content creation", "Content clusters with AI", "E-E-A-T for AI era", "Content velocity strategies"],
+          title: "AI Content at Scale (Quality + Speed)",
+          topics: ["AI content that doesn't sound like AI", "Content clusters in half the time", "E-E-A-T for the AI era", "100 pages/month workflow"],
           tools: ["Jasper", "SurferSEO", "Frase"],
+          outcome: "10x content output, same quality"
         },
         {
           title: "Technical AI SEO",
-          topics: ["JavaScript SEO for AI", "Core Web Vitals optimization", "Structured data automation", "Crawl budget for large sites"],
+          topics: ["JavaScript SEO for modern sites", "Core Web Vitals without dev help", "Automated schema generation", "Crawl budget for 1M+ page sites"],
           tools: ["Cloudflare", "Next.js", "Schema Pro"],
+          outcome: "Handle enterprise-level technical SEO"
         },
       ],
     },
     {
       id: "phase3",
-      title: "AI Implementation",
+      title: "Build AI Systems",
       subtitle: "Weeks 17-24",
+      outcome: "You'll build AI agents that work while you sleep",
       hours: "100 hours",
       icon: Rocket,
       color: "text-[hsl(var(--brand-orange))]",
@@ -93,26 +105,30 @@ export const CourseCurriculumSection = () => {
       borderColor: "border-[hsl(var(--brand-orange))]/30",
       modules: [
         {
-          title: "Building AI SEO Agents",
-          topics: ["Agent architecture design", "Workflow automation", "API integrations", "Custom GPT development"],
+          title: "Building Your First AI SEO Agent",
+          topics: ["Agent architecture (no coding needed)", "Automated workflows that save 10+ hours/week", "API integrations made simple", "Custom GPT for your niche"],
           tools: ["LangChain", "n8n", "Zapier", "Make"],
+          outcome: "AI that does competitor research for you"
         },
         {
           title: "Agentic Commerce Systems",
-          topics: ["Autonomous selling strategies", "AI-powered product discovery", "Personalization at scale", "Conversion optimization"],
+          topics: ["AI-powered product recommendations", "Autonomous selling strategies", "Personalization without creepiness", "Conversion rate optimization with AI"],
           tools: ["Shopify AI", "Dynamic Yield", "Optimizely"],
+          outcome: "E-commerce clients that actually convert"
         },
         {
-          title: "Advanced AI Analytics",
-          topics: ["Predictive SEO modeling", "AI-powered competitor analysis", "Trend forecasting", "Automated reporting"],
-          tools: ["BigQuery", "Python", "TensorFlow"],
+          title: "Predictive Analytics & Forecasting",
+          topics: ["Predict traffic drops before they happen", "AI-powered competitor monitoring", "Trend forecasting for content", "Automated reporting that clients love"],
+          tools: ["BigQuery", "Python basics", "TensorFlow Lite"],
+          outcome: "Predict and prevent SEO disasters"
         },
       ],
     },
     {
       id: "phase4",
-      title: "Capstone & Agentic Build",
+      title: "Real Projects",
       subtitle: "Weeks 25-26",
+      outcome: "You'll have a portfolio that actually impresses",
       hours: "40 hours",
       icon: Trophy,
       color: "text-emerald-500",
@@ -120,21 +136,24 @@ export const CourseCurriculumSection = () => {
       borderColor: "border-emerald-500/30",
       modules: [
         {
-          title: "Capstone Project",
-          topics: ["End-to-end AI SEO strategy", "Live client implementation", "Results documentation", "Presentation & defense"],
-          tools: ["All learned tools"],
+          title: "Capstone: Real Client Project",
+          topics: ["End-to-end AI SEO strategy", "Live implementation (not dummy sites)", "Measurable results documentation", "Presentation to industry panel"],
+          tools: ["Everything you've learned"],
+          outcome: "Case study for your portfolio"
         },
         {
-          title: "AI Agent Development",
-          topics: ["Build your own SEO agent", "Deploy autonomous systems", "Monitor and optimize", "Scale and iterate"],
+          title: "Build Your Signature AI Agent",
+          topics: ["Design your unique SEO agent", "Deploy for real clients", "Monitor, optimize, iterate", "Document for selling as a service"],
           tools: ["Custom stack"],
+          outcome: "Productized service you can sell"
         },
       ],
     },
     {
       id: "internship",
-      title: "Industry Internship",
+      title: "Paid Internship",
       subtitle: "Week 27+",
+      outcome: "You'll have real work experience on your resume",
       hours: "40 hours",
       icon: Briefcase,
       color: "text-amber-500",
@@ -142,9 +161,10 @@ export const CourseCurriculumSection = () => {
       borderColor: "border-amber-500/30",
       modules: [
         {
-          title: "Real-World Experience",
-          topics: ["Work with live clients", "Agency/startup immersion", "Team collaboration", "Professional development"],
-          tools: ["Industry-standard tools"],
+          title: "Industry Immersion",
+          topics: ["Work with live clients (paid)", "Agency or startup environment", "Team collaboration on real projects", "Reference letter for job applications"],
+          tools: ["Industry-standard stack"],
+          outcome: "Experience that separates you from freshers"
         },
       ],
     },
@@ -158,13 +178,13 @@ export const CourseCurriculumSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-4">
-            Comprehensive Curriculum
+            Your 6-Month Journey
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Master Every Layer: <span className="text-gradient">Traditional → AI-Enhanced → Autonomous</span>
+            Week 1: Learn the Basics. <span className="text-gradient">Week 26: Build AI Agents.</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            380 hours of structured learning across 5 phases. From foundations to building your own AI agents.
+            Here's exactly how that transformation happens. No fluff, no filler.
           </p>
         </div>
 
@@ -198,12 +218,12 @@ export const CourseCurriculumSection = () => {
                 </div>
                 <div>
                   <h3 className={`text-xl font-bold ${activePhaseData.color}`}>{activePhaseData.title}</h3>
-                  <p className="text-sm text-muted-foreground">{activePhaseData.subtitle}</p>
+                  <p className="text-sm text-muted-foreground">{activePhaseData.subtitle} • {activePhaseData.hours}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <Clock className="w-4 h-4" />
-                <span className="text-sm font-medium">{activePhaseData.hours}</span>
+              <div className="hidden md:block text-right">
+                <p className="text-xs text-muted-foreground">By the end:</p>
+                <p className="text-sm font-medium text-foreground">{activePhaseData.outcome}</p>
               </div>
             </div>
 
@@ -213,13 +233,15 @@ export const CourseCurriculumSection = () => {
                 {activePhaseData.modules.map((module, index) => (
                   <AccordionItem key={index} value={module.title} className="border-border/50">
                     <AccordionTrigger className="px-4 md:px-6 hover:no-underline hover:bg-muted/30">
-                      <span className="text-left font-semibold text-foreground">{module.title}</span>
+                      <div className="flex items-center gap-3 text-left">
+                        <span className="font-semibold text-foreground">{module.title}</span>
+                      </div>
                     </AccordionTrigger>
                     <AccordionContent className="px-4 md:px-6 pb-4">
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <div className="grid md:grid-cols-3 gap-4">
                         {/* Topics */}
                         <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Topics Covered</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">What You'll Learn</p>
                           <ul className="space-y-2">
                             {module.topics.map((topic, i) => (
                               <li key={i} className="flex items-center gap-2 text-sm text-foreground/80">
@@ -231,7 +253,7 @@ export const CourseCurriculumSection = () => {
                         </div>
                         {/* Tools */}
                         <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Tools & Platforms</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">Tools You'll Master</p>
                           <div className="flex flex-wrap gap-2">
                             {module.tools.map((tool, i) => (
                               <span 
@@ -242,6 +264,14 @@ export const CourseCurriculumSection = () => {
                                 {tool}
                               </span>
                             ))}
+                          </div>
+                        </div>
+                        {/* Outcome */}
+                        <div>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-2">You'll Be Able To</p>
+                          <div className="flex items-center gap-2 p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+                            <Target className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                            <span className="text-sm font-medium text-emerald-600 dark:text-emerald-400">{module.outcome}</span>
                           </div>
                         </div>
                       </div>
@@ -256,7 +286,8 @@ export const CourseCurriculumSection = () => {
         {/* Total Hours */}
         <div className={`text-center mt-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <p className="text-muted-foreground">
-            <span className="text-2xl font-bold text-foreground">380+</span> total hours of structured learning
+            <span className="text-2xl font-bold text-foreground">380+</span> hours of structured learning • 
+            <span className="text-foreground font-medium"> Not recorded videos—live classes with real Q&A</span>
           </p>
         </div>
       </div>
