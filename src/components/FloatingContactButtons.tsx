@@ -7,7 +7,7 @@ export const FloatingContactButtons = () => {
   const whatsappUrl = `https://wa.me/917353252526?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
-    <div className="fixed bottom-6 left-6 z-50 flex flex-col gap-3">
+    <div className="fixed bottom-24 left-6 z-50 flex flex-col gap-3">
       {/* WhatsApp Button */}
       <a
         href={whatsappUrl}

@@ -34,10 +34,10 @@ export const CourseStickyCTA = () => {
     >
       <div className="bg-primary/95 backdrop-blur-md border-t border-primary-foreground/10 shadow-lg">
         <div className="container mx-auto px-4 py-3 md:py-4">
-          <div className="flex items-center justify-between gap-4">
-            {/* Left - Message */}
-            <div className="flex-1 min-w-0">
-              <p className="text-primary-foreground font-semibold text-sm md:text-base truncate">
+          <div className="flex items-center justify-center gap-4 md:gap-6">
+            {/* Message */}
+            <div className="text-center sm:text-left">
+              <p className="text-primary-foreground font-semibold text-sm md:text-base">
                 <span className="hidden sm:inline">🔥 </span>
                 Only 2 Seats Left for January Batch
               </p>
@@ -46,8 +46,8 @@ export const CourseStickyCTA = () => {
               </p>
             </div>
 
-            {/* Right - CTA and Close */}
-            <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+            {/* CTA and Close */}
+            <div className="flex items-center gap-2 md:gap-3">
               <Button
                 onClick={scrollToApplication}
                 variant="secondary"
