@@ -1,6 +1,14 @@
-import { TrendingUp, Building2, MapPin, Quote } from "lucide-react";
+import { TrendingUp, Building2, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+// Import alumni images
+import priyaSharmaImg from "@/assets/alumni/priya-sharma.jpg";
+import rahulVermaImg from "@/assets/alumni/rahul-verma.jpg";
+import ananyaIyerImg from "@/assets/alumni/ananya-iyer.jpg";
+import vikashKumarImg from "@/assets/alumni/vikash-kumar.jpg";
+import snehaPatelImg from "@/assets/alumni/sneha-patel.jpg";
+import arjunNairImg from "@/assets/alumni/arjun-nair.jpg";
 
 export const CourseAlumniSuccessSection = () => {
   const [ref, isVisible] = useScrollAnimation();
@@ -17,7 +25,7 @@ export const CourseAlumniSuccessSection = () => {
       salaryGrowth: "171%",
       background: "Hindi-medium school, Tier-2 city",
       quote: "I didn't even know what GEO meant 8 months ago. Now I lead a team of 3 at Razorpay.",
-      avatar: "PS",
+      image: priyaSharmaImg,
     },
     {
       name: "Rahul Verma",
@@ -30,7 +38,7 @@ export const CourseAlumniSuccessSection = () => {
       salaryGrowth: "175%",
       background: "B.Com graduate, no coding background",
       quote: "My dad told me to do CA. I chose this instead. Now I earn more than most CAs my age.",
-      avatar: "RV",
+      image: rahulVermaImg,
     },
     {
       name: "Ananya Iyer",
@@ -43,7 +51,7 @@ export const CourseAlumniSuccessSection = () => {
       salaryGrowth: "First Job ₹6.6L",
       background: "Fresh graduate, no work experience",
       quote: "All my batchmates are struggling to get ₹25K jobs. I got ₹55K as a fresher. Still can't believe it.",
-      avatar: "AI",
+      image: ananyaIyerImg,
     },
     {
       name: "Vikash Kumar",
@@ -56,7 +64,7 @@ export const CourseAlumniSuccessSection = () => {
       salaryGrowth: "183%",
       background: "From Tier-3 city, self-taught",
       quote: "I moved from Patna to Chennai for this role. My family thought I was crazy. Now they show off my salary to relatives.",
-      avatar: "VK",
+      image: vikashKumarImg,
     },
     {
       name: "Sneha Patel",
@@ -69,7 +77,7 @@ export const CourseAlumniSuccessSection = () => {
       salaryGrowth: "500%",
       background: "2 years of failed interviews",
       quote: "I failed 23 interviews before this course. After completing it, I cleared 4 out of 5. The difference is the skills, not luck.",
-      avatar: "SP",
+      image: snehaPatelImg,
     },
     {
       name: "Arjun Nair",
@@ -82,7 +90,7 @@ export const CourseAlumniSuccessSection = () => {
       salaryGrowth: "180%",
       background: "Was stuck at same salary for 2 years",
       quote: "I was doing the same SEO for 3 years. This course made me realize I was 5 years behind. Now I lead a team.",
-      avatar: "AN",
+      image: arjunNairImg,
     },
   ];
 
@@ -129,9 +137,11 @@ export const CourseAlumniSuccessSection = () => {
                 {/* Profile Header */}
                 <div className="flex items-start gap-3 mb-4">
                   {/* Avatar */}
-                  <div className="w-10 h-10 rounded-full bg-[hsl(var(--brand-orange))]/10 flex items-center justify-center text-[hsl(var(--brand-orange))] font-semibold text-sm flex-shrink-0">
-                    {person.avatar}
-                  </div>
+                  <img 
+                    src={person.image}
+                    alt={person.name}
+                    className="w-10 h-10 rounded-full object-cover border-2 border-[hsl(var(--brand-orange))]/30 flex-shrink-0"
+                  />
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-foreground text-sm">{person.name}</h4>
                     <div className="flex items-center gap-1 text-xs text-muted-foreground">

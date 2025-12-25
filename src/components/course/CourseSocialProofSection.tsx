@@ -2,6 +2,12 @@ import { Quote, TrendingUp, Briefcase, DollarSign, Clock } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
+// Import alumni images
+import rahulDesaiImg from "@/assets/alumni/rahul-desai.jpg";
+import priyaSharmaImg from "@/assets/alumni/priya-sharma.jpg";
+import arjunVermaImg from "@/assets/alumni/arjun-verma.jpg";
+import deepakKumarImg from "@/assets/alumni/deepak-kumar.jpg";
+
 export const CourseSocialProofSection = () => {
   const [ref, isVisible] = useScrollAnimation();
 
@@ -11,7 +17,7 @@ export const CourseSocialProofSection = () => {
       role: "AI SEO Strategist",
       company: "Dukaan",
       city: "Bangalore",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rahul",
+      image: rahulDesaiImg,
       before: "Jr. Content Writer (₹35K/month)",
       after: "AI SEO Strategist (₹90K/month)",
       salary: "₹10.8L/year + equity",
@@ -23,7 +29,7 @@ export const CourseSocialProofSection = () => {
       role: "Agentic Commerce Manager",
       company: "Nykaa",
       city: "Mumbai",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Priya",
+      image: priyaSharmaImg,
       before: "Digital Marketing Exec (₹40K/month)",
       after: "Agentic Commerce Manager (₹95K/month)",
       salary: "₹11.4L/year + bonus",
@@ -35,7 +41,7 @@ export const CourseSocialProofSection = () => {
       role: "Search Architect",
       company: "Freshworks",
       city: "Chennai",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun",
+      image: arjunVermaImg,
       before: "SEO Analyst (₹45K/month)",
       after: "Search Architect (₹1.2L/month)",
       salary: "₹14.4L/year + RSUs",
@@ -47,7 +53,7 @@ export const CourseSocialProofSection = () => {
       role: "Founder",
       company: "AgenticSEO Agency",
       city: "Delhi (from Patna)",
-      image: "https://api.dicebear.com/7.x/avataaars/svg?seed=Deepak",
+      image: deepakKumarImg,
       before: "Freelance SEO (₹25K/month)",
       after: "Agency Founder",
       salary: "₹4L+/month revenue",
@@ -130,7 +136,7 @@ export const CourseSocialProofSection = () => {
                     <img 
                       src={testimonial.image} 
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full border-2 border-[hsl(var(--brand-orange))]/30"
+                      className="w-12 h-12 rounded-full border-2 border-[hsl(var(--brand-orange))]/30 object-cover"
                     />
                     <div>
                       <p className="font-semibold text-foreground">{testimonial.name}</p>
