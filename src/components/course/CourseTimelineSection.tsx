@@ -68,7 +68,7 @@ export const CourseTimelineSection = () => {
           {/* Milestones Container */}
           <div className="relative">
             {/* Center Line - stops at last milestone */}
-            <div className="absolute left-4 md:left-1/2 top-0 h-[calc(100%-20px)] w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-emerald-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-4 md:left-1/2 top-0 h-[calc(100%-80px)] w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-amber-500 transform md:-translate-x-1/2" />
 
             {/* Milestones */}
             <div className="space-y-2 md:space-y-3">
