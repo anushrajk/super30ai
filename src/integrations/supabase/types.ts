@@ -133,6 +133,59 @@ export type Database = {
           },
         ]
       }
+      course_applications: {
+        Row: {
+          applicant_role: string | null
+          created_at: string | null
+          email: string
+          experience: string | null
+          full_name: string
+          id: string
+          linkedin_url: string | null
+          motivation: string | null
+          phone: string
+          session_id: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          applicant_role?: string | null
+          created_at?: string | null
+          email: string
+          experience?: string | null
+          full_name: string
+          id?: string
+          linkedin_url?: string | null
+          motivation?: string | null
+          phone: string
+          session_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          applicant_role?: string | null
+          created_at?: string | null
+          email?: string
+          experience?: string | null
+          full_name?: string
+          id?: string
+          linkedin_url?: string | null
+          motivation?: string | null
+          phone?: string
+          session_id?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "course_applications_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       engagement_metrics: {
         Row: {
           created_at: string | null

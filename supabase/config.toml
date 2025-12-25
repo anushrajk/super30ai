@@ -26,3 +26,6 @@ verify_jwt = false
 
 [functions.analyze-performance]
 verify_jwt = false
+
+[functions.submit-course-application]
+verify_jwt = false

@@ -5,15 +5,14 @@ import {
   Phone, 
   Briefcase, 
   Clock, 
-  Linkedin, 
-  MessageSquare,
   CheckCircle2,
   ArrowRight,
   Shield,
   Users,
   Calendar,
   Sparkles,
-  Heart
+  Heart,
+  PartyPopper
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -29,10 +28,13 @@ import {
 } from "@/components/ui/select";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useToast } from "@/hooks/use-toast";
+import { useSession } from "@/hooks/useSession";
+import { supabase } from "@/integrations/supabase/client";
 
 export const CourseApplicationSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const { toast } = useToast();
+  const { session } = useSession();
   
   const [formData, setFormData] = useState({
     fullName: "",
@@ -44,6 +46,8 @@ export const CourseApplicationSection = () => {
     motivation: "",
   });
   const [loading, setLoading] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submittedName, setSubmittedName] = useState("");
 
   const experienceOptions = [
     { value: "0-1", label: "0-1 years (Fresher/Student)" },
@@ -75,27 +79,134 @@ export const CourseApplicationSection = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Client-side validation
+    if (!formData.fullName.trim()) {
+      toast({ title: "Please enter your name", variant: "destructive" });
+      return;
+    }
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({ title: "Please enter a valid email", variant: "destructive" });
+      return;
+    }
+    
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length !== 10) {
+      toast({ title: "Please enter a valid 10-digit phone number", variant: "destructive" });
+      return;
+    }
+
+    if (!formData.motivation.trim()) {
+      toast({ title: "Please tell us what's holding you back", variant: "destructive" });
+      return;
+    }
+
     setLoading(true);
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const { data, error } = await supabase.functions.invoke('submit-course-application', {
+        body: {
+          fullName: formData.fullName.trim(),
+          email: formData.email.trim(),
+          phone: phoneDigits,
+          currentRole: formData.currentRole,
+          experience: formData.experience,
+          linkedin: formData.linkedin.trim(),
+          motivation: formData.motivation.trim(),
+          sessionId: session?.id
+        }
+      });
 
-    toast({
-      title: "Application Received! 🎉",
-      description: "We'll call you within 24 hours. Check your WhatsApp too!",
-    });
+      if (error) {
+        throw new Error(error.message || 'Failed to submit application');
+      }
 
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      currentRole: "",
-      experience: "",
-      linkedin: "",
-      motivation: "",
-    });
-    setLoading(false);
+      if (data?.error) {
+        throw new Error(data.error);
+      }
+
+      // Success!
+      setSubmittedName(formData.fullName.split(' ')[0]);
+      setSubmitted(true);
+      
+      toast({
+        title: "Application Received! 🎉",
+        description: "We'll call you within 24 hours. Check your WhatsApp too!",
+      });
+
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      toast({
+        title: "Oops! Something went wrong",
+        description: error.message || "Please try again or contact us on WhatsApp",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
   };
+
+  // Success state after form submission
+  if (submitted) {
+    return (
+      <section 
+        ref={ref} 
+        id="course-application" 
+        className="py-16 md:py-24 bg-background"
+      >
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <Card className="bg-card border-border/50 p-8 md:p-12">
+              <CardContent className="space-y-6">
+                <div className="w-20 h-20 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center">
+                  <PartyPopper className="w-10 h-10 text-emerald-500" />
+                </div>
+                
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground">
+                  Thank you, {submittedName}! 🎉
+                </h2>
+                
+                <p className="text-lg text-muted-foreground">
+                  Your application has been received. We'll call you within <span className="text-foreground font-semibold">24 hours</span> to discuss the next steps.
+                </p>
+
+                <div className="bg-muted/50 rounded-lg p-6 space-y-4">
+                  <h3 className="font-semibold text-foreground">What happens next?</h3>
+                  <ul className="space-y-3 text-left">
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                      <span className="text-muted-foreground">Our team reviews your application</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                      <span className="text-muted-foreground">We call you to understand your goals</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-emerald-500 flex-shrink-0" />
+                      <span className="text-muted-foreground">If it's a fit, we share the next batch details</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="pt-4">
+                  <p className="text-sm text-muted-foreground mb-3">Have questions right now?</p>
+                  <Button 
+                    variant="outline"
+                    className="border-[hsl(var(--brand-orange))]/30 text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
+                    onClick={() => window.open('https://wa.me/919876543210?text=Hi, I just applied for the AI SEO course and have a quick question', '_blank')}
+                  >
+                    Chat on WhatsApp
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section 
