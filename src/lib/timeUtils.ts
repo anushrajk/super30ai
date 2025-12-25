@@ -230,3 +230,33 @@ export const getFollowingBatchDate = (currentBatchDate: Date): Date => {
   followingDate.setDate(followingDate.getDate() + 56); // ~8 weeks later
   return getNextMonday(followingDate);
 };
+
+/**
+ * Format batch date for day of week (e.g., "Monday")
+ */
+export const formatBatchDayName = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-IN', {
+    weekday: 'long',
+    timeZone: 'Asia/Kolkata'
+  }).format(date);
+};
+
+/**
+ * Format batch date for short month (e.g., "JAN")
+ */
+export const formatBatchMonthShort = (date: Date): string => {
+  return new Intl.DateTimeFormat('en-IN', {
+    month: 'short',
+    timeZone: 'Asia/Kolkata'
+  }).format(date).toUpperCase();
+};
+
+/**
+ * Get day number from batch date (e.g., 13)
+ */
+export const getBatchDay = (date: Date): number => {
+  return parseInt(new Intl.DateTimeFormat('en-IN', {
+    day: 'numeric',
+    timeZone: 'Asia/Kolkata'
+  }).format(date));
+};
