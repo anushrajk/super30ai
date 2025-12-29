@@ -175,9 +175,9 @@ const GalleryTile = ({ item, isHovered, onHover, onClick }: GalleryTileProps) =>
   const [isMuted, setIsMuted] = useState(true);
 
   const sizeClasses = {
-    small: 'w-48 h-48 md:w-56 md:h-56',
-    medium: 'w-56 h-48 md:w-72 md:h-56',
-    large: 'w-72 h-48 md:w-96 md:h-56',
+    small: 'w-56 h-56 md:w-64 md:h-64',
+    medium: 'w-64 h-56 md:w-80 md:h-64',
+    large: 'w-80 h-56 md:w-[26rem] md:h-64',
   };
 
   const handleMouseEnter = () => {
@@ -258,7 +258,7 @@ const GalleryTile = ({ item, isHovered, onHover, onClick }: GalleryTileProps) =>
       )}
 
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
 
       {/* Caption & Name */}
       <div className="absolute bottom-0 left-0 right-0 p-3">
@@ -279,7 +279,8 @@ const GalleryTile = ({ item, isHovered, onHover, onClick }: GalleryTileProps) =>
 export const CourseStudentGallerySection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const [hoveredId, setHoveredId] = useState<number | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPausedRow1, setIsPausedRow1] = useState(false);
+  const [isPausedRow2, setIsPausedRow2] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   // Duplicate items for seamless loop
@@ -329,55 +330,62 @@ export const CourseStudentGallerySection = () => {
       </div>
 
       {/* Mosaic Gallery Marquee */}
-      <div 
-        className="relative"
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      <div className="relative">
         {/* Left fade gradient */}
-        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-r from-black/90 to-transparent z-10 pointer-events-none" />
         
         {/* Right fade gradient */}
-        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-48 bg-gradient-to-l from-black/90 to-transparent z-10 pointer-events-none" />
 
         {/* Row 1 - scrolls left */}
         <div 
-          className={`flex gap-4 mb-4 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            animation: isPaused ? 'none' : 'scrollLeft 60s linear infinite',
-          }}
+          className="mb-4"
+          onMouseEnter={() => setIsPausedRow1(true)}
+          onMouseLeave={() => setIsPausedRow1(false)}
         >
-          {duplicatedItems.filter((_, i) => i % 2 === 0).map((item, index) => (
-            <GalleryTile
-              key={`row1-${item.id}-${index}`}
-              item={item}
-              isHovered={hoveredId === item.id}
-              onHover={setHoveredId}
-              onClick={() => openLightbox(item.id)}
-            />
-          ))}
+          <div 
+            className={`flex gap-4 ${
+              isVisible ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              animation: isPausedRow1 ? 'none' : 'scrollLeft 60s linear infinite',
+            }}
+          >
+            {duplicatedItems.filter((_, i) => i % 2 === 0).map((item, index) => (
+              <GalleryTile
+                key={`row1-${item.id}-${index}`}
+                item={item}
+                isHovered={hoveredId === item.id}
+                onHover={setHoveredId}
+                onClick={() => openLightbox(item.id)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Row 2 - scrolls right */}
         <div 
-          className={`flex gap-4 ${
-            isVisible ? 'opacity-100' : 'opacity-0'
-          }`}
-          style={{
-            animation: isPaused ? 'none' : 'scrollRight 55s linear infinite',
-          }}
+          onMouseEnter={() => setIsPausedRow2(true)}
+          onMouseLeave={() => setIsPausedRow2(false)}
         >
-          {duplicatedItems.filter((_, i) => i % 2 === 1).map((item, index) => (
-            <GalleryTile
-              key={`row2-${item.id}-${index}`}
-              item={item}
-              isHovered={hoveredId === item.id}
-              onHover={setHoveredId}
-              onClick={() => openLightbox(item.id)}
-            />
-          ))}
+          <div 
+            className={`flex gap-4 ${
+              isVisible ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              animation: isPausedRow2 ? 'none' : 'scrollRight 55s linear infinite',
+            }}
+          >
+            {duplicatedItems.filter((_, i) => i % 2 === 1).map((item, index) => (
+              <GalleryTile
+                key={`row2-${item.id}-${index}`}
+                item={item}
+                isHovered={hoveredId === item.id}
+                onHover={setHoveredId}
+                onClick={() => openLightbox(item.id)}
+              />
+            ))}
+          </div>
         </div>
       </div>
 

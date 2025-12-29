@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { TrendingUp, Building2, Quote } from "lucide-react";
+import { Building2, Quote } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -155,20 +155,16 @@ export const CourseAlumniSuccessSection = () => {
                   </div>
                 </div>
 
-                {/* Salary Journey */}
+                {/* Role Transition */}
                 <div className="flex items-center gap-2 p-3 bg-muted/30 rounded-lg">
                   <div className="flex-1 text-center">
                     <p className="text-xs text-muted-foreground">Before</p>
-                    <p className="text-sm font-medium text-foreground">{person.salaryBefore}</p>
+                    <p className="text-sm font-medium text-foreground">{person.previousRole}</p>
                   </div>
                   <div className="text-[hsl(var(--brand-orange))] font-bold">→</div>
                   <div className="flex-1 text-center">
                     <p className="text-xs text-muted-foreground">After</p>
-                    <p className="text-sm font-medium text-foreground">{person.salaryAfter}</p>
-                  </div>
-                  <div className="flex items-center gap-1 text-emerald-500 font-semibold text-xs bg-emerald-500/10 px-2 py-1 rounded-full">
-                    <TrendingUp className="w-3 h-3" />
-                    {person.salaryGrowth}
+                    <p className="text-sm font-medium text-foreground">{person.currentRole}</p>
                   </div>
                 </div>
               </CardContent>

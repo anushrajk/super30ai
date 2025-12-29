@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Quote, TrendingUp, Briefcase, DollarSign, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Quote, Briefcase, Clock, ChevronLeft, ChevronRight, Users, Award } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -34,11 +34,9 @@ export const CourseSocialProofSection = () => {
       company: "Dukaan",
       city: "Bangalore",
       image: rahulDesaiImg,
-      before: "Jr. Content Writer (₹35K/month)",
-      after: "AI SEO Strategist (₹90K/month)",
-      salary: "₹10.8L/year + equity",
-      increase: "157%",
-      quote: "Before joining, I was writing 10 blogs a day for ₹35K. Now I build AI systems that generate 50 blogs daily—and I earn ₹90K. My wife still can't believe it.",
+      before: "Jr. Content Writer",
+      after: "AI SEO Strategist",
+      quote: "Before joining, I was writing 10 blogs a day. Now I build AI systems that generate 50 blogs daily. My wife still can't believe the transformation.",
     },
     {
       name: "Priya Sharma",
@@ -46,11 +44,9 @@ export const CourseSocialProofSection = () => {
       company: "Nykaa",
       city: "Mumbai",
       image: priyaSharmaImg,
-      before: "Digital Marketing Exec (₹40K/month)",
-      after: "Agentic Commerce Manager (₹95K/month)",
-      salary: "₹11.4L/year + bonus",
-      increase: "138%",
-      quote: "I was stuck at ₹40K for 3 years. 5 months after completing this course, I got an offer I couldn't refuse. My parents finally understand what I do for work.",
+      before: "Digital Marketing Exec",
+      after: "Agentic Commerce Manager",
+      quote: "I was stuck in the same role for 3 years. 5 months after completing this course, I got an offer I couldn't refuse. My parents finally understand what I do for work.",
     },
     {
       name: "Arjun Verma",
@@ -58,10 +54,8 @@ export const CourseSocialProofSection = () => {
       company: "Freshworks",
       city: "Chennai",
       image: arjunVermaImg,
-      before: "SEO Analyst (₹45K/month)",
-      after: "Search Architect (₹1.2L/month)",
-      salary: "₹14.4L/year + RSUs",
-      increase: "167%",
+      before: "SEO Analyst",
+      after: "Search Architect",
       quote: "I had 5 job offers within 3 weeks of completing the course. The GEO and AEO skills are so rare that recruiters were literally fighting for me. Surreal feeling.",
     },
     {
@@ -70,11 +64,9 @@ export const CourseSocialProofSection = () => {
       company: "AgenticSEO Agency",
       city: "Delhi (from Patna)",
       image: deepakKumarImg,
-      before: "Freelance SEO (₹25K/month)",
+      before: "Freelance SEO",
       after: "Agency Founder",
-      salary: "₹4L+/month revenue",
-      increase: "1500%+",
-      quote: "I'm from a Tier-2 city. Hindi-medium background. No IIT degree. This course taught me skills that helped me start an agency. Now I have 4 employees. Best ₹60K I ever spent.",
+      quote: "I'm from a Tier-2 city. Hindi-medium background. No IIT degree. This course taught me skills that helped me start an agency. Now I have 4 employees.",
     },
     {
       name: "Kavita Reddy",
@@ -82,10 +74,8 @@ export const CourseSocialProofSection = () => {
       company: "Razorpay",
       city: "Hyderabad",
       image: kavitaReddyImg,
-      before: "Marketing Manager (₹55K/month)",
-      after: "Head of Growth (₹1.5L/month)",
-      salary: "₹18L/year + ESOPs",
-      increase: "173%",
+      before: "Marketing Manager",
+      after: "Head of Growth",
       quote: "Coming from a traditional marketing role, I was skeptical about AI. This course didn't just teach me tools—it transformed how I think about growth. Now I lead a team of 8.",
     },
     {
@@ -94,10 +84,8 @@ export const CourseSocialProofSection = () => {
       company: "Swiggy",
       city: "Pune",
       image: amitSaxenaImg,
-      before: "Content Lead (₹50K/month)",
-      after: "AI Content Director (₹1.1L/month)",
-      salary: "₹13.2L/year + bonus",
-      increase: "120%",
+      before: "Content Lead",
+      after: "AI Content Director",
       quote: "I was a journalism grad with zero tech background. The course broke down complex AI concepts so simply. Within 4 months, I was managing AI-driven content for 15 cities.",
     },
     {
@@ -106,19 +94,17 @@ export const CourseSocialProofSection = () => {
       company: "Zepto",
       city: "Mumbai",
       image: meeraJoshiImg,
-      before: "SEO Executive (₹30K/month)",
-      after: "GEO Specialist (₹85K/month)",
-      salary: "₹10.2L/year",
-      increase: "183%",
+      before: "SEO Executive",
+      after: "GEO Specialist",
       quote: "Fresh out of college with no connections. This course gave me skills that 10-year veterans don't have. Got placed in Zepto within 30 days of completing the program.",
     },
   ];
 
   const stats = [
     { label: "Placed in 90 Days", value: "95%", icon: Briefcase },
-    { label: "Avg. Starting Package", value: "₹7.2L", icon: DollarSign },
+    { label: "Career Transitions", value: "500+", icon: Users },
     { label: "Time to First Offer", value: "23 Days", icon: Clock },
-    { label: "Avg. Salary Hike", value: "140%", icon: TrendingUp },
+    { label: "Skills Mastered", value: "30+", icon: Award },
   ];
 
   return (
@@ -213,27 +199,21 @@ export const CourseSocialProofSection = () => {
                     </div>
                   </div>
 
-                  {/* Profile & Stats */}
-                  <div className="flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="relative shrink-0">
-                        <img 
-                          src={testimonial.image} 
-                          alt={testimonial.name}
-                          className="w-11 h-11 rounded-full border-2 border-[hsl(var(--brand-orange))]/30 object-cover group-hover:scale-110 group-hover:border-[hsl(var(--brand-orange))]/60 transition-all duration-300"
-                        />
-                        <div className="absolute inset-0 rounded-full bg-[hsl(var(--brand-orange))]/0 group-hover:bg-[hsl(var(--brand-orange))]/10 transition-colors duration-300" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="font-semibold text-foreground text-sm truncate">{testimonial.name}</p>
-                        <p className="text-xs text-muted-foreground truncate">
-                          {testimonial.role} @ {testimonial.company}
-                        </p>
-                      </div>
+                  {/* Profile */}
+                  <div className="flex items-center gap-3">
+                    <div className="relative shrink-0">
+                      <img 
+                        src={testimonial.image} 
+                        alt={testimonial.name}
+                        className="w-11 h-11 rounded-full border-2 border-[hsl(var(--brand-orange))]/30 object-cover group-hover:scale-110 group-hover:border-[hsl(var(--brand-orange))]/60 transition-all duration-300"
+                      />
+                      <div className="absolute inset-0 rounded-full bg-[hsl(var(--brand-orange))]/0 group-hover:bg-[hsl(var(--brand-orange))]/10 transition-colors duration-300" />
                     </div>
-                    <div className="text-right shrink-0">
-                      <p className="text-sm font-bold text-[hsl(var(--brand-orange))]">{testimonial.salary}</p>
-                      <p className="text-xs text-emerald-500 font-medium">↑ {testimonial.increase}</p>
+                    <div className="min-w-0">
+                      <p className="font-semibold text-foreground text-sm truncate">{testimonial.name}</p>
+                      <p className="text-xs text-muted-foreground truncate">
+                        {testimonial.role} @ {testimonial.company}
+                      </p>
                     </div>
                   </div>
                 </CardContent>
