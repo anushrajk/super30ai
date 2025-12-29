@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { OptimizedImage } from "@/components/common/OptimizedImage";
 
 // Import alumni images
 import priyaSharmaImg from "@/assets/alumni/priya-sharma.jpg";
@@ -141,11 +142,14 @@ export const CourseAlumniSuccessSection = () => {
                 {/* Profile Header */}
                 <div className="flex items-start gap-3 mb-4">
                   {/* Avatar */}
-                  <img 
-                    src={person.image}
-                    alt={person.name}
-                    className="w-10 h-10 rounded-full object-cover border-2 border-[hsl(var(--brand-orange))]/30 flex-shrink-0"
-                  />
+                  <div className="w-10 h-10 flex-shrink-0">
+                    <OptimizedImage
+                      src={person.image}
+                      alt={person.name}
+                      containerClassName="w-10 h-10 rounded-full border-2 border-[hsl(var(--brand-orange))]/30"
+                      aspectRatio="1/1"
+                    />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-semibold text-foreground text-sm">{person.name}</h4>
                     <div className="flex items-center gap-1 text-xs text-muted-foreground">
