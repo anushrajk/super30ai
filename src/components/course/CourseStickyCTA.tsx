@@ -1,9 +1,9 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, forwardRef } from "react";
 import { Button } from "@/components/ui/button";
 import { X, ArrowRight } from "lucide-react";
 import { getNextBatchStartDate, formatBatchMonth } from "@/lib/timeUtils";
 
-export const CourseStickyCTA = () => {
+export const CourseStickyCTA = forwardRef<HTMLDivElement>((_, ref) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isDismissed, setIsDismissed] = useState(false);
   
@@ -29,13 +29,16 @@ export const CourseStickyCTA = () => {
     }
   };
 
-  if (isDismissed || !isVisible) return null;
+  // Use visibility instead of early return to keep hooks consistent
+  const shouldShow = !isDismissed && isVisible;
 
   return (
     <div
+      ref={ref}
       className={`fixed bottom-0 left-0 right-0 z-50 transform transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "translate-y-full"
+        shouldShow ? "translate-y-0" : "translate-y-full"
       }`}
+      style={{ visibility: shouldShow ? 'visible' : 'hidden' }}
     >
       <div className="bg-primary/95 backdrop-blur-md border-t border-primary-foreground/10 shadow-lg">
         <div className="container mx-auto px-4 py-3 md:py-4">
@@ -76,4 +79,6 @@ export const CourseStickyCTA = () => {
       </div>
     </div>
   );
-};
+});
+
+CourseStickyCTA.displayName = "CourseStickyCTA";

@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import {
   Accordion,
@@ -6,7 +7,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 
-export const CourseFAQSection = () => {
+export const CourseFAQSection = forwardRef<HTMLElement>((_, forwardedRef) => {
   const [ref, isVisible] = useScrollAnimation();
 
   const faqs = [
@@ -131,4 +132,6 @@ export const CourseFAQSection = () => {
       </div>
     </section>
   );
-};
+});
+
+CourseFAQSection.displayName = "CourseFAQSection";
