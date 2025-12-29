@@ -90,8 +90,7 @@ export const CourseHeroSection = () => {
                 {" "}Marketing Professional
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                The only course that teaches you to build{" "}
-                <span className="text-foreground font-semibold">AI systems that do SEO for you</span>—while you sleep.
+                Master the Latest SEO and AI Optimization For The New SEO Jobs In 2026
               </p>
             </div>
 
@@ -132,13 +131,6 @@ export const CourseHeroSection = () => {
               <Calendar className="w-5 h-5 text-[hsl(var(--brand-orange))] hidden sm:block" />
             </div>
 
-            {/* Scarcity */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-destructive/10 border border-destructive/30 rounded-full animate-pulse">
-              <span className="w-2 h-2 bg-destructive rounded-full animate-ping" />
-              <span className="text-destructive font-semibold text-sm">
-                Only 2 seats left • 847 applied this month
-              </span>
-            </div>
 
             {/* Course Meta - Mobile only */}
             <div className="lg:hidden grid grid-cols-3 gap-3 pt-2">

@@ -24,7 +24,7 @@ export const CourseProblemSection = () => {
         {/* Section Header */}
         <div className={`text-center mb-12 md:mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Are You Still Doing SEO <span className="text-red-500">the 2019 Way?</span>
+            in 2026 Are You Still Doing SEO <span className="text-red-500">the 2025 Way?</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             The marketing game changed. The question is—will you adapt or get left behind?
