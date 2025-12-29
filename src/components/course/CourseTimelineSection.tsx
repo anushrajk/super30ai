@@ -48,17 +48,17 @@ export const CourseTimelineSection = () => {
   ];
 
   return (
-    <section ref={ref} className="py-12 md:py-16 bg-background">
+    <section ref={ref} className="py-10 md:py-16 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Header */}
-        <div className={`text-center mb-8 md:mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-          <span className="inline-block px-4 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-3">
+        <div className={`text-center mb-6 md:mb-10 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+          <span className="inline-block px-3 py-1 bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] text-xs md:text-sm font-semibold rounded-full border border-[hsl(var(--brand-orange))]/30 mb-2 md:mb-3">
             Your Journey
           </span>
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-foreground mb-2">
             26-Week <span className="text-gradient">Transformation Roadmap</span>
           </h2>
-          <p className="text-base text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto">
             From complete beginner to AI SEO expert. Every week brings you closer to your new career.
           </p>
         </div>
@@ -68,34 +68,34 @@ export const CourseTimelineSection = () => {
           {/* Milestones Container */}
           <div className="relative">
             {/* Center Line - stops at last milestone */}
-            <div className="absolute left-4 md:left-1/2 top-[14px] bottom-[14px] w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-amber-500 transform md:-translate-x-1/2" />
+            <div className="absolute left-3 md:left-1/2 top-[12px] md:top-[14px] bottom-[12px] md:bottom-[14px] w-0.5 bg-gradient-to-b from-blue-500 via-purple-500 via-[hsl(var(--brand-orange))] to-amber-500 transform md:-translate-x-1/2" />
 
             {/* Milestones */}
-            <div className="space-y-2 md:space-y-3">
+            <div className="space-y-1 md:space-y-3">
               {milestones.map((milestone, index) => (
                 <div 
                   key={index}
-                  className={`relative flex items-start gap-4 md:gap-0 ${
+                  className={`relative flex items-start gap-3 md:gap-0 ${
                     index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
                   }`}
                 >
                   {/* Content Card */}
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
-                    <div className={`bg-card p-4 rounded-xl border border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 ${
+                  <div className={`flex-1 pl-8 md:pl-0 ${index % 2 === 0 ? 'md:pr-8 md:text-right' : 'md:pl-8'}`}>
+                    <div className={`bg-card p-3 md:p-4 rounded-lg md:rounded-xl border border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300 ${
                       index % 2 === 0 ? 'md:ml-auto md:mr-0' : 'md:mr-auto md:ml-0'
-                    } max-w-sm`}>
-                      <span className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
+                    } md:max-w-sm`}>
+                      <span className="text-[9px] md:text-[10px] font-semibold text-muted-foreground uppercase tracking-wider">
                         {milestone.week}
                       </span>
-                      <h3 className="text-base font-bold text-foreground mt-0.5 mb-1">{milestone.title}</h3>
-                      <p className="text-muted-foreground text-xs mb-2">{milestone.description}</p>
-                      <div className={`flex flex-wrap gap-1.5 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
+                      <h3 className="text-sm md:text-base font-bold text-foreground mt-0.5 mb-1">{milestone.title}</h3>
+                      <p className="text-muted-foreground text-[11px] md:text-xs mb-2">{milestone.description}</p>
+                      <div className={`flex flex-wrap gap-1 md:gap-1.5 ${index % 2 === 0 ? 'md:justify-end' : 'md:justify-start'}`}>
                         {milestone.achievements.map((achievement, i) => (
                           <span 
                             key={i}
-                            className="flex items-center gap-1 px-1.5 py-0.5 bg-muted/50 rounded text-[10px] font-medium text-foreground/80"
+                            className="flex items-center gap-0.5 md:gap-1 px-1 md:px-1.5 py-0.5 bg-muted/50 rounded text-[9px] md:text-[10px] font-medium text-foreground/80"
                           >
-                            <CheckCircle2 className="w-2.5 h-2.5 text-emerald-500" />
+                            <CheckCircle2 className="w-2 h-2 md:w-2.5 md:h-2.5 text-emerald-500" />
                             {achievement}
                           </span>
                         ))}
@@ -105,8 +105,8 @@ export const CourseTimelineSection = () => {
 
                   {/* Timeline Node */}
                   <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 flex items-center justify-center">
-                    <div className={`w-7 h-7 rounded-full ${milestone.color} flex items-center justify-center shadow-lg`}>
-                      <milestone.icon className="w-3.5 h-3.5 text-white" />
+                    <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full ${milestone.color} flex items-center justify-center shadow-lg`}>
+                      <milestone.icon className="w-3 h-3 md:w-3.5 md:h-3.5 text-white" />
                     </div>
                   </div>
 
@@ -118,10 +118,10 @@ export const CourseTimelineSection = () => {
           </div>
 
           {/* Final CTA - positioned below timeline */}
-          <div className="flex items-center justify-center mt-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-              <span className="text-emerald-500 font-semibold text-sm">
+          <div className="flex items-center justify-center mt-6 md:mt-8">
+            <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
+              <CheckCircle2 className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-500" />
+              <span className="text-emerald-500 font-semibold text-xs md:text-sm">
                 Job-ready in 6 months with guaranteed placement support
               </span>
             </div>
