@@ -1,5 +1,5 @@
-import { useRef, useState, useEffect, useCallback } from "react";
-import { Play, Volume2, VolumeX, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useRef, useState, useEffect, useCallback, RefObject } from "react";
+import { Play, Volume2, VolumeX, X, ChevronLeft, ChevronRight, Pause, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
@@ -48,17 +48,24 @@ const galleryItems: GalleryItem[] = [
 
 interface LightboxProps {
   item: GalleryItem;
+  currentIndex: number;
+  totalItems: number;
+  allItems: GalleryItem[];
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  onGoTo: (index: number) => void;
 }
 
-const Lightbox = ({ item, onClose, onPrev, onNext }: LightboxProps) => {
+const Lightbox = ({ item, currentIndex, totalItems, allItems, onClose, onPrev, onNext, onGoTo }: LightboxProps) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
 
   // Auto-play video when lightbox opens
   useEffect(() => {
+    setIsLoading(true);
     if (item.type === 'video' && videoRef.current) {
       videoRef.current.play().catch(() => {});
     }
@@ -83,11 +90,35 @@ const Lightbox = ({ item, onClose, onPrev, onNext }: LightboxProps) => {
     };
   }, []);
 
+  // Touch handlers for swipe
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStart === null) return;
+    const diff = touchStart - e.changedTouches[0].clientX;
+    if (diff > 50) onNext();
+    if (diff < -50) onPrev();
+    setTouchStart(null);
+  };
+
+  const handleMediaLoad = () => {
+    setIsLoading(false);
+  };
+
   return (
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 backdrop-blur-md animate-fade-in"
       onClick={onClose}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
+      {/* Counter indicator */}
+      <div className="absolute top-4 left-1/2 -translate-x-1/2 bg-muted/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-foreground z-50">
+        {currentIndex + 1} / {totalItems}
+      </div>
+
       {/* Close button */}
       <button
         onClick={onClose}
@@ -114,14 +145,22 @@ const Lightbox = ({ item, onClose, onPrev, onNext }: LightboxProps) => {
 
       {/* Content */}
       <div 
-        className="relative max-w-5xl max-h-[85vh] w-full mx-4 md:mx-8"
+        className="relative max-w-5xl max-h-[70vh] w-full mx-4 md:mx-8"
         onClick={(e) => e.stopPropagation()}
       >
+        {/* Loading spinner */}
+        {isLoading && (
+          <div className="absolute inset-0 flex items-center justify-center z-10">
+            <Loader2 className="w-12 h-12 text-primary animate-spin" />
+          </div>
+        )}
+
         {item.type === 'image' ? (
           <img
             src={item.src}
             alt={item.caption}
-            className="w-full h-auto max-h-[75vh] object-contain rounded-xl"
+            className={`w-full h-auto max-h-[60vh] object-contain rounded-xl transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+            onLoad={handleMediaLoad}
           />
         ) : (
           <div className="relative">
@@ -132,7 +171,8 @@ const Lightbox = ({ item, onClose, onPrev, onNext }: LightboxProps) => {
               controls
               loop
               playsInline
-              className="w-full h-auto max-h-[75vh] object-contain rounded-xl"
+              className={`w-full h-auto max-h-[60vh] object-contain rounded-xl transition-opacity duration-300 ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+              onLoadedData={handleMediaLoad}
             />
             {/* Mute toggle */}
             <button
@@ -158,6 +198,30 @@ const Lightbox = ({ item, onClose, onPrev, onNext }: LightboxProps) => {
           )}
           <p className="text-lg font-medium text-foreground">{item.caption}</p>
         </div>
+      </div>
+
+      {/* Thumbnail strip */}
+      <div 
+        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 overflow-x-auto max-w-[90%] md:max-w-[70%] p-2 bg-muted/50 backdrop-blur-sm rounded-lg scrollbar-hide"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {allItems.map((thumbItem, idx) => (
+          <button
+            key={thumbItem.id}
+            onClick={() => onGoTo(idx)}
+            className={`w-12 h-12 md:w-14 md:h-14 rounded-md overflow-hidden flex-shrink-0 border-2 transition-all ${
+              idx === currentIndex 
+                ? 'border-primary scale-110 shadow-lg' 
+                : 'border-transparent opacity-60 hover:opacity-100'
+            }`}
+          >
+            <img 
+              src={thumbItem.type === 'video' ? thumbItem.thumbnail : thumbItem.src} 
+              alt={thumbItem.caption}
+              className="w-full h-full object-cover" 
+            />
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -265,7 +329,7 @@ const GalleryTile = ({ item, isHovered, onHover, onClick }: GalleryTileProps) =>
         {item.name && (
           <p className="text-xs font-medium text-primary mb-0.5">{item.name}</p>
         )}
-        <p className="text-sm font-medium text-foreground">{item.caption}</p>
+        <p className="text-sm font-medium text-white">{item.caption}</p>
       </div>
 
       {/* Hover border effect */}
@@ -282,9 +346,53 @@ export const CourseStudentGallerySection = () => {
   const [isPausedRow1, setIsPausedRow1] = useState(false);
   const [isPausedRow2, setIsPausedRow2] = useState(false);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  
+  // Drag state for row 1
+  const [isDraggingRow1, setIsDraggingRow1] = useState(false);
+  const [startXRow1, setStartXRow1] = useState(0);
+  const [scrollLeftRow1, setScrollLeftRow1] = useState(0);
+  const row1Ref = useRef<HTMLDivElement>(null);
+  
+  // Drag state for row 2
+  const [isDraggingRow2, setIsDraggingRow2] = useState(false);
+  const [startXRow2, setStartXRow2] = useState(0);
+  const [scrollLeftRow2, setScrollLeftRow2] = useState(0);
+  const row2Ref = useRef<HTMLDivElement>(null);
 
   // Duplicate items for seamless loop
   const duplicatedItems = [...galleryItems, ...galleryItems];
+
+  // Drag handlers
+  const handleMouseDown = (
+    e: React.MouseEvent,
+    rowRef: RefObject<HTMLDivElement>,
+    setIsDragging: (v: boolean) => void,
+    setStartX: (v: number) => void,
+    setScrollLeft: (v: number) => void
+  ) => {
+    if (!rowRef.current) return;
+    setIsDragging(true);
+    setStartX(e.pageX - rowRef.current.offsetLeft);
+    setScrollLeft(rowRef.current.scrollLeft);
+  };
+
+  const handleMouseMove = (
+    e: React.MouseEvent,
+    rowRef: RefObject<HTMLDivElement>,
+    isDragging: boolean,
+    startX: number,
+    scrollLeft: number
+  ) => {
+    if (!isDragging || !rowRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - rowRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    rowRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleMouseUp = (setIsDragging: (v: boolean) => void) => {
+    setIsDragging(false);
+  };
 
   const openLightbox = useCallback((itemId: number) => {
     const index = galleryItems.findIndex(item => item.id === itemId);
@@ -308,6 +416,10 @@ export const CourseStudentGallerySection = () => {
       setLightboxIndex((lightboxIndex + 1) % galleryItems.length);
     }
   }, [lightboxIndex]);
+
+  const goToIndex = useCallback((index: number) => {
+    setLightboxIndex(index);
+  }, []);
 
   return (
     <section 
@@ -339,17 +451,33 @@ export const CourseStudentGallerySection = () => {
 
         {/* Row 1 - scrolls left */}
         <div 
-          className="mb-4"
+          className="mb-4 relative"
           onMouseEnter={() => setIsPausedRow1(true)}
-          onMouseLeave={() => setIsPausedRow1(false)}
+          onMouseLeave={() => {
+            setIsPausedRow1(false);
+            setIsDraggingRow1(false);
+          }}
         >
+          {/* Pause indicator */}
+          {isPausedRow1 && (
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 animate-fade-in pointer-events-none shadow-lg">
+              <Pause className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-foreground">Drag to explore</span>
+            </div>
+          )}
           <div 
-            className={`flex gap-4 ${
+            ref={row1Ref}
+            className={`flex gap-4 overflow-x-auto scrollbar-hide ${
               isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
+            } ${isDraggingRow1 ? 'cursor-grabbing' : 'cursor-grab'}`}
             style={{
-              animation: isPausedRow1 ? 'none' : 'scrollLeft 60s linear infinite',
+              animation: 'scrollLeft 60s linear infinite',
+              animationPlayState: isPausedRow1 ? 'paused' : 'running',
             }}
+            onMouseDown={(e) => handleMouseDown(e, row1Ref, setIsDraggingRow1, setStartXRow1, setScrollLeftRow1)}
+            onMouseMove={(e) => handleMouseMove(e, row1Ref, isDraggingRow1, startXRow1, scrollLeftRow1)}
+            onMouseUp={() => handleMouseUp(setIsDraggingRow1)}
+            onMouseLeave={() => handleMouseUp(setIsDraggingRow1)}
           >
             {duplicatedItems.filter((_, i) => i % 2 === 0).map((item, index) => (
               <GalleryTile
@@ -357,7 +485,7 @@ export const CourseStudentGallerySection = () => {
                 item={item}
                 isHovered={hoveredId === item.id}
                 onHover={setHoveredId}
-                onClick={() => openLightbox(item.id)}
+                onClick={() => !isDraggingRow1 && openLightbox(item.id)}
               />
             ))}
           </div>
@@ -365,16 +493,33 @@ export const CourseStudentGallerySection = () => {
 
         {/* Row 2 - scrolls right */}
         <div 
+          className="relative"
           onMouseEnter={() => setIsPausedRow2(true)}
-          onMouseLeave={() => setIsPausedRow2(false)}
+          onMouseLeave={() => {
+            setIsPausedRow2(false);
+            setIsDraggingRow2(false);
+          }}
         >
+          {/* Pause indicator */}
+          {isPausedRow2 && (
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-background/80 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 animate-fade-in pointer-events-none shadow-lg">
+              <Pause className="w-4 h-4 text-primary" />
+              <span className="text-sm font-medium text-foreground">Drag to explore</span>
+            </div>
+          )}
           <div 
-            className={`flex gap-4 ${
+            ref={row2Ref}
+            className={`flex gap-4 overflow-x-auto scrollbar-hide ${
               isVisible ? 'opacity-100' : 'opacity-0'
-            }`}
+            } ${isDraggingRow2 ? 'cursor-grabbing' : 'cursor-grab'}`}
             style={{
-              animation: isPausedRow2 ? 'none' : 'scrollRight 55s linear infinite',
+              animation: 'scrollRight 55s linear infinite',
+              animationPlayState: isPausedRow2 ? 'paused' : 'running',
             }}
+            onMouseDown={(e) => handleMouseDown(e, row2Ref, setIsDraggingRow2, setStartXRow2, setScrollLeftRow2)}
+            onMouseMove={(e) => handleMouseMove(e, row2Ref, isDraggingRow2, startXRow2, scrollLeftRow2)}
+            onMouseUp={() => handleMouseUp(setIsDraggingRow2)}
+            onMouseLeave={() => handleMouseUp(setIsDraggingRow2)}
           >
             {duplicatedItems.filter((_, i) => i % 2 === 1).map((item, index) => (
               <GalleryTile
@@ -382,7 +527,7 @@ export const CourseStudentGallerySection = () => {
                 item={item}
                 isHovered={hoveredId === item.id}
                 onHover={setHoveredId}
-                onClick={() => openLightbox(item.id)}
+                onClick={() => !isDraggingRow2 && openLightbox(item.id)}
               />
             ))}
           </div>
@@ -393,9 +538,13 @@ export const CourseStudentGallerySection = () => {
       {lightboxIndex !== null && (
         <Lightbox
           item={galleryItems[lightboxIndex]}
+          currentIndex={lightboxIndex}
+          totalItems={galleryItems.length}
+          allItems={galleryItems}
           onClose={closeLightbox}
           onPrev={goToPrev}
           onNext={goToNext}
+          onGoTo={goToIndex}
         />
       )}
 
@@ -408,6 +557,13 @@ export const CourseStudentGallerySection = () => {
         @keyframes scrollRight {
           0% { transform: translateX(-50%); }
           100% { transform: translateX(0); }
+        }
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </section>
