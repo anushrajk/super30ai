@@ -2,6 +2,7 @@ import { useRef, useState, useEffect, useCallback, RefObject } from "react";
 import { Play, Volume2, VolumeX, X, ChevronLeft, ChevronRight, Pause, Loader2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { OptimizedImage } from "@/components/common/OptimizedImage";
 
 // Import gallery images
 import studentsStudying from "@/assets/gallery/students-studying.jpg";
@@ -276,12 +277,14 @@ const GalleryTile = ({ item, isHovered, onHover, onClick }: GalleryTileProps) =>
       onClick={onClick}
     >
       {/* Background Image/Thumbnail */}
-      <img
-        src={item.type === 'video' ? item.thumbnail : item.src}
+      <OptimizedImage
+        src={item.type === 'video' ? item.thumbnail || item.src : item.src}
         alt={item.caption}
-        className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 ${
+        containerClassName="absolute inset-0"
+        className={`transition-transform duration-500 ${
           isHovered ? 'scale-110' : 'scale-100'
         }`}
+        aspectRatio="auto"
       />
 
       {/* Video (hidden until hover) */}

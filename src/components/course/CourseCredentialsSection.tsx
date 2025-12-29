@@ -1,6 +1,7 @@
 import { Award, Building2, Users, Wrench, GraduationCap, Star } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { OptimizedImage } from "@/components/common/OptimizedImage";
 
 // Import instructor images
 import aishaPatelImg from "@/assets/instructors/aisha-patel.jpg";
@@ -123,11 +124,14 @@ export const CourseCredentialsSection = () => {
             {instructors.map((instructor, index) => (
               <Card key={index} className="bg-card border-border/50 hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300">
                 <CardContent className="p-6 text-center">
-                  <img 
-                    src={instructor.image}
-                    alt={instructor.name}
-                    className="w-20 h-20 mx-auto rounded-full border-2 border-[hsl(var(--brand-orange))]/30 mb-4 object-cover"
-                  />
+                  <div className="w-20 h-20 mx-auto mb-4">
+                    <OptimizedImage
+                      src={instructor.image}
+                      alt={instructor.name}
+                      containerClassName="w-20 h-20 rounded-full border-2 border-[hsl(var(--brand-orange))]/30"
+                      aspectRatio="1/1"
+                    />
+                  </div>
                   <h4 className="font-semibold text-foreground">{instructor.name}</h4>
                   <p className="text-sm text-[hsl(var(--brand-orange))] font-medium mb-2">{instructor.role}</p>
                   <p className="text-xs text-muted-foreground mb-2">{instructor.credentials}</p>
