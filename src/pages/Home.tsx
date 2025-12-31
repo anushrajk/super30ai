@@ -99,7 +99,7 @@ const Home = () => {
                     </defs>
                   </svg>
                 </span>{" "}
-                Marketing
+                Market
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
