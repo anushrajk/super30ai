@@ -103,7 +103,7 @@ const Home = () => {
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                We combine AI SEO and Performance Marketing to deliver predictable growth — not vanity metrics. Trusted by 300+ businesses across India.
+                We combine AI-driven SEO and performance marketing to deliver predictable business growth — not vanity metrics. Trusted by 300+ brands across India.
               </p>
 
               {/* Platform Logos */}
