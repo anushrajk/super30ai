@@ -17,7 +17,7 @@ import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerCli
 const services = [{
   icon: Bot,
   title: "AI SEO Services",
-  description: "Dominate Google, AI Overviews, and LLM answers with AI-first SEO strategies",
+  description: "Dominate Google Search, AI Overviews, and LLM answers with AI-first SEO strategies for scalable growth.",
   features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO"],
   href: "/ai-seo",
   color: "from-orange-500 to-orange-600",
