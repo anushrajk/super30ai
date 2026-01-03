@@ -186,7 +186,7 @@ const Home = () => {
               Why Choose The Super 30?
             </h2>
             <p className="text-lg text-muted-foreground">
-              We're not just another agency — we're your growth partners.
+              We’re not just another agency — we’re your growth marketing partners.
             </p>
           </div>
 
