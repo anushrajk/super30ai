@@ -18,7 +18,7 @@ const services = [{
   icon: Bot,
   title: "AI SEO Services",
   description: "Dominate Google Search, AI Overviews, and LLM answers with AI-first SEO strategies for scalable growth.",
-  features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO"],
+  features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO","Entity & Semantic SEO","Generative Search Optimization"],
   href: "/ai-seo",
   color: "from-orange-500 to-orange-600",
   glowColor: "orange"
