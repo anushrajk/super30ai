@@ -215,7 +215,7 @@ const Home = () => {
               Two Powerful Services, One Goal
             </h2>
             <p className="text-lg text-muted-foreground">
-              Whether you need organic AI visibility or paid advertising ROI, we've got you covered.
+              Whether you need AI-driven organic visibility or ROI-focused paid advertising, we’ve got you covered.
             </p>
           </div>
 
