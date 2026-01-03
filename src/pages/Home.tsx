@@ -26,7 +26,7 @@ const services = [{
   icon: Target,
   title: "Performance Marketing",
   description: "ROI-driven paid ads and performance marketing that turn ad spend into predictable revenue.",
-  features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Programmatic"],
+  features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Programmatic Advertising","YouTube Ads","Remarketing & Retargeting"],
   href: "/performance-marketing",
   color: "from-blue-500 to-blue-600",
   glowColor: "blue"
