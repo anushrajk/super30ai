@@ -212,7 +212,7 @@ const Home = () => {
               Our Services
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Two Powerful Services, One Goal
+              SEO & Performance Marketing — Two Services, One Growth Goal
             </h2>
             <p className="text-lg text-muted-foreground">
               Whether you need AI-driven organic visibility or ROI-focused paid advertising, we’ve got you covered.
