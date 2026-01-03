@@ -25,7 +25,7 @@ const services = [{
 }, {
   icon: Target,
   title: "Performance Marketing",
-  description: "ROI-driven paid advertising that turns ad spend into predictable revenue",
+  description: "ROI-driven paid ads and performance marketing that turn ad spend into predictable revenue.",
   features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Programmatic"],
   href: "/performance-marketing",
   color: "from-blue-500 to-blue-600",
