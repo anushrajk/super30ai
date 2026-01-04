@@ -84,10 +84,10 @@ const Home = () => {
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
-                Grow Your Business With <br>{" "}
+                Grow Your Business With {" "}
                 <span className="relative">
                   <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
-                    AI-Powered SEO Optimization
+                    <br>AI-</br>Powered SEO Optimization
                   </span>
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                     <path d="M2 10C50 4 150 4 198 10" stroke="url(#underline-gradient)" strokeWidth="3" strokeLinecap="round" />
