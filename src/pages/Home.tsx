@@ -87,7 +87,7 @@ const Home = () => {
                 Grow Your Business With {" "}
                 <span className="relative">
                   <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
-                    <br>AI-</br>Powered SEO Optimization
+                    <br>AI-Powered SEO Optimization
                   </span>
                   <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
                     <path d="M2 10C50 4 150 4 198 10" stroke="url(#underline-gradient)" strokeWidth="3" strokeLinecap="round" />
