@@ -84,7 +84,7 @@ const Home = () => {
 
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
-                Grow Your Business With{" "}
+                Grow Your Business With <br>{" "}
                 <span className="relative">
                   <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
                     AI-Powered SEO Optimization
