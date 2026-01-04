@@ -1,17 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import { Star } from "lucide-react";
 
+// Import client logos
+import magicbricksLogo from "@/assets/clients/magicbricks.png";
+import mamaearthLogo from "@/assets/clients/mamaearth.png";
+import upgradLogo from "@/assets/clients/upgrad.png";
+import tata1mgLogo from "@/assets/clients/tata1mg.png";
+import shriramPropertiesLogo from "@/assets/clients/shriram-properties.png";
+import lancesoftLogo from "@/assets/clients/lancesoft.png";
+
 const clientLogos = [
-  { name: "TechFlow", initials: "TF", industry: "SaaS" },
-  { name: "DataSync", initials: "DS", industry: "Enterprise" },
-  { name: "CloudNine", initials: "C9", industry: "Cloud" },
-  { name: "ScaleUp", initials: "SU", industry: "Fintech" },
-  { name: "GrowthIQ", initials: "GQ", industry: "Analytics" },
-  { name: "VentureX", initials: "VX", industry: "VC" },
-  { name: "NexGen", initials: "NG", industry: "AI/ML" },
-  { name: "AlphaAI", initials: "AA", industry: "Automation" },
-  { name: "ByteWise", initials: "BW", industry: "Security" },
-  { name: "InnoTech", initials: "IT", industry: "IoT" },
+  { name: "Magicbricks", logo: magicbricksLogo, industry: "Real Estate" },
+  { name: "Mamaearth", logo: mamaearthLogo, industry: "D2C / E-commerce" },
+  { name: "upGrad", logo: upgradLogo, industry: "EdTech" },
+  { name: "Tata 1mg", logo: tata1mgLogo, industry: "Healthcare" },
+  { name: "Shriram Properties", logo: shriramPropertiesLogo, industry: "Real Estate" },
+  { name: "Lancesoft", logo: lancesoftLogo, industry: "Healthcare" },
 ];
 
 export const ClientLogosSection = () => {
@@ -103,8 +107,8 @@ export const ClientLogosSection = () => {
                 key={index}
                 className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-white/5 rounded-xl border border-white/10 transition-colors duration-200 hover:border-brand/50"
               >
-                <div className="w-10 h-10 bg-gradient-to-br from-white/10 to-white/5 rounded-lg flex items-center justify-center border border-white/10">
-                  <span className="text-white font-bold text-sm">{client.initials}</span>
+                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
+                  <img src={client.logo} alt={client.name} className="w-8 h-8 object-contain" />
                 </div>
                 <div>
                   <span className="text-white font-medium whitespace-nowrap block text-sm">{client.name}</span>
