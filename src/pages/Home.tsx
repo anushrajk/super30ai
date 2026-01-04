@@ -87,30 +87,8 @@ const Home = () => {
   Grow Your Business With
   <br />
 
-  <span className="relative inline-block mt-2">
-    <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
-      AI-Powered SEO Optimization
-    </span>
-
-    <svg
-      className="absolute -bottom-2 left-0 w-full"
-      viewBox="0 0 200 12"
-      fill="none"
-      preserveAspectRatio="none"
-    >
-      <path
-        d="M2 10C50 4 150 4 198 10"
-        stroke="url(#underline-gradient)"
-        strokeWidth="3"
-        strokeLinecap="round"
-      />
-      <defs>
-        <linearGradient id="underline-gradient" x1="0" y1="0" x2="200" y2="0">
-          <stop stopColor="#f97316" />
-          <stop offset="1" stopColor="#ea580c" />
-        </linearGradient>
-      </defs>
-    </svg>
+  <span className="mt-2 block bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+    AI-Powered SEO Optimization
   </span>
 
   <br />
