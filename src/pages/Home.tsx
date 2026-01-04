@@ -83,16 +83,17 @@ const Home = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-foreground leading-[1.05]">
   Grow Your Business With
   <br />
 
-  <span className="mt-2 block bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+  <span className="block bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
     AI-Powered SEO Optimization
   </span>
 
-  <br />
-  Services
+  <span className="block mt-0">
+    Services
+  </span>
 </h1>
 
 
