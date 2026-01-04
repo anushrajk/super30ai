@@ -20,15 +20,15 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const audiences = [
-  { icon: Building2, title: "B2B SaaS", description: "Software companies seeking qualified leads through AI-powered visibility" },
-  { icon: ShoppingCart, title: "E-commerce", description: "Online stores wanting AI visibility and high-converting campaigns" },
-  { icon: Briefcase, title: "Professional Services", description: "Consultants and agencies looking to dominate their niche" },
-  { icon: GraduationCap, title: "EdTech", description: "Educational platforms and courses reaching the right audience" },
-  { icon: Stethoscope, title: "Healthcare", description: "Medical and wellness brands building trust online" },
-  { icon: Rocket, title: "Tech Startups", description: "Innovative companies scaling fast with data-driven marketing" },
-  { icon: HomeIcon, title: "Real Estate", description: "Property developers and brokers generating quality leads" },
-  { icon: Scale, title: "Legal Services", description: "Law firms and legal consultants attracting ideal clients" },
-  { icon: Utensils, title: "Hospitality & Travel", description: "Hotels, restaurants, and travel agencies driving bookings" },
+  { icon: Building2, title: "B2B SaaS", description: "AI-powered SEO and performance marketing for SaaS teams generating qualified leads and pipeline growth." },
+  { icon: ShoppingCart, title: "E-commerce", description: "AI-driven eCommerce SEO and paid marketing to boost store visibility, conversions, and ROAS." },
+  { icon: Briefcase, title: "Professional Services", description: "AI-first professional services SEO and performance marketing to build authority and inbound demand." },
+  { icon: GraduationCap, title: "EdTech", description: "AI-powered EdTech SEO and paid campaigns helping courses reach the right learners at scale." },
+  { icon: Stethoscope, title: "Healthcare", description: "Compliance-ready healthcare SEO and performance marketing building trust and patient acquisition." },
+  { icon: Rocket, title: "Tech Startups", description: "AI-led startup SEO and growth marketing for fast-scaling companies driving data-backed demand." },
+  { icon: HomeIcon, title: "Real Estate", description: "AI-powered real estate SEO and paid ads generating high-quality property leads." },
+  { icon: Scale, title: "Legal Services", description: "AI-first legal SEO and performance marketing helping law firms attract high-intent clients." },
+  { icon: Utensils, title: "Hospitality & Travel", description: "AI-driven hospitality SEO and travel marketing increasing bookings, demand, and visibility." },
 ];
 
 export const WhoIsThisForSection = () => {
