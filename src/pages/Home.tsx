@@ -83,27 +83,17 @@ const Home = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-bold text-foreground leading-[1.05]">
-  {/* Slightly bigger intro */}
-  <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-1">
-    Grow Your Business With
-  </span>
-
-  {/* Main hero line */}
-  <span className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-    <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
-      AI-Powered SEO Optimization
-    </span>{" "}
-    <span className="text-foreground">
-      Services
-    </span>
-  </span>
-</h1>
-
-
-
-
-
+              <h1 className="font-bold text-foreground leading-tight tracking-tight">
+                <span className="block text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-semibold mb-1 md:mb-2">
+                  Grow Your Business With
+                </span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
+                  AI-Powered SEO
+                </span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                  Optimization Services
+                </span>
+              </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
                 We combine AI-driven SEO and performance marketing to deliver predictable business growth — not vanity metrics. Trusted by 300+ brands across India.
@@ -189,7 +179,7 @@ const Home = () => {
               Why Choose The Super 30?
             </h2>
             <p className="text-lg text-muted-foreground">
-              We’re not just another agency — we’re your growth marketing partners.
+              We're not just another agency — we're your growth marketing partners.
             </p>
           </div>
 
@@ -218,7 +208,7 @@ const Home = () => {
               Two Powerful Services, One Goal
             </h2>
             <p className="text-lg text-muted-foreground">
-              Whether you need AI-driven organic visibility or ROI-focused paid advertising, we’ve got you covered.
+              Whether you need AI-driven organic visibility or ROI-focused paid advertising, we've got you covered.
             </p>
           </div>
 
