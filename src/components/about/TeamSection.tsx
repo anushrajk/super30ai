@@ -58,7 +58,7 @@ export const TeamSection = () => {
           {teamMembers.map((member, index) => (
             <BentoCard key={index} className="group text-center">
               {/* Avatar */}
-              <div className="relative w-16 h-16 md:w-20 md:h-20 bg-brand-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg shadow-brand/20">
+              <div className="relative w-16 h-16 md:w-20 md:h-20 bg-brand-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                 <span className="text-xl md:text-2xl font-bold text-white">{member.avatar}</span>
                 {/* Online indicator */}
                 <div className="absolute bottom-1 right-1 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-background" />

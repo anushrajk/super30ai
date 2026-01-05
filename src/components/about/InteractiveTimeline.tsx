@@ -86,7 +86,7 @@ export const InteractiveTimeline = () => {
                     onClick={() => setExpandedIndex(isExpanded ? null : index)}
                     className={`cursor-pointer bento-card transition-all duration-500 overflow-hidden ${
                       isExpanded
-                        ? "border-brand/50 shadow-xl shadow-brand/10"
+                        ? "border-brand/50 shadow-xl"
                         : "border-border/50 hover:border-brand/30 hover:shadow-lg"
                     }`}
                   >

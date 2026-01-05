@@ -81,7 +81,7 @@ export const ProblemSection = () => {
           <Button 
             onClick={scrollToForm}
             size="lg"
-            className="bg-brand-gradient hover:opacity-90 text-white shadow-brand hover:shadow-brand-lg hover:scale-105 transition-all duration-300"
+            className="bg-brand-gradient hover:opacity-90 text-white hover:scale-105 transition-all duration-300"
           >
             See how your site looks to AI
             <ArrowRight className="w-4 h-4 ml-2" />

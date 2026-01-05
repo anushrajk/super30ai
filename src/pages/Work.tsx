@@ -221,7 +221,7 @@ const Work = () => {
                   onClick={() => setActiveFilter(filter)}
                   className={`px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
                     activeFilter === filter
-                      ? "bg-brand-gradient text-white shadow-lg shadow-brand/30"
+                      ? "bg-brand-gradient text-white shadow-lg"
                       : "bg-muted text-muted-foreground hover:bg-muted/80"
                   }`}
                 >
@@ -235,7 +235,7 @@ const Work = () => {
               {filteredStudies.map((study) => (
                 <Card
                   key={study.id}
-                  className="bento-card group overflow-hidden hover:shadow-brand transition-shadow duration-300"
+                  className="bento-card group overflow-hidden transition-shadow duration-300"
                 >
                   {/* Image placeholder */}
                   <div className="h-40 md:h-48 bg-brand-gradient flex items-center justify-center relative overflow-hidden">

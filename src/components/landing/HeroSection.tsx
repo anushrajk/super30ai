@@ -48,14 +48,12 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
 
             {/* H1 and Description */}
             <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                When AI Decides Who Ranks,{" "}
-                <span className="relative">
-                  <span className="text-brand-gradient">
-                    We Decide Who Wins.
-                  </span>
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
+                <span className="block">Grow Your Business With</span>
+                <span className="relative block">
+                  <span className="text-brand-gradient">AI-Powered SEO</span>
                 </span>
+                <span className="block">Optimization Services</span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 We help founders dominate Google, AI Overviews, and LLM answers — with{" "}
@@ -70,7 +68,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                   key={index}
                   className="flex items-center gap-3 group cursor-default"
                 >
-                  <div className="w-8 h-8 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300 shadow-brand">
+                  <div className="w-8 h-8 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
                     <signal.icon className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>

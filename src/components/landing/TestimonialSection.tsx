@@ -212,7 +212,7 @@ export const TestimonialSection = () => {
 
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-brand to-orange-600 rounded-2xl flex items-center justify-center text-white text-lg md:text-xl font-bold shadow-lg shadow-brand/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
+                  <div className="w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-brand to-orange-600 rounded-2xl flex items-center justify-center text-white text-lg md:text-xl font-bold shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
                     {currentTestimonial.initials}
                   </div>
                   <div>
@@ -239,7 +239,7 @@ export const TestimonialSection = () => {
 
               {/* Result Badge */}
               <div className="mt-8 pt-8 border-t border-white/10 flex justify-center">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand to-orange-600 text-white px-8 py-4 rounded-2xl shadow-lg shadow-brand/30 hover:shadow-brand/50 hover:scale-105 hover:-translate-y-1 transition-all duration-500 cursor-default">
+                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-brand to-orange-600 text-white px-8 py-4 rounded-2xl shadow-lg hover:scale-105 hover:-translate-y-1 transition-all duration-500 cursor-default">
                   <TrendingUp className="w-5 h-5" />
                   <span className="font-bold text-lg">{currentTestimonial.result}</span>
                 </div>
