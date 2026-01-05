@@ -48,9 +48,8 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
 
             {/* H1 and Description */}
             <div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                <span className="inline">Grow Your Business</span>{" "}
-                <span className="inline">With</span>
+            <h1 className="font-bold text-foreground leading-tight mb-4 md:mb-5">
+                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Grow Your Business With</span>
                 <span className="relative block">
                   <span className="text-brand-gradient">AI-Powered SEO</span>
                 </span>
