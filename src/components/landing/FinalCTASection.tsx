@@ -66,7 +66,7 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
                     className={`flex items-start gap-3 justify-center lg:justify-start group transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                     style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                   >
-                    <div className="w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center shadow-brand flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">
                       <Check className="w-3.5 h-3.5 text-white" />
                     </div>
                     <span className={`text-left ${isDark ? 'text-white' : 'text-foreground'}`}>{benefit}</span>

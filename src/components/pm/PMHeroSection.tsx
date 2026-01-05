@@ -73,7 +73,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
                   key={index}
                   className="flex items-center gap-3 group cursor-default"
                 >
-                  <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-gradient group-hover:scale-110 transition-all duration-300 shadow-md shadow-brand/20">
+                  <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:bg-brand-gradient group-hover:scale-110 transition-all duration-300 shadow-md">
                     <signal.icon className="w-3.5 h-3.5 text-brand group-hover:text-white transition-colors" />
                   </div>
                   <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>

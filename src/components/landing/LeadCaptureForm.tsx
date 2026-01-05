@@ -130,7 +130,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
           required
           className="flex-1 bg-background border-input h-12"
         />
-        <Button type="submit" disabled={loading} className="h-12 bg-brand-gradient hover:opacity-90 text-white px-6 shadow-brand hover:shadow-brand-lg hover:scale-[1.02] transition-all duration-300">
+        <Button type="submit" disabled={loading} className="h-12 bg-brand-gradient hover:opacity-90 text-white px-6 hover:scale-[1.02] transition-all duration-300">
           {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Get Free Audit"}
           {!loading && <Sparkles className="w-4 h-4 ml-2" />}
         </Button>
@@ -139,7 +139,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
   }
 
   return (
-    <Card className="glass border-2 border-brand/20 shadow-2xl shadow-brand/10 overflow-hidden relative group rounded-2xl">
+    <Card className="glass border-2 border-brand/20 shadow-2xl overflow-hidden relative group rounded-2xl">
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand/30 via-transparent to-brand-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
@@ -302,7 +302,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
           <Button 
             type="submit" 
             disabled={loading || !canSubmit}
-            className="w-full h-14 bg-brand-gradient hover:opacity-90 text-white text-lg font-semibold shadow-brand-lg hover:shadow-glow hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-brand-gradient hover:opacity-90 text-white text-lg font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>

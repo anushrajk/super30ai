@@ -166,9 +166,6 @@ export const SEOBenefitsSection = () => {
 
         {/* Scrollable container with arrows */}
         <div className="relative group/carousel">
-          {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-4 w-8 md:w-16 bg-gradient-to-r from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-4 w-8 md:w-16 bg-gradient-to-l from-[#0a0a0a] to-transparent z-10 pointer-events-none" />
 
           {/* Left Arrow */}
           <Button
@@ -205,8 +202,7 @@ export const SEOBenefitsSection = () => {
                 <CardContent className="p-5 md:p-6 relative">
                   {/* Solid color icon */}
                   <div className="relative mb-4">
-                    <div className={`absolute inset-0 w-14 h-14 ${iconColors[index % iconColors.length].glow} rounded-xl blur-xl transition-all duration-300`} />
-                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 group-hover:shadow-xl transition-all duration-300`}>
+                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 transition-all duration-300`}>
                       <benefit.icon className={`w-7 h-7 ${iconColors[index % iconColors.length].text}`} />
                     </div>
                   </div>

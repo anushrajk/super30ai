@@ -81,7 +81,7 @@ export const BentoIcon = ({ children, className, size = "md" }: BentoIconProps) 
       "icon-bg-glow rounded-2xl flex items-center justify-center",
       "group-hover:bg-brand-gradient transition-all duration-300",
       "group-hover:scale-110 group-hover:rotate-3",
-      "shadow-lg group-hover:shadow-brand",
+      "shadow-lg",
       className
     )}>
       {children}

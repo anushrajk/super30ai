@@ -176,7 +176,7 @@ export const ServicesSection = () => {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 {intentMappingIcons.map((item, i) => <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
                     <div className="flex flex-col items-center gap-2">
-                      <div className={`w-14 h-14 sm:w-18 sm:h-18 ${i === 2 ? 'bg-brand-gradient shadow-brand' : 'bg-brand/20'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
+                      <div className={`w-14 h-14 sm:w-18 sm:h-18 ${i === 2 ? 'bg-brand-gradient' : 'bg-brand/20'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
                         <item.Icon className={`w-7 h-7 sm:w-9 sm:h-9 ${i === 2 ? 'text-white' : 'text-brand'}`} />
                       </div>
                       <span className="text-xs text-gray-400 font-medium">{item.label}</span>
@@ -233,12 +233,12 @@ export const ServicesSection = () => {
                 animationDelay: `${index * 100}ms`
               }}>
                     {/* Step number badge */}
-                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center text-white text-xs font-bold shadow-brand z-20 group-hover:scale-125 transition-transform duration-300">
+                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center text-white text-xs font-bold z-20 group-hover:scale-125 transition-transform duration-300">
                       {index + 1}
                     </div>
                     
                     {/* Card with enhanced interactions */}
-                    <Card className="bento-card group-hover:border-brand/50 group-hover:shadow-brand transition-all duration-500 h-full overflow-hidden">
+                    <Card className="bento-card group-hover:border-brand/50 transition-all duration-500 h-full overflow-hidden">
                       {/* Hover gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:via-brand/10 group-hover:to-brand/5 transition-all duration-500" />
                       
@@ -251,7 +251,7 @@ export const ServicesSection = () => {
                       }} />
                           
                           {/* Icon background with hover effects */}
-                          <div className="relative w-16 h-16 bg-brand/10 group-hover:bg-brand-gradient rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg group-hover:shadow-brand">
+                          <div className="relative w-16 h-16 bg-brand/10 group-hover:bg-brand-gradient rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg">
                             <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
                           </div>
                         </div>

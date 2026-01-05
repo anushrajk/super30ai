@@ -475,7 +475,7 @@ const Contact = () => {
                     id="btn-contact-form-submit"
                     name="submit-contact-form"
                     type="submit"
-                    className="w-full bg-brand-gradient hover:opacity-90 text-white shadow-lg shadow-brand/30"
+                    className="w-full bg-brand-gradient hover:opacity-90 text-white shadow-lg"
                     disabled={loading}
                   >
                     {loading ? (
