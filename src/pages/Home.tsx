@@ -87,10 +87,16 @@ const Home = () => {
   Grow Your Business With
   <br />
 
-  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent whitespace-nowrap">
-    AI-Powered SEO Optimization Services
+  <span className="bg-gradient-to-r from-orange-500 via-orange-600 to-orange-500 bg-clip-text text-transparent">
+    AI-Powered SEO Optimization
+  </span>
+  <br />
+
+  <span className="text-foreground">
+    Services
   </span>
 </h1>
+
 
 
 
