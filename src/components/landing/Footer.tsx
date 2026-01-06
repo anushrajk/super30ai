@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-import super30Logo from "@/assets/super30-logo.png";
+import s30Logo from "@/assets/s30-logo.svg";
 
 const services = [
   { name: "AI SEO Services", href: "/ai-seo" },
@@ -53,9 +53,9 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
           <div className="col-span-2 md:col-span-1">
             <Link to="/" className="flex items-center mb-4 group">
               <img 
-                src={super30Logo} 
+                src={s30Logo} 
                 alt="Super 30 Marketing Agency" 
-                className="h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+                className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
