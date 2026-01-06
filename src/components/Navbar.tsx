@@ -72,7 +72,7 @@ export const Navbar = () => {
             <img 
               src={s30Logo} 
               alt="Super 30 Marketing Agency" 
-              className="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+              className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
