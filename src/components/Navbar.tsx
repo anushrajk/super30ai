@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
-import super30Logo from "@/assets/super30-logo.png";
+import s30Logo from "@/assets/s30-logo.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -70,9 +70,9 @@ export const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center group">
             <img 
-              src={super30Logo} 
+              src={s30Logo} 
               alt="Super 30 Marketing Agency" 
-              className="h-10 md:h-12 w-auto group-hover:scale-105 transition-transform duration-300"
+              className="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300"
             />
           </Link>
 
