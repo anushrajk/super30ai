@@ -110,9 +110,9 @@ export const OurWorkCarousel = () => {
                 key={study.id}
                 className="flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden"
               >
-                <div className={`h-36 ${study.image} flex items-center justify-center relative`}>
+                <div className={`h-36 ${study.image} flex items-center justify-center relative overflow-hidden`}>
                   {study.logo ? (
-                    <img src={study.logo} alt={study.title} className="w-24 h-24 object-contain" />
+                    <img src={study.logo} alt={study.title} className="w-full h-full object-cover" />
                   ) : (
                     <span className="text-white/80 text-5xl font-bold opacity-30">
                       {study.title[0]}
