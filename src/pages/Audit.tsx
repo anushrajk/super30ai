@@ -287,26 +287,13 @@ const Audit = () => {
       setAuditResults(results);
       setAuditData(results);
 
-      const { data: auditRecord, error: insertError } = await supabase.from('audit_results').insert({
-        lead_id: leadId,
-        seo_score: analysisData.seo_score,
-        performance_score: analysisData.performance_score,
-        accessibility_score: analysisData.accessibility_score,
-        best_practices_score: analysisData.best_practices_score,
-        ai_visibility_score: analysisData.ai_visibility_score,
-        technical_issues: analysisData.technical_issues,
-        opportunities: analysisData.opportunities,
-        diagnostics: analysisData.diagnostics,
-        analyzed_url: analysisData.analyzed_url,
-        analysis_timestamp: analysisData.analysis_timestamp,
-        data_source: analysisData.data_source
-      }).select().single();
-
-      if (auditRecord) {
-        setCurrentAuditId(auditRecord.id);
+      // Audit record is now saved server-side by the analyze-seo edge function
+      // Use the audit ID returned from the analysis if available
+      if (analysisData.audit_id) {
+        setCurrentAuditId(analysisData.audit_id);
       }
 
-      runCompetitorAnalysis(websiteUrl, results, leadId, auditRecord?.id);
+      runCompetitorAnalysis(websiteUrl, results, leadId, analysisData.audit_id);
 
     } catch (error: any) {
       console.error("Analysis error:", error);

@@ -14,6 +14,9 @@ interface LeadData {
   monthly_revenue?: string;
   phone?: string;
   company_name?: string;
+  service_type?: string;
+  business_type?: string;
+  preferred_platforms?: string[];
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -47,7 +50,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     const body: LeadData & { lead_id?: string } = await req.json();
-    const { email, website_url, step, role, monthly_revenue, phone, company_name, lead_id } = body;
+    const { email, website_url, step, role, monthly_revenue, phone, company_name, lead_id, service_type, business_type, preferred_platforms } = body;
 
     // Basic validation
     if (!email || !website_url) {
@@ -100,7 +103,15 @@ const handler = async (req: Request): Promise<Response> => {
     let result;
 
     if (lead_id) {
-      // Update existing lead
+      // Validate UUID format for lead_id
+      if (!uuidRegex.test(lead_id)) {
+        return new Response(
+          JSON.stringify({ error: "Invalid lead ID format" }),
+          { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+
+      // Update existing lead - validate session ownership
       const { data, error } = await supabase
         .from("leads")
         .update({
@@ -111,6 +122,9 @@ const handler = async (req: Request): Promise<Response> => {
           monthly_revenue,
           phone,
           company_name,
+          service_type,
+          business_type,
+          preferred_platforms,
           updated_at: new Date().toISOString(),
         })
         .eq("id", lead_id)
@@ -139,6 +153,9 @@ const handler = async (req: Request): Promise<Response> => {
           monthly_revenue,
           phone,
           company_name,
+          service_type,
+          business_type,
+          preferred_platforms,
           session_id: sessionId,
         })
         .select()

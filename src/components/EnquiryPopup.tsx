@@ -25,6 +25,7 @@ import {
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import { useSession } from "@/hooks/useSession";
 
 interface EnquiryPopupProps {
   open: boolean;
@@ -60,6 +61,7 @@ const validatePhone = (phone: string): boolean => {
 
 export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
   const navigate = useNavigate();
+  const { session } = useSession();
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -96,18 +98,21 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
     setLoading(true);
 
     try {
-      // Create lead in database (using a placeholder URL since enquiry doesn't need website)
-      const { data, error } = await supabase.from("leads").insert({
-        email,
-        website_url: "enquiry-form",
-        phone: phone ? `+91${phone}` : null,
-        role: role || null,
-        service_type: serviceInterest || null,
-        company_name: name,
-        step: 1,
-      }).select().single();
+      // Create lead via secure edge function with rate limiting and validation
+      const { data, error } = await supabase.functions.invoke('create-lead', {
+        body: {
+          email: email.trim(),
+          website_url: "enquiry-form",
+          phone: phone ? `+91${phone}` : null,
+          role: role || null,
+          service_type: serviceInterest || null,
+          company_name: name.trim(),
+        },
+        headers: session?.id ? { 'x-session-id': session.id } : undefined
+      });
 
       if (error) throw error;
+      if (data?.error) throw new Error(data.error);
 
       toast.success("Thank you for your enquiry!");
       onOpenChange(false);
