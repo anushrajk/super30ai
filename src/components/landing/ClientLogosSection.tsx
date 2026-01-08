@@ -107,8 +107,8 @@ export const ClientLogosSection = () => {
                 key={index}
                 className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-white/5 rounded-xl border border-white/10 transition-colors duration-200 hover:border-brand/50"
               >
-                <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden">
-                  <img src={client.logo} alt={client.name} className="w-8 h-8 object-contain" />
+                <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
+                  <img src={client.logo} alt={client.name} className="w-12 h-12 object-cover rounded-lg" />
                 </div>
                 <div>
                   <span className="text-white font-medium whitespace-nowrap block text-sm">{client.name}</span>
