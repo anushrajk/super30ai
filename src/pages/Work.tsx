@@ -254,11 +254,11 @@ const Work = () => {
                   className="bento-card group overflow-hidden transition-shadow duration-300 cursor-pointer hover:shadow-xl"
                 >
                   {/* Logo Section */}
-                  <div className="h-40 md:h-48 bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center relative overflow-hidden p-6">
+                  <div className="h-40 md:h-48 bg-gradient-to-br from-muted to-muted/50 relative overflow-hidden">
                     <img 
                       src={study.logo} 
                       alt={study.title}
-                      className="h-16 md:h-20 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                     />
                     {/* Hover overlay */}
                     <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
