@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 
 const caseStudies = [
   {
     id: 1,
-    title: "E-commerce Brand",
-    industry: "Fashion & Apparel",
-    image: "bg-gradient-to-br from-pink-500 to-rose-600",
+    title: "Magicbricks",
+    industry: "Real Estate",
+    image: "bg-gradient-to-br from-rose-600 to-rose-700",
+    logo: magicbricksLogo,
   },
   {
     id: 2,
@@ -109,9 +111,13 @@ export const OurWorkCarousel = () => {
                 className="flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden"
               >
                 <div className={`h-36 ${study.image} flex items-center justify-center relative`}>
-                  <span className="text-white/80 text-5xl font-bold opacity-30">
-                    {study.title[0]}
-                  </span>
+                  {study.logo ? (
+                    <img src={study.logo} alt={study.title} className="w-24 h-24 object-contain" />
+                  ) : (
+                    <span className="text-white/80 text-5xl font-bold opacity-30">
+                      {study.title[0]}
+                    </span>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
