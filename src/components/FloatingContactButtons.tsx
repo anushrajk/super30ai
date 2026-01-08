@@ -1,10 +1,10 @@
 import { Phone, MessageCircle } from "lucide-react";
 
-const PHONE_NUMBER = "+917353252526";
+const PHONE_NUMBER = "+918904150555";
 const WHATSAPP_MESSAGE = "Hi! I'm interested in your marketing services.";
 
 export const FloatingContactButtons = () => {
-  const whatsappUrl = `https://wa.me/917353252526?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+  const whatsappUrl = `https://wa.me/918904150555?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
 
   return (
     <div className="fixed bottom-24 left-6 z-50 flex flex-col gap-3">

@@ -131,13 +131,13 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
               </li>
               <li>
                 <a
-                  href="tel:+917353252526"
+                  href="tel:+918904150555"
                   className="flex items-start gap-3 text-gray-400 hover:text-[hsl(var(--brand-orange))] transition-colors duration-300 text-sm group"
                 >
                   <span className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0 group-hover:bg-[hsl(var(--brand-orange))]/20 group-hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300">
                     <Phone className="w-4 h-4" />
                   </span>
-                  <span className="pt-1.5">+91 73532 52526</span>
+                  <span className="pt-1.5">+91 89041 50555</span>
                 </a>
               </li>
               <li>
@@ -145,7 +145,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
                   <span className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-4 h-4" />
                   </span>
-                  <span className="pt-1.5">Bangalore, India</span>
+                  <span className="pt-1.5">46/A, 1st Main Rd, opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078</span>
                 </div>
               </li>
             </ul>

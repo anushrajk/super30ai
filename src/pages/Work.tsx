@@ -17,80 +17,94 @@ import { BentoBadge } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
-const filters = ["All", "AI SEO", "Performance Marketing", "E-commerce", "B2B", "SaaS"];
+import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
+import upgradLogo from "@/assets/case-studies/upgrad.png";
+import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
+import shriramLogo from "@/assets/case-studies/shriram-properties.png";
+import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
+import { CaseStudyPopup } from "@/components/home/CaseStudyPopup";
+
+const filters = ["All", "Real Estate", "D2C", "EdTech", "Healthcare", "Staffing"];
 
 const caseStudies = [
   {
     id: 1,
-    title: "E-commerce Brand",
-    industry: "Fashion & Apparel",
-    category: ["AI SEO", "E-commerce"],
+    title: "Magicbricks",
+    industry: "Real Estate",
+    category: ["Real Estate"],
+    logo: magicbricksLogo,
     results: [
-      { metric: "Organic Traffic", value: "+340%" },
-      { metric: "Revenue", value: "+₹2.1Cr" },
-      { metric: "AI Citations", value: "45+" },
+      { metric: "Organic Traffic", value: "+156%" },
+      { metric: "Keywords", value: "+89%" },
+      { metric: "Backlinks", value: "+45%" },
     ],
-    description: "Transformed a struggling D2C brand into an AI search leader with comprehensive SEO strategy.",
+    description: "Transformed India's leading real estate portal with comprehensive AI SEO strategy.",
   },
   {
     id: 2,
-    title: "SaaS Platform",
-    industry: "HR Tech",
-    category: ["Performance Marketing", "SaaS", "B2B"],
+    title: "Mamaearth",
+    industry: "D2C",
+    category: ["D2C"],
+    logo: mamaEarthLogo,
     results: [
-      { metric: "ROAS", value: "5.2x" },
-      { metric: "Leads", value: "+180%" },
-      { metric: "CAC Reduction", value: "-45%" },
+      { metric: "Organic Traffic", value: "+234%" },
+      { metric: "Keywords", value: "+167%" },
+      { metric: "Backlinks", value: "+89%" },
     ],
-    description: "Scaled paid acquisition while reducing cost per qualified lead through AI-powered optimization.",
+    description: "Scaled organic visibility for India's fastest-growing personal care brand.",
   },
   {
     id: 3,
-    title: "Healthcare Startup",
-    industry: "HealthTech",
-    category: ["AI SEO", "B2B"],
+    title: "upGrad",
+    industry: "EdTech",
+    category: ["EdTech"],
+    logo: upgradLogo,
     results: [
-      { metric: "Domain Authority", value: "18→52" },
-      { metric: "Organic Leads", value: "+290%" },
-      { metric: "LLM Mentions", value: "120+" },
+      { metric: "Organic Traffic", value: "+189%" },
+      { metric: "Keywords", value: "+145%" },
+      { metric: "Ref. Domains", value: "+78%" },
     ],
-    description: "Built authority in a competitive space through strategic AI SEO and content optimization.",
+    description: "Built authority in competitive EdTech space through strategic content optimization.",
   },
   {
     id: 4,
-    title: "FinTech Company",
-    industry: "Financial Services",
-    category: ["Performance Marketing", "B2B"],
+    title: "Tata 1mg",
+    industry: "Healthcare",
+    category: ["Healthcare"],
+    logo: tata1mgLogo,
     results: [
-      { metric: "Lead Quality", value: "+85%" },
-      { metric: "Conv. Rate", value: "3.2x" },
-      { metric: "Cost/Lead", value: "-60%" },
+      { metric: "Organic Traffic", value: "+267%" },
+      { metric: "Keywords", value: "+198%" },
+      { metric: "Backlinks", value: "+112%" },
     ],
-    description: "Optimized LinkedIn and Google Ads campaigns for B2B lead generation in finance sector.",
+    description: "Dominated healthcare search with targeted SEO for India's leading health platform.",
   },
   {
     id: 5,
-    title: "Real Estate Portal",
-    industry: "PropTech",
-    category: ["AI SEO", "Performance Marketing"],
+    title: "Shriram Properties",
+    industry: "Real Estate",
+    category: ["Real Estate"],
+    logo: shriramLogo,
     results: [
-      { metric: "Organic Traffic", value: "+520%" },
-      { metric: "Listings Inquiries", value: "+410%" },
-      { metric: "Brand Searches", value: "+180%" },
+      { metric: "Organic Traffic", value: "+145%" },
+      { metric: "Keywords", value: "+98%" },
+      { metric: "Ref. Domains", value: "+56%" },
     ],
-    description: "Full-funnel marketing combining AI SEO with retargeting for maximum lead capture.",
+    description: "Enhanced digital presence for one of South India's premier real estate developers.",
   },
   {
     id: 6,
-    title: "EdTech Platform",
-    industry: "Education",
-    category: ["Performance Marketing", "SaaS"],
+    title: "Lancesoft",
+    industry: "Staffing",
+    category: ["Staffing"],
+    logo: lancesoftLogo,
     results: [
-      { metric: "Student Signups", value: "+350%" },
-      { metric: "Meta ROAS", value: "4.8x" },
-      { metric: "Brand Awareness", value: "+200%" },
+      { metric: "Organic Traffic", value: "+178%" },
+      { metric: "Keywords", value: "+134%" },
+      { metric: "Backlinks", value: "+67%" },
     ],
-    description: "Scaled student acquisition through strategic Meta and YouTube advertising campaigns.",
+    description: "Boosted organic reach for global IT staffing and workforce solutions provider.",
   },
 ];
 
@@ -98,6 +112,7 @@ const Work = () => {
   const [activeFilter, setActiveFilter] = useState("All");
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   const [showAuditPopup, setShowAuditPopup] = useState(false);
+  const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
 
   const filteredStudies = caseStudies.filter((study) => {
     if (activeFilter === "All") return true;
@@ -230,20 +245,23 @@ const Work = () => {
               ))}
             </div>
 
-            {/* Case Studies Grid */}
+            {/* Case Studies Grid - 3 per row */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {filteredStudies.map((study) => (
                 <Card
                   key={study.id}
-                  className="bento-card group overflow-hidden transition-shadow duration-300"
+                  onClick={() => setSelectedStudy(study)}
+                  className="bento-card group overflow-hidden transition-shadow duration-300 cursor-pointer hover:shadow-xl"
                 >
-                  {/* Image placeholder */}
-                  <div className="h-40 md:h-48 bg-brand-gradient flex items-center justify-center relative overflow-hidden">
-                    <span className="text-white/80 text-5xl md:text-6xl font-bold opacity-30">
-                      {study.title[0]}
-                    </span>
+                  {/* Logo Section */}
+                  <div className="h-40 md:h-48 bg-gradient-to-br from-muted to-muted/50 flex items-center justify-center relative overflow-hidden p-6">
+                    <img 
+                      src={study.logo} 
+                      alt={study.title}
+                      className="h-16 md:h-20 w-auto object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
                     {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-brand/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   <CardContent className="p-4 md:p-6">
@@ -323,9 +341,18 @@ const Work = () => {
         <Footer />
       </main>
 
-      {/* Enquiry Popup */}
+      {/* Popups */}
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
       <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
+      {selectedStudy && (
+        <CaseStudyPopup
+          open={!!selectedStudy}
+          onOpenChange={(open) => !open && setSelectedStudy(null)}
+          brandName={selectedStudy.title}
+          industry={selectedStudy.industry}
+          logo={selectedStudy.logo}
+        />
+      )}
     </>
   );
 };
