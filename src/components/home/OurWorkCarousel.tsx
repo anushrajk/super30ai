@@ -4,6 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
+import upgradLogo from "@/assets/case-studies/upgrad.png";
+import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
+import shriramLogo from "@/assets/case-studies/shriram-properties.png";
+import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
 import { CaseStudyPopup } from "./CaseStudyPopup";
 
 const caseStudies = [
@@ -16,33 +21,38 @@ const caseStudies = [
   },
   {
     id: 2,
-    title: "SaaS Platform",
-    industry: "HR Tech",
-    image: "bg-gradient-to-br from-blue-500 to-indigo-600",
+    title: "Mamaearth",
+    industry: "D2C Beauty & Skincare",
+    image: "bg-gradient-to-br from-green-400 to-blue-500",
+    logo: mamaEarthLogo,
   },
   {
     id: 3,
-    title: "Healthcare Startup",
-    industry: "HealthTech",
-    image: "bg-gradient-to-br from-green-500 to-emerald-600",
+    title: "upGrad",
+    industry: "EdTech",
+    image: "bg-gradient-to-br from-red-500 to-red-600",
+    logo: upgradLogo,
   },
   {
     id: 4,
-    title: "FinTech Company",
-    industry: "Financial Services",
-    image: "bg-gradient-to-br from-violet-500 to-purple-600",
+    title: "Tata 1mg",
+    industry: "HealthTech",
+    image: "bg-gradient-to-br from-orange-400 to-red-400",
+    logo: tata1mgLogo,
   },
   {
     id: 5,
-    title: "Real Estate Portal",
-    industry: "PropTech",
-    image: "bg-gradient-to-br from-amber-500 to-orange-600",
+    title: "Shriram Properties",
+    industry: "Real Estate",
+    image: "bg-gradient-to-br from-blue-500 to-blue-600",
+    logo: shriramLogo,
   },
   {
     id: 6,
-    title: "EdTech Platform",
-    industry: "Education",
-    image: "bg-gradient-to-br from-cyan-500 to-teal-600",
+    title: "Lancesoft Healthcare",
+    industry: "Healthcare Staffing",
+    image: "bg-gradient-to-br from-slate-700 to-slate-800",
+    logo: lancesoftLogo,
   },
 ];
 
