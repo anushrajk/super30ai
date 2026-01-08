@@ -24,48 +24,73 @@ interface CaseStudyPopupProps {
   logo?: string;
 }
 
-const magicbricksMetrics: CaseStudyMetric[] = [
-  {
-    label: "Organic Traffic",
-    before: "509.9K",
-    after: "547.3K",
-    change: "+7.3%",
-    isPositive: true,
-    icon: <BarChart3 className="w-5 h-5" />,
+interface BrandData {
+  metrics: CaseStudyMetric[];
+  period: { before: string; after: string };
+}
+
+const brandMetrics: Record<string, BrandData> = {
+  "Magicbricks": {
+    period: { before: "June 2023", after: "December 2023" },
+    metrics: [
+      { label: "Organic Traffic", before: "509.9K", after: "547.3K", change: "+7.3%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "20%", after: "25%", change: "+25%", isPositive: true, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "26.3K", after: "27K", change: "+2.7%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "31.3K", after: "33.6K", change: "+7.3%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "2.5K", after: "2.7K", change: "+8%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
   },
-  {
-    label: "Traffic Share",
-    before: "20%",
-    after: "25%",
-    change: "+25%",
-    isPositive: true,
-    icon: <TrendingUp className="w-5 h-5" />,
+  "Mamaearth": {
+    period: { before: "September 2020", after: "January 2021" },
+    metrics: [
+      { label: "Organic Traffic", before: "382.7K", after: "846.9K", change: "+121%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "96%", after: "96%", change: "0%", isPositive: true, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "10.6K", after: "19.9K", change: "+88%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "24.9K", after: "24.9K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "4.4K", after: "4.4K", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
   },
-  {
-    label: "Organic Keywords",
-    before: "26.3K",
-    after: "27K",
-    change: "+19%",
-    isPositive: true,
-    icon: <Search className="w-5 h-5" />,
+  "upGrad": {
+    period: { before: "May 2022", after: "September 2022" },
+    metrics: [
+      { label: "Organic Traffic", before: "937.3K", after: "1.2M", change: "+28%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "14%", after: "16%", change: "+14%", isPositive: true, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "79.4K", after: "98.9K", change: "+25%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "997K", after: "997K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "12.2K", after: "12.2K", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
   },
-  {
-    label: "Backlinks",
-    before: "31.3K",
-    after: "33.6K",
-    change: "+7.3%",
-    isPositive: true,
-    icon: <Link2 className="w-5 h-5" />,
+  "Tata 1mg": {
+    period: { before: "September 2021", after: "December 2021" },
+    metrics: [
+      { label: "Organic Traffic", before: "47.9M", after: "52.6M", change: "+10%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "63%", after: "52%", change: "-17%", isPositive: false, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "657.7K", after: "778.9K", change: "+18%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "463.8K", after: "463.8K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "11.8K", after: "11.8K", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
   },
-  {
-    label: "Ref. Domains",
-    before: "2.5K",
-    after: "2.7K",
-    change: "+8%",
-    isPositive: true,
-    icon: <Globe className="w-5 h-5" />,
+  "Shriram Properties": {
+    period: { before: "September 2023", after: "May 2023" },
+    metrics: [
+      { label: "Organic Traffic", before: "44.4K", after: "40.3K", change: "-9%", isPositive: false, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "47%", after: "52%", change: "+11%", isPositive: true, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "3.2K", after: "3.7K", change: "+16%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "20.8K", after: "20.8K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "2.4K", after: "2.4K", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
   },
-];
+  "Lancesoft Healthcare": {
+    period: { before: "May 2023", after: "May 2024" },
+    metrics: [
+      { label: "Organic Traffic", before: "40.3K", after: "17.6K", change: "+10%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "52%", after: "34%", change: "-35%", isPositive: false, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "3.7K", after: "268", change: "-93%", isPositive: false, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "20.8K", after: "2.9K", change: "-86%", isPositive: false, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "2.4K", after: "802", change: "-67%", isPositive: false, icon: <Globe className="w-5 h-5" /> },
+    ],
+  },
+};
 
 export const CaseStudyPopup = ({
   open,
@@ -74,7 +99,8 @@ export const CaseStudyPopup = ({
   industry,
   logo,
 }: CaseStudyPopupProps) => {
-  const metrics = brandName === "Magicbricks" ? magicbricksMetrics : [];
+  const brandData = brandMetrics[brandName] || { metrics: [], period: { before: "", after: "" } };
+  const { metrics, period } = brandData;
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -107,9 +133,9 @@ export const CaseStudyPopup = ({
               SEO Performance Results
             </h3>
             <div className="flex items-center gap-3 text-sm">
-              <span className="text-muted-foreground">June 2023</span>
+              <span className="text-muted-foreground">{period.before}</span>
               <ArrowUp className="w-4 h-4 text-primary rotate-90" />
-              <span className="text-primary font-medium">December 2023</span>
+              <span className="text-primary font-medium">{period.after}</span>
             </div>
           </div>
 
@@ -169,7 +195,7 @@ export const CaseStudyPopup = ({
 
           {/* Source Attribution */}
           <p className="text-xs text-muted-foreground text-center mt-6">
-            Data sourced from Semrush Domain Overview • June 2023 - December 2023
+            Data sourced from Semrush Domain Overview • {period.before} - {period.after}
           </p>
         </div>
       </DialogContent>
