@@ -1,19 +1,17 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 
 // Rate limit: 50 sessions per IP per hour (allows for dev refreshes)
 const RATE_LIMIT = 50;
 const RATE_WINDOW_MINUTES = 60;
 
 const handler = async (req: Request): Promise<Response> => {
-  if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const corsPreFlight = handleCorsPreFlight(req);
+  if (corsPreFlight) return corsPreFlight;
+
+  const origin = req.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
 
   try {
     const supabase = createClient(
@@ -65,21 +63,21 @@ const handler = async (req: Request): Promise<Response> => {
       await supabase.rpc("cleanup_old_rate_limits");
     }
 
-    // Get IP info
+    // Get IP info using HTTPS (ipapi.co)
     let ipInfo = { city: "Unknown", state: "Unknown", country: "Unknown" };
     if (clientIp && clientIp !== "unknown" && clientIp !== "127.0.0.1") {
       try {
-        // Use ip-api.com (HTTP but reliable, data is not sensitive)
+        // Use ipapi.co which supports HTTPS on free tier
         const geoResponse = await fetch(
-          `http://ip-api.com/json/${clientIp}?fields=status,country,regionName,city`
+          `https://ipapi.co/${clientIp}/json/`
         );
         const geoData = await geoResponse.json();
         
-        if (geoData.status === "success") {
+        if (!geoData.error) {
           ipInfo = {
             city: geoData.city || "Unknown",
-            state: geoData.regionName || "Unknown",
-            country: geoData.country || "Unknown",
+            state: geoData.region || "Unknown",
+            country: geoData.country_name || "Unknown",
           };
         }
       } catch (geoError) {

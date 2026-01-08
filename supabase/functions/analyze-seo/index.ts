@@ -1,10 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-session-id",
-};
+import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 
 interface SEOAnalysisRequest {
   url: string;
@@ -238,7 +234,7 @@ async function fetchWithRetry(
 }
 
 // Create error response with structured data
-function createErrorResponse(errorCode: string, statusCode: number = 400, additionalInfo?: Record<string, any>) {
+function createErrorResponse(errorCode: string, corsHeaders: Record<string, string>, statusCode: number = 400, additionalInfo?: Record<string, any>) {
   const errorInfo = ERROR_MESSAGES[errorCode] || ERROR_MESSAGES['UNKNOWN'];
   
   return new Response(
@@ -253,9 +249,11 @@ function createErrorResponse(errorCode: string, statusCode: number = 400, additi
 }
 
 const handler = async (req: Request): Promise<Response> => {
-  if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const corsPreFlight = handleCorsPreFlight(req);
+  if (corsPreFlight) return corsPreFlight;
+
+  const origin = req.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
 
   try {
     const { url, leadId }: SEOAnalysisRequest = await req.json();
@@ -300,7 +298,7 @@ const handler = async (req: Request): Promise<Response> => {
     
     if (!accessibilityCheck.accessible) {
       console.error("Website accessibility check failed:", accessibilityCheck.errorCode);
-      return createErrorResponse(accessibilityCheck.errorCode || 'CONNECTION_FAILED', 422, {
+      return createErrorResponse(accessibilityCheck.errorCode || 'CONNECTION_FAILED', corsHeaders, 422, {
         checkedUrl: homepage
       });
     }
@@ -346,14 +344,14 @@ const handler = async (req: Request): Promise<Response> => {
       console.error("PageSpeed API error:", response.status, errorText);
       
       if (response.status === 429) {
-        return createErrorResponse('RATE_LIMITED', 429);
+        return createErrorResponse('RATE_LIMITED', corsHeaders, 429);
       }
       
       // Parse Lighthouse-specific errors for better messaging
       const errorCode = parseLighthouseError(errorText);
       console.log("Parsed error code:", errorCode);
       
-      return createErrorResponse(errorCode, 422, {
+      return createErrorResponse(errorCode, corsHeaders, 422, {
         checkedUrl: homepage,
         rawError: response.status
       });
@@ -447,7 +445,7 @@ const handler = async (req: Request): Promise<Response> => {
       errorCode = 'CONNECTION_FAILED';
     }
     
-    return createErrorResponse(errorCode, 500);
+    return createErrorResponse(errorCode, corsHeaders, 500);
   }
 };
 

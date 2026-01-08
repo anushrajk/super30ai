@@ -1,10 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 
 interface LeadEmailRequest {
   lead: {
@@ -75,9 +71,11 @@ const getCurrentIST = (): string => {
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  if (req.method === "OPTIONS") {
-    return new Response(null, { headers: corsHeaders });
-  }
+  const corsPreFlight = handleCorsPreFlight(req);
+  if (corsPreFlight) return corsPreFlight;
+
+  const origin = req.headers.get("origin");
+  const corsHeaders = getCorsHeaders(origin);
 
   // Check for API key
   const apiKey = Deno.env.get("RESEND_API_KEY");
