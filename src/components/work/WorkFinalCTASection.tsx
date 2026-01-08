@@ -56,10 +56,9 @@ export const WorkFinalCTASection = () => {
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
-              variant="outline"
               size="lg"
               onClick={() => setShowEnquiryPopup(true)}
-              className="border-white/20 text-white hover:bg-white/10 hover:scale-105 transition-all duration-300 group"
+              className="bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all duration-300 group"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
