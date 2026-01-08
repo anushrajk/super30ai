@@ -128,35 +128,17 @@ export const OurWorkCarousel = () => {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {caseStudies.map((study) => (
-              <Card
+              <div
                 key={study.id}
-                className="flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden"
+                className="flex-shrink-0 w-[280px] md:w-[300px] rounded-xl overflow-hidden snap-start group hover:shadow-xl transition-all duration-300"
               >
-                {/* Image placeholder */}
                 <div className={`h-36 ${study.image} flex items-center justify-center relative`}>
                   <span className="text-white/80 text-5xl font-bold opacity-30">
                     {study.title[0]}
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-
-                <CardContent className="p-5">
-                  <h3 className="text-lg font-bold text-foreground mb-1">{study.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{study.industry}</p>
-
-                  {/* Results */}
-                  <div className="grid grid-cols-2 gap-3 pt-3 border-t border-border">
-                    {study.results.map((result, i) => (
-                      <div key={i} className="text-center">
-                        <div className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
-                          {result.value}
-                        </div>
-                        <p className="text-xs text-muted-foreground">{result.metric}</p>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
