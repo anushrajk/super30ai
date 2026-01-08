@@ -1,0 +1,178 @@
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Badge } from "@/components/ui/badge";
+import { TrendingUp, ArrowUp, Globe, Link2, Search, BarChart3 } from "lucide-react";
+
+interface CaseStudyMetric {
+  label: string;
+  before: string;
+  after: string;
+  change: string;
+  isPositive: boolean;
+  icon: React.ReactNode;
+}
+
+interface CaseStudyPopupProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  brandName: string;
+  industry: string;
+  logo?: string;
+}
+
+const magicbricksMetrics: CaseStudyMetric[] = [
+  {
+    label: "Organic Traffic",
+    before: "509.9K",
+    after: "547.3K",
+    change: "+7.3%",
+    isPositive: true,
+    icon: <BarChart3 className="w-5 h-5" />,
+  },
+  {
+    label: "Traffic Share",
+    before: "20%",
+    after: "25%",
+    change: "+25%",
+    isPositive: true,
+    icon: <TrendingUp className="w-5 h-5" />,
+  },
+  {
+    label: "Organic Keywords",
+    before: "26.3K",
+    after: "26K",
+    change: "+19%",
+    isPositive: true,
+    icon: <Search className="w-5 h-5" />,
+  },
+  {
+    label: "Backlinks",
+    before: "31.3K",
+    after: "33.6K",
+    change: "+7.3%",
+    isPositive: true,
+    icon: <Link2 className="w-5 h-5" />,
+  },
+  {
+    label: "Ref. Domains",
+    before: "2.5K",
+    after: "2.7K",
+    change: "+8%",
+    isPositive: true,
+    icon: <Globe className="w-5 h-5" />,
+  },
+];
+
+export const CaseStudyPopup = ({
+  open,
+  onOpenChange,
+  brandName,
+  industry,
+  logo,
+}: CaseStudyPopupProps) => {
+  const metrics = brandName === "Magicbricks" ? magicbricksMetrics : [];
+
+  return (
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-2xl bg-background border-border p-0 overflow-hidden">
+        {/* Header with brand */}
+        <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 border-b border-border">
+          <DialogHeader>
+            <div className="flex items-center gap-4">
+              {logo && (
+                <div className="w-16 h-16 rounded-xl overflow-hidden bg-white shadow-lg">
+                  <img src={logo} alt={brandName} className="w-full h-full object-cover" />
+                </div>
+              )}
+              <div>
+                <DialogTitle className="text-2xl font-bold text-foreground">
+                  {brandName}
+                </DialogTitle>
+                <Badge variant="secondary" className="mt-1">
+                  {industry}
+                </Badge>
+              </div>
+            </div>
+          </DialogHeader>
+        </div>
+
+        {/* Before/After Comparison */}
+        <div className="p-6">
+          <div className="flex items-center justify-between mb-6">
+            <h3 className="text-lg font-semibold text-foreground">
+              SEO Performance Results
+            </h3>
+            <div className="flex items-center gap-3 text-sm">
+              <span className="text-muted-foreground">June 2023</span>
+              <ArrowUp className="w-4 h-4 text-primary rotate-90" />
+              <span className="text-primary font-medium">December 2023</span>
+            </div>
+          </div>
+
+          {/* Metrics Grid */}
+          <div className="grid gap-4">
+            {metrics.map((metric, index) => (
+              <div
+                key={index}
+                className="bg-muted/50 rounded-xl p-4 border border-border hover:border-primary/30 transition-colors"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+                      {metric.icon}
+                    </div>
+                    <span className="font-medium text-foreground">{metric.label}</span>
+                  </div>
+
+                  <div className="flex items-center gap-6">
+                    {/* Before */}
+                    <div className="text-right">
+                      <p className="text-xs text-muted-foreground mb-0.5">Before</p>
+                      <p className="text-lg font-semibold text-muted-foreground">
+                        {metric.before}
+                      </p>
+                    </div>
+
+                    {/* Arrow */}
+                    <div className="flex items-center justify-center w-8">
+                      <ArrowUp className="w-5 h-5 text-primary rotate-90" />
+                    </div>
+
+                    {/* After */}
+                    <div className="text-right">
+                      <p className="text-xs text-muted-foreground mb-0.5">After</p>
+                      <p className="text-lg font-semibold text-foreground">
+                        {metric.after}
+                      </p>
+                    </div>
+
+                    {/* Change Badge */}
+                    <Badge
+                      className={`min-w-[60px] justify-center ${
+                        metric.isPositive
+                          ? "bg-green-500/10 text-green-600 hover:bg-green-500/20 border-green-500/20"
+                          : "bg-red-500/10 text-red-600 hover:bg-red-500/20 border-red-500/20"
+                      }`}
+                    >
+                      {metric.isPositive && <ArrowUp className="w-3 h-3 mr-1" />}
+                      {metric.change}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Source Attribution */}
+          <p className="text-xs text-muted-foreground text-center mt-6">
+            Data sourced from Semrush Domain Overview • June 2023 - December 2023
+          </p>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
