@@ -1,9 +1,10 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import { CaseStudyPopup } from "./CaseStudyPopup";
 
 const caseStudies = [
   {
@@ -47,6 +48,7 @@ const caseStudies = [
 
 export const OurWorkCarousel = () => {
   const scrollRef = useRef<HTMLDivElement>(null);
+  const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
 
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
@@ -108,7 +110,8 @@ export const OurWorkCarousel = () => {
             {caseStudies.map((study) => (
               <Card
                 key={study.id}
-                className="flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden"
+                onClick={() => study.logo && setSelectedStudy(study)}
+                className={`flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden ${study.logo ? 'cursor-pointer' : ''}`}
               >
                 <div className={`h-36 ${study.image} flex items-center justify-center relative overflow-hidden`}>
                   {study.logo ? (
@@ -143,6 +146,15 @@ export const OurWorkCarousel = () => {
           </Link>
         </div>
       </div>
+
+      {/* Case Study Popup */}
+      <CaseStudyPopup
+        open={!!selectedStudy}
+        onOpenChange={(open) => !open && setSelectedStudy(null)}
+        brandName={selectedStudy?.title || ""}
+        industry={selectedStudy?.industry || ""}
+        logo={selectedStudy?.logo}
+      />
     </section>
   );
 };
