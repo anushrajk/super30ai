@@ -44,7 +44,7 @@ const magicbricksMetrics: CaseStudyMetric[] = [
   {
     label: "Organic Keywords",
     before: "26.3K",
-    after: "26K",
+    after: "27K",
     change: "+19%",
     isPositive: true,
     icon: <Search className="w-5 h-5" />,
