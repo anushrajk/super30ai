@@ -404,7 +404,7 @@ const handler = async (req: Request): Promise<Response> => {
       }
     });
 
-    const result = {
+    const result: Record<string, any> = {
       seo_score: seoScore,
       performance_score: performanceScore,
       accessibility_score: accessibilityScore,
@@ -428,6 +428,39 @@ const handler = async (req: Request): Promise<Response> => {
       aiVisibility: aiVisibilityScore,
       isDeepPage
     });
+
+    // Save audit results server-side if leadId is provided
+    if (leadId) {
+      try {
+        const { data: auditRecord, error: insertError } = await supabase
+          .from('audit_results')
+          .insert({
+            lead_id: leadId,
+            seo_score: seoScore,
+            performance_score: performanceScore,
+            accessibility_score: accessibilityScore,
+            best_practices_score: bestPracticesScore,
+            ai_visibility_score: aiVisibilityScore,
+            technical_issues: technicalIssues,
+            opportunities,
+            diagnostics,
+            analyzed_url: homepage,
+            analysis_timestamp: result.analysis_timestamp,
+            data_source: result.data_source
+          })
+          .select('id')
+          .single();
+
+        if (auditRecord) {
+          result.audit_id = auditRecord.id;
+          console.log("Audit record saved:", auditRecord.id);
+        } else if (insertError) {
+          console.error("Failed to save audit record:", insertError);
+        }
+      } catch (saveError) {
+        console.error("Error saving audit record:", saveError);
+      }
+    }
 
     return new Response(JSON.stringify(result), {
       status: 200,

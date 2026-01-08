@@ -92,17 +92,20 @@ const PerformanceMarketing = () => {
     setProcessingComplete(true);
 
     try {
-      // Update the lead with business_type and preferred_platforms
-      const { error: updateError } = await supabase
-        .from('leads')
-        .update({
+      // Update the lead via secure edge function with session validation
+      const { data: updateResult, error: updateError } = await supabase.functions.invoke('create-lead', {
+        body: {
+          lead_id: leadId,
+          email: initialFormData.email,
+          website_url: initialFormData.website_url,
           business_type: questionnaireData.business_type,
           preferred_platforms: questionnaireData.preferred_platforms
-        })
-        .eq('id', leadId);
+        },
+        headers: session?.id ? { 'x-session-id': session.id } : undefined
+      });
 
-      if (updateError) {
-        console.error("Failed to update lead:", updateError);
+      if (updateError || updateResult?.error) {
+        console.error("Failed to update lead:", updateError || updateResult?.error);
       }
 
       // Combine all data for email and navigation
