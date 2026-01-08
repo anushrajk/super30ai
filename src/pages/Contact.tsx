@@ -40,13 +40,13 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Phone",
-    value: "+91 73532 52526",
-    link: "tel:+917353252526",
+    value: "+91 89041 50555",
+    link: "tel:+918904150555",
   },
   {
     icon: MapPin,
     title: "Office",
-    value: "Bangalore, India",
+    value: "46/A, 1st Main Rd, opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078",
     link: null,
   },
   {
@@ -257,7 +257,7 @@ const Contact = () => {
 
               {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <a href="tel:+917353252526">
+                <a href="tel:+918904150555">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Us Now

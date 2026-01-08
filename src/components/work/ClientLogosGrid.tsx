@@ -1,42 +1,26 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { ChevronDown } from "lucide-react";
+import { CaseStudyPopup } from "@/components/home/CaseStudyPopup";
 
-// Generate 30+ company logos for infinite loading
-const allLogos = [
-  // Row 1-3 (initial visible)
-  "TechFlow", "DataSync", "CloudNine", "GrowthIQ", "ScaleUp",
-  "NexGen", "PropTech", "MediCare", "EduPlus", "FinServ",
-  "RetailMax", "LogiTech", "HealthFirst", "CodeCraft", "MarketPro",
-  // Row 4-6
-  "InnovateCo", "SmartBiz", "DigitalEdge", "FutureTech", "EliteServe",
-  "PrimeLogic", "VentureX", "CoreSystems", "NextLevel", "TrustPoint",
-  "GlobalReach", "SwiftSolutions", "PeakPerform", "BrightIdeas", "MaxGrowth",
-  // Row 7-9
-  "VisionTech", "AlphaWave", "BetaSoft", "GammaCorp", "DeltaGroup",
-  "EpsilonLabs", "ZetaTech", "EtaVentures", "ThetaCo", "IotaSystems",
-  "KappaTech", "LambdaDigital", "MuIndustries", "NuVentures", "OmicronTech",
+import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
+import upgradLogo from "@/assets/case-studies/upgrad.png";
+import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
+import shriramLogo from "@/assets/case-studies/shriram-properties.png";
+import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
+
+const clientCompanies = [
+  { name: "Magicbricks", logo: magicbricksLogo, industry: "Real Estate" },
+  { name: "Mamaearth", logo: mamaEarthLogo, industry: "D2C" },
+  { name: "upGrad", logo: upgradLogo, industry: "EdTech" },
+  { name: "Tata 1mg", logo: tata1mgLogo, industry: "Healthcare" },
+  { name: "Shriram Properties", logo: shriramLogo, industry: "Real Estate" },
+  { name: "Lancesoft", logo: lancesoftLogo, industry: "Staffing" },
 ];
 
 export const ClientLogosGrid = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
-  const [visibleRows, setVisibleRows] = useState(3);
-  const logosPerRow = 5;
-  const totalLogos = visibleRows * logosPerRow;
-  const hasMore = totalLogos < allLogos.length;
-
-  const loadMore = () => {
-    setVisibleRows((prev) => Math.min(prev + 3, Math.ceil(allLogos.length / logosPerRow)));
-  };
-
-  const visibleLogos = allLogos.slice(0, totalLogos);
-
-  // Group logos into rows
-  const rows: string[][] = [];
-  for (let i = 0; i < visibleLogos.length; i += logosPerRow) {
-    rows.push(visibleLogos.slice(i, i + logosPerRow));
-  }
+  const [selectedCompany, setSelectedCompany] = useState<{ name: string; industry: string; logo: string } | null>(null);
 
   return (
     <section 
@@ -57,68 +41,48 @@ export const ClientLogosGrid = () => {
           </p>
         </div>
 
-        {/* Logo Grid */}
-        <div className="space-y-4 md:space-y-6 max-w-6xl mx-auto">
-          {rows.map((row, rowIndex) => (
-            <div 
-              key={rowIndex}
-              className={`grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 md:gap-4 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-              style={{ transitionDelay: `${(rowIndex + 1) * 100}ms` }}
-            >
-              {row.map((logo, logoIndex) => (
-                <div
-                  key={`${rowIndex}-${logoIndex}`}
-                  className="group bg-background border border-border/50 rounded-xl p-4 md:p-5 flex items-center justify-center hover:border-orange-500/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="flex items-center gap-2">
-                    {/* Placeholder logo icon */}
-                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-orange-100 to-orange-200 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <span className="text-orange-600 font-bold text-sm md:text-base">
-                        {logo.charAt(0)}
-                      </span>
-                    </div>
-                    {/* Company name - hidden on mobile for space */}
-                    <span className="hidden sm:block text-sm md:text-base font-semibold text-muted-foreground group-hover:text-foreground transition-colors truncate">
-                      {logo}
-                    </span>
-                    {/* Mobile: show abbreviated name */}
-                    <span className="sm:hidden text-xs font-semibold text-muted-foreground group-hover:text-foreground transition-colors">
-                      {logo.length > 8 ? logo.slice(0, 8) + '...' : logo}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ))}
+        {/* Logo Grid - 3 per row */}
+        <div className="max-w-5xl mx-auto">
+          <div 
+            className={`grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          >
+            {clientCompanies.map((company, index) => (
+              <button
+                key={company.name}
+                onClick={() => setSelectedCompany(company)}
+                className="group bg-background border border-border/50 rounded-xl p-6 md:p-8 flex flex-col items-center justify-center hover:border-orange-500/50 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                style={{ transitionDelay: `${index * 50}ms` }}
+              >
+                <img 
+                  src={company.logo} 
+                  alt={company.name}
+                  className="h-12 md:h-16 w-auto object-contain mb-3"
+                />
+                <span className="text-sm font-semibold text-foreground">{company.name}</span>
+                <span className="text-xs text-muted-foreground mt-1">{company.industry}</span>
+              </button>
+            ))}
+          </div>
         </div>
 
-        {/* Load More Button */}
-        {hasMore && (
-          <div className={`text-center mt-8 md:mt-10 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-            <Button
-              onClick={loadMore}
-              variant="outline"
-              size="lg"
-              className="border-2 border-orange-500/50 text-orange-600 hover:bg-orange-50 hover:border-orange-500 px-8 group"
-            >
-              Load More Clients
-              <ChevronDown className="w-4 h-4 ml-2 group-hover:translate-y-1 transition-transform" />
-            </Button>
-            <p className="text-sm text-muted-foreground mt-3">
-              Showing {Math.min(totalLogos, allLogos.length)} of {allLogos.length}+ clients
-            </p>
-          </div>
-        )}
-
-        {/* All loaded message */}
-        {!hasMore && (
-          <div className="text-center mt-8 md:mt-10">
-            <p className="text-muted-foreground">
-              ✓ All {allLogos.length}+ clients loaded
-            </p>
-          </div>
-        )}
+        {/* Additional companies message */}
+        <div className={`text-center mt-8 md:mt-10 transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <p className="text-muted-foreground">
+            + 44 more companies across various industries
+          </p>
+        </div>
       </div>
+
+      {/* Case Study Popup */}
+      {selectedCompany && (
+        <CaseStudyPopup
+          open={!!selectedCompany}
+          onOpenChange={(open) => !open && setSelectedCompany(null)}
+          brandName={selectedCompany.name}
+          industry={selectedCompany.industry}
+          logo={selectedCompany.logo}
+        />
+      )}
     </section>
   );
 };
