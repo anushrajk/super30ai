@@ -9,60 +9,36 @@ const caseStudies = [
     id: 1,
     title: "E-commerce Brand",
     industry: "Fashion & Apparel",
-    results: [
-      { metric: "Organic Traffic", value: "+340%" },
-      { metric: "Revenue", value: "+₹2.1Cr" },
-    ],
     image: "bg-gradient-to-br from-pink-500 to-rose-600",
   },
   {
     id: 2,
     title: "SaaS Platform",
     industry: "HR Tech",
-    results: [
-      { metric: "ROAS", value: "5.2x" },
-      { metric: "Leads", value: "+180%" },
-    ],
     image: "bg-gradient-to-br from-blue-500 to-indigo-600",
   },
   {
     id: 3,
     title: "Healthcare Startup",
     industry: "HealthTech",
-    results: [
-      { metric: "Domain Authority", value: "18→52" },
-      { metric: "Organic Leads", value: "+290%" },
-    ],
     image: "bg-gradient-to-br from-green-500 to-emerald-600",
   },
   {
     id: 4,
     title: "FinTech Company",
     industry: "Financial Services",
-    results: [
-      { metric: "Lead Quality", value: "+85%" },
-      { metric: "Conv. Rate", value: "3.2x" },
-    ],
     image: "bg-gradient-to-br from-violet-500 to-purple-600",
   },
   {
     id: 5,
     title: "Real Estate Portal",
     industry: "PropTech",
-    results: [
-      { metric: "Organic Traffic", value: "+520%" },
-      { metric: "Listings Inquiries", value: "+410%" },
-    ],
     image: "bg-gradient-to-br from-amber-500 to-orange-600",
   },
   {
     id: 6,
     title: "EdTech Platform",
     industry: "Education",
-    results: [
-      { metric: "Student Signups", value: "+350%" },
-      { metric: "Meta ROAS", value: "4.8x" },
-    ],
     image: "bg-gradient-to-br from-cyan-500 to-teal-600",
   },
 ];
@@ -128,9 +104,9 @@ export const OurWorkCarousel = () => {
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {caseStudies.map((study) => (
-              <div
+              <Card
                 key={study.id}
-                className="flex-shrink-0 w-[280px] md:w-[300px] rounded-xl overflow-hidden snap-start group hover:shadow-xl transition-all duration-300"
+                className="flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden"
               >
                 <div className={`h-36 ${study.image} flex items-center justify-center relative`}>
                   <span className="text-white/80 text-5xl font-bold opacity-30">
@@ -138,7 +114,12 @@ export const OurWorkCarousel = () => {
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-              </div>
+
+                <CardContent className="p-5">
+                  <h3 className="text-lg font-bold text-foreground mb-1">{study.title}</h3>
+                  <p className="text-sm text-muted-foreground">{study.industry}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
