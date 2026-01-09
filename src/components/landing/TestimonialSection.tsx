@@ -195,7 +195,7 @@ export const TestimonialSection = () => {
 
         {/* Text Testimonial Carousel */}
         <div className={`max-w-5xl mx-auto mb-16 md:mb-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <Card className="bg-white/[0.03] backdrop-blur-xl border-white/10 shadow-2xl shadow-black/40 overflow-hidden relative group hover:border-brand/30 transition-all duration-500">
+          <Card className="bg-white/[0.03] backdrop-blur-xl border-white/10 shadow-2xl shadow-black/40 overflow-hidden relative group hover:border-white/20 transition-all duration-500">
             {/* Glow Effects */}
             <div className="absolute top-0 right-0 w-80 h-80 bg-brand/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -251,7 +251,7 @@ export const TestimonialSection = () => {
                   variant="outline"
                   size="icon"
                   onClick={prevTestimonial}
-                  className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 hover:border-brand/50 text-white h-10 w-10 transition-all duration-300 hover:scale-110"
+                  className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/30 text-white h-10 w-10 transition-all duration-300 hover:scale-110"
                 >
                   <ChevronLeft className="w-5 h-5" />
                 </Button>
@@ -272,7 +272,7 @@ export const TestimonialSection = () => {
                   variant="outline"
                   size="icon"
                   onClick={nextTestimonial}
-                  className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 hover:border-brand/50 text-white h-10 w-10 transition-all duration-300 hover:scale-110"
+                  className="rounded-full bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/30 text-white h-10 w-10 transition-all duration-300 hover:scale-110"
                 >
                   <ChevronRight className="w-5 h-5" />
                 </Button>
@@ -307,7 +307,7 @@ export const TestimonialSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('left')}
-            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/50 hover:scale-110 h-10 w-10 text-white"
+            className="hidden sm:flex absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 h-10 w-10 text-white"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
@@ -333,7 +333,7 @@ export const TestimonialSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollVideos('right')}
-            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/50 hover:scale-110 h-10 w-10 text-white"
+            className="hidden sm:flex absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md rounded-full border border-white/10 opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 h-10 w-10 text-white"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>

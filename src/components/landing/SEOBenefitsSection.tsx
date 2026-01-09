@@ -172,7 +172,7 @@ export const SEOBenefitsSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollCards('left')}
-            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/30 hover:scale-110 text-white"
+            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 text-white"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
@@ -193,7 +193,7 @@ export const SEOBenefitsSection = () => {
             {benefits.map((benefit, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:border-brand/40 hover:-translate-y-2 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:border-gray-200 hover:-translate-y-2 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 {/* Animated gradient border on hover */}
@@ -232,7 +232,7 @@ export const SEOBenefitsSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollCards('right')}
-            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-brand/30 hover:scale-110 text-white"
+            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 hover:border-white/30 hover:scale-110 text-white"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
@@ -257,7 +257,7 @@ export const SEOBenefitsSection = () => {
           <Button 
             onClick={scrollToForm}
             size="lg"
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 hover:scale-105 transition-all duration-300 group"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
           >
             <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
             Start Free Audit Now

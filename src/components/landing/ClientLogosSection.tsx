@@ -105,7 +105,7 @@ export const ClientLogosSection = () => {
             {[...clientLogos, ...clientLogos].map((client, index) => (
               <div 
                 key={index}
-                className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-white/5 rounded-xl border border-white/10 transition-colors duration-200 hover:border-brand/50"
+                className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-white/5 rounded-xl border border-white/10 transition-colors duration-200 hover:border-white/30"
               >
                 <div className="w-12 h-12 rounded-lg flex items-center justify-center overflow-hidden">
                   <img src={client.logo} alt={client.name} className="w-12 h-12 object-cover rounded-lg" />

@@ -57,7 +57,7 @@ export const AwardsSection = () => {
         {/* Awards Grid */}
         <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto mb-10 md:mb-12">
           {awards.map((award, index) => (
-            <BentoCard key={index} className="group text-center overflow-hidden bg-white/5 border-white/10 hover:border-brand/30">
+            <BentoCard key={index} className="group text-center overflow-hidden bg-white/5 border-white/10 hover:border-white/20">
               {/* Shine effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
               
@@ -79,7 +79,7 @@ export const AwardsSection = () => {
             {certifications.map((cert, index) => (
               <div
                 key={index}
-                className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-brand/50 hover:bg-brand/10 transition-all duration-300 group"
+                className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/5 rounded-full border border-white/10 hover:border-white/30 hover:bg-white/10 transition-all duration-300 group"
               >
                 <cert.icon className="w-4 h-4 text-green-500 group-hover:text-brand transition-colors" />
                 <span className="text-xs md:text-sm font-medium text-white">{cert.name}</span>

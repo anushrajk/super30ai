@@ -37,7 +37,7 @@ export const AIComparisonSection = () => {
         {/* 50/50 Layout: Comparison Table + AI Search Journey */}
         <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch">
           {/* Left: Comparison Table */}
-          <Card className="border-border/50 overflow-hidden shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500 h-full">
+          <Card className="border-border/50 overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-500 h-full">
             <CardContent className="p-0 h-full flex flex-col">
               <div className="grid md:grid-cols-2 flex-1">
                 {/* Traditional SEO Column */}
@@ -84,7 +84,7 @@ export const AIComparisonSection = () => {
           </Card>
 
           {/* Right: AI Search Journey */}
-          <Card className="border-border/50 shadow-2xl shadow-orange-500/5 hover:shadow-orange-500/10 transition-all duration-500 h-full">
+          <Card className="border-border/50 shadow-2xl hover:shadow-xl transition-all duration-500 h-full">
             <CardContent className="p-4 md:p-6 h-full flex flex-col justify-center">
               <h3 className="text-lg font-bold text-foreground mb-6 text-center">
                 The AI Search Journey

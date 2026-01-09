@@ -77,7 +77,7 @@ export const PMAISections = () => {
               </ul>
               <Button 
                 onClick={scrollToForm} 
-                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg shadow-orange-500/25 hover:scale-105 transition-all duration-300"
+                className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300"
               >
                 Unlock AI Targeting
                 <ArrowRight className="w-4 h-4 ml-2" />
@@ -150,7 +150,7 @@ export const PMAISections = () => {
                     </div>
                     
                     {/* Card with enhanced interactions */}
-                    <Card className="bento-card group-hover:border-brand/50 transition-all duration-500 h-full overflow-hidden">
+                    <Card className="bento-card transition-all duration-500 h-full overflow-hidden">
                       {/* Hover gradient overlay */}
                       <div className="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:via-brand/10 group-hover:to-brand/5 transition-all duration-500" />
                       
@@ -161,7 +161,7 @@ export const PMAISections = () => {
                           <div className="absolute inset-0 rounded-2xl bg-brand/10 group-hover:animate-ping opacity-0 group-hover:opacity-100" style={{ animationDuration: '1.5s' }} />
                           
                           {/* Icon background with hover effects */}
-                          <div className="relative w-16 h-16 bg-brand/10 group-hover:bg-brand-gradient rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:rotate-6 group-hover:scale-110 shadow-lg">
+                          <div className="relative w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg">
                             <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
                           </div>
                         </div>

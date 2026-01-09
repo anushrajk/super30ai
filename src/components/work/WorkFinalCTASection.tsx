@@ -38,7 +38,7 @@ export const WorkFinalCTASection = () => {
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
             {benefits.map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-white bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-brand/30 transition-all duration-300">
+              <div key={i} className="flex items-center gap-2 text-white bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
                 <item.icon className="w-4 h-4 text-brand" />
                 <span className="text-sm">{item.text}</span>
               </div>
