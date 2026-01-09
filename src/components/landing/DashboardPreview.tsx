@@ -93,15 +93,15 @@ export const DashboardPreview = () => {
                 onClick={() => setActiveFeature(feature)}
                 className={`w-full flex items-center gap-4 p-4 rounded-xl transition-all duration-300 group text-left ${
                   activeFeature.id === feature.id
-                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30'
-                    : 'hover:bg-orange-50/50'
+                    ? 'bg-gradient-to-r from-orange-500 to-orange-600 shadow-lg'
+                    : 'hover:bg-muted/50'
                 }`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                   activeFeature.id === feature.id
                     ? 'bg-white/20'
-                    : 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg shadow-orange-500/30 group-hover:scale-110'
+                    : 'bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg group-hover:scale-110'
                 }`}>
                   <Check className={`w-4 h-4 ${activeFeature.id === feature.id ? 'text-white' : 'text-white'}`} />
                 </div>
@@ -112,7 +112,7 @@ export const DashboardPreview = () => {
             ))}
           </div>
 
-          <Card className={`bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden shadow-2xl shadow-orange-500/10 hover:shadow-orange-500/20 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+          <Card className={`bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
             {/* Browser chrome */}
             <div className="bg-muted/50 px-4 py-3 border-b border-border/50 flex items-center gap-3">
               <div className="flex gap-2">

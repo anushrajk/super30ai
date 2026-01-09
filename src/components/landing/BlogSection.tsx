@@ -56,7 +56,7 @@ export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
           {blogs.map((blog) => (
             <Card 
               key={blog.id}
-              className="bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden hover:shadow-2xl hover:shadow-orange-500/10 hover:-translate-y-2 transition-all duration-500 group cursor-pointer"
+              className="bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group cursor-pointer"
             >
               <div className="relative overflow-hidden">
                 <img 

@@ -175,7 +175,7 @@ const About = () => {
                     "AI + Human expertise",
                   ].map((item, i) => (
                     <li key={i} className="flex items-center gap-3 text-foreground group">
-                      <div className="icon-bg-glow w-6 h-6 rounded-full flex items-center justify-center group-hover:bg-brand-gradient transition-all duration-300">
+                      <div className="icon-bg-glow w-6 h-6 rounded-full flex items-center justify-center transition-all duration-300">
                         <CheckCircle2 className="w-4 h-4 text-brand group-hover:text-white transition-colors" />
                       </div>
                       {item}

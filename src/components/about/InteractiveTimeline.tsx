@@ -86,14 +86,14 @@ export const InteractiveTimeline = () => {
                     onClick={() => setExpandedIndex(isExpanded ? null : index)}
                     className={`cursor-pointer bento-card transition-all duration-500 overflow-hidden ${
                       isExpanded
-                        ? "border-brand/50 shadow-xl"
-                        : "border-border/50 hover:border-brand/30 hover:shadow-lg"
+                        ? "border-border shadow-xl"
+                        : "border-border/50 hover:border-border hover:shadow-lg"
                     }`}
                   >
                     <CardContent className="p-4 md:p-6">
                       <div className="flex items-start justify-between mb-3">
                         <div className="flex items-center gap-3">
-                          <div className="icon-bg-glow w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center shadow-lg group-hover:bg-brand-gradient transition-all duration-300">
+                          <div className="icon-bg-glow w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300">
                             <milestone.icon className="w-5 h-5 md:w-6 md:h-6 text-brand" />
                           </div>
                           <div>

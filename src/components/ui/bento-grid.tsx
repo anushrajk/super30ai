@@ -79,8 +79,8 @@ export const BentoIcon = ({ children, className, size = "md" }: BentoIconProps) 
     <div className={cn(
       sizeClasses[size],
       "icon-bg-glow rounded-2xl flex items-center justify-center",
-      "group-hover:bg-brand-gradient transition-all duration-300",
-      "group-hover:scale-110 group-hover:rotate-3",
+      "transition-all duration-300",
+      "group-hover:scale-110",
       "shadow-lg",
       className
     )}>

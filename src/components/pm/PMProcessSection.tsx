@@ -52,7 +52,7 @@ export const PMProcessSection = () => {
                   <div className="text-4xl md:text-6xl font-bold text-brand/30 mb-2 md:mb-4 group-hover:text-brand/50 transition-all duration-300">
                     {step.number}
                   </div>
-                  <div className="w-12 h-12 md:w-16 md:h-16 icon-bg-glow group-hover:bg-brand-gradient rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4 shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <div className="w-12 h-12 md:w-16 md:h-16 icon-bg-glow rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4 shadow-lg group-hover:scale-110 transition-all duration-300">
                     <step.icon className="w-6 h-6 md:w-8 md:h-8 text-brand group-hover:text-white transition-colors" />
                   </div>
                   <h3 className="text-base md:text-xl font-bold text-foreground mb-1 md:mb-2 group-hover:text-brand transition-colors">
