@@ -48,12 +48,16 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
 
             {/* H1 and Description */}
             <div>
-            <h1 className="font-bold text-foreground leading-tight mb-4 md:mb-5">
-                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl">Grow Your Business With</span>
-                <span className="relative block">
-                  <span className="text-brand-gradient">AI-Powered SEO</span>
+            <h1 className="font-bold text-foreground leading-tight tracking-tight mb-4 md:mb-5">
+                <span className="block text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-semibold mb-1 md:mb-2">
+                  Grow Your Business With
                 </span>
-                <span className="block">Optimization Services</span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
+                  AI-Powered SEO
+                </span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                  Optimization Services
+                </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 We help founders dominate Google, AI Overviews, and LLM answers — with{" "}
