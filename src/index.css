@@ -218,8 +218,8 @@ All colors MUST be HSL.
   }
 
   .bento-card:hover {
-    @apply border-[hsl(var(--brand))]/50 -translate-y-1;
-    box-shadow: 0 25px 50px -12px hsl(var(--brand) / 0.2);
+    @apply border-border -translate-y-1;
+    box-shadow: 0 25px 50px -12px hsl(var(--foreground) / 0.1);
   }
 
   /* Badge styling */

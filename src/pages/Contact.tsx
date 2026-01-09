@@ -545,14 +545,19 @@ const Contact = () => {
                   </div>
                 </div>
 
-                {/* Map placeholder */}
+                {/* Map */}
                 <div className="bento-card overflow-hidden flex-1">
-                  <div className="h-full min-h-48 bg-gradient-to-br from-brand/10 to-brand/5 flex items-center justify-center">
-                    <div className="text-center">
-                      <MapPin className="w-10 h-10 text-brand mx-auto mb-2" />
-                      <p className="text-muted-foreground text-sm">Bangalore, India</p>
-                    </div>
-                  </div>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62224.92642918453!2d77.57034246322014!3d12.903998375556354!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16256e8bd415%3A0x85acd49abea04935!2sDigital%20Academy%20360!5e0!3m2!1sen!2sin!4v1767928926902!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="100%" 
+                    style={{ border: 0, minHeight: "12rem" }}
+                    allowFullScreen
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Office Location"
+                    className="w-full h-full min-h-48"
+                  />
                 </div>
               </div>
             </div>
