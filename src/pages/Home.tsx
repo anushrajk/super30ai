@@ -186,7 +186,7 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {whyChooseUs.map((item, index) => <Card key={index} className="bento-card group hover:-translate-y-1 transition-all duration-300">
               <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 icon-bg-glow rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                <div className="w-14 h-14 icon-bg-glow rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 group-hover:bg-brand transition-all duration-300">
                   <item.icon className="w-7 h-7 text-brand group-hover:text-white transition-colors duration-200" />
                 </div>
                 <h3 className="text-lg font-bold text-foreground mb-2">{item.title}</h3>
