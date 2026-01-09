@@ -63,7 +63,7 @@ export const WhoIsThisForSection = () => {
           {audiences.map((audience, index) => (
             <BentoCard 
               key={index} 
-              className={`group bg-white/5 border-white/10 hover:border-brand/30 ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-500`}
+              className={`group bg-white/5 border-white/10 hover:border-white/20 ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-500`}
             >
               <div className="flex items-start gap-3 md:gap-4">
                 <BentoIcon size="md" className="bg-brand/20">
