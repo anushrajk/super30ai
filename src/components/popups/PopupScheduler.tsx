@@ -20,14 +20,6 @@ export const PopupScheduler = () => {
   const nextPopupTimerRef = useRef<NodeJS.Timeout | null>(null);
   const firstPopupScheduledRef = useRef(false);
 
-  // Check if popups are disabled on current route
-  const isPopupDisabled = POPUP_DISABLED_ROUTES.includes(location.pathname);
-
-  // If on a disabled route, don't render anything
-  if (isPopupDisabled) {
-    return null;
-  }
-
   const { 
     callbackSlots, 
     weeklyRequests, 
@@ -41,6 +33,9 @@ export const PopupScheduler = () => {
   const { cookieDismissed, canShowNotification, setActiveNotification, activeNotification } = useNotificationQueue();
 
   const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
+  // Check if popups are disabled on current route
+  const isPopupDisabled = POPUP_DISABLED_ROUTES.includes(location.pathname);
 
   // Show next popup from queue
   const showNextPopup = useCallback(() => {
@@ -136,6 +131,11 @@ export const PopupScheduler = () => {
   const handleExitSuccess = useCallback(() => {
     // No specific urgency action for exit
   }, []);
+
+  // If on a disabled route, don't render anything (must be after all hooks)
+  if (isPopupDisabled) {
+    return null;
+  }
 
   return (
     <Suspense fallback={null}>
