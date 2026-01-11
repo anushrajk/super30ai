@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sparkles, Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
@@ -106,27 +107,25 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         monthly_revenue: monthlyRevenue || undefined 
       };
 
-      // Send to Google Sheets (non-blocking, doesn't affect audit flow)
+      // Sync to Google Sheets via backend proxy (non-blocking, never affects audit flow)
       try {
         const sheetsData = {
           website: websiteUrl,
           email: email,
-          phone: phone ? `+91${phone}` : '',
-          role: roleOptions.find(r => r.value === role)?.label || role || '',
-          revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || '',
-          formSource: 'AI SEO Audit Form'
+          phone: phone ? `+91${phone}` : "",
+          role: roleOptions.find(r => r.value === role)?.label || role || "",
+          revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
+          formSource: "AI SEO Audit Form",
         };
 
-        fetch('https://script.google.com/macros/s/AKfycbzUbi6MV-u2pmH8LauEx3MmrK3XX7J-8srp7komiGKDH8ScXxwUskRcOWB2JjqfXQ0r/exec', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'text/plain'
-          },
-          body: JSON.stringify(sheetsData),
-          mode: 'no-cors'
-        }).catch(console.error);
+        void supabase.functions
+          .invoke("sync-lead-to-sheets", { body: sheetsData })
+          .then(({ data, error }) => {
+            if (error) console.error("Sheets sync failed:", error);
+            else console.log("Sheets sync result:", data);
+          });
       } catch (error) {
-        console.error('Error sending to Google Sheets:', error);
+        console.error("Error sending to Google Sheets:", error);
       }
 
       onSubmit(formData);
