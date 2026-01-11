@@ -42,14 +42,26 @@ const handler = async (req: Request): Promise<Response> => {
 
     const upstreamText = await upstreamRes.text();
 
+    let upstreamJson: any = null;
+    try {
+      upstreamJson = JSON.parse(upstreamText);
+    } catch {
+      // ignore
+    }
+
+    const appScriptStatus = upstreamJson?.status;
+    const appScriptOk = appScriptStatus === "success";
+
     // Log for debugging in backend logs
-    console.log("Sheets sync status:", upstreamRes.status);
-    console.log("Sheets sync response (first 500 chars):", upstreamText.slice(0, 500));
+    console.log("Sheets sync HTTP status:", upstreamRes.status);
+    console.log("Sheets sync body (first 500 chars):", upstreamText.slice(0, 500));
 
     return new Response(
       JSON.stringify({
-        ok: upstreamRes.ok,
-        status: upstreamRes.status,
+        ok: upstreamRes.ok && appScriptOk,
+        httpStatus: upstreamRes.status,
+        appScriptStatus: appScriptStatus ?? null,
+        appScriptMessage: upstreamJson?.message ?? null,
         bodyPreview: upstreamText.slice(0, 500),
       }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
