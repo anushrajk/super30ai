@@ -90,6 +90,46 @@ const brandMetrics: Record<string, BrandData> = {
       { label: "Ref. Domains", before: "2.4K", after: "802", change: "-67%", isPositive: false, icon: <Globe className="w-5 h-5" /> },
     ],
   },
+  "Jain University": {
+    period: { before: "June 2023", after: "June 2024" },
+    metrics: [
+      { label: "Organic Traffic", before: "15.6K", after: "28.2K", change: "+81%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "5%", after: "6%", change: "+20%", isPositive: true, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "4.2K", after: "8.2K", change: "+95%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "11.9K", after: "11.9K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "1.2K", after: "1.2K", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
+  },
+  "Harvest International School": {
+    period: { before: "March 2023", after: "September 2024" },
+    metrics: [
+      { label: "Organic Traffic", before: "4.4K", after: "5.7K", change: "+30%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "26%", after: "8%", change: "-69%", isPositive: false, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "1.3K", after: "1.5K", change: "+15%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "8.6K", after: "8.6K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "796", after: "796", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
+  },
+  "Atria Institute": {
+    period: { before: "July 2022", after: "June 2024" },
+    metrics: [
+      { label: "Organic Traffic", before: "9.4K", after: "27.8K", change: "+196%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "41%", after: "3%", change: "-93%", isPositive: false, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "926", after: "1.4K", change: "+51%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "3.6K", after: "3.6K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "712", after: "712", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
+  },
+  "Bhrighu Academy": {
+    period: { before: "September 2024", after: "September 2025" },
+    metrics: [
+      { label: "Organic Traffic", before: "15", after: "5.9K", change: "+39,233%", isPositive: true, icon: <BarChart3 className="w-5 h-5" /> },
+      { label: "Traffic Share", before: "0%", after: "70%", change: "+70%", isPositive: true, icon: <TrendingUp className="w-5 h-5" /> },
+      { label: "Organic Keywords", before: "38", after: "895", change: "+2,255%", isPositive: true, icon: <Search className="w-5 h-5" /> },
+      { label: "Backlinks", before: "3.3K", after: "3.3K", change: "0%", isPositive: true, icon: <Link2 className="w-5 h-5" /> },
+      { label: "Ref. Domains", before: "84", after: "84", change: "0%", isPositive: true, icon: <Globe className="w-5 h-5" /> },
+    ],
+  },
 };
 
 export const CaseStudyPopup = ({

@@ -9,6 +9,10 @@ import upgradLogo from "@/assets/case-studies/upgrad.png";
 import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
 import shriramLogo from "@/assets/case-studies/shriram-properties.png";
 import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
+import jainUniversityLogo from "@/assets/clients/jain-university.png";
+import harvestInternationalLogo from "@/assets/clients/harvest-international.png";
+import atriaInstituteLogo from "@/assets/clients/atria-institute.png";
+import bhrighuAcademyLogo from "@/assets/clients/bhrighu-academy.png";
 import { CaseStudyPopup } from "./CaseStudyPopup";
 
 const caseStudies = [
@@ -21,34 +25,62 @@ const caseStudies = [
   },
   {
     id: 2,
+    title: "Jain University",
+    industry: "Education",
+    image: "bg-gradient-to-br from-blue-600 to-blue-700",
+    logo: jainUniversityLogo,
+  },
+  {
+    id: 3,
     title: "Mamaearth",
     industry: "D2C Beauty & Skincare",
     image: "bg-gradient-to-br from-green-400 to-blue-500",
     logo: mamaEarthLogo,
   },
   {
-    id: 3,
+    id: 4,
+    title: "Harvest International School",
+    industry: "Education",
+    image: "bg-gradient-to-br from-green-600 to-green-700",
+    logo: harvestInternationalLogo,
+  },
+  {
+    id: 5,
     title: "upGrad",
-    industry: "EdTech",
+    industry: "Education",
     image: "bg-gradient-to-br from-red-500 to-red-600",
     logo: upgradLogo,
   },
   {
-    id: 4,
+    id: 6,
+    title: "Atria Institute",
+    industry: "Education",
+    image: "bg-gradient-to-br from-purple-600 to-purple-700",
+    logo: atriaInstituteLogo,
+  },
+  {
+    id: 7,
     title: "Tata 1mg",
     industry: "HealthTech",
     image: "bg-gradient-to-br from-orange-400 to-red-400",
     logo: tata1mgLogo,
   },
   {
-    id: 5,
+    id: 8,
+    title: "Bhrighu Academy",
+    industry: "Education",
+    image: "bg-gradient-to-br from-orange-500 to-orange-600",
+    logo: bhrighuAcademyLogo,
+  },
+  {
+    id: 9,
     title: "Shriram Properties",
     industry: "Real Estate",
     image: "bg-gradient-to-br from-blue-500 to-blue-600",
     logo: shriramLogo,
   },
   {
-    id: 6,
+    id: 10,
     title: "Lancesoft Healthcare",
     industry: "Healthcare Staffing",
     image: "bg-gradient-to-br from-slate-700 to-slate-800",
