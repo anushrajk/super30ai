@@ -23,9 +23,13 @@ import upgradLogo from "@/assets/case-studies/upgrad.png";
 import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
 import shriramLogo from "@/assets/case-studies/shriram-properties.png";
 import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
+import jainUniversityLogo from "@/assets/clients/jain-university.png";
+import harvestInternationalLogo from "@/assets/clients/harvest-international.png";
+import atriaInstituteLogo from "@/assets/clients/atria-institute.png";
+import bhrighuAcademyLogo from "@/assets/clients/bhrighu-academy.png";
 import { CaseStudyPopup } from "@/components/home/CaseStudyPopup";
 
-const filters = ["All", "Real Estate", "D2C", "EdTech", "Healthcare", "Staffing"];
+const filters = ["All", "Real Estate", "D2C", "Education", "Healthcare", "Staffing"];
 
 const caseStudies = [
   {
@@ -35,74 +39,126 @@ const caseStudies = [
     category: ["Real Estate"],
     logo: magicbricksLogo,
     results: [
-      { metric: "Organic Traffic", value: "+156%" },
-      { metric: "Keywords", value: "+89%" },
-      { metric: "Backlinks", value: "+45%" },
+      { metric: "Organic Traffic", value: "+7.3%" },
+      { metric: "Keywords", value: "+2.7%" },
+      { metric: "Backlinks", value: "+7.3%" },
     ],
     description: "Transformed India's leading real estate portal with comprehensive AI SEO strategy.",
   },
   {
     id: 2,
+    title: "Jain University",
+    industry: "Education",
+    category: ["Education"],
+    logo: jainUniversityLogo,
+    results: [
+      { metric: "Organic Traffic", value: "+81%" },
+      { metric: "Keywords", value: "+95%" },
+      { metric: "Traffic Share", value: "+20%" },
+    ],
+    description: "Boosted organic visibility for one of India's leading private universities.",
+  },
+  {
+    id: 3,
     title: "Mamaearth",
     industry: "D2C",
     category: ["D2C"],
     logo: mamaEarthLogo,
     results: [
-      { metric: "Organic Traffic", value: "+234%" },
-      { metric: "Keywords", value: "+167%" },
-      { metric: "Backlinks", value: "+89%" },
+      { metric: "Organic Traffic", value: "+121%" },
+      { metric: "Keywords", value: "+88%" },
+      { metric: "Backlinks", value: "0%" },
     ],
     description: "Scaled organic visibility for India's fastest-growing personal care brand.",
   },
   {
-    id: 3,
+    id: 4,
+    title: "Harvest International School",
+    industry: "Education",
+    category: ["Education"],
+    logo: harvestInternationalLogo,
+    results: [
+      { metric: "Organic Traffic", value: "+30%" },
+      { metric: "Keywords", value: "+15%" },
+      { metric: "Backlinks", value: "0%" },
+    ],
+    description: "Enhanced digital presence for premier international school in India.",
+  },
+  {
+    id: 5,
     title: "upGrad",
-    industry: "EdTech",
-    category: ["EdTech"],
+    industry: "Education",
+    category: ["Education"],
     logo: upgradLogo,
     results: [
-      { metric: "Organic Traffic", value: "+189%" },
-      { metric: "Keywords", value: "+145%" },
-      { metric: "Ref. Domains", value: "+78%" },
+      { metric: "Organic Traffic", value: "+28%" },
+      { metric: "Keywords", value: "+25%" },
+      { metric: "Traffic Share", value: "+14%" },
     ],
     description: "Built authority in competitive EdTech space through strategic content optimization.",
   },
   {
-    id: 4,
+    id: 6,
+    title: "Atria Institute",
+    industry: "Education",
+    category: ["Education"],
+    logo: atriaInstituteLogo,
+    results: [
+      { metric: "Organic Traffic", value: "+196%" },
+      { metric: "Keywords", value: "+51%" },
+      { metric: "Backlinks", value: "0%" },
+    ],
+    description: "Tripled organic traffic for leading technology institute in Bangalore.",
+  },
+  {
+    id: 7,
     title: "Tata 1mg",
     industry: "Healthcare",
     category: ["Healthcare"],
     logo: tata1mgLogo,
     results: [
-      { metric: "Organic Traffic", value: "+267%" },
-      { metric: "Keywords", value: "+198%" },
-      { metric: "Backlinks", value: "+112%" },
+      { metric: "Organic Traffic", value: "+10%" },
+      { metric: "Keywords", value: "+18%" },
+      { metric: "Backlinks", value: "0%" },
     ],
     description: "Dominated healthcare search with targeted SEO for India's leading health platform.",
   },
   {
-    id: 5,
+    id: 8,
+    title: "Bhrighu Academy",
+    industry: "Education",
+    category: ["Education"],
+    logo: bhrighuAcademyLogo,
+    results: [
+      { metric: "Organic Traffic", value: "+39,233%" },
+      { metric: "Keywords", value: "+2,255%" },
+      { metric: "Traffic Share", value: "+70%" },
+    ],
+    description: "Transformed online presence for astrology education platform from scratch.",
+  },
+  {
+    id: 9,
     title: "Shriram Properties",
     industry: "Real Estate",
     category: ["Real Estate"],
     logo: shriramLogo,
     results: [
-      { metric: "Organic Traffic", value: "+145%" },
-      { metric: "Keywords", value: "+98%" },
-      { metric: "Ref. Domains", value: "+56%" },
+      { metric: "Traffic Share", value: "+11%" },
+      { metric: "Keywords", value: "+16%" },
+      { metric: "Ref. Domains", value: "0%" },
     ],
     description: "Enhanced digital presence for one of South India's premier real estate developers.",
   },
   {
-    id: 6,
+    id: 10,
     title: "Lancesoft",
     industry: "Staffing",
     category: ["Staffing"],
     logo: lancesoftLogo,
     results: [
-      { metric: "Organic Traffic", value: "+178%" },
-      { metric: "Keywords", value: "+134%" },
-      { metric: "Backlinks", value: "+67%" },
+      { metric: "Organic Traffic", value: "+10%" },
+      { metric: "Traffic Share", value: "-35%" },
+      { metric: "Keywords", value: "-93%" },
     ],
     description: "Boosted organic reach for global IT staffing and workforce solutions provider.",
   },
