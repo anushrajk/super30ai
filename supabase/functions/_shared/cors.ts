@@ -12,6 +12,18 @@ const ALLOWED_ORIGINS = [
   'http://localhost:8080',  // Alternative dev port
 ];
 
+function isLovablePreviewOrigin(origin: string): boolean {
+  try {
+    const { hostname, protocol } = new URL(origin);
+    if (protocol !== 'https:') return false;
+
+    // Allow Lovable preview + hosted domains
+    return hostname.endsWith('.lovableproject.com') || hostname.endsWith('.lovable.app');
+  } catch {
+    return false;
+  }
+}
+
 // Get the allowed origin from environment or use default list
 const ENV_ALLOWED_ORIGIN = Deno.env.get('ALLOWED_ORIGIN');
 
@@ -25,15 +37,14 @@ export function getCorsHeaders(requestOrigin?: string | null): Record<string, st
     };
   }
 
-  // Check if the request origin is in our allowed list
-  const origin = requestOrigin && ALLOWED_ORIGINS.includes(requestOrigin)
+  // Allow known production/dev origins + Lovable preview origins
+  const origin = requestOrigin && (ALLOWED_ORIGINS.includes(requestOrigin) || isLovablePreviewOrigin(requestOrigin))
     ? requestOrigin
     : ALLOWED_ORIGINS[0]; // Default to first allowed origin
 
   return {
     'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-session-id',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
   };
 }
 
