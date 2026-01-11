@@ -106,20 +106,23 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         monthly_revenue: monthlyRevenue || undefined 
       };
 
-      // Send to Google Sheets
+      // Send to Google Sheets (non-blocking, doesn't affect audit flow)
       try {
-        const sheetsData = new FormData();
-        sheetsData.append('website_url', websiteUrl);
-        sheetsData.append('email', email);
-        sheetsData.append('phone', phone ? `+91${phone}` : '');
-        sheetsData.append('role', roleOptions.find(r => r.value === role)?.label || role || '');
-        sheetsData.append('monthly_revenue', revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || '');
-        sheetsData.append('timestamp', new Date().toISOString());
-        sheetsData.append('source', 'AI SEO Audit Form');
+        const sheetsData = {
+          website: websiteUrl,
+          email: email,
+          phone: phone ? `+91${phone}` : '',
+          role: roleOptions.find(r => r.value === role)?.label || role || '',
+          revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || '',
+          formSource: 'AI SEO Audit Form'
+        };
 
         fetch('https://script.google.com/macros/s/AKfycbzUbi6MV-u2pmH8LauEx3MmrK3XX7J-8srp7komiGKDH8ScXxwUskRcOWB2JjqfXQ0r/exec', {
           method: 'POST',
-          body: sheetsData,
+          headers: {
+            'Content-Type': 'text/plain'
+          },
+          body: JSON.stringify(sheetsData),
           mode: 'no-cors'
         }).catch(console.error);
       } catch (error) {
