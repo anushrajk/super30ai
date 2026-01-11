@@ -52,8 +52,8 @@ export const UnifiedCTASection = forwardRef<HTMLElement, UnifiedCTASectionProps>
             <Link to={secondaryCTA.href}>
               <Button
                 size="lg"
-                variant="outline"
-                className={`w-full sm:w-auto ${isDark ? "border-white/20 text-white hover:bg-white/10" : "border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400"}`}
+                variant={isDark ? "outline-white" : "outline"}
+                className={`w-full sm:w-auto ${!isDark && "border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400"}`}
               >
                 {secondaryCTA.label}
                 <ArrowRight className="w-5 h-5 ml-2" />
