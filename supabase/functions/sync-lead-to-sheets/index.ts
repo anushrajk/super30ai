@@ -11,7 +11,7 @@ interface SheetsLeadPayload {
 }
 
 const GOOGLE_APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbyQywSTHz2NKRwvg-oyXJVP_-GyUCaWrkYm9OQ7IudJsWZHXLYiqarcYtpE85NKYWzW/exec";
+  "https://script.google.com/macros/s/AKfycbwtAO1DRg-1RnW5HreL0ewiFQoh-S4IqVPQRugUANbTvnurt1eO2Gk10P8pJh0S4MaK/exec";
 
 const handler = async (req: Request): Promise<Response> => {
   const corsPreFlight = handleCorsPreFlight(req);
