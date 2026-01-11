@@ -93,18 +93,40 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
 
   const canSubmit = isUrlValid && isEmailValid && isPhoneValid;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setTouched({ url: true, email: true, phone: true });
     
     if (canSubmit) {
-      onSubmit({ 
+      const formData = { 
         website_url: websiteUrl, 
         email,
         phone: phone ? `+91${phone}` : undefined,
         role: role || undefined, 
         monthly_revenue: monthlyRevenue || undefined 
-      });
+      };
+
+      // Send to Google Sheets
+      try {
+        const sheetsData = new FormData();
+        sheetsData.append('website_url', websiteUrl);
+        sheetsData.append('email', email);
+        sheetsData.append('phone', phone ? `+91${phone}` : '');
+        sheetsData.append('role', roleOptions.find(r => r.value === role)?.label || role || '');
+        sheetsData.append('monthly_revenue', revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || '');
+        sheetsData.append('timestamp', new Date().toISOString());
+        sheetsData.append('source', 'AI SEO Audit Form');
+
+        fetch('https://script.google.com/macros/s/AKfycbzUbi6MV-u2pmH8LauEx3MmrK3XX7J-8srp7komiGKDH8ScXxwUskRcOWB2JjqfXQ0r/exec', {
+          method: 'POST',
+          body: sheetsData,
+          mode: 'no-cors'
+        }).catch(console.error);
+      } catch (error) {
+        console.error('Error sending to Google Sheets:', error);
+      }
+
+      onSubmit(formData);
     }
   };
 
