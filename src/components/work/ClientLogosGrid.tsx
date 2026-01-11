@@ -9,13 +9,28 @@ import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
 import shriramLogo from "@/assets/case-studies/shriram-properties.png";
 import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
 
+// New EdTech logos
+import jainUniversityLogo from "@/assets/clients/jain-university.png";
+import harvestInternationalLogo from "@/assets/clients/harvest-international.png";
+import soundaryaLogo from "@/assets/clients/soundarya.png";
+import bhrighuAcademyLogo from "@/assets/clients/bhrighu-academy.png";
+import smrUniversityLogo from "@/assets/clients/smr-university.png";
+import atriaInstituteLogo from "@/assets/clients/atria-institute.png";
+
+// Alternating order: existing, new EdTech, existing, new EdTech...
 const clientCompanies = [
   { name: "Magicbricks", logo: magicbricksLogo, industry: "Real Estate" },
+  { name: "Bhrighu Academy", logo: bhrighuAcademyLogo, industry: "EdTech" },
   { name: "Mamaearth", logo: mamaEarthLogo, industry: "D2C" },
+  { name: "Jain University", logo: jainUniversityLogo, industry: "EdTech" },
   { name: "upGrad", logo: upgradLogo, industry: "EdTech" },
+  { name: "Harvest International School", logo: harvestInternationalLogo, industry: "EdTech" },
   { name: "Tata 1mg", logo: tata1mgLogo, industry: "Healthcare" },
+  { name: "Soundarya", logo: soundaryaLogo, industry: "EdTech" },
   { name: "Shriram Properties", logo: shriramLogo, industry: "Real Estate" },
+  { name: "SMR University", logo: smrUniversityLogo, industry: "EdTech" },
   { name: "Lancesoft", logo: lancesoftLogo, industry: "Staffing" },
+  { name: "Atria Institute of Technology", logo: atriaInstituteLogo, industry: "EdTech" },
 ];
 
 export const ClientLogosGrid = () => {
