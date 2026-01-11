@@ -23,10 +23,10 @@ import upgradLogo from "@/assets/case-studies/upgrad.png";
 import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
 import shriramLogo from "@/assets/case-studies/shriram-properties.png";
 import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
-import jainUniversityLogo from "@/assets/clients/jain-university.png";
-import harvestInternationalLogo from "@/assets/clients/harvest-international.png";
-import atriaInstituteLogo from "@/assets/clients/atria-institute.png";
-import bhrighuAcademyLogo from "@/assets/clients/bhrighu-academy.png";
+import jainUniversityLogo from "@/assets/case-studies/jain-university.png";
+import harvestInternationalLogo from "@/assets/case-studies/harvest-international.png";
+import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
+import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
 import { CaseStudyPopup } from "@/components/home/CaseStudyPopup";
 
 const filters = ["All", "Real Estate", "D2C", "Education", "Healthcare", "Staffing"];
