@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
-import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
+import magicbricksLogo from "@/assets/clients/magicbricks.png";
+import mamaEarthLogo from "@/assets/clients/mamaearth.png";
 import upgradLogo from "@/assets/case-studies/upgrad.png";
-import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
-import shriramLogo from "@/assets/case-studies/shriram-properties.png";
-import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
-import jainUniversityLogo from "@/assets/case-studies/jain-university.png";
-import harvestInternationalLogo from "@/assets/case-studies/harvest-international.png";
-import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
-import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
+import tata1mgLogo from "@/assets/clients/tata1mg.png";
+import shriramLogo from "@/assets/clients/shriram-properties.png";
+import lancesoftLogo from "@/assets/clients/lancesoft.png";
+import jainUniversityLogo from "@/assets/clients/jain-university.png";
+import harvestInternationalLogo from "@/assets/clients/harvest-international.png";
+import atriaInstituteLogo from "@/assets/clients/atria-institute.png";
+import bhrighuAcademyLogo from "@/assets/clients/bhrighu-academy.png";
 import { CaseStudyPopup } from "./CaseStudyPopup";
 
 const caseStudies = [

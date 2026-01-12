@@ -2,12 +2,12 @@ import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { CaseStudyPopup } from "@/components/home/CaseStudyPopup";
 
-import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
-import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
+import magicbricksLogo from "@/assets/clients/magicbricks.png";
+import mamaEarthLogo from "@/assets/clients/mamaearth.png";
 import upgradLogo from "@/assets/case-studies/upgrad.png";
-import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
-import shriramLogo from "@/assets/case-studies/shriram-properties.png";
-import lancesoftLogo from "@/assets/case-studies/lancesoft.png";
+import tata1mgLogo from "@/assets/clients/tata1mg.png";
+import shriramLogo from "@/assets/clients/shriram-properties.png";
+import lancesoftLogo from "@/assets/clients/lancesoft.png";
 
 // New Education logos
 import jainUniversityLogo from "@/assets/clients/jain-university.png";
