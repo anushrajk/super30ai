@@ -1,7 +1,7 @@
 import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-import super30FooterLogo from "@/assets/super30-footer-logo.svg";
+import super30FooterLogo from "@/assets/super30-horizontal-logo.svg";
 
 const services = [
   { name: "AI SEO Services", href: "/ai-seo" },

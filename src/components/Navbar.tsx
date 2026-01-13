@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
-import super30Logo from "@/assets/super30-logo.svg";
+import super30Logo from "@/assets/super30-horizontal-logo.svg";
 import {
   NavigationMenu,
   NavigationMenuContent,
