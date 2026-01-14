@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sparkles, Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
@@ -107,26 +107,20 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         monthly_revenue: monthlyRevenue || undefined 
       };
 
-      // Sync to Google Sheets via backend proxy (non-blocking, never affects audit flow)
-      try {
-        const sheetsData = {
-          website: websiteUrl,
+      // Submit to Google Sheets (non-blocking)
+      void submitFormToGoogleSheets({
+        form_id: "lead_capture_form_seo",
+        form_name: "AI SEO Visibility Audit Form",
+        page_url: window.location.href,
+        trigger_type: "embedded",
+        data: {
+          website_url: websiteUrl,
           email: email,
           phone: phone ? `+91${phone}` : "",
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
-          formSource: "AI SEO Audit Form",
-        };
-
-        void supabase.functions
-          .invoke("sync-lead-to-sheets", { body: sheetsData })
-          .then(({ data, error }) => {
-            if (error) console.error("Sheets sync failed:", error);
-            else console.log("Sheets sync result:", data);
-          });
-      } catch (error) {
-        console.error("Error sending to Google Sheets:", error);
-      }
+        },
+      });
 
       onSubmit(formData);
     }

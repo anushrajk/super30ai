@@ -4,12 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Sparkles, Loader2, ArrowRight } from 'lucide-react';
-import { useLead } from '@/hooks/useLead';
-import { useSession } from '@/hooks/useSession';
 import { toast } from 'sonner';
 import { usePopupValidation, type ValidationRule } from './usePopupValidation';
 import { FormError } from './FormError';
 import type { ExitIntentPopupProps } from './types';
+import { submitFormToGoogleSheets } from '@/hooks/useFormSubmit';
 
 const validationRules: Record<string, ValidationRule> = {
   name: { required: true, type: 'name' },
@@ -35,8 +34,6 @@ export const ExitIntentPopup = ({
     businessType: '' 
   });
   
-  const { createLead, sendLeadEmail } = useLead();
-  const { session } = useSession();
   const { errors, touched, setFieldTouched, validateField, validateAllFields, clearErrors, getInputClassName } = usePopupValidation();
 
   const handleBlur = (field: string) => {
@@ -68,17 +65,19 @@ export const ExitIntentPopup = ({
 
     setIsSubmitting(true);
     try {
-      const leadData = {
-        email: form.email,
-        website_url: window.location.href,
-        phone: form.phone,
-        company_name: form.name,
-        role: `Free Marketing Plan - ${form.businessType}`,
-        step: 1,
-      };
-
-      await createLead(leadData, session?.id || undefined);
-      await sendLeadEmail(leadData as any, session, 'popup_exit_marketing_plan');
+      // Submit to Google Sheets
+      await submitFormToGoogleSheets({
+        form_id: "exit_intent_popup_form",
+        form_name: "Free Marketing Plan (Exit Intent)",
+        page_url: window.location.href,
+        trigger_type: "exit_intent",
+        data: {
+          name: form.name,
+          email: form.email,
+          phone: `+91${form.phone}`,
+          business_type: form.businessType,
+        },
+      });
       
       onSuccess();
       toast.success('Your FREE Marketing Plan is on its way!');
