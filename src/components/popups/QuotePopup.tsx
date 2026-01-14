@@ -4,12 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { FileText, Loader2, ArrowRight } from 'lucide-react';
-import { useLead } from '@/hooks/useLead';
-import { useSession } from '@/hooks/useSession';
 import { toast } from 'sonner';
 import { usePopupValidation, type ValidationRule } from './usePopupValidation';
 import { FormError } from './FormError';
 import type { QuotePopupProps } from './types';
+import { submitFormToGoogleSheets } from '@/hooks/useFormSubmit';
 
 const validationRules: Record<string, ValidationRule> = {
   companyName: { required: true, type: 'name' },
@@ -31,8 +30,6 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
     services: '' 
   });
   
-  const { createLead, sendLeadEmail } = useLead();
-  const { session } = useSession();
   const { errors, touched, setFieldTouched, validateField, validateAllFields, clearErrors, getInputClassName } = usePopupValidation();
 
   const handleBlur = (field: string) => {
@@ -56,17 +53,20 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
 
     setIsSubmitting(true);
     try {
-      const leadData = {
-        email: form.email,
-        website_url: form.website,
-        company_name: form.companyName,
-        monthly_revenue: form.budget,
-        role: `Quote Request - ${form.services}`,
-        step: 1,
-      };
-
-      await createLead(leadData, session?.id || undefined);
-      await sendLeadEmail(leadData as any, session, 'popup_quote');
+      // Submit to Google Sheets
+      await submitFormToGoogleSheets({
+        form_id: "quote_popup_form",
+        form_name: "Get Custom Quote Popup",
+        page_url: window.location.href,
+        trigger_type: "popup",
+        data: {
+          company_name: form.companyName,
+          website: form.website,
+          email: form.email,
+          budget: form.budget,
+          services: form.services,
+        },
+      });
       
       onSuccess();
       toast.success('Quote request received! Check your email within 24 hours.');

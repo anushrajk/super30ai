@@ -25,10 +25,9 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
-import { useLead } from "@/hooks/useLead";
-import { useSession } from "@/hooks/useSession";
 import { validateEmail, validatePhone, validateMessage, sanitizeInput } from "@/lib/validation";
 import { BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
+import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 const contactInfo = [
   {
@@ -92,8 +91,6 @@ const socialLinks = [
 
 const Contact = () => {
   const navigate = useNavigate();
-  const { session } = useSession();
-  const { createLead, sendLeadEmail } = useLead();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -143,25 +140,25 @@ const Contact = () => {
     setLoading(true);
 
     try {
-      const leadData = {
-        website_url: formData.website || window.location.href,
-        email: sanitizeInput(formData.email),
-        phone: formData.phone ? `+91${sanitizeInput(formData.phone)}` : undefined,
-        company_name: formData.company ? sanitizeInput(formData.company) : sanitizeInput(formData.name),
-        role: formData.service ? `Contact - ${formData.service}` : 'Contact Form',
-        monthly_revenue: formData.budget || undefined,
-        step: 1
-      };
-
-      const newLead = await createLead(leadData, session?.id);
-      
-      if (newLead && session) {
-        await sendLeadEmail(
-          { ...leadData, step: 1 },
-          session,
-          `Contact Form - ${formData.service || 'General'}: ${sanitizeInput(formData.name)}`
-        );
-      }
+      // Submit to Google Sheets
+      await submitFormToGoogleSheets({
+        form_id: "contact_form",
+        form_name: "Contact Form",
+        page_url: window.location.href,
+        trigger_type: "embedded",
+        data: {
+          name: sanitizeInput(formData.name),
+          email: sanitizeInput(formData.email),
+          phone: formData.phone ? `+91${sanitizeInput(formData.phone)}` : "",
+          company: formData.company ? sanitizeInput(formData.company) : "",
+          website: formData.website || "",
+          budget: formData.budget || "",
+          team_size: formData.teamSize || "",
+          source: formData.source || "",
+          service: formData.service || "",
+          message: sanitizeInput(formData.message),
+        },
+      });
 
       toast.success("Message sent! We'll get back to you within 24 hours.");
       setFormData({

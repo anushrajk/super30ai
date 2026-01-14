@@ -28,8 +28,6 @@ import {
 } from "@/components/ui/select";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useToast } from "@/hooks/use-toast";
-import { useSession } from "@/hooks/useSession";
-import { supabase } from "@/integrations/supabase/client";
 import { 
   getNextBatchStartDate, 
   formatBatchDayName, 
@@ -39,6 +37,7 @@ import {
 } from "@/lib/timeUtils";
 import { courseApplicationSchema, validateField } from "@/lib/courseFormValidation";
 import { FormFieldError } from "./FormFieldError";
+import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 interface FieldErrors {
   fullName?: string | null;
@@ -50,7 +49,6 @@ interface FieldErrors {
 export const CourseApplicationSection = () => {
   const [ref, isVisible] = useScrollAnimation();
   const { toast } = useToast();
-  const { session } = useSession();
 
   const batchInfo = useMemo(() => {
     const batchStartDate = getNextBatchStartDate();
@@ -146,26 +144,22 @@ export const CourseApplicationSection = () => {
     setLoading(true);
 
     try {
-      const { data, error } = await supabase.functions.invoke('submit-course-application', {
-        body: {
-          fullName: formData.fullName.trim(),
+      // Submit to Google Sheets
+      await submitFormToGoogleSheets({
+        form_id: "course_application_form",
+        form_name: "Course Application Form (Main)",
+        page_url: window.location.href,
+        trigger_type: "embedded",
+        data: {
+          full_name: formData.fullName.trim(),
           email: formData.email.trim(),
-          phone: formData.phone.replace(/\D/g, ''),
-          currentRole: formData.currentRole,
-          experience: formData.experience,
+          phone: `+91${formData.phone.replace(/\D/g, '')}`,
+          current_role: roleOptions.find(r => r.value === formData.currentRole)?.label || formData.currentRole || "",
+          experience: experienceOptions.find(e => e.value === formData.experience)?.label || formData.experience || "",
           linkedin: formData.linkedin.trim(),
           motivation: formData.motivation.trim(),
-          sessionId: session?.id
-        }
+        },
       });
-
-      if (error) {
-        throw new Error(error.message || 'Failed to submit application');
-      }
-
-      if (data?.error) {
-        throw new Error(data.error);
-      }
 
       setSubmittedName(formData.fullName.split(' ')[0]);
       setSubmitted(true);

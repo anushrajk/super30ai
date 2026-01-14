@@ -4,12 +4,11 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Phone, Loader2, ArrowRight } from 'lucide-react';
-import { useLead } from '@/hooks/useLead';
-import { useSession } from '@/hooks/useSession';
 import { toast } from 'sonner';
 import { usePopupValidation, type ValidationRule } from './usePopupValidation';
 import { FormError } from './FormError';
 import type { CallbackPopupProps } from './types';
+import { submitFormToGoogleSheets } from '@/hooks/useFormSubmit';
 
 const validationRules: Record<string, ValidationRule> = {
   name: { required: true, type: 'name' },
@@ -29,8 +28,6 @@ export const CallbackPopup = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', timeSlot: '' });
   
-  const { createLead, sendLeadEmail } = useLead();
-  const { session } = useSession();
   const { errors, touched, setFieldTouched, validateField, validateAllFields, clearErrors, getInputClassName } = usePopupValidation();
 
   const handleBlur = (field: string) => {
@@ -62,17 +59,18 @@ export const CallbackPopup = ({
 
     setIsSubmitting(true);
     try {
-      const leadData = {
-        email: `callback_${Date.now()}@popup.temp`,
-        website_url: window.location.href,
-        phone: form.phone,
-        company_name: form.name,
-        role: `Callback Request - ${form.timeSlot}`,
-        step: 1,
-      };
-
-      await createLead(leadData, session?.id || undefined);
-      await sendLeadEmail(leadData as any, session, 'popup_callback');
+      // Submit to Google Sheets
+      await submitFormToGoogleSheets({
+        form_id: "callback_popup_form",
+        form_name: "Schedule a Call Popup",
+        page_url: window.location.href,
+        trigger_type: "popup",
+        data: {
+          name: form.name,
+          phone: `+91${form.phone}`,
+          time_slot: form.timeSlot,
+        },
+      });
       
       onSuccess();
       toast.success('Callback requested! We\'ll call you soon.');

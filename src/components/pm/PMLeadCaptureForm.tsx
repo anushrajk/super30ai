@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
+import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 interface PMLeadCaptureFormProps {
   onSubmit: (data: { 
@@ -103,6 +104,22 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
     
     if (canSubmit) {
       const urlWithProtocol = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
+      
+      // Submit to Google Sheets (non-blocking)
+      void submitFormToGoogleSheets({
+        form_id: "pm_lead_capture_form",
+        form_name: "Performance Marketing Audit Form",
+        page_url: window.location.href,
+        trigger_type: "embedded",
+        data: {
+          website_url: urlWithProtocol,
+          email: email,
+          phone: phone ? `+91${phone}` : "",
+          role: roleOptions.find(r => r.value === role)?.label || role || "",
+          ad_budget: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
+        },
+      });
+
       onSubmit({ 
         website_url: urlWithProtocol, 
         email,
