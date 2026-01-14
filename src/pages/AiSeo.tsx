@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useSession } from "@/hooks/useSession";
-import { useLead } from "@/hooks/useLead";
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/landing/HeroSection";
@@ -22,25 +20,17 @@ import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
+import { useState } from "react";
 
 const AiSeo = () => {
   const navigate = useNavigate();
-  const { session } = useSession();
-  const { createLead, sendLeadEmail, loading } = useLead();
   const { setLeadData } = useFunnelData();
+  const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
+    setLoading(true);
     try {
-      const leadData = {
-        website_url: data.website_url,
-        email: data.email,
-        phone: data.phone,
-        role: data.role,
-        monthly_revenue: data.monthly_revenue,
-        step: 1
-      };
-
-      // Store in funnel data for persistence
+      // Store in funnel data for persistence across pages
       setLeadData({
         website_url: data.website_url,
         email: data.email,
@@ -49,22 +39,11 @@ const AiSeo = () => {
         monthly_revenue: data.monthly_revenue,
       });
 
-      const newLead = await createLead(leadData, session?.id);
-      
-      if (newLead && session) {
-        await sendLeadEmail(
-          { ...leadData, step: 1 },
-          session,
-          "Step 1 - Initial Lead Capture"
-        );
-      }
-
       toast.success("Analyzing your website...");
       
-      // Navigate with complete form data for reliability
+      // Navigate with form data - Google Sheets submission happens in the form component
       navigate("/audit", { 
         state: { 
-          leadId: newLead?.id,
           formData: {
             website_url: data.website_url,
             email: data.email,
@@ -77,6 +56,8 @@ const AiSeo = () => {
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
 
