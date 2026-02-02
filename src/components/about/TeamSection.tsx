@@ -1,42 +1,77 @@
 import { Linkedin, Twitter } from "lucide-react";
 import { BentoGrid, BentoCard, BentoBadge } from "@/components/ui/bento-grid";
 
+import vigneshImg from "@/assets/team/vignesh.png";
+import sujeetImg from "@/assets/team/sujeet.png";
+import swanandImg from "@/assets/team/swanand.png";
+import sathyaImg from "@/assets/team/sathya.png";
+import monishaImg from "@/assets/team/monisha.png";
+import kailashImg from "@/assets/team/kailash.png";
+import deepakImg from "@/assets/team/deepak.png";
+import madhuImg from "@/assets/team/madhu.png";
+import anushImg from "@/assets/team/anush.png";
+import abhishekImg from "@/assets/team/abhishek.png";
+
 const teamMembers = [
   {
-    name: "Rahul Sharma",
+    name: "Vignesh",
     role: "Founder & CEO",
     expertise: "Ex-Google, 12+ years in SEO",
-    avatar: "RS",
+    image: vigneshImg,
   },
   {
-    name: "Priya Patel",
+    name: "Sujeet",
     role: "Head of AI SEO",
     expertise: "AI/ML Specialist, Stanford Alum",
-    avatar: "PP",
+    image: sujeetImg,
   },
   {
-    name: "Amit Kumar",
+    name: "Swanand",
     role: "Director, Performance Marketing",
     expertise: "Meta & Google Certified, 10+ years",
-    avatar: "AK",
+    image: swanandImg,
   },
   {
-    name: "Sneha Reddy",
+    name: "Sathya",
     role: "Head of Content Strategy",
     expertise: "Ex-HubSpot, Content Marketing Expert",
-    avatar: "SR",
+    image: sathyaImg,
   },
   {
-    name: "Vikram Singh",
+    name: "Monisha",
     role: "Technical SEO Lead",
     expertise: "Full-stack Developer, SEO Engineer",
-    avatar: "VS",
+    image: monishaImg,
   },
   {
-    name: "Ananya Gupta",
+    name: "Kailash",
     role: "Data Science Lead",
     expertise: "IIT Delhi, Analytics Expert",
-    avatar: "AG",
+    image: kailashImg,
+  },
+  {
+    name: "Deepak",
+    role: "Client Success Manager",
+    expertise: "10+ years in Digital Marketing",
+    image: deepakImg,
+  },
+  {
+    name: "Madhu",
+    role: "Senior SEO Strategist",
+    expertise: "E-commerce SEO Specialist",
+    image: madhuImg,
+  },
+  {
+    name: "Anush",
+    role: "PPC Campaign Manager",
+    expertise: "Google Ads Certified, ROI Expert",
+    image: anushImg,
+  },
+  {
+    name: "Abhishek",
+    role: "Web Developer",
+    expertise: "React & Node.js Expert",
+    image: abhishekImg,
   },
 ];
 
@@ -54,37 +89,41 @@ export const TeamSection = () => {
           </p>
         </div>
 
-        <BentoGrid className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+        <BentoGrid className="grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-6xl mx-auto">
           {teamMembers.map((member, index) => (
-            <BentoCard key={index} className="group text-center">
+            <BentoCard key={index} className="group text-center p-3 md:p-4">
               {/* Avatar */}
-              <div className="relative w-16 h-16 md:w-20 md:h-20 bg-brand-gradient rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span className="text-xl md:text-2xl font-bold text-white">{member.avatar}</span>
+              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden">
+                <img 
+                  src={member.image} 
+                  alt={member.name}
+                  className="w-full h-full object-cover"
+                />
                 {/* Online indicator */}
-                <div className="absolute bottom-1 right-1 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-background" />
+                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-background" />
               </div>
 
-              <h3 className="text-lg md:text-xl font-bold text-foreground mb-1 group-hover:text-brand transition-colors">
+              <h3 className="text-sm md:text-base font-bold text-foreground mb-0.5 group-hover:text-brand transition-colors">
                 {member.name}
               </h3>
-              <p className="text-brand font-medium text-sm mb-2">{member.role}</p>
-              <p className="text-muted-foreground text-sm mb-4">{member.expertise}</p>
+              <p className="text-brand font-medium text-xs mb-1">{member.role}</p>
+              <p className="text-muted-foreground text-xs leading-tight hidden md:block">{member.expertise}</p>
 
               {/* Social Links */}
-              <div className="flex items-center justify-center gap-3">
+              <div className="flex items-center justify-center gap-2 mt-2">
                 <a
                   href="#"
-                  className="w-8 h-8 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
+                  className="w-6 h-6 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
                   aria-label={`${member.name}'s LinkedIn`}
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <Linkedin className="w-3 h-3" />
                 </a>
                 <a
                   href="#"
-                  className="w-8 h-8 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
+                  className="w-6 h-6 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
                   aria-label={`${member.name}'s Twitter`}
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Twitter className="w-3 h-3" />
                 </a>
               </div>
             </BentoCard>
