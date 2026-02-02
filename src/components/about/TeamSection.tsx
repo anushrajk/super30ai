@@ -89,7 +89,7 @@ export const TeamSection = () => {
           </p>
         </div>
 
-        <BentoGrid className="grid-cols-2 md:grid-cols-3 lg:grid-cols-5 max-w-6xl mx-auto">
+        <BentoGrid className="grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <BentoCard key={index} className="group text-center p-3 md:p-4">
               {/* Avatar */}
