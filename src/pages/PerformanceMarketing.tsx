@@ -146,8 +146,40 @@ const PerformanceMarketing = () => {
       <Helmet>
         <title>Performance Marketing Services | The Super 30 - ROI-Driven Ads</title>
         <meta name="description" content="Turn ad spend into predictable revenue with AI-powered performance marketing. Google Ads, Meta Ads, LinkedIn Ads, and more. Free Ads Audit." />
-        <meta name="keywords" content="Performance Marketing, Google Ads, Meta Ads, PPC Agency Bangalore, ROI Marketing, The Super 30" />
-        <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app/performance-marketing" />
+        <meta name="keywords" content="Performance Marketing, Google Ads, Meta Ads, LinkedIn Ads, PPC Agency Bangalore, ROI Marketing, The Super 30" />
+        <link rel="canonical" href="https://thesuper30.ai/performance-marketing" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Performance Marketing Services | ROI-Driven Ads" />
+        <meta property="og:description" content="Turn ad spend into predictable revenue. Google Ads, Meta Ads, LinkedIn Ads & more. Free Ads Audit." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://thesuper30.ai/performance-marketing" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Performance Marketing | The Super 30" />
+        <meta name="twitter:description" content="Turn ad spend into predictable revenue. Free Ads Audit available." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "Performance Marketing",
+            "provider": {
+              "@type": "Organization",
+              "name": "The Super 30"
+            },
+            "areaServed": "India",
+            "description": "ROI-driven paid advertising including Google Ads, Meta Ads, LinkedIn Ads, and Programmatic",
+            "offers": {
+              "@type": "Offer",
+              "name": "Free Ads Audit",
+              "price": "0",
+              "priceCurrency": "INR"
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

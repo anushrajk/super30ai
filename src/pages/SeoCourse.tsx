@@ -26,12 +26,10 @@ const SeoCourse = () => {
     <>
       <Helmet>
         <title>AI SEO Course | The Super 30 - Master GEO, AEO & Agentic Commerce</title>
-        <meta 
-          name="description" 
-          content="Join India's first Applied AI SEO course. 6-month program with 95% placement rate, ₹5-10L starting salaries. Learn AI SEO, GEO, AEO & Agentic Commerce." 
-        />
-        <meta name="keywords" content="AI SEO course, GEO course, AEO training, Agentic Commerce, SEO certification, AI marketing course, digital marketing course India" />
+        <meta name="description" content="Join India's first Applied AI SEO course. 6-month program with 95% placement rate, ₹5-10L starting salaries. Learn AI SEO, GEO, AEO & Agentic Commerce." />
+        <meta name="keywords" content="AI SEO course, GEO course, AEO training, Agentic Commerce, SEO certification, AI marketing course, digital marketing course India, SEO training Bangalore" />
         <link rel="canonical" href="https://thesuper30.ai/seo-course" />
+        <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
         <meta property="og:title" content="AI SEO Course | The Super 30 - Master GEO, AEO & Agentic Commerce" />

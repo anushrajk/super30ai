@@ -51,11 +51,36 @@ const About = () => {
     <>
       <Helmet>
         <title>About Us | The Super 30 - AI Marketing Agency Bangalore</title>
-        <meta
-          name="description"
-          content="Learn about The Super 30, Bangalore's leading AI-powered marketing agency. Our story, mission, and the team behind your growth."
-        />
-        <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app/about" />
+        <meta name="description" content="Learn about The Super 30, Bangalore's leading AI-powered marketing agency. Our story, mission, and the team behind your growth." />
+        <meta name="keywords" content="about The Super 30, AI marketing agency, digital marketing team, Bangalore SEO experts, ex-Google marketers" />
+        <link rel="canonical" href="https://thesuper30.ai/about" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="About The Super 30 | AI Marketing Experts" />
+        <meta property="og:description" content="Meet the team behind Bangalore's leading AI-powered marketing agency. 10+ years of expertise, 300+ successful projects." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://thesuper30.ai/about" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About The Super 30 | AI Marketing Experts" />
+        <meta name="twitter:description" content="Meet the team behind Bangalore's leading AI-powered marketing agency." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "mainEntity": {
+              "@type": "Organization",
+              "name": "The Super 30",
+              "description": "AI-Powered Digital Marketing Agency",
+              "foundingDate": "2015",
+              "numberOfEmployees": "30+",
+              "areaServed": "India"
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

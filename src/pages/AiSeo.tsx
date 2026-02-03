@@ -66,8 +66,40 @@ const AiSeo = () => {
       <Helmet>
         <title>AI SEO Services | The Super 30 - Dominate AI Search in 2025</title>
         <meta name="description" content="Future-proof your digital presence with AI-first SEO strategies. Get found in ChatGPT, Google AI Overviews, and next-gen search engines. Free AI SEO Audit." />
-        <meta name="keywords" content="AI SEO, SEO Agency Bangalore, AI Search Optimization, ChatGPT SEO, Google AI Overview, The Super 30" />
-        <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app/ai-seo" />
+        <meta name="keywords" content="AI SEO, SEO Agency Bangalore, AI Search Optimization, ChatGPT SEO, Google AI Overview, GEO, AEO, The Super 30" />
+        <link rel="canonical" href="https://thesuper30.ai/ai-seo" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="AI SEO Services | Dominate AI Search in 2025" />
+        <meta property="og:description" content="Future-proof your digital presence with AI-first SEO. Get found in ChatGPT, Google AI Overviews & next-gen search." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://thesuper30.ai/ai-seo" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="AI SEO Services | The Super 30" />
+        <meta name="twitter:description" content="Get found in ChatGPT, Google AI Overviews & next-gen search engines. Free AI SEO Audit." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "serviceType": "AI SEO Services",
+            "provider": {
+              "@type": "Organization",
+              "name": "The Super 30"
+            },
+            "areaServed": "India",
+            "description": "AI-first SEO strategies to dominate Google Search, AI Overviews, and LLM answers",
+            "offers": {
+              "@type": "Offer",
+              "name": "Free AI SEO Audit",
+              "price": "0",
+              "priceCurrency": "INR"
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />

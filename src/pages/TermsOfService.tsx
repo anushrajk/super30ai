@@ -11,7 +11,9 @@ const TermsOfService = () => {
       <Helmet>
         <title>Terms of Service | The Super 30 - AI Marketing Agency</title>
         <meta name="description" content="Read the terms and conditions that govern your use of The Super 30's AI SEO and Performance Marketing services." />
-        <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app/terms-of-service" />
+        <meta name="keywords" content="terms of service, terms and conditions, The Super 30 terms, legal agreement" />
+        <link rel="canonical" href="https://thesuper30.ai/terms-of-service" />
+        <meta name="robots" content="index, follow" />
       </Helmet>
 
       <Navbar />

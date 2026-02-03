@@ -179,11 +179,40 @@ const Work = () => {
     <>
       <Helmet>
         <title>Our Work | The Super 30 - Case Studies & Portfolio</title>
-        <meta
-          name="description"
-          content="Explore our portfolio of successful AI SEO and Performance Marketing campaigns. Real results from real clients."
-        />
-        <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app/work" />
+        <meta name="description" content="Explore our portfolio of successful AI SEO and Performance Marketing campaigns. Real results from real clients including Magicbricks, Mamaearth & more." />
+        <meta name="keywords" content="SEO case studies, digital marketing portfolio, AI SEO results, performance marketing success, client testimonials" />
+        <link rel="canonical" href="https://thesuper30.ai/work" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Case Studies & Portfolio | The Super 30" />
+        <meta property="og:description" content="300+ successful campaigns. See real results from clients like Magicbricks, Mamaearth, upGrad & more." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://thesuper30.ai/work" />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Case Studies & Portfolio | The Super 30" />
+        <meta name="twitter:description" content="300+ successful campaigns. Real results from real clients." />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": "The Super 30 Case Studies",
+            "description": "Portfolio of successful AI SEO and Performance Marketing campaigns",
+            "mainEntity": {
+              "@type": "ItemList",
+              "numberOfItems": 10,
+              "itemListElement": caseStudies.slice(0, 5).map((study, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "name": study.title,
+                "description": study.description
+              }))
+            }
+          })}
+        </script>
       </Helmet>
 
       <Navbar />
