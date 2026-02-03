@@ -104,7 +104,8 @@ For questions, contact: thesuper30.ai@gmail.com
     <>
       <Helmet>
         <title>Thank You | The Super 30</title>
-        <meta name="description" content="Thank you for reaching out. We'll be in touch shortly." />
+        <meta name="description" content="Thank you for reaching out to The Super 30. We'll be in touch within 24 hours." />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
       <Navbar />

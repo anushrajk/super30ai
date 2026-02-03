@@ -55,8 +55,58 @@ const Home = () => {
     <Helmet>
       <title>The Super 30 | AI-Powered Digital Marketing Agency Bangalore</title>
       <meta name="description" content="The Super 30 is Bangalore's leading AI-powered digital marketing agency. Specializing in AI SEO and Performance Marketing to grow your business." />
-      <meta name="keywords" content="digital marketing agency, AI SEO, performance marketing, Bangalore, The Super 30" />
-      <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app" />
+      <meta name="keywords" content="digital marketing agency, AI SEO, performance marketing, Bangalore, The Super 30, SEO agency India" />
+      <link rel="canonical" href="https://thesuper30.ai" />
+      
+      {/* Open Graph */}
+      <meta property="og:title" content="The Super 30 | AI-Powered Digital Marketing Agency" />
+      <meta property="og:description" content="Bangalore's leading AI-powered digital marketing agency. AI SEO & Performance Marketing for predictable business growth." />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://thesuper30.ai" />
+      <meta property="og:site_name" content="The Super 30" />
+      <meta property="og:locale" content="en_IN" />
+      
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="The Super 30 | AI Digital Marketing Agency" />
+      <meta name="twitter:description" content="AI SEO & Performance Marketing for predictable business growth. Trusted by 300+ brands." />
+      <meta name="twitter:site" content="@thesuper30ai" />
+      
+      {/* Additional SEO */}
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="The Super 30" />
+      <meta name="geo.region" content="IN-KA" />
+      <meta name="geo.placename" content="Bangalore" />
+      
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "The Super 30",
+          "description": "AI-Powered Digital Marketing Agency specializing in AI SEO and Performance Marketing",
+          "url": "https://thesuper30.ai",
+          "logo": "https://thesuper30.ai/favicon.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-89041-50555",
+            "contactType": "sales",
+            "areaServed": "IN",
+            "availableLanguage": ["English", "Hindi"]
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Bangalore",
+            "addressRegion": "Karnataka",
+            "addressCountry": "IN"
+          },
+          "sameAs": [
+            "https://linkedin.com/company/thesuper30",
+            "https://twitter.com/thesuper30ai",
+            "https://instagram.com/thesuper30.ai"
+          ]
+        })}
+      </script>
     </Helmet>
 
     <Navbar />

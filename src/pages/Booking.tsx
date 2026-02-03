@@ -144,7 +144,9 @@ const Booking = () => {
     <>
       <Helmet>
         <title>{isPM ? "Book Your Ads Strategy Call" : "Book Your AI SEO Strategy Call"} | The Super 30</title>
-        <meta name="description" content={isPM ? "Schedule your free 30-minute ads strategy session." : "Schedule your free 30-minute AI SEO strategy session."} />
+        <meta name="description" content={isPM ? "Schedule your free 30-minute ads strategy session. Get personalized ROI projections and quick wins." : "Schedule your free 30-minute AI SEO strategy session. Get your audit walkthrough and 90-day growth roadmap."} />
+        <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://thesuper30.ai/booking" />
       </Helmet>
       <Navbar />
       <main className="min-h-screen bg-background pt-16 md:pt-20">

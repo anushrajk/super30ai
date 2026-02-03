@@ -10,8 +10,10 @@ const PrivacyPolicy = () => {
     <>
       <Helmet>
         <title>Privacy Policy | The Super 30 - AI Marketing Agency</title>
-        <meta name="description" content="Learn how The Super 30 collects, uses, and protects your personal information. Your privacy is our priority." />
-        <link rel="canonical" href="https://aiseoserviceagencybangalore.lovable.app/privacy-policy" />
+        <meta name="description" content="Learn how The Super 30 collects, uses, and protects your personal information. Your privacy is our priority. GDPR compliant." />
+        <meta name="keywords" content="privacy policy, data protection, GDPR, The Super 30 privacy" />
+        <link rel="canonical" href="https://thesuper30.ai/privacy-policy" />
+        <meta name="robots" content="index, follow" />
       </Helmet>
 
       <Navbar />

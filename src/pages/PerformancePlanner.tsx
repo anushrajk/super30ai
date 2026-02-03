@@ -195,7 +195,8 @@ export default function PerformancePlanner() {
     return (
       <>
         <Helmet>
-          <title>Analyzing Your Ad Potential | Super30</title>
+          <title>Analyzing Your Ad Potential | The Super 30</title>
+          <meta name="robots" content="noindex, nofollow" />
         </Helmet>
         <div className="min-h-screen bg-background flex items-center justify-center p-4">
           <div className="max-w-3xl mx-auto space-y-6 w-full">
@@ -439,7 +440,9 @@ export default function PerformancePlanner() {
   return (
     <>
       <Helmet>
-        <title>Your Ad Performance Plan | Super30</title>
+        <title>Your Ad Performance Plan | The Super 30</title>
+        <meta name="description" content="View your personalized performance marketing opportunity report and ROI projections." />
+        <meta name="robots" content="noindex, nofollow" />
       </Helmet>
       <Navbar />
       
