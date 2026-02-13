@@ -50,7 +50,7 @@ export const PMBlogSection = () => {
           {articles.map((article, index) => (
             <Card 
               key={index}
-              className="bg-background border-border/50 hover:border-blue-500/50 hover:shadow-2xl transition-all duration-500 group overflow-hidden"
+              className="bg-background border-border/50 hover:border-[#F95B00]/50 hover:shadow-2xl transition-all duration-500 group overflow-hidden"
             >
               <div className={`h-48 ${article.image} relative overflow-hidden`}>
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
@@ -62,7 +62,7 @@ export const PMBlogSection = () => {
               </div>
 
               <CardContent className="p-4 md:p-6">
-                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-[#F95B00] transition-colors line-clamp-2">
                   {article.title}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
@@ -85,7 +85,7 @@ export const PMBlogSection = () => {
         </div>
 
         <div className="text-center mt-6 md:mt-10">
-          <Button variant="outline" className="border-blue-200 hover:bg-blue-50 hover:border-blue-400">
+          <Button variant="outline" className="border-[#F95B00]/30 hover:bg-[#F95B00]/10 hover:border-[#F95B00]">
             View All Articles
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>

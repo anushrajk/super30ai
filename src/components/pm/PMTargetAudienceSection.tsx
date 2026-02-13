@@ -19,17 +19,7 @@ import { Button } from "@/components/ui/button";
 import { BentoBadge } from "@/components/ui/bento-grid";
 
 // Color palette for multi-colored icons - SOLID colors with solid checkmarks
-const iconColors = [
-  { bg: "from-violet-500 to-purple-600", glow: "bg-violet-500/50", text: "text-white", checkBg: "bg-violet-500", checkText: "text-white" },
-  { bg: "from-emerald-500 to-teal-600", glow: "bg-emerald-500/50", text: "text-white", checkBg: "bg-emerald-500", checkText: "text-white" },
-  { bg: "from-amber-500 to-orange-600", glow: "bg-amber-500/50", text: "text-white", checkBg: "bg-amber-500", checkText: "text-white" },
-  { bg: "from-cyan-500 to-blue-600", glow: "bg-cyan-500/50", text: "text-white", checkBg: "bg-cyan-500", checkText: "text-white" },
-  { bg: "from-rose-500 to-pink-600", glow: "bg-rose-500/50", text: "text-white", checkBg: "bg-rose-500", checkText: "text-white" },
-  { bg: "from-indigo-500 to-blue-600", glow: "bg-indigo-500/50", text: "text-white", checkBg: "bg-indigo-500", checkText: "text-white" },
-  { bg: "from-lime-500 to-green-600", glow: "bg-lime-500/50", text: "text-white", checkBg: "bg-lime-500", checkText: "text-white" },
-  { bg: "from-fuchsia-500 to-purple-600", glow: "bg-fuchsia-500/50", text: "text-white", checkBg: "bg-fuchsia-500", checkText: "text-white" },
-  { bg: "from-sky-500 to-cyan-600", glow: "bg-sky-500/50", text: "text-white", checkBg: "bg-sky-500", checkText: "text-white" },
-];
+const iconColor = { bg: "from-[#F95B00] to-[#e04f00]", glow: "bg-[#F95B00]/50", text: "text-white", checkBg: "bg-[#F95B00]", checkText: "text-white" };
 
 const audiences = [
   {
@@ -184,9 +174,9 @@ export const PMTargetAudienceSection = () => {
                 <CardContent className="p-4 md:p-5 relative">
                   {/* Solid color icon */}
                   <div className="relative mb-3">
-                    <div className={`absolute inset-0 w-12 h-12 ${iconColors[index % iconColors.length].glow} rounded-xl blur-xl transition-all duration-300`} />
-                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-300`}>
-                      <audience.icon className={`w-6 h-6 ${iconColors[index % iconColors.length].text}`} />
+                    <div className={`absolute inset-0 w-12 h-12 ${iconColor.glow} rounded-xl blur-xl transition-all duration-300`} />
+                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColor.bg} shadow-lg group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-300`}>
+                      <audience.icon className={`w-6 h-6 ${iconColor.text}`} />
                     </div>
                   </div>
 
@@ -198,8 +188,8 @@ export const PMTargetAudienceSection = () => {
                   <ul className="space-y-1.5">
                     {audience.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2 text-sm text-gray-800 font-medium">
-                        <div className={`w-5 h-5 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
-                          <CheckCircle2 className={`w-3 h-3 ${iconColors[index % iconColors.length].checkText}`} />
+                        <div className={`w-5 h-5 rounded-full ${iconColor.checkBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
+                          <CheckCircle2 className={`w-3 h-3 ${iconColor.checkText}`} />
                         </div>
                         {feature}
                       </li>
