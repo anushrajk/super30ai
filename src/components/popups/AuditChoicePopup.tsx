@@ -19,7 +19,7 @@ export const AuditChoicePopup = ({ open, onOpenChange }: AuditChoicePopupProps) 
   const handleAuditChoice = (type: "seo" | "ads") => {
     onOpenChange(false);
     if (type === "seo") {
-      navigate("/ai-seo");
+      navigate("/ai-seo-agency-bangalore");
     } else {
       navigate("/performance-marketing");
     }

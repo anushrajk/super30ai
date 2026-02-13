@@ -177,7 +177,7 @@ export const OurWorkCarousel = () => {
 
         {/* View All CTA */}
         <div className="text-center mt-10">
-          <Link to="/work">
+          <Link to="/seo-results-bangalore">
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg"

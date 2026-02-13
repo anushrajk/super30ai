@@ -168,7 +168,7 @@ const Audit = () => {
     } else if (formData?.website_url) {
       runAnalysisWithUrl(formData.website_url);
     } else {
-      navigate("/ai-seo");
+      navigate("/ai-seo-agency-bangalore");
     }
   }, []);
 

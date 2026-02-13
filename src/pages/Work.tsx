@@ -181,13 +181,13 @@ const Work = () => {
         <title>Our Work | The Super 30 - Case Studies & Portfolio</title>
         <meta name="description" content="Explore our portfolio of successful AI SEO and Performance Marketing campaigns. Real results from real clients including Magicbricks, Mamaearth & more." />
         <meta name="keywords" content="SEO case studies, digital marketing portfolio, AI SEO results, performance marketing success, client testimonials" />
-        <link rel="canonical" href="https://thesuper30.ai/work" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-results-bangalore" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Case Studies & Portfolio | The Super 30" />
         <meta property="og:description" content="300+ successful campaigns. See real results from clients like Magicbricks, Mamaearth, upGrad & more." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thesuper30.ai/work" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-results-bangalore" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -387,7 +387,7 @@ const Work = () => {
           <UnifiedCTASection 
             headline="Stop Guessing. Start Dominating."
             subtext="Your competitors are already optimizing for AI search. Get your free visibility audit and discover exactly what you're missing."
-            primaryCTA={{ label: "Get Free AI SEO Audit", href: "/ai-seo" }}
+            primaryCTA={{ label: "Get Free AI SEO Audit", href: "/ai-seo-agency-bangalore" }}
             secondaryCTA={{ label: "Free Ads Audit", href: "/performance-marketing" }}
             variant="dark"
           />

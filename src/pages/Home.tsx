@@ -19,7 +19,7 @@ const services = [{
   title: "AI SEO Services",
   description: "Dominate Google Search, AI Overviews, and LLM answers with AI-first SEO strategies for scalable growth.",
   features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO","Entity & Semantic SEO","Generative Search Optimization"],
-  href: "/ai-seo",
+  href: "/ai-seo-agency-bangalore",
   color: "from-orange-500 to-orange-600",
   glowColor: "orange"
 }, {
@@ -174,7 +174,7 @@ const Home = () => {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
-                <Link to="/ai-seo">
+                <Link to="/ai-seo-agency-bangalore">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                     Talk to Our SEO Experts

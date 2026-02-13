@@ -67,13 +67,13 @@ const AiSeo = () => {
         <title>AI SEO Services | Best SEO Services in Bangalore | The Super 30</title>
         <meta name="description" content="Get the best AI SEO services in Bangalore using technical SEO, on page SEO services, and off page SEO services for better rankings and traffic." />
         <meta name="keywords" content="AI SEO Services, best SEO services in bangalore, technical seo services, on page seo services, off page seo services, seo services in bangalore, seo agency in bangalore, ai seo services" />
-        <link rel="canonical" href="https://www.thesuper30.ai/ai-seo" />
+        <link rel="canonical" href="https://www.thesuper30.ai/ai-seo-agency-bangalore" />
         
         {/* Open Graph */}
         <meta property="og:title" content="AI SEO Services | Best SEO Services in Bangalore | The Super 30" />
         <meta property="og:description" content="Get the best AI SEO services in Bangalore using technical SEO, on page SEO services, and off page SEO services for better rankings and traffic." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/ai-seo" />
+        <meta property="og:url" content="https://www.thesuper30.ai/ai-seo-agency-bangalore" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -87,7 +87,7 @@ const AiSeo = () => {
             "@type": "Service",
             "serviceType": "AI SEO Services",
             "name": "AI SEO Services | The Super 30",
-            "url": "https://www.thesuper30.ai/ai-seo",
+            "url": "https://www.thesuper30.ai/ai-seo-agency-bangalore",
             "provider": {
               "@type": "Organization",
               "name": "The Super 30",

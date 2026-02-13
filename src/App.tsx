@@ -88,13 +88,13 @@ const App = () => (
             <Suspense fallback={<PageLoader />}>
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/ai-seo" element={<AiSeo />} />
+                <Route path="/ai-seo-agency-bangalore" element={<AiSeo />} />
                 <Route path="/performance-marketing" element={<PerformanceMarketing />} />
                 <Route path="/performance-planner" element={<PerformancePlanner />} />
-                <Route path="/seo-course" element={<SeoCourse />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/work" element={<Work />} />
-                <Route path="/contact" element={<Contact />} />
+                <Route path="/seo-training-in-bangalore" element={<SeoCourse />} />
+                <Route path="/seo-experts-bangalore" element={<About />} />
+                <Route path="/seo-results-bangalore" element={<Work />} />
+                <Route path="/seo-agency-near-me" element={<Contact />} />
                 <Route path="/audit" element={<Audit />} />
                 <Route path="/booking" element={<Booking />} />
                 <Route path="/thank-you" element={<ThankYou />} />

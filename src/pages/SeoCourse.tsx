@@ -28,14 +28,14 @@ const SeoCourse = () => {
         <title>Advanced AI SEO Course with Hands-On Training | The Super 30</title>
         <meta name="description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance. One of the best SEO training courses for building real skills." />
         <meta name="keywords" content="ai seo course, SEO certification course, seo training in bangalore, seo course, seo course in bangalore, best seo training courses" />
-        <link rel="canonical" href="https://www.thesuper30.ai/seo-course" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-training-in-bangalore" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Advanced AI SEO Course with Hands-On Training | The Super 30" />
         <meta property="og:description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance. One of the best SEO training courses for building real skills." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/seo-course" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-training-in-bangalore" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -48,7 +48,7 @@ const SeoCourse = () => {
             "@context": "https://schema.org",
             "@type": "Course",
             "name": "Advanced AI SEO Course with Hands-On Training",
-            "url": "https://www.thesuper30.ai/seo-course",
+            "url": "https://www.thesuper30.ai/seo-training-in-bangalore",
             "description": "AI SEO course and SEO certification course with practical training and expert guidance.",
             "provider": {
               "@type": "Organization",
