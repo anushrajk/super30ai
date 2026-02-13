@@ -193,7 +193,7 @@ export const SEOBenefitsSection = () => {
             {benefits.map((benefit, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:border-gray-200 hover:-translate-y-2 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-[#F95B00]/20 hover:border-[#F95B00]/40 hover:bg-[#F95B00] hover:-translate-y-2 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
                 {/* Animated gradient border on hover */}
@@ -207,14 +207,14 @@ export const SEOBenefitsSection = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-white mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
+                  <p className="text-sm text-gray-600 group-hover:text-white/90 mb-4 leading-relaxed">{benefit.description}</p>
 
                   <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 font-medium">
+                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 group-hover:text-white/90 font-medium">
                         <div className={`w-5 h-5 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
                           <CheckCircle2 className={`w-3 h-3 ${iconColors[index % iconColors.length].checkText}`} />
                         </div>

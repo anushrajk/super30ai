@@ -65,8 +65,8 @@ const CircularProgress = ({ value, size = 120, strokeWidth = 8 }: { value: numbe
         />
         <defs>
           <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#f97316" />
-            <stop offset="100%" stopColor="#ea580c" />
+            <stop offset="0%" stopColor="#F95B00" />
+            <stop offset="100%" stopColor="#F95B00" />
           </linearGradient>
         </defs>
       </svg>
@@ -86,15 +86,15 @@ export const HeroDashboardPreview = () => {
   }, []);
 
   const metrics = [
-    { icon: TrendingUp, label: "Traffic Growth", value: 245, suffix: "%", color: "text-green-500" },
-    { icon: Users, label: "New Leads", value: 180, suffix: "%", color: "text-blue-500" },
-    { icon: Target, label: "ROAS", value: 4, suffix: "x", color: "text-purple-500" },
+    { icon: TrendingUp, label: "Traffic Growth", value: 245, suffix: "%", color: "text-[#F95B00]" },
+    { icon: Users, label: "New Leads", value: 180, suffix: "%", color: "text-[#F95B00]" },
+    { icon: Target, label: "ROAS", value: 4, suffix: "x", color: "text-[#F95B00]" },
   ];
 
   const achievements = [
-    { icon: Award, label: "Google Partner", color: "from-yellow-400 to-orange-500" },
-    { icon: Bot, label: "AI Certified", color: "from-blue-400 to-indigo-500" },
-    { icon: Zap, label: "Fast Results", color: "from-green-400 to-emerald-500" },
+    { icon: Award, label: "Google Partner", color: "from-[#F95B00] to-[#F95B00]" },
+    { icon: Bot, label: "AI Certified", color: "from-[#F95B00] to-[#F95B00]" },
+    { icon: Zap, label: "Fast Results", color: "from-[#F95B00] to-[#F95B00]" },
   ];
 
   return (
