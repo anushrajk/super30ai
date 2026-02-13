@@ -85,12 +85,12 @@ export const CourseHeroSection = () => {
             {/* H1 and Description */}
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-3 md:mb-4">
-                Become{" "}
-                <span className="text-gradient">India's Most In-Demand</span>
-                {" "}Marketing Professional
+                Advanced{" "}
+                <span className="text-gradient">AI SEO Course</span>
+                {" "}with Hands-On Training
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                Master the Latest SEO and AI Optimization For The New SEO Jobs In 2026
+                Join our AI SEO course and SEO certification course with practical training and expert guidance. One of the best SEO training courses in Bangalore for building real skills.
               </p>
             </div>
 

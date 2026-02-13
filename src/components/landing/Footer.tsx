@@ -5,14 +5,14 @@ import super30FooterLogo from "@/assets/super30-horizontal-logo.svg";
 
 const services = [
   { name: "AI SEO Services", href: "/ai-seo" },
-  { name: "Performance Marketing", href: "/performance-marketing" },
-  { name: "SEO Course", href: "/seo-course" },
+  { name: "Performance Marketing Services", href: "/performance-marketing" },
+  { name: "AI SEO Course", href: "/seo-course" },
 ];
 
 const company = [
-  { name: "About Us", href: "/about" },
+  { name: "About / Team 30", href: "/about" },
   { name: "Our Work", href: "/work" },
-  { name: "Contact", href: "/contact" },
+  { name: "Contact Our SEO Experts", href: "/contact" },
 ];
 
 const legal = [
@@ -54,12 +54,15 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
             <Link to="/" className="flex items-center mb-4 group">
               <img 
                 src={super30FooterLogo} 
-                alt="Super 30 Marketing Agency" 
+                alt="The Super 30 — AI SEO Agency Bangalore" 
                 className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
+            <p className="text-gray-400 text-sm leading-relaxed mb-2">
+              The Super 30 — AI SEO &amp; Performance Marketing Agency
+            </p>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              AI-powered digital marketing agency helping businesses grow with data-driven SEO and performance marketing.
+              We are Bangalore's leading AI SEO agency and performance marketing experts, helping brands grow through smarter search and data-driven advertising.
             </p>
             {/* Social Media Icons */}
             <div className="flex items-center gap-3">
@@ -156,7 +159,10 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} The Super 30 AI SEO Agency. All rights reserved.
+              © {new Date().getFullYear()} The Super 30 | AI Marketing Agency, Bangalore, India. All rights reserved.
+            </p>
+            <p className="text-gray-600 text-xs mt-1">
+              Serving businesses across Bangalore and India with AI-powered SEO and performance marketing services.
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               {legal.map((item) => (

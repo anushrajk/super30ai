@@ -130,7 +130,7 @@ export const ServicesSection = () => {
             Our AI SEO Services
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Comprehensive solutions to dominate AI search
+            Comprehensive AI SEO solutions covering technical SEO, on-page SEO, and off-page SEO services
           </p>
         </div>
 

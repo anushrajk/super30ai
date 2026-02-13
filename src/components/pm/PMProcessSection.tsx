@@ -26,10 +26,10 @@ export const PMProcessSection = () => {
             Our Process
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            How We Work
+            Our Performance Marketing Process
           </h2>
           <p className="text-lg text-muted-foreground">
-            A systematic approach to performance marketing success
+            A data-driven approach to PPC marketing and AI powered ads success
           </p>
         </div>
 

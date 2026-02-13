@@ -24,7 +24,7 @@ const services = [{
   glowColor: "orange"
 }, {
   icon: Target,
-  title: "Performance Marketing",
+  title: "Performance Marketing Services",
   description: "ROI-driven paid ads and performance marketing that turn ad spend into predictable revenue.",
   features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Programmatic Advertising","YouTube Ads","Remarketing & Retargeting"],
   href: "/performance-marketing",
@@ -35,7 +35,7 @@ const services = [{
 const whyChooseUs = [{
   icon: Users,
   title: "Team 30",
-  description: "Ex-Google strategists with 10+ years of experience"
+  description: "Our AI marketing agency team has 10+ years of experience"
 }, {
   icon: Bot,
   title: "AI-First Approach",
@@ -123,18 +123,18 @@ const Home = () => {
               {/* Main Headline */}
               <h1 className="font-bold text-foreground leading-tight tracking-tight">
                 <span className="block text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-semibold mb-1 md:mb-2">
-                  Grow Your Business With
+                  Bangalore's Leading
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
-                  AI-Powered SEO
+                  AI SEO &amp; Performance
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                  Optimization Services
+                  Marketing Agency
                 </span>
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                We combine AI-driven SEO and performance marketing to deliver predictable business growth not vanity metrics. Trusted by 300+ brands across India.
+                We use AI in digital marketing to build smarter AI powered SEO strategies and data-driven campaigns that drive real business growth. Trusted by 300+ brands across India.
               </p>
 
               {/* Platform Logos */}
@@ -180,7 +180,7 @@ const Home = () => {
                 <Link to="/ai-seo">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                    AI SEO Services
+                    Talk to Our SEO Experts
                     <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </Link>
@@ -214,10 +214,10 @@ const Home = () => {
               Why Us
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Why Choose The Super 30?
+              Why Brands Choose The Super 30
             </h2>
             <p className="text-lg text-muted-foreground">
-              We're not just another agency — we're your growth marketing partners.
+              As a trusted AI SEO agency and one of the best SEO agencies in Bangalore, we combine technology and creativity to deliver results.
             </p>
           </div>
 
@@ -240,7 +240,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
-              Our Services
+              Our AI-Powered Services
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
               Two Powerful Services, One Goal

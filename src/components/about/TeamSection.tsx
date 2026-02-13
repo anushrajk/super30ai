@@ -15,31 +15,31 @@ import abhishekImg from "@/assets/team/abhishek.png";
 const teamMembers = [
   {
     name: "Vignesh",
-    role: "Founder & CEO",
+    role: "Founder & SEO Expert",
     expertise: "Ex-Google, 12+ years in SEO",
     image: vigneshImg,
   },
   {
     name: "Sujeet",
     role: "Head of AI SEO",
-    expertise: "AI/ML Specialist, Stanford Alum",
+    expertise: "AI/ML SEO Specialist",
     image: sujeetImg,
   },
   {
     name: "Swanand",
     role: "Director, Performance Marketing",
-    expertise: "Meta & Google Certified, 10+ years",
+    expertise: "PPC Specialist, Meta & Google Certified",
     image: swanandImg,
   },
   {
     name: "Sathya",
-    role: "Head of Content Strategy",
-    expertise: "Ex-HubSpot, Content Marketing Expert",
+    role: "Digital Marketing Specialist",
+    expertise: "Content Strategy & SEO Expert",
     image: sathyaImg,
   },
   {
     name: "Monisha",
-    role: "Technical SEO Lead",
+    role: "Technical SEO Specialist",
     expertise: "Full-stack Developer, SEO Engineer",
     image: monishaImg,
   },
@@ -51,19 +51,19 @@ const teamMembers = [
   },
   {
     name: "Deepak",
-    role: "Client Success Manager",
-    expertise: "10+ years in Digital Marketing",
+    role: "Digital Marketing Specialist",
+    expertise: "10+ years in SEO & PPC",
     image: deepakImg,
   },
   {
     name: "Madhu",
-    role: "Senior SEO Strategist",
-    expertise: "E-commerce SEO Specialist",
+    role: "Senior SEO Specialist",
+    expertise: "E-commerce SEO Expert",
     image: madhuImg,
   },
   {
     name: "Anush",
-    role: "PPC Campaign Manager",
+    role: "PPC Specialist",
     expertise: "Google Ads Certified, ROI Expert",
     image: anushImg,
   },
@@ -82,10 +82,10 @@ export const TeamSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <BentoBadge className="mb-4">Our Team</BentoBadge>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            Meet the Experts
+            Meet the SEO Experts
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            A world-class team united by one mission — your growth.
+            Our SEO specialists and PPC specialists work collaboratively to deliver integrated strategies for your growth.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export const TeamSection = () => {
               <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden">
                 <img 
                   src={member.image} 
-                  alt={member.name}
+                  alt={`${member.name} — ${member.role} at The Super 30`}
                   className="w-full h-full object-cover"
                 />
                 {/* Online indicator */}

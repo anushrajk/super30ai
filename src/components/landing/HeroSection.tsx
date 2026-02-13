@@ -50,7 +50,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
             <div>
             <h1 className="font-bold text-foreground leading-tight tracking-tight mb-4 md:mb-5">
                 <span className="block text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground font-semibold mb-1 md:mb-2">
-                  Grow Your Business With
+                  Best AI SEO Services in Bangalore
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
                   AI-Powered SEO
@@ -60,8 +60,8 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                We help founders dominate Google, AI Overviews, and LLM answers — with{" "}
-                <span className="text-foreground font-semibold">predictable SEO performance</span>, not vanity rankings.
+                The Super 30 offers industry-leading AI SEO services as a trusted SEO agency in Bangalore. Our approach combines technical precision with AI-driven insights to deliver the{" "}
+                <span className="text-foreground font-semibold">best SEO services in Bangalore</span>.
               </p>
             </div>
 

@@ -71,10 +71,10 @@ export const CourseCredentialsSection = () => {
             Trust & Credibility
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Learn From <span className="text-gradient">Industry Leaders</span>
+            Get Your <span className="text-gradient">SEO Certification</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Backed by top AI companies, taught by ex-Google & ex-Amazon experts.
+            Upon completion of our SEO certification course, you'll earn a globally recognized credential taught by ex-Google & ex-Amazon experts.
           </p>
         </div>
 

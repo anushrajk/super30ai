@@ -55,14 +55,13 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
             {/* H1 and Description */}
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                When Every Rupee Counts,{" "}
                 <span className="bg-gradient-to-r from-blue-600 to-orange-500 bg-clip-text text-transparent">
-                  We Make It Multiply.
+                  AI Powered Ads &amp; Performance Marketing Services
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                AI-powered performance marketing that turns ad spend into{" "}
-                <span className="text-foreground font-semibold">predictable revenue</span>, not wasted budget.
+                As a leading performance marketing agency in Bangalore, we deliver AI powered ads and performance marketing services built around your{" "}
+                <span className="text-foreground font-semibold">business goals and ROI</span>.
               </p>
             </div>
 

@@ -199,10 +199,10 @@ export const CourseCurriculumSection = () => {
             Your 6-Month Journey
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Week 1: Learn the Basics. <span className="text-gradient">Week 26: Build AI Agents.</span>
+            SEO Course Curriculum
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Here's exactly how that transformation happens. No fluff, no filler.
+            Rated among the best SEO training courses in Bangalore, our SEO course covers everything from keyword research to AI-driven technical SEO.
           </p>
 
           {/* Batch Start Date Calendar */}
