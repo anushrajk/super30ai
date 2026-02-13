@@ -35,7 +35,7 @@ export const PMFinalCTASection = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to <span className="bg-gradient-to-r from-blue-500 to-orange-500 bg-clip-text text-transparent">Maximize Your Ad ROI?</span>
+            Ready to <span className="text-[#F95B00]">Maximize Your Ad ROI?</span>
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
             Book a free consultation with our ads experts. Get a complete audit of your campaigns and discover hidden revenue opportunities.

@@ -161,8 +161,8 @@ export const PMAISections = () => {
                           <div className="absolute inset-0 rounded-2xl bg-brand/10 group-hover:animate-ping opacity-0 group-hover:opacity-100" style={{ animationDuration: '1.5s' }} />
                           
                           {/* Icon background with hover effects */}
-                          <div className="relative w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg">
-                            <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
+                          <div className="relative w-16 h-16 bg-[#F95B00]/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg">
+                            <feature.icon className="w-7 h-7 text-[#F95B00] group-hover:text-white transition-all duration-300" />
                           </div>
                         </div>
                         
