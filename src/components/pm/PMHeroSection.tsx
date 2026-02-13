@@ -55,7 +55,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
             {/* H1 and Description */}
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                <span className="text-[#F95B00]">
+                <span className="text-foreground">
                   AI Powered Ads &amp; Performance Marketing Services
                 </span>
               </h1>
