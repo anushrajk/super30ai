@@ -25,43 +25,38 @@ const SeoCourse = () => {
   return (
     <>
       <Helmet>
-        <title>AI SEO Course | The Super 30 - Master GEO, AEO & Agentic Commerce</title>
-        <meta name="description" content="Join India's first Applied AI SEO course. 6-month program with 95% placement rate, ₹5-10L starting salaries. Learn AI SEO, GEO, AEO & Agentic Commerce." />
-        <meta name="keywords" content="AI SEO course, GEO course, AEO training, Agentic Commerce, SEO certification, AI marketing course, digital marketing course India, SEO training Bangalore" />
-        <link rel="canonical" href="https://thesuper30.ai/seo-course" />
+        <title>Advanced AI SEO Course with Hands-On Training | The Super 30</title>
+        <meta name="description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance. One of the best SEO training courses for building real skills." />
+        <meta name="keywords" content="ai seo course, SEO certification course, seo training in bangalore, seo course, seo course in bangalore, best seo training courses" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-course" />
         <meta name="robots" content="index, follow" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI SEO Course | The Super 30 - Master GEO, AEO & Agentic Commerce" />
-        <meta property="og:description" content="Join India's first Applied AI SEO course. 6-month program with 95% placement rate. Transform your career." />
+        <meta property="og:title" content="Advanced AI SEO Course with Hands-On Training | The Super 30" />
+        <meta property="og:description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance. One of the best SEO training courses for building real skills." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thesuper30.ai/seo-course" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-course" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI SEO Course | The Super 30" />
-        <meta name="twitter:description" content="India's first Applied AI SEO course. 95% placement rate, ₹5-10L starting salaries." />
+        <meta name="twitter:title" content="Advanced AI SEO Course with Hands-On Training | The Super 30" />
+        <meta name="twitter:description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Course",
-            "name": "AI SEO Mastery Course",
-            "description": "6-month comprehensive course covering AI SEO, GEO, AEO, and Agentic Commerce with job placement guarantee.",
+            "name": "Advanced AI SEO Course with Hands-On Training",
+            "url": "https://www.thesuper30.ai/seo-course",
+            "description": "AI SEO course and SEO certification course with practical training and expert guidance.",
             "provider": {
               "@type": "Organization",
               "name": "The Super 30",
-              "sameAs": "https://thesuper30.ai"
+              "url": "https://www.thesuper30.ai/"
             },
-            "educationalLevel": "Professional",
-            "courseMode": "online",
-            "duration": "P6M",
-            "offers": {
-              "@type": "Offer",
-              "price": "59999",
-              "priceCurrency": "INR"
-            }
+            "educationalLevel": "Advanced",
+            "teaches": "AI SEO, Technical SEO, On-Page SEO, Off-Page SEO"
           })}
         </script>
       </Helmet>

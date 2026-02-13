@@ -50,35 +50,30 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>About Us | The Super 30 - AI Marketing Agency Bangalore</title>
-        <meta name="description" content="Learn about The Super 30, Bangalore's leading AI-powered marketing agency. Our story, mission, and the team behind your growth." />
-        <meta name="keywords" content="about The Super 30, AI marketing agency, digital marketing team, Bangalore SEO experts, ex-Google marketers" />
-        <link rel="canonical" href="https://thesuper30.ai/about" />
+        <title>Meet Our SEO Experts and PPC Specialists | The Super 30</title>
+        <meta name="description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
+        <meta name="keywords" content="seo experts, PPC specialists, digital marketing specialist, ppc specialist, seo expert in bangalore, seo agency team" />
+        <link rel="canonical" href="https://www.thesuper30.ai/about" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="About The Super 30 | AI Marketing Experts" />
-        <meta property="og:description" content="Meet the team behind Bangalore's leading AI-powered marketing agency. 10+ years of expertise, 300+ successful projects." />
+        <meta property="og:title" content="Meet Our SEO Experts and PPC Specialists | The Super 30" />
+        <meta property="og:description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thesuper30.ai/about" />
+        <meta property="og:url" content="https://www.thesuper30.ai/about" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About The Super 30 | AI Marketing Experts" />
-        <meta name="twitter:description" content="Meet the team behind Bangalore's leading AI-powered marketing agency." />
+        <meta name="twitter:title" content="Meet Our SEO Experts and PPC Specialists | The Super 30" />
+        <meta name="twitter:description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "mainEntity": {
-              "@type": "Organization",
-              "name": "The Super 30",
-              "description": "AI-Powered Digital Marketing Agency",
-              "foundingDate": "2015",
-              "numberOfEmployees": "30+",
-              "areaServed": "India"
-            }
+            "name": "Meet Our SEO Experts and PPC Specialists",
+            "url": "https://www.thesuper30.ai/about",
+            "description": "Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth."
           })}
         </script>
       </Helmet>

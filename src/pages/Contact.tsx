@@ -193,47 +193,30 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | The Super 30 - Get in Touch</title>
-        <meta name="description" content="Get in touch with The Super 30. Contact us for AI SEO and Performance Marketing services. Free consultation available. Call +91 89041 50555." />
-        <meta name="keywords" content="contact The Super 30, digital marketing consultation, SEO agency contact, marketing agency Bangalore" />
-        <link rel="canonical" href="https://thesuper30.ai/contact" />
+        <title>Talk to Our SEO Experts | The Super 30</title>
+        <meta name="description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
+        <meta name="keywords" content="SEO agency team, SEO Experts, hire seo experts, seo services near me, seo agency near me" />
+        <link rel="canonical" href="https://www.thesuper30.ai/contact" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Contact The Super 30 | Free Consultation" />
-        <meta property="og:description" content="Get in touch for AI SEO and Performance Marketing services. Free consultation available." />
+        <meta property="og:title" content="Talk to Our SEO Experts | The Super 30" />
+        <meta property="og:description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thesuper30.ai/contact" />
+        <meta property="og:url" content="https://www.thesuper30.ai/contact" />
         
         {/* Twitter Card */}
-        <meta name="twitter:card" content="summary" />
-        <meta name="twitter:title" content="Contact The Super 30 | Free Consultation" />
-        <meta name="twitter:description" content="Get in touch for AI SEO and Performance Marketing services." />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Talk to Our SEO Experts | The Super 30" />
+        <meta name="twitter:description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "mainEntity": {
-              "@type": "Organization",
-              "name": "The Super 30",
-              "telephone": "+91-89041-50555",
-              "email": "hello@thesuper30.ai",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "46/A, 1st Main Rd, Sarakki Industrial Layout",
-                "addressLocality": "J. P. Nagar",
-                "addressRegion": "Bangalore, Karnataka",
-                "postalCode": "560078",
-                "addressCountry": "IN"
-              },
-              "openingHoursSpecification": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-                "opens": "09:00",
-                "closes": "18:00"
-              }
-            }
+            "name": "Talk to Our SEO Experts",
+            "url": "https://www.thesuper30.ai/contact",
+            "description": "Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online."
           })}
         </script>
       </Helmet>
