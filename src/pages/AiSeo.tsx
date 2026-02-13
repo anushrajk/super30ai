@@ -64,21 +64,21 @@ const AiSeo = () => {
   return (
     <>
       <Helmet>
-        <title>AI SEO Services | The Super 30 - Dominate AI Search in 2025</title>
-        <meta name="description" content="Future-proof your digital presence with AI-first SEO strategies. Get found in ChatGPT, Google AI Overviews, and next-gen search engines. Free AI SEO Audit." />
-        <meta name="keywords" content="AI SEO, SEO Agency Bangalore, AI Search Optimization, ChatGPT SEO, Google AI Overview, GEO, AEO, The Super 30" />
-        <link rel="canonical" href="https://thesuper30.ai/ai-seo" />
+        <title>AI SEO Services | Best SEO Services in Bangalore | The Super 30</title>
+        <meta name="description" content="Get the best AI SEO services in Bangalore using technical SEO, on page SEO services, and off page SEO services for better rankings and traffic." />
+        <meta name="keywords" content="AI SEO Services, best SEO services in bangalore, technical seo services, on page seo services, off page seo services, seo services in bangalore, seo agency in bangalore, ai seo services" />
+        <link rel="canonical" href="https://www.thesuper30.ai/ai-seo" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI SEO Services | Dominate AI Search in 2025" />
-        <meta property="og:description" content="Future-proof your digital presence with AI-first SEO. Get found in ChatGPT, Google AI Overviews & next-gen search." />
+        <meta property="og:title" content="AI SEO Services | Best SEO Services in Bangalore | The Super 30" />
+        <meta property="og:description" content="Get the best AI SEO services in Bangalore using technical SEO, on page SEO services, and off page SEO services for better rankings and traffic." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thesuper30.ai/ai-seo" />
+        <meta property="og:url" content="https://www.thesuper30.ai/ai-seo" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI SEO Services | The Super 30" />
-        <meta name="twitter:description" content="Get found in ChatGPT, Google AI Overviews & next-gen search engines. Free AI SEO Audit." />
+        <meta name="twitter:title" content="AI SEO Services | Best SEO Services in Bangalore | The Super 30" />
+        <meta name="twitter:description" content="Get the best AI SEO services in Bangalore using technical SEO, on page SEO services, and off page SEO services for better rankings and traffic." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
@@ -86,18 +86,18 @@ const AiSeo = () => {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "AI SEO Services",
+            "name": "AI SEO Services | The Super 30",
+            "url": "https://www.thesuper30.ai/ai-seo",
             "provider": {
               "@type": "Organization",
-              "name": "The Super 30"
+              "name": "The Super 30",
+              "url": "https://www.thesuper30.ai/"
             },
-            "areaServed": "India",
-            "description": "AI-first SEO strategies to dominate Google Search, AI Overviews, and LLM answers",
-            "offers": {
-              "@type": "Offer",
-              "name": "Free AI SEO Audit",
-              "price": "0",
-              "priceCurrency": "INR"
-            }
+            "areaServed": {
+              "@type": "City",
+              "name": "Bangalore"
+            },
+            "description": "Best AI SEO services in Bangalore covering technical SEO, on-page SEO, and off-page SEO for improved rankings and qualified traffic."
           })}
         </script>
       </Helmet>
