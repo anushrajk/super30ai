@@ -2,13 +2,13 @@ import { Search, Facebook, Linkedin, Youtube, RefreshCw, BarChart3, Palette, Tar
 import { BentoGrid, BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
 
 const services = [
-  { icon: Search, title: "Google Ads", description: "Search, Display, Shopping & YouTube campaigns" },
-  { icon: Facebook, title: "Meta Ads", description: "Facebook & Instagram advertising" },
+  { icon: Search, title: "PPC Services in Bangalore", description: "Google Ads Search, Display, Shopping & YouTube campaigns optimized with AI" },
+  { icon: Facebook, title: "Meta Ads", description: "Facebook & Instagram advertising for targeted reach" },
   { icon: Linkedin, title: "LinkedIn Ads", description: "B2B lead generation campaigns" },
   { icon: Youtube, title: "YouTube Ads", description: "Video advertising for brand awareness" },
-  { icon: RefreshCw, title: "Remarketing", description: "Re-engage visitors who didn't convert" },
-  { icon: BarChart3, title: "Analytics & Attribution", description: "Full-funnel tracking & reporting" },
-  { icon: Palette, title: "Creative Optimization", description: "A/B testing ads for max performance" },
+  { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn't convert" },
+  { icon: BarChart3, title: "Performance Tracking & Reporting", description: "Full-funnel tracking & transparent reporting" },
+  { icon: Palette, title: "AI Powered Ad Campaigns", description: "AI powered ads that learn, adapt, and improve in real time" },
   { icon: Target, title: "Landing Page CRO", description: "Optimize pages for conversions" },
 ];
 

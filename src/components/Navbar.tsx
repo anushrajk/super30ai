@@ -71,7 +71,7 @@ export const Navbar = () => {
           <Link to="/" className="flex items-center group">
             <img 
               src={super30Logo} 
-              alt="Super 30 Marketing Agency" 
+              alt="The Super 30 — AI SEO Agency Bangalore" 
               className="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300"
             />
           </Link>

@@ -47,10 +47,10 @@ export const ProcessSection = () => {
             How It Works
           </BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Our Process
+            Our AI SEO Process
           </h2>
           <p className="text-lg text-muted-foreground">
-            A systematic approach to AI SEO success
+            As a leading provider of SEO services in Bangalore, we follow a structured AI SEO process — from audit to execution to monthly reporting.
           </p>
         </div>
 

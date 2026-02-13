@@ -99,15 +99,15 @@ const About = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  We're{" "}
+                  Meet Our{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">The Super 30</span>
+                    <span className="text-brand-gradient">SEO Experts & PPC Specialists</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  A team of AI-first marketers on a mission to help founders{" "}
-                  <span className="text-foreground font-semibold">dominate the digital landscape</span>. Zero fluff.
+                  Our SEO agency team is made up of experienced SEO specialists, PPC specialists, and digital marketing experts who are passionate about{" "}
+                  <span className="text-foreground font-semibold">growing brands</span>.
                 </p>
               </div>
 
@@ -179,10 +179,10 @@ const About = () => {
               <div>
                 <BentoBadge className="mb-4">Our Mission</BentoBadge>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 md:mb-6">
-                  Making AI Marketing Accessible to Every Ambitious Business
+                  The Super 30 SEO Agency Team
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  We believe every business deserves access to cutting-edge AI marketing strategies — not just enterprises with deep pockets. That's why we built The Super 30.
+                  As a Bangalore-based SEO agency team, our SEO experts bring years of hands-on experience in AI-driven strategies and performance marketing.
                 </p>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   Our team combines ex-Google expertise with proprietary AI tools to deliver enterprise-grade results at founder-friendly prices.

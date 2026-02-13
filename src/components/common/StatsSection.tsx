@@ -40,7 +40,7 @@ export const StatsSection = ({ stats, className = "" }: StatsSectionProps) => {
 
 // Default stats data that can be reused across pages
 export const defaultStats = [
-  { value: "300+", label: "Successful Projects" },
+  { value: "300+", label: "Brands Grown with AI Powered SEO" },
   { value: "₹50Cr+", label: "Revenue Generated" },
   { value: "10+", label: "Years Experience" },
   { value: "95%", label: "Client Retention" },
