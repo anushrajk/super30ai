@@ -11,7 +11,7 @@ const QuotePopup = lazy(() => import('./QuotePopup').then(m => ({ default: m.Quo
 const ExitIntentPopup = lazy(() => import('./ExitIntentPopup').then(m => ({ default: m.ExitIntentPopup })));
 
 // Pages where popups should be disabled
-const POPUP_DISABLED_ROUTES = ['/seo-course'];
+const POPUP_DISABLED_ROUTES = ['/seo-training-in-bangalore'];
 
 export const PopupScheduler = () => {
   const location = useLocation();

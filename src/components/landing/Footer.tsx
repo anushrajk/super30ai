@@ -4,15 +4,15 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import super30FooterLogo from "@/assets/super30-horizontal-logo.svg";
 
 const services = [
-  { name: "AI SEO Services", href: "/ai-seo" },
+  { name: "AI SEO Services", href: "/ai-seo-agency-bangalore" },
   { name: "Performance Marketing Services", href: "/performance-marketing" },
-  { name: "AI SEO Course", href: "/seo-course" },
+  { name: "AI SEO Course", href: "/seo-training-in-bangalore" },
 ];
 
 const company = [
-  { name: "About / Team 30", href: "/about" },
-  { name: "Our Work", href: "/work" },
-  { name: "Contact Our SEO Experts", href: "/contact" },
+  { name: "About / Team 30", href: "/seo-experts-bangalore" },
+  { name: "Our Work", href: "/seo-results-bangalore" },
+  { name: "Contact Our SEO Experts", href: "/seo-agency-near-me" },
 ];
 
 const legal = [

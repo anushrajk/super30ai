@@ -196,13 +196,13 @@ const Contact = () => {
         <title>Talk to Our SEO Experts | The Super 30</title>
         <meta name="description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
         <meta name="keywords" content="SEO agency team, SEO Experts, hire seo experts, seo services near me, seo agency near me" />
-        <link rel="canonical" href="https://www.thesuper30.ai/contact" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-agency-near-me" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Talk to Our SEO Experts | The Super 30" />
         <meta property="og:description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/contact" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-agency-near-me" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -215,7 +215,7 @@ const Contact = () => {
             "@context": "https://schema.org",
             "@type": "ContactPage",
             "name": "Talk to Our SEO Experts",
-            "url": "https://www.thesuper30.ai/contact",
+            "url": "https://www.thesuper30.ai/seo-agency-near-me",
             "description": "Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online."
           })}
         </script>

@@ -6,12 +6,12 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.thesuper30.ai/about</loc>
+    <loc>https://www.thesuper30.ai/seo-experts-bangalore</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thesuper30.ai/ai-seo</loc>
+    <loc>https://www.thesuper30.ai/ai-seo-agency-bangalore</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -21,13 +21,18 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.thesuper30.ai/seo-course</loc>
+    <loc>https://www.thesuper30.ai/seo-training-in-bangalore</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.thesuper30.ai/contact</loc>
+    <loc>https://www.thesuper30.ai/seo-agency-near-me</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.thesuper30.ai/seo-results-bangalore</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

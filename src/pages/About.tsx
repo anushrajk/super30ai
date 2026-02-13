@@ -53,13 +53,13 @@ const About = () => {
         <title>Meet Our SEO Experts and PPC Specialists | The Super 30</title>
         <meta name="description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
         <meta name="keywords" content="seo experts, PPC specialists, digital marketing specialist, ppc specialist, seo expert in bangalore, seo agency team" />
-        <link rel="canonical" href="https://www.thesuper30.ai/about" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-experts-bangalore" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Meet Our SEO Experts and PPC Specialists | The Super 30" />
         <meta property="og:description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/about" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-experts-bangalore" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -72,7 +72,7 @@ const About = () => {
             "@context": "https://schema.org",
             "@type": "AboutPage",
             "name": "Meet Our SEO Experts and PPC Specialists",
-            "url": "https://www.thesuper30.ai/about",
+            "url": "https://www.thesuper30.ai/seo-experts-bangalore",
             "description": "Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth."
           })}
         </script>
@@ -131,14 +131,14 @@ const About = () => {
 
               {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <Link to="/contact">
+                <Link to="/seo-agency-near-me">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
                     <Users className="w-4 h-4 mr-2" />
                     Get in Touch
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link to="/work">
+                <Link to="/seo-results-bangalore">
                   <Button 
                     size="lg" 
                     variant="outline" 
