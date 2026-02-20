@@ -248,23 +248,6 @@ const Work = () => {
                 </p>
               </div>
 
-              {/* Trust Signals - Horizontal */}
-              <div className="flex flex-wrap justify-center gap-4 py-4">
-                {[
-                  { icon: TrendingUp, text: "₹50Cr+ Revenue" },
-                  { icon: Award, text: "4.2x Avg ROAS" },
-                  { icon: Users, text: "300+ Clients" },
-                  { icon: BarChart3, text: "92% Retention" },
-                ].map((signal, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-center gap-2 bg-background border border-border rounded-full px-4 py-2"
-                  >
-                    <signal.icon className="w-4 h-4 text-brand" />
-                    <span className="font-medium text-foreground text-sm">{signal.text}</span>
-                  </div>
-                ))}
-              </div>
 
               {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
@@ -310,98 +293,6 @@ const Work = () => {
           <ClientLogosSection />
         </div>
 
-        {/* Case Studies Section */}
-        <section id="work-cases" className="py-12 md:py-16 lg:py-20 bg-background">
-          <div className="container mx-auto px-3 md:px-4">
-            {/* Filters */}
-            <div className="flex flex-wrap justify-center gap-2 mb-8 md:mb-10">
-              {filters.map((filter) => (
-                <button
-                  key={filter}
-                  onClick={() => setActiveFilter(filter)}
-                  className={`px-3 md:px-4 py-2 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ${
-                    activeFilter === filter
-                      ? "bg-brand-gradient text-white shadow-lg"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
-                  }`}
-                >
-                  {filter}
-                </button>
-              ))}
-            </div>
-
-            {/* Case Studies Grid - 3 per row */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-              {filteredStudies.map((study) => (
-                <Card
-                  key={study.id}
-                  onClick={() => setSelectedStudy(study)}
-                  className="bento-card group overflow-hidden transition-shadow duration-300 cursor-pointer hover:shadow-xl"
-                >
-                  {/* Logo Section */}
-                  <div className="h-40 md:h-48 relative overflow-hidden">
-                    <img 
-                      src={study.logo} 
-                      alt={study.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-
-                  <CardContent className="p-4 md:p-6">
-                    <div className="flex flex-wrap gap-2 mb-3">
-                      {study.category.slice(0, 2).map((cat) => (
-                        <span
-                          key={cat}
-                          className="badge-brand text-xs"
-                        >
-                          {cat}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">{study.title}</h3>
-                    <p className="text-xs md:text-sm text-muted-foreground mb-3">{study.industry}</p>
-
-                    <p className="text-muted-foreground text-sm mb-4">{study.description}</p>
-
-                    {/* Results */}
-                    <div className="grid grid-cols-3 gap-2 pt-3 border-t border-border">
-                      {study.results.map((result, i) => (
-                        <div key={i} className="text-center">
-                          <div className="text-base md:text-lg font-bold text-brand">{result.value}</div>
-                          <p className="text-[10px] md:text-xs text-muted-foreground">{result.metric}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Unified CTA Section - moved above Client Logos Grid */}
-        <div id="work-cta">
-          <UnifiedCTASection 
-            headline="Stop Guessing. Start Dominating."
-            subtext="Your competitors are already optimizing for AI search. Get your free visibility audit and discover exactly what you're missing."
-            primaryCTA={{ label: "Get Free AI SEO Audit", href: "/ai-seo-agency-bangalore" }}
-            secondaryCTA={{ label: "Free Ads Audit", href: "/performance-marketing" }}
-            variant="dark"
-          />
-        </div>
-
-        {/* Client Logos Grid */}
-        <div id="work-client-logos-grid">
-          <ClientLogosGrid />
-        </div>
-
-        {/* Stats Section */}
-        <div id="work-stats">
-          <StatsSection stats={workPageStats} className="bg-background border-y-0" />
-        </div>
 
         {/* Testimonials Section */}
         <div id="work-testimonials">
