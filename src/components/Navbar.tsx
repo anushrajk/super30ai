@@ -139,20 +139,6 @@ export const Navbar = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
-            <Link
-              to="/seo-training-in-bangalore"
-              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
-                location.pathname === "/seo-training-in-bangalore"
-                  ? "text-brand"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
-            >
-              <span className="link-underline">SEO Course</span>
-              <span className="ml-1.5 px-1.5 py-0.5 text-[10px] font-bold uppercase bg-emerald-500 text-white rounded">New</span>
-              {location.pathname === "/seo-training-in-bangalore" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
-              )}
-            </Link>
 
             <Link
               to="/seo-results-bangalore"
@@ -269,17 +255,6 @@ export const Navbar = () => {
               </div>
             </div>
 
-            <Link
-              to="/seo-training-in-bangalore"
-              className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 border ${
-                location.pathname === "/seo-training-in-bangalore"
-                  ? "bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))]/30"
-                  : "text-foreground border-transparent hover:bg-muted/50 hover:border-border/50"
-              }`}
-            >
-              SEO Course
-              <span className="ml-2 px-1.5 py-0.5 text-[10px] font-bold uppercase bg-emerald-500 text-white rounded">New</span>
-            </Link>
 
             <Link
               to="/seo-results-bangalore"
