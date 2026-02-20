@@ -9,9 +9,7 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
-import { StatsSection, defaultStats } from "@/components/common/StatsSection";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
-import { OurWorkCarousel } from "@/components/home/OurWorkCarousel";
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award } from "lucide-react";
 
 const services = [{
@@ -309,15 +307,6 @@ const Home = () => {
         <WhoIsThisForSection />
       </div>
 
-      {/* Our Work Carousel */}
-      <div id="home-work">
-        <OurWorkCarousel />
-      </div>
-
-      {/* Stats Section - Using global component */}
-      <div id="home-stats">
-        <StatsSection stats={defaultStats} />
-      </div>
 
       <div id="home-testimonials">
         <TestimonialSection />

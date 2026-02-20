@@ -140,19 +140,6 @@ export const Navbar = () => {
             </NavigationMenu>
 
 
-            <Link
-              to="/seo-results-bangalore"
-              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
-                location.pathname === "/seo-results-bangalore"
-                  ? "text-brand"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
-            >
-              <span className="link-underline">Our Work</span>
-              {location.pathname === "/seo-results-bangalore" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
-              )}
-            </Link>
 
             <Link
               to="/seo-agency-near-me"
@@ -256,16 +243,6 @@ export const Navbar = () => {
             </div>
 
 
-            <Link
-              to="/seo-results-bangalore"
-              className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 border ${
-                location.pathname === "/seo-results-bangalore"
-                  ? "bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))]/30"
-                  : "text-foreground border-transparent hover:bg-muted/50 hover:border-border/50"
-              }`}
-            >
-              Our Work
-            </Link>
 
             <Link
               to="/seo-agency-near-me"
