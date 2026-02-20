@@ -12,7 +12,7 @@ const benefits = [
 ];
 
 export const SEOFinalCTASection = () => {
-  const [ref, isVisible] = useScrollAnimation();
+  const [ref, isVisible] = useScrollAnimation<HTMLElement>();
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   const scrollToForm = () => {

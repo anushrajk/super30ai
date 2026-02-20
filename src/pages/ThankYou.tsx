@@ -128,7 +128,15 @@ For questions, contact: thesuper30.ai@gmail.com
                   {isBookingConfirmation ? "Booking Confirmed!" : `Thank You${name ? `, ${name}` : ''}!`}
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground">
-                  {isBookingConfirmation ? "Your strategy call has been scheduled. Check your email for the calendar invite." : "Your request has been received."}
+                  {isBookingConfirmation
+                    ? "Your strategy call has been scheduled. Check your email for the calendar invite."
+                    : source === 'callback'
+                    ? "We've received your callback request and will call you at your preferred time."
+                    : source === 'quote'
+                    ? "Your quote request is received. Expect a tailored response within 24 hours."
+                    : source === 'exit_intent'
+                    ? "Your personalized 30-day marketing plan is on its way to your inbox!"
+                    : "Your request has been received. We'll be in touch within 24 hours."}
                 </p>
               </div>
 
