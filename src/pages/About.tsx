@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
-import { TeamSection } from "@/components/about/TeamSection";
+
 import { InteractiveTimeline } from "@/components/about/InteractiveTimeline";
 import { AwardsSection } from "@/components/about/AwardsSection";
 import { AnimatedStats } from "@/components/about/AnimatedStats";
@@ -225,11 +225,6 @@ const About = () => {
         {/* Interactive Timeline */}
         <div id="about-timeline">
           <InteractiveTimeline />
-        </div>
-
-        {/* Team Section */}
-        <div id="about-team">
-          <TeamSection />
         </div>
 
         {/* Awards Section */}
