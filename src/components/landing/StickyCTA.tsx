@@ -41,7 +41,7 @@ export const StickyCTA = forwardRef<HTMLDivElement, StickyCTAProps>(({ onClick }
           <div className="flex items-center gap-2">
             <Button
               onClick={onClick}
-              className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg text-sm px-4"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm px-4"
             >
               <Sparkles className="w-4 h-4 mr-1.5" />
               Start Free

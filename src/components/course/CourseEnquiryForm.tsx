@@ -150,7 +150,7 @@ export const CourseEnquiryForm = ({ onSuccess }: CourseEnquiryFormProps) => {
   // Success state
   if (submitted) {
     return (
-      <Card className="bg-card border-[hsl(var(--brand-orange))]/30 shadow-xl">
+      <Card className="bg-card border-border shadow-xl">
         <CardContent className="p-4 md:p-8 text-center space-y-4">
           <div className="w-12 h-12 md:w-16 md:h-16 mx-auto bg-emerald-500/10 rounded-full flex items-center justify-center">
             <PartyPopper className="w-6 h-6 md:w-8 md:h-8 text-emerald-500" />
@@ -185,7 +185,7 @@ export const CourseEnquiryForm = ({ onSuccess }: CourseEnquiryFormProps) => {
           <Button 
             variant="outline"
             size="sm"
-            className="border-[hsl(var(--brand-orange))]/30 text-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/10"
+            className="border-border text-primary hover:bg-primary/10"
             onClick={() => window.open('https://wa.me/919876543210?text=Hi, I just applied for the AI SEO course and have a quick question', '_blank')}
           >
             Chat on WhatsApp
@@ -196,11 +196,11 @@ export const CourseEnquiryForm = ({ onSuccess }: CourseEnquiryFormProps) => {
   }
 
   return (
-    <Card className="bg-card border-[hsl(var(--brand-orange))]/30 shadow-xl">
+    <Card className="bg-card border-border shadow-xl">
       <CardContent className="p-4 md:p-6">
         {/* Header */}
         <div className="flex items-center gap-2 mb-3 md:mb-4 text-xs md:text-sm text-muted-foreground">
-          <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[hsl(var(--brand-orange))] text-white flex items-center justify-center text-[10px] md:text-xs font-bold">1</span>
+          <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[10px] md:text-xs font-bold">1</span>
           <span>Fill form (2 mins)</span>
           <span className="mx-1">→</span>
           <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-muted text-muted-foreground flex items-center justify-center text-[10px] md:text-xs font-bold">2</span>
@@ -336,7 +336,7 @@ export const CourseEnquiryForm = ({ onSuccess }: CourseEnquiryFormProps) => {
           <Button 
             type="submit"
             disabled={loading}
-            className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold h-10 md:h-12 text-sm md:text-base shadow-lg hover:shadow-xl transition-all"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-10 md:h-12 text-sm md:text-base transition-all"
           >
             {loading ? (
               <>
