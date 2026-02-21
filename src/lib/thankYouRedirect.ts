@@ -1,5 +1,5 @@
 /**
- * Opens the thank-you page in a new tab with query parameters
+ * Navigates to the thank-you page in the same tab with query parameters
  */
 export const openThankYouPage = (params: Record<string, string | undefined>) => {
   const searchParams = new URLSearchParams();
@@ -7,5 +7,5 @@ export const openThankYouPage = (params: Record<string, string | undefined>) => 
     if (value) searchParams.set(key, value);
   });
   const url = `/thank-you?${searchParams.toString()}`;
-  window.open(url, '_blank', 'noopener,noreferrer');
+  window.location.href = url;
 };
