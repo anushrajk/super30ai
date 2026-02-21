@@ -8,21 +8,21 @@ const testimonials = [
   {
     quote: "The Super 30 helped us go from invisible in AI search to being recommended by ChatGPT for our core services. Our qualified leads increased by 340%.",
     author: "Sarah Chen",
-    role: "CEO, TechFlow SaaS",
+    role: "CEO",
     initials: "SC",
     result: "340% more leads"
   },
   {
     quote: "Finally an SEO agency that understands the AI-first future. Our organic revenue doubled in 6 months with their strategic approach.",
     author: "Rahul Sharma",
-    role: "Founder, DataSync",
+    role: "Founder",
     initials: "RS",
     result: "2x organic revenue"
   },
   {
     quote: "Their AI visibility tracking showed us exactly where we were losing to competitors. Now we dominate those conversations.",
     author: "Priya Patel",
-    role: "CMO, CloudNine",
+    role: "CMO",
     initials: "PP",
     result: "Top AI recommendations"
   }
