@@ -157,9 +157,9 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
   }
 
   return (
-    <Card className="glass border-2 border-brand/20 shadow-2xl overflow-hidden relative group rounded-2xl">
+    <Card className="glass border-2 border-border shadow-2xl overflow-hidden relative group rounded-2xl">
       {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand/30 via-transparent to-brand-dark/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <CardContent className="p-4 sm:p-6 relative">
         {/* Progress bar */}

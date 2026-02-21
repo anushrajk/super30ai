@@ -41,7 +41,7 @@ export const FloatingContactButtons = () => {
         </span>
         
         {/* Subtle glow ring */}
-        <span className="absolute inset-0 rounded-2xl border border-[hsl(var(--brand-orange))]/50 animate-pulse opacity-50" />
+        <span className="absolute inset-0 rounded-2xl border border-primary/50 animate-pulse opacity-50" />
       </a>
     </div>
   );

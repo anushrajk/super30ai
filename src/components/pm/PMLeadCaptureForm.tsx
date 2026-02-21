@@ -134,9 +134,9 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const progress = (filledFields / 5) * 100;
 
   return (
-    <Card className="bg-background/95 backdrop-blur-xl border-2 border-[#F95B00]/20 shadow-2xl shadow-[#F95B00]/10 overflow-hidden relative group">
-      {/* Animated gradient border - blue for PM */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#F95B00]/30 via-transparent to-[#F95B00]/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border shadow-2xl overflow-hidden relative group">
+      {/* Animated gradient border */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <CardContent className="p-4 sm:p-6 relative">
         {/* Progress bar */}
@@ -151,18 +151,18 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               {filledFields === 0 ? "Start your ads audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to continue!"}
             </span>
             </div>
-            <span className="text-xs font-bold text-[#F95B00]">{Math.round(progress)}%</span>
+            <span className="text-xs font-bold text-primary">{Math.round(progress)}%</span>
           </div>
           <div className="h-1.5 bg-muted rounded-full overflow-hidden">
             <div 
-              className="h-full bg-gradient-to-r from-[#F95B00] to-[#e04f00] rounded-full transition-all duration-500 ease-out"
+              className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
         <div className="flex items-center justify-center gap-2 mb-2">
-          <Target className="w-5 h-5 text-[#F95B00]" />
+          <Target className="w-5 h-5 text-primary" />
           <h3 className="text-xl font-bold text-foreground text-center">
             Free Ads Audit
           </h3>
@@ -173,7 +173,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         
         {/* Value badges */}
         <div className="flex items-center justify-center gap-2 mb-5">
-          <span className="text-xs bg-[#F95B00]/10 text-[#F95B00] px-2 py-0.5 rounded-full font-medium">
+          <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">
             Worth ₹25,000
           </span>
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
@@ -193,20 +193,20 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               onBlur={() => handleBlur('url')}
               className={`w-full bg-background h-12 transition-all duration-300 pl-4 pr-10 ${
                 touched.url && !isUrlValid 
-                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-                  : 'border-border focus:border-[#F95B00] focus:ring-2 focus:ring-[#F95B00]/20'
+                  ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
+                  : 'border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
               }`}
             />
             {websiteUrl && (
               isUrlValid ? (
                 <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
               ) : touched.url && (
-                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive animate-scale-in" />
               )
             )}
           </div>
           {touched.url && !isUrlValid && websiteUrl && (
-            <p className="text-xs text-red-500 -mt-1 ml-1">Please enter a valid URL (e.g., example.com)</p>
+            <p className="text-xs text-destructive -mt-1 ml-1">Please enter a valid URL (e.g., example.com)</p>
           )}
           
           {/* Email */}
@@ -220,20 +220,20 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               onBlur={() => handleBlur('email')}
               className={`w-full bg-background h-12 transition-all duration-300 pl-4 pr-10 ${
                 touched.email && !isEmailValid 
-                  ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-                  : 'border-border focus:border-[#F95B00] focus:ring-2 focus:ring-[#F95B00]/20'
+                  ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
+                  : 'border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
               }`}
             />
             {email && (
               isEmailValid ? (
                 <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
               ) : touched.email && (
-                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive animate-scale-in" />
               )
             )}
           </div>
           {touched.email && !isEmailValid && email && (
-            <p className="text-xs text-red-500 -mt-1 ml-1">Please enter a valid email address</p>
+            <p className="text-xs text-destructive -mt-1 ml-1">Please enter a valid email address</p>
           )}
 
           {/* Phone Number with +91 */}
@@ -252,8 +252,8 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
                 onBlur={() => handleBlur('phone')}
                 className={`w-full bg-background h-12 rounded-l-none transition-all duration-300 pl-3 pr-10 ${
                   touched.phone && !isPhoneValid 
-                    ? 'border-red-500 focus:border-red-500 focus:ring-red-500/20' 
-                    : 'border-border focus:border-[#F95B00] focus:ring-2 focus:ring-[#F95B00]/20'
+                  ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
+                    : 'border-border focus:border-primary focus:ring-2 focus:ring-primary/20'
                 }`}
               />
             </div>
@@ -261,22 +261,22 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               isPhoneValid ? (
                 <CheckCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-green-500 animate-scale-in" />
               ) : touched.phone && (
-                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-red-500 animate-scale-in" />
+                <AlertCircle className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-destructive animate-scale-in" />
               )
             )}
           </div>
           {touched.phone && !isPhoneValid && phone && (
-            <p className="text-xs text-red-500 -mt-1 ml-1">Enter 10 digit number starting with 6, 7, 8, or 9</p>
+            <p className="text-xs text-destructive -mt-1 ml-1">Enter 10 digit number starting with 6, 7, 8, or 9</p>
           )}
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <Select value={role} onValueChange={setRole}>
-              <SelectTrigger className={`bg-background border-border h-12 focus:border-[#F95B00] focus:ring-2 focus:ring-[#F95B00]/20 transition-all duration-300 ${role ? 'border-green-500/50' : ''}`}>
+              <SelectTrigger className={`bg-background border-border h-12 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 ${role ? 'border-green-500/50' : ''}`}>
                 <SelectValue placeholder="Your Role" />
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-[#F95B00]/10 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="hover:bg-primary/10 cursor-pointer">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -284,12 +284,12 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
             </Select>
 
             <Select value={adBudget} onValueChange={setAdBudget}>
-              <SelectTrigger className={`bg-background border-border h-12 focus:border-[#F95B00] focus:ring-2 focus:ring-[#F95B00]/20 transition-all duration-300 ${adBudget ? 'border-green-500/50' : ''}`}>
+              <SelectTrigger className={`bg-background border-border h-12 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 ${adBudget ? 'border-green-500/50' : ''}`}>
                 <SelectValue placeholder="Ad Budget" />
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {adBudgetOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-[#F95B00]/10 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="hover:bg-primary/10 cursor-pointer">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -300,7 +300,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           <Button 
             type="submit" 
             disabled={loading || !canSubmit}
-            className="w-full h-14 bg-gradient-to-r from-[#F95B00] to-[#e04f00] hover:from-[#e04f00] hover:to-[#d04500] text-white text-lg font-semibold shadow-xl shadow-[#F95B00]/30 hover:shadow-[#F95B00]/50 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -320,7 +320,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         <div className="mt-4 pt-4 border-t border-border/50">
           <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2 text-xs text-muted-foreground">
             <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-[#F95B00]" />
+              <Clock className="w-3.5 h-3.5 text-primary" />
               <span>60 sec setup</span>
             </div>
             <div className="flex items-center gap-1.5">
@@ -340,9 +340,9 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
             {[1,2,3,4].map((i) => (
               <div 
                 key={i} 
-                className="w-7 h-7 rounded-full bg-gradient-to-br from-[#F95B00]/30 to-[#F95B00]/50 border-2 border-background flex items-center justify-center"
+                className="w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 border-2 border-background flex items-center justify-center"
               >
-                <Users className="w-3 h-3 text-[#F95B00]" />
+                <Users className="w-3 h-3 text-muted-foreground" />
               </div>
             ))}
           </div>
