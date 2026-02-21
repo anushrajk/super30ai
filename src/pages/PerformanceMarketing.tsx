@@ -124,14 +124,14 @@ const PerformanceMarketing = () => {
         );
       }
 
-      toast.success("Starting your personalized ads audit...");
+      toast.success("Form submitted successfully!");
       
-      // Navigate to performance planner with all data
-      navigate("/performance-planner", { 
+      // Redirect to thank you page
+      navigate("/thank-you", { 
         state: { 
-          leadId, 
-          formData: fullFormData,
-          service: "pm" 
+          name: initialFormData.email?.split('@')[0],
+          email: initialFormData.email,
+          source: 'performance_marketing'
         } 
       });
     } catch (error) {

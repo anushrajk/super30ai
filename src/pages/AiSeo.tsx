@@ -39,18 +39,14 @@ const AiSeo = () => {
         monthly_revenue: data.monthly_revenue,
       });
 
-      toast.success("Analyzing your website...");
+      toast.success("Form submitted successfully!");
       
-      // Navigate with form data - Google Sheets submission happens in the form component
-      navigate("/audit", { 
+      // Redirect to thank you page
+      navigate("/thank-you", { 
         state: { 
-          formData: {
-            website_url: data.website_url,
-            email: data.email,
-            phone: data.phone,
-            role: data.role,
-            monthly_revenue: data.monthly_revenue,
-          }
+          name: data.email?.split('@')[0],
+          email: data.email,
+          source: 'ai_seo_audit'
         } 
       });
     } catch (error) {
