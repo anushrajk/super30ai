@@ -54,6 +54,8 @@ const validatePhone = (phone: string): boolean => {
 };
 
 export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: LeadCaptureFormProps) => {
+  const [fullName, setFullName] = useState("");
+  const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -114,6 +116,8 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         page_url: window.location.href,
         trigger_type: "embedded",
         data: {
+          full_name: fullName,
+          company_name: companyName,
           website_url: websiteUrl,
           email: email,
           phone: phone ? `+91${phone}` : "",
@@ -126,8 +130,8 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
     }
   };
 
-  const filledFields = [websiteUrl, email, phone, role, monthlyRevenue].filter(Boolean).length;
-  const progress = (filledFields / 5) * 100;
+  const filledFields = [fullName, companyName, websiteUrl, email, phone, role, monthlyRevenue].filter(Boolean).length;
+  const progress = (filledFields / 7) * 100;
 
   if (variant === "compact") {
     return (
@@ -202,6 +206,32 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-3">
+          {/* Full Name & Company Name */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className={`relative transition-all duration-300 ${focusedField === 'name' ? 'scale-[1.02]' : ''}`}>
+              <Input
+                type="text"
+                placeholder="Your Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                onFocus={() => setFocusedField('name')}
+                onBlur={() => { setFocusedField(null); }}
+                className="w-full bg-background h-12 border-border focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300 pl-4"
+              />
+            </div>
+            <div className={`relative transition-all duration-300 ${focusedField === 'company' ? 'scale-[1.02]' : ''}`}>
+              <Input
+                type="text"
+                placeholder="Company Name"
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
+                onFocus={() => setFocusedField('company')}
+                onBlur={() => { setFocusedField(null); }}
+                className="w-full bg-background h-12 border-border focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300 pl-4"
+              />
+            </div>
+          </div>
+
           {/* Website URL */}
           <div className={`relative transition-all duration-300 ${focusedField === 'url' ? 'scale-[1.02]' : ''}`}>
             <Input

@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const forYou = [
-  "You spend ₹1L+/month on ads",
+  "You spend ₹50,000+/month on ads",
   "You want measurable ROI",
   "You need multi-platform expertise",
   "You value data-driven decisions",

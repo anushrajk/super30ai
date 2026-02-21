@@ -7,7 +7,7 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const forYou = [
-  "Spending ₹1L+/mo but can't predict ROI",
+  "Spending ₹50,000+/mo but can't predict ROI",
   "Revenue from organic is important",
   "You want visibility inside ChatGPT & Google AI",
   "You want one agency accountable for outcomes",

@@ -6,7 +6,6 @@ import super30FooterLogo from "@/assets/super30-horizontal-logo.svg";
 const services = [
   { name: "AI SEO Services", href: "/ai-seo-agency-bangalore" },
   { name: "Performance Marketing Services", href: "/performance-marketing" },
-  { name: "AI SEO Course", href: "/seo-training-in-bangalore" },
 ];
 
 const company = [

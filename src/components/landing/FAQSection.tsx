@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     question: "Do you work with startups or only established businesses?",
-    answer: "We work with growth-stage companies spending ₹1L+ per month on marketing who are serious about long-term organic growth. Whether you're a funded startup or an established business, if organic revenue is important to your growth strategy, we can help."
+    answer: "We work with growth-stage companies spending ₹50,000+ per month on marketing who are serious about long-term organic growth. Whether you're a funded startup or an established business, if organic revenue is important to your growth strategy, we can help."
   },
   {
     question: "What industries do you specialize in?",
