@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { CheckCircle, Phone, Calendar, ArrowRight, Clock, Video, Download, Globe, Mail, IndianRupee, Target, TrendingDown } from "lucide-react";
@@ -32,6 +33,18 @@ const ThankYou = () => {
   const leadData = stateData.leadData || funnelLeadData;
   const auditData = stateData.auditData || funnelAuditData;
   const competitorData = stateData.competitorData || funnelCompetitorData;
+
+  // Push GTM dataLayer event for conversion tracking
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).dataLayer) {
+      (window as any).dataLayer.push({
+        event: 'thank_you_page_view',
+        source: source || 'unknown',
+        page_path: '/thank-you',
+        page_title: 'Thank You',
+      });
+    }
+  }, [source]);
 
   const isBookingConfirmation = source === "booking_calendar" || bookingDate;
 
