@@ -40,15 +40,15 @@ export const StatsSection = ({ stats, className = "" }: StatsSectionProps) => {
 
 // Default stats data that can be reused across pages
 export const defaultStats = [
-  { value: "300+", label: "Brands Grown with AI Powered SEO" },
-  { value: "₹50Cr+", label: "Revenue Generated" },
-  { value: "10+", label: "Years Experience" },
-  { value: "95%", label: "Client Retention" },
+  { value: "300%+", label: "Avg. Traffic Growth" },
+  { value: "50+", label: "AI Audits Delivered" },
+  { value: "$2M+", label: "Revenue Generated" },
+  { value: "4.9/5", label: "Client Rating" },
 ];
 
 export const workPageStats = [
-  { value: "₹50Cr+", label: "Revenue Generated for Clients" },
-  { value: "300+", label: "Successful Projects" },
-  { value: "4.2x", label: "Average ROAS" },
-  { value: "280%", label: "Avg. Traffic Growth" },
+  { value: "300%+", label: "Avg. Traffic Growth" },
+  { value: "50+", label: "AI Audits Delivered" },
+  { value: "$2M+", label: "Revenue Generated" },
+  { value: "4.9/5", label: "Client Rating" },
 ];

@@ -1,4 +1,5 @@
 import React, { forwardRef } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, Calendar } from "lucide-react";
@@ -6,6 +7,7 @@ import { ArrowRight, Clock, Calendar } from "lucide-react";
 const blogs = [
   {
     id: 1,
+    slug: "how-ai-is-changing-seo-2025",
     title: "How AI is Changing SEO: What Founders Need to Know in 2025",
     excerpt: "The search landscape is evolving rapidly with AI. Learn how to adapt your SEO strategy for ChatGPT, Google AI Overviews, and beyond.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
@@ -15,6 +17,7 @@ const blogs = [
   },
   {
     id: 2,
+    slug: "getting-cited-by-chatgpt-guide",
     title: "Getting Cited by ChatGPT: A Complete Guide for B2B Brands",
     excerpt: "Discover the tactics top brands use to get recommended and cited by large language models like ChatGPT and Claude.",
     image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=600&h=400&fit=crop",
@@ -24,6 +27,7 @@ const blogs = [
   },
   {
     id: 3,
+    slug: "roi-of-ai-seo-case-studies",
     title: "The ROI of AI SEO: Case Studies from Our Top Clients",
     excerpt: "Real numbers from real businesses. See how AI SEO transformed organic revenue for SaaS and E-commerce brands.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
@@ -37,11 +41,11 @@ export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section ref={ref} className="py-8 md:py-14 lg:py-20 bg-background relative overflow-hidden">
       {/* Subtle background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-orange-50/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-muted/20 to-transparent" />
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl lg:max-w-4xl mx-auto mb-5 md:mb-10">
-          <span className="inline-block px-4 py-1.5 bg-orange-100 text-orange-600 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
             Blog
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
@@ -54,47 +58,48 @@ export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8 mb-5 md:mb-10">
           {blogs.map((blog) => (
-            <Card 
-              key={blog.id}
-              className="bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group cursor-pointer"
-            >
-              <div className="relative overflow-hidden">
-                <img 
-                  src={blog.image} 
-                  alt={blog.title}
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 bg-orange-500 text-white text-xs font-medium rounded-full">
-                    {blog.category}
-                  </span>
-                </div>
-              </div>
-              <CardContent className="p-4 md:p-6">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="w-4 h-4" />
-                    {blog.date}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="w-4 h-4" />
-                    {blog.readTime}
+            <Link key={blog.id} to={`/blog/${blog.slug}`} className="block">
+              <Card 
+                className="bg-background/80 backdrop-blur-sm border-border/50 overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group cursor-pointer h-full"
+              >
+                <div className="relative overflow-hidden">
+                  <img 
+                    src={blog.image} 
+                    alt={blog.title}
+                    loading="lazy"
+                    decoding="async"
+                    className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full">
+                      {blog.category}
+                    </span>
                   </div>
                 </div>
-                <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-orange-600 transition-colors line-clamp-2">
-                  {blog.title}
-                </h3>
-                <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
-                  {blog.excerpt}
-                </p>
-                <div className="flex items-center text-orange-600 font-medium text-sm group-hover:gap-2 transition-all">
-                  Read More
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </CardContent>
-            </Card>
+                <CardContent className="p-4 md:p-6">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
+                    <div className="flex items-center gap-1">
+                      <Calendar className="w-4 h-4" />
+                      {blog.date}
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-4 h-4" />
+                      {blog.readTime}
+                    </div>
+                  </div>
+                  <h3 className="text-lg font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2">
+                    {blog.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm line-clamp-3 mb-4">
+                    {blog.excerpt}
+                  </p>
+                  <div className="flex items-center text-primary font-medium text-sm group-hover:gap-2 transition-all">
+                    Read More
+                    <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
           ))}
         </div>
 
@@ -102,7 +107,7 @@ export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
           <Button 
             variant="outline"
             size="lg"
-            className="border-orange-500 text-orange-600 hover:bg-orange-50 hover:border-orange-600"
+            className="border-primary text-primary hover:bg-accent hover:border-primary"
           >
             Explore All Blogs
             <ArrowRight className="w-4 h-4 ml-2" />
