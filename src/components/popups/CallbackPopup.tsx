@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { openThankYouPage } from '@/lib/thankYouRedirect';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -26,7 +26,7 @@ export const CallbackPopup = ({
   weeklyRequests, 
   onSuccess 
 }: CallbackPopupProps) => {
-  const navigate = useNavigate();
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ name: '', phone: '', timeSlot: '' });
   
@@ -79,7 +79,7 @@ export const CallbackPopup = ({
       onClose();
       setForm({ name: '', phone: '', timeSlot: '' });
       clearErrors();
-      navigate('/thank-you', { state: { name: form.name, source: 'callback' } });
+      openThankYouPage({ name: form.name, source: 'callback' });
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {

@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { useFunnelData } from "@/hooks/useFunnelData";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
@@ -23,7 +23,6 @@ import { toast } from "sonner";
 import { useState } from "react";
 
 const AiSeo = () => {
-  const navigate = useNavigate();
   const { setLeadData } = useFunnelData();
   const [loading, setLoading] = useState(false);
 
@@ -41,13 +40,11 @@ const AiSeo = () => {
 
       toast.success("Form submitted successfully!");
       
-      // Redirect to thank you page
-      navigate("/thank-you", { 
-        state: { 
-          name: data.email?.split('@')[0],
-          email: data.email,
-          source: 'ai_seo_audit'
-        } 
+      // Open thank you page in new tab
+      openThankYouPage({
+        name: data.email?.split('@')[0],
+        email: data.email,
+        source: 'ai_seo_audit'
       });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");

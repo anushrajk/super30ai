@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { CheckCircle, Phone, Calendar, ArrowRight, Clock, Video, Download, Globe, Mail, IndianRupee, Target, TrendingDown } from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
@@ -14,16 +14,24 @@ import { formatDateOnly } from "@/lib/timeUtils";
 
 const ThankYou = () => {
   const location = useLocation();
+  const [searchParams] = useSearchParams();
   const { leadData: funnelLeadData, auditData: funnelAuditData, competitorData: funnelCompetitorData } = useFunnelData();
   
-  const { 
-    name, email, phone, source, bookingDate, startTime, endTime, meetingLink,
-    leadData: stateLeadData, auditData: stateAuditData, competitorData: stateCompetitorData 
-  } = location.state || {};
+  const stateData = location.state || {};
 
-  const leadData = stateLeadData || funnelLeadData;
-  const auditData = stateAuditData || funnelAuditData;
-  const competitorData = stateCompetitorData || funnelCompetitorData;
+  // Read from URL search params (new tab) or location state (fallback)
+  const name = searchParams.get('name') || stateData.name;
+  const email = searchParams.get('email') || stateData.email;
+  const phone = searchParams.get('phone') || stateData.phone;
+  const source = searchParams.get('source') || stateData.source;
+  const bookingDate = searchParams.get('bookingDate') || stateData.bookingDate;
+  const startTime = searchParams.get('startTime') || stateData.startTime;
+  const endTime = searchParams.get('endTime') || stateData.endTime;
+  const meetingLink = searchParams.get('meetingLink') || stateData.meetingLink;
+
+  const leadData = stateData.leadData || funnelLeadData;
+  const auditData = stateData.auditData || funnelAuditData;
+  const competitorData = stateData.competitorData || funnelCompetitorData;
 
   const isBookingConfirmation = source === "booking_calendar" || bookingDate;
 

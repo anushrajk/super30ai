@@ -24,7 +24,7 @@ import {
   Award,
 } from "lucide-react";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { validateEmail, validatePhone, validateMessage, sanitizeInput } from "@/lib/validation";
 import { BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
@@ -90,7 +90,7 @@ const socialLinks = [
 ];
 
 const Contact = () => {
-  const navigate = useNavigate();
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -175,12 +175,11 @@ const Contact = () => {
       });
       setErrors({});
       
-      navigate("/thank-you", { 
-        state: { 
-          name: formData.name,
-          email: formData.email,
-          source: "contact"
-        }
+      // Open thank you page in new tab
+      openThankYouPage({
+        name: formData.name,
+        email: formData.email,
+        source: "contact"
       });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");

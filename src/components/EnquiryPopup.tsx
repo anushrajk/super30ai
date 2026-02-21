@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
 import {
   Dialog,
   DialogContent,
@@ -59,7 +59,7 @@ const validatePhone = (phone: string): boolean => {
 };
 
 export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
-  const navigate = useNavigate();
+  
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -114,14 +114,12 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
       toast.success("Thank you for your enquiry!");
       onOpenChange(false);
       
-      // Navigate to thank you page
-      navigate("/thank-you", {
-        state: {
-          source: "enquiry",
-          name: name.trim(),
-          email: email.trim(),
-          phone: phone ? `+91${phone}` : "",
-        },
+      // Open thank you page in new tab
+      openThankYouPage({
+        source: "enquiry",
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone ? `+91${phone}` : "",
       });
     } catch (error) {
       console.error("Error submitting enquiry:", error);
