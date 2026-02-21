@@ -181,16 +181,18 @@ For questions, contact: thesuper30.ai@gmail.com
                       Your Information
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-2 text-sm">
-                    {leadData?.website_url && (
-                      <p className="flex items-center gap-2"><Globe className="w-4 h-4 text-muted-foreground" />{leadData.website_url}</p>
-                    )}
-                    {(email || leadData?.email) && (
-                      <p className="flex items-center gap-2"><Mail className="w-4 h-4 text-muted-foreground" />{email || leadData.email}</p>
-                    )}
-                    {(phone || leadData?.phone) && (
-                      <p className="flex items-center gap-2"><Phone className="w-4 h-4 text-muted-foreground" />{phone || leadData.phone}</p>
-                    )}
+                  <CardContent className="text-sm">
+                    <div className="flex flex-wrap gap-x-6 gap-y-2">
+                      {leadData?.website_url && (
+                        <span className="flex items-center gap-2"><Globe className="w-4 h-4 text-muted-foreground" />{leadData.website_url}</span>
+                      )}
+                      {(email || leadData?.email) && (
+                        <span className="flex items-center gap-2"><Mail className="w-4 h-4 text-muted-foreground" />{email || leadData.email}</span>
+                      )}
+                      {(phone || leadData?.phone) && (
+                        <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-muted-foreground" />{phone || leadData.phone}</span>
+                      )}
+                    </div>
                   </CardContent>
                 </Card>
 
@@ -270,9 +272,9 @@ For questions, contact: thesuper30.ai@gmail.com
                 
                 <div className="bg-brand-gradient rounded-2xl p-6 text-white">
                   <p className="text-white/80 mb-2">Can't wait? Talk to us now!</p>
-                  <a href="tel:+917353252526" className="inline-flex items-center gap-2 text-xl md:text-2xl font-bold hover:opacity-80 transition-opacity">
+                  <a href="tel:+918904150555" className="inline-flex items-center gap-2 text-xl md:text-2xl font-bold hover:opacity-80 transition-opacity">
                     <Phone className="w-5 h-5 md:w-6 md:h-6" />
-                    +91 73532 52526
+                    +91 89041 50555
                   </a>
                 </div>
 

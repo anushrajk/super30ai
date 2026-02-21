@@ -172,7 +172,7 @@ const TermsOfService = () => {
                   <div className="mt-3 md:mt-4 p-3 md:p-4 bg-muted/30 rounded-xl">
                     <p className="text-foreground font-semibold text-sm md:text-base">The Super 30</p>
                     <p className="text-muted-foreground text-sm">Email: legal@thesuper30.ai</p>
-                    <p className="text-muted-foreground text-sm">Phone: +91 73532 52526</p>
+                    <p className="text-muted-foreground text-sm">Phone: +91 89041 50555</p>
                     <p className="text-muted-foreground text-sm">Address: Bangalore, Karnataka, India</p>
                   </div>
                 </div>

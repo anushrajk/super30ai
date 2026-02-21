@@ -114,11 +114,13 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
       toast.success("Thank you for your enquiry!");
       onOpenChange(false);
       
-      // Navigate to booking page with lead data
-      navigate("/booking", {
+      // Navigate to thank you page
+      navigate("/thank-you", {
         state: {
           source: "enquiry",
-          formData: { name, email, phone, role, serviceInterest },
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone ? `+91${phone}` : "",
         },
       });
     } catch (error) {
@@ -224,7 +226,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
               </span>
               <Input
                 type="tel"
-                placeholder="7353252526"
+                placeholder="8904150555"
                 value={phone}
                 onChange={(e) => handlePhoneChange(e.target.value)}
                 onBlur={() => handleBlur("phone")}
