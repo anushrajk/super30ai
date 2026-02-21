@@ -1,5 +1,5 @@
 import { useState, Suspense, lazy } from "react";
-import { useNavigate } from "react-router-dom";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
 import { Navbar } from "@/components/Navbar";
@@ -37,7 +37,7 @@ interface InitialFormData {
 }
 
 const PerformanceMarketing = () => {
-  const navigate = useNavigate();
+  
   const { session } = useSession();
   const { createLead, sendLeadEmail, loading } = useLead();
   
@@ -126,13 +126,11 @@ const PerformanceMarketing = () => {
 
       toast.success("Form submitted successfully!");
       
-      // Redirect to thank you page
-      navigate("/thank-you", { 
-        state: { 
-          name: initialFormData.email?.split('@')[0],
-          email: initialFormData.email,
-          source: 'performance_marketing'
-        } 
+      // Open thank you page in new tab
+      openThankYouPage({
+        name: initialFormData.email?.split('@')[0],
+        email: initialFormData.email,
+        source: 'performance_marketing'
       });
     } catch (error) {
       toast.error("Something went wrong. Please try again.");

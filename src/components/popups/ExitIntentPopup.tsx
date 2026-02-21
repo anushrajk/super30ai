@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { openThankYouPage } from '@/lib/thankYouRedirect';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -27,7 +27,7 @@ export const ExitIntentPopup = ({
   formatCountdown, 
   onSuccess 
 }: ExitIntentPopupProps) => {
-  const navigate = useNavigate();
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ 
     name: '', 
@@ -86,7 +86,7 @@ export const ExitIntentPopup = ({
       onClose();
       setForm({ name: '', email: '', phone: '', businessType: '' });
       clearErrors();
-      navigate('/thank-you', { state: { name: form.name, email: form.email, source: 'exit_intent' } });
+      openThankYouPage({ name: form.name, email: form.email, source: 'exit_intent' });
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { useSession } from "@/hooks/useSession";
@@ -30,7 +31,7 @@ const pmBenefits = [
 
 const Booking = () => {
   const location = useLocation();
-  const navigate = useNavigate();
+  
   const { session, updateCurrentPage } = useSession();
   const { lead, getLead, updateLead, sendLeadEmail } = useLead();
   const { slotsRemaining, decrementSlots } = useUrgencyValues();
@@ -120,25 +121,21 @@ const Booking = () => {
           setBookingData(bookingInfo);
           
           toast.success("Consultation booked successfully!");
-          navigate("/thank-you", {
-            state: {
-              name: bookingData?.attendees?.[0]?.name || leadData?.email?.split('@')[0],
-              email: bookingData?.attendees?.[0]?.email || leadData?.email,
-              phone: leadData?.phone,
-              bookingDate: bookingData?.startTime,
-              startTime: formatTime(bookingData?.startTime),
-              endTime: formatTime(bookingData?.endTime),
-              meetingLink: bookingData?.metadata?.videoCallUrl || bookingData?.meetingUrl,
-              source: "booking_calendar",
-              leadData,
-              auditData,
-              competitorData
-            }
+          // Open thank you page in new tab
+          openThankYouPage({
+            name: bookingData?.attendees?.[0]?.name || leadData?.email?.split('@')[0],
+            email: bookingData?.attendees?.[0]?.email || leadData?.email,
+            phone: leadData?.phone,
+            bookingDate: bookingData?.startTime,
+            startTime: formatTime(bookingData?.startTime),
+            endTime: formatTime(bookingData?.endTime),
+            meetingLink: bookingData?.metadata?.videoCallUrl || bookingData?.meetingUrl,
+            source: "booking_calendar"
           });
         },
       });
     })();
-  }, [navigate, session, lead, decrementSlots, leadData, auditData, competitorData]);
+  }, [session, lead, decrementSlots, leadData, auditData, competitorData]);
 
   return (
     <>

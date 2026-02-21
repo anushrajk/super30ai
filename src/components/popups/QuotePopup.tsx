@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { openThankYouPage } from '@/lib/thankYouRedirect';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -22,7 +22,7 @@ const validationRules: Record<string, ValidationRule> = {
 const baseInputClass = "h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60";
 
 export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
-  const navigate = useNavigate();
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [form, setForm] = useState({ 
     companyName: '', 
@@ -75,7 +75,7 @@ export const QuotePopup = ({ open, onClose, onSuccess }: QuotePopupProps) => {
       onClose();
       setForm({ companyName: '', website: '', email: '', budget: '', services: '' });
       clearErrors();
-      navigate('/thank-you', { state: { email: form.email, source: 'quote' } });
+      openThankYouPage({ email: form.email, source: 'quote' });
     } catch (error) {
       toast.error('Something went wrong. Please try again.');
     } finally {
