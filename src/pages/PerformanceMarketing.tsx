@@ -34,6 +34,8 @@ interface InitialFormData {
   phone?: string;
   role?: string;
   monthly_revenue?: string;
+  full_name?: string;
+  company_name?: string;
 }
 
 const PerformanceMarketing = () => {
@@ -64,6 +66,7 @@ const PerformanceMarketing = () => {
         phone: data.phone,
         role: data.role,
         monthly_revenue: data.monthly_revenue,
+        company_name: data.company_name,
         service_type: "pm",
         step: 1
       };
@@ -126,10 +129,11 @@ const PerformanceMarketing = () => {
 
       toast.success("Form submitted successfully!");
       
-      // Open thank you page in new tab
+      // Open thank you page
       openThankYouPage({
-        name: initialFormData.email?.split('@')[0],
+        name: initialFormData.full_name || initialFormData.email?.split('@')[0],
         email: initialFormData.email,
+        company: initialFormData.company_name,
         source: 'performance_marketing'
       });
     } catch (error) {
