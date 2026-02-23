@@ -7,7 +7,7 @@ import { Sparkles, Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 interface LeadCaptureFormProps {
-  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => void;
+  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
   loading?: boolean;
   variant?: "default" | "compact";
 }
@@ -106,7 +106,9 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
         email,
         phone: phone ? `+91${phone}` : undefined,
         role: role || undefined, 
-        monthly_revenue: monthlyRevenue || undefined 
+        monthly_revenue: monthlyRevenue || undefined,
+        full_name: fullName || undefined,
+        company_name: companyName || undefined,
       };
 
       // Submit to Google Sheets (non-blocking)
