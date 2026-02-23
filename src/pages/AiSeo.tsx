@@ -26,7 +26,7 @@ const AiSeo = () => {
   const { setLeadData } = useFunnelData();
   const [loading, setLoading] = useState(false);
 
-  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string }) => {
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
     setLoading(true);
     try {
       // Store in funnel data for persistence across pages
@@ -42,8 +42,9 @@ const AiSeo = () => {
       
       // Open thank you page in new tab
       openThankYouPage({
-        name: data.email?.split('@')[0],
+        name: data.full_name || data.email?.split('@')[0],
         email: data.email,
+        company: data.company_name,
         source: 'ai_seo_audit'
       });
     } catch (error) {
