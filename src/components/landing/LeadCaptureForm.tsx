@@ -114,13 +114,13 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
       // Submit to Google Sheets (non-blocking)
       void submitFormToGoogleSheets({
         form_id: "lead_capture_form_seo",
-        form_name: "AI SEO Visibility Audit Form",
+        form_name: "Free AI Visibility Audit",
         page_url: window.location.href,
-        trigger_type: "embedded",
+        trigger_type: "form_submit",
         data: {
-          full_name: fullName,
-          company_name: companyName,
-          website_url: websiteUrl,
+          name: fullName,
+          company: companyName,
+          website: websiteUrl,
           email: email,
           phone: phone ? `+91${phone}` : "",
           role: roleOptions.find(r => r.value === role)?.label || role || "",

@@ -9,7 +9,7 @@ export interface FormSubmitPayload {
   form_id: string;
   form_name: string;
   page_url: string;
-  trigger_type: "popup" | "embedded" | "exit_intent" | "button" | "scroll";
+  trigger_type: "popup" | "embedded" | "exit_intent" | "button" | "scroll" | "form_submit";
   data: Record<string, unknown>;
 }
 
