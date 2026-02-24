@@ -20,18 +20,23 @@ export interface FormSubmitResult {
 
 /**
  * Submit form data to Google Apps Script endpoint
+ * Flattens the nested `data` object to top-level keys so Google Apps Script can read all fields
  */
 export const submitFormToGoogleSheets = async (
   payload: FormSubmitPayload
 ): Promise<FormSubmitResult> => {
   try {
+    // Flatten: spread data fields to top level so Apps Script can read them directly
+    const { data, ...meta } = payload;
+    const flatPayload = { ...meta, ...data };
+
     const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
       method: "POST",
       mode: "no-cors", // Google Apps Script requires no-cors for cross-origin requests
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(flatPayload),
     });
 
     // With no-cors mode, we can't read the response
