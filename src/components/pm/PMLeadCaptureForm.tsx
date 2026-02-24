@@ -112,13 +112,13 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
       // Submit to Google Sheets (non-blocking)
       void submitFormToGoogleSheets({
         form_id: "pm_lead_capture_form",
-        form_name: "Performance Marketing Audit Form",
+        form_name: "Free Ads Audit",
         page_url: window.location.href,
-        trigger_type: "embedded",
+        trigger_type: "form_submit",
         data: {
-          full_name: fullName,
-          company_name: companyName,
-          website_url: urlWithProtocol,
+          name: fullName,
+          company: companyName,
+          website: urlWithProtocol,
           email: email,
           phone: phone ? `+91${phone}` : "",
           role: roleOptions.find(r => r.value === role)?.label || role || "",
