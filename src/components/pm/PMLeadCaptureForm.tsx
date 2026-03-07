@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -68,19 +68,10 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [adBudget, setAdBudget] = useState("");
-  const [recentSignups, setRecentSignups] = useState(32);
+  
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRecentSignups(prev => {
-        const change = Math.random() > 0.7 ? 1 : 0;
-        return Math.min(prev + change, 99);
-      });
-    }, 15000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleBlur = (field: string) => {
     setFocusedField(null);
@@ -112,7 +103,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
       // Submit to Google Sheets (non-blocking)
       void submitFormToGoogleSheets({
         form_id: "pm_lead_capture_form",
-        form_name: "Free Ads Audit",
+        form_name: "Free Ads Performance Consultation",
         page_url: window.location.href,
         trigger_type: "form_submit",
         data: {
@@ -147,43 +138,18 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <CardContent className="p-4 sm:p-6 relative">
-        {/* Progress bar */}
-        <div className="mb-5">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 px-2 py-0.5 rounded-full">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs font-medium text-green-600">{recentSignups} audits today</span>
-              </div>
-            <span className="text-xs font-medium text-muted-foreground">
-              {filledFields === 0 ? "Start your ads audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to continue!"}
-            </span>
-            </div>
-            <span className="text-xs font-bold text-primary">{Math.round(progress)}%</span>
-          </div>
-          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-primary rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
         <div className="flex items-center justify-center gap-2 mb-2">
           <Target className="w-5 h-5 text-primary" />
           <h3 className="text-xl font-bold text-foreground text-center">
-            Free Ads Audit
+            Book Your Free Ads Performance Consultation
           </h3>
         </div>
         <p className="text-muted-foreground text-center text-sm mb-1">
-          Discover hidden ROI opportunities in your campaigns
+          In a short consultation we'll show how to maximize your ad ROI and reduce wasted spend across Google, Meta & LinkedIn.
         </p>
         
-        {/* Value badges */}
+        {/* Value badge */}
         <div className="flex items-center justify-center gap-2 mb-5">
-          <span className="text-xs bg-primary/10 text-primary px-2 py-0.5 rounded-full font-medium">
-            Worth ₹25,000
-          </span>
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
             100% Free
           </span>
@@ -343,7 +309,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               </>
             ) : (
               <>
-                Continue
+                Book Your Free Consultation
                 <TrendingUp className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
               </>
             )}
@@ -381,7 +347,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
             ))}
           </div>
           <span className="text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">₹2Cr+</span> ad spend optimized this month
+            <span className="font-semibold text-foreground">300+</span> founders booked consultations this month
           </span>
         </div>
       </CardContent>
