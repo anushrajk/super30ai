@@ -17,9 +17,9 @@ const trustSignals = [
 ];
 
 const expertCredentials = [
-  "Ex-Google SEO Strategists",
+  "Ex-Google & Meta Certified",
   "10+ Years Experience",
-  "300+ Successful Projects",
+  "300+ Brands Grown",
 ];
 
 export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
@@ -42,7 +42,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
             <div className="inline-flex items-center gap-2 bg-accent border border-border px-4 py-1.5 rounded-full">
               <TrendingUp className="w-4 h-4 text-brand" />
               <span className="text-foreground text-sm font-medium">
-                #1 AI SEO Agency in India
+                #1 AI Digital Marketing Agency in India
               </span>
             </div>
 
@@ -50,15 +50,14 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
             <div>
             <h1 className="font-bold text-foreground leading-tight tracking-tight mb-4 md:mb-5">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
-                  AI-Powered SEO
+                  AI-Powered Digital
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                  Optimization Services
+                  Marketing Services
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                The Super 30 offers industry-leading AI SEO services as a trusted SEO agency in Bangalore. Our approach combines technical precision with AI-driven insights to deliver the{" "}
-                <span className="text-foreground font-semibold">best SEO services in Bangalore</span>.
+                The Super 30 is a full-service <span className="text-foreground font-semibold">digital marketing agency in Bangalore</span>. We combine AI-driven strategies with expert execution across SEO, paid ads, social media, and web design to accelerate your growth.
               </p>
             </div>
 

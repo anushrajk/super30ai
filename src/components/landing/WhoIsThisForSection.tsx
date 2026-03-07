@@ -20,15 +20,15 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const audiences = [
-  { icon: Building2, title: "B2B SaaS", description: "AI-powered SEO and performance marketing for SaaS teams generating qualified leads and pipeline growth." },
-  { icon: ShoppingCart, title: "E-commerce", description: "AI-driven eCommerce SEO and paid marketing to boost store visibility, conversions, and ROAS." },
-  { icon: Briefcase, title: "Professional Services", description: "AI-first professional services SEO and performance marketing to build authority and inbound demand." },
-  { icon: GraduationCap, title: "EdTech", description: "AI-powered EdTech SEO and paid campaigns helping courses reach the right learners at scale." },
-  { icon: Stethoscope, title: "Healthcare", description: "Compliance-ready healthcare SEO and performance marketing building trust and patient acquisition." },
-  { icon: Rocket, title: "Tech Startups", description: "AI-led startup SEO and growth marketing for fast-scaling companies driving data-backed demand." },
-  { icon: HomeIcon, title: "Real Estate", description: "AI-powered real estate SEO and paid ads generating high-quality property leads." },
-  { icon: Scale, title: "Legal Services", description: "AI-first legal SEO and performance marketing helping law firms attract high-intent clients." },
-  { icon: Utensils, title: "Hospitality & Travel", description: "AI-driven hospitality SEO and travel marketing increasing bookings, demand, and visibility." },
+  { icon: Building2, title: "B2B SaaS", description: "Full-funnel digital marketing for SaaS — from SEO and content to paid campaigns that generate qualified pipeline." },
+  { icon: ShoppingCart, title: "E-commerce", description: "AI-driven eCommerce marketing combining SEO, paid ads, and social media to boost conversions and ROAS." },
+  { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to build authority, drive inbound leads, and grow your practice." },
+  { icon: GraduationCap, title: "EdTech", description: "Multi-channel digital marketing for EdTech — SEO, paid campaigns, and social media to reach learners at scale." },
+  { icon: Stethoscope, title: "Healthcare", description: "Compliance-ready digital marketing for healthcare — from patient acquisition ads to trust-building content." },
+  { icon: Rocket, title: "Tech Startups", description: "Growth marketing for startups — rapid experimentation across SEO, ads, social, and content to find product-market fit." },
+  { icon: HomeIcon, title: "Real Estate", description: "Digital marketing strategies for real estate — SEO, Google Ads, social media, and landing pages that generate quality leads." },
+  { icon: Scale, title: "Legal Services", description: "Targeted digital marketing for law firms — from local SEO to paid ads that attract high-intent clients." },
+  { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality — social media, SEO, and paid campaigns that drive bookings." },
 ];
 
 export const WhoIsThisForSection = () => {
@@ -55,7 +55,7 @@ export const WhoIsThisForSection = () => {
             Who Is This For?
           </h2>
           <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-            Our AI-powered marketing solutions work best for ambitious businesses ready to dominate their market
+            Our AI-powered digital marketing solutions are built for ambitious businesses ready to scale across every channel
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export const WhoIsThisForSection = () => {
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
-              Start Free Audit Now
+              Get a Free Strategy Call
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 

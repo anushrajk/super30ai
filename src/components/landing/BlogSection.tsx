@@ -8,28 +8,28 @@ const blogs = [
   {
     id: 1,
     slug: "how-ai-is-changing-seo-2025",
-    title: "How AI is Changing SEO: What Founders Need to Know in 2025",
-    excerpt: "The search landscape is evolving rapidly with AI. Learn how to adapt your SEO strategy for ChatGPT, Google AI Overviews, and beyond.",
+    title: "How AI Is Reshaping Digital Marketing in 2025",
+    excerpt: "From AI-powered ad bidding to automated content strategies — discover how smart brands are using AI to dominate every digital channel.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop",
-    category: "AI SEO Strategy",
+    category: "AI Marketing",
     readTime: "8 min read",
     date: "Dec 15, 2024"
   },
   {
     id: 2,
     slug: "getting-cited-by-chatgpt-guide",
-    title: "Getting Cited by ChatGPT: A Complete Guide for B2B Brands",
-    excerpt: "Discover the tactics top brands use to get recommended and cited by large language models like ChatGPT and Claude.",
+    title: "The Complete Guide to Multi-Channel Digital Marketing for B2B",
+    excerpt: "Learn how to build an integrated digital marketing strategy across SEO, paid ads, social media, and email that drives consistent pipeline.",
     image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=600&h=400&fit=crop",
-    category: "LLM Optimization",
+    category: "Growth Strategy",
     readTime: "12 min read",
     date: "Dec 10, 2024"
   },
   {
     id: 3,
     slug: "roi-of-ai-seo-case-studies",
-    title: "The ROI of AI SEO: Case Studies from Our Top Clients",
-    excerpt: "Real numbers from real businesses. See how AI SEO transformed organic revenue for SaaS and E-commerce brands.",
+    title: "Digital Marketing ROI: Case Studies from Our Top Clients",
+    excerpt: "Real numbers from real businesses. See how integrated digital marketing strategies transformed growth for SaaS and E-commerce brands.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
     category: "Case Studies",
     readTime: "10 min read",
@@ -52,7 +52,7 @@ export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
             Latest Insights
           </h2>
           <p className="text-lg text-muted-foreground">
-            Expert perspectives on AI SEO and the future of search
+            Expert perspectives on digital marketing, AI strategies, and growth
           </p>
         </div>
 

@@ -6,25 +6,25 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
-    quote: "The Super 30 helped us go from invisible in AI search to being recommended by ChatGPT for our core services. Our qualified leads increased by 340%.",
+    quote: "The Super 30 transformed our entire digital presence — from SEO to paid ads to social media. Our qualified leads increased by 340% in just 6 months.",
     author: "Sarah Chen",
     role: "CEO",
     initials: "SC",
     result: "340% more leads"
   },
   {
-    quote: "Finally an SEO agency that understands the AI-first future. Our organic revenue doubled in 6 months with their strategic approach.",
+    quote: "Finally a digital marketing agency that delivers across all channels. Our organic traffic doubled while our ad ROAS hit 5x within the first quarter.",
     author: "Rahul Sharma",
     role: "Founder",
     initials: "RS",
-    result: "2x organic revenue"
+    result: "5x ROAS"
   },
   {
-    quote: "Their AI visibility tracking showed us exactly where we were losing to competitors. Now we dominate those conversations.",
+    quote: "Their integrated approach to SEO, ads, and social media gave us a unified growth strategy. We went from scattered campaigns to predictable revenue.",
     author: "Priya Patel",
     role: "CMO",
     initials: "PP",
-    result: "Top AI recommendations"
+    result: "Predictable revenue"
   }
 ];
 

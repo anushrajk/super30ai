@@ -14,65 +14,65 @@ import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerCli
 
 const services = [{
   icon: Bot,
-  title: "AI SEO Services",
-  features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO", "Entity & Semantic SEO", "Generative Search Optimization"],
+  title: "AI-Powered SEO",
+  features: ["AI Search Optimization", "LLM Visibility & Citations", "Technical SEO Audits", "Content Strategy & Creation", "Entity & Semantic SEO", "Local & International SEO"],
   href: "/ai-seo-agency-bangalore",
   color: "from-orange-500 to-orange-600",
 }, {
   icon: Target,
   title: "Performance Marketing",
-  features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "YouTube Ads", "Remarketing & Retargeting", "AI Bid Optimization"],
+  features: ["Google Ads Management", "Meta & Instagram Ads", "LinkedIn B2B Campaigns", "YouTube Advertising", "Remarketing & Retargeting", "AI-Driven Bid Optimization"],
   href: "/performance-marketing",
   color: "from-blue-500 to-blue-600",
 }, {
   icon: Megaphone,
-  title: "Digital Marketing",
-  features: ["Content Marketing", "Email Marketing", "Marketing Automation", "Conversion Optimization", "Analytics & Reporting", "Growth Strategy"],
+  title: "Digital Strategy & Growth",
+  features: ["Content Marketing", "Email & Drip Campaigns", "Marketing Automation", "Conversion Rate Optimization", "Analytics & Reporting", "Full-Funnel Growth Strategy"],
   href: "/ai-seo-agency-bangalore",
   color: "from-purple-500 to-purple-600",
 }, {
   icon: Palette,
-  title: "Social Media Post Design",
-  features: ["Brand Templates", "Carousel Designs", "Story & Reel Covers", "Infographics", "Ad Creatives", "Motion Graphics"],
+  title: "Social Media Marketing",
+  features: ["Social Media Strategy", "Content Calendar & Posting", "Community Management", "Influencer Collaborations", "Ad Creative Design", "Reels & Short-Form Video"],
   href: "/ai-seo-agency-bangalore",
   color: "from-teal-500 to-teal-600",
 }, {
   icon: Globe,
   title: "Web Design & Development",
-  features: ["Landing Pages", "Corporate Websites", "E-commerce", "UI/UX Design", "CRO Optimization", "Speed Optimization"],
+  features: ["High-Converting Landing Pages", "Corporate & Brand Websites", "E-commerce Development", "UI/UX Design", "CRO Optimization", "Speed & Core Web Vitals"],
   href: "/ai-seo-agency-bangalore",
   color: "from-emerald-500 to-emerald-600",
 }];
 
 const whyChooseUs = [{
   icon: Users,
-  title: "Team 30",
-  description: "Our AI marketing agency team has 10+ years of experience"
+  title: "30+ Expert Marketers",
+  description: "A dedicated team of digital marketing specialists with 10+ years of combined experience"
 }, {
   icon: Bot,
-  title: "AI-First Approach",
-  description: "We leverage AI for optimization, not just talk about it"
+  title: "AI-Powered Strategies",
+  description: "We use AI tools and automation to deliver smarter, faster marketing results"
 }, {
   icon: BarChart3,
-  title: "Data-Driven Results",
-  description: "Every decision backed by analytics and measurable outcomes"
+  title: "Data-Driven Growth",
+  description: "Every campaign is backed by analytics, A/B testing, and measurable ROI"
 }, {
   icon: Zap,
-  title: "Fast Execution",
-  description: "Rapid implementation with no long-term lock-ins"
+  title: "Fast & Flexible",
+  description: "Rapid execution with transparent reporting and no long-term lock-ins"
 }];
 
 const Home = () => {
   return <>
     <Helmet>
-      <title>AI SEO & Performance Marketing Agency | The Super 30</title>
-      <meta name="description" content="We help brands grow with AI-powered SEO and performance marketing strategies that improve visibility, drive qualified traffic, and deliver higher ROI." />
-      <meta name="keywords" content="AI SEO, AI powered SEO, performance marketing agency, seo agency bangalore, ai in digital marketing, ai marketing agency, best seo agency bangalore, ai seo agency" />
+      <title>AI Digital Marketing Agency in Bangalore | The Super 30</title>
+      <meta name="description" content="The Super 30 is an AI-powered digital marketing agency in Bangalore. We offer SEO, performance marketing, social media, web design & full-funnel growth strategies." />
+      <meta name="keywords" content="digital marketing agency, digital marketing agency bangalore, AI digital marketing, performance marketing, SEO agency bangalore, social media marketing, web design bangalore" />
       <link rel="canonical" href="https://www.thesuper30.ai/" />
       
       {/* Open Graph */}
-      <meta property="og:title" content="AI SEO & Performance Marketing Agency | The Super 30" />
-      <meta property="og:description" content="We help brands grow with AI-powered SEO and performance marketing strategies that improve visibility, drive qualified traffic, and deliver higher ROI." />
+      <meta property="og:title" content="AI Digital Marketing Agency in Bangalore | The Super 30" />
+      <meta property="og:description" content="The Super 30 is an AI-powered digital marketing agency offering SEO, ads, social media, web design & growth strategies. Trusted by 300+ brands." />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.thesuper30.ai/" />
       <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
@@ -81,8 +81,8 @@ const Home = () => {
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="AI SEO & Performance Marketing Agency | The Super 30" />
-      <meta name="twitter:description" content="We help brands grow with AI-powered SEO and performance marketing strategies that improve visibility, drive qualified traffic, and deliver higher ROI." />
+      <meta name="twitter:title" content="AI Digital Marketing Agency in Bangalore | The Super 30" />
+      <meta name="twitter:description" content="AI-powered digital marketing agency offering SEO, performance marketing, social media & web design. Trusted by 300+ brands across India." />
       
       {/* Additional SEO */}
       <meta name="robots" content="index, follow" />
@@ -98,7 +98,7 @@ const Home = () => {
           "name": "The Super 30",
           "url": "https://www.thesuper30.ai/",
           "logo": "https://www.thesuper30.ai/logo.png",
-          "description": "AI-powered SEO and performance marketing agency based in Bangalore.",
+          "description": "AI-powered digital marketing agency in Bangalore offering SEO, performance marketing, social media, web design and growth strategies.",
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Bangalore",
@@ -128,27 +128,27 @@ const Home = () => {
                 <div className="flex items-center justify-center w-5 h-5 md:w-6 md:h-6 icon-bg-glow rounded-full">
                   <Award className="w-3 h-3 md:w-3.5 md:h-3.5 text-brand" />
                 </div>
-                <span className="text-xs md:text-sm font-medium text-foreground">#1 AI Marketing Agency in India</span>
+                <span className="text-xs md:text-sm font-medium text-foreground">#1 AI Digital Marketing Agency in India</span>
                 <Sparkles className="w-3 h-3 md:w-4 md:h-4 text-brand" />
               </div>
 
               {/* Main Headline */}
               <h1 className="font-bold text-foreground leading-tight tracking-tight">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
-                  AI-Powered SEO
+                  AI-Powered Digital
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-                  Optimization Services
+                  Marketing Agency
                 </span>
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                We use AI in digital marketing to build smarter AI powered SEO strategies and data-driven campaigns that drive real business growth. Trusted by 300+ brands across India.
+                From SEO to performance ads, social media to web design — we combine AI and human expertise to drive measurable growth. Trusted by 300+ brands across India.
               </p>
 
               {/* Platform Logos */}
               <div className="flex items-center gap-3 md:gap-4 justify-center lg:justify-start flex-wrap">
-                <span className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider">30+ Experienced Marketers:</span>
+                <span className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider">Platforms We Master:</span>
                 <div className="flex items-center gap-2 md:gap-3">
                   {/* Google */}
                   <div className="w-7 h-7 md:w-8 md:h-8 bg-white rounded-lg flex items-center justify-center shadow-sm border border-border/50" title="Google">
@@ -189,7 +189,7 @@ const Home = () => {
                 <Link to="/ai-seo-agency-bangalore">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
-                    Talk to Our SEO Experts
+                    Get a Free Strategy Call
                     <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </Link>
@@ -226,7 +226,7 @@ const Home = () => {
               Why Brands Choose The Super 30
             </h2>
             <p className="text-lg text-muted-foreground">
-              As a trusted AI SEO agency and one of the best SEO agencies in Bangalore, we combine technology and creativity to deliver results.
+              We're a full-service AI digital marketing agency in Bangalore that combines technology, creativity, and data to deliver real business growth.
             </p>
           </div>
 
@@ -252,10 +252,10 @@ const Home = () => {
               Our Services
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Everything Your Brand Needs to Grow
+              Full-Service Digital Marketing Solutions
             </h2>
             <p className="text-lg text-muted-foreground">
-              Whether you need AI-driven organic visibility, paid advertising, social media, or creative design — we've got you covered.
+              From AI-powered SEO and paid ads to social media management and web development — everything your brand needs under one roof.
             </p>
           </div>
 
