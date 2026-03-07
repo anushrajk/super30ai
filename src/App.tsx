@@ -36,6 +36,9 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const DigitalMarketing = lazy(() => import("./pages/DigitalMarketing"));
+const SocialMediaDesign = lazy(() => import("./pages/SocialMediaDesign"));
+const WebDesign = lazy(() => import("./pages/WebDesign"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -102,6 +105,9 @@ const App = () => (
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/cookie-policy" element={<CookiePolicy />} />
+                <Route path="/digital-marketing" element={<DigitalMarketing />} />
+                <Route path="/social-media-post-design" element={<SocialMediaDesign />} />
+                <Route path="/web-design-development" element={<WebDesign />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>

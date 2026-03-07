@@ -28,19 +28,19 @@ const services = [{
   icon: Megaphone,
   title: "Digital Strategy & Growth",
   features: ["Content Marketing", "Email & Drip Campaigns", "Marketing Automation", "Conversion Rate Optimization", "Analytics & Reporting", "Full-Funnel Growth Strategy"],
-  href: "/ai-seo-agency-bangalore",
+  href: "/digital-marketing",
   color: "from-purple-500 to-purple-600",
 }, {
   icon: Palette,
   title: "Social Media Marketing",
   features: ["Social Media Strategy", "Content Calendar & Posting", "Community Management", "Influencer Collaborations", "Ad Creative Design", "Reels & Short-Form Video"],
-  href: "/ai-seo-agency-bangalore",
+  href: "/social-media-post-design",
   color: "from-teal-500 to-teal-600",
 }, {
   icon: Globe,
   title: "Web Design & Development",
   features: ["High-Converting Landing Pages", "Corporate & Brand Websites", "E-commerce Development", "UI/UX Design", "CRO Optimization", "Speed & Core Web Vitals"],
-  href: "/ai-seo-agency-bangalore",
+  href: "/web-design-development",
   color: "from-emerald-500 to-emerald-600",
 }];
 
