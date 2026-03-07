@@ -213,14 +213,9 @@ export const Navbar = () => {
                     <div className="w-10 h-10 rounded-xl bg-background border border-border/50 flex items-center justify-center group-hover:bg-[hsl(var(--brand-orange))]/10 group-hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300">
                       <service.icon className={`w-5 h-5 ${service.color}`} />
                     </div>
-                    <div>
-                      <span className="font-semibold group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
+                    <span className="text-sm font-medium group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
                         {service.title}
                       </span>
-                      <p className="text-xs text-muted-foreground">
-                        {service.description}
-                      </p>
-                    </div>
                   </Link>
                 ))}
               </div>
