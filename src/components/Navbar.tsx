@@ -135,8 +135,8 @@ export const Navbar = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-[400px] p-4 bg-popover border border-border rounded-xl shadow-xl">
-                      <div className="grid gap-3">
+                    <div className="w-[480px] p-4 bg-popover border border-border rounded-xl shadow-xl">
+                      <div className="grid grid-cols-2 gap-3">
                         {services.map((service) => (
                           <NavigationMenuLink key={service.href} asChild>
                             <Link
