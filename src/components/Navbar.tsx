@@ -111,15 +111,11 @@ export const Navbar = () => {
                                 <service.icon className={`w-5 h-5 ${service.color} group-hover:scale-110 transition-transform duration-300`} />
                               </div>
                               <div className="flex-1">
-                                <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-foreground group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
+                                <span className="font-semibold text-foreground group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
                                     {service.title}
                                   </span>
-                                  <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[hsl(var(--brand-orange))]" />
-                                </div>
-                                <p className="text-sm text-muted-foreground mt-0.5">
-                                  {service.description}
-                                </p>
+                              </div>
+                            </Link>
                               </div>
                             </Link>
                           </NavigationMenuLink>
