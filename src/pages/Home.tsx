@@ -31,12 +31,6 @@ const services = [{
   href: "/ai-seo-agency-bangalore",
   color: "from-purple-500 to-purple-600",
 }, {
-  icon: Share2,
-  title: "Social Media Marketing",
-  features: ["Instagram Marketing", "Facebook Marketing", "LinkedIn Marketing", "Twitter/X Marketing", "Influencer Marketing", "Community Management"],
-  href: "/ai-seo-agency-bangalore",
-  color: "from-pink-500 to-pink-600",
-}, {
   icon: Palette,
   title: "Social Media Post Design",
   features: ["Brand Templates", "Carousel Designs", "Story & Reel Covers", "Infographics", "Ad Creatives", "Motion Graphics"],
