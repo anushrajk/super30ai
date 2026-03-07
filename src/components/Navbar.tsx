@@ -15,48 +15,12 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const services = [
-  {
-    title: "AI SEO Services",
-    description: "Dominate AI search results and LLM citations",
-    href: "/ai-seo-agency-bangalore",
-    icon: Bot,
-    color: "text-[hsl(var(--brand-orange))]",
-  },
-  {
-    title: "Performance Marketing",
-    description: "ROI-driven paid advertising across all platforms",
-    href: "/performance-marketing",
-    icon: Target,
-    color: "text-blue-500",
-  },
-  {
-    title: "Digital Marketing",
-    description: "Content, email & growth strategies",
-    href: "/ai-seo-agency-bangalore",
-    icon: Megaphone,
-    color: "text-purple-500",
-  },
-  {
-    title: "Social Media Marketing",
-    description: "Grow your brand across social platforms",
-    href: "/ai-seo-agency-bangalore",
-    icon: Share2,
-    color: "text-pink-500",
-  },
-  {
-    title: "Social Media Post Design",
-    description: "Stunning creatives for every platform",
-    href: "/ai-seo-agency-bangalore",
-    icon: Palette,
-    color: "text-teal-500",
-  },
-  {
-    title: "Web Design & Development",
-    description: "High-converting websites & landing pages",
-    href: "/ai-seo-agency-bangalore",
-    icon: Globe,
-    color: "text-emerald-500",
-  },
+  { title: "AI SEO Services", href: "/ai-seo-agency-bangalore", icon: Bot, color: "text-[hsl(var(--brand-orange))]" },
+  { title: "Performance Marketing", href: "/performance-marketing", icon: Target, color: "text-blue-500" },
+  { title: "Digital Marketing", href: "/ai-seo-agency-bangalore", icon: Megaphone, color: "text-purple-500" },
+  { title: "Social Media Marketing", href: "/ai-seo-agency-bangalore", icon: Share2, color: "text-pink-500" },
+  { title: "Social Media Post Design", href: "/ai-seo-agency-bangalore", icon: Palette, color: "text-teal-500" },
+  { title: "Web Design & Development", href: "/ai-seo-agency-bangalore", icon: Globe, color: "text-emerald-500" },
 ];
 
 const navLinks = [
