@@ -10,24 +10,44 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
-import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award } from "lucide-react";
+import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Share2, Palette, Globe } from "lucide-react";
 
 const services = [{
   icon: Bot,
   title: "AI SEO Services",
-  description: "Dominate Google Search, AI Overviews, and LLM answers with AI-first SEO strategies for scalable growth.",
-  features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO","Entity & Semantic SEO","Generative Search Optimization"],
+  features: ["AI Search Optimization", "LLM Visibility", "Intent Mapping", "Technical AI SEO", "Entity & Semantic SEO", "Generative Search Optimization"],
   href: "/ai-seo-agency-bangalore",
   color: "from-orange-500 to-orange-600",
-  glowColor: "orange"
 }, {
   icon: Target,
-  title: "Performance Marketing Services",
-  description: "ROI-driven paid ads and performance marketing that turn ad spend into predictable revenue.",
-  features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "Programmatic Advertising","YouTube Ads","Remarketing & Retargeting"],
+  title: "Performance Marketing",
+  features: ["Google Ads", "Meta Ads", "LinkedIn Ads", "YouTube Ads", "Remarketing & Retargeting", "AI Bid Optimization"],
   href: "/performance-marketing",
   color: "from-blue-500 to-blue-600",
-  glowColor: "blue"
+}, {
+  icon: Megaphone,
+  title: "Digital Marketing",
+  features: ["Content Marketing", "Email Marketing", "Marketing Automation", "Conversion Optimization", "Analytics & Reporting", "Growth Strategy"],
+  href: "/ai-seo-agency-bangalore",
+  color: "from-purple-500 to-purple-600",
+}, {
+  icon: Share2,
+  title: "Social Media Marketing",
+  features: ["Instagram Marketing", "Facebook Marketing", "LinkedIn Marketing", "Twitter/X Marketing", "Influencer Marketing", "Community Management"],
+  href: "/ai-seo-agency-bangalore",
+  color: "from-pink-500 to-pink-600",
+}, {
+  icon: Palette,
+  title: "Social Media Post Design",
+  features: ["Brand Templates", "Carousel Designs", "Story & Reel Covers", "Infographics", "Ad Creatives", "Motion Graphics"],
+  href: "/ai-seo-agency-bangalore",
+  color: "from-teal-500 to-teal-600",
+}, {
+  icon: Globe,
+  title: "Web Design & Development",
+  features: ["Landing Pages", "Corporate Websites", "E-commerce", "UI/UX Design", "CRO Optimization", "Speed Optimization"],
+  href: "/ai-seo-agency-bangalore",
+  color: "from-emerald-500 to-emerald-600",
 }];
 
 const whyChooseUs = [{
