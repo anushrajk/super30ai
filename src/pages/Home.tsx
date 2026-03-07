@@ -10,7 +10,7 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
-import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Share2, Palette, Globe } from "lucide-react";
+import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Palette, Globe } from "lucide-react";
 
 const services = [{
   icon: Bot,
@@ -30,12 +30,6 @@ const services = [{
   features: ["Content Marketing", "Email Marketing", "Marketing Automation", "Conversion Optimization", "Analytics & Reporting", "Growth Strategy"],
   href: "/ai-seo-agency-bangalore",
   color: "from-purple-500 to-purple-600",
-}, {
-  icon: Share2,
-  title: "Social Media Marketing",
-  features: ["Instagram Marketing", "Facebook Marketing", "LinkedIn Marketing", "Twitter/X Marketing", "Influencer Marketing", "Community Management"],
-  href: "/ai-seo-agency-bangalore",
-  color: "from-pink-500 to-pink-600",
 }, {
   icon: Palette,
   title: "Social Media Post Design",

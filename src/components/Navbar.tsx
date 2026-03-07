@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle, Megaphone, Share2, Palette, Globe } from "lucide-react";
+import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle, Megaphone, Palette, Globe } from "lucide-react";
 import super30Logo from "@/assets/super30-new-logo.png";
 import {
   NavigationMenu,
@@ -18,7 +18,6 @@ const services = [
   { title: "AI SEO Services", href: "/ai-seo-agency-bangalore", icon: Bot, color: "text-[hsl(var(--brand-orange))]" },
   { title: "Performance Marketing", href: "/performance-marketing", icon: Target, color: "text-blue-500" },
   { title: "Digital Marketing", href: "/ai-seo-agency-bangalore", icon: Megaphone, color: "text-purple-500" },
-  { title: "Social Media Marketing", href: "/ai-seo-agency-bangalore", icon: Share2, color: "text-pink-500" },
   { title: "Social Media Post Design", href: "/ai-seo-agency-bangalore", icon: Palette, color: "text-teal-500" },
   { title: "Web Design & Development", href: "/ai-seo-agency-bangalore", icon: Globe, color: "text-emerald-500" },
 ];
