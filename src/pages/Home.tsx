@@ -255,17 +255,17 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
-              Our AI-Powered Services
+              Our Services
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Two Powerful Services, One Goal
+              Everything Your Brand Needs to Grow
             </h2>
             <p className="text-lg text-muted-foreground">
-              Whether you need AI-driven organic visibility or ROI-focused paid advertising, we've got you covered.
+              Whether you need AI-driven organic visibility, paid advertising, social media, or creative design — we've got you covered.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {services.map((service, index) => (
               <Card 
                 key={index} 
@@ -280,20 +280,17 @@ const Home = () => {
                 {/* Simplified glow effect - reduced blur */}
                 <div className={`absolute -inset-1 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 blur-lg transition-opacity duration-300`} />
 
-                <CardContent className="relative p-8 z-10">
-                  {/* Simplified icon */}
-                  <div className={`relative w-20 h-20 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 shadow-xl`}>
-                    <service.icon className="w-10 h-10 text-white relative z-10" />
+                 <CardContent className="relative p-6 z-10">
+                   {/* Simplified icon */}
+                   <div className={`relative w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300 shadow-xl`}>
+                     <service.icon className="w-8 h-8 text-white relative z-10" />
                     {/* Simplified icon glow - reduced blur */}
                     <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-300`} />
                   </div>
 
-                  <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-orange-600 transition-colors duration-300">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-
-                  {/* Features with staggered animation */}
+                   <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-orange-600 transition-colors duration-300">
+                     {service.title}
+                   </h3>
                   <ul className="space-y-3 mb-6">
                     {service.features.map((feature, i) => (
                       <li 
