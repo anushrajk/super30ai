@@ -65,16 +65,6 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
-  // Simulate live activity counter
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRecentSignups(prev => {
-        const change = Math.random() > 0.7 ? 1 : 0;
-        return Math.min(prev + change, 99);
-      });
-    }, 15000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleBlur = (field: string) => {
     setFocusedField(null);
@@ -114,7 +104,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
       // Submit to Google Sheets (non-blocking)
       void submitFormToGoogleSheets({
         form_id: "lead_capture_form_seo",
-        form_name: "Free AI Visibility Audit",
+        form_name: "Free AI Visibility Consultation",
         page_url: window.location.href,
         trigger_type: "form_submit",
         data: {
@@ -168,40 +158,15 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
       
       <CardContent className="p-4 sm:p-6 relative">
-        {/* Progress bar */}
-        <div className="mb-5">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1.5 bg-green-500/10 border border-green-500/30 px-2 py-0.5 rounded-full">
-                <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-                <span className="text-xs font-medium text-green-600">{recentSignups} audits today</span>
-              </div>
-              <span className="text-xs font-medium text-muted-foreground">
-                {filledFields === 0 ? "Start your audit" : filledFields < 5 ? `${5 - filledFields} fields remaining` : "Ready to analyze!"}
-              </span>
-            </div>
-            <span className="text-xs font-bold text-brand">{Math.round(progress)}%</span>
-          </div>
-          <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-brand-gradient rounded-full transition-all duration-500 ease-out"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
-        </div>
-
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
-          Free AI Visibility Audit
+          Book Your Free AI Visibility Consultation
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-1">
-          See exactly where you rank in AI search
+          In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.
         </p>
         
-        {/* Value badges */}
+        {/* Value badge */}
         <div className="flex items-center justify-center gap-2 mb-5">
-          <span className="text-xs bg-brand-light text-brand px-2 py-0.5 rounded-full font-medium">
-            Worth $500
-          </span>
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
             100% Free
           </span>
@@ -357,11 +322,11 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
             {loading ? (
               <>
                 <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                Analyzing Your Site...
+                Processing...
               </>
             ) : (
               <>
-                Get My Free Audit Now
+                Book Your Free Consultation
                 <Sparkles className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
               </>
             )}
@@ -399,7 +364,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
             ))}
           </div>
           <span className="text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">300+</span> founders audited this month
+            <span className="font-semibold text-foreground">300+</span> founders booked consultations this month
           </span>
         </div>
       </CardContent>
