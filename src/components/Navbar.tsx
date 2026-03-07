@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle } from "lucide-react";
+import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle, Megaphone, Share2, Palette, Globe } from "lucide-react";
 import super30Logo from "@/assets/super30-new-logo.png";
 import {
   NavigationMenu,
@@ -28,6 +28,34 @@ const services = [
     href: "/performance-marketing",
     icon: Target,
     color: "text-blue-500",
+  },
+  {
+    title: "Digital Marketing",
+    description: "Content, email & growth strategies",
+    href: "/ai-seo-agency-bangalore",
+    icon: Megaphone,
+    color: "text-purple-500",
+  },
+  {
+    title: "Social Media Marketing",
+    description: "Grow your brand across social platforms",
+    href: "/ai-seo-agency-bangalore",
+    icon: Share2,
+    color: "text-pink-500",
+  },
+  {
+    title: "Social Media Post Design",
+    description: "Stunning creatives for every platform",
+    href: "/ai-seo-agency-bangalore",
+    icon: Palette,
+    color: "text-teal-500",
+  },
+  {
+    title: "Web Design & Development",
+    description: "High-converting websites & landing pages",
+    href: "/ai-seo-agency-bangalore",
+    icon: Globe,
+    color: "text-emerald-500",
   },
 ];
 
@@ -107,8 +135,8 @@ export const Navbar = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-[400px] p-4 bg-popover border border-border rounded-xl shadow-xl">
-                      <div className="grid gap-3">
+                    <div className="w-[480px] p-4 bg-popover border border-border rounded-xl shadow-xl">
+                      <div className="grid grid-cols-2 gap-3">
                         {services.map((service) => (
                           <NavigationMenuLink key={service.href} asChild>
                             <Link
