@@ -15,48 +15,12 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const services = [
-  {
-    title: "AI SEO Services",
-    description: "Dominate AI search results and LLM citations",
-    href: "/ai-seo-agency-bangalore",
-    icon: Bot,
-    color: "text-[hsl(var(--brand-orange))]",
-  },
-  {
-    title: "Performance Marketing",
-    description: "ROI-driven paid advertising across all platforms",
-    href: "/performance-marketing",
-    icon: Target,
-    color: "text-blue-500",
-  },
-  {
-    title: "Digital Marketing",
-    description: "Content, email & growth strategies",
-    href: "/ai-seo-agency-bangalore",
-    icon: Megaphone,
-    color: "text-purple-500",
-  },
-  {
-    title: "Social Media Marketing",
-    description: "Grow your brand across social platforms",
-    href: "/ai-seo-agency-bangalore",
-    icon: Share2,
-    color: "text-pink-500",
-  },
-  {
-    title: "Social Media Post Design",
-    description: "Stunning creatives for every platform",
-    href: "/ai-seo-agency-bangalore",
-    icon: Palette,
-    color: "text-teal-500",
-  },
-  {
-    title: "Web Design & Development",
-    description: "High-converting websites & landing pages",
-    href: "/ai-seo-agency-bangalore",
-    icon: Globe,
-    color: "text-emerald-500",
-  },
+  { title: "AI SEO Services", href: "/ai-seo-agency-bangalore", icon: Bot, color: "text-[hsl(var(--brand-orange))]" },
+  { title: "Performance Marketing", href: "/performance-marketing", icon: Target, color: "text-blue-500" },
+  { title: "Digital Marketing", href: "/ai-seo-agency-bangalore", icon: Megaphone, color: "text-purple-500" },
+  { title: "Social Media Marketing", href: "/ai-seo-agency-bangalore", icon: Share2, color: "text-pink-500" },
+  { title: "Social Media Post Design", href: "/ai-seo-agency-bangalore", icon: Palette, color: "text-teal-500" },
+  { title: "Web Design & Development", href: "/ai-seo-agency-bangalore", icon: Globe, color: "text-emerald-500" },
 ];
 
 const navLinks = [
@@ -135,28 +99,20 @@ export const Navbar = () => {
                     Services
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <div className="w-[480px] p-4 bg-popover border border-border rounded-xl shadow-xl">
-                      <div className="grid grid-cols-2 gap-3">
+                    <div className="w-[280px] p-3 bg-popover border border-border rounded-xl shadow-xl">
+                      <div className="grid gap-1">
                         {services.map((service) => (
                           <NavigationMenuLink key={service.href} asChild>
                             <Link
                               to={service.href}
-                              className="group flex items-start gap-4 p-3 rounded-xl hover:bg-muted/50 border border-transparent hover:border-border/50 transition-all duration-300"
+                              className="group flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted/50 transition-all duration-300"
                             >
-                              <div className="w-10 h-10 rounded-xl bg-muted/50 border border-border/50 flex items-center justify-center group-hover:bg-[hsl(var(--brand-orange))]/10 group-hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300">
-                                <service.icon className={`w-5 h-5 ${service.color} group-hover:scale-110 transition-transform duration-300`} />
+                              <div className="w-8 h-8 rounded-lg bg-muted/50 border border-border/50 flex items-center justify-center group-hover:bg-[hsl(var(--brand-orange))]/10 transition-all duration-300">
+                                <service.icon className={`w-4 h-4 ${service.color}`} />
                               </div>
-                              <div className="flex-1">
-                                <div className="flex items-center gap-2">
-                                  <span className="font-semibold text-foreground group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
-                                    {service.title}
-                                  </span>
-                                  <ArrowRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-[hsl(var(--brand-orange))]" />
-                                </div>
-                                <p className="text-sm text-muted-foreground mt-0.5">
-                                  {service.description}
-                                </p>
-                              </div>
+                              <span className="text-sm font-medium text-foreground group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
+                                {service.title}
+                              </span>
                             </Link>
                           </NavigationMenuLink>
                         ))}
@@ -257,14 +213,9 @@ export const Navbar = () => {
                     <div className="w-10 h-10 rounded-xl bg-background border border-border/50 flex items-center justify-center group-hover:bg-[hsl(var(--brand-orange))]/10 group-hover:border-[hsl(var(--brand-orange))]/30 transition-all duration-300">
                       <service.icon className={`w-5 h-5 ${service.color}`} />
                     </div>
-                    <div>
-                      <span className="font-semibold group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
+                    <span className="text-sm font-medium group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
                         {service.title}
                       </span>
-                      <p className="text-xs text-muted-foreground">
-                        {service.description}
-                      </p>
-                    </div>
                   </Link>
                 ))}
               </div>
