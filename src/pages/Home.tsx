@@ -133,11 +133,11 @@ const Home = () => {
               </div>
 
               {/* Main Headline */}
-              <h1 className="font-bold text-foreground leading-tight tracking-tight">
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-brand via-orange-500 to-brand bg-clip-text text-transparent pb-1">
+              <h1 className="font-bold text-foreground">
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.3] pb-1">
                   AI-Powered Digital
                 </span>
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.3]">
                   Marketing Agency
                 </span>
               </h1>
