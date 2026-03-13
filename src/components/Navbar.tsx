@@ -17,8 +17,9 @@ const services = [
   { title: "Digital Marketing", href: "/digital-marketing", icon: Megaphone, color: "text-purple-500" },
   { title: "AI SEO Services", href: "/ai-seo-agency-bangalore", icon: Bot, color: "text-[hsl(var(--brand-orange))]" },
   { title: "Performance Marketing", href: "/performance-marketing", icon: Target, color: "text-blue-500" },
-  { title: "Social Media Design", href: "/social-media-post-design", icon: Palette, color: "text-teal-500" },
-  { title: "Web Design & Development", href: "/web-design-development", icon: Globe, color: "text-emerald-500" },
+  { title: "Social Media", href: "/social-media-post-design", icon: Palette, color: "text-teal-500" },
+  { title: "Design", href: "/design", icon: Sparkles, color: "text-pink-500" },
+  { title: "Web Design", href: "/web-design-development", icon: Globe, color: "text-emerald-500" },
 ];
 
 const navLinks = [
