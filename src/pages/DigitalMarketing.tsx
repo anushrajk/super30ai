@@ -19,7 +19,7 @@ import {
 const services = [
   { icon: Search, title: "AI SEO Services", description: "AI-powered technical, on-page & off-page SEO to dominate search rankings" },
   { icon: Target, title: "Performance Marketing", description: "Google, Meta, LinkedIn & YouTube Ads optimized with AI for maximum ROI" },
-  { icon: Palette, title: "Social Media Post Design", description: "Scroll-stopping creatives for Instagram, Facebook, LinkedIn & more" },
+  { icon: Palette, title: "Social Media Design", description: "Scroll-stopping creatives for Instagram, Facebook, LinkedIn & more" },
   { icon: Globe, title: "Web Design & Development", description: "High-converting websites, landing pages & e-commerce stores" },
   { icon: Mail, title: "Email Marketing", description: "Automated drip campaigns, newsletters & lead nurturing sequences" },
   { icon: BarChart3, title: "Analytics & Reporting", description: "Full-funnel tracking, attribution modeling & transparent dashboards" },
@@ -35,7 +35,7 @@ const process = [
 ];
 
 const faqs = [
-  { question: "What digital marketing services does The Super 30 offer?", answer: "We offer a full suite: AI SEO, Performance Marketing (Google/Meta/LinkedIn Ads), Social Media Post Design, Web Design & Development, Email Marketing, Content Marketing, and Marketing Automation." },
+  { question: "What digital marketing services does The Super 30 offer?", answer: "We offer a full suite: AI SEO, Performance Marketing (Google/Meta/LinkedIn Ads), Social Media Design, Web Design & Development, Email Marketing, Content Marketing, and Marketing Automation." },
   { question: "How is The Super 30 different from other agencies?", answer: "We combine AI-powered tools with a team of 30+ specialists. Our data-driven approach, no long-term lock-ins, and transparent reporting set us apart." },
   { question: "Do you work with startups or only large companies?", answer: "We work with businesses of all sizes — from funded startups to enterprise brands. Our strategies are customized to your budget and growth stage." },
   { question: "How quickly can I expect results?", answer: "Paid campaigns show results within 1-2 weeks. SEO typically takes 3-6 months for significant organic growth. We provide weekly progress reports." },

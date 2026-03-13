@@ -66,20 +66,20 @@ const SocialMediaDesign = () => {
   return (
     <>
       <Helmet>
-        <title>Social Media Post Design Services | The Super 30</title>
-        <meta name="description" content="Professional social media post design services for Instagram, Facebook, LinkedIn & more. Scroll-stopping creatives that drive engagement. Get a free consultation." />
-        <meta name="keywords" content="social media post design, social media creatives, instagram post design, facebook post design, social media marketing design, social media design agency bangalore" />
+        <title>Social Media Design Services | The Super 30</title>
+        <meta name="description" content="Professional social media design services for Instagram, Facebook, LinkedIn & more. Scroll-stopping creatives that drive engagement. Get a free consultation." />
+        <meta name="keywords" content="social media design, social media creatives, instagram post design, facebook post design, social media marketing design, social media design agency bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/social-media-post-design" />
-        <meta property="og:title" content="Social Media Post Design Services | The Super 30" />
-        <meta property="og:description" content="Professional social media post design for Instagram, Facebook, LinkedIn & more. Scroll-stopping creatives that drive engagement." />
+        <meta property="og:title" content="Social Media Design Services | The Super 30" />
+        <meta property="og:description" content="Professional social media design for Instagram, Facebook, LinkedIn & more. Scroll-stopping creatives that drive engagement." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/social-media-post-design" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "Social Media Post Design",
-            "name": "Social Media Post Design Services | The Super 30",
+            "serviceType": "Social Media Design",
+            "name": "Social Media Design Services | The Super 30",
             "url": "https://www.thesuper30.ai/social-media-post-design",
             "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" },
             "areaServed": { "@type": "City", "name": "Bangalore" }
