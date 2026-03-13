@@ -19,7 +19,7 @@ import {
 const services = [
   { icon: Search, title: "AI SEO Services", description: "AI-powered technical, on-page & off-page SEO to dominate search rankings" },
   { icon: Target, title: "Performance Marketing", description: "Google, Meta, LinkedIn & YouTube Ads optimized with AI for maximum ROI" },
-  { icon: Palette, title: "Social Media Post Design", description: "Scroll-stopping creatives for Instagram, Facebook, LinkedIn & more" },
+  { icon: Palette, title: "Social Media Design", description: "Scroll-stopping creatives for Instagram, Facebook, LinkedIn & more" },
   { icon: Globe, title: "Web Design & Development", description: "High-converting websites, landing pages & e-commerce stores" },
   { icon: Mail, title: "Email Marketing", description: "Automated drip campaigns, newsletters & lead nurturing sequences" },
   { icon: BarChart3, title: "Analytics & Reporting", description: "Full-funnel tracking, attribution modeling & transparent dashboards" },
