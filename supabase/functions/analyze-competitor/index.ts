@@ -24,7 +24,7 @@ serve(async (req) => {
       throw new Error('LOVABLE_API_KEY is not configured');
     }
 
-    console.log(`Analyzing competitors for: ${url}`);
+    console.log("Analyzing competitors");
 
     // Create a prompt for competitor analysis
     const prompt = `Analyze this website URL and its audit data to provide competitor analysis:
