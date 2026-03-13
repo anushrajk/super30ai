@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ProjectShowcaseSection } from "@/components/work/ProjectShowcaseSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
