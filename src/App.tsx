@@ -39,6 +39,7 @@ const BlogPost = lazy(() => import("./pages/BlogPost"));
 const DigitalMarketing = lazy(() => import("./pages/DigitalMarketing"));
 const SocialMediaDesign = lazy(() => import("./pages/SocialMediaDesign"));
 const WebDesign = lazy(() => import("./pages/WebDesign"));
+const Design = lazy(() => import("./pages/Design"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -108,6 +109,7 @@ const App = () => (
                 <Route path="/digital-marketing" element={<DigitalMarketing />} />
                 <Route path="/social-media-post-design" element={<SocialMediaDesign />} />
                 <Route path="/web-design-development" element={<WebDesign />} />
+                <Route path="/design" element={<Design />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
