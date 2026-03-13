@@ -177,7 +177,7 @@ const handler = async (req: Request): Promise<Response> => {
       </div>
     `;
 
-    console.log("Sending email via Resend...");
+    // Sending email...
     
     const emailResponse = await resend.emails.send({
       from: "AI SEO Agency <onboarding@resend.dev>",
