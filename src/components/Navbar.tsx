@@ -245,16 +245,14 @@ export const Navbar = () => {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Enquire Now
               </Button>
-              <Button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setShowAuditPopup(true);
-                }}
-                className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
-              >
-                <Sparkles className="w-4 h-4 mr-2" />
-                Get Free Audit
-              </Button>
+              <Link to="/seo-agency-near-me" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button 
+                  className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
+                >
+                  <ArrowRight className="w-4 h-4 mr-2" />
+                  Reach Us
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
