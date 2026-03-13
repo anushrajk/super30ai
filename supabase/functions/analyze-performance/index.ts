@@ -71,6 +71,7 @@ serve(async (req) => {
             cls: psData.lighthouseResult?.audits?.["cumulative-layout-shift"]?.displayValue,
           };
           // PageSpeed data fetched
+        }
       } catch (psError) {
         console.error("PageSpeed fetch error:", psError);
       }
