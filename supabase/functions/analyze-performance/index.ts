@@ -362,7 +362,7 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
       if (insertError) {
         console.error("Database insert error:", insertError);
       } else {
-        console.log("Saved to database with ID:", insertedData?.id);
+        console.log("Saved to database");
         result.id = insertedData?.id;
       }
     }
