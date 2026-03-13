@@ -128,7 +128,7 @@ const DesignHeroSection = () => {
           {/* Right — Portfolio Preview */}
           <div className="md:col-span-1 lg:col-span-5">
             <div className="grid grid-cols-2 gap-3 animate-fade-in" style={{ animationDelay: "200ms" }}>
-              {[socialPost1, webDesign1, socialPost2, webDesign2].map((img, i) => (
+              {[socialPost1, webDesign1, socialPost2, socialPost3].map((img, i) => (
                 <div
                   key={i}
                   className={`rounded-2xl overflow-hidden border border-border/50 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg ${i === 0 ? "row-span-2" : ""}`}
