@@ -288,7 +288,6 @@ const SocialMediaShowcase = () => {
         (parallaxRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
       }}
       className="py-16 md:py-24 bg-muted/30 relative overflow-hidden"
-      className="py-16 md:py-24 bg-muted/30 relative overflow-hidden"
     >
       {/* Parallax background shapes */}
       <div className="absolute inset-0 pointer-events-none">
