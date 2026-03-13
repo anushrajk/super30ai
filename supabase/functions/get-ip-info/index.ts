@@ -14,7 +14,7 @@ const handler = async (req: Request): Promise<Response> => {
                      req.headers.get("x-real-ip") || 
                      "unknown";
     
-    console.log("Getting IP info for:", clientIp);
+    // IP lookup starting
 
     // Default response
     let ipInfo = {
