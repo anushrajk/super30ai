@@ -17,7 +17,7 @@ export const PopupScheduler = () => {
   const location = useLocation();
   const [activePopup, setActivePopup] = useState<PopupType | null>(null);
   const popupQueueRef = useRef<PopupType[]>(['callback', 'quote']);
-  const nextPopupTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const nextPopupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const firstPopupScheduledRef = useRef(false);
 
   const { 

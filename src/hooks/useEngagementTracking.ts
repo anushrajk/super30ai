@@ -27,7 +27,7 @@ export const useEngagementTracking = () => {
     interactions: [],
   });
   const metricIdRef = useRef<string | null>(null);
-  const syncIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const syncIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSyncRef = useRef<number>(Date.now());
   const lastDataHashRef = useRef<string>("");
 
@@ -97,7 +97,7 @@ export const useEngagementTracking = () => {
       lastDataHashRef.current = currentHash;
     } catch (error) {
       // Silently handle errors - don't spam console in production
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.error("Failed to sync engagement metrics:", error);
       }
     }
