@@ -125,25 +125,9 @@ const DesignHeroSection = () => {
             </div>
           </div>
 
-          {/* Right — Portfolio Preview */}
-          <div className="md:col-span-1 lg:col-span-5">
-            <div className="grid grid-cols-2 gap-3 animate-fade-in" style={{ animationDelay: "200ms" }}>
-              {[socialPost1, webDesign1, socialPost2, socialPost3].map((img, i) => (
-                <div
-                  key={i}
-                  className={`rounded-2xl overflow-hidden border border-border/50 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-lg ${i === 0 ? "row-span-2" : ""}`}
-                >
-                  <img
-                    src={img}
-                    alt={`Design portfolio ${i + 1}`}
-                    className="w-full h-full object-cover"
-                    loading={i < 2 ? "eager" : "lazy"}
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div className="hidden lg:flex flex-wrap gap-2 mt-4 justify-center">
+          {/* Right — Credentials */}
+          <div className="md:col-span-1 lg:col-span-5 flex items-center justify-center">
+            <div className="flex flex-wrap gap-2 justify-center">
               {credentials.map((cred, i) => (
                 <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
                   <Award className="w-3 h-3 text-brand" />
