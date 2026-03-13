@@ -32,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
         const geoData = await geoResponse.json();
         
-        console.log("Geo API response:", geoData);
+        // Geo data received
         
         if (!geoData.error) {
           ipInfo = {
