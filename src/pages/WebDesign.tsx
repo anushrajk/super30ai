@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ProjectShowcaseSection } from "@/components/work/ProjectShowcaseSection";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
@@ -191,30 +192,8 @@ const WebDesign = () => {
 
         <ClientLogosSection />
 
-        {/* Portfolio Showcase */}
-        <section className="py-6 md:py-10 lg:py-16 bg-background">
-          <div className="container mx-auto px-3 md:px-4">
-            <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-              <BentoBadge className="mb-4"><Monitor className="w-4 h-4" />Our Work</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Websites We've Built</h2>
-              <p className="text-base md:text-lg text-muted-foreground">A selection of recent web design & development projects</p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-              {portfolioItems.map((item, i) => (
-                <div key={i} className="group bg-card border border-border rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300">
-                  <div className="aspect-video overflow-hidden">
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  </div>
-                  <div className="p-5">
-                    <span className="text-xs font-medium text-brand bg-brand/10 px-2 py-1 rounded-full">{item.category}</span>
-                    <h3 className="text-lg font-bold text-foreground mt-2 mb-1">{item.title}</h3>
-                    <p className="text-muted-foreground text-sm">{item.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Project Showcase - Dark Scrollable */}
+        <ProjectShowcaseSection />
 
         {/* Services */}
         <section className="py-6 md:py-10 lg:py-16 bg-muted/30">
