@@ -1,6 +1,7 @@
 import { Phone, MessageCircle } from "lucide-react";
 
 const PHONE_NUMBER = "+918904150555";
+const PHONE_DISPLAY = "89041 50555";
 const WHATSAPP_MESSAGE = "Hi! I'm interested in your marketing services.";
 
 export const FloatingContactButtons = () => {
@@ -20,7 +21,7 @@ export const FloatingContactButtons = () => {
         
         {/* Tooltip with glass effect */}
         <span className="absolute left-full ml-3 px-3 py-2 bg-background/90 backdrop-blur-sm text-foreground text-sm font-medium rounded-xl border border-border/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg">
-          Chat on WhatsApp
+          WhatsApp: {PHONE_DISPLAY}
         </span>
         
         {/* Subtle pulse ring */}
@@ -37,7 +38,7 @@ export const FloatingContactButtons = () => {
         
         {/* Tooltip with glass effect */}
         <span className="absolute left-full ml-3 px-3 py-2 bg-background/90 backdrop-blur-sm text-foreground text-sm font-medium rounded-xl border border-border/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none shadow-lg">
-          Call Now
+          Call: {PHONE_DISPLAY}
         </span>
         
         {/* Subtle glow ring */}
