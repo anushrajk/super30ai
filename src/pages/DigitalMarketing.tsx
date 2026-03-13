@@ -1,30 +1,57 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
-import { FAQSection } from "@/components/landing/FAQSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Button } from "@/components/ui/button";
-import { BentoBadge, BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
+import { Card, CardContent } from "@/components/ui/card";
+import { BentoBadge } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
-import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 import {
   Megaphone, ArrowRight, MessageCircle, Award, CheckCircle2,
   Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
-  Mail, Users, Lightbulb, Layers
+  Mail, Users, Lightbulb, Layers, Sparkles
 } from "lucide-react";
 
-const services = [
-  { icon: Search, title: "AI SEO Services", description: "AI-powered technical, on-page & off-page SEO to dominate search rankings" },
-  { icon: Target, title: "Performance Marketing", description: "Google, Meta, LinkedIn & YouTube Ads optimized with AI for maximum ROI" },
-  { icon: Palette, title: "Social Media Design", description: "Scroll-stopping creatives for Instagram, Facebook, LinkedIn & more" },
-  { icon: Globe, title: "Web Design & Development", description: "High-converting websites, landing pages & e-commerce stores" },
-  { icon: Mail, title: "Email Marketing", description: "Automated drip campaigns, newsletters & lead nurturing sequences" },
-  { icon: BarChart3, title: "Analytics & Reporting", description: "Full-funnel tracking, attribution modeling & transparent dashboards" },
-  { icon: Lightbulb, title: "Content Marketing", description: "Blog strategy, thought leadership & SEO-optimized content creation" },
-  { icon: Layers, title: "Marketing Automation", description: "CRM integrations, workflow automation & conversion optimization" },
+const serviceProducts = [
+  {
+    icon: Bot,
+    title: "AI SEO Services",
+    description: "Dominate search results with AI-powered SEO. We optimize your website for both traditional search engines and AI platforms like ChatGPT, Gemini & Perplexity.",
+    features: ["Technical SEO Audits", "On-Page & Off-Page SEO", "AI Search Optimization", "Content Strategy", "Local & International SEO"],
+    href: "/ai-seo-agency-bangalore",
+  },
+  {
+    icon: Target,
+    title: "Performance Marketing",
+    description: "Maximize ROI with AI-optimized paid campaigns across Google, Meta, LinkedIn & YouTube. Data-driven bidding and creative strategies that convert.",
+    features: ["Google Ads Management", "Meta & Instagram Ads", "LinkedIn B2B Campaigns", "YouTube Advertising", "AI Bid Optimization"],
+    href: "/performance-marketing",
+  },
+  {
+    icon: Palette,
+    title: "Social Media",
+    description: "Build your brand presence with strategic social media management. From content calendars to community building and influencer collaborations.",
+    features: ["Social Media Strategy", "Content Calendar & Posting", "Community Management", "Influencer Collaborations", "Reels & Short-Form Video"],
+    href: "/social-media-post-design",
+  },
+  {
+    icon: Sparkles,
+    title: "Design",
+    description: "Scroll-stopping creatives that elevate your brand. From social media graphics to brand identity, packaging, and marketing collaterals.",
+    features: ["Brand Identity Design", "Social Media Creatives", "Marketing Collaterals", "Presentation Design", "Logo & Visual Identity"],
+    href: "/design",
+  },
+  {
+    icon: Globe,
+    title: "Web Design",
+    description: "High-converting websites and landing pages built for speed, SEO, and user experience. From corporate sites to e-commerce stores.",
+    features: ["Landing Page Design", "Corporate Websites", "E-commerce Stores", "UI/UX Design", "Speed & Core Web Vitals"],
+    href: "/web-design-development",
+  },
 ];
 
 const process = [
@@ -35,7 +62,7 @@ const process = [
 ];
 
 const faqs = [
-  { question: "What digital marketing services does The Super 30 offer?", answer: "We offer a full suite: AI SEO, Performance Marketing (Google/Meta/LinkedIn Ads), Social Media Design, Web Design & Development, Email Marketing, Content Marketing, and Marketing Automation." },
+  { question: "What digital marketing services does The Super 30 offer?", answer: "We offer a full suite: AI SEO, Performance Marketing (Google/Meta/LinkedIn Ads), Social Media, Design, Web Design, Email Marketing, Content Marketing, and Marketing Automation." },
   { question: "How is The Super 30 different from other agencies?", answer: "We combine AI-powered tools with a team of 30+ specialists. Our data-driven approach, no long-term lock-ins, and transparent reporting set us apart." },
   { question: "Do you work with startups or only large companies?", answer: "We work with businesses of all sizes — from funded startups to enterprise brands. Our strategies are customized to your budget and growth stage." },
   { question: "How quickly can I expect results?", answer: "Paid campaigns show results within 1-2 weeks. SEO typically takes 3-6 months for significant organic growth. We provide weekly progress reports." },
@@ -44,17 +71,16 @@ const faqs = [
 
 const DigitalMarketing = () => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
-  const [showAuditPopup, setShowAuditPopup] = useState(false);
 
   return (
     <>
       <Helmet>
         <title>Digital Marketing Agency in Bangalore | The Super 30</title>
-        <meta name="description" content="The Super 30 is a full-service digital marketing agency in Bangalore offering AI SEO, performance marketing, social media design, web development & growth strategies." />
+        <meta name="description" content="The Super 30 is a full-service digital marketing agency in Bangalore offering AI SEO, performance marketing, social media, design, web design & growth strategies." />
         <meta name="keywords" content="digital marketing agency bangalore, digital marketing services, online marketing agency, full service digital marketing, digital marketing company" />
         <link rel="canonical" href="https://www.thesuper30.ai/digital-marketing" />
         <meta property="og:title" content="Digital Marketing Agency in Bangalore | The Super 30" />
-        <meta property="og:description" content="Full-service digital marketing agency offering AI SEO, ads, social media, web design & growth strategies. Trusted by 300+ brands." />
+        <meta property="og:description" content="Full-service digital marketing agency offering AI SEO, ads, social media, design, web design & growth strategies. Trusted by 300+ brands." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing" />
         <script type="application/ld+json">
@@ -66,7 +92,7 @@ const DigitalMarketing = () => {
             "url": "https://www.thesuper30.ai/digital-marketing",
             "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" },
             "areaServed": { "@type": "City", "name": "Bangalore" },
-            "description": "Full-service digital marketing agency in Bangalore offering AI-powered SEO, performance marketing, social media, web design & growth strategies."
+            "description": "Full-service digital marketing agency in Bangalore offering AI-powered SEO, performance marketing, social media, design, web design & growth strategies."
           })}
         </script>
       </Helmet>
@@ -93,9 +119,11 @@ const DigitalMarketing = () => {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <Button size="lg" onClick={() => setShowAuditPopup(true)} className="bg-brand hover:bg-brand/90 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
-                  <Search className="w-4 h-4 mr-2" />Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                <Link to="/seo-agency-near-me">
+                  <Button size="lg" className="bg-brand hover:bg-brand/90 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
+                    <Search className="w-4 h-4 mr-2" />Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
+                  </Button>
+                </Link>
                 <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="border-border text-foreground hover:bg-muted transition-all duration-300 w-full sm:w-auto">
                   <MessageCircle className="w-4 h-4 mr-2" />Enquire Now<ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
@@ -114,25 +142,68 @@ const DigitalMarketing = () => {
         {/* Client Logos */}
         <ClientLogosSection />
 
-        {/* Services Section */}
-        <section className="py-6 md:py-10 lg:py-16 bg-background">
+        {/* Our Products / Services - Detailed with Interlinking */}
+        <section className="py-10 md:py-16 lg:py-24 bg-background">
           <div className="container mx-auto px-3 md:px-4">
-            <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
+            <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
               <BentoBadge className="mb-4">Our Services</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Everything You Need to Grow Online</h2>
-              <p className="text-base md:text-lg text-muted-foreground">Full-stack digital marketing services under one roof</p>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+                Everything You Need to <span className="text-brand">Grow Online</span>
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground">
+                Explore our full suite of digital marketing services — each designed to work independently or as part of a unified growth strategy.
+              </p>
             </div>
-            <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-              {services.map((service, index) => (
-                <BentoCard key={index} className="group">
-                  <BentoIcon size="md">
-                    <service.icon className="w-5 h-5 md:w-6 md:h-6 text-brand group-hover:text-white transition-colors duration-300" />
-                  </BentoIcon>
-                  <h3 className="text-base md:text-lg font-bold text-foreground mt-3 mb-2 group-hover:text-brand transition-colors duration-300">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.description}</p>
-                </BentoCard>
+
+            <div className="space-y-8 max-w-6xl mx-auto">
+              {serviceProducts.map((product, index) => (
+                <Card key={index} className="overflow-hidden border-2 border-border/50 hover:border-brand/30 transition-all duration-300 group">
+                  <CardContent className="p-0">
+                    <div className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-stretch`}>
+                      {/* Icon/Visual Side */}
+                      <div className="md:w-2/5 bg-gradient-to-br from-brand/5 to-brand/10 p-8 md:p-10 flex flex-col items-center justify-center text-center">
+                        <div className="w-20 h-20 bg-brand/10 border-2 border-brand/20 rounded-3xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-brand group-hover:border-brand transition-all duration-300">
+                          <product.icon className="w-10 h-10 text-brand group-hover:text-white transition-colors duration-300" />
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{product.title}</h3>
+                        <Link to={product.href}>
+                          <Button className="mt-4 bg-brand hover:bg-brand/90 text-white">
+                            Learn More <ArrowRight className="w-4 h-4 ml-2" />
+                          </Button>
+                        </Link>
+                      </div>
+
+                      {/* Content Side */}
+                      <div className="md:w-3/5 p-6 md:p-10 flex flex-col justify-center">
+                        <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
+                          {product.description}
+                        </p>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {product.features.map((feature, i) => (
+                            <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
+                              <div className="w-5 h-5 bg-brand/10 rounded-full flex items-center justify-center flex-shrink-0">
+                                <CheckCircle2 className="w-3 h-3 text-brand" />
+                              </div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
-            </BentoGrid>
+            </div>
+
+            {/* Cross-link CTA */}
+            <div className="text-center mt-12">
+              <p className="text-muted-foreground mb-4">Not sure which service is right for you?</p>
+              <Link to="/seo-agency-near-me">
+                <Button size="lg" className="bg-brand hover:bg-brand/90 text-white">
+                  Talk to Our Experts <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </section>
 
@@ -188,9 +259,11 @@ const DigitalMarketing = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ready to Grow Your Business?</h2>
             <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-6">Get a free digital marketing consultation from our experts. No commitments.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" onClick={() => setShowAuditPopup(true)} className="bg-white text-brand hover:bg-white/90 font-semibold">
-                Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
+              <Link to="/seo-agency-near-me">
+                <Button size="lg" className="bg-white text-brand hover:bg-white/90 font-semibold">
+                  Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </Link>
               <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="border-white text-white hover:bg-white/10">
                 <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
               </Button>
@@ -226,7 +299,6 @@ const DigitalMarketing = () => {
       </main>
 
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
-      <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
     </>
   );
 };

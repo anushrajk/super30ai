@@ -18,31 +18,37 @@ const services = [{
   title: "AI-Powered SEO",
   features: ["AI Search Optimization", "LLM Visibility & Citations", "Technical SEO Audits", "Content Strategy & Creation", "Entity & Semantic SEO", "Local & International SEO"],
   href: "/ai-seo-agency-bangalore",
-  color: "from-orange-500 to-orange-600",
+  color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Target,
   title: "Performance Marketing",
   features: ["Google Ads Management", "Meta & Instagram Ads", "LinkedIn B2B Campaigns", "YouTube Advertising", "Remarketing & Retargeting", "AI-Driven Bid Optimization"],
   href: "/performance-marketing",
-  color: "from-blue-500 to-blue-600",
+  color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Megaphone,
   title: "Digital Strategy & Growth",
   features: ["Content Marketing", "Email & Drip Campaigns", "Marketing Automation", "Conversion Rate Optimization", "Analytics & Reporting", "Full-Funnel Growth Strategy"],
   href: "/digital-marketing",
-  color: "from-purple-500 to-purple-600",
+  color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Palette,
-  title: "Social Media Marketing",
+  title: "Social Media",
   features: ["Social Media Strategy", "Content Calendar & Posting", "Community Management", "Influencer Collaborations", "Ad Creative Design", "Reels & Short-Form Video"],
   href: "/social-media-post-design",
-  color: "from-teal-500 to-teal-600",
+  color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
+}, {
+  icon: Sparkles,
+  title: "Design",
+  features: ["Brand Identity Design", "Marketing Collaterals", "Presentation Design", "Packaging Design", "Logo & Visual Identity", "Print & Digital Assets"],
+  href: "/design",
+  color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Globe,
-  title: "Web Design & Development",
+  title: "Web Design",
   features: ["High-Converting Landing Pages", "Corporate & Brand Websites", "E-commerce Development", "UI/UX Design", "CRO Optimization", "Speed & Core Web Vitals"],
   href: "/web-design-development",
-  color: "from-emerald-500 to-emerald-600",
+  color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }];
 
 const whyChooseUs = [{

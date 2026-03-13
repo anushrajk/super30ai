@@ -12,14 +12,14 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
-import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const services = [
   { title: "Digital Marketing", href: "/digital-marketing", icon: Megaphone, color: "text-purple-500" },
   { title: "AI SEO Services", href: "/ai-seo-agency-bangalore", icon: Bot, color: "text-[hsl(var(--brand-orange))]" },
   { title: "Performance Marketing", href: "/performance-marketing", icon: Target, color: "text-blue-500" },
-  { title: "Social Media Design", href: "/social-media-post-design", icon: Palette, color: "text-teal-500" },
-  { title: "Web Design & Development", href: "/web-design-development", icon: Globe, color: "text-emerald-500" },
+  { title: "Social Media", href: "/social-media-post-design", icon: Palette, color: "text-teal-500" },
+  { title: "Design", href: "/design", icon: Sparkles, color: "text-pink-500" },
+  { title: "Web Design", href: "/web-design-development", icon: Globe, color: "text-emerald-500" },
 ];
 
 const navLinks = [
@@ -33,7 +33,6 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
-  const [showAuditPopup, setShowAuditPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -148,13 +147,14 @@ export const Navbar = () => {
               <MessageCircle className="w-4 h-4 mr-2" />
               Enquire Now
             </Button>
-            <Button 
-              onClick={() => setShowAuditPopup(true)}
-              className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Get Free Audit
-            </Button>
+            <Link to="/seo-agency-near-me">
+              <Button 
+                className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+              >
+                <ArrowRight className="w-4 h-4 mr-2" />
+                Reach Us
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -245,16 +245,14 @@ export const Navbar = () => {
                 <MessageCircle className="w-4 h-4 mr-2" />
                 Enquire Now
               </Button>
-              <Button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setShowAuditPopup(true);
-                }}
-                className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
-              >
-                <Sparkles className="w-4 h-4 mr-2" />
-                Get Free Audit
-              </Button>
+              <Link to="/seo-agency-near-me" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button 
+                  className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
+                >
+                  <ArrowRight className="w-4 h-4 mr-2" />
+                  Reach Us
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -263,8 +261,6 @@ export const Navbar = () => {
       {/* Enquiry Popup */}
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
 
-      {/* Audit Choice Popup */}
-      <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
     </header>
   );
 };
