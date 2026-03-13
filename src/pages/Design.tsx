@@ -414,7 +414,7 @@ const WebDesignShowcase = () => {
           </Link>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
