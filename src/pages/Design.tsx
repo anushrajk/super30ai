@@ -211,7 +211,7 @@ const serviceCards = [
     description: "Responsive, modern websites built with performance and aesthetics in mind.",
     icon: Globe,
     gradient: "from-[hsl(180,60%,45%)] to-[hsl(200,70%,35%)]",
-    colSpan: "md:col-span-2",
+    colSpan: "md:col-span-4",
     rowSpan: "",
     size: "md" as const,
   },
