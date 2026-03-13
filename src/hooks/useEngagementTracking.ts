@@ -27,7 +27,7 @@ export const useEngagementTracking = () => {
     interactions: [],
   });
   const metricIdRef = useRef<string | null>(null);
-  const syncIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const syncIntervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const lastSyncRef = useRef<number>(Date.now());
   const lastDataHashRef = useRef<string>("");
 
