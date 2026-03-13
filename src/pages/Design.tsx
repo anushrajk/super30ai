@@ -667,7 +667,7 @@ const Design = () => {
         <DesignStatsSection />
         <BentoServicesSection />
         <SocialMediaShowcase />
-        <WebDesignShowcase />
+        
         <PortfolioCaseStudySection />
         <DesignProcessSection />
         <DesignCTASection />
