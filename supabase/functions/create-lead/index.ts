@@ -140,7 +140,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
       }
       result = data;
-      console.log("Lead updated:", result.id);
+      console.log("Lead updated");
     } else {
       // Create new lead
       const { data, error } = await supabase
