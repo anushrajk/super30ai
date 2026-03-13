@@ -357,13 +357,13 @@ const SocialMediaShowcase = () => {
 // ─── Web Design / Banner Showcase (Parallax) ───
 const WebDesignShowcase = () => {
   const { ref: parallaxRef, offset } = useParallax(0.12);
-  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>();
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
   const webDesigns = [webDesign1, webDesign2, webDesign3];
 
   return (
-    <section
+    <div
       ref={(el) => {
-        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        (sectionRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
         (parallaxRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
       }}
       className="py-16 md:py-24 bg-background relative overflow-hidden"
