@@ -8,8 +8,8 @@ const services = [
   { name: "AI SEO Services", href: "/ai-seo-agency-bangalore" },
   { name: "Performance Marketing", href: "/performance-marketing" },
   { name: "Social Media", href: "/social-media-post-design" },
-  { name: "Design", href: "/design" },
-  { name: "Web Design", href: "/web-design" },
+{ name: "Design", href: "/design" },
+  { name: "Web Design", href: "/web-design-development" },
 ];
 
 const company = [
