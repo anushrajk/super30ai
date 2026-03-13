@@ -10,6 +10,7 @@ import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
+import { ServicesCarousel } from "@/components/home/ServicesCarousel";
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Palette, Globe } from "lucide-react";
 
 const services = [{
