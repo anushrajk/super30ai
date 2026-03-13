@@ -44,10 +44,7 @@ serve(async (req) => {
       adBudget 
     } = await req.json();
 
-    console.log("Starting performance analysis for:", url);
-    console.log("Business type:", businessType);
-    console.log("Preferred platforms:", preferredPlatforms);
-    console.log("Ad budget tier:", adBudget);
+    console.log("Starting performance analysis");
 
     // Get budget range
     const budget = budgetTiers[adBudget] || budgetTiers["10k_50k"];
