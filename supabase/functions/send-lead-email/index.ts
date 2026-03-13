@@ -186,7 +186,7 @@ const handler = async (req: Request): Promise<Response> => {
       html: emailHtml,
     });
 
-    console.log("Resend API response:", JSON.stringify(emailResponse));
+    // Email response received
 
     if (emailResponse.error) {
       console.error("Resend error:", emailResponse.error);
