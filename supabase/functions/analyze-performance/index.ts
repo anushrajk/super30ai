@@ -70,8 +70,7 @@ serve(async (req) => {
             lcp: psData.lighthouseResult?.audits?.["largest-contentful-paint"]?.displayValue,
             cls: psData.lighthouseResult?.audits?.["cumulative-layout-shift"]?.displayValue,
           };
-          console.log("PageSpeed data fetched:", landingPageData);
-        }
+          // PageSpeed data fetched
       } catch (psError) {
         console.error("PageSpeed fetch error:", psError);
       }
