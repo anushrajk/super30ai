@@ -196,7 +196,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    console.log("Email sent successfully! ID:", emailResponse.data?.id);
+    console.log("Email sent successfully");
 
     return new Response(JSON.stringify({ success: true, id: emailResponse.data?.id }), {
       status: 200,

@@ -169,7 +169,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
       }
       result = data;
-      console.log("Lead created:", result.id);
+      console.log("Lead created");
     }
 
     return new Response(JSON.stringify(result), {

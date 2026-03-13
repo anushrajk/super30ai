@@ -367,7 +367,7 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
       }
     }
 
-    console.log("Analysis complete for:", url);
+    console.log("Analysis complete");
 
     return new Response(JSON.stringify(result), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },

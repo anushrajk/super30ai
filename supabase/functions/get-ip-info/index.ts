@@ -47,7 +47,7 @@ const handler = async (req: Request): Promise<Response> => {
       }
     }
 
-    console.log("IP info result:", ipInfo);
+    // IP info resolved
 
     return new Response(JSON.stringify(ipInfo), {
       status: 200,

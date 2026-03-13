@@ -159,7 +159,7 @@ Consider that this is an Indian business, so use INR for currency and consider I
     }
 
     const analysisData = JSON.parse(toolCall.function.arguments);
-    console.log('Parsed analysis data:', analysisData);
+    // Analysis data parsed
 
     // Save to database if we have leadId
     if (leadId) {

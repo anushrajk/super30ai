@@ -63,7 +63,7 @@ const handler = async (req: Request): Promise<Response> => {
     //   );
     // }
 
-    console.log(`Session validated: ${sessionId}`);
+    console.log("Session validated");
     
     return new Response(
       JSON.stringify({ 
