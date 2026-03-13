@@ -252,7 +252,7 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
     if (toolCall?.function?.arguments) {
       try {
         analysisResult = JSON.parse(toolCall.function.arguments);
-        console.log("Parsed AI analysis:", analysisResult);
+        // AI analysis parsed
       } catch (parseError) {
         console.error("Failed to parse AI response:", parseError);
         throw new Error("Invalid AI response format");
