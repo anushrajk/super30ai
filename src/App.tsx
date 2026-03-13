@@ -116,7 +116,7 @@ const App = () => (
           <CookieConsent />
           <FloatingContactButtons />
           <ScrollToTopButton />
-          <PopupScheduler />
+          
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

@@ -261,8 +261,6 @@ export const Navbar = () => {
       {/* Enquiry Popup */}
       <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
 
-      {/* Audit Choice Popup */}
-      <AuditChoicePopup open={showAuditPopup} onOpenChange={setShowAuditPopup} />
     </header>
   );
 };
