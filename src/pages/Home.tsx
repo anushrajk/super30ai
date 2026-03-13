@@ -245,74 +245,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Services Section - Enhanced Cards */}
-      <section id="home-services" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <span className="inline-block px-4 py-1.5 bg-accent text-primary rounded-full text-sm font-medium mb-4">
-              Our Services
-            </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Full-Service Digital Marketing Solutions
-            </h2>
-            <p className="text-lg text-muted-foreground">
-              From AI-powered SEO and paid ads to social media management and web development — everything your brand needs under one roof.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {services.map((service, index) => (
-              <Card 
-                key={index} 
-                className="relative bg-background/95 border-2 border-border/50 hover:border-transparent overflow-hidden group transition-[transform,box-shadow,border-color] duration-300 hover:shadow-2xl"
-                style={{ transform: "translateZ(0)" }}
-              >
-                {/* Simplified gradient border */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} style={{ padding: "2px", margin: "-2px", borderRadius: "inherit" }}>
-                  <div className="w-full h-full bg-background rounded-[inherit]" />
-                </div>
-                
-                {/* Simplified glow effect - reduced blur */}
-                <div className={`absolute -inset-1 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-15 blur-lg transition-opacity duration-300`} />
-
-                 <CardContent className="relative p-6 z-10">
-                   {/* Simplified icon */}
-                   <div className={`relative w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300 shadow-xl`}>
-                     <service.icon className="w-8 h-8 text-white relative z-10" />
-                    {/* Simplified icon glow - reduced blur */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-300`} />
-                  </div>
-
-                   <h3 className="text-xl font-bold text-foreground mb-4 group-hover:text-orange-600 transition-colors duration-300">
-                     {service.title}
-                   </h3>
-                  <ul className="space-y-3 mb-6">
-                    {service.features.map((feature, i) => (
-                      <li 
-                        key={i} 
-                        className="flex items-center gap-2 text-sm text-foreground opacity-80 group-hover:opacity-100 transition-all duration-300"
-                        style={{ transitionDelay: `${i * 50}ms` }}
-                      >
-                        <div className={`w-5 h-5 bg-gradient-to-br ${service.color} rounded-full flex items-center justify-center flex-shrink-0`}>
-                          <CheckCircle2 className="w-3 h-3 text-white" />
-                        </div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <Link to={service.href}>
-                    <Button className={`w-full bg-gradient-to-r ${service.color} hover:shadow-lg transition-all duration-300 text-white`}>
-                      Learn More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Services Section - Carousel */}
+      <ServicesCarousel services={services} />
 
       {/* Who Is This For? */}
       <div id="home-audience">
