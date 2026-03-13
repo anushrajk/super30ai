@@ -354,70 +354,6 @@ const SocialMediaShowcase = () => {
   );
 };
 
-// ─── Web Design / Banner Showcase (Parallax) ───
-const WebDesignShowcase = () => {
-  const { ref: parallaxRef, offset } = useParallax(0.12);
-  const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
-  const webDesigns = [webDesign1, webDesign2, webDesign3];
-
-  return (
-    <div
-      ref={(el) => {
-        (sectionRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
-        (parallaxRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
-      }}
-      className="py-16 md:py-24 bg-background relative overflow-hidden"
-    >
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-12 md:mb-16">
-          <div className="badge-brand mx-auto mb-4">
-            <Monitor className="w-4 h-4" />
-            <span className="text-sm font-medium">Web & Banner Design</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Websites & Banners That <span className="text-brand">Perform</span>
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            High-converting landing pages, responsive websites, and digital banners crafted with precision.
-          </p>
-        </div>
-
-        <div className="space-y-6 max-w-5xl mx-auto">
-          {webDesigns.map((design, index) => (
-            <div
-              key={index}
-              className={`rounded-2xl overflow-hidden border border-border/50 group relative
-                transition-all duration-500 hover:shadow-2xl
-                ${isVisible ? "animate-bento-reveal" : "opacity-0"}`}
-              style={{
-                animationDelay: `${index * 150}ms`,
-                transform: `translateY(${offset * 0.05 * (index + 1)}px)`,
-              }}
-            >
-              <img
-                src={design}
-                alt={`Web design ${index + 1}`}
-                className="w-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-          ))}
-        </div>
-
-        <div className="text-center mt-10">
-          <Link to="/web-design-development">
-            <Button variant="outline-brand" size="lg" className="rounded-xl group">
-              View All Web Design Work
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-          </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
 // ─── Portfolio Case Study Cards (Reference-style horizontal scroll) ───
 const portfolioCaseStudies = [
   {
@@ -731,7 +667,7 @@ const Design = () => {
         <DesignStatsSection />
         <BentoServicesSection />
         <SocialMediaShowcase />
-        <WebDesignShowcase />
+        
         <PortfolioCaseStudySection />
         <DesignProcessSection />
         <DesignCTASection />
