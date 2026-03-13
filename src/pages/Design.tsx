@@ -278,15 +278,16 @@ const BentoServicesSection = () => {
 // ─── Social Media Portfolio (Parallax Grid) ───
 const SocialMediaShowcase = () => {
   const { ref: parallaxRef, offset } = useParallax(0.15);
-  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>();
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
   const socialPosts = [socialPost1, socialPost2, socialPost3, socialPost4, socialPost5, socialPost6];
 
   return (
-    <section
+    <div
       ref={(el) => {
-        (sectionRef as React.MutableRefObject<HTMLElement | null>).current = el;
+        (sectionRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
         (parallaxRef as React.MutableRefObject<HTMLDivElement | null>).current = el;
       }}
+      className="py-16 md:py-24 bg-muted/30 relative overflow-hidden"
       className="py-16 md:py-24 bg-muted/30 relative overflow-hidden"
     >
       {/* Parallax background shapes */}
