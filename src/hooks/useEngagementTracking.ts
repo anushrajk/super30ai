@@ -97,7 +97,7 @@ export const useEngagementTracking = () => {
       lastDataHashRef.current = currentHash;
     } catch (error) {
       // Silently handle errors - don't spam console in production
-      if (process.env.NODE_ENV === 'development') {
+      if (import.meta.env.DEV) {
         console.error("Failed to sync engagement metrics:", error);
       }
     }
