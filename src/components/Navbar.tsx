@@ -33,7 +33,6 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
-  const [showAuditPopup, setShowAuditPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
