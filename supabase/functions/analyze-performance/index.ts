@@ -44,10 +44,7 @@ serve(async (req) => {
       adBudget 
     } = await req.json();
 
-    console.log("Starting performance analysis for:", url);
-    console.log("Business type:", businessType);
-    console.log("Preferred platforms:", preferredPlatforms);
-    console.log("Ad budget tier:", adBudget);
+    console.log("Starting performance analysis");
 
     // Get budget range
     const budget = budgetTiers[adBudget] || budgetTiers["10k_50k"];
@@ -73,8 +70,7 @@ serve(async (req) => {
             lcp: psData.lighthouseResult?.audits?.["largest-contentful-paint"]?.displayValue,
             cls: psData.lighthouseResult?.audits?.["cumulative-layout-shift"]?.displayValue,
           };
-          console.log("PageSpeed data fetched:", landingPageData);
-        }
+          // PageSpeed data fetched
       } catch (psError) {
         console.error("PageSpeed fetch error:", psError);
       }
@@ -256,7 +252,7 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
     if (toolCall?.function?.arguments) {
       try {
         analysisResult = JSON.parse(toolCall.function.arguments);
-        console.log("Parsed AI analysis:", analysisResult);
+        // AI analysis parsed
       } catch (parseError) {
         console.error("Failed to parse AI response:", parseError);
         throw new Error("Invalid AI response format");
@@ -366,12 +362,12 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
       if (insertError) {
         console.error("Database insert error:", insertError);
       } else {
-        console.log("Saved to database with ID:", insertedData?.id);
+        console.log("Saved to database");
         result.id = insertedData?.id;
       }
     }
 
-    console.log("Analysis complete for:", url);
+    console.log("Analysis complete");
 
     return new Response(JSON.stringify(result), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },

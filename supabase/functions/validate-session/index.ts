@@ -45,7 +45,7 @@ const handler = async (req: Request): Promise<Response> => {
       .single();
 
     if (error || !session) {
-      console.log(`Session not found: ${sessionId}`);
+      console.log("Session not found");
       return new Response(
         JSON.stringify({ valid: false, error: "Session not found" }),
         { status: 404, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -63,7 +63,7 @@ const handler = async (req: Request): Promise<Response> => {
     //   );
     // }
 
-    console.log(`Session validated: ${sessionId}`);
+    console.log("Session validated");
     
     return new Response(
       JSON.stringify({ 

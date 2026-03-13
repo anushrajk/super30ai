@@ -14,7 +14,7 @@ const handler = async (req: Request): Promise<Response> => {
                      req.headers.get("x-real-ip") || 
                      "unknown";
     
-    console.log("Getting IP info for:", clientIp);
+    // IP lookup starting
 
     // Default response
     let ipInfo = {
@@ -32,7 +32,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
         const geoData = await geoResponse.json();
         
-        console.log("Geo API response:", geoData);
+        // Geo data received
         
         if (!geoData.error) {
           ipInfo = {
@@ -47,7 +47,7 @@ const handler = async (req: Request): Promise<Response> => {
       }
     }
 
-    console.log("IP info result:", ipInfo);
+    // IP info resolved
 
     return new Response(JSON.stringify(ipInfo), {
       status: 200,

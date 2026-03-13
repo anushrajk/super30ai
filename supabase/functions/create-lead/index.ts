@@ -87,7 +87,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     if (count !== null && count >= RATE_LIMIT) {
-      console.log(`Rate limit exceeded for ${identifier}: ${count}/${RATE_LIMIT}`);
+      console.log("Rate limit exceeded");
       return new Response(
         JSON.stringify({ error: "Rate limit exceeded. Please try again later." }),
         { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -140,7 +140,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
       }
       result = data;
-      console.log("Lead updated:", result.id);
+      console.log("Lead updated");
     } else {
       // Create new lead
       const { data, error } = await supabase
@@ -169,7 +169,7 @@ const handler = async (req: Request): Promise<Response> => {
         );
       }
       result = data;
-      console.log("Lead created:", result.id);
+      console.log("Lead created");
     }
 
     return new Response(JSON.stringify(result), {

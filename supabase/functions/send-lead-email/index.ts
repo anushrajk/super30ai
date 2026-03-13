@@ -92,13 +92,7 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { lead, session, submission_time, form_step }: LeadEmailRequest = await req.json();
     
-    console.log("========================================");
-    console.log("SEND-LEAD-EMAIL FUNCTION INVOKED");
-    console.log("========================================");
-    console.log("Lead email:", lead.email);
-    console.log("Form step:", form_step);
-    console.log("Session ID exists:", !!session);
-    console.log("Timestamp:", getCurrentIST());
+    console.log("send-lead-email invoked, step:", form_step);
 
     // Format location with state
     const location = [
@@ -183,7 +177,7 @@ const handler = async (req: Request): Promise<Response> => {
       </div>
     `;
 
-    console.log("Sending email via Resend...");
+    // Sending email...
     
     const emailResponse = await resend.emails.send({
       from: "AI SEO Agency <onboarding@resend.dev>",
@@ -192,7 +186,7 @@ const handler = async (req: Request): Promise<Response> => {
       html: emailHtml,
     });
 
-    console.log("Resend API response:", JSON.stringify(emailResponse));
+    // Email response received
 
     if (emailResponse.error) {
       console.error("Resend error:", emailResponse.error);
@@ -202,7 +196,7 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    console.log("Email sent successfully! ID:", emailResponse.data?.id);
+    console.log("Email sent successfully");
 
     return new Response(JSON.stringify({ success: true, id: emailResponse.data?.id }), {
       status: 200,
