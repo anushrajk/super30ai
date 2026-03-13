@@ -351,7 +351,7 @@ const SocialMediaShowcase = () => {
           </Link>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
