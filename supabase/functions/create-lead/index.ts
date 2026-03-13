@@ -87,7 +87,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     if (count !== null && count >= RATE_LIMIT) {
-      console.log(`Rate limit exceeded for ${identifier}: ${count}/${RATE_LIMIT}`);
+      console.log("Rate limit exceeded");
       return new Response(
         JSON.stringify({ error: "Rate limit exceeded. Please try again later." }),
         { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
