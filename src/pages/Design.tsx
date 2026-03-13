@@ -470,130 +470,126 @@ const PortfolioCaseStudySection = () => {
   const scroll = (direction: "left" | "right") => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -380 : 380,
+        left: direction === "left" ? -400 : 400,
         behavior: "smooth",
       });
     }
   };
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-[hsl(var(--background))] relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <div className="badge-brand mx-auto mb-4">
-            <Award className="w-4 h-4" />
-            <span className="text-sm font-medium">Featured Projects</span>
+        {/* Header row — left-aligned title + right nav */}
+        <div className={`flex items-center justify-between mb-10 md:mb-14 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+          <div className="flex items-center gap-3">
+            <div className="w-1 h-6 bg-brand rounded-full" />
+            <span className="text-sm font-semibold uppercase tracking-widest text-foreground">Featured Projects</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Work That <span className="text-brand">Speaks</span> for Itself
-          </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Real brands. Real results. Explore our portfolio of design work that drove measurable impact.
-          </p>
+          <div className="flex items-center gap-3">
+            <span className="hidden md:inline-flex items-center gap-2 bg-foreground text-background px-5 py-2 rounded-full text-sm font-medium">
+              Recent Projects
+              <span className="w-5 h-5 bg-brand rounded-full flex items-center justify-center text-white text-[10px] font-bold">{portfolioCaseStudies.length}</span>
+            </span>
+            <button
+              onClick={() => scroll("left")}
+              className="w-10 h-10 border-2 border-border rounded-full flex items-center justify-center hover:bg-muted transition-colors"
+              aria-label="Previous"
+            >
+              <ArrowRight className="w-4 h-4 text-foreground rotate-180" />
+            </button>
+            <button
+              onClick={() => scroll("right")}
+              className="w-10 h-10 border-2 border-border rounded-full flex items-center justify-center hover:bg-muted transition-colors"
+              aria-label="Next"
+            >
+              <ArrowRight className="w-4 h-4 text-foreground" />
+            </button>
+          </div>
         </div>
 
         {/* Carousel */}
-        <div className="relative">
-          {/* Nav buttons */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-10 w-10 h-10 bg-background border border-border rounded-full items-center justify-center shadow-lg hover:bg-muted transition-colors hidden md:flex"
-            aria-label="Scroll left"
-          >
-            <ArrowRight className="w-5 h-5 text-foreground rotate-180" />
-          </button>
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-10 w-10 h-10 bg-background border border-border rounded-full items-center justify-center shadow-lg hover:bg-muted transition-colors hidden md:flex"
-            aria-label="Scroll right"
-          >
-            <ArrowRight className="w-5 h-5 text-foreground" />
-          </button>
-
-          <div
-            ref={scrollRef}
-            className="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {portfolioCaseStudies.map((study, index) => (
-              <div
-                key={index}
-                className={`flex-shrink-0 w-[300px] md:w-[340px] rounded-3xl overflow-hidden relative group cursor-pointer snap-start
-                  bg-gradient-to-br ${study.gradient}
-                  transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
-                  ${isVisible ? "animate-bento-reveal" : "opacity-0"}`}
-                style={{ animationDelay: `${index * 120}ms`, minHeight: "460px" }}
-              >
-                {/* Top content */}
-                <div className="p-6 pb-0 relative z-10">
-                  {study.isCounter ? (
-                    <div className="mb-2">
-                      <span className="text-5xl md:text-6xl font-black text-white/90">{study.brand}</span>
-                      <div className="text-lg font-semibold text-white/80 mt-1">Design Projects</div>
-                    </div>
-                  ) : (
-                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 tracking-tight">{study.brand}</h3>
-                  )}
-                  <p className="text-white/75 text-sm leading-relaxed mb-4 line-clamp-3">
-                    {study.description}
-                  </p>
-                  {study.isCounter && (
-                    <Link to="/seo-results-bangalore">
-                      <Button variant="outline-white" size="sm" className="rounded-full text-xs mt-2 group/btn">
-                        VIEW MORE WORK
-                        <ArrowRight className="w-3 h-3 ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
-                      </Button>
-                    </Link>
-                  )}
-                </div>
-
-                {/* Device mockup area */}
-                <div className="absolute bottom-0 left-0 right-0 h-[55%] flex items-end justify-center px-4 pb-0 overflow-hidden">
-                  {/* Laptop/tablet mockup */}
-                  <div className="relative w-full flex items-end justify-center gap-2">
-                    {/* Main device - laptop style */}
-                    <div className="relative w-[75%] transform group-hover:scale-105 group-hover:-translate-y-1 transition-all duration-500">
-                      <div className="bg-foreground/90 rounded-t-lg p-1 shadow-2xl">
-                        <div className="bg-muted rounded-sm overflow-hidden aspect-[4/3]">
-                          <img
-                            src={study.images[0]}
-                            alt={`${study.brand} design`}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
-                        </div>
-                      </div>
-                      <div className="bg-foreground/80 h-2 rounded-b-lg mx-auto w-[110%] -ml-[5%]" />
-                    </div>
-
-                    {/* Phone mockup */}
-                    <div className="absolute -right-2 bottom-2 w-[30%] transform group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-700 delay-100 z-10">
-                      <div className="bg-foreground/90 rounded-xl p-1 shadow-2xl">
-                        <div className="bg-muted rounded-lg overflow-hidden aspect-[9/16]">
-                          <img
-                            src={study.images[1]}
-                            alt={`${study.brand} mobile`}
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                          />
-                        </div>
-                      </div>
-                    </div>
+        <div
+          ref={scrollRef}
+          className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
+          {portfolioCaseStudies.map((study, index) => (
+            <div
+              key={index}
+              className={`flex-shrink-0 w-[320px] md:w-[380px] rounded-3xl overflow-hidden relative group cursor-pointer snap-start
+                bg-gradient-to-br ${study.gradient}
+                transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
+                ${isVisible ? "animate-bento-reveal" : "opacity-0"}`}
+              style={{ animationDelay: `${index * 120}ms`, aspectRatio: "4/5" }}
+            >
+              {/* Top content */}
+              <div className="p-6 md:p-8 pb-0 relative z-10">
+                {study.isCounter ? (
+                  <div className="mb-3">
+                    <span className="text-6xl md:text-7xl font-black text-white/90 leading-none">{study.brand}</span>
+                    <div className="text-lg font-semibold text-white/80 mt-2">Design Projects</div>
                   </div>
-                </div>
-
-                {/* Stat badge */}
-                {!study.isCounter && (
-                  <div className="absolute top-5 right-5 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
-                    {study.stat}
-                  </div>
+                ) : (
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{study.brand}</h3>
                 )}
-
-                {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+                <p className="text-white/70 text-sm leading-relaxed mb-5 line-clamp-3 max-w-[90%]">
+                  {study.description}
+                </p>
+                {study.isCounter && (
+                  <Link to="/seo-results-bangalore">
+                    <Button variant="outline-white" size="sm" className="rounded-full text-xs mt-1 group/btn">
+                      VIEW MORE WORK
+                      <ArrowRight className="w-3 h-3 ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
+                    </Button>
+                  </Link>
+                )}
               </div>
-            ))}
-          </div>
+
+              {/* Device mockups — bottom half */}
+              <div className="absolute bottom-0 left-0 right-0 h-[55%] flex items-end justify-center overflow-hidden">
+                <div className="relative w-full h-full flex items-end justify-center px-5">
+                  {/* Laptop / Tablet mockup */}
+                  <div className="relative w-[80%] mb-0 transform group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 z-[1]">
+                    <div className="bg-[hsl(var(--foreground))]/90 rounded-t-xl p-[3px] shadow-2xl">
+                      <div className="rounded-t-lg overflow-hidden aspect-[4/3] bg-muted">
+                        <img
+                          src={study.images[0]}
+                          alt={`${study.brand} design`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <div className="bg-[hsl(var(--foreground))]/70 h-[6px] rounded-b-lg w-[108%] -ml-[4%]" />
+                  </div>
+
+                  {/* Phone mockup */}
+                  <div className="absolute -right-1 bottom-3 w-[32%] transform group-hover:scale-110 group-hover:-translate-y-3 transition-all duration-700 delay-100 z-[2]">
+                    <div className="bg-[hsl(var(--foreground))]/90 rounded-2xl p-[3px] shadow-2xl">
+                      <div className="rounded-xl overflow-hidden aspect-[9/16] bg-muted">
+                        <img
+                          src={study.images[1]}
+                          alt={`${study.brand} mobile`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stat badge */}
+              {!study.isCounter && (
+                <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
+                  {study.stat}
+                </div>
+              )}
+
+              {/* Decorative circle */}
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+            </div>
+          ))}
         </div>
       </div>
     </section>
