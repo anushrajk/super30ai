@@ -92,13 +92,7 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { lead, session, submission_time, form_step }: LeadEmailRequest = await req.json();
     
-    console.log("========================================");
-    console.log("SEND-LEAD-EMAIL FUNCTION INVOKED");
-    console.log("========================================");
-    console.log("Lead email:", lead.email);
-    console.log("Form step:", form_step);
-    console.log("Session ID exists:", !!session);
-    console.log("Timestamp:", getCurrentIST());
+    console.log("send-lead-email invoked, step:", form_step);
 
     // Format location with state
     const location = [
