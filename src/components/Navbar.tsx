@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle, Megaphone, Palette, Globe } from "lucide-react";
+import { Menu, X, Bot, Target, Sparkles, ArrowRight, Megaphone, Palette, Globe } from "lucide-react";
 import super30Logo from "@/assets/super30-new-logo.png";
 import {
   NavigationMenu,
@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+
 
 const services = [
   { title: "Digital Marketing", href: "/digital-marketing", icon: Megaphone, color: "text-purple-500" },
@@ -32,7 +32,6 @@ const navLinks = [
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -88,8 +87,7 @@ export const Navbar = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className={`px-4 py-2 text-sm font-medium transition-colors bg-transparent hover:bg-muted/50 ${
-                      location.pathname.includes("/ai-seo-agency-bangalore") ||
-                      location.pathname.includes("/performance-marketing")
+                      services.some(s => location.pathname === s.href)
                         ? "text-[hsl(var(--brand-orange))]"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
@@ -121,7 +119,19 @@ export const Navbar = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
-
+            <Link
+              to="/seo-results-bangalore"
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+                location.pathname === "/seo-results-bangalore"
+                  ? "text-brand"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              <span className="link-underline">Our Work</span>
+              {location.pathname === "/seo-results-bangalore" && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
+              )}
+            </Link>
 
             <Link
               to="/seo-agency-near-me"
@@ -138,15 +148,8 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button 
-              variant="outline-brand"
-              onClick={() => setShowEnquiryPopup(true)}
-            >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Enquire Now
-            </Button>
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center">
             <Link to="/seo-agency-near-me">
               <Button 
                 className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
@@ -220,7 +223,16 @@ export const Navbar = () => {
               </div>
             </div>
 
-
+            <Link
+              to="/seo-results-bangalore"
+              className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 border ${
+                location.pathname === "/seo-results-bangalore"
+                  ? "bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))]/30"
+                  : "text-foreground border-transparent hover:bg-muted/50 hover:border-border/50"
+              }`}
+            >
+              Our Work
+            </Link>
 
             <Link
               to="/seo-agency-near-me"
@@ -233,18 +245,7 @@ export const Navbar = () => {
               Contact
             </Link>
 
-            <div className="pt-4 mt-2 border-t border-border/50 space-y-3">
-              <Button 
-                variant="outline-brand"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setShowEnquiryPopup(true);
-                }}
-                className="w-full"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Enquire Now
-              </Button>
+            <div className="pt-4 mt-2 border-t border-border/50">
               <Link to="/seo-agency-near-me" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button 
                   className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
@@ -258,8 +259,6 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Enquiry Popup */}
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
 
     </header>
   );
