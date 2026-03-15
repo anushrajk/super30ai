@@ -259,8 +259,6 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Enquiry Popup */}
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
 
     </header>
   );
