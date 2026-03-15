@@ -3,14 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, Bot, Target, Sparkles, ArrowRight, Megaphone, Palette, Globe } from "lucide-react";
 import super30Logo from "@/assets/super30-new-logo.png";
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 
 
 const services = [
@@ -67,84 +59,56 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 ml-auto mr-4">
+            {services.map((service) => (
+              <Link
+                key={service.href}
+                to={service.href}
+                className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+                  location.pathname === service.href
+                    ? "text-[hsl(var(--brand-orange))]"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                }`}
+              >
+                <span className="link-underline">{service.title}</span>
+                {location.pathname === service.href && (
+                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[hsl(var(--brand-orange))]" />
+                )}
+              </Link>
+            ))}
+
+            <span className="w-px h-5 bg-border/50 mx-1" />
+
             <Link
               to="/seo-experts-bangalore"
-              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+              className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/seo-experts-bangalore"
                   ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
               <span className="link-underline">Team 30</span>
-              {location.pathname === "/seo-experts-bangalore" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
-              )}
             </Link>
-
-            {/* Services Dropdown */}
-            <NavigationMenu>
-              <NavigationMenuList>
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger
-                    className={`px-4 py-2 text-sm font-medium transition-colors bg-transparent hover:bg-muted/50 ${
-                      services.some(s => location.pathname === s.href)
-                        ? "text-[hsl(var(--brand-orange))]"
-                        : "text-muted-foreground hover:text-foreground"
-                    }`}
-                  >
-                    Services
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <div className="w-[280px] p-3 bg-popover border border-border rounded-xl shadow-xl">
-                      <div className="grid gap-1">
-                        {services.map((service) => (
-                          <NavigationMenuLink key={service.href} asChild>
-                            <Link
-                              to={service.href}
-                              className="group flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-muted/50 transition-all duration-300"
-                            >
-                              <div className="w-8 h-8 rounded-lg bg-muted/50 border border-border/50 flex items-center justify-center group-hover:bg-[hsl(var(--brand-orange))]/10 transition-all duration-300">
-                                <service.icon className={`w-4 h-4 ${service.color}`} />
-                              </div>
-                              <span className="text-sm font-medium text-foreground group-hover:text-[hsl(var(--brand-orange))] transition-colors duration-300">
-                                {service.title}
-                              </span>
-                            </Link>
-                          </NavigationMenuLink>
-                        ))}
-                      </div>
-                    </div>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
 
             <Link
               to="/seo-results-bangalore"
-              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+              className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/seo-results-bangalore"
                   ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
               <span className="link-underline">Our Work</span>
-              {location.pathname === "/seo-results-bangalore" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
-              )}
             </Link>
 
             <Link
               to="/seo-agency-near-me"
-              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+              className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/seo-agency-near-me"
                   ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
               <span className="link-underline">Contact</span>
-              {location.pathname === "/seo-agency-near-me" && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
-              )}
             </Link>
           </div>
 
