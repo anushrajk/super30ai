@@ -11,7 +11,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+
 
 const services = [
   { title: "Digital Marketing", href: "/digital-marketing", icon: Megaphone, color: "text-purple-500" },
