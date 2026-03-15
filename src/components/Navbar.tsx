@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Bot, Target, Sparkles, ArrowRight, MessageCircle, Megaphone, Palette, Globe } from "lucide-react";
+import { Menu, X, Bot, Target, Sparkles, ArrowRight, Megaphone, Palette, Globe } from "lucide-react";
 import super30Logo from "@/assets/super30-new-logo.png";
 import {
   NavigationMenu,
