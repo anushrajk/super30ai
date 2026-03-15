@@ -88,8 +88,7 @@ export const Navbar = () => {
                 <NavigationMenuItem>
                   <NavigationMenuTrigger
                     className={`px-4 py-2 text-sm font-medium transition-colors bg-transparent hover:bg-muted/50 ${
-                      location.pathname.includes("/ai-seo-agency-bangalore") ||
-                      location.pathname.includes("/performance-marketing")
+                      services.some(s => location.pathname === s.href)
                         ? "text-[hsl(var(--brand-orange))]"
                         : "text-muted-foreground hover:text-foreground"
                     }`}
@@ -121,7 +120,19 @@ export const Navbar = () => {
               </NavigationMenuList>
             </NavigationMenu>
 
-
+            <Link
+              to="/seo-results-bangalore"
+              className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
+                location.pathname === "/seo-results-bangalore"
+                  ? "text-brand"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+              }`}
+            >
+              <span className="link-underline">Our Work</span>
+              {location.pathname === "/seo-results-bangalore" && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-brand" />
+              )}
+            </Link>
 
             <Link
               to="/seo-agency-near-me"
@@ -138,15 +149,8 @@ export const Navbar = () => {
             </Link>
           </div>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
-            <Button 
-              variant="outline-brand"
-              onClick={() => setShowEnquiryPopup(true)}
-            >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Enquire Now
-            </Button>
+          {/* CTA Button */}
+          <div className="hidden lg:flex items-center">
             <Link to="/seo-agency-near-me">
               <Button 
                 className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
