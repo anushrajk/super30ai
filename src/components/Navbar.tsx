@@ -224,7 +224,16 @@ export const Navbar = () => {
               </div>
             </div>
 
-
+            <Link
+              to="/seo-results-bangalore"
+              className={`px-4 py-3 rounded-xl font-medium transition-all duration-300 border ${
+                location.pathname === "/seo-results-bangalore"
+                  ? "bg-[hsl(var(--brand-orange))]/10 text-[hsl(var(--brand-orange))] border-[hsl(var(--brand-orange))]/30"
+                  : "text-foreground border-transparent hover:bg-muted/50 hover:border-border/50"
+              }`}
+            >
+              Our Work
+            </Link>
 
             <Link
               to="/seo-agency-near-me"
@@ -237,18 +246,7 @@ export const Navbar = () => {
               Contact
             </Link>
 
-            <div className="pt-4 mt-2 border-t border-border/50 space-y-3">
-              <Button 
-                variant="outline-brand"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setShowEnquiryPopup(true);
-                }}
-                className="w-full"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Enquire Now
-              </Button>
+            <div className="pt-4 mt-2 border-t border-border/50">
               <Link to="/seo-agency-near-me" onClick={() => setIsMobileMenuOpen(false)}>
                 <Button 
                   className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
