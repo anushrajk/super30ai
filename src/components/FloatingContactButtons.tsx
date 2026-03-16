@@ -41,8 +41,6 @@ export const FloatingContactButtons = () => {
           Call: {PHONE_DISPLAY}
         </span>
         
-        {/* Subtle glow ring */}
-        <span className="absolute inset-0 rounded-2xl border border-primary/50 animate-pulse opacity-50" />
       </a>
     </div>
   );

@@ -87,7 +87,7 @@ export const CourseScarcitySection = () => {
             {/* Top Row: Scarcity Indicators */}
             <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-8">
               {/* Seats Remaining */}
-              <div className="flex items-center gap-2 px-4 py-2 bg-red-500/20 rounded-full border border-red-500/30 animate-pulse">
+              <div className="flex items-center gap-2 px-4 py-2 bg-red-500/20 rounded-full border border-red-500/30">
                 <AlertTriangle className="w-4 h-4 text-red-400" />
                 <span className="text-red-400 font-semibold text-sm">
                   Only 2 seats left (13 filled)
