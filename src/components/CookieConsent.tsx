@@ -165,7 +165,7 @@ export const CookieConsent = () => {
             <div className="flex gap-2">
               <Button
                 onClick={() => handleClose(() => saveCustomPreferences(customPreferences))}
-                className="flex-1 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25"
+                className="flex-1 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
               >
                 Save Preferences
               </Button>
