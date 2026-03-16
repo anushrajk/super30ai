@@ -141,7 +141,7 @@ export const CookieConsent = () => {
             <div className="flex flex-col sm:flex-row gap-2">
               <Button
                 onClick={() => handleClose(acceptAll)}
-                className="flex-1 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg shadow-[hsl(var(--brand-orange))]/25"
+                className="flex-1 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
               >
                 Accept All
               </Button>
