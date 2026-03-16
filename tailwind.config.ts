@@ -101,10 +101,6 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--brand) / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(var(--brand) / 0.5)" },
-        },
         "bounce-subtle": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-4px)" },
