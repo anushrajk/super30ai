@@ -115,8 +115,8 @@ export const PMAISections = () => {
         <div className="bento-card p-4 md:p-8 relative overflow-hidden">
           {/* Animated background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '1s' }} />
+            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl" />
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" style={{ animationDelay: '1s' }} />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand/3 rounded-full blur-3xl" />
           </div>
           
@@ -138,7 +138,6 @@ export const PMAISections = () => {
               {/* Connection lines - Desktop */}
               <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 z-0">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/40 to-transparent animate-pulse" style={{ animationDuration: '2s' }} />
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">

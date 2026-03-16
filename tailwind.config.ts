@@ -101,10 +101,6 @@ export default {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
         },
-        "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 20px hsl(var(--brand) / 0.3)" },
-          "50%": { boxShadow: "0 0 40px hsl(var(--brand) / 0.5)" },
-        },
         "bounce-subtle": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-4px)" },
@@ -125,7 +121,6 @@ export default {
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         "bento-reveal": "bento-reveal 0.5s ease-out forwards",
         "float": "float 6s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "bounce-subtle": "bounce-subtle 0.4s ease-out",
         "wiggle": "wiggle 0.3s ease-in-out",
         "slide-up-fade": "slide-up-fade 0.4s ease-out forwards",

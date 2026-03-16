@@ -63,7 +63,7 @@ export const CourseHeroSection = () => {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-[hsl(var(--brand-orange))]/20 to-transparent rounded-full blur-3xl animate-pulse" />
+      <div className="absolute top-20 right-10 w-72 h-72 bg-gradient-to-br from-[hsl(var(--brand-orange))]/20 to-transparent rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-96 h-96 bg-gradient-to-tr from-[hsl(var(--brand-orange))]/10 to-transparent rounded-full blur-3xl" />
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">

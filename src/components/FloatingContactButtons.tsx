@@ -31,7 +31,7 @@ export const FloatingContactButtons = () => {
       {/* Phone Button */}
       <a
         href={`tel:${PHONE_NUMBER}`}
-        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 rounded-2xl flex items-center justify-center shadow-lg shadow-[hsl(var(--brand-orange))]/30 hover:shadow-[0_0_25px_hsl(var(--brand-orange)/0.6)] transition-all duration-300 hover:scale-110 border border-[hsl(var(--brand-orange))]/30"
+        className="group relative w-12 h-12 sm:w-14 sm:h-14 bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 rounded-2xl flex items-center justify-center shadow-lg shadow-[hsl(var(--brand-orange))]/30 transition-all duration-300 hover:scale-110 border border-[hsl(var(--brand-orange))]/30"
         aria-label="Call us"
       >
         <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -41,8 +41,6 @@ export const FloatingContactButtons = () => {
           Call: {PHONE_DISPLAY}
         </span>
         
-        {/* Subtle glow ring */}
-        <span className="absolute inset-0 rounded-2xl border border-primary/50 animate-pulse opacity-50" />
       </a>
     </div>
   );

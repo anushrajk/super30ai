@@ -56,7 +56,7 @@ export const PMFinalCTASection = () => {
               size="lg"
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
-              <Sparkles className="w-4 h-4 mr-2 group-hover:animate-pulse" />
+              <Sparkles className="w-4 h-4 mr-2" />
               Start Free Audit Now
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>

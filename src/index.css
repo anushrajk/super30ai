@@ -263,10 +263,6 @@ All colors MUST be HSL.
     @apply w-full;
   }
 
-  /* CTA glow pulse */
-  .cta-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
-  }
 
   /* Floating animation for decorative elements */
   .animate-float {
