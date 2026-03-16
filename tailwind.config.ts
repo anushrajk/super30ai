@@ -121,7 +121,6 @@ export default {
         "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
         "bento-reveal": "bento-reveal 0.5s ease-out forwards",
         "float": "float 6s ease-in-out infinite",
-        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
         "bounce-subtle": "bounce-subtle 0.4s ease-out",
         "wiggle": "wiggle 0.3s ease-in-out",
         "slide-up-fade": "slide-up-fade 0.4s ease-out forwards",
