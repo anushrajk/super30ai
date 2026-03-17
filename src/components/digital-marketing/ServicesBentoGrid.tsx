@@ -68,15 +68,17 @@ const ServiceCard = ({
       </p>
     </div>
 
-    {/* Laptop image at bottom */}
-    <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4">
-      <img
-        src={service.image}
-        alt={service.title}
-        className="w-[85%] max-w-[300px] object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
-        loading="lazy"
-      />
-    </div>
+    {/* Laptop image at bottom (only for AI SEO) */}
+    {service.image && (
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4">
+        <img
+          src={service.image}
+          alt={service.title}
+          className="w-[85%] max-w-[300px] object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
+          loading="lazy"
+        />
+      </div>
+    )}
   </Link>
 );
 
