@@ -312,7 +312,7 @@ const DigitalMarketing = () => {
         <Footer />
       </main>
 
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      
     </>
   );
 };
