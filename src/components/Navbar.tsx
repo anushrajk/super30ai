@@ -201,10 +201,7 @@ export const Navbar = () => {
               <Link
                 to="/seo-agency-near-me"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={buttonVariants({
-                  className:
-                    "w-full leading-none bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg",
-                })}
+                className={`${buttonVariants()} w-full leading-none bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg`}
               >
                 Contact
                 <ArrowRight className="h-4 w-4 shrink-0" />
