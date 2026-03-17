@@ -534,6 +534,26 @@ const DesignCTASection = () => {
 
 // ─── Main Page ───
 const Design = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
+    setLoading(true);
+    try {
+      toast.success("Form submitted successfully!");
+      openThankYouPage({
+        name: data.full_name || data.email?.split('@')[0],
+        email: data.email,
+        company: data.company_name,
+        source: 'design'
+      });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -542,8 +562,35 @@ const Design = () => {
         <link rel="canonical" href="https://super30ai.lovable.app/design" />
       </Helmet>
       <Navbar />
-      <main>
-        <DesignHeroSection />
+      <main className="pt-16 md:pt-20">
+        <ServiceHeroSection
+          badgeIcon={Sparkles}
+          badgeText="Creative Design Agency"
+          headline={
+            <>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
+                Design That Converts,
+              </span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
+                Branding That Lasts
+              </span>
+            </>
+          }
+          description={
+            <>
+              From <span className="text-foreground font-semibold">social media creatives</span> to full UI/UX design systems — we craft visual experiences that drive engagement and build brand authority.
+            </>
+          }
+          trustSignals={[
+            { icon: Palette, text: "Brand Identity & Visual Systems" },
+            { icon: Layout, text: "UI/UX & Product Design" },
+            { icon: Instagram, text: "Social Media Creatives" },
+            { icon: Bot, text: "AI-Enhanced Design Workflows" },
+          ]}
+          credentials={["100+ Brands Designed", "UI/UX Specialists", "Figma & Adobe Suite"]}
+          onSubmit={handleFormSubmit}
+          loading={loading}
+        />
         <DesignStatsSection />
         <BentoServicesSection />
         <SocialMediaShowcase />
