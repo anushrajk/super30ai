@@ -342,7 +342,7 @@ export const LeadCaptureForm = ({
               </>
             ) : (
               <>
-                Book Your Free Consultation
+                {formButtonText}
                 <Sparkles className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
               </>
             )}
