@@ -12,10 +12,10 @@ import { BentoBadge } from "@/components/ui/bento-grid";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
+import { ServicesBentoGrid } from "@/components/digital-marketing/ServicesBentoGrid";
 import {
-  Megaphone, ArrowRight, MessageCircle, Award, CheckCircle2,
-  Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
-  Mail, Users, Lightbulb, Layers, Sparkles
+  Megaphone, ArrowRight, MessageCircle, CheckCircle2,
+  BarChart3, Zap, Bot, Users
 } from "lucide-react";
 
 const serviceProducts = [
