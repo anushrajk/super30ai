@@ -13,6 +13,8 @@ import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
 import { ServicesBentoGrid } from "@/components/digital-marketing/ServicesBentoGrid";
+import { ServicesDetailSection } from "@/components/digital-marketing/ServicesDetailSection";
+import { GrowthEcosystemSection } from "@/components/digital-marketing/GrowthEcosystemSection";
 import {
   Megaphone, ArrowRight, MessageCircle, CheckCircle2,
   BarChart3, Zap, Bot, Users
