@@ -1,5 +1,6 @@
-import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
-import { Search, Target, Share2, Palette, Globe, Mail, TrendingUp, ArrowRight } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { Search, Target, Share2, Palette, Globe, Mail, TrendingUp } from "lucide-react";
+import { useEffect, useState } from "react";
 
 const verticals = [
   { icon: Search, label: "AI SEO", color: "18 100% 48%", desc: "Organic Visibility" },
@@ -10,12 +11,77 @@ const verticals = [
   { icon: Mail, label: "Email Marketing", color: "0 84% 60%", desc: "Lead Nurturing" },
 ];
 
+// Positions around center (angle in degrees for each node)
+const nodePositions = [
+  { angle: 270, radius: 1 },   // top
+  { angle: 330, radius: 1 },   // top-right
+  { angle: 30, radius: 1 },    // bottom-right
+  { angle: 90, radius: 1 },    // bottom
+  { angle: 150, radius: 1 },   // bottom-left
+  { angle: 210, radius: 1 },   // top-left
+];
+
+const FlowingDot = ({ angle, color, delay, isVisible }: { angle: number; color: string; delay: number; isVisible: boolean }) => {
+  if (!isVisible) return null;
+  
+  const rad = (angle * Math.PI) / 180;
+  
+  return (
+    <div
+      className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full z-20"
+      style={{
+        background: `hsl(${color})`,
+        boxShadow: `0 0 8px hsl(${color} / 0.8), 0 0 16px hsl(${color} / 0.4)`,
+        animation: `flowToCenter-${Math.round(angle)} 2.5s ${delay}s ease-in-out infinite`,
+      }}
+    />
+  );
+};
+
 export const GrowthEcosystemSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.15 });
-  const [cardsRef, cardsVisible, getDelay] = useStaggeredAnimation<HTMLDivElement>({ threshold: 0.1 });
+  const [animStarted, setAnimStarted] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) {
+      const timer = setTimeout(() => setAnimStarted(true), 600);
+      return () => clearTimeout(timer);
+    }
+  }, [isVisible]);
+
+  // Generate CSS keyframes for each angle
+  const keyframes = nodePositions.map((pos) => {
+    const rad = (pos.angle * Math.PI) / 180;
+    const startX = Math.cos(rad) * 140;
+    const startY = Math.sin(rad) * 140;
+    return `
+      @keyframes flowToCenter-${Math.round(pos.angle)} {
+        0% { transform: translate(calc(-50% + ${startX}px), calc(-50% + ${startY}px)); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(-50%, -50%); opacity: 0; }
+      }
+    `;
+  }).join("\n");
+
+  // Mobile keyframes (smaller radius)
+  const mobileKeyframes = nodePositions.map((pos) => {
+    const rad = (pos.angle * Math.PI) / 180;
+    const startX = Math.cos(rad) * 100;
+    const startY = Math.sin(rad) * 100;
+    return `
+      @keyframes mobileFlowToCenter-${Math.round(pos.angle)} {
+        0% { transform: translate(calc(-50% + ${startX}px), calc(-50% + ${startY}px)); opacity: 0; }
+        15% { opacity: 1; }
+        85% { opacity: 1; }
+        100% { transform: translate(-50%, -50%); opacity: 0; }
+      }
+    `;
+  }).join("\n");
 
   return (
     <section className="py-10 md:py-16 lg:py-24 bg-foreground overflow-hidden" ref={sectionRef}>
+      <style>{keyframes}{mobileKeyframes}</style>
       <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
@@ -28,69 +94,123 @@ export const GrowthEcosystemSection = () => {
           </p>
         </div>
 
-        {/* Animated Hub */}
-        <div className="max-w-5xl mx-auto relative" ref={cardsRef}>
-          {/* Central Growth Hub */}
-          <div className="flex justify-center mb-10 md:mb-0 md:absolute md:inset-0 md:flex md:items-center md:justify-center md:z-10 md:pointer-events-none">
-            <div
-              className={`w-32 h-32 md:w-40 md:h-40 rounded-full bg-brand flex flex-col items-center justify-center shadow-2xl transition-all duration-700 ${
-                isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
-              }`}
-              style={{ boxShadow: "0 0 60px hsl(18 100% 48% / 0.3)" }}
-            >
-              <TrendingUp className="w-10 h-10 md:w-12 md:h-12 text-white mb-1" />
-              <span className="text-white font-bold text-sm md:text-base">BRAND</span>
-              <span className="text-white/80 text-xs">GROWTH</span>
-            </div>
-          </div>
+        {/* Motherboard / Chip Layout */}
+        <div className="max-w-2xl mx-auto relative">
+          {/* Circuit board background pattern */}
+          <div className="relative w-full aspect-square max-w-[500px] mx-auto">
+            
+            {/* Circuit traces (lines from nodes to center) */}
+            <svg className="absolute inset-0 w-full h-full z-0" viewBox="0 0 500 500">
+              {nodePositions.map((pos, i) => {
+                const rad = (pos.angle * Math.PI) / 180;
+                const outerX = 250 + Math.cos(rad) * 190;
+                const outerY = 250 + Math.sin(rad) * 190;
+                const color = verticals[i].color;
+                return (
+                  <g key={i}>
+                    {/* Main trace line */}
+                    <line
+                      x1={250} y1={250}
+                      x2={outerX} y2={outerY}
+                      stroke={`hsl(${color} / 0.25)`}
+                      strokeWidth="2"
+                      strokeDasharray="4 4"
+                      className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                      style={{ transitionDelay: `${i * 150}ms` }}
+                    />
+                    {/* Circuit board junction dots */}
+                    <circle
+                      cx={250 + Math.cos(rad) * 95}
+                      cy={250 + Math.sin(rad) * 95}
+                      r="3"
+                      fill={`hsl(${color} / 0.4)`}
+                      className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                      style={{ transitionDelay: `${i * 150 + 300}ms` }}
+                    />
+                    <circle
+                      cx={250 + Math.cos(rad) * 145}
+                      cy={250 + Math.sin(rad) * 145}
+                      r="2.5"
+                      fill={`hsl(${color} / 0.3)`}
+                      className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                      style={{ transitionDelay: `${i * 150 + 200}ms` }}
+                    />
+                  </g>
+                );
+              })}
+              {/* Inner ring around brand hub */}
+              <circle cx="250" cy="250" r="65" fill="none" stroke="hsl(18 100% 48% / 0.15)" strokeWidth="1" strokeDasharray="3 6"
+                className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              />
+              {/* Outer ring */}
+              <circle cx="250" cy="250" r="190" fill="none" stroke="white" strokeWidth="0.5" strokeOpacity="0.08"
+                className={`transition-opacity duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+              />
+            </svg>
 
-          {/* Service Verticals Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {verticals.map((v, i) => (
+            {/* Central BRAND Hub (chip) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
               <div
-                key={i}
-                className={`relative rounded-2xl border border-white/10 p-5 md:p-6 transition-all duration-500 group hover:border-white/25 hover:-translate-y-1 ${
-                  cardsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                className={`w-28 h-28 md:w-32 md:h-32 rounded-2xl bg-brand flex flex-col items-center justify-center transition-all duration-700 border border-brand/50 ${
+                  isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
                 }`}
-                style={{
-                  background: `linear-gradient(160deg, hsl(${v.color} / 0.08), hsl(${v.color} / 0.02))`,
-                  transitionDelay: getDelay(i),
-                }}
+                style={{ boxShadow: "0 0 40px hsl(18 100% 48% / 0.2)" }}
               >
-                {/* Connecting line animation */}
-                <div
-                  className={`hidden md:block absolute top-1/2 ${
-                    i % 3 === 1 ? "left-1/2 -translate-x-1/2 w-px h-8 -top-4" : i % 3 === 0 ? "right-0 translate-x-full w-8 h-px top-1/2" : "left-0 -translate-x-full w-8 h-px top-1/2"
-                  }`}
-                  style={{
-                    background: `hsl(${v.color} / 0.3)`,
-                    transition: "opacity 0.5s",
-                    transitionDelay: `${i * 150 + 500}ms`,
-                    opacity: cardsVisible ? 1 : 0,
-                  }}
-                />
-
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: `hsl(${v.color} / 0.15)` }}
-                >
-                  <v.icon className="w-6 h-6" style={{ color: `hsl(${v.color})` }} />
-                </div>
-                <h3 className="text-white font-bold text-base mb-1">{v.label}</h3>
-                <p className="text-white/50 text-sm">{v.desc}</p>
-
-                {/* Growth indicator */}
-                <div
-                  className={`mt-3 h-1 rounded-full transition-all duration-1000 ${
-                    cardsVisible ? "w-full" : "w-0"
-                  }`}
-                  style={{
-                    background: `linear-gradient(90deg, hsl(${v.color} / 0.6), hsl(${v.color} / 0.1))`,
-                    transitionDelay: `${i * 200 + 400}ms`,
-                  }}
-                />
+                <TrendingUp className="w-8 h-8 md:w-10 md:h-10 text-white mb-1" />
+                <span className="text-white font-bold text-sm md:text-base tracking-wider">BRAND</span>
+                <span className="text-white/70 text-[10px] uppercase tracking-widest">Growth</span>
               </div>
-            ))}
+            </div>
+
+            {/* Flowing dots */}
+            <div className="absolute inset-0 z-20 pointer-events-none">
+              <div className="absolute top-1/2 left-1/2 w-0 h-0">
+                {animStarted && verticals.map((v, i) => (
+                  <div key={`dots-${i}`}>
+                    <FlowingDot angle={nodePositions[i].angle} color={v.color} delay={0} isVisible={animStarted} />
+                    <FlowingDot angle={nodePositions[i].angle} color={v.color} delay={0.8} isVisible={animStarted} />
+                    <FlowingDot angle={nodePositions[i].angle} color={v.color} delay={1.6} isVisible={animStarted} />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Service Nodes (chips around the center) */}
+            {verticals.map((v, i) => {
+              const rad = (nodePositions[i].angle * Math.PI) / 180;
+              const x = 50 + (Math.cos(rad) * 38); // percentage from center
+              const y = 50 + (Math.sin(rad) * 38);
+
+              return (
+                <div
+                  key={i}
+                  className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
+                    isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
+                  }`}
+                  style={{
+                    left: `${x}%`,
+                    top: `${y}%`,
+                    transitionDelay: `${i * 120 + 200}ms`,
+                  }}
+                >
+                  <div
+                    className="flex flex-col items-center gap-1.5 px-3 py-2.5 md:px-4 md:py-3 rounded-xl border border-white/10 backdrop-blur-sm hover:border-white/25 transition-colors duration-300 cursor-default group"
+                    style={{
+                      background: `linear-gradient(135deg, hsl(${v.color} / 0.12), hsl(${v.color} / 0.04))`,
+                    }}
+                  >
+                    <div
+                      className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
+                      style={{ background: `hsl(${v.color} / 0.2)` }}
+                    >
+                      <v.icon className="w-4 h-4 md:w-5 md:h-5" style={{ color: `hsl(${v.color})` }} />
+                    </div>
+                    <span className="text-white font-semibold text-[10px] md:text-xs whitespace-nowrap">{v.label}</span>
+                    <span className="text-white/40 text-[8px] md:text-[10px] whitespace-nowrap hidden md:block">{v.desc}</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
 
           {/* Bottom Message */}
