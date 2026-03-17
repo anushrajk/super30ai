@@ -1,7 +1,8 @@
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/landing/HeroSection";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { Search, Globe, Bot, Handshake, BarChart3, TrendingUp } from "lucide-react";
 
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
@@ -100,7 +101,44 @@ const AiSeo = () => {
 
       <main className="min-h-screen pt-16 md:pt-20">
         <div id="ai-seo-hero">
-          <HeroSection onSubmit={handleFormSubmit} loading={loading} />
+          <ServiceHeroSection
+            badgeIcon={TrendingUp}
+            badgeText="#1 AI SEO Agency in Bangalore"
+            headline={
+              <>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
+                  AI-Powered SEO
+                </span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
+                  Services in Bangalore
+                </span>
+              </>
+            }
+            description={
+              <>
+                We are a results-driven <span className="text-foreground font-semibold">AI SEO agency in Bangalore</span>. Our expert team combines advanced AI tools with proven SEO strategies — technical SEO, on-page optimization, and authority-building link campaigns — to boost your rankings and drive qualified organic traffic.
+              </>
+            }
+            trustSignals={[
+              { icon: Search, text: "Technical & On-Page SEO Audits" },
+              { icon: Globe, text: "Local & International SEO" },
+              { icon: Bot, text: "AI-Driven Keyword Research" },
+              { icon: BarChart3, text: "Transparent Ranking Reports" },
+            ]}
+            credentials={[
+              "Google Certified SEO Experts",
+              "10+ Years Experience",
+              "500+ Keywords Ranked #1",
+            ]}
+            onSubmit={handleFormSubmit}
+            loading={loading}
+            formTitle="Book Your Free AI SEO Consultation"
+            formDescription="Get a detailed SEO audit showing exactly how to rank higher and drive more organic traffic."
+            formBadgeText="100% Free"
+            formButtonText="Get My Free SEO Audit"
+            formId="ai-seo-hero-form"
+            formName="Free AI SEO Consultation"
+          />
         </div>
         <div id="ai-seo-problem">
           <ProblemSection />
