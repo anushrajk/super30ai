@@ -13,6 +13,8 @@ import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
 import { ServicesBentoGrid } from "@/components/digital-marketing/ServicesBentoGrid";
+import { ServicesDetailSection } from "@/components/digital-marketing/ServicesDetailSection";
+import { GrowthEcosystemSection } from "@/components/digital-marketing/GrowthEcosystemSection";
 import {
   Megaphone, ArrowRight, MessageCircle, CheckCircle2,
   BarChart3, Zap, Bot, Users
@@ -121,8 +123,8 @@ const DigitalMarketing = () => {
           formName="Digital Marketing Strategy Consultation"
         />
 
-
         <ServicesBentoGrid />
+        <ServicesDetailSection />
 
         {/* Process Section */}
         <section className="py-6 md:py-10 lg:py-16 bg-muted/30">
@@ -144,7 +146,7 @@ const DigitalMarketing = () => {
           </div>
         </section>
 
-        {/* Why Choose Us */}
+        <GrowthEcosystemSection />
         <section className="py-6 md:py-10 lg:py-16 bg-background">
           <div className="container mx-auto px-3 md:px-4">
             <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
