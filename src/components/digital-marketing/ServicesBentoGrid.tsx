@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-import aiSeoImg from "@/assets/services/ai-seo-card.jpg";
+import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
 import performanceImg from "@/assets/services/performance-marketing-card.jpg";
 import socialMediaImg from "@/assets/services/social-media-card.jpg";
 import designImg from "@/assets/services/design-card.jpg";
@@ -13,7 +13,7 @@ const services = [
     title: "AI SEO Services",
     description: "AI-powered search optimization that drives organic traffic and dominates rankings.",
     href: "/ai-seo-agency-bangalore",
-    image: aiSeoImg,
+    image: null,
   },
   {
     title: "Performance Marketing",
@@ -57,7 +57,7 @@ const ServiceCard = ({
     className="relative rounded-2xl overflow-hidden group cursor-pointer block h-full"
   >
     <img
-      src={service.image}
+      src={service.image!}
       alt={service.title}
       className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
       loading="lazy"
@@ -70,6 +70,36 @@ const ServiceCard = ({
       <p className="text-white/70 text-sm leading-relaxed">
         {service.description}
       </p>
+    </div>
+  </Link>
+);
+
+const AiSeoCard = () => (
+  <Link
+    to="/ai-seo-agency-bangalore"
+    className="relative rounded-2xl overflow-hidden group cursor-pointer block h-full"
+    style={{
+      background: "linear-gradient(160deg, #1a0a2e 0%, #2d1b69 30%, #7c3aed 70%, #a78bfa 100%)",
+    }}
+  >
+    {/* Text on top */}
+    <div className="relative z-10 p-5 md:p-6 pt-6 md:pt-8">
+      <h3 className="text-lg md:text-2xl font-bold text-white mb-2 leading-[1.3]">
+        AI SEO Services
+      </h3>
+      <p className="text-white/70 text-sm leading-relaxed">
+        AI-powered search optimization that drives organic traffic and dominates rankings.
+      </p>
+    </div>
+
+    {/* Laptop image at bottom */}
+    <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4">
+      <img
+        src={aiSeoLaptop}
+        alt="AI SEO Services preview"
+        className="w-[90%] max-w-[320px] object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
+        loading="lazy"
+      />
     </div>
   </Link>
 );
@@ -98,11 +128,11 @@ export const ServicesBentoGrid = () => {
           </Link>
         </div>
 
-        {/* Bento Grid - exact 4-col layout: tall, 2 short stacked, tall, 2 short stacked */}
+        {/* Bento Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
-          {/* Col 1 - Tall */}
+          {/* Col 1 - AI SEO (special card) */}
           <div className="h-[320px] sm:h-[400px] lg:h-[520px]">
-            <ServiceCard service={services[0]} />
+            <AiSeoCard />
           </div>
 
           {/* Col 2 - Two short stacked */}
