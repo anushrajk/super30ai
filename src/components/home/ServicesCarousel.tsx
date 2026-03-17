@@ -71,7 +71,7 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] relative bg-background/95 border-2 border-border/50 hover:border-transparent overflow-hidden group snap-start"
+                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] relative bg-background/95 border-2 border-border/50 hover:border-transparent overflow-hidden group snap-start shadow-none"
                 style={{ transform: "translateZ(0)" }}
               >
                 {/* Gradient border on hover */}
