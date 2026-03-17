@@ -58,7 +58,7 @@ const serviceProducts = [
     features: ["High-converting landing pages", "Corporate & e-commerce sites", "UI/UX & responsive design", "Speed & Core Web Vitals"],
     href: "/web-design-development",
     cta: "Get Website Quote",
-    image: webMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Growth & Automation",
