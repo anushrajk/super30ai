@@ -26,7 +26,7 @@ const serviceProducts = [
     features: ["AI-powered search optimization", "Technical SEO & site audits", "Content strategy & creation", "Local & international SEO"],
     href: "/ai-seo-agency-bangalore",
     cta: "Get Free SEO Audit",
-    image: seoMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Paid Advertising",
