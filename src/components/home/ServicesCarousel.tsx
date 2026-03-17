@@ -85,9 +85,8 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
 
                 <CardContent className="relative p-5 md:p-6 z-10">
                   {/* Icon */}
-                  <div className={`relative w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300 shadow-xl`}>
+                  <div className={`relative w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}>
                     <service.icon className="w-7 h-7 md:w-8 md:h-8 text-white relative z-10" />
-                    <div className={`absolute inset-0 bg-gradient-to-br ${service.color} rounded-2xl blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-300`} />
                   </div>
 
                   <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
