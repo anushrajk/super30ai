@@ -84,7 +84,7 @@ export const ServicesBentoGrid = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.3]">
               <span className="text-brand">What</span>
               <br />
-              <span className="text-white">We Excel At</span>
+              <span className="text-foreground">We Excel At</span>
             </h2>
           </div>
           <Link
