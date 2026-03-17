@@ -84,7 +84,7 @@ const ServiceCard = ({
 
 export const ServicesBentoGrid = () => {
   return (
-    <section className="py-10 md:py-16 lg:py-24 bg-background">
+    <section className="py-10 md:py-16 lg:py-24 bg-foreground">
       <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between max-w-6xl mx-auto mb-10 md:mb-14 gap-4">
@@ -92,9 +92,18 @@ export const ServicesBentoGrid = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.3]">
               <span className="text-brand">What</span>
               <br />
-              <span className="text-foreground">We Excel At</span>
+              <span className="text-white">We Excel At</span>
             </h2>
           </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 text-foreground font-semibold text-sm tracking-wide hover:shadow-lg transition-all duration-300 group w-fit"
+          >
+            CONTACT US NOW
+            <span className="w-8 h-8 rounded-full bg-brand flex items-center justify-center group-hover:scale-110 transition-transform">
+              <ArrowRight className="w-4 h-4 text-white" />
+            </span>
+          </Link>
         </div>
 
         {/* Bento Grid */}
