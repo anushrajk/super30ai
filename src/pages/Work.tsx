@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { ClientLogosGrid } from "@/components/work/ClientLogosGrid";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
