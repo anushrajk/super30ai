@@ -196,9 +196,8 @@ export const TestimonialSection = () => {
         {/* Text Testimonial Carousel */}
         <div className={`max-w-5xl mx-auto mb-16 md:mb-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Card className="bg-white/[0.03] backdrop-blur-xl border-white/10 shadow-2xl shadow-black/40 overflow-hidden relative group hover:border-white/20 transition-all duration-500">
-            {/* Glow Effects */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-brand/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Subtle background accents */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
             <CardContent className="p-6 sm:p-8 md:p-12 relative">
               {/* Quote Icon with Hover Effect */}
