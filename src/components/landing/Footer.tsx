@@ -165,7 +165,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
               © {new Date().getFullYear()} The Super 30 | AI Marketing Agency, Bangalore, India. All rights reserved.
             </p>
             <p className="text-gray-600 text-xs whitespace-nowrap">
-              Serving businesses across Bangalore and India with AI-powered SEO and performance marketing services.
+              Serving businesses across Bangalore and India with AI-powered digital marketing services.
             </p>
             <div className="flex items-center gap-6 whitespace-nowrap">
               {legal.map((item) => (

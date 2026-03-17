@@ -180,10 +180,10 @@ const About = () => {
               <div>
                 <BentoBadge className="mb-4">Our Mission</BentoBadge>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 md:mb-6">
-                  The Super 30 SEO Agency Team
+                  The Super 30 Digital Marketing Team
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  As a Bangalore-based SEO agency team, our SEO experts bring years of hands-on experience in AI-driven strategies and performance marketing.
+                  As a Bangalore-based digital marketing agency team, our experts bring years of hands-on experience in AI-driven strategies, SEO, and performance marketing.
                 </p>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
                   Our team combines ex-Google expertise with proprietary AI tools to deliver enterprise-grade results at founder-friendly prices.
