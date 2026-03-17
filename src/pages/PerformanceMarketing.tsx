@@ -4,7 +4,7 @@ import { useSession } from "@/hooks/useSession";
 import { useLead } from "@/hooks/useLead";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
