@@ -9,7 +9,9 @@ import { BlogSection } from "@/components/landing/BlogSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BentoBadge } from "@/components/ui/bento-grid";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
+import { toast } from "sonner";
 import {
   Megaphone, ArrowRight, MessageCircle, Award, CheckCircle2,
   Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
@@ -70,7 +72,25 @@ const faqs = [
 ];
 
 const DigitalMarketing = () => {
-  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
+    setLoading(true);
+    try {
+      toast.success("Form submitted successfully!");
+      openThankYouPage({
+        name: data.full_name || data.email?.split('@')[0],
+        email: data.email,
+        company: data.company_name,
+        source: 'digital_marketing'
+      });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
@@ -100,109 +120,36 @@ const DigitalMarketing = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* Hero Section */}
-        <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-          </div>
-          <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
-            <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
-              {/* Left Column - Content */}
-              <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
-                <div className="badge-brand">
-                  <Megaphone className="w-4 h-4" />
-                  <span className="text-sm font-medium">Full-Service Digital Marketing Agency</span>
-                </div>
-
-                <div>
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                    Grow Your Business with{" "}
-                    <span className="text-brand">AI-Powered Digital Marketing</span>
-                  </h1>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                    From SEO to social media, ads to web design — we bring{" "}
-                    <span className="text-foreground font-semibold">everything under one roof</span> to drive measurable growth for your brand.
-                  </p>
-                </div>
-
-                {/* Trust Signals */}
-                <div className="flex flex-col gap-3 py-2">
-                  {[
-                    { icon: Bot, text: "AI + Human Expert Model" },
-                    { icon: BarChart3, text: "Data-Driven Growth Strategies" },
-                    { icon: Users, text: "30+ Marketing Experts" },
-                    { icon: Zap, text: "No Long-Term Lock-ins" },
-                  ].map((signal, index) => (
-                    <div key={index} className="flex items-center gap-3 group cursor-default">
-                      <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-md">
-                        <signal.icon className="w-3.5 h-3.5 text-brand group-hover:text-white transition-colors" />
-                      </div>
-                      <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                  <Link to="/seo-agency-near-me">
-                    <Button size="lg" className="bg-brand hover:bg-brand/90 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto px-6 py-3 h-auto rounded-xl">
-                      <Search className="w-5 h-5 mr-2" />
-                      Reach Us
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                  <Button 
-                    variant="outline-brand"
-                    size="lg"
-                    onClick={() => setShowEnquiryPopup(true)}
-                    className="px-6 py-3 h-auto rounded-xl group"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Enquire Now
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-
-                {/* Expert credentials - Mobile only */}
-                <div className="lg:hidden flex flex-wrap gap-2 pt-2">
-                  {["30+ Marketing Experts", "AI-Powered Strategies", "300+ Brands Served"].map((cred, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
-                      <Award className="w-3 h-3 text-brand" />{cred}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column - Services Overview Card */}
-              <div className="md:col-span-1 lg:col-span-5">
-                <div className="animate-fade-in bg-card border border-border rounded-2xl p-6 md:p-8 space-y-5" style={{ animationDelay: '200ms' }}>
-                  <h3 className="text-lg font-bold text-foreground text-center">Our Services</h3>
-                  <div className="space-y-3">
-                    {serviceProducts.map((product, i) => (
-                      <Link key={i} to={product.href} className="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-brand/30 hover:bg-brand/5 transition-all duration-300 group">
-                        <div className="w-10 h-10 bg-brand/10 rounded-xl flex items-center justify-center flex-shrink-0 group-hover:bg-brand group-hover:scale-110 transition-all duration-300">
-                          <product.icon className="w-5 h-5 text-brand group-hover:text-white transition-colors" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <span className="font-semibold text-foreground text-sm">{product.title}</span>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-brand group-hover:translate-x-1 transition-all" />
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-                {/* Expert credentials - Desktop only */}
-                <div className="hidden lg:flex flex-wrap gap-2 mt-4 justify-center">
-                  {["30+ Marketing Experts", "AI-Powered Strategies", "300+ Brands Served"].map((cred, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
-                      <Award className="w-3 h-3 text-brand" />{cred}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Hero Section with Lead Form */}
+        <ServiceHeroSection
+          badgeIcon={Megaphone}
+          badgeText="Full-Service Digital Marketing Agency"
+          headline={
+            <>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
+                Grow Your Business with
+              </span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
+                AI-Powered Digital Marketing
+              </span>
+            </>
+          }
+          description={
+            <>
+              From SEO to social media, ads to web design — we bring{" "}
+              <span className="text-foreground font-semibold">everything under one roof</span> to drive measurable growth for your brand.
+            </>
+          }
+          trustSignals={[
+            { icon: Bot, text: "AI + Human Expert Model" },
+            { icon: BarChart3, text: "Data-Driven Growth Strategies" },
+            { icon: Users, text: "30+ Marketing Experts" },
+            { icon: Zap, text: "No Long-Term Lock-ins" },
+          ]}
+          credentials={["30+ Marketing Experts", "AI-Powered Strategies", "300+ Brands Served"]}
+          onSubmit={handleFormSubmit}
+          loading={loading}
+        />
 
         {/* Client Logos */}
         <ClientLogosSection />
@@ -329,9 +276,11 @@ const DigitalMarketing = () => {
                   Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="border-white text-white hover:bg-white/10">
-                <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
-              </Button>
+              <Link to="/seo-agency-near-me">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
@@ -363,7 +312,7 @@ const DigitalMarketing = () => {
         <Footer />
       </main>
 
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      
     </>
   );
 };

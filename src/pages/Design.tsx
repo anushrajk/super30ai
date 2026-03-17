@@ -5,6 +5,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { Button } from "@/components/ui/button";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
+import { toast } from "sonner";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 import {
   Palette, Layout, Smartphone, PenTool, Layers, Monitor,
@@ -43,105 +46,7 @@ const useParallax = (speed: number = 0.3) => {
   return { ref, offset };
 };
 
-// ─── Hero Section ───
-const DesignHeroSection = () => {
-  const [showEnquiry, setShowEnquiry] = useState(false);
-
-  const trustSignals = [
-    { icon: Palette, text: "Brand Identity & Visual Systems" },
-    { icon: Layout, text: "UI/UX & Product Design" },
-    { icon: Instagram, text: "Social Media Creatives" },
-    { icon: Bot, text: "AI-Enhanced Design Workflows" },
-  ];
-
-  const credentials = [
-    "100+ Brands Designed",
-    "UI/UX Specialists",
-    "Figma & Adobe Suite",
-  ];
-
-  return (
-    <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
-      <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-      </div>
-
-      <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
-          {/* Left */}
-          <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
-            <div className="badge-brand">
-              <Sparkles className="w-4 h-4" />
-              <span className="text-sm font-medium">Creative Design Agency</span>
-            </div>
-
-            <div>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                <span className="text-brand">Design</span> That Converts,{" "}
-                <span className="text-foreground">Branding That Lasts</span>
-              </h1>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                From <span className="text-foreground font-semibold">social media creatives</span> to full UI/UX design systems — we craft visual experiences that drive engagement and build brand authority.
-              </p>
-            </div>
-
-            <div className="flex flex-col gap-3 py-2">
-              {trustSignals.map((signal, index) => (
-                <div key={index} className="flex items-center gap-3 group cursor-default">
-                  <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-md">
-                    <signal.icon className="w-3.5 h-3.5 text-brand group-hover:text-white transition-colors" />
-                  </div>
-                  <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-wrap gap-3 pt-2">
-              <Link to="/seo-agency-near-me">
-                <Button size="lg" className="bg-brand-gradient text-white px-6 py-3 h-auto rounded-xl group hover:opacity-90">
-                  <PenTool className="w-5 h-5 mr-2" />
-                  Get a Design Quote
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                </Button>
-              </Link>
-              <Button
-                variant="outline-brand"
-                size="lg"
-                onClick={() => setShowEnquiry(true)}
-                className="px-6 py-3 h-auto rounded-xl group"
-              >
-                <MessageCircle className="w-5 h-5 mr-2" />
-                Enquire Now
-              </Button>
-            </div>
-
-            <div className="lg:hidden flex flex-wrap gap-2 pt-2">
-              {credentials.map((cred, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
-                  <Award className="w-3 h-3 text-brand" />
-                  {cred}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          {/* Right — Credentials */}
-          <div className="md:col-span-1 lg:col-span-5 flex items-center justify-center">
-            <div className="flex flex-wrap gap-2 justify-center">
-              {credentials.map((cred, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
-                  <Award className="w-3 h-3 text-brand" />
-                  {cred}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-      <EnquiryPopup open={showEnquiry} onOpenChange={setShowEnquiry} />
-    </section>
-  );
-};
+// ─── Hero Section (removed - now using ServiceHeroSection in main page) ───
 
 // ─── Bento Service Cards (like reference image) ───
 const serviceCards = [
@@ -629,6 +534,26 @@ const DesignCTASection = () => {
 
 // ─── Main Page ───
 const Design = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
+    setLoading(true);
+    try {
+      toast.success("Form submitted successfully!");
+      openThankYouPage({
+        name: data.full_name || data.email?.split('@')[0],
+        email: data.email,
+        company: data.company_name,
+        source: 'design'
+      });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Helmet>
@@ -637,8 +562,35 @@ const Design = () => {
         <link rel="canonical" href="https://super30ai.lovable.app/design" />
       </Helmet>
       <Navbar />
-      <main>
-        <DesignHeroSection />
+      <main className="pt-16 md:pt-20">
+        <ServiceHeroSection
+          badgeIcon={Sparkles}
+          badgeText="Creative Design Agency"
+          headline={
+            <>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
+                Design That Converts,
+              </span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
+                Branding That Lasts
+              </span>
+            </>
+          }
+          description={
+            <>
+              From <span className="text-foreground font-semibold">social media creatives</span> to full UI/UX design systems — we craft visual experiences that drive engagement and build brand authority.
+            </>
+          }
+          trustSignals={[
+            { icon: Palette, text: "Brand Identity & Visual Systems" },
+            { icon: Layout, text: "UI/UX & Product Design" },
+            { icon: Instagram, text: "Social Media Creatives" },
+            { icon: Bot, text: "AI-Enhanced Design Workflows" },
+          ]}
+          credentials={["100+ Brands Designed", "UI/UX Specialists", "Figma & Adobe Suite"]}
+          onSubmit={handleFormSubmit}
+          loading={loading}
+        />
         <DesignStatsSection />
         <BentoServicesSection />
         <SocialMediaShowcase />
