@@ -276,9 +276,11 @@ const DigitalMarketing = () => {
                   Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="border-white text-white hover:bg-white/10">
-                <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
-              </Button>
+              <Link to="/seo-agency-near-me">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                  <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
+                </Button>
+              </Link>
             </div>
           </div>
         </section>
