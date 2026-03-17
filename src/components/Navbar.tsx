@@ -103,14 +103,15 @@ export const Navbar = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center">
-            <Link to="/seo-agency-near-me">
-              <Button 
-                className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
-              >
+            <Button
+              asChild
+              className="leading-none bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
+            >
+              <Link to="/seo-agency-near-me">
                 Contact
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </Link>
+            </Button>
           </div>
 
           {/* Mobile Menu Button */}
