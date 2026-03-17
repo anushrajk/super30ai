@@ -144,7 +144,7 @@ const SocialMediaDesign = () => {
           loading={loading}
         />
 
-        <ClientLogosSection />
+        
 
         {/* Portfolio Showcase */}
         <section className="py-6 md:py-10 lg:py-16 bg-background">

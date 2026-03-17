@@ -102,9 +102,6 @@ const AiSeo = () => {
         <div id="ai-seo-hero">
           <HeroSection onSubmit={handleFormSubmit} loading={loading} />
         </div>
-        <div id="ai-seo-logos">
-          <ClientLogosSection />
-        </div>
         <div id="ai-seo-problem">
           <ProblemSection />
         </div>

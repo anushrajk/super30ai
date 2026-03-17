@@ -151,8 +151,6 @@ const DigitalMarketing = () => {
           loading={loading}
         />
 
-        {/* Client Logos */}
-        <ClientLogosSection />
 
         {/* Our Products / Services - Detailed with Interlinking */}
         <section className="py-10 md:py-16 lg:py-24 bg-background">

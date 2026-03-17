@@ -142,7 +142,7 @@ const WebDesign = () => {
           loading={loading}
         />
 
-        <ClientLogosSection />
+        
 
         {/* Project Showcase - Dark Scrollable */}
         <ProjectShowcaseSection />

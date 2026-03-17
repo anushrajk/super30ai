@@ -288,10 +288,6 @@ const Work = () => {
           </div>
         </section>
 
-        {/* Client Logos Section */}
-        <div id="work-logos">
-          <ClientLogosSection />
-        </div>
 
 
         {/* Testimonials Section */}

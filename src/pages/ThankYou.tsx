@@ -307,7 +307,7 @@ For questions, contact: thesuper30.ai@gmail.com
           </div>
         </section>
 
-        <ClientLogosSection />
+        
         <TestimonialSection />
         <Footer />
       </main>

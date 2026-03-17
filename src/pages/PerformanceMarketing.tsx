@@ -192,9 +192,6 @@ const PerformanceMarketing = () => {
             <PMHeroSection onSubmit={handleHeroFormSubmit} loading={loading} />
           </Suspense>
         </div>
-        <div id="pm-logos">
-          <ClientLogosSection />
-        </div>
         <div id="pm-problem">
           <PMProblemSection />
         </div>
