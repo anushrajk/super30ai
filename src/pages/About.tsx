@@ -102,12 +102,12 @@ const About = () => {
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
                   Meet Our{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">SEO Experts & PPC Specialists</span>
+                    <span className="text-brand-gradient">Digital Marketing Experts</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Our SEO agency team is made up of experienced SEO specialists, PPC specialists, and digital marketing experts who are passionate about{" "}
+                  Our digital marketing team is made up of experienced SEO specialists, PPC specialists, and growth experts who are passionate about{" "}
                   <span className="text-foreground font-semibold">growing brands</span>.
                 </p>
               </div>
