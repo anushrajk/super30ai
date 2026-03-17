@@ -173,16 +173,16 @@ export const TestimonialSection = () => {
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
       
-      {/* Animated Glowing Orbs */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Subtle background accents */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand/3 rounded-full blur-[100px]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-[150px]" />
       
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative">
         {/* Section Header */}
         <div className={`text-center max-w-3xl mx-auto mb-10 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-orange-400 rounded-full" />
             Testimonials
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
@@ -196,9 +196,8 @@ export const TestimonialSection = () => {
         {/* Text Testimonial Carousel */}
         <div className={`max-w-5xl mx-auto mb-16 md:mb-20 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <Card className="bg-white/[0.03] backdrop-blur-xl border-white/10 shadow-2xl shadow-black/40 overflow-hidden relative group hover:border-white/20 transition-all duration-500">
-            {/* Glow Effects */}
-            <div className="absolute top-0 right-0 w-80 h-80 bg-brand/10 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            <div className="absolute bottom-0 left-0 w-80 h-80 bg-brand/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            {/* Subtle background accents */}
+            <div className="absolute top-0 right-0 w-80 h-80 bg-brand/5 rounded-full blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
             
             <CardContent className="p-6 sm:p-8 md:p-12 relative">
               {/* Quote Icon with Hover Effect */}

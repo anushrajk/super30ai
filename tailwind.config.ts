@@ -71,11 +71,7 @@ export default {
         "2xl": "calc(var(--radius) + 8px)",
         "3xl": "calc(var(--radius) + 12px)",
       },
-      boxShadow: {
-        'brand': '0 10px 40px -10px hsl(var(--brand) / 0.3)',
-        'brand-lg': '0 20px 60px -15px hsl(var(--brand) / 0.4)',
-        'glow': '0 0 40px hsl(var(--brand) / 0.2)',
-      },
+      boxShadow: {},
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
