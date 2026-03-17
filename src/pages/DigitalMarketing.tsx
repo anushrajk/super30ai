@@ -66,7 +66,7 @@ const serviceProducts = [
     features: ["Email campaign automation", "Lead nurturing sequences", "Blog & content strategy", "Marketing funnel design"],
     href: "/contact",
     cta: "Book A Scoping Call",
-    image: emailMockup,
+    image: serviceMockup,
   },
 ];
 
