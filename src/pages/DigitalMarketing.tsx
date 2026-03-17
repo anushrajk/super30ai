@@ -9,7 +9,9 @@ import { BlogSection } from "@/components/landing/BlogSection";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { BentoBadge } from "@/components/ui/bento-grid";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
+import { toast } from "sonner";
 import {
   Megaphone, ArrowRight, MessageCircle, Award, CheckCircle2,
   Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
