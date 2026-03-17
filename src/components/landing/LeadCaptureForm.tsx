@@ -175,16 +175,16 @@ export const LeadCaptureForm = ({
       
       <CardContent className="p-4 sm:p-6 relative">
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
-          Book Your Free AI Visibility Consultation
+          {formTitle}
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-1">
-          In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.
+          {formDescription}
         </p>
         
         {/* Value badge */}
         <div className="flex items-center justify-center gap-2 mb-5">
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-            100% Free
+            {formBadgeText}
           </span>
         </div>
 
