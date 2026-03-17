@@ -79,17 +79,6 @@ export const Navbar = () => {
             <span className="w-px h-5 bg-border/50 mx-1" />
 
             <Link
-              to="/seo-experts-bangalore"
-              className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
-                location.pathname === "/seo-experts-bangalore"
-                  ? "text-brand"
-                  : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-              }`}
-            >
-              <span className="link-underline">Team 30</span>
-            </Link>
-
-            <Link
               to="/seo-results-bangalore"
               className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
                 location.pathname === "/seo-results-bangalore"
@@ -101,14 +90,14 @@ export const Navbar = () => {
             </Link>
 
             <Link
-              to="/seo-agency-near-me"
+              to="/seo-experts-bangalore"
               className={`relative px-3 py-2 text-sm font-medium transition-all duration-300 rounded-lg group ${
-                location.pathname === "/seo-agency-near-me"
+                location.pathname === "/seo-experts-bangalore"
                   ? "text-brand"
                   : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
               }`}
             >
-              <span className="link-underline">Contact</span>
+              <span className="link-underline">Team 30</span>
             </Link>
           </div>
 
@@ -119,7 +108,7 @@ export const Navbar = () => {
                 className="bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
                 <ArrowRight className="w-4 h-4 mr-2" />
-                Reach Us
+                Contact
               </Button>
             </Link>
           </div>
@@ -215,7 +204,7 @@ export const Navbar = () => {
                   className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
                 >
                   <ArrowRight className="w-4 h-4 mr-2" />
-                  Reach Us
+                  Contact
                 </Button>
               </Link>
             </div>
