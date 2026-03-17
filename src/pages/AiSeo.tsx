@@ -1,7 +1,8 @@
 import { useFunnelData } from "@/hooks/useFunnelData";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { Navbar } from "@/components/Navbar";
-import { HeroSection } from "@/components/landing/HeroSection";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { Search, Globe, Bot, Handshake, BarChart3, TrendingUp } from "lucide-react";
 
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
