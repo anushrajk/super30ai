@@ -221,9 +221,7 @@ export const ServicesSection = () => {
               {/* Connection lines - Desktop */}
               <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 z-0">
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/40 to-transparent animate-pulse" style={{
-                animationDuration: '2s'
-              }} />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
