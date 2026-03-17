@@ -35,6 +35,12 @@ export const ServiceHeroSection = ({
   credentials,
   onSubmit,
   loading,
+  formTitle,
+  formDescription,
+  formBadgeText,
+  formButtonText,
+  formId,
+  formName,
 }: ServiceHeroSectionProps) => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
