@@ -31,6 +31,7 @@ const serviceProducts = [
     features: ["AI-powered search optimization", "Technical SEO & site audits", "Content strategy & creation", "Local & international SEO"],
     href: "/ai-seo-agency-bangalore",
     cta: "Get Free SEO Audit",
+    image: seoMockup,
   },
   {
     subtitle: "Paid Advertising",
@@ -38,6 +39,7 @@ const serviceProducts = [
     features: ["Google & Meta Ads management", "AI-optimized bid strategies", "LinkedIn & YouTube campaigns", "Conversion rate optimization"],
     href: "/performance-marketing",
     cta: "Book A Strategy Call",
+    image: performanceMockup,
   },
   {
     subtitle: "Brand Presence",
@@ -45,6 +47,7 @@ const serviceProducts = [
     features: ["Content calendar & posting", "Community management", "Influencer collaborations", "Reels & short-form video"],
     href: "/social-media-post-design",
     cta: "Get Social Strategy",
+    image: socialMockup,
   },
   {
     subtitle: "Creative Studio",
@@ -52,6 +55,7 @@ const serviceProducts = [
     features: ["Brand identity & logo design", "Social media creatives", "Marketing collaterals", "Presentation & pitch decks"],
     href: "/design",
     cta: "Get A Quick Quote",
+    image: designMockup,
   },
   {
     subtitle: "Web & Landing Pages",
@@ -59,6 +63,7 @@ const serviceProducts = [
     features: ["High-converting landing pages", "Corporate & e-commerce sites", "UI/UX & responsive design", "Speed & Core Web Vitals"],
     href: "/web-design-development",
     cta: "Get Website Quote",
+    image: webMockup,
   },
   {
     subtitle: "Growth & Automation",
@@ -66,6 +71,7 @@ const serviceProducts = [
     features: ["Email campaign automation", "Lead nurturing sequences", "Blog & content strategy", "Marketing funnel design"],
     href: "/contact",
     cta: "Book A Scoping Call",
+    image: emailMockup,
   },
 ];
 
