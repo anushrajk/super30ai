@@ -101,9 +101,9 @@ export const HeroDashboardPreview = () => {
     <div className={`relative transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
       {/* Main Dashboard Card - reduced blur */}
       <div className="relative bg-background/90 rounded-3xl border border-border/50 shadow-2xl overflow-hidden p-6">
-        {/* Simplified glow effects - reduced blur radius */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-orange-400/20 to-orange-600/10 rounded-full blur-2xl" />
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-blue-400/10 to-blue-600/5 rounded-full blur-2xl" />
+        {/* Subtle background accents */}
+        <div className="absolute -top-20 -right-20 w-40 h-40 bg-gradient-to-br from-muted/20 to-muted/10 rounded-full blur-2xl" />
+        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gradient-to-br from-muted/10 to-muted/5 rounded-full blur-2xl" />
         
         {/* Header */}
         <div className="flex items-center justify-between mb-6">

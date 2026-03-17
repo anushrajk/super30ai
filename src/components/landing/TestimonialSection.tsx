@@ -182,7 +182,7 @@ export const TestimonialSection = () => {
         {/* Section Header */}
         <div className={`text-center max-w-3xl mx-auto mb-10 md:mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-sm font-medium mb-6">
-            <span className="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+            <span className="w-2 h-2 bg-orange-400 rounded-full" />
             Testimonials
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
