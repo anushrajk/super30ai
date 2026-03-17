@@ -17,12 +17,7 @@ import {
   Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
   Mail, Users, Lightbulb, Layers, Sparkles
 } from "lucide-react";
-import seoMockup from "@/assets/services/seo-mockup.png";
-import performanceMockup from "@/assets/services/performance-mockup.png";
-import socialMockup from "@/assets/services/social-mockup.png";
-import designMockup from "@/assets/services/design-mockup.png";
-import webMockup from "@/assets/services/web-mockup.png";
-import emailMockup from "@/assets/services/email-mockup.png";
+import serviceMockup from "@/assets/services/service-mockup.avif";
 
 const serviceProducts = [
   {
@@ -31,7 +26,7 @@ const serviceProducts = [
     features: ["AI-powered search optimization", "Technical SEO & site audits", "Content strategy & creation", "Local & international SEO"],
     href: "/ai-seo-agency-bangalore",
     cta: "Get Free SEO Audit",
-    image: seoMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Paid Advertising",
@@ -39,7 +34,7 @@ const serviceProducts = [
     features: ["Google & Meta Ads management", "AI-optimized bid strategies", "LinkedIn & YouTube campaigns", "Conversion rate optimization"],
     href: "/performance-marketing",
     cta: "Book A Strategy Call",
-    image: performanceMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Brand Presence",
@@ -47,7 +42,7 @@ const serviceProducts = [
     features: ["Content calendar & posting", "Community management", "Influencer collaborations", "Reels & short-form video"],
     href: "/social-media-post-design",
     cta: "Get Social Strategy",
-    image: socialMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Creative Studio",
@@ -55,7 +50,7 @@ const serviceProducts = [
     features: ["Brand identity & logo design", "Social media creatives", "Marketing collaterals", "Presentation & pitch decks"],
     href: "/design",
     cta: "Get A Quick Quote",
-    image: designMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Web & Landing Pages",
@@ -63,7 +58,7 @@ const serviceProducts = [
     features: ["High-converting landing pages", "Corporate & e-commerce sites", "UI/UX & responsive design", "Speed & Core Web Vitals"],
     href: "/web-design-development",
     cta: "Get Website Quote",
-    image: webMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Growth & Automation",
@@ -71,7 +66,7 @@ const serviceProducts = [
     features: ["Email campaign automation", "Lead nurturing sequences", "Blog & content strategy", "Marketing funnel design"],
     href: "/contact",
     cta: "Book A Scoping Call",
-    image: emailMockup,
+    image: serviceMockup,
   },
 ];
 
