@@ -122,57 +122,7 @@ const DigitalMarketing = () => {
         />
 
 
-        {/* Our Products / Services - Detailed with Interlinking */}
-        <section className="py-10 md:py-16 lg:py-24 bg-background">
-          <div className="container mx-auto px-3 md:px-4">
-            <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-              <BentoBadge className="mb-4">Our Services</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Everything You Need to <span className="text-brand">Grow Online</span>
-              </h2>
-              <p className="text-base md:text-lg text-muted-foreground">
-                Explore our full suite of digital marketing services — each designed to work independently or as part of a unified growth strategy.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-              {serviceProducts.map((product, index) => (
-                <div key={index} className="bg-card border border-border rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group">
-                  <div>
-                    <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
-                    <ul className="space-y-3 mb-6">
-                      {product.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <Link to={product.href}>
-                    <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
-                      {product.cta}
-                      <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
-                        <ArrowRight className="w-3.5 h-3.5 text-white" />
-                      </span>
-                    </Button>
-                  </Link>
-                </div>
-              ))}
-            </div>
-
-            {/* Cross-link CTA */}
-            <div className="text-center mt-12">
-              <p className="text-muted-foreground mb-4">Not sure which service is right for you?</p>
-              <Link to="/seo-agency-near-me">
-                <Button size="lg" className="bg-brand hover:bg-brand/90 text-white">
-                  Talk to Our Experts <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </section>
+        <ServicesBentoGrid />
 
         {/* Process Section */}
         <section className="py-6 md:py-10 lg:py-16 bg-muted/30">
