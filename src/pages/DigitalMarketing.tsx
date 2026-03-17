@@ -191,27 +191,38 @@ const DigitalMarketing = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {serviceProducts.map((product, index) => (
-                <div key={index} className="bg-card border border-border rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group">
-                  <div>
-                    <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
-                    <ul className="space-y-3 mb-6">
-                      {product.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                <div key={index} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="p-6 md:p-8 flex flex-col flex-1">
+                    <div>
+                      <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
+                      <ul className="space-y-3 mb-6">
+                        {product.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
+                            <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <Link to={product.href}>
+                      <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
+                        {product.cta}
+                        <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
+                          <ArrowRight className="w-3.5 h-3.5 text-white" />
+                        </span>
+                      </Button>
+                    </Link>
                   </div>
-                  <Link to={product.href}>
-                    <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
-                      {product.cta}
-                      <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
-                        <ArrowRight className="w-3.5 h-3.5 text-white" />
-                      </span>
-                    </Button>
-                  </Link>
+                  {/* Mockup Image */}
+                  <div className="h-48 md:h-56 overflow-hidden bg-muted/30">
+                    <img 
+                      src={product.image} 
+                      alt={product.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
