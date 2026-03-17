@@ -76,7 +76,7 @@ const ServiceCard = ({
 
 export const ServicesBentoGrid = () => {
   return (
-    <section className="py-10 md:py-16 lg:py-24 bg-[#0a0a0a]">
+    <section className="py-10 md:py-16 lg:py-24 bg-background">
       <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between max-w-6xl mx-auto mb-10 md:mb-14 gap-4">
