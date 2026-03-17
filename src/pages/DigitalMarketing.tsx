@@ -177,43 +177,30 @@ const DigitalMarketing = () => {
               </p>
             </div>
 
-            <div className="space-y-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {serviceProducts.map((product, index) => (
-                <Card key={index} className="overflow-hidden border-2 border-border/50 hover:border-brand/30 transition-all duration-300 group">
-                  <CardContent className="p-0">
-                    <div className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'} items-stretch`}>
-                      {/* Icon/Visual Side */}
-                      <div className="md:w-2/5 bg-gradient-to-br from-brand/5 to-brand/10 p-8 md:p-10 flex flex-col items-center justify-center text-center">
-                        <div className="w-20 h-20 bg-brand/10 border-2 border-brand/20 rounded-3xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-brand group-hover:border-brand transition-all duration-300">
-                          <product.icon className="w-10 h-10 text-brand group-hover:text-white transition-colors duration-300" />
-                        </div>
-                        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">{product.title}</h3>
-                        <Link to={product.href}>
-                          <Button className="mt-4 bg-brand hover:bg-brand/90 text-white">
-                            Learn More <ArrowRight className="w-4 h-4 ml-2" />
-                          </Button>
-                        </Link>
-                      </div>
-
-                      {/* Content Side */}
-                      <div className="md:w-3/5 p-6 md:p-10 flex flex-col justify-center">
-                        <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-6">
-                          {product.description}
-                        </p>
-                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          {product.features.map((feature, i) => (
-                            <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
-                              <div className="w-5 h-5 bg-brand/10 rounded-full flex items-center justify-center flex-shrink-0">
-                                <CheckCircle2 className="w-3 h-3 text-brand" />
-                              </div>
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <div key={index} className="bg-card border border-border rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group">
+                  <div>
+                    <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
+                    <ul className="space-y-3 mb-6">
+                      {product.features.map((feature, i) => (
+                        <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
+                          <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <Link to={product.href}>
+                    <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
+                      {product.cta}
+                      <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
+                        <ArrowRight className="w-3.5 h-3.5 text-white" />
+                      </span>
+                    </Button>
+                  </Link>
+                </div>
               ))}
             </div>
 
