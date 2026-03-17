@@ -18,50 +18,8 @@ import {
   BarChart3, Zap, Bot, Users
 } from "lucide-react";
 
-const serviceProducts = [
-  {
-    subtitle: "Search Domination",
-    title: "AI SEO Services",
-    features: ["AI-powered search optimization", "Technical SEO & site audits", "Content strategy & creation", "Local & international SEO"],
-    href: "/ai-seo-agency-bangalore",
-    cta: "Get Free SEO Audit",
-  },
-  {
-    subtitle: "Paid Advertising",
-    title: "Performance Marketing",
-    features: ["Google & Meta Ads management", "AI-optimized bid strategies", "LinkedIn & YouTube campaigns", "Conversion rate optimization"],
-    href: "/performance-marketing",
-    cta: "Book A Strategy Call",
-  },
-  {
-    subtitle: "Brand Presence",
-    title: "Social Media Marketing",
-    features: ["Content calendar & posting", "Community management", "Influencer collaborations", "Reels & short-form video"],
-    href: "/social-media-post-design",
-    cta: "Get Social Strategy",
-  },
-  {
-    subtitle: "Creative Studio",
-    title: "Design Services",
-    features: ["Brand identity & logo design", "Social media creatives", "Marketing collaterals", "Presentation & pitch decks"],
-    href: "/design",
-    cta: "Get A Quick Quote",
-  },
-  {
-    subtitle: "Web & Landing Pages",
-    title: "Web Design",
-    features: ["High-converting landing pages", "Corporate & e-commerce sites", "UI/UX & responsive design", "Speed & Core Web Vitals"],
-    href: "/web-design-development",
-    cta: "Get Website Quote",
-  },
-  {
-    subtitle: "Growth & Automation",
-    title: "Email & Content Marketing",
-    features: ["Email campaign automation", "Lead nurturing sequences", "Blog & content strategy", "Marketing funnel design"],
-    href: "/contact",
-    cta: "Book A Scoping Call",
-  },
-];
+
+
 
 const process = [
   { step: "01", title: "Discovery & Audit", description: "We analyze your current digital presence, competitors & growth opportunities." },
