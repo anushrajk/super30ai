@@ -50,7 +50,7 @@ const serviceProducts = [
     features: ["Brand identity & logo design", "Social media creatives", "Marketing collaterals", "Presentation & pitch decks"],
     href: "/design",
     cta: "Get A Quick Quote",
-    image: designMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Web & Landing Pages",
