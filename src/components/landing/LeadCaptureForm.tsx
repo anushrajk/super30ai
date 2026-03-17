@@ -10,6 +10,12 @@ interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
   loading?: boolean;
   variant?: "default" | "compact";
+  formTitle?: string;
+  formDescription?: string;
+  formBadgeText?: string;
+  formButtonText?: string;
+  formId?: string;
+  formName?: string;
 }
 
 const roleOptions = [
