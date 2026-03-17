@@ -184,36 +184,36 @@ const DigitalMarketing = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
               {serviceProducts.map((product, index) => (
-                <div key={index} className="rounded-3xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 group bg-gradient-to-b from-muted/40 to-muted/80">
+                <div key={index} className="rounded-3xl overflow-hidden flex flex-col transition-all duration-300 group bg-muted/50">
                   {/* Content */}
-                  <div className="px-8 pt-10 pb-6 flex flex-col flex-1">
-                    <p className="text-sm text-muted-foreground font-medium mb-2 tracking-wide">{product.subtitle}</p>
-                    <h3 className="text-2xl md:text-[1.75rem] font-bold text-foreground mb-6 leading-tight">{product.title}</h3>
-                    <ul className="space-y-3.5 mb-8">
+                  <div className="px-8 md:px-10 pt-10 md:pt-12 pb-8 flex flex-col">
+                    <p className="text-sm text-muted-foreground font-medium mb-2 italic">{product.subtitle}</p>
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-6 leading-tight">{product.title}</h3>
+                    <ul className="space-y-4 mb-8">
                       {product.features.map((feature, i) => (
-                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/80">
-                          <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
+                        <li key={i} className="flex items-center gap-3 text-sm md:text-base text-foreground/80">
+                          <CheckCircle2 className="w-5 h-5 text-brand flex-shrink-0" />
                           <span>{feature}</span>
                         </li>
                       ))}
                     </ul>
                     <Link to={product.href}>
-                      <Button className="bg-brand hover:bg-brand/90 text-white rounded-full pl-6 pr-2 py-3 h-auto text-sm font-bold uppercase tracking-wide group/btn">
+                      <Button className="bg-brand hover:bg-brand/90 text-white rounded-full pl-7 pr-2 py-3 h-auto text-sm font-bold uppercase tracking-wider group/btn">
                         {product.cta}
-                        <span className="ml-3 w-8 h-8 bg-white rounded-full inline-flex items-center justify-center">
-                          <ArrowRight className="w-4 h-4 text-brand" />
+                        <span className="ml-3 w-9 h-9 bg-white rounded-full inline-flex items-center justify-center">
+                          <ArrowRight className="w-4 h-4 text-brand rotate-[-45deg]" />
                         </span>
                       </Button>
                     </Link>
                   </div>
                   {/* Mockup Image */}
-                  <div className="h-56 md:h-64 overflow-hidden">
+                  <div className="h-64 md:h-72 lg:h-80 overflow-hidden mt-auto">
                     <img 
                       src={product.image} 
                       alt={product.title} 
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
