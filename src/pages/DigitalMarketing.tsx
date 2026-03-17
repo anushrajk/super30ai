@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Button } from "@/components/ui/button";
