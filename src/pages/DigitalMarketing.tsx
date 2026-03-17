@@ -191,35 +191,34 @@ const DigitalMarketing = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {serviceProducts.map((product, index) => (
-                <div key={index} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 group">
-                  <div className="p-6 md:p-8 flex flex-col flex-1">
-                    <div>
-                      <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
-                      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
-                      <ul className="space-y-3 mb-6">
-                        {product.features.map((feature, i) => (
-                          <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
-                            <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                <div key={index} className="rounded-3xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 group bg-gradient-to-b from-muted/40 to-muted/80">
+                  {/* Content */}
+                  <div className="px-8 pt-10 pb-6 flex flex-col flex-1">
+                    <p className="text-sm text-muted-foreground font-medium mb-2 tracking-wide">{product.subtitle}</p>
+                    <h3 className="text-2xl md:text-[1.75rem] font-bold text-foreground mb-6 leading-tight">{product.title}</h3>
+                    <ul className="space-y-3.5 mb-8">
+                      {product.features.map((feature, i) => (
+                        <li key={i} className="flex items-start gap-3 text-sm text-foreground/80">
+                          <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                     <Link to={product.href}>
-                      <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
+                      <Button className="bg-brand hover:bg-brand/90 text-white rounded-full pl-6 pr-2 py-3 h-auto text-sm font-bold uppercase tracking-wide group/btn">
                         {product.cta}
-                        <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
-                          <ArrowRight className="w-3.5 h-3.5 text-white" />
+                        <span className="ml-3 w-8 h-8 bg-white rounded-full inline-flex items-center justify-center">
+                          <ArrowRight className="w-4 h-4 text-brand" />
                         </span>
                       </Button>
                     </Link>
                   </div>
                   {/* Mockup Image */}
-                  <div className="h-48 md:h-56 overflow-hidden bg-muted/30">
+                  <div className="h-56 md:h-64 overflow-hidden">
                     <img 
                       src={product.image} 
                       alt={product.title} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                   </div>
