@@ -2,11 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
-import performanceLaptop from "@/assets/services/performance-laptop.png";
-import socialMediaLaptop from "@/assets/services/social-media-laptop.png";
-import designLaptop from "@/assets/services/design-laptop.png";
-import webDesignLaptop from "@/assets/services/web-design-laptop.png";
-import emailLaptop from "@/assets/services/email-laptop.png";
 
 const services = [
   {
