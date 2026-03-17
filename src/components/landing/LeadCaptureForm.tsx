@@ -119,8 +119,8 @@ export const LeadCaptureForm = ({
 
       // Submit to Google Sheets (non-blocking)
       void submitFormToGoogleSheets({
-        form_id: "lead_capture_form_seo",
-        form_name: "Free AI Visibility Consultation",
+        form_id: formId,
+        form_name: formName,
         page_url: window.location.href,
         trigger_type: "form_submit",
         data: {
