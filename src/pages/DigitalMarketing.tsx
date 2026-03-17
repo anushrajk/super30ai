@@ -34,7 +34,7 @@ const serviceProducts = [
     features: ["Google & Meta Ads management", "AI-optimized bid strategies", "LinkedIn & YouTube campaigns", "Conversion rate optimization"],
     href: "/performance-marketing",
     cta: "Book A Strategy Call",
-    image: performanceMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Brand Presence",
