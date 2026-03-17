@@ -203,8 +203,8 @@ export const Navbar = () => {
                 <Button 
                   className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
                 >
-                  <ArrowRight className="w-4 h-4 mr-2" />
-                  Contact
+                   Contact
+                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
             </div>
