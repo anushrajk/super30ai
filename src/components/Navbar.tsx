@@ -201,15 +201,17 @@ export const Navbar = () => {
             </Link>
 
             <div className="pt-4 mt-2 border-t border-border/50">
-              <Button
-                asChild
-                className="w-full leading-none bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
+              <Link
+                to="/seo-agency-near-me"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={buttonVariants({
+                  className:
+                    "w-full leading-none bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg",
+                })}
               >
-                <Link to="/seo-agency-near-me" onClick={() => setIsMobileMenuOpen(false)}>
-                  Contact
-                  <ArrowRight className="h-4 w-4 shrink-0" />
-                </Link>
-              </Button>
+                Contact
+                <ArrowRight className="h-4 w-4 shrink-0" />
+              </Link>
             </div>
           </div>
         </div>
