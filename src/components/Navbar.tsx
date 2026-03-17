@@ -105,7 +105,7 @@ export const Navbar = () => {
           <div className="hidden lg:flex items-center">
             <Link
               to="/seo-agency-near-me"
-              className={`${buttonVariants()} leading-none bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300`}
+              className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-semibold leading-none text-white ring-offset-background transition-all duration-300 active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-[hsl(var(--brand-orange))] shadow-lg hover:scale-105 hover:bg-[hsl(var(--brand-orange))]/90 hover:shadow-xl"
             >
               Contact
               <ArrowRight className="h-4 w-4 shrink-0" />
