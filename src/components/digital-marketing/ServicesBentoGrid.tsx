@@ -95,15 +95,6 @@ export const ServicesBentoGrid = () => {
               <span className="text-foreground">We Excel At</span>
             </h2>
           </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 border border-border rounded-full px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted transition-colors w-fit"
-          >
-            VIEW ALL SERVICES
-            <span className="w-6 h-6 rounded-full bg-brand flex items-center justify-center">
-              <ArrowRight className="w-3.5 h-3.5 text-white" />
-            </span>
-          </Link>
         </div>
 
         {/* Bento Grid */}
