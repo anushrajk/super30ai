@@ -196,12 +196,10 @@ export const ServicesSection = () => {
 
         {/* Enhanced AI Prompt & Generative Search Optimization - Infographic Style */}
         <div className="bento-card p-4 md:p-8 mb-6 md:mb-12 relative overflow-hidden">
-          {/* Animated background elements */}
+          {/* Background elements */}
           <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl animate-pulse" />
-            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl animate-pulse" style={{
-            animationDelay: '1s'
-          }} />
+            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl" />
+            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand/3 rounded-full blur-3xl" />
           </div>
           
