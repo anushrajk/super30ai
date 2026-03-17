@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 import { BentoBadge, BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { openThankYouPage } from "@/lib/thankYouRedirect";
+import { toast } from "sonner";
 import {
   Globe, ArrowRight, MessageCircle, Award, CheckCircle2,
   Layout, ShoppingCart, Smartphone, Zap, Code, Paintbrush,
