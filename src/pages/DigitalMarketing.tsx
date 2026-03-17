@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { Button } from "@/components/ui/button";
@@ -149,10 +149,13 @@ const DigitalMarketing = () => {
           credentials={["30+ Marketing Experts", "AI-Powered Strategies", "300+ Brands Served"]}
           onSubmit={handleFormSubmit}
           loading={loading}
+          formTitle="Get Your Free Digital Marketing Strategy"
+          formDescription="Tell us about your business and our experts will create a custom growth plan to boost your online presence."
+          formButtonText="Get Free Strategy"
+          formId="lead_capture_digital_marketing"
+          formName="Digital Marketing Strategy Consultation"
         />
 
-        {/* Client Logos */}
-        <ClientLogosSection />
 
         {/* Our Products / Services - Detailed with Interlinking */}
         <section className="py-10 md:py-16 lg:py-24 bg-background">

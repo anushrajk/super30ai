@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { Button } from "@/components/ui/button";
 import { BentoBadge, BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
@@ -140,9 +140,14 @@ const WebDesign = () => {
           credentials={["200+ Websites Built", "Core Web Vitals Optimized", "SEO-Ready"]}
           onSubmit={handleFormSubmit}
           loading={loading}
+          formTitle="Get Your Free Website Consultation"
+          formDescription="Tell us about your project and we'll create a plan for a high-converting website that grows your business."
+          formButtonText="Get Free Website Quote"
+          formId="lead_capture_web_design"
+          formName="Web Design Consultation"
         />
 
-        <ClientLogosSection />
+        
 
         {/* Project Showcase - Dark Scrollable */}
         <ProjectShowcaseSection />

@@ -5,7 +5,7 @@ import { CheckCircle, Phone, Calendar, ArrowRight, Clock, Video, Download, Globe
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { Navbar } from "@/components/Navbar";
 import { useFunnelData } from "@/hooks/useFunnelData";
@@ -307,7 +307,7 @@ For questions, contact: thesuper30.ai@gmail.com
           </div>
         </section>
 
-        <ClientLogosSection />
+        
         <TestimonialSection />
         <Footer />
       </main>

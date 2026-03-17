@@ -18,6 +18,12 @@ interface ServiceHeroSectionProps {
   credentials: string[];
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
   loading?: boolean;
+  formTitle?: string;
+  formDescription?: string;
+  formBadgeText?: string;
+  formButtonText?: string;
+  formId?: string;
+  formName?: string;
 }
 
 export const ServiceHeroSection = ({
@@ -29,6 +35,12 @@ export const ServiceHeroSection = ({
   credentials,
   onSubmit,
   loading,
+  formTitle,
+  formDescription,
+  formBadgeText,
+  formButtonText,
+  formId,
+  formName,
 }: ServiceHeroSectionProps) => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
@@ -96,7 +108,16 @@ export const ServiceHeroSection = ({
           {/* Right Column - Form */}
           <div className="md:col-span-1 lg:col-span-5">
             <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-              <LeadCaptureForm onSubmit={onSubmit} loading={loading} />
+              <LeadCaptureForm 
+                onSubmit={onSubmit} 
+                loading={loading}
+                formTitle={formTitle}
+                formDescription={formDescription}
+                formBadgeText={formBadgeText}
+                formButtonText={formButtonText}
+                formId={formId}
+                formName={formName}
+              />
             </div>
 
             {/* Expert credentials - Desktop only */}

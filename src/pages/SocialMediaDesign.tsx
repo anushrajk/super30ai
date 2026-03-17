@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { Button } from "@/components/ui/button";
 import { BentoBadge, BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
@@ -142,9 +142,14 @@ const SocialMediaDesign = () => {
           credentials={["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"]}
           onSubmit={handleFormSubmit}
           loading={loading}
+          formTitle="Get Your Free Social Media Design Consultation"
+          formDescription="Share your brand details and we'll show you how scroll-stopping creatives can boost your social engagement."
+          formButtonText="Get Free Design Consultation"
+          formId="lead_capture_social_media"
+          formName="Social Media Design Consultation"
         />
 
-        <ClientLogosSection />
+        
 
         {/* Portfolio Showcase */}
         <section className="py-6 md:py-10 lg:py-16 bg-background">

@@ -10,6 +10,12 @@ interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
   loading?: boolean;
   variant?: "default" | "compact";
+  formTitle?: string;
+  formDescription?: string;
+  formBadgeText?: string;
+  formButtonText?: string;
+  formId?: string;
+  formName?: string;
 }
 
 const roleOptions = [
@@ -53,7 +59,17 @@ const validatePhone = (phone: string): boolean => {
   return phoneRegex.test(phone);
 };
 
-export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: LeadCaptureFormProps) => {
+export const LeadCaptureForm = ({ 
+  onSubmit, 
+  loading, 
+  variant = "default",
+  formTitle = "Book Your Free AI Visibility Consultation",
+  formDescription = "In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.",
+  formBadgeText = "100% Free",
+  formButtonText = "Book Your Free Consultation",
+  formId = "lead_capture_form_seo",
+  formName = "Free AI Visibility Consultation",
+}: LeadCaptureFormProps) => {
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
@@ -103,8 +119,8 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
 
       // Submit to Google Sheets (non-blocking)
       void submitFormToGoogleSheets({
-        form_id: "lead_capture_form_seo",
-        form_name: "Free AI Visibility Consultation",
+        form_id: formId,
+        form_name: formName,
         page_url: window.location.href,
         trigger_type: "form_submit",
         data: {
@@ -159,16 +175,16 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
       
       <CardContent className="p-4 sm:p-6 relative">
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
-          Book Your Free AI Visibility Consultation
+          {formTitle}
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-1">
-          In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.
+          {formDescription}
         </p>
         
         {/* Value badge */}
         <div className="flex items-center justify-center gap-2 mb-5">
           <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">
-            100% Free
+            {formBadgeText}
           </span>
         </div>
 
@@ -326,7 +342,7 @@ export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: Lead
               </>
             ) : (
               <>
-                Book Your Free Consultation
+                {formButtonText}
                 <Sparkles className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
               </>
             )}
