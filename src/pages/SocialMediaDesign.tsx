@@ -113,102 +113,36 @@ const SocialMediaDesign = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* Hero */}
-        <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
-          </div>
-          <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
-            <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
-              {/* Left Column - Content */}
-              <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
-                <div className="badge-brand">
-                  <Palette className="w-4 h-4" />
-                  <span className="text-sm font-medium">Social Media Design Agency</span>
-                </div>
-
-                <div>
-                  <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                    Social Media Posts That{" "}
-                    <span className="text-brand">Stop the Scroll</span>
-                  </h1>
-                  <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                    Eye-catching, on-brand social media creatives for Instagram, Facebook, LinkedIn & more —{" "}
-                    <span className="text-foreground font-semibold">designed to engage and convert</span>.
-                  </p>
-                </div>
-
-                {/* Trust Signals */}
-                <div className="flex flex-col gap-3 py-2">
-                  {[
-                    { icon: Instagram, text: "Instagram, Facebook & LinkedIn" },
-                    { icon: Layers, text: "Carousels, Stories & Reels" },
-                    { icon: Sparkles, text: "On-Brand Creative Design" },
-                    { icon: Zap, text: "Quick Turnaround" },
-                  ].map((signal, index) => (
-                    <div key={index} className="flex items-center gap-3 group cursor-default">
-                      <div className="w-7 h-7 icon-bg-glow rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-all duration-300 shadow-md">
-                        <signal.icon className="w-3.5 h-3.5 text-brand group-hover:text-white transition-colors" />
-                      </div>
-                      <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTA */}
-                <div className="pt-2 flex flex-col sm:flex-row gap-3">
-                  <Link to="/seo-agency-near-me">
-                    <Button size="lg" className="bg-brand hover:bg-brand/90 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto px-6 py-3 h-auto rounded-xl">
-                      <Palette className="w-5 h-5 mr-2" />
-                      Reach Us
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
-                  </Link>
-                  <Button 
-                    variant="outline-brand"
-                    size="lg"
-                    onClick={() => setShowEnquiryPopup(true)}
-                    className="px-6 py-3 h-auto rounded-xl group"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    Enquire Now
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-
-                {/* Expert credentials - Mobile only */}
-                <div className="lg:hidden flex flex-wrap gap-2 pt-2">
-                  {["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"].map((cred, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
-                      <Award className="w-3 h-3 text-brand" />{cred}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {/* Right Column - Portfolio Preview */}
-              <div className="md:col-span-1 lg:col-span-5">
-                <div className="animate-fade-in grid grid-cols-2 gap-3" style={{ animationDelay: '200ms' }}>
-                  {portfolioItems.slice(0, 4).map((item, i) => (
-                    <div key={i} className="group relative overflow-hidden rounded-2xl border border-border bg-card hover:-translate-y-1 transition-all duration-300">
-                      <div className="aspect-square overflow-hidden">
-                        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                {/* Expert credentials - Desktop only */}
-                <div className="hidden lg:flex flex-wrap gap-2 mt-4 justify-center">
-                  {["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"].map((cred, i) => (
-                    <span key={i} className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium">
-                      <Award className="w-3 h-3 text-brand" />{cred}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* Hero Section with Lead Form */}
+        <ServiceHeroSection
+          badgeIcon={Palette}
+          badgeText="Social Media Design Agency"
+          headline={
+            <>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
+                Social Media Posts That
+              </span>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
+                Stop the Scroll
+              </span>
+            </>
+          }
+          description={
+            <>
+              Eye-catching, on-brand social media creatives for Instagram, Facebook, LinkedIn & more —{" "}
+              <span className="text-foreground font-semibold">designed to engage and convert</span>.
+            </>
+          }
+          trustSignals={[
+            { icon: Instagram, text: "Instagram, Facebook & LinkedIn" },
+            { icon: Layers, text: "Carousels, Stories & Reels" },
+            { icon: Sparkles, text: "On-Brand Creative Design" },
+            { icon: Zap, text: "Quick Turnaround" },
+          ]}
+          credentials={["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"]}
+          onSubmit={handleFormSubmit}
+          loading={loading}
+        />
 
         <ClientLogosSection />
 
