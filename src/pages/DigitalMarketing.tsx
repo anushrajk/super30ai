@@ -42,7 +42,7 @@ const serviceProducts = [
     features: ["Content calendar & posting", "Community management", "Influencer collaborations", "Reels & short-form video"],
     href: "/social-media-post-design",
     cta: "Get Social Strategy",
-    image: socialMockup,
+    image: serviceMockup,
   },
   {
     subtitle: "Creative Studio",
