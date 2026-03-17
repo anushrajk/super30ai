@@ -59,7 +59,17 @@ const validatePhone = (phone: string): boolean => {
   return phoneRegex.test(phone);
 };
 
-export const LeadCaptureForm = ({ onSubmit, loading, variant = "default" }: LeadCaptureFormProps) => {
+export const LeadCaptureForm = ({ 
+  onSubmit, 
+  loading, 
+  variant = "default",
+  formTitle = "Book Your Free AI Visibility Consultation",
+  formDescription = "In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.",
+  formBadgeText = "100% Free",
+  formButtonText = "Book Your Free Consultation",
+  formId = "lead_capture_form_seo",
+  formName = "Free AI Visibility Consultation",
+}: LeadCaptureFormProps) => {
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
