@@ -17,6 +17,12 @@ import {
   Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
   Mail, Users, Lightbulb, Layers, Sparkles
 } from "lucide-react";
+import seoMockup from "@/assets/services/seo-mockup.png";
+import performanceMockup from "@/assets/services/performance-mockup.png";
+import socialMockup from "@/assets/services/social-mockup.png";
+import designMockup from "@/assets/services/design-mockup.png";
+import webMockup from "@/assets/services/web-mockup.png";
+import emailMockup from "@/assets/services/email-mockup.png";
 
 const serviceProducts = [
   {
@@ -25,6 +31,7 @@ const serviceProducts = [
     features: ["AI-powered search optimization", "Technical SEO & site audits", "Content strategy & creation", "Local & international SEO"],
     href: "/ai-seo-agency-bangalore",
     cta: "Get Free SEO Audit",
+    image: seoMockup,
   },
   {
     subtitle: "Paid Advertising",
@@ -32,6 +39,7 @@ const serviceProducts = [
     features: ["Google & Meta Ads management", "AI-optimized bid strategies", "LinkedIn & YouTube campaigns", "Conversion rate optimization"],
     href: "/performance-marketing",
     cta: "Book A Strategy Call",
+    image: performanceMockup,
   },
   {
     subtitle: "Brand Presence",
@@ -39,6 +47,7 @@ const serviceProducts = [
     features: ["Content calendar & posting", "Community management", "Influencer collaborations", "Reels & short-form video"],
     href: "/social-media-post-design",
     cta: "Get Social Strategy",
+    image: socialMockup,
   },
   {
     subtitle: "Creative Studio",
@@ -46,6 +55,7 @@ const serviceProducts = [
     features: ["Brand identity & logo design", "Social media creatives", "Marketing collaterals", "Presentation & pitch decks"],
     href: "/design",
     cta: "Get A Quick Quote",
+    image: designMockup,
   },
   {
     subtitle: "Web & Landing Pages",
@@ -53,6 +63,7 @@ const serviceProducts = [
     features: ["High-converting landing pages", "Corporate & e-commerce sites", "UI/UX & responsive design", "Speed & Core Web Vitals"],
     href: "/web-design-development",
     cta: "Get Website Quote",
+    image: webMockup,
   },
   {
     subtitle: "Growth & Automation",
@@ -60,6 +71,7 @@ const serviceProducts = [
     features: ["Email campaign automation", "Lead nurturing sequences", "Blog & content strategy", "Marketing funnel design"],
     href: "/contact",
     cta: "Book A Scoping Call",
+    image: emailMockup,
   },
 ];
 
@@ -179,27 +191,38 @@ const DigitalMarketing = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
               {serviceProducts.map((product, index) => (
-                <div key={index} className="bg-card border border-border rounded-2xl p-6 md:p-8 flex flex-col justify-between hover:-translate-y-1 transition-all duration-300 group">
-                  <div>
-                    <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
-                    <ul className="space-y-3 mb-6">
-                      {product.features.map((feature, i) => (
-                        <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
-                          <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
-                          {feature}
-                        </li>
-                      ))}
-                    </ul>
+                <div key={index} className="bg-card border border-border rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-all duration-300 group">
+                  <div className="p-6 md:p-8 flex flex-col flex-1">
+                    <div>
+                      <p className="text-sm text-muted-foreground font-medium mb-1">{product.subtitle}</p>
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground mb-5">{product.title}</h3>
+                      <ul className="space-y-3 mb-6">
+                        {product.features.map((feature, i) => (
+                          <li key={i} className="flex items-center gap-2.5 text-sm text-foreground">
+                            <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <Link to={product.href}>
+                      <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
+                        {product.cta}
+                        <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
+                          <ArrowRight className="w-3.5 h-3.5 text-white" />
+                        </span>
+                      </Button>
+                    </Link>
                   </div>
-                  <Link to={product.href}>
-                    <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 group/btn">
-                      {product.cta}
-                      <span className="ml-2 w-7 h-7 bg-white/20 rounded-full inline-flex items-center justify-center group-hover/btn:bg-white/30 transition-colors">
-                        <ArrowRight className="w-3.5 h-3.5 text-white" />
-                      </span>
-                    </Button>
-                  </Link>
+                  {/* Mockup Image */}
+                  <div className="h-48 md:h-56 overflow-hidden bg-muted/30">
+                    <img 
+                      src={product.image} 
+                      alt={product.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               ))}
             </div>
