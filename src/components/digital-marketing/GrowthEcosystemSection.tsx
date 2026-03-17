@@ -1,231 +1,180 @@
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { Search, Target, Share2, Palette, Globe, Mail, TrendingUp } from "lucide-react";
-import { useEffect, useState } from "react";
+import { Search, Target, Share2, Palette, Globe, Mail } from "lucide-react";
+import { BentoBadge } from "@/components/ui/bento-grid";
+import super30Logo from "@/assets/super30-new-logo.png";
 
-const verticals = [
-  { icon: Search, label: "AI SEO", color: "18 100% 48%", desc: "Organic Visibility" },
-  { icon: Target, label: "Performance Ads", color: "217 91% 60%", desc: "Paid Conversions" },
-  { icon: Share2, label: "Social Media", color: "292 84% 61%", desc: "Brand Awareness" },
-  { icon: Palette, label: "Design", color: "38 92% 50%", desc: "Visual Identity" },
-  { icon: Globe, label: "Web Design", color: "168 76% 42%", desc: "Digital Experience" },
-  { icon: Mail, label: "Email Marketing", color: "0 84% 60%", desc: "Lead Nurturing" },
+const services = [
+  { icon: Search, label: "AI SEO", side: "left" as const },
+  { icon: Globe, label: "Web Design", side: "left" as const },
+  { icon: Target, label: "Performance Ads", side: "left" as const },
+  { icon: Share2, label: "Social Media", side: "right" as const },
+  { icon: Palette, label: "Design", side: "right" as const },
+  { icon: Mail, label: "Email Marketing", side: "right" as const },
 ];
 
-// Positions around center (angle in degrees for each node)
-const nodePositions = [
-  { angle: 270, radius: 1 },   // top
-  { angle: 330, radius: 1 },   // top-right
-  { angle: 30, radius: 1 },    // bottom-right
-  { angle: 90, radius: 1 },    // bottom
-  { angle: 150, radius: 1 },   // bottom-left
-  { angle: 210, radius: 1 },   // top-left
-];
-
-const FlowingDot = ({ angle, color, delay, isVisible }: { angle: number; color: string; delay: number; isVisible: boolean }) => {
-  if (!isVisible) return null;
-  
-  const rad = (angle * Math.PI) / 180;
-  
-  return (
-    <div
-      className="absolute top-1/2 left-1/2 w-2 h-2 rounded-full z-20"
-      style={{
-        background: `hsl(${color})`,
-        boxShadow: `0 0 8px hsl(${color} / 0.8), 0 0 16px hsl(${color} / 0.4)`,
-        animation: `flowToCenter-${Math.round(angle)} 2.5s ${delay}s ease-in-out infinite`,
-      }}
-    />
-  );
-};
+const leftServices = services.filter((s) => s.side === "left");
+const rightServices = services.filter((s) => s.side === "right");
 
 export const GrowthEcosystemSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>({ threshold: 0.15 });
-  const [animStarted, setAnimStarted] = useState(false);
-
-  useEffect(() => {
-    if (isVisible) {
-      const timer = setTimeout(() => setAnimStarted(true), 600);
-      return () => clearTimeout(timer);
-    }
-  }, [isVisible]);
-
-  // Generate CSS keyframes for each angle
-  const keyframes = nodePositions.map((pos) => {
-    const rad = (pos.angle * Math.PI) / 180;
-    const startX = Math.cos(rad) * 140;
-    const startY = Math.sin(rad) * 140;
-    return `
-      @keyframes flowToCenter-${Math.round(pos.angle)} {
-        0% { transform: translate(calc(-50% + ${startX}px), calc(-50% + ${startY}px)); opacity: 0; }
-        15% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { transform: translate(-50%, -50%); opacity: 0; }
-      }
-    `;
-  }).join("\n");
-
-  // Mobile keyframes (smaller radius)
-  const mobileKeyframes = nodePositions.map((pos) => {
-    const rad = (pos.angle * Math.PI) / 180;
-    const startX = Math.cos(rad) * 100;
-    const startY = Math.sin(rad) * 100;
-    return `
-      @keyframes mobileFlowToCenter-${Math.round(pos.angle)} {
-        0% { transform: translate(calc(-50% + ${startX}px), calc(-50% + ${startY}px)); opacity: 0; }
-        15% { opacity: 1; }
-        85% { opacity: 1; }
-        100% { transform: translate(-50%, -50%); opacity: 0; }
-      }
-    `;
-  }).join("\n");
 
   return (
-    <section className="py-10 md:py-16 lg:py-24 bg-foreground overflow-hidden" ref={sectionRef}>
-      <style>{keyframes}{mobileKeyframes}</style>
+    <section className="py-10 md:py-16 lg:py-24 bg-background overflow-hidden" ref={sectionRef}>
       <div className="container mx-auto px-3 md:px-4">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.3] mb-4">
-            <span className="text-brand">360° Growth</span>{" "}
-            <span className="text-white">Ecosystem</span>
+          <BentoBadge className="mb-4">Integrated Growth</BentoBadge>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.3] text-foreground mb-4">
+            We work across{" "}
+            <span className="text-brand">all verticals.</span>
           </h2>
-          <p className="text-white/60 text-base md:text-lg">
-            Every service is a growth lever. When all verticals work in sync, your brand doesn't just grow — it dominates.
+          <p className="text-muted-foreground text-base md:text-lg">
+            Every service connects to your brand — working in harmony to drive growth from every direction.
           </p>
         </div>
 
-        {/* Motherboard / Chip Layout */}
-        <div className="max-w-2xl mx-auto relative">
-          {/* Circuit board background pattern */}
-          <div className="relative w-full aspect-square max-w-[500px] mx-auto">
-            
-            {/* Circuit traces (lines from nodes to center) */}
-            <svg className="absolute inset-0 w-full h-full z-0" viewBox="0 0 500 500">
-              {nodePositions.map((pos, i) => {
-                const rad = (pos.angle * Math.PI) / 180;
-                const outerX = 250 + Math.cos(rad) * 190;
-                const outerY = 250 + Math.sin(rad) * 190;
-                const color = verticals[i].color;
+        {/* Integration Diagram */}
+        <div className="max-w-4xl mx-auto">
+          {/* Desktop Layout */}
+          <div className="hidden md:block relative">
+            <svg
+              className="absolute inset-0 w-full h-full z-0"
+              viewBox="0 0 800 400"
+              fill="none"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {/* Left side lines */}
+              {leftServices.map((_, i) => {
+                const nodeY = 80 + i * 120;
+                const centerX = 400;
+                const centerY = 200;
+                const nodeX = 160;
+                const elbowX = 280;
                 return (
-                  <g key={i}>
-                    {/* Main trace line */}
-                    <line
-                      x1={250} y1={250}
-                      x2={outerX} y2={outerY}
-                      stroke={`hsl(${color} / 0.25)`}
+                  <g key={`left-${i}`}>
+                    <path
+                      d={`M ${nodeX} ${nodeY} L ${elbowX} ${nodeY} L ${elbowX} ${centerY} L ${centerX - 70} ${centerY}`}
+                      stroke="hsl(var(--foreground) / 0.15)"
                       strokeWidth="2"
-                      strokeDasharray="4 4"
-                      className={`transition-all duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                      fill="none"
+                      className={`transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
                       style={{ transitionDelay: `${i * 150}ms` }}
                     />
-                    {/* Circuit board junction dots */}
-                    <circle
-                      cx={250 + Math.cos(rad) * 95}
-                      cy={250 + Math.sin(rad) * 95}
-                      r="3"
-                      fill={`hsl(${color} / 0.4)`}
-                      className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-                      style={{ transitionDelay: `${i * 150 + 300}ms` }}
-                    />
-                    <circle
-                      cx={250 + Math.cos(rad) * 145}
-                      cy={250 + Math.sin(rad) * 145}
-                      r="2.5"
-                      fill={`hsl(${color} / 0.3)`}
-                      className={`transition-all duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-                      style={{ transitionDelay: `${i * 150 + 200}ms` }}
-                    />
+                    {/* Junction dots */}
+                    <circle cx={elbowX} cy={nodeY} r="4" fill="hsl(var(--brand))" opacity={isVisible ? 0.6 : 0}
+                      className="transition-opacity duration-500" style={{ transitionDelay: `${i * 150 + 200}ms` }} />
+                    <circle cx={elbowX} cy={centerY} r="4" fill="hsl(var(--brand))" opacity={isVisible ? 0.4 : 0}
+                      className="transition-opacity duration-500" style={{ transitionDelay: `${i * 150 + 300}ms` }} />
                   </g>
                 );
               })}
-              {/* Inner ring around brand hub */}
-              <circle cx="250" cy="250" r="65" fill="none" stroke="hsl(18 100% 48% / 0.15)" strokeWidth="1" strokeDasharray="3 6"
-                className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              />
-              {/* Outer ring */}
-              <circle cx="250" cy="250" r="190" fill="none" stroke="white" strokeWidth="0.5" strokeOpacity="0.08"
-                className={`transition-opacity duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-              />
+              {/* Right side lines */}
+              {rightServices.map((_, i) => {
+                const nodeY = 80 + i * 120;
+                const centerX = 400;
+                const centerY = 200;
+                const nodeX = 640;
+                const elbowX = 520;
+                return (
+                  <g key={`right-${i}`}>
+                    <path
+                      d={`M ${nodeX} ${nodeY} L ${elbowX} ${nodeY} L ${elbowX} ${centerY} L ${centerX + 70} ${centerY}`}
+                      stroke="hsl(var(--foreground) / 0.15)"
+                      strokeWidth="2"
+                      fill="none"
+                      className={`transition-all duration-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
+                      style={{ transitionDelay: `${i * 150 + 100}ms` }}
+                    />
+                    <circle cx={elbowX} cy={nodeY} r="4" fill="hsl(var(--brand))" opacity={isVisible ? 0.6 : 0}
+                      className="transition-opacity duration-500" style={{ transitionDelay: `${i * 150 + 300}ms` }} />
+                    <circle cx={elbowX} cy={centerY} r="4" fill="hsl(var(--brand))" opacity={isVisible ? 0.4 : 0}
+                      className="transition-opacity duration-500" style={{ transitionDelay: `${i * 150 + 400}ms` }} />
+                  </g>
+                );
+              })}
             </svg>
 
-            {/* Central BRAND Hub (chip) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-              <div
-                className={`w-28 h-28 md:w-32 md:h-32 rounded-2xl bg-brand flex flex-col items-center justify-center transition-all duration-700 border border-brand/50 ${
-                  isVisible ? "scale-100 opacity-100" : "scale-50 opacity-0"
-                }`}
-                style={{ boxShadow: "0 0 40px hsl(18 100% 48% / 0.2)" }}
-              >
-                <TrendingUp className="w-8 h-8 md:w-10 md:h-10 text-white mb-1" />
-                <span className="text-white font-bold text-sm md:text-base tracking-wider">BRAND</span>
-                <span className="text-white/70 text-[10px] uppercase tracking-widest">Growth</span>
+            <div className="relative z-10 grid grid-cols-3 items-center" style={{ minHeight: 400 }}>
+              {/* Left services */}
+              <div className="flex flex-col gap-10 items-end pr-4">
+                {leftServices.map((s, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center gap-3 transition-all duration-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
+                    style={{ transitionDelay: `${i * 120}ms` }}
+                  >
+                    <div className="w-11 h-11 rounded-xl bg-muted border border-border flex items-center justify-center">
+                      <s.icon className="w-5 h-5 text-foreground" />
+                    </div>
+                    <span className="font-semibold text-foreground text-sm">{s.label}</span>
+                  </div>
+                ))}
               </div>
-            </div>
 
-            {/* Flowing dots */}
-            <div className="absolute inset-0 z-20 pointer-events-none">
-              <div className="absolute top-1/2 left-1/2 w-0 h-0">
-                {animStarted && verticals.map((v, i) => (
-                  <div key={`dots-${i}`}>
-                    <FlowingDot angle={nodePositions[i].angle} color={v.color} delay={0} isVisible={animStarted} />
-                    <FlowingDot angle={nodePositions[i].angle} color={v.color} delay={0.8} isVisible={animStarted} />
-                    <FlowingDot angle={nodePositions[i].angle} color={v.color} delay={1.6} isVisible={animStarted} />
+              {/* Center brand hub */}
+              <div className="flex justify-center">
+                <div
+                  className={`w-32 h-32 lg:w-36 lg:h-36 rounded-2xl bg-foreground flex items-center justify-center transition-all duration-700 ${isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}
+                >
+                  <img src={super30Logo} alt="The Super 30" className="w-20 h-20 lg:w-24 lg:h-24 object-contain" />
+                </div>
+              </div>
+
+              {/* Right services */}
+              <div className="flex flex-col gap-10 items-start pl-4">
+                {rightServices.map((s, i) => (
+                  <div
+                    key={i}
+                    className={`flex items-center gap-3 transition-all duration-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}
+                    style={{ transitionDelay: `${i * 120 + 100}ms` }}
+                  >
+                    <span className="font-semibold text-foreground text-sm">{s.label}</span>
+                    <div className="w-11 h-11 rounded-xl bg-muted border border-border flex items-center justify-center">
+                      <s.icon className="w-5 h-5 text-foreground" />
+                    </div>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Service Nodes (chips around the center) */}
-            {verticals.map((v, i) => {
-              const rad = (nodePositions[i].angle * Math.PI) / 180;
-              const x = 50 + (Math.cos(rad) * 38); // percentage from center
-              const y = 50 + (Math.sin(rad) * 38);
+          {/* Mobile Layout */}
+          <div className="md:hidden relative">
+            {/* Center brand */}
+            <div className={`flex justify-center mb-8 transition-all duration-700 ${isVisible ? "scale-100 opacity-100" : "scale-75 opacity-0"}`}>
+              <div className="w-24 h-24 rounded-2xl bg-foreground flex items-center justify-center">
+                <img src={super30Logo} alt="The Super 30" className="w-16 h-16 object-contain" />
+              </div>
+            </div>
 
-              return (
+            {/* Services grid */}
+            <div className="grid grid-cols-2 gap-3">
+              {services.map((s, i) => (
                 <div
                   key={i}
-                  className={`absolute z-10 -translate-x-1/2 -translate-y-1/2 transition-all duration-500 ${
-                    isVisible ? "opacity-100 scale-100" : "opacity-0 scale-75"
-                  }`}
-                  style={{
-                    left: `${x}%`,
-                    top: `${y}%`,
-                    transitionDelay: `${i * 120 + 200}ms`,
-                  }}
+                  className={`flex items-center gap-3 p-3 rounded-xl border border-border bg-card transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                  style={{ transitionDelay: `${i * 100 + 300}ms` }}
                 >
-                  <div
-                    className="flex flex-col items-center gap-1.5 px-3 py-2.5 md:px-4 md:py-3 rounded-xl border border-white/10 backdrop-blur-sm hover:border-white/25 transition-colors duration-300 cursor-default group"
-                    style={{
-                      background: `linear-gradient(135deg, hsl(${v.color} / 0.12), hsl(${v.color} / 0.04))`,
-                    }}
-                  >
-                    <div
-                      className="w-9 h-9 md:w-10 md:h-10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                      style={{ background: `hsl(${v.color} / 0.2)` }}
-                    >
-                      <v.icon className="w-4 h-4 md:w-5 md:h-5" style={{ color: `hsl(${v.color})` }} />
-                    </div>
-                    <span className="text-white font-semibold text-[10px] md:text-xs whitespace-nowrap">{v.label}</span>
-                    <span className="text-white/40 text-[8px] md:text-[10px] whitespace-nowrap hidden md:block">{v.desc}</span>
+                  <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
+                    <s.icon className="w-4 h-4 text-foreground" />
                   </div>
+                  <span className="font-medium text-foreground text-xs">{s.label}</span>
                 </div>
-              );
-            })}
+              ))}
+            </div>
           </div>
 
           {/* Bottom Message */}
           <div
-            className={`mt-10 md:mt-14 text-center transition-all duration-700 delay-700 ${
-              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+            className={`mt-10 md:mt-14 text-center transition-all duration-700 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
           >
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
-              <p className="text-white/90 text-base md:text-lg font-medium mb-2">
-                🚀 Brands with a longer vision need <span className="text-brand font-bold">all verticals working in harmony</span>.
+            <div className="bg-muted/50 border border-border rounded-2xl p-6 md:p-8 max-w-3xl mx-auto">
+              <p className="text-foreground text-base md:text-lg font-medium mb-2">
+                Brands with a longer vision need <span className="text-brand font-bold">all verticals working in harmony</span>.
               </p>
-              <p className="text-white/50 text-sm md:text-base">
-                SEO builds long-term authority, ads drive immediate conversions, social creates brand recall, 
-                design shapes perception, web converts visitors, and email nurtures relationships. 
+              <p className="text-muted-foreground text-sm md:text-base">
+                SEO builds authority, ads drive conversions, social creates recall,
+                design shapes perception, web converts visitors, and email nurtures relationships.
                 Together, they create an unstoppable growth engine.
               </p>
             </div>
