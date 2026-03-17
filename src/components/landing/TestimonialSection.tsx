@@ -173,9 +173,9 @@ export const TestimonialSection = () => {
       {/* Animated Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,107,0,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,107,0,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(ellipse_at_center,black_20%,transparent_70%)]" />
       
-      {/* Animated Glowing Orbs */}
-      <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand/10 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand/5 rounded-full blur-[100px] animate-pulse" style={{ animationDelay: '1s' }} />
+      {/* Subtle background accents */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-brand/5 rounded-full blur-[120px]" />
+      <div className="absolute bottom-20 right-1/4 w-80 h-80 bg-brand/3 rounded-full blur-[100px]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-[150px]" />
       
       <div className="container mx-auto px-4 sm:px-6 md:px-8 relative">
