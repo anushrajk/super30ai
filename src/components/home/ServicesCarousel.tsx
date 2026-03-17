@@ -82,8 +82,6 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
                   <div className="w-full h-full bg-background rounded-[inherit]" />
                 </div>
 
-                {/* Hover highlight */}
-                <div className={`absolute -inset-1 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-10 blur-lg transition-opacity duration-300`} />
 
                 <CardContent className="relative p-5 md:p-6 z-10">
                   {/* Icon */}
