@@ -17,6 +17,12 @@ import {
   Search, Target, Palette, Globe, BarChart3, TrendingUp, Zap, Bot,
   Mail, Users, Lightbulb, Layers, Sparkles
 } from "lucide-react";
+import seoMockup from "@/assets/services/seo-mockup.png";
+import performanceMockup from "@/assets/services/performance-mockup.png";
+import socialMockup from "@/assets/services/social-mockup.png";
+import designMockup from "@/assets/services/design-mockup.png";
+import webMockup from "@/assets/services/web-mockup.png";
+import emailMockup from "@/assets/services/email-mockup.png";
 
 const serviceProducts = [
   {
