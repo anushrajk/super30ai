@@ -264,7 +264,7 @@ All colors MUST be HSL.
     animation: float 8s ease-in-out infinite;
   }
 
-  /* Icon bg glow with hover enhancement - uses fallback defined above */
+  /* Icon bg with hover enhancement */
   .icon-bg-glow {
     @apply transition-all duration-300;
   }
