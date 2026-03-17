@@ -179,12 +179,12 @@ const DigitalMarketing = () => {
             <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-6">Get a free digital marketing consultation from our experts. No commitments.</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/seo-agency-near-me">
-                <Button size="lg" className="bg-white text-brand hover:bg-white/90 font-semibold">
+                <Button size="lg" className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-8">
                   Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link to="/seo-agency-near-me">
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Link to="/contact">
+                <Button size="lg" className="bg-transparent border-2 border-white text-white hover:bg-white/10 rounded-full px-8">
                   <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
                 </Button>
               </Link>
