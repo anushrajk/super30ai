@@ -121,8 +121,8 @@ const DigitalMarketing = () => {
           formName="Digital Marketing Strategy Consultation"
         />
 
-
         <ServicesBentoGrid />
+        <ServicesDetailSection />
 
         {/* Process Section */}
         <section className="py-6 md:py-10 lg:py-16 bg-muted/30">
