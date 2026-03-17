@@ -72,7 +72,25 @@ const faqs = [
 ];
 
 const DigitalMarketing = () => {
-  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
+    setLoading(true);
+    try {
+      toast.success("Form submitted successfully!");
+      openThankYouPage({
+        name: data.full_name || data.email?.split('@')[0],
+        email: data.email,
+        company: data.company_name,
+        source: 'digital_marketing'
+      });
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <>
