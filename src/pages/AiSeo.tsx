@@ -2,7 +2,7 @@ import { useFunnelData } from "@/hooks/useFunnelData";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/landing/HeroSection";
-import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+
 import { ProblemSection } from "@/components/landing/ProblemSection";
 import { RelevanceFilterSection } from "@/components/landing/RelevanceFilterSection";
 import { AIComparisonSection } from "@/components/landing/AIComparisonSection";
