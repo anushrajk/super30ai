@@ -590,6 +590,11 @@ const Design = () => {
           credentials={["100+ Brands Designed", "UI/UX Specialists", "Figma & Adobe Suite"]}
           onSubmit={handleFormSubmit}
           loading={loading}
+          formTitle="Get Your Free Design Consultation"
+          formDescription="Share your brand vision and our creative team will show you how great design can elevate your business."
+          formButtonText="Get Free Design Quote"
+          formId="lead_capture_design"
+          formName="Creative Design Consultation"
         />
         <DesignStatsSection />
         <BentoServicesSection />

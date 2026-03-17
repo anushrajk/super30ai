@@ -142,6 +142,11 @@ const SocialMediaDesign = () => {
           credentials={["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"]}
           onSubmit={handleFormSubmit}
           loading={loading}
+          formTitle="Get Your Free Social Media Design Consultation"
+          formDescription="Share your brand details and we'll show you how scroll-stopping creatives can boost your social engagement."
+          formButtonText="Get Free Design Consultation"
+          formId="lead_capture_social_media"
+          formName="Social Media Design Consultation"
         />
 
         

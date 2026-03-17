@@ -149,6 +149,11 @@ const DigitalMarketing = () => {
           credentials={["30+ Marketing Experts", "AI-Powered Strategies", "300+ Brands Served"]}
           onSubmit={handleFormSubmit}
           loading={loading}
+          formTitle="Get Your Free Digital Marketing Strategy"
+          formDescription="Tell us about your business and our experts will create a custom growth plan to boost your online presence."
+          formButtonText="Get Free Strategy"
+          formId="lead_capture_digital_marketing"
+          formName="Digital Marketing Strategy Consultation"
         />
 
 
