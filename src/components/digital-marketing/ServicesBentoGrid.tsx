@@ -2,11 +2,6 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
-import performanceLaptop from "@/assets/services/performance-laptop.png";
-import socialMediaLaptop from "@/assets/services/social-media-laptop.png";
-import designLaptop from "@/assets/services/design-laptop.png";
-import webDesignLaptop from "@/assets/services/web-design-laptop.png";
-import emailLaptop from "@/assets/services/email-laptop.png";
 
 const services = [
   {
@@ -20,35 +15,35 @@ const services = [
     title: "Performance Marketing",
     description: "Google & Meta Ads managed with AI-optimized bid strategies for maximum ROAS.",
     href: "/performance-marketing",
-    image: performanceLaptop,
+    image: null,
     gradient: "linear-gradient(160deg, #0c1a2e 0%, #1e3a5f 30%, #2563eb 70%, #60a5fa 100%)",
   },
   {
     title: "Social Media Marketing",
     description: "Content calendars, community management, and viral short-form video strategies.",
     href: "/social-media-post-design",
-    image: socialMediaLaptop,
+    image: null,
     gradient: "linear-gradient(160deg, #1a0a1e 0%, #5b1a6e 30%, #d946ef 70%, #f0abfc 100%)",
   },
   {
     title: "Design Services",
     description: "Brand identity, social media creatives, and marketing collaterals that stand out.",
     href: "/design",
-    image: designLaptop,
+    image: null,
     gradient: "linear-gradient(160deg, #1a1a0a 0%, #6b4f1a 30%, #f59e0b 70%, #fcd34d 100%)",
   },
   {
     title: "Web Design",
     description: "High-converting landing pages and responsive websites optimized for speed.",
     href: "/web-design-development",
-    image: webDesignLaptop,
+    image: null,
     gradient: "linear-gradient(160deg, #0a1a1a 0%, #134e4a 30%, #14b8a6 70%, #5eead4 100%)",
   },
   {
     title: "Email & Content Marketing",
     description: "Automated email sequences, lead nurturing funnels, and content strategy.",
     href: "/contact",
-    image: emailLaptop,
+    image: null,
     gradient: "linear-gradient(160deg, #1a0a0a 0%, #7f1d1d 30%, #ef4444 70%, #fca5a5 100%)",
   },
 ];
@@ -73,15 +68,17 @@ const ServiceCard = ({
       </p>
     </div>
 
-    {/* Laptop image at bottom */}
-    <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4">
-      <img
-        src={service.image}
-        alt={service.title}
-        className="w-[85%] max-w-[300px] object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
-        loading="lazy"
-      />
-    </div>
+    {/* Laptop image at bottom (only for AI SEO) */}
+    {service.image && (
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center px-4">
+        <img
+          src={service.image}
+          alt={service.title}
+          className="w-[85%] max-w-[300px] object-contain transition-transform duration-500 group-hover:scale-105 group-hover:-translate-y-1"
+          loading="lazy"
+        />
+      </div>
+    )}
   </Link>
 );
 
