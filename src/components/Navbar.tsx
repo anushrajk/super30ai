@@ -204,7 +204,7 @@ export const Navbar = () => {
                   className="w-full bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 text-white font-semibold shadow-lg"
                 >
                   <ArrowRight className="w-4 h-4 mr-2" />
-                  Reach Us
+                  Contact
                 </Button>
               </Link>
             </div>

@@ -223,6 +223,11 @@ const About = () => {
           </div>
         </section>
 
+        {/* Team Section */}
+        <div id="about-team">
+          <TeamSection />
+        </div>
+
         {/* Interactive Timeline */}
         <div id="about-timeline">
           <InteractiveTimeline />
