@@ -51,30 +51,30 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>Meet Our SEO Experts and PPC Specialists | The Super 30</title>
-        <meta name="description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
-        <meta name="keywords" content="seo experts, PPC specialists, digital marketing specialist, ppc specialist, seo expert in bangalore, seo agency team" />
+        <title>Meet Our Digital Marketing Experts | The Super 30</title>
+        <meta name="description" content="Get to know our team of digital marketing experts, SEO specialists, and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
+        <meta name="keywords" content="digital marketing experts, digital marketing specialists, PPC specialists, seo expert in bangalore, digital marketing agency team" />
         <link rel="canonical" href="https://www.thesuper30.ai/seo-experts-bangalore" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Meet Our SEO Experts and PPC Specialists | The Super 30" />
-        <meta property="og:description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
+        <meta property="og:title" content="Meet Our Digital Marketing Experts | The Super 30" />
+        <meta property="og:description" content="Get to know our team of digital marketing experts who combine strategy, data, and creativity to help businesses achieve long-term growth." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/seo-experts-bangalore" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Meet Our SEO Experts and PPC Specialists | The Super 30" />
-        <meta name="twitter:description" content="Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
+        <meta name="twitter:title" content="Meet Our Digital Marketing Experts | The Super 30" />
+        <meta name="twitter:description" content="Get to know our team of digital marketing experts who combine strategy, data, and creativity to help businesses achieve long-term growth." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "name": "Meet Our SEO Experts and PPC Specialists",
+            "name": "Meet Our Digital Marketing Experts",
             "url": "https://www.thesuper30.ai/seo-experts-bangalore",
-            "description": "Get to know our team of SEO experts and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth."
+            "description": "Get to know our team of digital marketing experts who combine strategy, data, and creativity to help businesses achieve long-term growth."
           })}
         </script>
       </Helmet>
