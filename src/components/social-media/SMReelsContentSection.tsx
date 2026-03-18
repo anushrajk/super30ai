@@ -56,7 +56,6 @@ export const SMReelsContentSection = () => {
             <BentoCard
               key={i}
               className={`group transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-              style={{ transitionDelay: `${i * 100}ms` }}
             >
               <BentoIcon size="md">
                 <item.icon className="w-5 h-5 md:w-6 md:h-6 text-brand group-hover:text-white transition-colors duration-300" />
