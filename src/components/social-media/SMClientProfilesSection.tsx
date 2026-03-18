@@ -2,43 +2,51 @@ import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-import profileMockup from "@/assets/portfolio/profile-mockup.png";
-import magicbricksLogo from "@/assets/clients/magicbricks.png";
-import jainUniversityLogo from "@/assets/clients/jain-university.png";
-import mamaEarthLogo from "@/assets/clients/mamaearth.png";
-import tata1mgLogo from "@/assets/clients/tata1mg.png";
-import upgradLogo from "@/assets/clients/upgrad.png";
+import socialPost1 from "@/assets/portfolio/social-post-1.jpg";
+import socialPost2 from "@/assets/portfolio/social-post-2.jpg";
+import socialPost3 from "@/assets/portfolio/social-post-3.jpg";
+import socialPost4 from "@/assets/portfolio/social-post-4.jpg";
+import socialPost5 from "@/assets/portfolio/social-post-5.jpg";
+import socialPost6 from "@/assets/portfolio/social-post-6.jpg";
+import webDesign1 from "@/assets/portfolio/web-design-1.jpg";
+import webDesign2 from "@/assets/portfolio/web-design-2.jpg";
+import webDesign3 from "@/assets/portfolio/web-design-3.jpg";
 
 const clientProfiles = [
   {
     brand: "Magicbricks",
-    description: "Complete social media overhaul — feed design, stories, and carousel templates that boosted profile visits by 60%.",
-    stat: "+60% Profile Visits",
-    logo: magicbricksLogo,
+    description: "A complete digital redesign with +40% lead generation uplift. We rebuilt their brand presence across web and social.",
+    gradient: "from-emerald-500 to-green-700",
+    images: [socialPost1, webDesign1],
+    stat: "+40% Leads",
   },
   {
     brand: "Jain University",
-    description: "End-to-end Instagram & LinkedIn management with branded templates for admissions, events, and campus life content.",
+    description: "End-to-end brand identity and social media design for one of India's leading universities. Admissions campaigns that convert.",
+    gradient: "from-blue-600 to-indigo-800",
+    images: [socialPost2, webDesign2],
     stat: "2x Engagement",
-    logo: jainUniversityLogo,
   },
   {
     brand: "Mamaearth",
-    description: "Vibrant D2C creatives across Instagram & Facebook — product launches, influencer collab posts, and festive campaigns.",
+    description: "Vibrant D2C creatives across Instagram and Facebook. We designed scroll-stopping visuals that drove massive engagement.",
+    gradient: "from-amber-400 to-orange-600",
+    images: [socialPost3, webDesign3],
     stat: "+65% CTR",
-    logo: mamaEarthLogo,
   },
   {
     brand: "Tata 1mg",
-    description: "Healthcare social media design — informative carousels, health tips reels, and trust-building content that simplified complex topics.",
-    stat: "3x Reach",
-    logo: tata1mgLogo,
+    description: "Healthcare UI/UX and marketing creatives. Clean, trustworthy designs that simplified complex health information.",
+    gradient: "from-rose-500 to-pink-700",
+    images: [socialPost4, socialPost5],
+    stat: "3x Conversions",
   },
   {
     brand: "upGrad",
     description: "EdTech social creatives for LinkedIn & Instagram — course promotions, student success stories, and webinar graphics.",
+    gradient: "from-violet-600 to-purple-900",
+    images: [socialPost6, webDesign1],
     stat: "+80% Leads",
-    logo: upgradLogo,
   },
 ];
 
@@ -56,16 +64,17 @@ export const SMClientProfilesSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-20 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between mb-8 md:mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        {/* Header row */}
+        <div className={`flex items-center justify-between mb-10 md:mb-14 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex items-center gap-3">
             <div className="w-1 h-6 bg-brand rounded-full" />
-            <span className="text-sm font-semibold uppercase tracking-widest text-foreground">Our Client Profiles</span>
+            <span className="text-sm font-semibold uppercase tracking-widest text-foreground">Featured Projects</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="hidden md:inline-flex items-center gap-2 bg-foreground text-background px-5 py-2 rounded-full text-sm font-medium">
-              Recent Clients
+              Recent Projects
               <span className="w-5 h-5 bg-brand rounded-full flex items-center justify-center text-white text-[10px] font-bold">{clientProfiles.length}</span>
             </span>
             <button onClick={() => scroll("left")} className="w-10 h-10 border-2 border-border rounded-full flex items-center justify-center hover:bg-muted transition-colors" aria-label="Previous">
@@ -77,6 +86,7 @@ export const SMClientProfilesSection = () => {
           </div>
         </div>
 
+        {/* Carousel */}
         <div
           ref={scrollRef}
           className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
@@ -85,39 +95,61 @@ export const SMClientProfilesSection = () => {
           {clientProfiles.map((client, index) => (
             <div
               key={index}
-              className={`flex-shrink-0 w-[320px] md:w-[400px] rounded-2xl overflow-hidden relative group cursor-pointer snap-start
-                bg-card border border-border
-                transition-all duration-500 hover:-translate-y-2 hover:shadow-xl
+              className={`flex-shrink-0 w-[320px] md:w-[380px] rounded-3xl overflow-hidden relative group cursor-pointer snap-start
+                bg-gradient-to-br ${client.gradient}
+                transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
                 ${isVisible ? "animate-bento-reveal" : "opacity-0"}`}
-              style={{ animationDelay: `${index * 120}ms` }}
+              style={{ animationDelay: `${index * 120}ms`, aspectRatio: "4/5" }}
             >
-              {/* Mockup image showing desktop + mobile */}
-              <div className="p-4 pb-0">
-                <div className="rounded-xl overflow-hidden bg-muted">
-                  <img
-                    src={profileMockup}
-                    alt={`${client.brand} social media profile on desktop and mobile`}
-                    className="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
-                    loading="lazy"
-                  />
+              {/* Top content */}
+              <div className="p-6 md:p-8 pb-0 relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{client.brand}</h3>
+                <p className="text-white/70 text-sm leading-relaxed mb-5 line-clamp-3 max-w-[90%]">
+                  {client.description}
+                </p>
+              </div>
+
+              {/* Device mockups — bottom half */}
+              <div className="absolute bottom-0 left-0 right-0 h-[55%] flex items-end justify-center overflow-hidden">
+                <div className="relative w-full h-full flex items-end justify-center px-5">
+                  {/* Laptop / Tablet mockup */}
+                  <div className="relative w-[80%] mb-0 transform group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 z-[1]">
+                    <div className="bg-[hsl(var(--foreground))]/90 rounded-t-xl p-[3px] shadow-2xl">
+                      <div className="rounded-t-lg overflow-hidden aspect-[4/3] bg-muted">
+                        <img
+                          src={client.images[0]}
+                          alt={`${client.brand} design`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                    <div className="bg-[hsl(var(--foreground))]/70 h-[6px] rounded-b-lg w-[108%] -ml-[4%]" />
+                  </div>
+
+                  {/* Phone mockup */}
+                  <div className="absolute -right-1 bottom-3 w-[32%] transform group-hover:scale-110 group-hover:-translate-y-3 transition-all duration-700 delay-100 z-[2]">
+                    <div className="bg-[hsl(var(--foreground))]/90 rounded-2xl p-[3px] shadow-2xl">
+                      <div className="rounded-xl overflow-hidden aspect-[9/16] bg-muted">
+                        <img
+                          src={client.images[1]}
+                          alt={`${client.brand} mobile`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              {/* Content */}
-              <div className="p-5 pt-4">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-muted overflow-hidden flex items-center justify-center">
-                      <img src={client.logo} alt={client.brand} className="w-6 h-6 object-contain" />
-                    </div>
-                    <h3 className="text-base font-bold text-foreground">{client.brand}</h3>
-                  </div>
-                  <span className="bg-brand/10 text-brand text-xs font-bold px-2.5 py-1 rounded-full">
-                    {client.stat}
-                  </span>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">{client.description}</p>
+              {/* Stat badge */}
+              <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
+                {client.stat}
               </div>
+
+              {/* Decorative circle */}
+              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
             </div>
           ))}
         </div>
