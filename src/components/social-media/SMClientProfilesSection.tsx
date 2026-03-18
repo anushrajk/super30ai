@@ -2,47 +2,43 @@ import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-import magicbricksImg from "@/assets/case-studies/magicbricks.png";
-import jainUniversityImg from "@/assets/case-studies/jain-university.png";
-import mamaEarthImg from "@/assets/case-studies/mamaearth.png";
-import tata1mgImg from "@/assets/case-studies/tata1mg.png";
-import upgradImg from "@/assets/case-studies/upgrad.png";
+import profileMockup from "@/assets/portfolio/profile-mockup.png";
+import magicbricksLogo from "@/assets/clients/magicbricks.png";
+import jainUniversityLogo from "@/assets/clients/jain-university.png";
+import mamaEarthLogo from "@/assets/clients/mamaearth.png";
+import tata1mgLogo from "@/assets/clients/tata1mg.png";
+import upgradLogo from "@/assets/clients/upgrad.png";
 
 const clientProfiles = [
   {
     brand: "Magicbricks",
     description: "Complete social media overhaul — feed design, stories, and carousel templates that boosted profile visits by 60%.",
-    gradient: "from-emerald-500 to-teal-700",
     stat: "+60% Profile Visits",
-    image: magicbricksImg,
+    logo: magicbricksLogo,
   },
   {
     brand: "Jain University",
     description: "End-to-end Instagram & LinkedIn management with branded templates for admissions, events, and campus life content.",
-    gradient: "from-blue-600 to-indigo-800",
     stat: "2x Engagement",
-    image: jainUniversityImg,
+    logo: jainUniversityLogo,
   },
   {
     brand: "Mamaearth",
     description: "Vibrant D2C creatives across Instagram & Facebook — product launches, influencer collab posts, and festive campaigns.",
-    gradient: "from-amber-400 to-orange-600",
     stat: "+65% CTR",
-    image: mamaEarthImg,
+    logo: mamaEarthLogo,
   },
   {
     brand: "Tata 1mg",
     description: "Healthcare social media design — informative carousels, health tips reels, and trust-building content that simplified complex topics.",
-    gradient: "from-rose-500 to-pink-700",
     stat: "3x Reach",
-    image: tata1mgImg,
+    logo: tata1mgLogo,
   },
   {
     brand: "upGrad",
     description: "EdTech social creatives for LinkedIn & Instagram — course promotions, student success stories, and webinar graphics.",
-    gradient: "from-violet-600 to-purple-900",
     stat: "+80% Leads",
-    image: upgradImg,
+    logo: upgradLogo,
   },
 ];
 
@@ -89,27 +85,39 @@ export const SMClientProfilesSection = () => {
           {clientProfiles.map((client, index) => (
             <div
               key={index}
-              className={`flex-shrink-0 w-[300px] md:w-[360px] rounded-3xl overflow-hidden relative group cursor-pointer snap-start
-                bg-gradient-to-br ${client.gradient}
-                transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
+              className={`flex-shrink-0 w-[320px] md:w-[400px] rounded-2xl overflow-hidden relative group cursor-pointer snap-start
+                bg-card border border-border
+                transition-all duration-500 hover:-translate-y-2 hover:shadow-xl
                 ${isVisible ? "animate-bento-reveal" : "opacity-0"}`}
               style={{ animationDelay: `${index * 120}ms` }}
             >
-              <div className="p-6 md:p-8 relative z-10">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">{client.brand}</h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-5 line-clamp-3">{client.description}</p>
-              </div>
-
-              <div className="px-6 pb-6 relative z-10">
-                <div className="rounded-2xl overflow-hidden border-2 border-white/20 shadow-xl group-hover:scale-[1.02] transition-transform duration-500">
-                  <img src={client.image} alt={`${client.brand} social media work`} className="w-full aspect-[4/3] object-cover" loading="lazy" />
+              {/* Mockup image showing desktop + mobile */}
+              <div className="p-4 pb-0">
+                <div className="rounded-xl overflow-hidden bg-muted">
+                  <img
+                    src={profileMockup}
+                    alt={`${client.brand} social media profile on desktop and mobile`}
+                    className="w-full aspect-[4/3] object-cover group-hover:scale-[1.03] transition-transform duration-500"
+                    loading="lazy"
+                  />
                 </div>
               </div>
 
-              <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
-                {client.stat}
+              {/* Content */}
+              <div className="p-5 pt-4">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-muted overflow-hidden flex items-center justify-center">
+                      <img src={client.logo} alt={client.brand} className="w-6 h-6 object-contain" />
+                    </div>
+                    <h3 className="text-base font-bold text-foreground">{client.brand}</h3>
+                  </div>
+                  <span className="bg-brand/10 text-brand text-xs font-bold px-2.5 py-1 rounded-full">
+                    {client.stat}
+                  </span>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2">{client.description}</p>
               </div>
-              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
             </div>
           ))}
         </div>
