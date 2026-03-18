@@ -135,16 +135,17 @@ const SocialMediaDesign = () => {
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Button
                 size="lg"
+                variant="ghost"
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-8"
+                className="bg-white text-[hsl(var(--brand))] hover:bg-white/90 hover:text-[hsl(var(--brand))] font-semibold rounded-full px-8"
               >
                 Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
               </Button>
               <Button
                 size="lg"
-                variant="outline"
+                variant="outline-white"
                 onClick={() => setShowEnquiryPopup(true)}
-                className="border-2 border-white text-white hover:bg-white/10 rounded-full px-8"
+                className="rounded-full px-8"
               >
                 <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
               </Button>
