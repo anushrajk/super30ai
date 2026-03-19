@@ -4,7 +4,7 @@ import { ArrowRight, Search, Target, Share2, Palette, Globe, Mail } from "lucide
 const services = [
   {
     icon: Search,
-    title: "AI SEO Services",
+    title: "AI SEO",
     description: "Our AI-powered SEO strategies go beyond traditional optimization. We use machine learning to analyze search patterns, predict algorithm changes, and create content that ranks. From technical audits to content strategy, we ensure your brand dominates organic search results.",
     features: ["AI-Powered Keyword Research", "Technical SEO Audits", "Content Strategy & Creation", "Link Building & Authority", "Local SEO & Google Business", "Schema Markup & Rich Snippets"],
     href: "/ai-seo-agency-bangalore",
