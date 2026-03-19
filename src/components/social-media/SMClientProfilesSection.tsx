@@ -73,15 +73,15 @@ export const SMClientProfilesSection = () => {
 73:             <span className="text-sm font-semibold uppercase tracking-widest text-white">Featured Projects</span>
           </div>
           <div className="flex items-center gap-3">
-            <span className="hidden md:inline-flex items-center gap-2 bg-foreground text-background px-5 py-2 rounded-full text-sm font-medium">
+            <span className="hidden md:inline-flex items-center gap-2 bg-white text-[#020617] px-5 py-2 rounded-full text-sm font-medium">
               Recent Projects
               <span className="w-5 h-5 bg-brand rounded-full flex items-center justify-center text-white text-[10px] font-bold">{clientProfiles.length}</span>
             </span>
-            <button onClick={() => scroll("left")} className="w-10 h-10 border-2 border-border rounded-full flex items-center justify-center hover:bg-muted transition-colors" aria-label="Previous">
-              <ArrowRight className="w-4 h-4 text-foreground rotate-180" />
+            <button onClick={() => scroll("left")} className="w-10 h-10 border-2 border-white/20 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Previous">
+              <ArrowRight className="w-4 h-4 text-white rotate-180" />
             </button>
-            <button onClick={() => scroll("right")} className="w-10 h-10 border-2 border-border rounded-full flex items-center justify-center hover:bg-muted transition-colors" aria-label="Next">
-              <ArrowRight className="w-4 h-4 text-foreground" />
+            <button onClick={() => scroll("right")} className="w-10 h-10 border-2 border-white/20 rounded-full flex items-center justify-center hover:bg-white/10 transition-colors" aria-label="Next">
+              <ArrowRight className="w-4 h-4 text-white" />
             </button>
           </div>
         </div>
