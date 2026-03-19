@@ -6,7 +6,7 @@ import super30FooterLogo from "@/assets/super30-footer-logo-white.png";
 const services = [
   { name: "Digital Marketing", href: "/digital-marketing" },
   { name: "AI SEO", href: "/ai-seo-agency-bangalore" },
-  { name: "Performance Marketing", href: "/performance-marketing" },
+  { name: "Lead Generation", href: "/performance-marketing" },
   { name: "Social Media", href: "/social-media-post-design" },
   { name: "Design", href: "/design" },
   { name: "Web Design", href: "/web-design-development" },
