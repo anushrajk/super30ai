@@ -219,7 +219,7 @@ const WebDesign = () => {
               <Button size="lg" onClick={() => setShowAuditPopup(true)} className="bg-white text-brand hover:bg-white/90 font-semibold">
                 Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
               </Button>
-              <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="border-white text-white hover:bg-white/10">
+              <Button size="lg" variant="outline-white" onClick={() => setShowEnquiryPopup(true)}>
                 <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
               </Button>
             </div>
