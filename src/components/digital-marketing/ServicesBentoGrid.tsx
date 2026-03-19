@@ -5,7 +5,7 @@ import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
 
 const services = [
   {
-    title: "AI SEO Services",
+    title: "AI SEO",
     description: "AI-powered search optimization that drives organic traffic and dominates rankings.",
     href: "/ai-seo-agency-bangalore",
     image: aiSeoLaptop,
