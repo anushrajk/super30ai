@@ -12,7 +12,7 @@ const services = [
   },
   {
     icon: Target,
-    title: "Performance Marketing",
+    title: "Lead Generation",
     description: "Maximize your ROAS with data-driven ad campaigns across Google, Meta, and LinkedIn. Our AI bid optimization ensures every rupee works harder, with real-time adjustments based on conversion data and audience behavior.",
     features: ["Google & Meta Ads Management", "AI Bid Optimization", "Conversion Rate Optimization", "Retargeting & Lookalike Audiences", "Landing Page A/B Testing", "Campaign Analytics & Reporting"],
     href: "/performance-marketing",
