@@ -21,7 +21,7 @@ const services = [{
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Target,
-  title: "Performance Marketing",
+  title: "Lead Generation",
   features: ["Google Ads Management", "Meta & Instagram Ads", "LinkedIn B2B Campaigns", "YouTube Advertising", "Remarketing & Retargeting", "AI-Driven Bid Optimization"],
   href: "/performance-marketing",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",

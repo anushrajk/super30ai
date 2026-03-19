@@ -465,7 +465,7 @@ const Contact = () => {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="ai-seo">AI SEO</SelectItem>
-                        <SelectItem value="performance-marketing">Performance Marketing</SelectItem>
+                        <SelectItem value="performance-marketing">Lead Generation</SelectItem>
                         <SelectItem value="both">Both Services</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
