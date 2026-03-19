@@ -39,7 +39,7 @@ export const SMReelsContentSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>();
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-20 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-10 md:py-16 lg:py-20 bg-[#020617] text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <BentoBadge className="mb-4"><Video className="w-4 h-4" />Reels & Content Production</BentoBadge>

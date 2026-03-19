@@ -64,7 +64,7 @@ export const SMClientProfilesSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-background relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 bg-[#020617] text-white relative overflow-hidden">
       <div className="container mx-auto px-4">
         {/* Header row */}
         <div className={`flex items-center justify-between mb-10 md:mb-14 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
