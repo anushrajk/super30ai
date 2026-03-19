@@ -41,7 +41,7 @@ const roleOptions = [
 ];
 
 const serviceOptions = [
-  { value: "ai-seo", label: "AI SEO Services" },
+  { value: "ai-seo", label: "AI SEO" },
   { value: "performance-marketing", label: "Performance Marketing" },
   { value: "both", label: "Both Services" },
 ];
