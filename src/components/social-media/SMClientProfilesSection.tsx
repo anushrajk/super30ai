@@ -70,7 +70,7 @@ export const SMClientProfilesSection = () => {
         <div className={`flex items-center justify-between mb-10 md:mb-14 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="flex items-center gap-3">
             <div className="w-1 h-6 bg-brand rounded-full" />
-            <span className="text-sm font-semibold uppercase tracking-widest text-foreground">Featured Projects</span>
+73:             <span className="text-sm font-semibold uppercase tracking-widest text-white">Featured Projects</span>
           </div>
           <div className="flex items-center gap-3">
             <span className="hidden md:inline-flex items-center gap-2 bg-foreground text-background px-5 py-2 rounded-full text-sm font-medium">
