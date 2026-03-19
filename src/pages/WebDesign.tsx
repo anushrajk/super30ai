@@ -175,15 +175,15 @@ const WebDesign = () => {
         </section>
 
         {/* Tech Stack */}
-        <section className="py-6 md:py-10 lg:py-16 bg-background">
+        <section className="py-6 md:py-10 lg:py-16 bg-[#020617]">
           <div className="container mx-auto px-3 md:px-4">
             <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-              <BentoBadge className="mb-4"><Code className="w-4 h-4" />Tech Stack</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Technologies We Work With</h2>
+              <BentoBadge className="mb-4 border-white/20 text-white/80"><Code className="w-4 h-4" />Tech Stack</BentoBadge>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">Technologies We Work With</h2>
             </div>
             <div className="flex flex-wrap gap-3 justify-center max-w-3xl mx-auto">
               {techStack.map((tech, i) => (
-                <span key={i} className="bg-card border border-border rounded-xl px-5 py-3 text-sm font-semibold text-foreground hover:-translate-y-0.5 hover:border-brand/50 transition-all duration-300 cursor-default">
+                <span key={i} className="bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm font-semibold text-white hover:-translate-y-0.5 hover:border-brand/50 transition-all duration-300 cursor-default">
                   {tech}
                 </span>
               ))}
