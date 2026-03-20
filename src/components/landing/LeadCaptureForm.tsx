@@ -169,9 +169,7 @@ export const LeadCaptureForm = ({
   }
 
   return (
-    <Card className="glass border-2 border-border shadow-2xl overflow-hidden relative group rounded-2xl">
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <Card className="glass border-2 border-border shadow-2xl overflow-hidden relative rounded-2xl">
       
       <CardContent className="p-4 sm:p-6 relative">
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
