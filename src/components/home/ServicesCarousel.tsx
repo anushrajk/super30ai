@@ -71,17 +71,9 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] relative bg-background/95 border-2 border-border/50 hover:border-transparent overflow-hidden group snap-start shadow-none"
+                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] relative bg-background/95 border-2 border-border/50 overflow-hidden group snap-start shadow-none"
                 style={{ transform: "translateZ(0)" }}
               >
-                {/* Gradient border on hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                  style={{ padding: "2px", margin: "-2px", borderRadius: "inherit" }}
-                >
-                  <div className="w-full h-full bg-background rounded-[inherit]" />
-                </div>
-
 
                 <CardContent className="relative p-5 md:p-6 z-10">
                   {/* Icon */}
