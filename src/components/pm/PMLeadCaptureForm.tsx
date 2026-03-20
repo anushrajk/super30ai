@@ -167,7 +167,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
                 className="w-full bg-background h-12 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 pl-4"
               />
             </div>
-            <div className={`relative transition-all duration-300 ${focusedField === 'company' ? 'scale-[1.02]' : ''}`}>
+            <div className="relative">
               <Input
                 type="text"
                 placeholder="Company Name"
