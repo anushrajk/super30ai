@@ -44,7 +44,7 @@ const services = [
     description: "Automated email sequences, lead nurturing funnels, and content strategy.",
     href: "/contact",
     image: null,
-    bg: "bg-[#1a0a0a]",
+    bg: "bg-[#ef4444]",
   },
 ];
 
