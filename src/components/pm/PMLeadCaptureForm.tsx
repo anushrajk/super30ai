@@ -133,7 +133,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const progress = (filledFields / 7) * 100;
 
   return (
-    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border shadow-2xl overflow-hidden relative rounded-2xl">
+    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border overflow-hidden relative rounded-2xl shadow-none">
       
       <CardContent className="p-4 sm:p-6 relative">
         <div className="flex items-center justify-center gap-2 mb-2">
