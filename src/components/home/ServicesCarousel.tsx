@@ -103,7 +103,7 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
                   <Link to={service.href}>
                     <Button className={`w-full bg-gradient-to-r ${service.color} transition-all duration-300 text-white`}>
                       Learn More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
                 </CardContent>
