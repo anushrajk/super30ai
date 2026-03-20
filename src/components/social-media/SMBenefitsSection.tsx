@@ -84,7 +84,7 @@ export const SMBenefitsSection = () => {
               <Card key={index} className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${(index + 1) * 50}ms` }}>
                 <CardContent className="p-5 md:p-6 relative">
                   <div className="relative mb-4">
-                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg}`}>
                       <benefit.icon className={`w-7 h-7 ${iconColors[index % iconColors.length].text}`} />
                     </div>
                   </div>
