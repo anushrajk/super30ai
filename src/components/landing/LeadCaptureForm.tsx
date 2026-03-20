@@ -268,7 +268,7 @@ export const LeadCaptureForm = ({
           )}
 
           {/* Phone Number with +91 */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'phone' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <div className="flex">
               <div className="flex items-center gap-1 bg-muted border border-r-0 border-border rounded-l-md px-3 h-12">
                 <Phone className="w-4 h-4 text-muted-foreground" />
