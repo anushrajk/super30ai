@@ -314,40 +314,6 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           </Button>
         </form>
 
-        {/* Trust indicators */}
-        <div className="mt-4 pt-4 border-t border-border/50">
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2 text-xs text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-primary" />
-              <span>60 sec setup</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-green-500" />
-              <span>Bank-grade security</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Star className="w-3.5 h-3.5 text-yellow-500" />
-              <span>4.9/5 rating</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Social proof */}
-        <div className="mt-4 flex items-center justify-center gap-2">
-          <div className="flex -space-x-2">
-            {[1,2,3,4].map((i) => (
-              <div 
-                key={i} 
-                className="w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 border-2 border-background flex items-center justify-center"
-              >
-                <Users className="w-3 h-3 text-muted-foreground" />
-              </div>
-            ))}
-          </div>
-          <span className="text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">300+</span> founders booked consultations this month
-          </span>
-        </div>
       </CardContent>
     </Card>
   );
