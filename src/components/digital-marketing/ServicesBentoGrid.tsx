@@ -23,7 +23,7 @@ const services = [
     description: "Content calendars, community management, and viral short-form video strategies.",
     href: "/social-media-post-design",
     image: null,
-    bg: "bg-[#1a0a1e]",
+    bg: "bg-[#d946ef]",
   },
   {
     title: "Design Services",
