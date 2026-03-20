@@ -208,7 +208,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           )}
           
           {/* Email */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'email' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <Input
               type="email"
               placeholder="you@company.com"
