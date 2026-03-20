@@ -133,9 +133,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const progress = (filledFields / 7) * 100;
 
   return (
-    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border shadow-2xl overflow-hidden relative group">
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border shadow-2xl overflow-hidden relative rounded-2xl">
       
       <CardContent className="p-4 sm:p-6 relative">
         <div className="flex items-center justify-center gap-2 mb-2">
