@@ -81,7 +81,7 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
                     <service.icon className="w-7 h-7 md:w-8 md:h-8 text-white relative z-10" />
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">
                     {service.title}
                   </h3>
 

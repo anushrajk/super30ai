@@ -55,8 +55,7 @@ const ServiceCard = ({
 }) => (
   <Link
     to={service.href}
-    className="relative rounded-2xl overflow-hidden group cursor-pointer block h-full"
-    style={{ background: service.gradient }}
+    className={`relative rounded-2xl overflow-hidden group cursor-pointer block h-full ${service.bg}`}
   >
     {/* Text on top */}
     <div className="relative z-10 p-5 md:p-6 pt-6 md:pt-8">
