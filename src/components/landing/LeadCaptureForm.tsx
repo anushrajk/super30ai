@@ -214,7 +214,7 @@ export const LeadCaptureForm = ({
           </div>
 
           {/* Website URL */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'url' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <Input
               type="url"
               placeholder="https://yourcompany.com"
