@@ -274,7 +274,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-primary/10 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="cursor-pointer focus:bg-transparent focus:text-foreground">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -287,7 +287,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {adBudgetOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-primary/10 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="cursor-pointer focus:bg-transparent focus:text-foreground">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -297,8 +297,9 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
 
           <Button 
             type="submit" 
+            variant="unstyled"
             disabled={loading || !canSubmit}
-            className="w-full h-14 bg-primary hover:bg-primary/90 text-primary-foreground text-lg font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-primary text-primary-foreground text-lg font-semibold active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -308,7 +309,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
             ) : (
               <>
                 Book Your Free Consultation
-                <TrendingUp className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
+                <TrendingUp className="w-5 h-5 ml-2" />
               </>
             )}
           </Button>

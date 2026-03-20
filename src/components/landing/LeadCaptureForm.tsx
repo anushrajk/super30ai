@@ -160,7 +160,7 @@ export const LeadCaptureForm = ({
           required
           className="flex-1 bg-background border-input h-12"
         />
-        <Button type="submit" disabled={loading} className="h-12 bg-brand-gradient hover:opacity-90 text-white px-6 hover:scale-[1.02] transition-all duration-300">
+        <Button type="submit" variant="unstyled" disabled={loading} className="h-12 bg-brand-gradient text-white px-6 transition-all duration-300">
           {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Get Free Audit"}
           {!loading && <Sparkles className="w-4 h-4 ml-2" />}
         </Button>
@@ -307,7 +307,7 @@ export const LeadCaptureForm = ({
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-brand-light cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="cursor-pointer focus:bg-transparent focus:text-foreground">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -320,7 +320,7 @@ export const LeadCaptureForm = ({
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {revenueOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-brand-light cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="cursor-pointer focus:bg-transparent focus:text-foreground">
                     {option.label}
                   </SelectItem>
                 ))}
@@ -330,8 +330,9 @@ export const LeadCaptureForm = ({
 
           <Button 
             type="submit" 
+            variant="unstyled"
             disabled={loading || !canSubmit}
-            className="w-full h-14 bg-brand-gradient hover:opacity-90 text-white text-lg font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-brand-gradient text-white text-lg font-semibold active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -341,7 +342,7 @@ export const LeadCaptureForm = ({
             ) : (
               <>
                 {formButtonText}
-                <Sparkles className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
+                <Sparkles className="w-5 h-5 ml-2" />
               </>
             )}
           </Button>
