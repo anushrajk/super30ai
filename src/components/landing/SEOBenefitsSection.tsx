@@ -207,10 +207,10 @@ export const SEOBenefitsSection = () => {
                     </div>
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-white mb-2">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">
                     {benefit.title}
                   </h3>
-                  <p className="text-sm text-gray-600 group-hover:text-white/90 mb-4 leading-relaxed">{benefit.description}</p>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
 
                   <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
