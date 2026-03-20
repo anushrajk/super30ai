@@ -160,7 +160,7 @@ export const LeadCaptureForm = ({
           required
           className="flex-1 bg-background border-input h-12"
         />
-        <Button type="submit" disabled={loading} className="h-12 bg-brand-gradient hover:opacity-90 text-white px-6 hover:scale-[1.02] transition-all duration-300">
+        <Button type="submit" variant="unstyled" disabled={loading} className="h-12 bg-brand-gradient text-white px-6 transition-all duration-300">
           {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "Get Free Audit"}
           {!loading && <Sparkles className="w-4 h-4 ml-2" />}
         </Button>

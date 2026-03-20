@@ -274,7 +274,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-primary/10 cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="cursor-pointer focus:bg-transparent focus:text-foreground">
                     {option.label}
                   </SelectItem>
                 ))}
