@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
+import { Loader2, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 interface PMLeadCaptureFormProps {
