@@ -89,7 +89,7 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
                     {service.features.map((feature, i) => (
                       <li
                         key={i}
-                        className="flex items-center gap-2 text-sm text-foreground opacity-80 group-hover:opacity-100 transition-all duration-300"
+                        className="flex items-center gap-2 text-sm text-foreground opacity-80"
                         style={{ transitionDelay: `${i * 50}ms` }}
                       >
                         <div className={`w-5 h-5 bg-gradient-to-br ${service.color} rounded-full flex items-center justify-center flex-shrink-0`}>
@@ -103,7 +103,7 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
                   <Link to={service.href}>
                     <Button className={`w-full bg-gradient-to-r ${service.color} transition-all duration-300 text-white`}>
                       Learn More
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </Link>
                 </CardContent>
