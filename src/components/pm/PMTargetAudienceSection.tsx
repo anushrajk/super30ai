@@ -168,8 +168,8 @@ export const PMTargetAudienceSection = () => {
                 className={`flex-shrink-0 w-[260px] sm:w-[280px] bg-white border border-gray-100 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:to-brand/10 transition-colors duration-300" />
+                
+                
                 
                 <CardContent className="p-4 md:p-5 relative">
                   {/* Solid color icon */}
