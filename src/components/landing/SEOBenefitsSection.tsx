@@ -196,8 +196,8 @@ export const SEOBenefitsSection = () => {
                 className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
-                {/* Animated gradient border on hover */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/10 group-hover:via-transparent group-hover:to-brand/5 transition-all duration-500" />
+                
+                
                 
                 <CardContent className="p-5 md:p-6 relative">
                   {/* Solid color icon */}
