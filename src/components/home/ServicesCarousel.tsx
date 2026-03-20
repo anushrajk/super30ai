@@ -71,25 +71,17 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
             {services.map((service, index) => (
               <Card
                 key={index}
-                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] relative bg-background/95 border-2 border-border/50 hover:border-transparent overflow-hidden group snap-start shadow-none"
+                className="flex-shrink-0 w-[280px] sm:w-[300px] md:w-[320px] relative bg-background/95 border-2 border-border/50 overflow-hidden group snap-start shadow-none"
                 style={{ transform: "translateZ(0)" }}
               >
-                {/* Gradient border on hover */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}
-                  style={{ padding: "2px", margin: "-2px", borderRadius: "inherit" }}
-                >
-                  <div className="w-full h-full bg-background rounded-[inherit]" />
-                </div>
-
 
                 <CardContent className="relative p-5 md:p-6 z-10">
                   {/* Icon */}
-                  <div className={`relative w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-300`}>
+                  <div className={`relative w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-4`}>
                     <service.icon className="w-7 h-7 md:w-8 md:h-8 text-white relative z-10" />
                   </div>
 
-                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">
                     {service.title}
                   </h3>
 
