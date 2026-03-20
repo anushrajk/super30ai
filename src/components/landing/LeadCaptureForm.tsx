@@ -200,7 +200,7 @@ export const LeadCaptureForm = ({
                 className="w-full bg-background h-12 border-border focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300 pl-4"
               />
             </div>
-            <div className={`relative transition-all duration-300 ${focusedField === 'company' ? 'scale-[1.02]' : ''}`}>
+            <div className="relative">
               <Input
                 type="text"
                 placeholder="Company Name"
