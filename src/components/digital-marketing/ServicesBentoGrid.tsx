@@ -16,7 +16,7 @@ const services = [
     description: "Google & Meta Ads managed with AI-optimized bid strategies for maximum ROAS.",
     href: "/performance-marketing",
     image: null,
-    bg: "bg-[#0c1a2e]",
+    bg: "bg-[#2563eb]",
   },
   {
     title: "Social Media Marketing",
