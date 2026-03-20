@@ -37,7 +37,7 @@ const services = [
     description: "High-converting landing pages and responsive websites optimized for speed.",
     href: "/web-design-development",
     image: null,
-    bg: "bg-[#0a1a1a]",
+    bg: "bg-[#14b8a6]",
   },
   {
     title: "Email & Content Marketing",
