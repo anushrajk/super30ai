@@ -307,7 +307,7 @@ export const LeadCaptureForm = ({
               </SelectTrigger>
               <SelectContent className="bg-background border-border z-50">
                 {roleOptions.map((option) => (
-                  <SelectItem key={option.value} value={option.value} className="hover:bg-brand-light cursor-pointer">
+                  <SelectItem key={option.value} value={option.value} className="cursor-pointer focus:bg-transparent focus:text-foreground">
                     {option.label}
                   </SelectItem>
                 ))}
