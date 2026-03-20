@@ -9,7 +9,7 @@ const services = [
     description: "AI-powered search optimization that drives organic traffic and dominates rankings.",
     href: "/ai-seo-agency-bangalore",
     image: aiSeoLaptop,
-    bg: "bg-[#1a0a2e]",
+    bg: "bg-[#7c3aed]",
   },
   {
     title: "Lead Generation",
