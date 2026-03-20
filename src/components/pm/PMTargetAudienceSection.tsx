@@ -165,17 +165,17 @@ export const PMTargetAudienceSection = () => {
             {audiences.map((audience, index) => (
               <Card 
                 key={index}
-                className={`flex-shrink-0 w-[260px] sm:w-[280px] bg-white border border-gray-100 shadow-lg shadow-black/5 hover:shadow-xl hover:shadow-black/10 hover:border-gray-200 hover:-translate-y-2 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+                className={`flex-shrink-0 w-[260px] sm:w-[280px] bg-white border border-gray-100 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                 style={{ transitionDelay: `${(index + 1) * 50}ms` }}
               >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:to-brand/10 transition-colors duration-300" />
+                
+                
                 
                 <CardContent className="p-4 md:p-5 relative">
                   {/* Solid color icon */}
                   <div className="relative mb-3">
-                    <div className={`absolute inset-0 w-12 h-12 ${iconColor.bg} rounded-xl blur-xl opacity-0 transition-all duration-300`} />
-                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColor.bg} shadow-lg group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-300`}>
+                    <div className={`absolute inset-0 w-12 h-12 rounded-xl blur-xl opacity-0`} />
+                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColor.bg}`}>
                       <audience.icon className={`w-6 h-6 ${iconColor.text}`} />
                     </div>
                   </div>
