@@ -174,8 +174,8 @@ export const PMTargetAudienceSection = () => {
                 <CardContent className="p-4 md:p-5 relative">
                   {/* Solid color icon */}
                   <div className="relative mb-3">
-                    <div className={`absolute inset-0 w-12 h-12 ${iconColor.bg} rounded-xl blur-xl opacity-0 transition-all duration-300`} />
-                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColor.bg} shadow-lg group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-xl transition-all duration-300`}>
+                    <div className={`absolute inset-0 w-12 h-12 rounded-xl blur-xl opacity-0`} />
+                    <div className={`relative w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColor.bg}`}>
                       <audience.icon className={`w-6 h-6 ${iconColor.text}`} />
                     </div>
                   </div>
