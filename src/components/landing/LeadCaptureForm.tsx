@@ -189,7 +189,7 @@ export const LeadCaptureForm = ({
         <form onSubmit={handleSubmit} className="space-y-3">
           {/* Full Name & Company Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className={`relative transition-all duration-300 ${focusedField === 'name' ? 'scale-[1.02]' : ''}`}>
+            <div className="relative">
               <Input
                 type="text"
                 placeholder="Your Full Name"
