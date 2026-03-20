@@ -88,8 +88,8 @@ export const SMBenefitsSection = () => {
                       <benefit.icon className={`w-7 h-7 ${iconColors[index % iconColors.length].text}`} />
                     </div>
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 group-hover:text-white mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-gray-600 group-hover:text-white/90 mb-4 leading-relaxed">{benefit.description}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
                   <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
                       <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 group-hover:text-white/90 font-medium">
