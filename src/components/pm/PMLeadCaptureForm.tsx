@@ -3,7 +3,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Shield, Clock, Loader2, Users, Star, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
+import { Loader2, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 
 interface PMLeadCaptureFormProps {
@@ -133,9 +133,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const progress = (filledFields / 7) * 100;
 
   return (
-    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border shadow-2xl overflow-hidden relative group">
-      {/* Animated gradient border */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+    <Card className="bg-background/95 backdrop-blur-xl border-2 border-border shadow-2xl overflow-hidden relative rounded-2xl">
       
       <CardContent className="p-4 sm:p-6 relative">
         <div className="flex items-center justify-center gap-2 mb-2">
@@ -158,7 +156,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         <form onSubmit={handleSubmit} className="space-y-3">
           {/* Full Name & Company Name */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            <div className={`relative transition-all duration-300 ${focusedField === 'name' ? 'scale-[1.02]' : ''}`}>
+            <div className="relative">
               <Input
                 type="text"
                 placeholder="Your Full Name"
@@ -169,7 +167,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
                 className="w-full bg-background h-12 border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 pl-4"
               />
             </div>
-            <div className={`relative transition-all duration-300 ${focusedField === 'company' ? 'scale-[1.02]' : ''}`}>
+            <div className="relative">
               <Input
                 type="text"
                 placeholder="Company Name"
@@ -183,7 +181,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           </div>
 
           {/* Website URL */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'url' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <Input
               type="text"
               placeholder="yourcompany.com"
@@ -210,7 +208,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           )}
           
           {/* Email */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'email' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <Input
               type="email"
               placeholder="you@company.com"
@@ -237,7 +235,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           )}
 
           {/* Phone Number with +91 */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'phone' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <div className="flex">
               <div className="flex items-center gap-1 bg-muted border border-r-0 border-border rounded-l-md px-3 h-12">
                 <Phone className="w-4 h-4 text-muted-foreground" />
@@ -316,40 +314,6 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           </Button>
         </form>
 
-        {/* Trust indicators */}
-        <div className="mt-4 pt-4 border-t border-border/50">
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-3 sm:gap-2 text-xs text-muted-foreground">
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-primary" />
-              <span>60 sec setup</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Shield className="w-3.5 h-3.5 text-green-500" />
-              <span>Bank-grade security</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Star className="w-3.5 h-3.5 text-yellow-500" />
-              <span>4.9/5 rating</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Social proof */}
-        <div className="mt-4 flex items-center justify-center gap-2">
-          <div className="flex -space-x-2">
-            {[1,2,3,4].map((i) => (
-              <div 
-                key={i} 
-                className="w-7 h-7 rounded-full bg-gradient-to-br from-muted to-muted-foreground/20 border-2 border-background flex items-center justify-center"
-              >
-                <Users className="w-3 h-3 text-muted-foreground" />
-              </div>
-            ))}
-          </div>
-          <span className="text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">300+</span> founders booked consultations this month
-          </span>
-        </div>
       </CardContent>
     </Card>
   );
