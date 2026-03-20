@@ -30,7 +30,7 @@ const services = [
     description: "Brand identity, social media creatives, and marketing collaterals that stand out.",
     href: "/design",
     image: null,
-    bg: "bg-[#1a1a0a]",
+    bg: "bg-[#f59e0b]",
   },
   {
     title: "Web Design",
