@@ -3,32 +3,26 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
-import { Button } from "@/components/ui/button";
-import { BentoBadge } from "@/components/ui/bento-grid";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { BlogSection } from "@/components/landing/BlogSection";
+import { StickyCTA } from "@/components/landing/StickyCTA";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { SMClientProfilesSection } from "@/components/social-media/SMClientProfilesSection";
 import { SMMoodboardSection } from "@/components/social-media/SMMoodboardSection";
 import { SMReelsContentSection } from "@/components/social-media/SMReelsContentSection";
 import { SMProcessSection } from "@/components/social-media/SMProcessSection";
 import { SMPricingSection } from "@/components/social-media/SMPricingSection";
+import { SMProblemSection } from "@/components/social-media/SMProblemSection";
+import { SMComparisonSection } from "@/components/social-media/SMComparisonSection";
+import { SMRelevanceSection } from "@/components/social-media/SMRelevanceSection";
+import { SMBenefitsSection } from "@/components/social-media/SMBenefitsSection";
+import { SMWhoIsThisForSection } from "@/components/social-media/SMWhoIsThisForSection";
+import { SMFinalCTASection } from "@/components/social-media/SMFinalCTASection";
+import { SMFAQSection } from "@/components/social-media/SMFAQSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
-import {
-  Palette, ArrowRight, MessageCircle, Instagram,
-  Layers, Sparkles, Zap
-} from "lucide-react";
-
-const faqs = [
-  { question: "What formats do you deliver the designs in?", answer: "We deliver in all standard formats — PNG, JPG, PDF, and platform-specific dimensions (1080x1080 for feed, 1080x1920 for stories, etc.)." },
-  { question: "Can you match our existing brand guidelines?", answer: "Absolutely! We start every project by studying your brand colors, fonts, tone & existing content to ensure consistency." },
-  { question: "How many revisions are included?", answer: "Our Starter plan includes 2 revisions per post. Growth and Premium plans include unlimited revisions until you're 100% satisfied." },
-  { question: "Do you also write captions and hashtags?", answer: "Yes! Our Growth and Premium plans include SEO-optimized captions and researched hashtag sets for maximum reach." },
-  { question: "What's the turnaround time?", answer: "Standard turnaround is 3-5 business days for a batch. Premium clients get priority delivery within 24-48 hours." },
-];
+import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
 
 const SocialMediaDesign = () => {
-  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
@@ -76,110 +70,62 @@ const SocialMediaDesign = () => {
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* 1. Hero Section with Lead Form */}
-        <ServiceHeroSection
-          badgeIcon={Palette}
-          badgeText="Social Media Design Agency"
-          headline={
-            <>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                Social Media Posts That
-              </span>
-              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                Stop the Scroll
-              </span>
-            </>
-          }
-          description={
-            <>
-              Eye-catching, on-brand social media creatives for Instagram, Facebook, LinkedIn & more —{" "}
-              <span className="text-foreground font-semibold">designed to engage and convert</span>.
-            </>
-          }
-          trustSignals={[
-            { icon: Instagram, text: "Instagram, Facebook & LinkedIn" },
-            { icon: Layers, text: "Carousels, Stories & Reels" },
-            { icon: Sparkles, text: "On-Brand Creative Design" },
-            { icon: Zap, text: "Quick Turnaround" },
-          ]}
-          credentials={["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"]}
-          onSubmit={handleFormSubmit}
-          loading={loading}
-          formTitle="Get Your Free Social Media Design Consultation"
-          formDescription="Share your brand details and we'll show you how scroll-stopping creatives can boost your social engagement."
-          formButtonText="Get Free Design Consultation"
-          formId="lead_capture_social_media"
-          formName="Social Media Design Consultation"
-        />
+        <div id="sm-hero">
+          <ServiceHeroSection
+            badgeIcon={Palette}
+            badgeText="Social Media Design Agency"
+            headline={
+              <>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
+                  Social Media Posts That
+                </span>
+                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
+                  Stop the Scroll
+                </span>
+              </>
+            }
+            description={
+              <>
+                Eye-catching, on-brand social media creatives for Instagram, Facebook, LinkedIn & more —{" "}
+                <span className="text-foreground font-semibold">designed to engage and convert</span>.
+              </>
+            }
+            trustSignals={[
+              { icon: Instagram, text: "Instagram, Facebook & LinkedIn" },
+              { icon: Layers, text: "Carousels, Stories & Reels" },
+              { icon: Sparkles, text: "On-Brand Creative Design" },
+              { icon: Zap, text: "Quick Turnaround" },
+            ]}
+            credentials={["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"]}
+            onSubmit={handleFormSubmit}
+            loading={loading}
+            formTitle="Get Your Free Social Media Design Consultation"
+            formDescription="Share your brand details and we'll show you how scroll-stopping creatives can boost your social engagement."
+            formButtonText="Get Free Design Consultation"
+            formId="lead_capture_social_media"
+            formName="Social Media Design Consultation"
+          />
+        </div>
 
-        {/* 2. Client Profiles Carousel */}
+        <SMProblemSection />
+        <SMComparisonSection />
         <SMClientProfilesSection />
-
-        {/* 3. Moodboards & Brand Consistency (Instagram Grid) */}
+        <SMBenefitsSection />
         <SMMoodboardSection />
-
-        {/* 4. Reels & Content Shoot Types */}
         <SMReelsContentSection />
-
-        {/* 5. Our Process */}
+        <SMWhoIsThisForSection />
         <SMProcessSection />
-
-        {/* 6. Pricing (buttons scroll to form) */}
+        <SMFinalCTASection />
         <SMPricingSection />
-
-        {/* CTA */}
-        <section className="py-10 md:py-16 bg-brand">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ready to Level Up Your Social Media?</h2>
-            <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-6">Get a free consultation and see sample designs for your brand.</p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                size="lg"
-                variant="ghost"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-                className="bg-white text-[hsl(var(--brand))] hover:bg-white/90 hover:text-[hsl(var(--brand))] font-semibold rounded-full px-8"
-              >
-                Get Free Consultation<ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-              <Button
-                size="lg"
-                variant="outline-white"
-                onClick={() => setShowEnquiryPopup(true)}
-                className="rounded-full px-8"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
-              </Button>
-            </div>
-          </div>
-        </section>
-
+        <SMRelevanceSection />
         <TestimonialSection />
-
-        {/* FAQ */}
-        <section className="py-6 md:py-10 lg:py-16 bg-background">
-          <div className="container mx-auto px-4">
-            <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-              <BentoBadge className="mb-4">FAQs</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Frequently Asked Questions</h2>
-            </div>
-            <div className="max-w-3xl mx-auto space-y-4">
-              {faqs.map((faq, i) => (
-                <details key={i} className="group bg-card border border-border rounded-xl p-4 cursor-pointer">
-                  <summary className="font-semibold text-foreground list-none flex items-center justify-between">
-                    {faq.question}
-                    <ArrowRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform" />
-                  </summary>
-                  <p className="text-muted-foreground text-sm mt-3">{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
-
+        <BlogSection />
+        <SMFinalCTASection />
+        <SMFAQSection />
         <Footer />
       </main>
 
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      <StickyCTA onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
     </>
   );
 };
