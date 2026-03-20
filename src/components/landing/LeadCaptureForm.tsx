@@ -330,8 +330,9 @@ export const LeadCaptureForm = ({
 
           <Button 
             type="submit" 
+            variant="unstyled"
             disabled={loading || !canSubmit}
-            className="w-full h-14 bg-brand-gradient hover:opacity-90 text-white text-lg font-semibold hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 group/btn disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full h-14 bg-brand-gradient text-white text-lg font-semibold active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? (
               <>
@@ -341,7 +342,7 @@ export const LeadCaptureForm = ({
             ) : (
               <>
                 {formButtonText}
-                <Sparkles className="w-5 h-5 ml-2 group-hover/btn:rotate-12 group-hover/btn:scale-110 transition-transform" />
+                <Sparkles className="w-5 h-5 ml-2" />
               </>
             )}
           </Button>
