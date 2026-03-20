@@ -81,7 +81,7 @@ export const SMBenefitsSection = () => {
             style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
           >
             {benefits.map((benefit, index) => (
-              <Card key={index} className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-lg hover:shadow-xl hover:shadow-pink-500/20 hover:border-pink-500/40 hover:bg-pink-500 hover:-translate-y-2 transition-all duration-500 group overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${(index + 1) * 50}ms` }}>
+              <Card key={index} className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: `${(index + 1) * 50}ms` }}>
                 <CardContent className="p-5 md:p-6 relative">
                   <div className="relative mb-4">
                     <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 transition-all duration-300`}>
