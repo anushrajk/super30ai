@@ -181,7 +181,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           </div>
 
           {/* Website URL */}
-          <div className={`relative transition-all duration-300 ${focusedField === 'url' ? 'scale-[1.02]' : ''}`}>
+          <div className="relative">
             <Input
               type="text"
               placeholder="yourcompany.com"
