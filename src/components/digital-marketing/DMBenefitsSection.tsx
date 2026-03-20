@@ -172,7 +172,7 @@ export const DMBenefitsSection = () => {
                   <p className="text-sm text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
                   <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 group-hover:text-white/90 font-medium">
+                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 font-medium">
                         <div className={`w-5 h-5 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0`}>
                           <CheckCircle2 className={`w-3 h-3 ${iconColors[index % iconColors.length].checkText}`} />
                         </div>
