@@ -169,7 +169,7 @@ export const LeadCaptureForm = ({
   }
 
   return (
-    <Card className="glass border-2 border-border shadow-2xl overflow-hidden relative rounded-2xl">
+    <Card className="glass border-2 border-border overflow-hidden relative rounded-2xl shadow-none">
       
       <CardContent className="p-4 sm:p-6 relative">
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
