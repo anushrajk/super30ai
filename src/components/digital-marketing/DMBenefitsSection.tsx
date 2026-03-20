@@ -164,7 +164,7 @@ export const DMBenefitsSection = () => {
               >
                 <CardContent className="p-5 md:p-6 relative">
                   <div className="relative mb-4">
-                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg} shadow-lg group-hover:scale-110 transition-all duration-300`}>
+                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg}`}>
                       <benefit.icon className={`w-7 h-7 ${iconColors[index % iconColors.length].text}`} />
                     </div>
                   </div>
