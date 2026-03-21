@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
+import designMockup from "@/assets/services/design-services-mockup.png";
 
 const services = [
   {
