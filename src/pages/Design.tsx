@@ -155,7 +155,7 @@ const BentoServicesSection = () => {
 const SocialMediaShowcase = () => {
   const { ref: parallaxRef, offset } = useParallax(0.15);
   const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
-  const socialPosts = [socialPost1, socialPost2, socialPost3, socialPost4, socialPost5, socialPost6];
+  const socialPosts = [aadhyaImg, madrabbitImg, isitImg, interiorsImg, da360Img, aadhyaImg];
 
   return (
     <div
@@ -335,25 +335,10 @@ const PortfolioCaseStudySection = () => {
             >
               {/* Top content */}
               <div className="p-6 md:p-8 pb-0 relative z-10">
-                {study.isCounter ? (
-                  <div className="mb-3">
-                    <span className="text-6xl md:text-7xl font-black text-white/90 leading-none">{study.brand}</span>
-                    <div className="text-lg font-semibold text-white/80 mt-2">Design Projects</div>
-                  </div>
-                ) : (
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{study.brand}</h3>
-                )}
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{study.brand}</h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-5 line-clamp-3 max-w-[90%]">
                   {study.description}
                 </p>
-                {study.isCounter && (
-                  <Link to="/seo-results-bangalore">
-                    <Button variant="outline-white" size="sm" className="rounded-full text-xs mt-1 group/btn">
-                      VIEW MORE WORK
-                      <ArrowRight className="w-3 h-3 ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </Button>
-                  </Link>
-                )}
               </div>
 
               {/* Device mockups — bottom half */}
@@ -391,11 +376,9 @@ const PortfolioCaseStudySection = () => {
               </div>
 
               {/* Stat badge */}
-              {!study.isCounter && (
                 <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
                   {study.stat}
                 </div>
-              )}
 
               {/* Decorative circle */}
               <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
