@@ -94,18 +94,6 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
               </Button>
             </div>
 
-            {/* Expert credentials - Mobile only */}
-            <div className="lg:hidden flex flex-wrap gap-2 pt-2">
-              {expertCredentials.map((cred, i) => (
-                <span 
-                  key={i}
-                  className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
-                >
-                  <Award className="w-3 h-3 text-brand" />
-                  {cred}
-                </span>
-              ))}
-            </div>
           </div>
 
           {/* Right Column - Form */}
