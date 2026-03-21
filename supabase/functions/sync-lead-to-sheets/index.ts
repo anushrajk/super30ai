@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { checkRateLimit } from "../_shared/rate-limit.ts";
 
 interface SheetsLeadPayload {
   website?: string;
@@ -22,6 +23,13 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const payload: SheetsLeadPayload = await req.json();
+
+    // Rate limit: 10 requests per IP per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "sync_lead_to_sheets",
+      limit: 10,
+    });
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
 
     // Minimal validation (do not block funnel; just avoid sending garbage)
     if (!payload?.email || !payload?.website) {
@@ -52,17 +60,13 @@ const handler = async (req: Request): Promise<Response> => {
     const appScriptStatus = upstreamJson?.status;
     const appScriptOk = appScriptStatus === "success";
 
-    // Log for debugging in backend logs
+    // Log for debugging in backend logs only
     console.log("Sheets sync HTTP status:", upstreamRes.status);
     console.log("Sheets sync body (first 500 chars):", upstreamText.slice(0, 500));
 
     return new Response(
       JSON.stringify({
         ok: upstreamRes.ok && appScriptOk,
-        httpStatus: upstreamRes.status,
-        appScriptStatus: appScriptStatus ?? null,
-        appScriptMessage: upstreamJson?.message ?? null,
-        bodyPreview: upstreamText.slice(0, 500),
       }),
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
