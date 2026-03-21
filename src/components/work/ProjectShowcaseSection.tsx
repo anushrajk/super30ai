@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import aadhyaImg from "@/assets/portfolio/aadhya-animatics.png";
 import isitImg from "@/assets/portfolio/isit.png";
 import interiorsImg from "@/assets/portfolio/interiors-and-more.png";
+import madrabbitImg from "@/assets/portfolio/madrabbit.png";
 
 const projects = [
   {
