@@ -225,32 +225,32 @@ const handler = async (req: Request): Promise<Response> => {
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
               <tr style="background: #f9fafb;">
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600; width: 35%;">Name</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb;">${fullName}</td>
+               <td style="padding: 12px; border: 1px solid #e5e7eb;">${escapeHtml(fullName)}</td>
               </tr>
               <tr>
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Email</td>
                 <td style="padding: 12px; border: 1px solid #e5e7eb;">
-                  <a href="mailto:${email}" style="color: #2563EB;">${email}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #2563EB;">${escapeHtml(email)}</a>
                 </td>
               </tr>
               <tr style="background: #f9fafb;">
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Phone</td>
                 <td style="padding: 12px; border: 1px solid #e5e7eb;">
-                  <a href="tel:+91${cleanedPhone}" style="color: #2563EB;">+91 ${cleanedPhone}</a>
+                  <a href="tel:+91${escapeHtml(cleanedPhone)}" style="color: #2563EB;">+91 ${escapeHtml(cleanedPhone)}</a>
                 </td>
               </tr>
               <tr>
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Current Role</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb;">${currentRole || 'Not specified'}</td>
+                <td style="padding: 12px; border: 1px solid #e5e7eb;">${escapeHtml(currentRole || 'Not specified')}</td>
               </tr>
               <tr style="background: #f9fafb;">
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Experience</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb;">${experience || 'Not specified'}</td>
+                <td style="padding: 12px; border: 1px solid #e5e7eb;">${escapeHtml(experience || 'Not specified')}</td>
               </tr>
               ${linkedin ? `<tr>
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">LinkedIn</td>
                 <td style="padding: 12px; border: 1px solid #e5e7eb;">
-                  <a href="${linkedin}" style="color: #2563EB;" target="_blank">${linkedin}</a>
+                  ${safeUrl(linkedin) ? `<a href="${escapeHtml(safeUrl(linkedin)!)}" style="color: #2563EB;" target="_blank">${escapeHtml(linkedin)}</a>` : escapeHtml(linkedin)}
                 </td>
               </tr>` : ''}
             </table>
