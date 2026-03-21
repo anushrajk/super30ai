@@ -202,7 +202,7 @@ const handler = async (req: Request): Promise<Response> => {
               📚 New Course Application
             </h1>
             <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px;">
-              ${fullName} wants to join The Super 30!
+              ${escapeHtml(fullName)} wants to join The Super 30!
             </p>
           </div>
           
