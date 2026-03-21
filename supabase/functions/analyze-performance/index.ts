@@ -55,6 +55,15 @@ serve(async (req) => {
 
     console.log("Starting performance analysis");
 
+    // Validate URL to prevent SSRF
+    const urlValidation = validateUrl(url);
+    if (!urlValidation.valid) {
+      return new Response(
+        JSON.stringify({ error: urlValidation.error || "Invalid URL" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     // Get budget range
     const budget = budgetTiers[adBudget] || budgetTiers["10k_50k"];
     const monthlyBudget = Math.round((budget.min + budget.max) / 2);
@@ -66,7 +75,7 @@ serve(async (req) => {
     const pageSpeedApiKey = Deno.env.get("GOOGLE_PAGESPEED_API_KEY");
     if (pageSpeedApiKey) {
       try {
-        const normalizedUrl = url.startsWith("http") ? url : `https://${url}`;
+        const normalizedUrl = urlValidation.sanitizedUrl!;
         const pageSpeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(normalizedUrl)}&strategy=mobile&key=${pageSpeedApiKey}`;
         
         const pageSpeedResponse = await fetch(pageSpeedUrl);
