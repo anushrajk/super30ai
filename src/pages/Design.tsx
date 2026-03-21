@@ -17,15 +17,11 @@ import {
 } from "lucide-react";
 
 // Portfolio imports
-import socialPost1 from "@/assets/portfolio/social-post-1.jpg";
-import socialPost2 from "@/assets/portfolio/social-post-2.jpg";
-import socialPost3 from "@/assets/portfolio/social-post-3.jpg";
-import socialPost4 from "@/assets/portfolio/social-post-4.jpg";
-import socialPost5 from "@/assets/portfolio/social-post-5.jpg";
-import socialPost6 from "@/assets/portfolio/social-post-6.jpg";
-import webDesign1 from "@/assets/portfolio/web-design-1.jpg";
-import webDesign2 from "@/assets/portfolio/web-design-2.jpg";
-import webDesign3 from "@/assets/portfolio/web-design-3.jpg";
+import aadhyaImg from "@/assets/portfolio/aadhya-animatics.png";
+import madrabbitImg from "@/assets/portfolio/madrabbit.png";
+import isitImg from "@/assets/portfolio/isit.png";
+import interiorsImg from "@/assets/portfolio/interiors-and-more.png";
+import da360Img from "@/assets/portfolio/digital-academy-360.png";
 
 // ─── Parallax Hook ───
 const useParallax = (speed: number = 0.3) => {
@@ -159,7 +155,7 @@ const BentoServicesSection = () => {
 const SocialMediaShowcase = () => {
   const { ref: parallaxRef, offset } = useParallax(0.15);
   const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
-  const socialPosts = [socialPost1, socialPost2, socialPost3, socialPost4, socialPost5, socialPost6];
+  const socialPosts = [aadhyaImg, madrabbitImg, isitImg, interiorsImg, da360Img, aadhyaImg];
 
   return (
     <div
@@ -237,45 +233,44 @@ const SocialMediaShowcase = () => {
 // ─── Portfolio Case Study Cards (Reference-style horizontal scroll) ───
 const portfolioCaseStudies = [
   {
-    brand: "Magicbricks",
-    description: "A complete digital redesign with +40% lead generation uplift. We rebuilt their brand presence across web and social.",
-    gradient: "from-emerald-500 to-teal-700",
+    brand: "Aadhya Animatics",
+    description: "Complete web and social media design for a leading video production company. Dark-themed, cinematic visuals that match their creative identity.",
+    gradient: "from-blue-600 to-indigo-900",
     textColor: "text-white",
-    images: [socialPost1, webDesign1],
-    stat: "+40% Leads",
+    images: [aadhyaImg, aadhyaImg],
+    stat: "+55% Leads",
   },
   {
-    brand: "Jain University",
-    description: "End-to-end brand identity and social media design for one of India's leading universities. Admissions campaigns that convert.",
-    gradient: "from-blue-600 to-indigo-800",
+    brand: "Mad Rabbit Racing",
+    description: "Bold, high-energy social creatives and web design for India's premier motorcycle racing academy. Action-packed visuals that drive enrollments.",
+    gradient: "from-amber-500 to-yellow-700",
     textColor: "text-white",
-    images: [socialPost2, webDesign2],
-    stat: "2x Engagement",
+    images: [madrabbitImg, madrabbitImg],
+    stat: "3x Enrollments",
   },
   {
-    brand: "Mamaearth",
-    description: "Vibrant D2C creatives across Instagram and Facebook. We designed scroll-stopping visuals that drove massive engagement.",
-    gradient: "from-amber-400 to-orange-600",
+    brand: "iSit",
+    description: "Modern corporate website and social media presence for an IT solutions company. Clean, professional designs that build trust and generate B2B leads.",
+    gradient: "from-teal-500 to-cyan-800",
     textColor: "text-white",
-    images: [socialPost3, webDesign3],
-    stat: "+65% CTR",
+    images: [isitImg, isitImg],
+    stat: "+70% Traffic",
   },
   {
-    brand: "Tata 1mg",
-    description: "Healthcare UI/UX and marketing creatives. Clean, trustworthy designs that simplified complex health information.",
-    gradient: "from-rose-500 to-pink-700",
+    brand: "Interiors & More",
+    description: "Premium e-commerce design and social creatives for India's largest artificial flowers brand. Elegant visuals that showcase product beauty and drive sales.",
+    gradient: "from-amber-700 to-rose-800",
     textColor: "text-white",
-    images: [socialPost4, socialPost5],
-    stat: "3x Conversions",
+    images: [interiorsImg, interiorsImg],
+    stat: "2x Sales",
   },
   {
-    brand: "+100",
-    description: "Design Projects delivered across branding, UI/UX, social media, and web design for startups and enterprises.",
-    gradient: "from-violet-600 to-purple-900",
+    brand: "Digital Academy 360",
+    description: "End-to-end digital branding and social media campaigns for a top digital marketing school. Admission-focused creatives that convert prospective students.",
+    gradient: "from-red-500 to-orange-600",
     textColor: "text-white",
-    images: [socialPost6, webDesign1],
-    isCounter: true,
-    stat: "View More Work",
+    images: [da360Img, da360Img],
+    stat: "+90% Admissions",
   },
 ];
 
@@ -340,25 +335,10 @@ const PortfolioCaseStudySection = () => {
             >
               {/* Top content */}
               <div className="p-6 md:p-8 pb-0 relative z-10">
-                {study.isCounter ? (
-                  <div className="mb-3">
-                    <span className="text-6xl md:text-7xl font-black text-white/90 leading-none">{study.brand}</span>
-                    <div className="text-lg font-semibold text-white/80 mt-2">Design Projects</div>
-                  </div>
-                ) : (
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{study.brand}</h3>
-                )}
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{study.brand}</h3>
                 <p className="text-white/70 text-sm leading-relaxed mb-5 line-clamp-3 max-w-[90%]">
                   {study.description}
                 </p>
-                {study.isCounter && (
-                  <Link to="/seo-results-bangalore">
-                    <Button variant="outline-white" size="sm" className="rounded-full text-xs mt-1 group/btn">
-                      VIEW MORE WORK
-                      <ArrowRight className="w-3 h-3 ml-1 group-hover/btn:translate-x-0.5 transition-transform" />
-                    </Button>
-                  </Link>
-                )}
               </div>
 
               {/* Device mockups — bottom half */}
@@ -396,11 +376,9 @@ const PortfolioCaseStudySection = () => {
               </div>
 
               {/* Stat badge */}
-              {!study.isCounter && (
                 <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
                   {study.stat}
                 </div>
-              )}
 
               {/* Decorative circle */}
               <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
