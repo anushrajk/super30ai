@@ -97,19 +97,6 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
             <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
               <LeadCaptureForm onSubmit={onSubmit} loading={loading} />
             </div>
-            
-            {/* Expert credentials - Desktop only */}
-            <div className="hidden lg:flex flex-wrap gap-2 mt-4 justify-center">
-              {expertCredentials.map((cred, i) => (
-                <span 
-                  key={i}
-                  className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
-                >
-                  <Award className="w-3 h-3 text-brand" />
-                  {cred}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
       </div>
