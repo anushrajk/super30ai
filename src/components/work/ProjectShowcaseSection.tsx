@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import aadhyaImg from "@/assets/portfolio/aadhya-animatics.png";
 import isitImg from "@/assets/portfolio/isit.png";
 import interiorsImg from "@/assets/portfolio/interiors-and-more.png";
+import madrabbitImg from "@/assets/portfolio/madrabbit.png";
 
 const projects = [
   {
@@ -33,6 +34,15 @@ const projects = [
       "Crafted a visually stunning website for an interior design studio — featuring project galleries, service pages, and lead capture forms for consultations.",
     tags: ["Corporate Site", "Gallery", "Lead Generation", "Responsive"],
     image: interiorsImg,
+    cta: "View Case Study",
+  },
+  {
+    category: "RACING ACADEMY WEBSITE",
+    title: "Mad Rabbit Racing",
+    description:
+      "Designed a bold, high-energy website for India's premier motorcycle racing academy — with dynamic visuals, course listings, and enrollment-driven CTAs.",
+    tags: ["Landing Page", "Enrollment Focused", "Responsive", "Action Sports"],
+    image: madrabbitImg,
     cta: "View Case Study",
   },
 ];
