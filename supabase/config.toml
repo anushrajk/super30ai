@@ -29,3 +29,9 @@ verify_jwt = false
 
 [functions.submit-course-application]
 verify_jwt = false
+
+[functions.update-engagement]
+verify_jwt = false
+
+[functions.sync-lead-to-sheets]
+verify_jwt = false

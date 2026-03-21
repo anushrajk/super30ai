@@ -275,11 +275,11 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const { url, leadId }: SEOAnalysisRequest = await req.json();
 
-    // Rate limit: 5 requests per session per hour
+    // Rate limit: 5 requests per IP per hour (IP-based to prevent bypass)
     const rateLimitResult = await checkRateLimit(req, corsHeaders, {
       operation: "analyze_seo",
       limit: 5,
-    }, leadId);
+    });
     if (!rateLimitResult.allowed) return rateLimitResult.response!;
     
     // Validate required fields

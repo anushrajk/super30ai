@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 import { checkRateLimit } from "../_shared/rate-limit.ts";
+import { escapeHtml } from "../_shared/escape-html.ts";
 
 interface LeadEmailRequest {
   lead: {
@@ -112,34 +113,34 @@ const handler = async (req: Request): Promise<Response> => {
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <h1 style="color: #F97316; border-bottom: 2px solid #F97316; padding-bottom: 10px;">
-          🚀 New Lead - ${form_step}
+          🚀 New Lead - ${escapeHtml(form_step)}
         </h1>
         
         <h2 style="color: #333; margin-top: 20px;">Lead Information</h2>
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Website URL</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${lead.website_url}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.website_url)}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Email</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${lead.email}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.email)}</td>
           </tr>
           ${lead.role ? `<tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Role</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${lead.role}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.role)}</td>
           </tr>` : ''}
           ${lead.monthly_revenue ? `<tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Monthly Revenue</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${lead.monthly_revenue}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.monthly_revenue)}</td>
           </tr>` : ''}
           ${lead.phone ? `<tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Phone</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${lead.phone}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.phone)}</td>
           </tr>` : ''}
           ${lead.company_name ? `<tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Company Name</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${lead.company_name}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.company_name)}</td>
           </tr>` : ''}
         </table>
 
@@ -147,27 +148,27 @@ const handler = async (req: Request): Promise<Response> => {
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">First Page URL</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.first_page_url || 'N/A'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(session.first_page_url || 'N/A')}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Current Page URL</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.current_page_url || 'N/A'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(session.current_page_url || 'N/A')}</td>
           </tr>
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Referrer</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.referrer || 'Direct'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(session.referrer || 'Direct')}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">IP Address</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.ip_address || 'N/A'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(session.ip_address || 'N/A')}</td>
           </tr>
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Location</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${location}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(location)}</td>
           </tr>
           <tr>
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Browser</td>
-            <td style="padding: 10px; border: 1px solid #e5e7eb;">${session.browser || 'N/A'}</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(session.browser || 'N/A')}</td>
           </tr>
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">First Landed (IST)</td>

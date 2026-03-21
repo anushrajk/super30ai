@@ -3,6 +3,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 import { checkRateLimit } from "../_shared/rate-limit.ts";
+import { escapeHtml, safeUrl } from "../_shared/escape-html.ts";
 
 interface ApplicationRequest {
   fullName: string;
@@ -201,7 +202,7 @@ const handler = async (req: Request): Promise<Response> => {
               📚 New Course Application
             </h1>
             <p style="color: rgba(255,255,255,0.9); margin: 8px 0 0 0; font-size: 16px;">
-              ${fullName} wants to join The Super 30!
+              ${escapeHtml(fullName)} wants to join The Super 30!
             </p>
           </div>
           
@@ -224,32 +225,32 @@ const handler = async (req: Request): Promise<Response> => {
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 25px;">
               <tr style="background: #f9fafb;">
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600; width: 35%;">Name</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb;">${fullName}</td>
+               <td style="padding: 12px; border: 1px solid #e5e7eb;">${escapeHtml(fullName)}</td>
               </tr>
               <tr>
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Email</td>
                 <td style="padding: 12px; border: 1px solid #e5e7eb;">
-                  <a href="mailto:${email}" style="color: #2563EB;">${email}</a>
+                  <a href="mailto:${escapeHtml(email)}" style="color: #2563EB;">${escapeHtml(email)}</a>
                 </td>
               </tr>
               <tr style="background: #f9fafb;">
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Phone</td>
                 <td style="padding: 12px; border: 1px solid #e5e7eb;">
-                  <a href="tel:+91${cleanedPhone}" style="color: #2563EB;">+91 ${cleanedPhone}</a>
+                  <a href="tel:+91${escapeHtml(cleanedPhone)}" style="color: #2563EB;">+91 ${escapeHtml(cleanedPhone)}</a>
                 </td>
               </tr>
               <tr>
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Current Role</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb;">${currentRole || 'Not specified'}</td>
+                <td style="padding: 12px; border: 1px solid #e5e7eb;">${escapeHtml(currentRole || 'Not specified')}</td>
               </tr>
               <tr style="background: #f9fafb;">
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">Experience</td>
-                <td style="padding: 12px; border: 1px solid #e5e7eb;">${experience || 'Not specified'}</td>
+                <td style="padding: 12px; border: 1px solid #e5e7eb;">${escapeHtml(experience || 'Not specified')}</td>
               </tr>
               ${linkedin ? `<tr>
                 <td style="padding: 12px; border: 1px solid #e5e7eb; font-weight: 600;">LinkedIn</td>
                 <td style="padding: 12px; border: 1px solid #e5e7eb;">
-                  <a href="${linkedin}" style="color: #2563EB;" target="_blank">${linkedin}</a>
+                  ${safeUrl(linkedin) ? `<a href="${escapeHtml(safeUrl(linkedin)!)}" style="color: #2563EB;" target="_blank">${escapeHtml(linkedin)}</a>` : escapeHtml(linkedin)}
                 </td>
               </tr>` : ''}
             </table>
@@ -259,7 +260,7 @@ const handler = async (req: Request): Promise<Response> => {
             </h2>
             <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 15px; margin-bottom: 25px; border-radius: 0 8px 8px 0;">
               <p style="margin: 0; color: #92400E; font-style: italic; line-height: 1.6;">
-                "${motivation}"
+                "${escapeHtml(motivation)}"
               </p>
             </div>
 

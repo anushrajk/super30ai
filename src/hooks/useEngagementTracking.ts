@@ -67,7 +67,6 @@ export const useEngagementTracking = () => {
     }
 
     const payload = {
-      session_id: sessionId,
       page_url: location.pathname,
       max_scroll_depth: Math.round(data.maxScrollDepth),
       scroll_milestones: JSON.parse(JSON.stringify(data.scrollMilestones)),
@@ -77,21 +76,16 @@ export const useEngagementTracking = () => {
     };
 
     try {
-      if (metricIdRef.current) {
-        await supabase
-          .from("engagement_metrics")
-          .update(payload)
-          .eq("id", metricIdRef.current);
-      } else {
-        const { data: inserted } = await supabase
-          .from("engagement_metrics")
-          .insert([payload])
-          .select("id")
-          .single();
-        
-        if (inserted?.id) {
-          metricIdRef.current = inserted.id;
-        }
+      const { data: result } = await supabase.functions.invoke('update-engagement', {
+        body: {
+          sessionId,
+          metricId: metricIdRef.current,
+          payload,
+        },
+      });
+      
+      if (result?.id && !metricIdRef.current) {
+        metricIdRef.current = result.id;
       }
       lastSyncRef.current = Date.now();
       lastDataHashRef.current = currentHash;

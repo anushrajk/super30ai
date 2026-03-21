@@ -13,11 +13,11 @@ serve(async (req) => {
   try {
     const { url, auditData, leadId, auditId } = await req.json();
 
-    // Rate limit: 3 requests per session per hour
+    // Rate limit: 3 requests per IP per hour (IP-based to prevent bypass)
     const rateLimitResult = await checkRateLimit(req, corsHeaders, {
       operation: "analyze_competitor",
       limit: 3,
-    }, leadId);
+    });
     if (!rateLimitResult.allowed) return rateLimitResult.response!;
     
     if (!url) {
