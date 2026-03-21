@@ -88,7 +88,23 @@ function validateUrl(url: string): { valid: boolean; error?: string; sanitizedUr
       hostname.startsWith('172.30.') ||
       hostname.startsWith('172.31.') ||
       hostname === '0.0.0.0' ||
-      hostname.includes('169.254.169.254') // Cloud metadata
+      hostname.startsWith('169.254.') || // Link-local range
+      hostname.startsWith('100.64.') || // Carrier-grade NAT
+      hostname.endsWith('.local') ||
+      hostname.endsWith('.internal') ||
+      hostname.endsWith('.localhost')
+    ) {
+      return { valid: false, error: 'Internal URLs not allowed' };
+    }
+
+    // Block IPv6 private/internal addresses
+    const cleanHost = hostname.replace(/[\[\]]/g, '').toLowerCase();
+    if (
+      cleanHost === '::1' ||
+      cleanHost.startsWith('::ffff:127.') ||
+      cleanHost.startsWith('fe80:') ||
+      cleanHost.startsWith('fc') ||
+      cleanHost.startsWith('fd')
     ) {
       return { valid: false, error: 'Internal URLs not allowed' };
     }

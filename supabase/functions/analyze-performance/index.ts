@@ -385,7 +385,7 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
   } catch (error) {
     console.error("Performance analysis error:", error);
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : "Analysis failed" }),
+      JSON.stringify({ error: "Service temporarily unavailable. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }

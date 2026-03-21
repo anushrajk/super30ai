@@ -218,7 +218,7 @@ const handler = async (req: Request): Promise<Response> => {
     console.error("========================================");
     
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ error: "Service temporarily unavailable. Please try again." }),
       { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
     );
   }

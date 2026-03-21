@@ -67,8 +67,8 @@ const handler = async (req: Request): Promise<Response> => {
       { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (error: any) {
-    console.error("Error in sync-lead-to-sheets:", error);
-    return new Response(JSON.stringify({ ok: false, error: error?.message ?? String(error) }), {
+    console.error("Error in sync-lead-to-sheets:", error?.message ?? error, error?.stack);
+    return new Response(JSON.stringify({ ok: false, error: "Service temporarily unavailable. Please try again." }), {
       status: 500,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
