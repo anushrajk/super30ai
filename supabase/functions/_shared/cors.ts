@@ -17,8 +17,13 @@ function isLovablePreviewOrigin(origin: string): boolean {
     const { hostname, protocol } = new URL(origin);
     if (protocol !== 'https:') return false;
 
-    // Allow Lovable preview + hosted domains
-    return hostname.endsWith('.lovableproject.com') || hostname.endsWith('.lovable.app');
+    // Only allow this project's specific Lovable preview/hosted domains
+    const PROJECT_ID = '9fc41acf-a44c-4b4e-b257-9336c6b074a9';
+    const ALLOWED_LOVABLE_HOSTS = [
+      `id-preview--${PROJECT_ID}.lovableproject.com`,
+      `super30ai.lovable.app`,
+    ];
+    return ALLOWED_LOVABLE_HOSTS.includes(hostname);
   } catch {
     return false;
   }

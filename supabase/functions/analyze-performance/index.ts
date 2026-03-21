@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 import { checkRateLimit } from "../_shared/rate-limit.ts";
+import { validateUrl } from "../_shared/validate-url.ts";
 
 // Industry benchmarks for performance marketing platforms (2025 data)
 const platformBenchmarks = {
@@ -54,6 +55,15 @@ serve(async (req) => {
 
     console.log("Starting performance analysis");
 
+    // Validate URL to prevent SSRF
+    const urlValidation = validateUrl(url);
+    if (!urlValidation.valid) {
+      return new Response(
+        JSON.stringify({ error: urlValidation.error || "Invalid URL" }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     // Get budget range
     const budget = budgetTiers[adBudget] || budgetTiers["10k_50k"];
     const monthlyBudget = Math.round((budget.min + budget.max) / 2);
@@ -65,7 +75,7 @@ serve(async (req) => {
     const pageSpeedApiKey = Deno.env.get("GOOGLE_PAGESPEED_API_KEY");
     if (pageSpeedApiKey) {
       try {
-        const normalizedUrl = url.startsWith("http") ? url : `https://${url}`;
+        const normalizedUrl = urlValidation.sanitizedUrl!;
         const pageSpeedUrl = `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodeURIComponent(normalizedUrl)}&strategy=mobile&key=${pageSpeedApiKey}`;
         
         const pageSpeedResponse = await fetch(pageSpeedUrl);
@@ -385,7 +395,7 @@ Based on the website URL, provide intelligent analysis using the provided tool.`
   } catch (error) {
     console.error("Performance analysis error:", error);
     return new Response(
-      JSON.stringify({ error: error instanceof Error ? error.message : "Analysis failed" }),
+      JSON.stringify({ error: "Service temporarily unavailable. Please try again." }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
