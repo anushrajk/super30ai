@@ -2,51 +2,47 @@ import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-import socialPost1 from "@/assets/portfolio/social-post-1.jpg";
-import socialPost2 from "@/assets/portfolio/social-post-2.jpg";
-import socialPost3 from "@/assets/portfolio/social-post-3.jpg";
-import socialPost4 from "@/assets/portfolio/social-post-4.jpg";
-import socialPost5 from "@/assets/portfolio/social-post-5.jpg";
-import socialPost6 from "@/assets/portfolio/social-post-6.jpg";
-import webDesign1 from "@/assets/portfolio/web-design-1.jpg";
-import webDesign2 from "@/assets/portfolio/web-design-2.jpg";
-import webDesign3 from "@/assets/portfolio/web-design-3.jpg";
+import aadhyaImg from "@/assets/portfolio/aadhya-animatics.png";
+import madrabbitImg from "@/assets/portfolio/madrabbit.png";
+import isitImg from "@/assets/portfolio/isit.png";
+import interiorsImg from "@/assets/portfolio/interiors-and-more.png";
+import da360Img from "@/assets/portfolio/digital-academy-360.png";
 
 const clientProfiles = [
   {
-    brand: "Magicbricks",
-    description: "A complete digital redesign with +40% lead generation uplift. We rebuilt their brand presence across web and social.",
-    gradient: "from-emerald-500 to-green-700",
-    images: [socialPost1, webDesign1],
-    stat: "+40% Leads",
+    brand: "Aadhya Animatics",
+    description: "Complete web and social media design for a leading video production company. Dark-themed, cinematic visuals that match their creative identity.",
+    gradient: "from-blue-600 to-indigo-900",
+    images: [aadhyaImg, aadhyaImg],
+    stat: "+55% Leads",
   },
   {
-    brand: "Jain University",
-    description: "End-to-end brand identity and social media design for one of India's leading universities. Admissions campaigns that convert.",
-    gradient: "from-blue-600 to-indigo-800",
-    images: [socialPost2, webDesign2],
-    stat: "2x Engagement",
+    brand: "Mad Rabbit Racing",
+    description: "Bold, high-energy social creatives and web design for India's premier motorcycle racing academy. Action-packed visuals that drive enrollments.",
+    gradient: "from-amber-500 to-yellow-700",
+    images: [madrabbitImg, madrabbitImg],
+    stat: "3x Enrollments",
   },
   {
-    brand: "Mamaearth",
-    description: "Vibrant D2C creatives across Instagram and Facebook. We designed scroll-stopping visuals that drove massive engagement.",
-    gradient: "from-amber-400 to-orange-600",
-    images: [socialPost3, webDesign3],
-    stat: "+65% CTR",
+    brand: "iSit",
+    description: "Modern corporate website and social media presence for an IT solutions company. Clean, professional designs that build trust and generate B2B leads.",
+    gradient: "from-teal-500 to-cyan-800",
+    images: [isitImg, isitImg],
+    stat: "+70% Traffic",
   },
   {
-    brand: "Tata 1mg",
-    description: "Healthcare UI/UX and marketing creatives. Clean, trustworthy designs that simplified complex health information.",
-    gradient: "from-rose-500 to-pink-700",
-    images: [socialPost4, socialPost5],
-    stat: "3x Conversions",
+    brand: "Interiors & More",
+    description: "Premium e-commerce design and social creatives for India's largest artificial flowers brand. Elegant visuals that showcase product beauty and drive sales.",
+    gradient: "from-amber-700 to-rose-800",
+    images: [interiorsImg, interiorsImg],
+    stat: "2x Sales",
   },
   {
-    brand: "upGrad",
-    description: "EdTech social creatives for LinkedIn & Instagram — course promotions, student success stories, and webinar graphics.",
-    gradient: "from-violet-600 to-purple-900",
-    images: [socialPost6, webDesign1],
-    stat: "+80% Leads",
+    brand: "Digital Academy 360",
+    description: "End-to-end digital branding and social media campaigns for a top digital marketing school. Admission-focused creatives that convert prospective students.",
+    gradient: "from-red-500 to-orange-600",
+    images: [da360Img, da360Img],
+    stat: "+90% Admissions",
   },
 ];
 
