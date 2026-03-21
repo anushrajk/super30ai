@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { checkRateLimit } from "../_shared/rate-limit.ts";
 
 serve(async (req) => {
   const corsPreFlight = handleCorsPreFlight(req);
@@ -11,6 +12,13 @@ serve(async (req) => {
 
   try {
     const { url, auditData, leadId, auditId } = await req.json();
+
+    // Rate limit: 3 requests per session per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "analyze_competitor",
+      limit: 3,
+    }, leadId);
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
     
     if (!url) {
       return new Response(

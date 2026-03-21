@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { checkRateLimit } from "../_shared/rate-limit.ts";
 
 interface ApplicationRequest {
   fullName: string;
@@ -89,6 +90,13 @@ const handler = async (req: Request): Promise<Response> => {
   try {
     const body: ApplicationRequest = await req.json();
     const { fullName, email, phone, currentRole, experience, linkedin, motivation, sessionId } = body;
+
+    // Rate limit: 5 requests per IP per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "submit_course_application",
+      limit: 5,
+    });
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
 
     // Validation
     if (!fullName?.trim()) {

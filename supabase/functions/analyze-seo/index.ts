@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { checkRateLimit } from "../_shared/rate-limit.ts";
 
 interface SEOAnalysisRequest {
   url: string;
@@ -257,6 +258,13 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const { url, leadId }: SEOAnalysisRequest = await req.json();
+
+    // Rate limit: 5 requests per session per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "analyze_seo",
+      limit: 5,
+    }, leadId);
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
     
     // Validate required fields
     if (!url) {

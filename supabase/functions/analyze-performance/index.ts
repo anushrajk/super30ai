@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { checkRateLimit } from "../_shared/rate-limit.ts";
 
 // Industry benchmarks for performance marketing platforms (2025 data)
 const platformBenchmarks = {
@@ -43,6 +44,13 @@ serve(async (req) => {
       preferredPlatforms, 
       adBudget 
     } = await req.json();
+
+    // Rate limit: 3 requests per session per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "analyze_performance",
+      limit: 3,
+    }, leadId);
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
 
     console.log("Starting performance analysis");
 

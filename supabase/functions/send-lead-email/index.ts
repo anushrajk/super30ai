@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { Resend } from "https://esm.sh/resend@2.0.0";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { checkRateLimit } from "../_shared/rate-limit.ts";
 
 interface LeadEmailRequest {
   lead: {
@@ -91,6 +92,13 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const { lead, session, submission_time, form_step }: LeadEmailRequest = await req.json();
+
+    // Rate limit: 10 requests per IP per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "send_lead_email",
+      limit: 10,
+    });
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
     
     console.log("send-lead-email invoked, step:", form_step);
 
