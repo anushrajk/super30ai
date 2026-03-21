@@ -36,6 +36,15 @@ const projects = [
     image: interiorsImg,
     cta: "View Case Study",
   },
+  {
+    category: "RACING ACADEMY WEBSITE",
+    title: "Mad Rabbit Racing",
+    description:
+      "Designed a bold, high-energy website for India's premier motorcycle racing academy — with dynamic visuals, course listings, and enrollment-driven CTAs.",
+    tags: ["Landing Page", "Enrollment Focused", "Responsive", "Action Sports"],
+    image: madrabbitImg,
+    cta: "View Case Study",
+  },
 ];
 
 export const ProjectShowcaseSection = () => {
