@@ -91,6 +91,13 @@ const handler = async (req: Request): Promise<Response> => {
     const body: ApplicationRequest = await req.json();
     const { fullName, email, phone, currentRole, experience, linkedin, motivation, sessionId } = body;
 
+    // Rate limit: 5 requests per IP per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "submit_course_application",
+      limit: 5,
+    });
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
+
     // Validation
     if (!fullName?.trim()) {
       return new Response(

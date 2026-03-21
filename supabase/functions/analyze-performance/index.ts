@@ -45,6 +45,13 @@ serve(async (req) => {
       adBudget 
     } = await req.json();
 
+    // Rate limit: 3 requests per session per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "analyze_performance",
+      limit: 3,
+    }, leadId);
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
+
     console.log("Starting performance analysis");
 
     // Get budget range

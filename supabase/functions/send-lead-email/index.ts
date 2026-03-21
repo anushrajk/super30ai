@@ -92,6 +92,13 @@ const handler = async (req: Request): Promise<Response> => {
 
   try {
     const { lead, session, submission_time, form_step }: LeadEmailRequest = await req.json();
+
+    // Rate limit: 10 requests per IP per hour
+    const rateLimitResult = await checkRateLimit(req, corsHeaders, {
+      operation: "send_lead_email",
+      limit: 10,
+    });
+    if (!rateLimitResult.allowed) return rateLimitResult.response!;
     
     console.log("send-lead-email invoked, step:", form_step);
 
