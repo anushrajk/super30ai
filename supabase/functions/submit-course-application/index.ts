@@ -260,7 +260,7 @@ const handler = async (req: Request): Promise<Response> => {
             </h2>
             <div style="background: #FEF3C7; border-left: 4px solid #F59E0B; padding: 15px; margin-bottom: 25px; border-radius: 0 8px 8px 0;">
               <p style="margin: 0; color: #92400E; font-style: italic; line-height: 1.6;">
-                "${motivation}"
+                "${escapeHtml(motivation)}"
               </p>
             </div>
 
