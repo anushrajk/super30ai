@@ -3,36 +3,36 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
-import webDesign1 from "@/assets/portfolio/web-design-1.jpg";
-import webDesign2 from "@/assets/portfolio/web-design-2.jpg";
-import webDesign3 from "@/assets/portfolio/web-design-3.jpg";
+import aadhyaImg from "@/assets/portfolio/aadhya-animatics.png";
+import isitImg from "@/assets/portfolio/isit.png";
+import interiorsImg from "@/assets/portfolio/interiors-and-more.png";
 
 const projects = [
   {
-    category: "CORPORATE WEBSITE",
-    title: "Professional Business Website",
+    category: "VIDEO PRODUCTION WEBSITE",
+    title: "Aadhya Animatics",
     description:
-      "Designed and developed a high-converting corporate website with modern UI, clear CTAs, and SEO-optimized structure to drive leads and build brand trust.",
-    tags: ["Corporate Site", "Responsive", "SEO Ready", "CMS Ready"],
-    image: webDesign1,
+      "Designed and developed a cinematic, dark-themed website for a leading video production company — with bold CTAs, portfolio showcases, and SEO-optimized structure.",
+    tags: ["Corporate Site", "Dark Theme", "SEO Ready", "Portfolio"],
+    image: aadhyaImg,
     cta: "View Case Study",
   },
   {
     category: "E-COMMERCE STORE",
-    title: "Full-Featured Online Store",
+    title: "iSit Office Space Solutions",
     description:
-      "Built a complete e-commerce platform with product catalogs, payment gateway integration, cart management, and a streamlined checkout experience.",
+      "Built a complete e-commerce platform for office furniture with product catalogs, payment gateway integration, and a streamlined checkout experience.",
     tags: ["E-Commerce", "Payment Gateway", "Product Catalog", "Mobile First"],
-    image: webDesign2,
+    image: isitImg,
     cta: "View Case Study",
   },
   {
-    category: "SAAS LANDING PAGE",
-    title: "High-Converting SaaS Landing",
+    category: "INTERIOR DESIGN WEBSITE",
+    title: "Interiors & More",
     description:
-      "Crafted a conversion-focused landing page with pricing sections, feature highlights, testimonials, and optimized CTAs for maximum sign-ups.",
-    tags: ["Landing Page", "SaaS", "Conversion Focused", "A/B Tested"],
-    image: webDesign3,
+      "Crafted a visually stunning website for an interior design studio — featuring project galleries, service pages, and lead capture forms for consultations.",
+    tags: ["Corporate Site", "Gallery", "Lead Generation", "Responsive"],
+    image: interiorsImg,
     cta: "View Case Study",
   },
 ];
