@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
+import designMockup from "@/assets/services/design-services-mockup.png";
 
 const services = [
   {
@@ -29,7 +30,7 @@ const services = [
     title: "Design Services",
     description: "Brand identity, social media creatives, and marketing collaterals that stand out.",
     href: "/design",
-    image: null,
+    image: designMockup,
     bg: "bg-[#f59e0b]",
   },
   {
