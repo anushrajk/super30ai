@@ -320,46 +320,46 @@ const PortfolioCaseStudySection = () => {
           {portfolioCaseStudies.map((study, index) => (
             <div
               key={index}
-              className={`flex-shrink-0 w-[320px] md:w-[380px] rounded-3xl overflow-hidden relative group cursor-pointer snap-start
+              className={`flex-shrink-0 w-[260px] sm:w-[320px] md:w-[380px] rounded-3xl overflow-hidden relative group cursor-pointer snap-start
                 bg-gradient-to-br ${study.gradient}
                 transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl
                 ${isVisible ? "animate-bento-reveal" : "opacity-0"}`}
               style={{ animationDelay: `${index * 120}ms`, aspectRatio: "4/5" }}
             >
               {/* Top content */}
-              <div className="p-6 md:p-8 pb-0 relative z-10">
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight leading-tight">{study.brand}</h3>
-                <p className="text-white/70 text-sm leading-relaxed mb-5 line-clamp-3 max-w-[90%]">
+              <div className="p-4 sm:p-6 md:p-8 pb-0 relative z-10">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-2 sm:mb-3 tracking-tight leading-tight">{study.brand}</h3>
+                <p className="text-white/70 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-5 line-clamp-2 sm:line-clamp-3 max-w-[90%]">
                   {study.description}
                 </p>
               </div>
 
               {/* Device mockups — bottom half */}
-              <div className="absolute bottom-0 left-0 right-0 h-[55%] flex items-end justify-center overflow-hidden">
-                <div className="relative w-full h-full flex items-end justify-center px-5">
+              <div className="absolute bottom-0 left-0 right-0 h-[50%] sm:h-[55%] flex items-end justify-center overflow-hidden">
+                <div className="relative w-full h-full flex items-end justify-center px-3 sm:px-5">
                   {/* Laptop / Tablet mockup */}
                   <div className="relative w-[80%] mb-0 transform group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 z-[1]">
-                    <div className="bg-[hsl(var(--foreground))]/90 rounded-t-xl p-[3px] shadow-2xl">
-                      <div className="rounded-t-lg overflow-hidden aspect-[4/3] bg-muted">
+                    <div className="bg-[hsl(var(--foreground))]/90 rounded-t-lg sm:rounded-t-xl p-[2px] sm:p-[3px] shadow-2xl">
+                      <div className="rounded-t-md sm:rounded-t-lg overflow-hidden aspect-[4/3] bg-muted">
                         <img
                           src={study.images[0]}
                           alt={`${study.brand} design`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-top"
                           loading="lazy"
                         />
                       </div>
                     </div>
-                    <div className="bg-[hsl(var(--foreground))]/70 h-[6px] rounded-b-lg w-[108%] -ml-[4%]" />
+                    <div className="bg-[hsl(var(--foreground))]/70 h-1 sm:h-[6px] rounded-b-lg w-[108%] -ml-[4%]" />
                   </div>
 
                   {/* Phone mockup */}
-                  <div className="absolute -right-1 bottom-3 w-[32%] transform group-hover:scale-110 group-hover:-translate-y-3 transition-all duration-700 delay-100 z-[2]">
-                    <div className="bg-[hsl(var(--foreground))]/90 rounded-2xl p-[3px] shadow-2xl">
-                      <div className="rounded-xl overflow-hidden aspect-[9/16] bg-muted">
+                  <div className="absolute -right-1 bottom-2 sm:bottom-3 w-[28%] sm:w-[32%] transform group-hover:scale-110 group-hover:-translate-y-3 transition-all duration-700 delay-100 z-[2]">
+                    <div className="bg-[hsl(var(--foreground))]/90 rounded-xl sm:rounded-2xl p-[2px] sm:p-[3px] shadow-2xl">
+                      <div className="rounded-lg sm:rounded-xl overflow-hidden aspect-[9/16] bg-muted">
                         <img
                           src={study.images[1]}
                           alt={`${study.brand} mobile`}
-                          className="w-full h-full object-cover"
+                          className="w-full h-full object-cover object-top"
                           loading="lazy"
                         />
                       </div>
@@ -369,12 +369,12 @@ const PortfolioCaseStudySection = () => {
               </div>
 
               {/* Stat badge */}
-                <div className="absolute top-6 right-6 bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1.5 rounded-full z-10">
-                  {study.stat}
-                </div>
+              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white/20 backdrop-blur-sm text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full z-10">
+                {study.stat}
+              </div>
 
               {/* Decorative circle */}
-              <div className="absolute top-0 right-0 w-40 h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
+              <div className="absolute top-0 right-0 w-28 sm:w-40 h-28 sm:h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
             </div>
           ))}
         </div>
