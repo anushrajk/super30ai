@@ -155,7 +155,7 @@ const BentoServicesSection = () => {
 const SocialMediaShowcase = () => {
   const { ref: parallaxRef, offset } = useParallax(0.15);
   const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
-  const socialPosts = [aadhyaImg, madrabbitImg, isitImg, interiorsImg, da360Img, aadhyaImg];
+  const socialPosts = Array(6).fill(null);
 
   return (
     <div
@@ -192,7 +192,7 @@ const SocialMediaShowcase = () => {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-          {socialPosts.map((post, index) => (
+          {socialPosts.map((_, index) => (
             <div
               key={index}
               className={`rounded-2xl overflow-hidden border border-border/50 group relative
@@ -203,15 +203,8 @@ const SocialMediaShowcase = () => {
                 transform: `translateY(${index % 2 === 0 ? offset * 0.1 : -offset * 0.1}px)`,
               }}
             >
-              <img
-                src={post}
-                alt={`Social media design ${index + 1}`}
-                className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-              />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300 flex items-center justify-center">
-                <Eye className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 drop-shadow-lg" />
+              <div className="w-full aspect-square bg-muted flex items-center justify-center">
+                <Instagram className="w-8 h-8 text-muted-foreground/30" />
               </div>
             </div>
           ))}
