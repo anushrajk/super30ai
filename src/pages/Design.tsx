@@ -155,7 +155,7 @@ const BentoServicesSection = () => {
 const SocialMediaShowcase = () => {
   const { ref: parallaxRef, offset } = useParallax(0.15);
   const [sectionRef, isVisible] = useScrollAnimation<HTMLDivElement>();
-  const socialPosts = [aadhyaImg, madrabbitImg, isitImg, interiorsImg, da360Img, aadhyaImg];
+  const socialPosts = Array(6).fill(null);
 
   return (
     <div
