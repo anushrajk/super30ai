@@ -417,36 +417,6 @@ const ClientReport = () => {
             </div>
           </section>
 
-          <Divider />
-
-          {/* ── 07 RECOMMENDATIONS ── */}
-          <section data-section="recommendations" id="recommendations">
-            <SectionHeader tag="07 — Recommendations" title="Next Steps" sub="Prioritised action items for Q2 2026." />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {[
-                { n: "01", title: "Fix duplicate meta descriptions", desc: "Rewrite unique meta descriptions for the 6 flagged service pages. Target 150–160 characters with primary keyword inclusion.", priority: "High priority", badge: "red" },
-                { n: "02", title: "Add Article schema to blog posts", desc: "Implement JSON-LD Article structured data across all 38 blog posts to unlock rich snippet eligibility in SERPs.", priority: "High priority", badge: "red" },
-                { n: "03", title: "Improve mobile PageSpeed score", desc: "Optimise image formats (WebP), eliminate render-blocking scripts, and implement lazy loading to push mobile score above 85.", priority: "Medium priority", badge: "yellow" },
-                { n: "04", title: "Resolve CLS issues", desc: "Reserve explicit dimensions for all images and ad units. Audit font loading to prevent layout shifts during page load.", priority: "Medium priority", badge: "yellow" },
-                { n: "05", title: "Expand alt text coverage", desc: "Add descriptive alt attributes to the remaining 214 images. Focus on blog and product imagery first for maximum SEO impact.", priority: "Medium priority", badge: "yellow" },
-                { n: "06", title: "Build content on thin service pages", desc: "Expand 8 service pages to 800+ words each with FAQ sections, case study snippets, and supporting internal links.", priority: "Low priority", badge: "blue" },
-                { n: "07", title: 'Target "social media marketing" keyword', desc: "This high-volume term slipped 2 positions. Refresh the page content, add internal links, and build 3-5 targeted backlinks.", priority: "Medium priority", badge: "yellow" },
-                { n: "08", title: "Continue link-building outreach", desc: "Sustain the 30 new referring domains/month pace. Focus on DA 60+ editorial placements in digital marketing publications.", priority: "Ongoing", badge: "blue" },
-              ].map((rec) => (
-                <div key={rec.n} className="report-card p-5 flex gap-4 hover:border-brand transition-colors" style={{ borderColor: undefined }}>
-                  <span className="text-3xl font-serif flex-shrink-0 min-w-7 leading-none" style={{ color: "hsl(18,100%,48%)", opacity: 0.35 }}>{rec.n}</span>
-                  <div>
-                    <div className="text-sm font-semibold text-report-text mb-1">{rec.title}</div>
-                    <div className="text-[13px] text-report-muted leading-relaxed">{rec.desc}</div>
-                    <div className="mt-2">
-                      <span className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full ${badgeColor(rec.badge)}`}>{rec.priority}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
           <div className="py-12" />
         </main>
       </div>
