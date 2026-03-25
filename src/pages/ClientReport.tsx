@@ -435,7 +435,7 @@ const ClientReport = () => {
                 { n: "04", title: "Resolve CLS issues", desc: "Reserve explicit dimensions for all images and ad units. Audit font loading to prevent layout shifts during page load.", priority: "Medium priority", badge: "yellow" },
                 { n: "05", title: "Expand alt text coverage", desc: "Add descriptive alt attributes to the remaining 214 images. Focus on blog and product imagery first for maximum SEO impact.", priority: "Medium priority", badge: "yellow" },
                 { n: "06", title: "Build content on thin service pages", desc: "Expand 8 service pages to 800+ words each with FAQ sections, case study snippets, and supporting internal links.", priority: "Low priority", badge: "blue" },
-                { n: "07", title: "Target "social media marketing" keyword", desc: "This high-volume term slipped 2 positions. Refresh the page content, add internal links, and build 3–5 targeted backlinks.", priority: "Medium priority", badge: "yellow" },
+                { n: "07", title: 'Target "social media marketing" keyword', desc: "This high-volume term slipped 2 positions. Refresh the page content, add internal links, and build 3-5 targeted backlinks.", priority: "Medium priority", badge: "yellow" },
                 { n: "08", title: "Continue link-building outreach", desc: "Sustain the 30 new referring domains/month pace. Focus on DA 60+ editorial placements in digital marketing publications.", priority: "Ongoing", badge: "blue" },
               ].map((rec) => (
                 <div key={rec.n} className="report-card p-5 flex gap-4 hover:border-brand transition-colors" style={{ borderColor: undefined }}>
