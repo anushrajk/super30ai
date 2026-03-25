@@ -10,7 +10,7 @@ import shriramLogo from "@/assets/case-studies/shriram-properties.png";
 import jainUniversityLogo from "@/assets/case-studies/jain-university.png";
 import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
 import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
-import s30Logo from "@/assets/super30-horizontal-logo.svg";
+import { Navbar } from "@/components/Navbar";
 
 const clientData: Record<string, { name: string; industry: string; logo: string; domain: string }> = {
   magicbricks: { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, domain: "magicbricks.com" },
@@ -30,7 +30,6 @@ const navSections = [
   { id: "onpage", label: "On-Page SEO Audit" },
   { id: "technical", label: "Technical SEO" },
   { id: "backlinks", label: "Backlink Analysis" },
-  { id: "recommendations", label: "Recommendations" },
 ];
 
 /* ── Reusable components ─────────────────────── */
@@ -139,12 +138,13 @@ const ClientReport = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
+      <Navbar />
       <div className="min-h-screen" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
 
         {/* ── SIDEBAR ── */}
-        <nav className="fixed left-0 top-0 w-[220px] h-screen border-r border-report-border flex-col gap-1.5 py-8 px-5 z-50 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
+        <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
           <div className="mb-5">
-            <img src={s30Logo} alt="The Super 30" className="h-6 brightness-0 invert cursor-pointer" onClick={() => navigate("/")} />
+            <img src={client.logo} alt={client.name} className="h-10 w-auto object-contain" />
             <div className="text-[11px] font-mono text-report-muted mt-2 tracking-[0.06em]">Q1 · 2026 · {client.name}</div>
           </div>
 
@@ -169,21 +169,16 @@ const ClientReport = () => {
           </div>
         </nav>
 
-        {/* ── Mobile Header ── */}
-        <div className="md:hidden sticky top-0 z-50 border-b border-report-border px-4 py-3 flex items-center justify-between" style={{ background: "#161918" }}>
-          <img src={s30Logo} alt="The Super 30" className="h-5 brightness-0 invert cursor-pointer" onClick={() => navigate("/")} />
-          <button onClick={() => navigate("/seo-results-bangalore")} className="text-xs text-report-muted">← Back</button>
-        </div>
 
         {/* ── MAIN CONTENT ── */}
-        <main ref={mainRef} className="md:ml-[220px] px-5 md:px-12 py-10 md:py-12 max-w-[1100px]">
+        <main ref={mainRef} className="md:ml-[220px] px-5 md:px-12 pt-10 md:pt-12 pb-10 max-w-[1100px]">
 
           {/* ── HERO ── */}
           <div className="report-card p-8 md:p-10 mb-14 relative overflow-hidden rounded-2xl">
             <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(18,100%,48%,0.07) 0%, transparent 70%)" }} />
             <div className="text-[11px] font-mono text-report-muted tracking-[0.08em] mb-2.5">REPORT PERIOD — JAN 1 TO MAR 25, 2026</div>
             <div className="flex items-start gap-5 mb-2">
-              <img src={client.logo} alt={client.name} className="h-12 w-auto object-contain flex-shrink-0 mt-1 brightness-0 invert opacity-80" />
+              <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain flex-shrink-0 mt-1" />
             </div>
             <h1 className="text-4xl md:text-[38px] font-serif text-report-text leading-tight mb-2">
               SEO Work<br /><em style={{ color: "hsl(18,100%,48%)" }}>Conducted</em>
@@ -419,36 +414,6 @@ const ClientReport = () => {
                 <ProgressRow label="Low quality (DA 10–39)" value={22} color="bg-yellow-500" />
                 <ProgressRow label="Toxic / spammy" value={6} color="bg-red-500" />
               </div>
-            </div>
-          </section>
-
-          <Divider />
-
-          {/* ── 07 RECOMMENDATIONS ── */}
-          <section data-section="recommendations" id="recommendations">
-            <SectionHeader tag="07 — Recommendations" title="Next Steps" sub="Prioritised action items for Q2 2026." />
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-              {[
-                { n: "01", title: "Fix duplicate meta descriptions", desc: "Rewrite unique meta descriptions for the 6 flagged service pages. Target 150–160 characters with primary keyword inclusion.", priority: "High priority", badge: "red" },
-                { n: "02", title: "Add Article schema to blog posts", desc: "Implement JSON-LD Article structured data across all 38 blog posts to unlock rich snippet eligibility in SERPs.", priority: "High priority", badge: "red" },
-                { n: "03", title: "Improve mobile PageSpeed score", desc: "Optimise image formats (WebP), eliminate render-blocking scripts, and implement lazy loading to push mobile score above 85.", priority: "Medium priority", badge: "yellow" },
-                { n: "04", title: "Resolve CLS issues", desc: "Reserve explicit dimensions for all images and ad units. Audit font loading to prevent layout shifts during page load.", priority: "Medium priority", badge: "yellow" },
-                { n: "05", title: "Expand alt text coverage", desc: "Add descriptive alt attributes to the remaining 214 images. Focus on blog and product imagery first for maximum SEO impact.", priority: "Medium priority", badge: "yellow" },
-                { n: "06", title: "Build content on thin service pages", desc: "Expand 8 service pages to 800+ words each with FAQ sections, case study snippets, and supporting internal links.", priority: "Low priority", badge: "blue" },
-                { n: "07", title: 'Target "social media marketing" keyword', desc: "This high-volume term slipped 2 positions. Refresh the page content, add internal links, and build 3-5 targeted backlinks.", priority: "Medium priority", badge: "yellow" },
-                { n: "08", title: "Continue link-building outreach", desc: "Sustain the 30 new referring domains/month pace. Focus on DA 60+ editorial placements in digital marketing publications.", priority: "Ongoing", badge: "blue" },
-              ].map((rec) => (
-                <div key={rec.n} className="report-card p-5 flex gap-4 hover:border-brand transition-colors" style={{ borderColor: undefined }}>
-                  <span className="text-3xl font-serif flex-shrink-0 min-w-7 leading-none" style={{ color: "hsl(18,100%,48%)", opacity: 0.35 }}>{rec.n}</span>
-                  <div>
-                    <div className="text-sm font-semibold text-report-text mb-1">{rec.title}</div>
-                    <div className="text-[13px] text-report-muted leading-relaxed">{rec.desc}</div>
-                    <div className="mt-2">
-                      <span className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full ${badgeColor(rec.badge)}`}>{rec.priority}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
 
