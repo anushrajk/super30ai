@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { FileText, Palette, PenTool, Image, Search, TrendingUp, Video, Camera } from "lucide-react";
+import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
