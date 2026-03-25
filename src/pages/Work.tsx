@@ -6,6 +6,7 @@ import { Footer } from "@/components/landing/Footer";
 import { ClientLogosGrid } from "@/components/work/ClientLogosGrid";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
+import { WorkPortfolioTabs } from "@/components/work/WorkPortfolioTabs";
 import { WorkFinalCTASection } from "@/components/work/WorkFinalCTASection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { FAQSection } from "@/components/landing/FAQSection";
@@ -289,6 +290,8 @@ const Work = () => {
         </section>
 
 
+        {/* Portfolio Tabs Section */}
+        <WorkPortfolioTabs />
 
         {/* Testimonials Section */}
         <div id="work-testimonials">
