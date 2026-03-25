@@ -100,6 +100,17 @@ All colors MUST be HSL.
   }
 }
 
+/* Report page tokens */
+.report-card {
+  background: #161918;
+  border: 1px solid #2a2e2c;
+  border-radius: 12px;
+}
+.text-report-text { color: #e8ede9; }
+.text-report-muted { color: #7a8a7e; }
+.border-report-border { border-color: #2a2e2c; }
+.bg-report-surface2 { background: #1e2220; }
+
 @layer base {
   * {
     @apply border-border;
