@@ -337,13 +337,8 @@ const ClientReport = () => {
             </div>
           </section>
 
-          {/* Footer */}
-          <footer className="py-8 border-t border-border text-center">
-            <img src={s30Logo} alt="The Super 30" className="h-6 mx-auto mb-3" />
-            <p className="text-xs text-muted-foreground">
-              © {new Date().getFullYear()} The Super 30. All rights reserved.
-            </p>
-          </footer>
+          {/* Spacer */}
+          <div className="py-8" />
         </div>
       </div>
     </>

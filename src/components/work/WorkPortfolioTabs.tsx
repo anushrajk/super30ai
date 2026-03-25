@@ -63,20 +63,8 @@ const ClientReportGrid = ({ clients, type }: { clients: typeof seoClients; type:
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {clients.map((client) => (
         <Card key={client.name} className="bg-background border-border/50 overflow-hidden">
-          <CardContent className="p-5 flex flex-col items-center text-center">
-            <div className="w-full h-20 flex items-center justify-center mb-4">
-              <img src={client.logo} alt={client.name} className="h-16 w-auto object-contain" />
-            </div>
-            <h4 className="font-semibold text-foreground text-sm mb-0.5">{client.name}</h4>
-            <p className="text-xs text-muted-foreground mb-4">{client.industry}</p>
-            <Button
-              size="sm"
-              onClick={() => navigate(`/report/${client.slug}`)}
-              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs"
-            >
-              <FileText className="w-3.5 h-3.5 mr-1.5" />
-              View Detailed Report
-            </Button>
+          <CardContent className="p-6 flex items-center justify-center cursor-pointer" onClick={() => navigate(`/report/${client.slug}`)}>
+            <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain" />
           </CardContent>
         </Card>
       ))}
