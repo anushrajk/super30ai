@@ -63,7 +63,6 @@ export const TeamSection = () => {
                 {member.name}
               </h3>
               <p className="text-muted-foreground text-xs leading-tight hidden md:block">{member.expertise}</p>
-              <p className="text-muted-foreground text-xs leading-tight hidden md:block">{member.expertise}</p>
 
               {/* Social Links */}
               <div className="flex items-center justify-center gap-2 mt-2">
