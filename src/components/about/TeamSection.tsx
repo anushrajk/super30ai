@@ -62,7 +62,7 @@ export const TeamSection = () => {
               <h3 className="text-sm md:text-base font-bold text-foreground mb-0.5 group-hover:text-brand transition-colors">
                 {member.name}
               </h3>
-              <p className="text-brand font-medium text-xs mb-1">{member.role}</p>
+              <p className="text-muted-foreground text-xs leading-tight hidden md:block">{member.expertise}</p>
               <p className="text-muted-foreground text-xs leading-tight hidden md:block">{member.expertise}</p>
 
               {/* Social Links */}
