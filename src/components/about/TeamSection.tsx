@@ -52,7 +52,7 @@ export const TeamSection = () => {
               <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden">
                 <img 
                   src={member.image} 
-                  alt={`${member.name} — ${member.role} at The Super 30`}
+                  alt={`${member.name} at The Super 30`}
                   className="w-full h-full object-cover"
                 />
                 {/* Online indicator */}
