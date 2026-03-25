@@ -101,14 +101,14 @@ const ClientReport = () => {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Top Bar */}
+        {/* Header */}
         <div className="border-b border-border sticky top-0 bg-background/95 backdrop-blur-sm z-50">
-          <div className="max-w-5xl mx-auto px-4 md:px-8 py-3 flex items-center justify-between">
+          <div className="max-w-5xl mx-auto px-4 md:px-8 py-4 flex items-center justify-between">
+            <img src={s30Logo} alt="The Super 30" className="h-7 cursor-pointer" onClick={() => navigate("/")} />
             <Button variant="ghost" size="sm" onClick={() => navigate("/seo-results-bangalore")} className="text-muted-foreground hover:text-foreground gap-1.5">
               <ArrowLeft className="w-4 h-4" />
               Back to Portfolio
             </Button>
-            <img src={s30Logo} alt="The Super 30" className="h-6" />
           </div>
         </div>
 
