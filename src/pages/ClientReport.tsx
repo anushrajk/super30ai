@@ -30,7 +30,6 @@ const navSections = [
   { id: "onpage", label: "On-Page SEO Audit" },
   { id: "technical", label: "Technical SEO" },
   { id: "backlinks", label: "Backlink Analysis" },
-  { id: "recommendations", label: "Recommendations" },
 ];
 
 /* ── Reusable components ─────────────────────── */
