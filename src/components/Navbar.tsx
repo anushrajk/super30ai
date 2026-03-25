@@ -21,7 +21,7 @@ const navLinks = [
   { label: "Contact", href: "/seo-agency-near-me" },
 ];
 
-export const Navbar = () => {
+export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
