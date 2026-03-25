@@ -171,7 +171,7 @@ const ClientReport = () => {
 
 
         {/* ── MAIN CONTENT ── */}
-        <main ref={mainRef} className="md:ml-[220px] px-5 md:px-12 py-10 md:py-12 max-w-[1100px]">
+        <main ref={mainRef} className="md:ml-[220px] px-5 md:px-12 pt-10 md:pt-12 pb-10 max-w-[1100px]">
 
           {/* ── HERO ── */}
           <div className="report-card p-8 md:p-10 mb-14 relative overflow-hidden rounded-2xl">
