@@ -138,12 +138,13 @@ const ClientReport = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
+      <Navbar />
       <div className="min-h-screen" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
 
         {/* ── SIDEBAR ── */}
-        <nav className="fixed left-0 top-0 w-[220px] h-screen border-r border-report-border flex-col gap-1.5 py-8 px-5 z-50 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
+        <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
           <div className="mb-5">
-            <img src={s30Logo} alt="The Super 30" className="h-6 brightness-0 invert cursor-pointer" onClick={() => navigate("/")} />
+            <img src={client.logo} alt={client.name} className="h-10 w-auto object-contain" />
             <div className="text-[11px] font-mono text-report-muted mt-2 tracking-[0.06em]">Q1 · 2026 · {client.name}</div>
           </div>
 
