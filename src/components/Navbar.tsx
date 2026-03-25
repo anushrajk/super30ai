@@ -41,9 +41,11 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-md"
-          : "bg-background/60 backdrop-blur-sm shadow-sm"
+        forceWhiteBg
+          ? "bg-white border-b border-border/50 shadow-md"
+          : isScrolled
+            ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-md"
+            : "bg-background/60 backdrop-blur-sm shadow-sm"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

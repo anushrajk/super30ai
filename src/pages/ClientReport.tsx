@@ -138,8 +138,8 @@ const ClientReport = () => {
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
 
-      <Navbar />
-      <div className="min-h-screen" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
+      <Navbar forceWhiteBg />
+      <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
 
         {/* ── SIDEBAR ── */}
         <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
