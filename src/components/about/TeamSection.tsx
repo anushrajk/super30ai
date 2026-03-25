@@ -1,6 +1,9 @@
 import { Linkedin, Twitter } from "lucide-react";
 import { BentoGrid, BentoCard, BentoBadge } from "@/components/ui/bento-grid";
 
+import amitImg from "@/assets/team/amit.png";
+import lalitImg from "@/assets/team/lalit.png";
+import mayankImg from "@/assets/team/mayank.png";
 import vigneshImg from "@/assets/team/vignesh.png";
 import sujeetImg from "@/assets/team/sujeet.png";
 import swanandImg from "@/assets/team/swanand.png";
@@ -13,66 +16,19 @@ import anushImg from "@/assets/team/anush.png";
 import abhishekImg from "@/assets/team/abhishek.png";
 
 const teamMembers = [
-  {
-    name: "Vignesh",
-    role: "Founder & SEO Expert",
-    expertise: "Ex-Google, 12+ years in SEO",
-    image: vigneshImg,
-  },
-  {
-    name: "Sujeet",
-    role: "Head of AI SEO",
-    expertise: "AI/ML SEO Specialist",
-    image: sujeetImg,
-  },
-  {
-    name: "Swanand",
-    role: "Director, Performance Marketing",
-    expertise: "PPC Specialist, Meta & Google Certified",
-    image: swanandImg,
-  },
-  {
-    name: "Sathya",
-    role: "Digital Marketing Specialist",
-    expertise: "Content Strategy & SEO Expert",
-    image: sathyaImg,
-  },
-  {
-    name: "Monisha",
-    role: "Technical SEO Specialist",
-    expertise: "Full-stack Developer, SEO Engineer",
-    image: monishaImg,
-  },
-  {
-    name: "Kailash",
-    role: "Data Science Lead",
-    expertise: "IIT Delhi, Analytics Expert",
-    image: kailashImg,
-  },
-  {
-    name: "Deepak",
-    role: "Digital Marketing Specialist",
-    expertise: "10+ years in SEO & PPC",
-    image: deepakImg,
-  },
-  {
-    name: "Madhu",
-    role: "Senior SEO Specialist",
-    expertise: "E-commerce SEO Expert",
-    image: madhuImg,
-  },
-  {
-    name: "Anush",
-    role: "PPC Specialist",
-    expertise: "Google Ads Certified, ROI Expert",
-    image: anushImg,
-  },
-  {
-    name: "Abhishek",
-    role: "Web Developer",
-    expertise: "React & Node.js Expert",
-    image: abhishekImg,
-  },
+  { name: "Amit", expertise: "Growth Strategy & Business Development", image: amitImg },
+  { name: "Lalit", expertise: "SEO Architecture & Technical Audits", image: lalitImg },
+  { name: "Mayank", expertise: "Digital Strategy & Analytics", image: mayankImg },
+  { name: "Vignesh", expertise: "Ex-Google, 12+ years in SEO", image: vigneshImg },
+  { name: "Sujeet", expertise: "AI/ML SEO Specialist", image: sujeetImg },
+  { name: "Swanand", expertise: "PPC Specialist, Meta & Google Certified", image: swanandImg },
+  { name: "Sathya", expertise: "Content Strategy & SEO Expert", image: sathyaImg },
+  { name: "Monisha", expertise: "Full-stack Developer, SEO Engineer", image: monishaImg },
+  { name: "Kailash", expertise: "IIT Delhi, Analytics Expert", image: kailashImg },
+  { name: "Deepak", expertise: "10+ years in SEO & PPC", image: deepakImg },
+  { name: "Madhu", expertise: "E-commerce SEO Expert", image: madhuImg },
+  { name: "Anush", expertise: "Google Ads Certified, ROI Expert", image: anushImg },
+  { name: "Abhishek", expertise: "React & Node.js Expert", image: abhishekImg },
 ];
 
 export const TeamSection = () => {
