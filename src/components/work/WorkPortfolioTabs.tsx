@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
-import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera } from "lucide-react";
+import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
@@ -21,8 +21,6 @@ const tabs = [
   { id: "ugc-content", label: "UGC Content", icon: Video },
   { id: "product-photoshoot", label: "Product Photoshoot", icon: Camera },
 ];
-
-const nameToSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
 
 const seoClients = [
   { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
@@ -44,18 +42,169 @@ const leadGenClients = [
   { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
 ];
 
-const DemoPlaceholder = ({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) => (
-  <div className="text-center py-16 md:py-20">
-    <div className="w-16 h-16 mx-auto bg-muted rounded-2xl flex items-center justify-center mb-4">
-      <Icon className="w-7 h-7 text-muted-foreground" />
-    </div>
-    <h3 className="text-lg font-semibold text-foreground mb-2">{title}</h3>
-    <p className="text-sm text-muted-foreground max-w-md mx-auto">{description}</p>
-    <p className="text-xs text-muted-foreground mt-4">Coming Soon</p>
+/* ── Demo content for non-report tabs ── */
+
+const logoProjects = [
+  { name: "TechVista", style: "Minimalist", colors: ["hsl(220,80%,55%)", "hsl(220,30%,15%)"], initials: "TV" },
+  { name: "GreenLeaf Organics", style: "Organic", colors: ["hsl(145,60%,45%)", "hsl(90,40%,50%)"], initials: "GL" },
+  { name: "Luxe Interiors", style: "Elegant", colors: ["hsl(35,60%,50%)", "hsl(0,0%,15%)"], initials: "LI" },
+  { name: "FitPulse", style: "Dynamic", colors: ["hsl(350,80%,55%)", "hsl(15,90%,55%)"], initials: "FP" },
+  { name: "CloudNine Travel", style: "Playful", colors: ["hsl(200,80%,55%)", "hsl(280,60%,60%)"], initials: "CN" },
+  { name: "Nova Finance", style: "Corporate", colors: ["hsl(210,50%,40%)", "hsl(210,20%,70%)"], initials: "NF" },
+];
+
+const LogoGrid = () => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {logoProjects.map((p) => (
+      <Card key={p.name} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+        <CardContent className="p-6 flex flex-col items-center gap-4">
+          <div
+            className="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-md"
+            style={{ background: `linear-gradient(135deg, ${p.colors[0]}, ${p.colors[1]})` }}
+          >
+            {p.initials}
+          </div>
+          <div className="text-center">
+            <div className="font-semibold text-sm text-foreground">{p.name}</div>
+            <div className="text-xs text-muted-foreground">{p.style}</div>
+          </div>
+        </CardContent>
+      </Card>
+    ))}
   </div>
 );
 
-const ClientReportGrid = ({ clients, type }: { clients: typeof seoClients; type: "seo" | "lead-gen" }) => {
+const brandProjects = [
+  { name: "Bloom Cosmetics", type: "Full Brand System", deliverables: "Logo, Color Palette, Typography, Stationery, Guidelines", accent: "hsl(330,70%,55%)" },
+  { name: "UrbanBite", type: "F&B Branding", deliverables: "Logo, Packaging, Menu Design, Signage", accent: "hsl(25,90%,55%)" },
+  { name: "Zenith Academy", type: "Education Branding", deliverables: "Logo, Website, Brochures, Uniforms", accent: "hsl(210,70%,50%)" },
+  { name: "PureWell Health", type: "Healthcare Branding", deliverables: "Logo, UI Kit, Social Templates, Print Collateral", accent: "hsl(160,60%,45%)" },
+];
+
+const BrandIdentityGrid = () => (
+  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+    {brandProjects.map((p) => (
+      <Card key={p.name} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+        <CardContent className="p-6">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="w-3 h-3 rounded-full" style={{ background: p.accent }} />
+            <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">{p.type}</span>
+          </div>
+          <h4 className="text-lg font-semibold text-foreground mb-2">{p.name}</h4>
+          <p className="text-xs text-muted-foreground leading-relaxed">{p.deliverables}</p>
+          <div className="mt-4 flex gap-2">
+            {[1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="w-8 h-8 rounded-lg"
+                style={{ background: p.accent, opacity: 1 - i * 0.2 }}
+              />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+);
+
+const socialPosts = [
+  { brand: "Mamaearth", type: "Carousel", engagement: "12.4K", platform: "Instagram", accent: "hsl(145,60%,45%)" },
+  { brand: "upGrad", type: "Story Ad", engagement: "8.2K", platform: "Instagram", accent: "hsl(210,70%,50%)" },
+  { brand: "FitPulse", type: "Reel Cover", engagement: "22.1K", platform: "Instagram", accent: "hsl(350,80%,55%)" },
+  { brand: "Bloom Cosmetics", type: "Feed Post", engagement: "6.8K", platform: "Facebook", accent: "hsl(330,70%,55%)" },
+  { brand: "UrbanBite", type: "Promo Banner", engagement: "9.5K", platform: "Instagram", accent: "hsl(25,90%,55%)" },
+  { brand: "TechVista", type: "LinkedIn Post", engagement: "3.4K", platform: "LinkedIn", accent: "hsl(220,80%,55%)" },
+];
+
+const SocialCreativesGrid = () => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {socialPosts.map((p, i) => (
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+        <CardContent className="p-0">
+          <div className="aspect-square flex items-center justify-center relative" style={{ background: `linear-gradient(135deg, ${p.accent}22, ${p.accent}08)` }}>
+            <div className="w-16 h-16 rounded-xl flex items-center justify-center" style={{ background: p.accent }}>
+              <Image className="w-7 h-7 text-white" />
+            </div>
+            <span className="absolute top-3 right-3 text-[10px] font-mono px-2 py-0.5 rounded-full bg-background/80 text-muted-foreground">{p.type}</span>
+          </div>
+          <div className="p-4">
+            <div className="font-semibold text-sm text-foreground">{p.brand}</div>
+            <div className="flex items-center justify-between mt-2">
+              <span className="text-xs text-muted-foreground">{p.platform}</span>
+              <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                <Heart className="w-3 h-3" /> {p.engagement}
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+);
+
+const ugcContent = [
+  { title: "Product Unboxing — Mamaearth", views: "45K", likes: "3.2K", comments: "412", accent: "hsl(145,60%,45%)" },
+  { title: "Day-in-Life — FitPulse", views: "82K", likes: "6.8K", comments: "890", accent: "hsl(350,80%,55%)" },
+  { title: "Testimonial — Jain University", views: "28K", likes: "1.9K", comments: "215", accent: "hsl(210,70%,50%)" },
+  { title: "How-To Guide — PureWell", views: "35K", likes: "2.4K", comments: "320", accent: "hsl(160,60%,45%)" },
+  { title: "Behind the Scenes — UrbanBite", views: "52K", likes: "4.1K", comments: "560", accent: "hsl(25,90%,55%)" },
+  { title: "Review — TechVista", views: "19K", likes: "1.2K", comments: "145", accent: "hsl(220,80%,55%)" },
+];
+
+const UGCGrid = () => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {ugcContent.map((item, i) => (
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+        <CardContent className="p-0">
+          <div className="aspect-[9/16] max-h-[200px] flex items-center justify-center relative" style={{ background: `linear-gradient(180deg, ${item.accent}18, ${item.accent}05)` }}>
+            <Video className="w-10 h-10" style={{ color: item.accent }} />
+            <div className="absolute bottom-2 left-2 right-2 bg-background/80 backdrop-blur-sm rounded-lg px-2 py-1.5">
+              <div className="text-[11px] font-medium text-foreground truncate">{item.title}</div>
+            </div>
+          </div>
+          <div className="p-3 flex items-center gap-3 text-[11px] text-muted-foreground">
+            <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{item.views}</span>
+            <span className="flex items-center gap-1"><Heart className="w-3 h-3" />{item.likes}</span>
+            <span className="flex items-center gap-1"><MessageCircle className="w-3 h-3" />{item.comments}</span>
+          </div>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+);
+
+const photoshootProjects = [
+  { product: "Skincare Range", client: "Mamaearth", shots: 48, style: "Flat Lay", accent: "hsl(145,60%,45%)" },
+  { product: "Furniture Collection", client: "Luxe Interiors", shots: 32, style: "Lifestyle", accent: "hsl(35,60%,50%)" },
+  { product: "Fitness Gear", client: "FitPulse", shots: 24, style: "Action", accent: "hsl(350,80%,55%)" },
+  { product: "Food Menu", client: "UrbanBite", shots: 56, style: "Styled", accent: "hsl(25,90%,55%)" },
+  { product: "Tech Gadgets", client: "TechVista", shots: 36, style: "Studio", accent: "hsl(220,80%,55%)" },
+  { product: "Health Supplements", client: "PureWell", shots: 28, style: "Clean", accent: "hsl(160,60%,45%)" },
+];
+
+const PhotoshootGrid = () => (
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    {photoshootProjects.map((p, i) => (
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+        <CardContent className="p-0">
+          <div className="aspect-square flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${p.accent}15, ${p.accent}05)` }}>
+            <Camera className="w-12 h-12" style={{ color: p.accent, opacity: 0.6 }} />
+          </div>
+          <div className="p-4">
+            <div className="font-semibold text-sm text-foreground">{p.product}</div>
+            <div className="text-xs text-muted-foreground mt-0.5">{p.client}</div>
+            <div className="flex items-center justify-between mt-3">
+              <span className="text-[11px] font-mono px-2 py-0.5 rounded-full bg-muted text-muted-foreground">{p.style}</span>
+              <span className="text-[11px] text-muted-foreground">{p.shots} shots</span>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+);
+
+const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
   const navigate = useNavigate();
 
   return (
@@ -66,7 +215,7 @@ const ClientReportGrid = ({ clients, type }: { clients: typeof seoClients; type:
             <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain" />
             <button
               onClick={() => navigate(`/report/${client.slug}`)}
-              className="w-full text-sm font-medium py-2 px-4 rounded-lg bg-gradient-to-r from-brand to-brand-dark text-white hover:opacity-90 transition-opacity"
+              className="w-full text-sm font-medium py-2 px-4 rounded-lg text-white hover:opacity-90 transition-opacity"
               style={{ background: "linear-gradient(to right, hsl(18,100%,48%), hsl(18,100%,38%))" }}
             >
               Detailed Report
@@ -92,12 +241,12 @@ export const WorkPortfolioTabs = () => {
         </div>
 
         <Tabs defaultValue="seo" className="w-full">
-          <TabsList className="w-full flex flex-wrap h-auto gap-1.5 bg-muted/50 p-1.5 rounded-xl mb-8">
+          <TabsList className="w-full flex flex-wrap justify-center h-auto gap-1 bg-transparent p-0 border-b border-border/50 rounded-none mb-8">
             {tabs.map((tab) => (
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="flex items-center gap-1.5 text-xs md:text-sm px-3 py-2 rounded-lg data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow-sm"
+                className="flex items-center gap-1.5 text-xs md:text-sm px-4 py-2.5 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(18,100%,48%)] data-[state=active]:text-[hsl(18,100%,48%)] data-[state=active]:bg-transparent data-[state=active]:shadow-none text-muted-foreground hover:text-foreground transition-all bg-transparent"
               >
                 <tab.icon className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{tab.label}</span>
@@ -107,31 +256,31 @@ export const WorkPortfolioTabs = () => {
           </TabsList>
 
           <TabsContent value="logo">
-            <DemoPlaceholder icon={PenTool} title="Logo Design Portfolio" description="Our collection of custom logo designs crafted for brands across industries." />
+            <LogoGrid />
           </TabsContent>
 
           <TabsContent value="brand-identity">
-            <DemoPlaceholder icon={Palette} title="Brand Identity Projects" description="Complete brand identity systems including guidelines, collateral, and visual language." />
+            <BrandIdentityGrid />
           </TabsContent>
 
           <TabsContent value="social-creatives">
-            <DemoPlaceholder icon={Image} title="Social Media Creatives" description="Engaging social media content designed to drive engagement and brand awareness." />
+            <SocialCreativesGrid />
           </TabsContent>
 
           <TabsContent value="seo">
-            <ClientReportGrid clients={seoClients} type="seo" />
+            <ClientReportGrid clients={seoClients} />
           </TabsContent>
 
           <TabsContent value="lead-generation">
-            <ClientReportGrid clients={leadGenClients} type="lead-gen" />
+            <ClientReportGrid clients={leadGenClients} />
           </TabsContent>
 
           <TabsContent value="ugc-content">
-            <DemoPlaceholder icon={Video} title="UGC Content Portfolio" description="User-generated content campaigns that drive authentic engagement and conversions." />
+            <UGCGrid />
           </TabsContent>
 
           <TabsContent value="product-photoshoot">
-            <DemoPlaceholder icon={Camera} title="Product Photoshoot Gallery" description="Professional product photography that elevates brand perception and drives sales." />
+            <PhotoshootGrid />
           </TabsContent>
         </Tabs>
       </div>
