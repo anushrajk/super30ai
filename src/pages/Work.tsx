@@ -290,6 +290,8 @@ const Work = () => {
         </section>
 
 
+        {/* Portfolio Tabs Section */}
+        <WorkPortfolioTabs />
 
         {/* Testimonials Section */}
         <div id="work-testimonials">
