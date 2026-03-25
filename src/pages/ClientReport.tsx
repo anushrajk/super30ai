@@ -169,11 +169,6 @@ const ClientReport = () => {
           </div>
         </nav>
 
-        {/* ── Mobile Header ── */}
-        <div className="md:hidden sticky top-0 z-50 border-b border-report-border px-4 py-3 flex items-center justify-between" style={{ background: "#161918" }}>
-          <img src={s30Logo} alt="The Super 30" className="h-5 brightness-0 invert cursor-pointer" onClick={() => navigate("/")} />
-          <button onClick={() => navigate("/seo-results-bangalore")} className="text-xs text-report-muted">← Back</button>
-        </div>
 
         {/* ── MAIN CONTENT ── */}
         <main ref={mainRef} className="md:ml-[220px] px-5 md:px-12 py-10 md:py-12 max-w-[1100px]">
