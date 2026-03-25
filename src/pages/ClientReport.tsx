@@ -178,7 +178,7 @@ const ClientReport = () => {
             <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(18,100%,48%,0.07) 0%, transparent 70%)" }} />
             <div className="text-[11px] font-mono text-report-muted tracking-[0.08em] mb-2.5">REPORT PERIOD — JAN 1 TO MAR 25, 2026</div>
             <div className="flex items-start gap-5 mb-2">
-              <img src={client.logo} alt={client.name} className="h-12 w-auto object-contain flex-shrink-0 mt-1 brightness-0 invert opacity-80" />
+              <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain flex-shrink-0 mt-1" />
             </div>
             <h1 className="text-4xl md:text-[38px] font-serif text-report-text leading-tight mb-2">
               SEO Work<br /><em style={{ color: "hsl(18,100%,48%)" }}>Conducted</em>
