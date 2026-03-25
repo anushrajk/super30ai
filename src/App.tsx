@@ -40,6 +40,7 @@ const DigitalMarketing = lazy(() => import("./pages/DigitalMarketing"));
 const SocialMediaDesign = lazy(() => import("./pages/SocialMediaDesign"));
 const WebDesign = lazy(() => import("./pages/WebDesign"));
 const Design = lazy(() => import("./pages/Design"));
+const ClientReport = lazy(() => import("./pages/ClientReport"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
