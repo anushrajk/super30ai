@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileText, Palette, PenTool, Image, Search, TrendingUp, Video, Camera } from "lucide-react";
-import { SEOReportModal } from "./SEOReportModal";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
@@ -24,24 +23,26 @@ const tabs = [
   { id: "product-photoshoot", label: "Product Photoshoot", icon: Camera },
 ];
 
+const nameToSlug = (name: string) => name.toLowerCase().replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
 const seoClients = [
-  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo },
-  { name: "Jain University", industry: "Education", logo: jainUniversityLogo },
-  { name: "Mamaearth", industry: "D2C", logo: mamaEarthLogo },
-  { name: "upGrad", industry: "Education", logo: upgradLogo },
-  { name: "Tata 1mg", industry: "Healthcare", logo: tata1mgLogo },
-  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo },
-  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo },
-  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo },
+  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
+  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
+  { name: "Mamaearth", industry: "D2C", logo: mamaEarthLogo, slug: "mamaearth" },
+  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
+  { name: "Tata 1mg", industry: "Healthcare", logo: tata1mgLogo, slug: "tata-1mg" },
+  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
+  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
+  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
 ];
 
 const leadGenClients = [
-  { name: "Jain University", industry: "Education", logo: jainUniversityLogo },
-  { name: "upGrad", industry: "Education", logo: upgradLogo },
-  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo },
-  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo },
-  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo },
-  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo },
+  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
+  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
+  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
+  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
+  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
+  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
 ];
 
 const DemoPlaceholder = ({ icon: Icon, title, description }: { icon: React.ElementType; title: string; description: string }) => (
@@ -56,41 +57,30 @@ const DemoPlaceholder = ({ icon: Icon, title, description }: { icon: React.Eleme
 );
 
 const ClientReportGrid = ({ clients, type }: { clients: typeof seoClients; type: "seo" | "lead-gen" }) => {
-  const [reportClient, setReportClient] = useState<typeof clients[0] | null>(null);
+  const navigate = useNavigate();
 
   return (
-    <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {clients.map((client) => (
-          <Card key={client.name} className="bg-background border-border/50 overflow-hidden">
-            <CardContent className="p-5 flex flex-col items-center text-center">
-              <div className="w-full h-20 flex items-center justify-center mb-4">
-                <img src={client.logo} alt={client.name} className="h-16 w-auto object-contain" />
-              </div>
-              <h4 className="font-semibold text-foreground text-sm mb-0.5">{client.name}</h4>
-              <p className="text-xs text-muted-foreground mb-4">{client.industry}</p>
-              <Button
-                size="sm"
-                onClick={() => setReportClient(client)}
-                className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs"
-              >
-                <FileText className="w-3.5 h-3.5 mr-1.5" />
-                View Detailed Report
-              </Button>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-
-      {reportClient && (
-        <SEOReportModal
-          open={!!reportClient}
-          onOpenChange={(open) => !open && setReportClient(null)}
-          companyName={reportClient.name}
-          logo={reportClient.logo}
-        />
-      )}
-    </>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      {clients.map((client) => (
+        <Card key={client.name} className="bg-background border-border/50 overflow-hidden">
+          <CardContent className="p-5 flex flex-col items-center text-center">
+            <div className="w-full h-20 flex items-center justify-center mb-4">
+              <img src={client.logo} alt={client.name} className="h-16 w-auto object-contain" />
+            </div>
+            <h4 className="font-semibold text-foreground text-sm mb-0.5">{client.name}</h4>
+            <p className="text-xs text-muted-foreground mb-4">{client.industry}</p>
+            <Button
+              size="sm"
+              onClick={() => navigate(`/report/${client.slug}`)}
+              className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white text-xs"
+            >
+              <FileText className="w-3.5 h-3.5 mr-1.5" />
+              View Detailed Report
+            </Button>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
   );
 };
 
