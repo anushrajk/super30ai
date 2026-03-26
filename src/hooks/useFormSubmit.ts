@@ -2,7 +2,7 @@
  * Centralized hook for submitting all forms to Web3Forms endpoint
  */
 
-const WEB3FORMS_ACCESS_KEY = "2e6b168e-6519-4f0f-8c81-86fb009e0900";
+const WEB3FORMS_ACCESS_KEY = "0a6e76cf-34fb-47e4-9f75-38a127adfd45";
 const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 export interface FormSubmitPayload {
