@@ -98,7 +98,7 @@ const LogoGrid = () => (
 const brandImages = [brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10, brand11, brand12, brand13];
 
 const BrandIdentityGrid = () => (
-  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
     {brandImages.map((img, i) => (
       <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
         <CardContent className="p-0">
