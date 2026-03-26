@@ -192,30 +192,27 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Talk to Our SEO Experts | The Super 30</title>
-        <meta name="description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
-        <meta name="keywords" content="SEO agency team, SEO Experts, hire seo experts, seo services near me, seo agency near me" />
+        <title>Talk to Our Digital Marketing Experts | The Super 30</title>
+        <meta name="description" content="Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services." />
+        <meta name="keywords" content="digital marketing agency, digital marketing experts, hire digital marketing experts, digital marketing services near me, digital marketing agency near me" />
         <link rel="canonical" href="https://www.thesuper30.ai/seo-agency-near-me" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Talk to Our SEO Experts | The Super 30" />
-        <meta property="og:description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
+        <meta property="og:title" content="Talk to Our Digital Marketing Experts | The Super 30" />
+        <meta property="og:description" content="Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/seo-agency-near-me" />
         
-        {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Talk to Our SEO Experts | The Super 30" />
-        <meta name="twitter:description" content="Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online." />
+        <meta name="twitter:title" content="Talk to Our Digital Marketing Experts | The Super 30" />
+        <meta name="twitter:description" content="Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services." />
         
-        {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "name": "Talk to Our SEO Experts",
+            "name": "Talk to Our Digital Marketing Experts",
             "url": "https://www.thesuper30.ai/seo-agency-near-me",
-            "description": "Connect with our SEO agency team to discuss your goals and discover how our strategies can help grow your business online."
+            "description": "Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services."
           })}
         </script>
       </Helmet>
@@ -243,12 +240,12 @@ const Contact = () => {
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
                   Talk to Our{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">SEO Experts</span>
+                    <span className="text-brand-gradient">Digital Marketing Experts</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Whether you're searching for SEO services near you, want to hire SEO experts, or need AI SEO experts who understand your market — our team is{" "}
+                  Whether you need AI SEO, lead generation, social media management, web design, or full-scale digital marketing — our team is{" "}
                   <span className="text-foreground font-semibold">ready to help</span>.
                 </p>
               </div>
@@ -295,7 +292,7 @@ const Contact = () => {
 
               {/* Expert credentials */}
               <div className="flex flex-wrap gap-2 justify-center pt-2">
-                {["AI SEO Experts", "Performance Marketing", "Free Consultation"].map((cred, i) => (
+                {["AI SEO", "Lead Generation", "Social Media", "Web Design", "Branding"].map((cred, i) => (
                   <span 
                     key={i}
                     className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
@@ -315,7 +312,7 @@ const Contact = () => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
               <div className="bento-card p-6 md:p-8 h-full flex flex-col">
-                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Get in Touch With Our SEO Agency Team</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Get in Touch With Our Digital Marketing Team</h2>
 
                 <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-4" id="contact-form">
                   <div className="grid md:grid-cols-2 gap-4">
@@ -465,8 +462,11 @@ const Contact = () => {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="ai-seo">AI SEO</SelectItem>
-                        <SelectItem value="performance-marketing">Lead Generation</SelectItem>
-                        <SelectItem value="both">Both Services</SelectItem>
+                        <SelectItem value="lead-generation">Lead Generation</SelectItem>
+                        <SelectItem value="social-media">Social Media Management</SelectItem>
+                        <SelectItem value="web-design">Web Design & Development</SelectItem>
+                        <SelectItem value="branding">Branding & Design</SelectItem>
+                        <SelectItem value="multiple">Multiple Services</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
