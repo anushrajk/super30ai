@@ -246,7 +246,7 @@ export const WorkPortfolioTabs = () => {
               <TabsTrigger
                 key={tab.id}
                 value={tab.id}
-                className="flex items-center gap-1.5 text-xs md:text-sm px-4 py-2.5 rounded-none border-b-2 border-transparent data-[state=active]:border-[hsl(18,100%,48%)] data-[state=active]:text-[hsl(18,100%,48%)] data-[state=active]:bg-transparent data-[state=active]:shadow-none text-muted-foreground hover:text-foreground transition-all bg-transparent"
+                className="flex items-center gap-1.5 text-xs md:text-sm px-4 py-2.5 rounded-t-lg border-b-2 border-transparent data-[state=active]:border-[hsl(18,100%,48%)] data-[state=active]:bg-[hsl(18,100%,48%)] data-[state=active]:text-white data-[state=active]:shadow-none text-muted-foreground hover:text-foreground transition-all bg-transparent"
               >
                 <tab.icon className="w-3.5 h-3.5" />
                 <span className="hidden sm:inline">{tab.label}</span>
