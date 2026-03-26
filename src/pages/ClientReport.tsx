@@ -109,6 +109,100 @@ const SectionHeader = ({ tag, title, sub }: { tag: string; title: string; sub: s
 
 const Divider = () => <hr className="border-0 border-t border-report-border my-14" />;
 
+/* ── Animated Line Chart ─────────────────────── */
+const trafficData = [
+  { label: "Oct", prev: 5200, curr: 0 },
+  { label: "Nov", prev: 5800, curr: 0 },
+  { label: "Dec", prev: 5500, curr: 0 },
+  { label: "Jan", prev: 0, curr: 6800 },
+  { label: "Feb", prev: 0, curr: 7900 },
+  { label: "Mar", prev: 0, curr: 9600 },
+];
+
+const TrafficLineChart = () => {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = chartRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setAnimated(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const maxVal = 10000;
+  const w = 400;
+  const h = 120;
+  const padX = 10;
+  const padY = 10;
+  const points = trafficData.length;
+
+  const getX = (i: number) => padX + (i * (w - 2 * padX)) / (points - 1);
+  const getY = (val: number) => h - padY - ((val / maxVal) * (h - 2 * padY));
+
+  const prevLine = trafficData.filter(d => d.prev > 0);
+  const currLine = trafficData.filter(d => d.curr > 0);
+  const prevPath = prevLine.map((d, i) => `${i === 0 ? "M" : "L"}${getX(trafficData.indexOf(d))},${getY(d.prev)}`).join(" ");
+  const currPath = currLine.map((d, i) => `${i === 0 ? "M" : "L"}${getX(trafficData.indexOf(d))},${getY(d.curr)}`).join(" ");
+
+  return (
+    <div ref={chartRef} className="report-card p-5 md:p-6 mb-3.5">
+      <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Monthly Organic Sessions</div>
+      <svg viewBox={`0 0 ${w} ${h + 20}`} className="w-full" style={{ overflow: "visible" }}>
+        {/* Grid lines */}
+        {[0, 2500, 5000, 7500, 10000].map(v => (
+          <line key={v} x1={padX} x2={w - padX} y1={getY(v)} y2={getY(v)} stroke="#1e2220" strokeWidth="0.5" />
+        ))}
+        {/* Previous quarter line */}
+        <path
+          d={prevPath}
+          fill="none"
+          stroke="hsl(205,60%,70%)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.4"
+          strokeDasharray={animated ? "0" : "600"}
+          strokeDashoffset={animated ? "0" : "600"}
+          style={{ transition: "stroke-dasharray 1.2s ease-out, stroke-dashoffset 1.2s ease-out" }}
+        />
+        {prevLine.map((d) => {
+          const idx = trafficData.indexOf(d);
+          return <circle key={`p-${idx}`} cx={getX(idx)} cy={getY(d.prev)} r="3" fill="hsl(205,60%,70%)" opacity={animated ? 0.5 : 0} style={{ transition: "opacity 0.5s ease-out 1s" }} />;
+        })}
+        {/* Current quarter line */}
+        <path
+          d={currPath}
+          fill="none"
+          stroke="hsl(18,100%,48%)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray={animated ? "0" : "600"}
+          strokeDashoffset={animated ? "0" : "600"}
+          style={{ transition: "stroke-dasharray 1.2s ease-out 0.3s, stroke-dashoffset 1.2s ease-out 0.3s" }}
+        />
+        {currLine.map((d) => {
+          const idx = trafficData.indexOf(d);
+          return <circle key={`c-${idx}`} cx={getX(idx)} cy={getY(d.curr)} r="3.5" fill="hsl(18,100%,48%)" opacity={animated ? 1 : 0} style={{ transition: "opacity 0.5s ease-out 1.3s" }} />;
+        })}
+        {/* X axis labels */}
+        {trafficData.map((d, i) => (
+          <text key={d.label} x={getX(i)} y={h + 14} textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 10, fontFamily: "monospace" }}>{d.label}</text>
+        ))}
+      </svg>
+      <div className="flex gap-4 mt-3">
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "hsl(205,60%,70%,0.4)" }} />Previous quarter</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "hsl(18,100%,48%)" }} />This quarter</div>
+      </div>
+    </div>
+  );
+};
+
 /* ── Main Page ───────────────────────────────── */
 
 const ClientReport = () => {
