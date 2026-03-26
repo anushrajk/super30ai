@@ -109,34 +109,41 @@ const SectionHeader = ({ tag, title, sub }: { tag: string; title: string; sub: s
 
 const Divider = () => <hr className="border-0 border-t border-report-border my-14" />;
 
-/* ── Animated Line Chart (Clicks & Impressions) ─────────────────────── */
-const trafficData = [
-  { label: "2/12", clicks: 14, impressions: 82 },
-  { label: "2/14", clicks: 4, impressions: 12 },
-  { label: "2/16", clicks: 14, impressions: 62 },
-  { label: "2/18", clicks: 4, impressions: 60 },
-  { label: "2/20", clicks: 6, impressions: 38 },
-  { label: "2/22", clicks: 3, impressions: 10 },
-  { label: "2/24", clicks: 8, impressions: 55 },
-  { label: "2/26", clicks: 7, impressions: 58 },
-  { label: "2/28", clicks: 3, impressions: 10 },
-  { label: "3/2", clicks: 2, impressions: 8 },
-  { label: "3/4", clicks: 4, impressions: 33 },
-  { label: "3/6", clicks: 3, impressions: 18 },
-  { label: "3/8", clicks: 6, impressions: 20 },
-  { label: "3/10", clicks: 7, impressions: 38 },
-  { label: "3/12", clicks: 10, impressions: 52 },
-  { label: "3/14", clicks: 9, impressions: 48 },
-  { label: "3/16", clicks: 8, impressions: 50 },
-  { label: "3/18", clicks: 7, impressions: 48 },
-  { label: "3/20", clicks: 5, impressions: 40 },
-  { label: "3/22", clicks: 3, impressions: 18 },
-  { label: "3/24", clicks: 2, impressions: 88 },
+/* ── Animated Line Chart (Clicks & Impressions — Prev & Current Quarter) ── */
+const prevQuarterData = [
+  { label: "10/1", clicks: 8, impressions: 30 },
+  { label: "10/8", clicks: 12, impressions: 42 },
+  { label: "10/15", clicks: 10, impressions: 38 },
+  { label: "10/22", clicks: 15, impressions: 55 },
+  { label: "11/1", clicks: 9, impressions: 35 },
+  { label: "11/8", clicks: 11, impressions: 40 },
+  { label: "11/15", clicks: 7, impressions: 28 },
+  { label: "11/22", clicks: 13, impressions: 48 },
+  { label: "12/1", clicks: 6, impressions: 22 },
+  { label: "12/8", clicks: 10, impressions: 36 },
+  { label: "12/15", clicks: 8, impressions: 32 },
+  { label: "12/22", clicks: 5, impressions: 20 },
+];
+
+const currQuarterData = [
+  { label: "1/1", clicks: 10, impressions: 40 },
+  { label: "1/8", clicks: 14, impressions: 55 },
+  { label: "1/15", clicks: 12, impressions: 50 },
+  { label: "1/22", clicks: 18, impressions: 65 },
+  { label: "2/1", clicks: 15, impressions: 58 },
+  { label: "2/8", clicks: 20, impressions: 72 },
+  { label: "2/15", clicks: 17, impressions: 68 },
+  { label: "2/22", clicks: 22, impressions: 78 },
+  { label: "3/1", clicks: 19, impressions: 70 },
+  { label: "3/8", clicks: 25, impressions: 85 },
+  { label: "3/15", clicks: 23, impressions: 80 },
+  { label: "3/22", clicks: 28, impressions: 90 },
 ];
 
 const TrafficLineChart = () => {
   const chartRef = useRef<HTMLDivElement>(null);
   const [animated, setAnimated] = useState(false);
+  const [quarter, setQuarter] = useState<"prev" | "curr">("curr");
 
   useEffect(() => {
     const el = chartRef.current;
@@ -149,28 +156,52 @@ const TrafficLineChart = () => {
     return () => observer.disconnect();
   }, []);
 
+  const data = quarter === "curr" ? currQuarterData : prevQuarterData;
   const maxClicks = 30;
-  const maxImpressions = 90;
+  const maxImpressions = 100;
   const w = 500;
   const h = 140;
   const padX = 40;
-  const padR = 50;
+  const padR = 55;
   const padY = 15;
-  const points = trafficData.length;
+  const points = data.length;
 
   const getX = (i: number) => padX + (i * (w - padX - padR)) / (points - 1);
   const getYClicks = (val: number) => h - padY - ((val / maxClicks) * (h - 2 * padY));
   const getYImpressions = (val: number) => h - padY - ((val / maxImpressions) * (h - 2 * padY));
 
-  const clicksPath = trafficData.map((d, i) => `${i === 0 ? "M" : "L"}${getX(i)},${getYClicks(d.clicks)}`).join(" ");
-  const impressionsPath = trafficData.map((d, i) => `${i === 0 ? "M" : "L"}${getX(i)},${getYImpressions(d.impressions)}`).join(" ");
+  const clicksPath = data.map((d, i) => `${i === 0 ? "M" : "L"}${getX(i)},${getYClicks(d.clicks)}`).join(" ");
+  const impressionsPath = data.map((d, i) => `${i === 0 ? "M" : "L"}${getX(i)},${getYImpressions(d.impressions)}`).join(" ");
 
   const clicksTicks = [0, 10, 20, 30];
   const impressionsTicks = [0, 30, 60, 90];
 
+  // Reset animation when quarter changes
+  useEffect(() => {
+    setAnimated(false);
+    const t = setTimeout(() => setAnimated(true), 50);
+    return () => clearTimeout(t);
+  }, [quarter]);
+
   return (
     <div ref={chartRef} className="report-card p-5 md:p-6 mb-3.5">
-      <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Traffic Overview — Clicks & Impressions</div>
+      <div className="flex items-center justify-between mb-3">
+        <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase">
+          Traffic Overview — {quarter === "curr" ? "Jan – Mar 2026" : "Oct – Dec 2025"}
+        </div>
+        <div className="flex gap-1">
+          <button
+            onClick={() => setQuarter("prev")}
+            className={`text-[11px] font-mono px-3 py-1 rounded-full transition-colors ${quarter === "prev" ? "text-white" : "text-report-muted hover:text-report-text"}`}
+            style={quarter === "prev" ? { background: "hsl(18,100%,48%)" } : { background: "#1e2220" }}
+          >Oct – Dec '25</button>
+          <button
+            onClick={() => setQuarter("curr")}
+            className={`text-[11px] font-mono px-3 py-1 rounded-full transition-colors ${quarter === "curr" ? "text-white" : "text-report-muted hover:text-report-text"}`}
+            style={quarter === "curr" ? { background: "hsl(18,100%,48%)" } : { background: "#1e2220" }}
+          >Jan – Mar '26</button>
+        </div>
+      </div>
       <svg viewBox={`0 0 ${w} ${h + 24}`} className="w-full" style={{ overflow: "visible" }}>
         {/* Grid lines */}
         {clicksTicks.map(v => (
@@ -211,15 +242,15 @@ const TrafficLineChart = () => {
           style={{ transition: "stroke-dasharray 1.5s ease-out 0.3s, stroke-dashoffset 1.5s ease-out 0.3s" }}
         />
         {/* Dots */}
-        {trafficData.map((d, i) => (
+        {data.map((d, i) => (
           <g key={i}>
             <circle cx={getX(i)} cy={getYClicks(d.clicks)} r="2.5" fill="#60a5fa" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1 + i * 0.05}s` }} />
             <circle cx={getX(i)} cy={getYImpressions(d.impressions)} r="2.5" fill="#8b5cf6" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1.3 + i * 0.05}s` }} />
           </g>
         ))}
         {/* X axis labels */}
-        {trafficData.filter((_, i) => i % 3 === 0).map((d, _i) => {
-          const origIdx = trafficData.indexOf(d);
+        {data.filter((_, i) => i % 2 === 0).map((d) => {
+          const origIdx = data.indexOf(d);
           return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
         })}
       </svg>
