@@ -115,49 +115,29 @@ const BrandIdentityGrid = () => (
   </div>
 );
 
-const socialPosts = [
-  { brand: "Mamaearth", type: "Carousel", engagement: "12.4K", platform: "Instagram", accent: "hsl(145,60%,45%)" },
-  { brand: "upGrad", type: "Story Ad", engagement: "8.2K", platform: "Instagram", accent: "hsl(210,70%,50%)" },
-  { brand: "FitPulse", type: "Reel Cover", engagement: "22.1K", platform: "Instagram", accent: "hsl(350,80%,55%)" },
-  { brand: "Bloom Cosmetics", type: "Feed Post", engagement: "6.8K", platform: "Facebook", accent: "hsl(330,70%,55%)" },
-  { brand: "UrbanBite", type: "Promo Banner", engagement: "9.5K", platform: "Instagram", accent: "hsl(25,90%,55%)" },
-  { brand: "TechVista", type: "LinkedIn Post", engagement: "3.4K", platform: "LinkedIn", accent: "hsl(220,80%,55%)" },
+const socialCreativeImages = [
+  creative1, creative2, creative3, creative4,
+  creative5, creative6, creative7, creative8,
 ];
 
 const SocialCreativesGrid = () => (
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-    {socialPosts.map((p, i) => (
-      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    {socialCreativeImages.map((img, i) => (
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
         <CardContent className="p-0">
-          <div className="aspect-square flex items-center justify-center relative" style={{ background: `linear-gradient(135deg, ${p.accent}22, ${p.accent}08)` }}>
-            <div className="w-16 h-16 rounded-xl flex items-center justify-center" style={{ background: p.accent }}>
-              <Image className="w-7 h-7 text-white" />
-            </div>
-            <span className="absolute top-3 right-3 text-[10px] font-mono px-2 py-0.5 rounded-full bg-background/80 text-muted-foreground">{p.type}</span>
-          </div>
-          <div className="p-4">
-            <div className="font-semibold text-sm text-foreground">{p.brand}</div>
-            <div className="flex items-center justify-between mt-2">
-              <span className="text-xs text-muted-foreground">{p.platform}</span>
-              <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Heart className="w-3 h-3" /> {p.engagement}
-              </div>
-            </div>
+          <div className="aspect-square overflow-hidden">
+            <img
+              src={img}
+              alt={`Social media creative ${i + 1}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
           </div>
         </CardContent>
       </Card>
     ))}
   </div>
 );
-
-const ugcContent = [
-  { title: "Product Unboxing — Mamaearth", views: "45K", likes: "3.2K", comments: "412", accent: "hsl(145,60%,45%)" },
-  { title: "Day-in-Life — FitPulse", views: "82K", likes: "6.8K", comments: "890", accent: "hsl(350,80%,55%)" },
-  { title: "Testimonial — Jain University", views: "28K", likes: "1.9K", comments: "215", accent: "hsl(210,70%,50%)" },
-  { title: "How-To Guide — PureWell", views: "35K", likes: "2.4K", comments: "320", accent: "hsl(160,60%,45%)" },
-  { title: "Behind the Scenes — UrbanBite", views: "52K", likes: "4.1K", comments: "560", accent: "hsl(25,90%,55%)" },
-  { title: "Review — TechVista", views: "19K", likes: "1.2K", comments: "145", accent: "hsl(220,80%,55%)" },
-];
 
 const UGCGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
