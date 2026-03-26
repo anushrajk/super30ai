@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
