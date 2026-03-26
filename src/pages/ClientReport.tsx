@@ -11,6 +11,7 @@ import jainUniversityLogo from "@/assets/case-studies/jain-university.png";
 import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
 import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
 import { Navbar } from "@/components/Navbar";
+import { ArrowLeft } from "lucide-react";
 
 const clientData: Record<string, { name: string; industry: string; logo: string; domain: string }> = {
   magicbricks: { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, domain: "magicbricks.com" },
