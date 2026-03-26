@@ -69,8 +69,7 @@ export const ProjectShowcaseSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center min-h-[500px]">
-          {/* Left — Text content */}
+        <div className="max-w-2xl mx-auto text-center min-h-[300px]">
           <div className="space-y-6" key={activeIndex}>
             <p className="text-brand text-xs md:text-sm font-semibold tracking-[0.2em] uppercase animate-fade-in">
               {project.category}
@@ -78,7 +77,7 @@ export const ProjectShowcaseSection = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-fade-in" style={{ animationDelay: "50ms" }}>
               {project.title}
             </h2>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
+            <p className="text-white/60 text-base md:text-lg leading-relaxed mx-auto max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
               {project.description}
             </p>
             <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
