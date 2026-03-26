@@ -1,9 +1,9 @@
 /**
- * Centralized hook for submitting all forms to Google Apps Script endpoint
- * Replaces Supabase/useLead() for lead storage
+ * Centralized hook for submitting all forms to Web3Forms endpoint
  */
 
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyzxD425E9QSIUl1vjoRJJCr6IpOo0i2ZwJh7xIctSKseTJx1CCT3qNwir6nImU5oHh/exec";
+const WEB3FORMS_ACCESS_KEY = "2e6b168e-6519-4f0f-8c81-86fb009e0900";
+const WEB3FORMS_URL = "https://api.web3forms.com/submit";
 
 export interface FormSubmitPayload {
   form_id: string;
@@ -19,24 +19,40 @@ export interface FormSubmitResult {
 }
 
 /**
- * Submit form data to Google Apps Script endpoint
+ * Submit form data to Web3Forms endpoint
  */
 export const submitFormToGoogleSheets = async (
   payload: FormSubmitPayload
 ): Promise<FormSubmitResult> => {
   try {
-    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+    const response = await fetch(WEB3FORMS_URL, {
       method: "POST",
-      mode: "no-cors", // Google Apps Script requires no-cors for cross-origin requests
       headers: {
         "Content-Type": "application/json",
+        "Accept": "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        subject: `${payload.form_name} — ${payload.form_id}`,
+        from_name: "The Super 30 Website",
+        form_id: payload.form_id,
+        form_name: payload.form_name,
+        page_url: payload.page_url,
+        trigger_type: payload.trigger_type,
+        ...payload.data,
+      }),
     });
 
-    // With no-cors mode, we can't read the response
-    // We assume success if no error was thrown
-    return { success: true };
+    const result = await response.json();
+
+    if (result.success) {
+      return { success: true };
+    }
+
+    return {
+      success: false,
+      error: result.message || "Form submission failed",
+    };
   } catch (error) {
     console.error("Form submission error:", error);
     return {
