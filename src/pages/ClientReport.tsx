@@ -47,17 +47,36 @@ const MetricCard = ({ label, value, delta, direction }: { label: string; value: 
   </div>
 );
 
-const ProgressRow = ({ label, value, color }: { label: string; value: number; color: string }) => (
-  <div className="mb-3.5">
-    <div className="flex justify-between text-[13px] mb-1">
-      <span className="text-report-text">{label}</span>
-      <span className="text-report-muted font-mono text-xs">{value}%</span>
+const ProgressRow = ({ label, value, color }: { label: string; value: number; color: string }) => {
+  const barRef = useRef<HTMLDivElement>(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setAnimated(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="mb-3.5" ref={barRef}>
+      <div className="flex justify-between text-[13px] mb-1">
+        <span className="text-report-text">{label}</span>
+        <span className="text-report-muted font-mono text-xs">{value}%</span>
+      </div>
+      <div className="h-1.5 bg-report-surface2 rounded-full overflow-hidden">
+        <div
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${color}`}
+          style={{ width: animated ? `${value}%` : "0%" }}
+        />
+      </div>
     </div>
-    <div className="h-1.5 bg-report-surface2 rounded-full overflow-hidden">
-      <div className={`h-full rounded-full transition-all duration-1000 ${color}`} style={{ width: `${value}%` }} />
-    </div>
-  </div>
-);
+  );
+};
 
 const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "fail"; title: string; desc: string; badge: string }) => (
   <div className="flex items-start gap-3.5 py-3.5 border-b border-report-border last:border-0">
