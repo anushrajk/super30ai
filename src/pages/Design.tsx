@@ -338,7 +338,7 @@ const PortfolioCaseStudySection = () => {
               <div className="absolute bottom-0 left-0 right-0 h-[50%] sm:h-[55%] flex items-end justify-center overflow-hidden">
                 <div className="relative w-full h-full flex items-end justify-center px-3 sm:px-5">
                   {/* Laptop / Tablet mockup */}
-                  <div className="relative w-[80%] mb-0 transform group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 z-[1]">
+                  <div className="relative w-[90%] mb-0 transform group-hover:scale-[1.04] group-hover:-translate-y-2 transition-all duration-500 z-[1]">
                     <div className="bg-[hsl(var(--foreground))]/90 rounded-t-lg sm:rounded-t-xl p-[2px] sm:p-[3px] shadow-2xl">
                       <div className="rounded-t-md sm:rounded-t-lg overflow-hidden aspect-[4/3] bg-muted">
                         <img
