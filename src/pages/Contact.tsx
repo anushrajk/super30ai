@@ -312,7 +312,7 @@ const Contact = () => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
               <div className="bento-card p-6 md:p-8 h-full flex flex-col">
-                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Get in Touch With Our SEO Agency Team</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Get in Touch With Our Digital Marketing Team</h2>
 
                 <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-4" id="contact-form">
                   <div className="grid md:grid-cols-2 gap-4">
