@@ -292,7 +292,7 @@ const Contact = () => {
 
               {/* Expert credentials */}
               <div className="flex flex-wrap gap-2 justify-center pt-2">
-                {["AI SEO Experts", "Performance Marketing", "Free Consultation"].map((cred, i) => (
+                {["AI SEO", "Lead Generation", "Social Media", "Web Design", "Branding"].map((cred, i) => (
                   <span 
                     key={i}
                     className="inline-flex items-center gap-1.5 bg-muted text-muted-foreground px-3 py-1.5 rounded-full text-xs font-medium"
