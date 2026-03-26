@@ -81,16 +81,6 @@ export const ProjectShowcaseSection = () => {
             <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
               {project.description}
             </p>
-            <div className="flex flex-wrap gap-2 animate-fade-in" style={{ animationDelay: "150ms" }}>
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-white/15 text-white/70 text-xs md:text-sm px-4 py-1.5 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
             <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
               <Link to="/seo-agency-near-me">
                 <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 py-3 h-auto text-sm font-semibold group">
