@@ -155,8 +155,8 @@ const ClientReport = () => {
         {/* ── SIDEBAR ── */}
         <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
           <div className="mb-5">
-            <img src={client.logo} alt={client.name} className="h-10 w-auto object-contain rounded-xl" />
-            <div className="text-[11px] font-mono text-report-muted mt-2 tracking-[0.06em]">Q1 · 2026 · {client.name}</div>
+            <div className="text-sm font-semibold text-report-text">{client.name}</div>
+            <div className="text-[11px] font-mono text-report-muted mt-1 tracking-[0.06em]">Q1 · 2026</div>
           </div>
 
           {navSections.map((s) => (
