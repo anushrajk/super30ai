@@ -4,6 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import brand1 from "@/assets/brand-identity/brand-1.jpg";
+import brand2 from "@/assets/brand-identity/brand-2.jpg";
+import brand3 from "@/assets/brand-identity/brand-3.jpg";
+import brand4 from "@/assets/brand-identity/brand-4.jpg";
+import brand5 from "@/assets/brand-identity/brand-5.jpg";
 import creative1 from "@/assets/social-creatives/creative-1.png";
 import creative2 from "@/assets/social-creatives/creative-2.png";
 import creative3 from "@/assets/social-creatives/creative-3.png";
@@ -82,32 +87,20 @@ const LogoGrid = () => (
   </div>
 );
 
-const brandProjects = [
-  { name: "Bloom Cosmetics", type: "Full Brand System", deliverables: "Logo, Color Palette, Typography, Stationery, Guidelines", accent: "hsl(330,70%,55%)" },
-  { name: "UrbanBite", type: "F&B Branding", deliverables: "Logo, Packaging, Menu Design, Signage", accent: "hsl(25,90%,55%)" },
-  { name: "Zenith Academy", type: "Education Branding", deliverables: "Logo, Website, Brochures, Uniforms", accent: "hsl(210,70%,50%)" },
-  { name: "PureWell Health", type: "Healthcare Branding", deliverables: "Logo, UI Kit, Social Templates, Print Collateral", accent: "hsl(160,60%,45%)" },
-];
+const brandImages = [brand1, brand2, brand3, brand4, brand5];
 
 const BrandIdentityGrid = () => (
-  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    {brandProjects.map((p) => (
-      <Card key={p.name} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
-        <CardContent className="p-6">
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-3 h-3 rounded-full" style={{ background: p.accent }} />
-            <span className="text-xs font-mono text-muted-foreground uppercase tracking-wider">{p.type}</span>
-          </div>
-          <h4 className="text-lg font-semibold text-foreground mb-2">{p.name}</h4>
-          <p className="text-xs text-muted-foreground leading-relaxed">{p.deliverables}</p>
-          <div className="mt-4 flex gap-2">
-            {[1, 2, 3, 4].map((i) => (
-              <div
-                key={i}
-                className="w-8 h-8 rounded-lg"
-                style={{ background: p.accent, opacity: 1 - i * 0.2 }}
-              />
-            ))}
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+    {brandImages.map((img, i) => (
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
+        <CardContent className="p-0">
+          <div className="aspect-square overflow-hidden">
+            <img
+              src={img}
+              alt={`Brand identity project ${i + 1}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
           </div>
         </CardContent>
       </Card>
