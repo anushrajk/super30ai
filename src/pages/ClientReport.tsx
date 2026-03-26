@@ -252,31 +252,7 @@ const ClientReport = () => {
           {/* ── 02 TRAFFIC ── */}
           <section data-section="traffic" id="traffic">
             <SectionHeader tag="02 — Traffic & Performance" title="Traffic Overview" sub="Monthly organic sessions and click-through performance." />
-            <div className="report-card p-5 md:p-6 mb-3.5">
-              <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Monthly Organic Sessions</div>
-              <div className="flex items-end gap-1.5 h-[120px]">
-                {[
-                  { h: 55, label: "Oct", current: false },
-                  { h: 60, label: "Nov", current: false },
-                  { h: 58, label: "Dec", current: false },
-                  { h: 70, label: "Jan", current: true },
-                  { h: 82, label: "Feb", current: true },
-                  { h: 100, label: "Mar", current: true },
-                ].map((bar) => (
-                  <div key={bar.label} className="flex-1 flex flex-col items-center gap-1">
-                    <div
-                      className="w-full rounded-t"
-                      style={{ height: `${bar.h}%`, background: bar.current ? "hsl(18,100%,48%)" : "hsl(205,60%,70%,0.3)" }}
-                    />
-                    <span className="text-[10px] font-mono text-report-muted">{bar.label}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-4 mt-3">
-                <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: "hsl(205,60%,70%,0.3)" }} />Previous quarter</div>
-                <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: "hsl(18,100%,48%)" }} />This quarter</div>
-              </div>
-            </div>
+            <TrafficLineChart />
             <div className="grid grid-cols-3 gap-3.5">
               <MetricCard label="Click-Through Rate" value="4.8%" delta="↑ from 3.2%" direction="up" />
               <MetricCard label="Impressions" value="412K" delta="↑ 18%" direction="up" />
