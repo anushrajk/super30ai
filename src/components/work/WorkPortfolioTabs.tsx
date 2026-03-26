@@ -4,6 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import brand1 from "@/assets/brand-identity/brand-1.jpg";
+import brand2 from "@/assets/brand-identity/brand-2.jpg";
+import brand3 from "@/assets/brand-identity/brand-3.jpg";
+import brand4 from "@/assets/brand-identity/brand-4.jpg";
+import brand5 from "@/assets/brand-identity/brand-5.jpg";
 import creative1 from "@/assets/social-creatives/creative-1.png";
 import creative2 from "@/assets/social-creatives/creative-2.png";
 import creative3 from "@/assets/social-creatives/creative-3.png";
