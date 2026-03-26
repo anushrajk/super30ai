@@ -139,6 +139,15 @@ const SocialCreativesGrid = () => (
   </div>
 );
 
+const ugcContent = [
+  { title: "Product Unboxing", views: "45K", likes: "3.2K", comments: "412", accent: "hsl(145,60%,45%)" },
+  { title: "Day-in-Life Vlog", views: "82K", likes: "6.8K", comments: "890", accent: "hsl(350,80%,55%)" },
+  { title: "Student Testimonial", views: "28K", likes: "1.9K", comments: "215", accent: "hsl(210,70%,50%)" },
+  { title: "How-To Guide", views: "35K", likes: "2.4K", comments: "320", accent: "hsl(160,60%,45%)" },
+  { title: "Behind the Scenes", views: "52K", likes: "4.1K", comments: "560", accent: "hsl(25,90%,55%)" },
+  { title: "Product Review", views: "19K", likes: "1.2K", comments: "145", accent: "hsl(220,80%,55%)" },
+];
+
 const UGCGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
     {ugcContent.map((item, i) => (
