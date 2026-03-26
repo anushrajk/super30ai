@@ -109,14 +109,29 @@ const SectionHeader = ({ tag, title, sub }: { tag: string; title: string; sub: s
 
 const Divider = () => <hr className="border-0 border-t border-report-border my-14" />;
 
-/* ── Animated Line Chart ─────────────────────── */
+/* ── Animated Line Chart (Clicks & Impressions) ─────────────────────── */
 const trafficData = [
-  { label: "Oct", prev: 5200, curr: 0 },
-  { label: "Nov", prev: 5800, curr: 0 },
-  { label: "Dec", prev: 5500, curr: 0 },
-  { label: "Jan", prev: 0, curr: 6800 },
-  { label: "Feb", prev: 0, curr: 7900 },
-  { label: "Mar", prev: 0, curr: 9600 },
+  { label: "2/12", clicks: 14, impressions: 82 },
+  { label: "2/14", clicks: 4, impressions: 12 },
+  { label: "2/16", clicks: 14, impressions: 62 },
+  { label: "2/18", clicks: 4, impressions: 60 },
+  { label: "2/20", clicks: 6, impressions: 38 },
+  { label: "2/22", clicks: 3, impressions: 10 },
+  { label: "2/24", clicks: 8, impressions: 55 },
+  { label: "2/26", clicks: 7, impressions: 58 },
+  { label: "2/28", clicks: 3, impressions: 10 },
+  { label: "3/2", clicks: 2, impressions: 8 },
+  { label: "3/4", clicks: 4, impressions: 33 },
+  { label: "3/6", clicks: 3, impressions: 18 },
+  { label: "3/8", clicks: 6, impressions: 20 },
+  { label: "3/10", clicks: 7, impressions: 38 },
+  { label: "3/12", clicks: 10, impressions: 52 },
+  { label: "3/14", clicks: 9, impressions: 48 },
+  { label: "3/16", clicks: 8, impressions: 50 },
+  { label: "3/18", clicks: 7, impressions: 48 },
+  { label: "3/20", clicks: 5, impressions: 40 },
+  { label: "3/22", clicks: 3, impressions: 18 },
+  { label: "3/24", clicks: 2, impressions: 88 },
 ];
 
 const TrafficLineChart = () => {
@@ -134,70 +149,83 @@ const TrafficLineChart = () => {
     return () => observer.disconnect();
   }, []);
 
-  const maxVal = 10000;
-  const w = 400;
-  const h = 120;
-  const padX = 10;
-  const padY = 10;
+  const maxClicks = 30;
+  const maxImpressions = 90;
+  const w = 500;
+  const h = 140;
+  const padX = 40;
+  const padR = 50;
+  const padY = 15;
   const points = trafficData.length;
 
-  const getX = (i: number) => padX + (i * (w - 2 * padX)) / (points - 1);
-  const getY = (val: number) => h - padY - ((val / maxVal) * (h - 2 * padY));
+  const getX = (i: number) => padX + (i * (w - padX - padR)) / (points - 1);
+  const getYClicks = (val: number) => h - padY - ((val / maxClicks) * (h - 2 * padY));
+  const getYImpressions = (val: number) => h - padY - ((val / maxImpressions) * (h - 2 * padY));
 
-  const prevLine = trafficData.filter(d => d.prev > 0);
-  const currLine = trafficData.filter(d => d.curr > 0);
-  const prevPath = prevLine.map((d, i) => `${i === 0 ? "M" : "L"}${getX(trafficData.indexOf(d))},${getY(d.prev)}`).join(" ");
-  const currPath = currLine.map((d, i) => `${i === 0 ? "M" : "L"}${getX(trafficData.indexOf(d))},${getY(d.curr)}`).join(" ");
+  const clicksPath = trafficData.map((d, i) => `${i === 0 ? "M" : "L"}${getX(i)},${getYClicks(d.clicks)}`).join(" ");
+  const impressionsPath = trafficData.map((d, i) => `${i === 0 ? "M" : "L"}${getX(i)},${getYImpressions(d.impressions)}`).join(" ");
+
+  const clicksTicks = [0, 10, 20, 30];
+  const impressionsTicks = [0, 30, 60, 90];
 
   return (
     <div ref={chartRef} className="report-card p-5 md:p-6 mb-3.5">
-      <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Monthly Organic Sessions</div>
-      <svg viewBox={`0 0 ${w} ${h + 20}`} className="w-full" style={{ overflow: "visible" }}>
+      <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Traffic Overview — Clicks & Impressions</div>
+      <svg viewBox={`0 0 ${w} ${h + 24}`} className="w-full" style={{ overflow: "visible" }}>
         {/* Grid lines */}
-        {[0, 2500, 5000, 7500, 10000].map(v => (
-          <line key={v} x1={padX} x2={w - padX} y1={getY(v)} y2={getY(v)} stroke="#1e2220" strokeWidth="0.5" />
+        {clicksTicks.map(v => (
+          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#1e2220" strokeWidth="0.5" />
         ))}
-        {/* Previous quarter line */}
+        {/* Left Y axis labels (Clicks) */}
+        {clicksTicks.map(v => (
+          <text key={`cl-${v}`} x={padX - 6} y={getYClicks(v) + 3} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
+        ))}
+        <text x={padX - 6} y={padY - 8} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>Clicks</text>
+        {/* Right Y axis labels (Impressions) */}
+        {impressionsTicks.map(v => (
+          <text key={`im-${v}`} x={w - padR + 6} y={getYImpressions(v) + 3} textAnchor="start" fill="#8b5cf6" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
+        ))}
+        <text x={w - padR + 6} y={padY - 8} textAnchor="start" fill="#8b5cf6" style={{ fontSize: 9, fontFamily: "monospace" }}>Impressions</text>
+        {/* Clicks line (blue) */}
         <path
-          d={prevPath}
+          d={clicksPath}
           fill="none"
-          stroke="hsl(205,60%,70%)"
-          strokeWidth="2.5"
+          stroke="#60a5fa"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          opacity="0.4"
-          strokeDasharray={animated ? "0" : "600"}
-          strokeDashoffset={animated ? "0" : "600"}
-          style={{ transition: "stroke-dasharray 1.2s ease-out, stroke-dashoffset 1.2s ease-out" }}
+          strokeDasharray={animated ? "0" : "2000"}
+          strokeDashoffset={animated ? "0" : "2000"}
+          style={{ transition: "stroke-dasharray 1.5s ease-out, stroke-dashoffset 1.5s ease-out" }}
         />
-        {prevLine.map((d) => {
-          const idx = trafficData.indexOf(d);
-          return <circle key={`p-${idx}`} cx={getX(idx)} cy={getY(d.prev)} r="3" fill="hsl(205,60%,70%)" opacity={animated ? 0.5 : 0} style={{ transition: "opacity 0.5s ease-out 1s" }} />;
-        })}
-        {/* Current quarter line */}
+        {/* Impressions line (purple) */}
         <path
-          d={currPath}
+          d={impressionsPath}
           fill="none"
-          stroke="hsl(18,100%,48%)"
-          strokeWidth="2.5"
+          stroke="#8b5cf6"
+          strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeDasharray={animated ? "0" : "600"}
-          strokeDashoffset={animated ? "0" : "600"}
-          style={{ transition: "stroke-dasharray 1.2s ease-out 0.3s, stroke-dashoffset 1.2s ease-out 0.3s" }}
+          strokeDasharray={animated ? "0" : "2000"}
+          strokeDashoffset={animated ? "0" : "2000"}
+          style={{ transition: "stroke-dasharray 1.5s ease-out 0.3s, stroke-dashoffset 1.5s ease-out 0.3s" }}
         />
-        {currLine.map((d) => {
-          const idx = trafficData.indexOf(d);
-          return <circle key={`c-${idx}`} cx={getX(idx)} cy={getY(d.curr)} r="3.5" fill="hsl(18,100%,48%)" opacity={animated ? 1 : 0} style={{ transition: "opacity 0.5s ease-out 1.3s" }} />;
-        })}
-        {/* X axis labels */}
+        {/* Dots */}
         {trafficData.map((d, i) => (
-          <text key={d.label} x={getX(i)} y={h + 14} textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 10, fontFamily: "monospace" }}>{d.label}</text>
+          <g key={i}>
+            <circle cx={getX(i)} cy={getYClicks(d.clicks)} r="2.5" fill="#60a5fa" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1 + i * 0.05}s` }} />
+            <circle cx={getX(i)} cy={getYImpressions(d.impressions)} r="2.5" fill="#8b5cf6" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1.3 + i * 0.05}s` }} />
+          </g>
         ))}
+        {/* X axis labels */}
+        {trafficData.filter((_, i) => i % 3 === 0).map((d, _i) => {
+          const origIdx = trafficData.indexOf(d);
+          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
+        })}
       </svg>
       <div className="flex gap-4 mt-3">
-        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "hsl(205,60%,70%,0.4)" }} />Previous quarter</div>
-        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "hsl(18,100%,48%)" }} />This quarter</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#60a5fa" }} />Clicks</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#8b5cf6" }} />Impressions</div>
       </div>
     </div>
   );
