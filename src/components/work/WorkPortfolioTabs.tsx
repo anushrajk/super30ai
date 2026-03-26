@@ -4,6 +4,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import creative1 from "@/assets/social-creatives/creative-1.png";
+import creative2 from "@/assets/social-creatives/creative-2.png";
+import creative3 from "@/assets/social-creatives/creative-3.png";
+import creative4 from "@/assets/social-creatives/creative-4.png";
+import creative5 from "@/assets/social-creatives/creative-5.png";
+import creative6 from "@/assets/social-creatives/creative-6.png";
+import creative7 from "@/assets/social-creatives/creative-7.png";
+import creative8 from "@/assets/social-creatives/creative-8.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
 import upgradLogo from "@/assets/case-studies/upgrad.png";
 import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
