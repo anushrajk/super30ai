@@ -11,6 +11,7 @@ import jainUniversityLogo from "@/assets/case-studies/jain-university.png";
 import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
 import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
 import { Navbar } from "@/components/Navbar";
+import { ArrowLeft } from "lucide-react";
 
 const clientData: Record<string, { name: string; industry: string; logo: string; domain: string }> = {
   magicbricks: { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, domain: "magicbricks.com" },
@@ -141,10 +142,20 @@ const ClientReport = () => {
       <Navbar forceWhiteBg />
       <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
 
+        {/* ── GO BACK BUTTON (right side) ── */}
+        <button
+          onClick={() => navigate(-1)}
+          className="fixed right-6 top-[88px] z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors"
+          style={{ background: "#1e2220", color: "#e8ede9", border: "1px solid rgba(255,255,255,0.1)" }}
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Go Back
+        </button>
+
         {/* ── SIDEBAR ── */}
         <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
           <div className="mb-5">
-            <img src={client.logo} alt={client.name} className="h-10 w-auto object-contain" />
+            <img src={client.logo} alt={client.name} className="h-10 w-auto object-contain rounded-xl" />
             <div className="text-[11px] font-mono text-report-muted mt-2 tracking-[0.06em]">Q1 · 2026 · {client.name}</div>
           </div>
 
@@ -178,7 +189,7 @@ const ClientReport = () => {
             <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(18,100%,48%,0.07) 0%, transparent 70%)" }} />
             <div className="text-[11px] font-mono text-report-muted tracking-[0.08em] mb-2.5">REPORT PERIOD — JAN 1 TO MAR 25, 2026</div>
             <div className="flex items-start gap-5 mb-2">
-              <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain flex-shrink-0 mt-1" />
+              <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain flex-shrink-0 mt-1 rounded-xl" />
             </div>
             <h1 className="text-4xl md:text-[38px] font-serif text-report-text leading-tight mb-2">
               SEO Work<br /><em style={{ color: "hsl(18,100%,48%)" }}>Conducted</em>

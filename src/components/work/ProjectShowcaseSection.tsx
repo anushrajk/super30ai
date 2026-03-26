@@ -69,8 +69,7 @@ export const ProjectShowcaseSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center min-h-[500px]">
-          {/* Left — Text content */}
+        <div className="max-w-2xl mx-auto text-center min-h-[300px]">
           <div className="space-y-6" key={activeIndex}>
             <p className="text-brand text-xs md:text-sm font-semibold tracking-[0.2em] uppercase animate-fade-in">
               {project.category}
@@ -78,52 +77,16 @@ export const ProjectShowcaseSection = () => {
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-fade-in" style={{ animationDelay: "50ms" }}>
               {project.title}
             </h2>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
+            <p className="text-white/60 text-base md:text-lg leading-relaxed mx-auto max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
               {project.description}
             </p>
-            <div className="flex flex-wrap gap-2 animate-fade-in" style={{ animationDelay: "150ms" }}>
-              {project.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="border border-white/15 text-white/70 text-xs md:text-sm px-4 py-1.5 rounded-full"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <div className="animate-fade-in" style={{ animationDelay: "200ms" }}>
+            <div className="animate-fade-in flex justify-center" style={{ animationDelay: "150ms" }}>
               <Link to="/seo-agency-near-me">
                 <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 py-3 h-auto text-sm font-semibold group">
                   {project.cta}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-            </div>
-          </div>
-
-          {/* Right — Browser mockup */}
-          <div className="relative animate-fade-in" style={{ animationDelay: "100ms" }} key={`img-${activeIndex}`}>
-            <div className="rounded-2xl overflow-hidden border border-white/10 bg-[hsl(222,30%,12%)] shadow-2xl">
-              {/* Browser bar */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-[hsl(222,30%,14%)] border-b border-white/5">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-500" />
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                </div>
-                <div className="flex-1 mx-4">
-                  <div className="bg-white/5 rounded-md h-6 max-w-xs" />
-                </div>
-              </div>
-              {/* Screenshot */}
-              <div className="aspect-[16/10] overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                />
-              </div>
             </div>
           </div>
         </div>
