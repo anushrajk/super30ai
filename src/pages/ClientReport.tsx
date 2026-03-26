@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
@@ -47,17 +47,36 @@ const MetricCard = ({ label, value, delta, direction }: { label: string; value: 
   </div>
 );
 
-const ProgressRow = ({ label, value, color }: { label: string; value: number; color: string }) => (
-  <div className="mb-3.5">
-    <div className="flex justify-between text-[13px] mb-1">
-      <span className="text-report-text">{label}</span>
-      <span className="text-report-muted font-mono text-xs">{value}%</span>
+const ProgressRow = ({ label, value, color }: { label: string; value: number; color: string }) => {
+  const barRef = useRef<HTMLDivElement>(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = barRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setAnimated(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div className="mb-3.5" ref={barRef}>
+      <div className="flex justify-between text-[13px] mb-1">
+        <span className="text-report-text">{label}</span>
+        <span className="text-report-muted font-mono text-xs">{value}%</span>
+      </div>
+      <div className="h-1.5 bg-report-surface2 rounded-full overflow-hidden">
+        <div
+          className={`h-full rounded-full transition-all duration-1000 ease-out ${color}`}
+          style={{ width: animated ? `${value}%` : "0%" }}
+        />
+      </div>
     </div>
-    <div className="h-1.5 bg-report-surface2 rounded-full overflow-hidden">
-      <div className={`h-full rounded-full transition-all duration-1000 ${color}`} style={{ width: `${value}%` }} />
-    </div>
-  </div>
-);
+  );
+};
 
 const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "fail"; title: string; desc: string; badge: string }) => (
   <div className="flex items-start gap-3.5 py-3.5 border-b border-report-border last:border-0">
@@ -89,6 +108,100 @@ const SectionHeader = ({ tag, title, sub }: { tag: string; title: string; sub: s
 );
 
 const Divider = () => <hr className="border-0 border-t border-report-border my-14" />;
+
+/* ── Animated Line Chart ─────────────────────── */
+const trafficData = [
+  { label: "Oct", prev: 5200, curr: 0 },
+  { label: "Nov", prev: 5800, curr: 0 },
+  { label: "Dec", prev: 5500, curr: 0 },
+  { label: "Jan", prev: 0, curr: 6800 },
+  { label: "Feb", prev: 0, curr: 7900 },
+  { label: "Mar", prev: 0, curr: 9600 },
+];
+
+const TrafficLineChart = () => {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [animated, setAnimated] = useState(false);
+
+  useEffect(() => {
+    const el = chartRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setAnimated(true); observer.disconnect(); } },
+      { threshold: 0.3 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const maxVal = 10000;
+  const w = 400;
+  const h = 120;
+  const padX = 10;
+  const padY = 10;
+  const points = trafficData.length;
+
+  const getX = (i: number) => padX + (i * (w - 2 * padX)) / (points - 1);
+  const getY = (val: number) => h - padY - ((val / maxVal) * (h - 2 * padY));
+
+  const prevLine = trafficData.filter(d => d.prev > 0);
+  const currLine = trafficData.filter(d => d.curr > 0);
+  const prevPath = prevLine.map((d, i) => `${i === 0 ? "M" : "L"}${getX(trafficData.indexOf(d))},${getY(d.prev)}`).join(" ");
+  const currPath = currLine.map((d, i) => `${i === 0 ? "M" : "L"}${getX(trafficData.indexOf(d))},${getY(d.curr)}`).join(" ");
+
+  return (
+    <div ref={chartRef} className="report-card p-5 md:p-6 mb-3.5">
+      <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Monthly Organic Sessions</div>
+      <svg viewBox={`0 0 ${w} ${h + 20}`} className="w-full" style={{ overflow: "visible" }}>
+        {/* Grid lines */}
+        {[0, 2500, 5000, 7500, 10000].map(v => (
+          <line key={v} x1={padX} x2={w - padX} y1={getY(v)} y2={getY(v)} stroke="#1e2220" strokeWidth="0.5" />
+        ))}
+        {/* Previous quarter line */}
+        <path
+          d={prevPath}
+          fill="none"
+          stroke="hsl(205,60%,70%)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          opacity="0.4"
+          strokeDasharray={animated ? "0" : "600"}
+          strokeDashoffset={animated ? "0" : "600"}
+          style={{ transition: "stroke-dasharray 1.2s ease-out, stroke-dashoffset 1.2s ease-out" }}
+        />
+        {prevLine.map((d) => {
+          const idx = trafficData.indexOf(d);
+          return <circle key={`p-${idx}`} cx={getX(idx)} cy={getY(d.prev)} r="3" fill="hsl(205,60%,70%)" opacity={animated ? 0.5 : 0} style={{ transition: "opacity 0.5s ease-out 1s" }} />;
+        })}
+        {/* Current quarter line */}
+        <path
+          d={currPath}
+          fill="none"
+          stroke="hsl(18,100%,48%)"
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeDasharray={animated ? "0" : "600"}
+          strokeDashoffset={animated ? "0" : "600"}
+          style={{ transition: "stroke-dasharray 1.2s ease-out 0.3s, stroke-dashoffset 1.2s ease-out 0.3s" }}
+        />
+        {currLine.map((d) => {
+          const idx = trafficData.indexOf(d);
+          return <circle key={`c-${idx}`} cx={getX(idx)} cy={getY(d.curr)} r="3.5" fill="hsl(18,100%,48%)" opacity={animated ? 1 : 0} style={{ transition: "opacity 0.5s ease-out 1.3s" }} />;
+        })}
+        {/* X axis labels */}
+        {trafficData.map((d, i) => (
+          <text key={d.label} x={getX(i)} y={h + 14} textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 10, fontFamily: "monospace" }}>{d.label}</text>
+        ))}
+      </svg>
+      <div className="flex gap-4 mt-3">
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "hsl(205,60%,70%,0.4)" }} />Previous quarter</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "hsl(18,100%,48%)" }} />This quarter</div>
+      </div>
+    </div>
+  );
+};
 
 /* ── Main Page ───────────────────────────────── */
 
@@ -155,8 +268,8 @@ const ClientReport = () => {
         {/* ── SIDEBAR ── */}
         <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
           <div className="mb-5">
-            <img src={client.logo} alt={client.name} className="h-10 w-auto object-contain rounded-xl" />
-            <div className="text-[11px] font-mono text-report-muted mt-2 tracking-[0.06em]">Q1 · 2026 · {client.name}</div>
+            <div className="text-sm font-semibold text-report-text">{client.name}</div>
+            <div className="text-[11px] font-mono text-report-muted mt-1 tracking-[0.06em]">Q1 · 2026</div>
           </div>
 
           {navSections.map((s) => (
@@ -233,31 +346,7 @@ const ClientReport = () => {
           {/* ── 02 TRAFFIC ── */}
           <section data-section="traffic" id="traffic">
             <SectionHeader tag="02 — Traffic & Performance" title="Traffic Overview" sub="Monthly organic sessions and click-through performance." />
-            <div className="report-card p-5 md:p-6 mb-3.5">
-              <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3">Monthly Organic Sessions</div>
-              <div className="flex items-end gap-1.5 h-[120px]">
-                {[
-                  { h: 55, label: "Oct", current: false },
-                  { h: 60, label: "Nov", current: false },
-                  { h: 58, label: "Dec", current: false },
-                  { h: 70, label: "Jan", current: true },
-                  { h: 82, label: "Feb", current: true },
-                  { h: 100, label: "Mar", current: true },
-                ].map((bar) => (
-                  <div key={bar.label} className="flex-1 flex flex-col items-center gap-1">
-                    <div
-                      className="w-full rounded-t"
-                      style={{ height: `${bar.h}%`, background: bar.current ? "hsl(18,100%,48%)" : "hsl(205,60%,70%,0.3)" }}
-                    />
-                    <span className="text-[10px] font-mono text-report-muted">{bar.label}</span>
-                  </div>
-                ))}
-              </div>
-              <div className="flex gap-4 mt-3">
-                <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: "hsl(205,60%,70%,0.3)" }} />Previous quarter</div>
-                <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-sm inline-block" style={{ background: "hsl(18,100%,48%)" }} />This quarter</div>
-              </div>
-            </div>
+            <TrafficLineChart />
             <div className="grid grid-cols-3 gap-3.5">
               <MetricCard label="Click-Through Rate" value="4.8%" delta="↑ from 3.2%" direction="up" />
               <MetricCard label="Impressions" value="412K" delta="↑ 18%" direction="up" />
