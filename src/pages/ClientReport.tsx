@@ -142,6 +142,16 @@ const ClientReport = () => {
       <Navbar forceWhiteBg />
       <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
 
+        {/* ── GO BACK BUTTON (right side) ── */}
+        <button
+          onClick={() => navigate(-1)}
+          className="fixed right-6 top-[88px] z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors"
+          style={{ background: "#1e2220", color: "#e8ede9", border: "1px solid rgba(255,255,255,0.1)" }}
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Go Back
+        </button>
+
         {/* ── SIDEBAR ── */}
         <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
           <div className="mb-5">
