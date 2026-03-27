@@ -260,10 +260,6 @@ const Home = () => {
         <WhoIsThisForSection />
       </div>
 
-      {/* Our Portfolio */}
-      <div id="home-portfolio">
-        <OurWorkCarousel />
-      </div>
 
 
       <div id="home-testimonials">
