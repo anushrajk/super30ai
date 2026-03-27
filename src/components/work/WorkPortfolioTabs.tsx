@@ -5,6 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle, Volume2, VolumeX } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
+import suranaLogo from "@/assets/case-studies/surana-educational.png";
+import harvestLogo from "@/assets/case-studies/harvest-international.png";
 import logo1 from "@/assets/logos/logo-1.jpg";
 import logo2 from "@/assets/logos/logo-2.jpg";
 import logo3 from "@/assets/logos/logo-3.jpg";
@@ -59,14 +62,9 @@ const tabs = [
 ];
 
 const seoClients = [
-  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
-  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
-  { name: "Mamaearth", industry: "D2C", logo: mamaEarthLogo, slug: "mamaearth" },
-  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
-  { name: "Tata 1mg", industry: "Healthcare", logo: tata1mgLogo, slug: "tata-1mg" },
-  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
-  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
-  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
+  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans" },
+  { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational" },
+  { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international" },
 ];
 
 const leadGenClients = [
@@ -241,7 +239,7 @@ const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
         >
           <CardContent className="p-0">
             <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 p-6">
-              <img src={client.logo} alt={client.name} className="max-h-20 max-w-[70%] object-contain" />
+              <img src={client.logo} alt={client.name} className="max-h-28 max-w-[85%] object-contain" />
             </div>
             <div className="p-5 flex items-center justify-between">
               <div>
