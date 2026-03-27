@@ -40,8 +40,8 @@ const MetricCard = ({ label, value, delta, direction }: { label: string; value: 
     <div className="text-[11px] font-mono text-report-muted tracking-[0.06em] uppercase mb-1.5">{label}</div>
     <div className="text-[32px] font-bold text-report-text leading-none">{value}</div>
     <div className={`inline-flex items-center gap-1 text-xs mt-2 px-2 py-0.5 rounded-full font-mono ${
-      direction === "up" ? "bg-emerald-500/12 text-emerald-400" :
-      direction === "down" ? "bg-red-500/12 text-red-400" :
+  direction === "up" ? "bg-emerald-50 text-emerald-700" :
+      direction === "down" ? "bg-red-50 text-red-700" :
       "bg-muted text-report-muted"
     }`}>{delta}</div>
   </div>
