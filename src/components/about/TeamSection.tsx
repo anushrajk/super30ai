@@ -32,37 +32,37 @@ const teamMembers = [
 ];
 
 const PolaroidCard = ({ member }: { member: typeof teamMembers[0] }) => (
-  <div className="group relative bg-card rounded-lg p-2.5 pb-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border/40">
-    {/* Photo area */}
-    <div className="relative aspect-[4/5] rounded overflow-hidden bg-muted">
+  <div className="group relative bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-2 border border-border/30">
+    {/* Photo */}
+    <div className="aspect-[4/5] overflow-hidden">
       <img
         src={member.image}
         alt={`${member.name} at The Super 30`}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         loading="lazy"
       />
-      {/* Social overlay on hover */}
-      <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+    </div>
+    {/* Info */}
+    <div className="p-4 text-center">
+      <h3 className="font-bold text-sm md:text-base text-foreground">{member.name}</h3>
+      <p className="text-[11px] md:text-xs text-muted-foreground mt-1 leading-tight">{member.expertise}</p>
+      {/* Social links below text */}
+      <div className="flex items-center justify-center gap-2 mt-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
         <a
           href="#"
-          className="w-9 h-9 bg-white rounded-full flex items-center justify-center hover:bg-brand hover:text-white text-foreground transition-all duration-200 hover:scale-110"
+          className="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:scale-110 transition-transform"
           aria-label={`${member.name}'s LinkedIn`}
         >
-          <Linkedin className="w-4 h-4" />
+          <Linkedin className="w-3.5 h-3.5" />
         </a>
         <a
           href="#"
-          className="w-9 h-9 bg-white rounded-full flex items-center justify-center hover:bg-foreground hover:text-white text-foreground transition-all duration-200 hover:scale-110"
+          className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center text-background hover:scale-110 transition-transform"
           aria-label={`${member.name}'s X`}
         >
-          <Twitter className="w-4 h-4" />
+          <Twitter className="w-3.5 h-3.5" />
         </a>
       </div>
-    </div>
-    {/* Name & role */}
-    <div className="mt-3 text-center">
-      <h3 className="font-bold text-sm md:text-base text-foreground">{member.name}</h3>
-      <p className="text-xs text-muted-foreground mt-0.5 leading-tight">{member.expertise}</p>
     </div>
   </div>
 );
