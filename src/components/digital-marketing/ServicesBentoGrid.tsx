@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
-import aiSeoLaptop from "@/assets/services/ai-seo-laptop.webp";
-import designMockup from "@/assets/services/design-services-mockup.png";
-
 const services = [
   {
     title: "AI SEO",
     description: "AI-powered search optimization that drives organic traffic and dominates rankings.",
     href: "/ai-seo-agency-bangalore",
-    image: aiSeoLaptop,
+    image: null,
     bg: "bg-[#7c3aed]",
   },
   {
@@ -30,7 +27,7 @@ const services = [
     title: "Design Services",
     description: "Brand identity, social media creatives, and marketing collaterals that stand out.",
     href: "/design",
-    image: designMockup,
+    image: null,
     bg: "bg-[#f59e0b]",
   },
   {
