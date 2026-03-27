@@ -155,6 +155,16 @@ const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4"
 
 const HoverVideo = ({ src }: { src: string }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const [isMuted, setIsMuted] = React.useState(true);
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (videoRef.current) {
+      videoRef.current.muted = !videoRef.current.muted;
+      setIsMuted(!isMuted);
+    }
+  };
+
   return (
     <Card
       className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow"
@@ -162,7 +172,7 @@ const HoverVideo = ({ src }: { src: string }) => {
       onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; } }}
     >
       <CardContent className="p-0">
-        <div className="aspect-[9/16] overflow-hidden">
+        <div className="aspect-[9/16] overflow-hidden relative group">
           <video
             ref={videoRef}
             src={src}
@@ -172,6 +182,13 @@ const HoverVideo = ({ src }: { src: string }) => {
             loop
             preload="metadata"
           />
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-foreground hover:bg-background/90"
+            aria-label={isMuted ? "Unmute" : "Mute"}
+          >
+            {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
+          </button>
         </div>
       </CardContent>
     </Card>
