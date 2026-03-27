@@ -238,7 +238,7 @@ export const WorkPortfolioTabs = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="seo" className="w-full">
+        <Tabs defaultValue="logo" className="w-full">
           <TabsList className="w-full flex flex-wrap justify-center h-auto gap-1 bg-transparent p-0 border-b border-border/50 rounded-none mb-8">
             {tabs.map((tab) => (
               <TabsTrigger
