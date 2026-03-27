@@ -317,8 +317,7 @@ const ClientReport = () => {
         {/* ── GO BACK BUTTON (right side) ── */}
         <button
           onClick={() => navigate(-1)}
-          className="fixed right-6 top-[88px] z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors"
-          className="bg-muted text-foreground border border-border"
+          className="fixed right-6 top-[88px] z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors bg-muted text-foreground border border-border"
         >
           <ArrowLeft className="w-4 h-4" />
           Go Back
