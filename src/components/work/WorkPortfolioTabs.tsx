@@ -11,6 +11,10 @@ import logo4 from "@/assets/logos/logo-4.jpg";
 
 import logo6 from "@/assets/logos/logo-6.jpg";
 import logo7 from "@/assets/logos/logo-7.jpg";
+import logo8 from "@/assets/logos/logo-8.jpg";
+import logo9 from "@/assets/logos/logo-9.jpg";
+import logo10 from "@/assets/logos/logo-10.jpg";
+import logo11 from "@/assets/logos/logo-11.jpg";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
 import brand2 from "@/assets/brand-identity/brand-2.jpg";
 import brand3 from "@/assets/brand-identity/brand-3.jpg";
@@ -72,7 +76,7 @@ const leadGenClients = [
 
 /* ── Demo content for non-report tabs ── */
 
-const logoImages = [logo1, logo2, logo3, logo4, logo6, logo7];
+const logoImages = [logo1, logo2, logo3, logo4, logo6, logo7, logo8, logo9, logo10, logo11];
 
 const LogoGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
