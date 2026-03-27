@@ -74,14 +74,14 @@ export const TeamSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <BentoBadge className="mb-4">Our Team</BentoBadge>
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            Meet the SEO Experts
+            Meet Our Digital Marketing Experts
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
             Our SEO specialists and PPC specialists work collaboratively to deliver integrated strategies for your growth.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
             <PolaroidCard key={index} member={member} />
           ))}
