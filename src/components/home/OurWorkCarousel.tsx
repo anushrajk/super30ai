@@ -1,106 +1,30 @@
-import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import magicbricksLogo from "@/assets/clients/magicbricks.png";
-import mamaEarthLogo from "@/assets/clients/mamaearth.png";
+import { ArrowRight, Sparkles } from "lucide-react";
+import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
 import upgradLogo from "@/assets/case-studies/upgrad.png";
-import tata1mgLogo from "@/assets/clients/tata1mg.png";
-import shriramLogo from "@/assets/clients/shriram-properties.png";
-import lancesoftLogo from "@/assets/clients/lancesoft.png";
-import jainUniversityLogo from "@/assets/clients/jain-university.png";
-import harvestInternationalLogo from "@/assets/clients/harvest-international.png";
-import atriaInstituteLogo from "@/assets/clients/atria-institute.png";
-import bhrighuAcademyLogo from "@/assets/clients/bhrighu-academy.png";
-import { CaseStudyPopup } from "./CaseStudyPopup";
+import tata1mgLogo from "@/assets/case-studies/tata1mg.png";
+import shriramLogo from "@/assets/case-studies/shriram-properties.png";
+import jainUniversityLogo from "@/assets/case-studies/jain-university.png";
+import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
+import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
 
-const caseStudies = [
-  {
-    id: 1,
-    title: "Magicbricks",
-    industry: "Real Estate",
-    image: "bg-gradient-to-br from-rose-600 to-rose-700",
-    logo: magicbricksLogo,
-  },
-  {
-    id: 2,
-    title: "Jain University",
-    industry: "Education",
-    image: "bg-gradient-to-br from-blue-600 to-blue-700",
-    logo: jainUniversityLogo,
-  },
-  {
-    id: 3,
-    title: "Mamaearth",
-    industry: "D2C Beauty & Skincare",
-    image: "bg-gradient-to-br from-green-400 to-blue-500",
-    logo: mamaEarthLogo,
-  },
-  {
-    id: 4,
-    title: "Harvest International School",
-    industry: "Education",
-    image: "bg-gradient-to-br from-green-600 to-green-700",
-    logo: harvestInternationalLogo,
-  },
-  {
-    id: 5,
-    title: "upGrad",
-    industry: "Education",
-    image: "bg-gradient-to-br from-red-500 to-red-600",
-    logo: upgradLogo,
-  },
-  {
-    id: 6,
-    title: "Atria Institute",
-    industry: "Education",
-    image: "bg-gradient-to-br from-purple-600 to-purple-700",
-    logo: atriaInstituteLogo,
-  },
-  {
-    id: 7,
-    title: "Tata 1mg",
-    industry: "HealthTech",
-    image: "bg-gradient-to-br from-orange-400 to-red-400",
-    logo: tata1mgLogo,
-  },
-  {
-    id: 8,
-    title: "Bhrighu Academy",
-    industry: "Education",
-    image: "bg-gradient-to-br from-orange-500 to-orange-600",
-    logo: bhrighuAcademyLogo,
-  },
-  {
-    id: 9,
-    title: "Shriram Properties",
-    industry: "Real Estate",
-    image: "bg-gradient-to-br from-blue-500 to-blue-600",
-    logo: shriramLogo,
-  },
-  {
-    id: 10,
-    title: "Lancesoft Healthcare",
-    industry: "Healthcare Staffing",
-    image: "bg-gradient-to-br from-slate-700 to-slate-800",
-    logo: lancesoftLogo,
-  },
+const clients = [
+  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
+  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
+  { name: "Mamaearth", industry: "D2C", logo: mamaEarthLogo, slug: "mamaearth" },
+  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
+  { name: "Tata 1mg", industry: "Healthcare", logo: tata1mgLogo, slug: "tata-1mg" },
+  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
+  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
+  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
 ];
 
 export const OurWorkCarousel = () => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const [selectedStudy, setSelectedStudy] = useState<typeof caseStudies[0] | null>(null);
-
-  const scroll = (direction: "left" | "right") => {
-    if (scrollRef.current) {
-      const scrollAmount = 320;
-      scrollRef.current.scrollBy({
-        left: direction === "left" ? -scrollAmount : scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <section className="py-20 md:py-24 bg-muted/30">
@@ -124,55 +48,25 @@ export const OurWorkCarousel = () => {
           </p>
         </div>
 
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Navigation Buttons */}
-          <button
-            onClick={() => scroll("left")}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-background border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-muted transition-colors hidden md:flex"
-            aria-label="Scroll left"
-          >
-            <ChevronLeft className="w-5 h-5 text-foreground" />
-          </button>
-          
-          <button
-            onClick={() => scroll("right")}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-background border border-border rounded-full flex items-center justify-center shadow-lg hover:bg-muted transition-colors hidden md:flex"
-            aria-label="Scroll right"
-          >
-            <ChevronRight className="w-5 h-5 text-foreground" />
-          </button>
-
-          {/* Scrollable Cards */}
-          <div
-            ref={scrollRef}
-            className="flex gap-6 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {caseStudies.map((study) => (
-              <Card
-                key={study.id}
-                onClick={() => study.logo && setSelectedStudy(study)}
-                className={`flex-shrink-0 w-[280px] md:w-[300px] bg-background border-border/50 hover:border-primary/50 hover:shadow-xl transition-all duration-300 group snap-start overflow-hidden ${study.logo ? 'cursor-pointer' : ''}`}
-              >
-                <div className={`h-36 ${study.image} flex items-center justify-center relative overflow-hidden`}>
-                  {study.logo ? (
-                    <img src={study.logo} alt={study.title} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-white/80 text-5xl font-bold opacity-30">
-                      {study.title[0]}
-                    </span>
-                  )}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {/* Client Cards Grid - Same as SEO tab layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {clients.map((client) => (
+            <Card
+              key={client.name}
+              className="group bg-background border-border/30 overflow-hidden cursor-pointer hover:shadow-lg hover:border-border/60 transition-all duration-300 rounded-2xl"
+              onClick={() => navigate(`/report/${client.slug}`)}
+            >
+              <CardContent className="p-0">
+                <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 p-6">
+                  <img src={client.logo} alt={client.name} className="max-h-20 max-w-[70%] object-contain" />
                 </div>
-
-                <CardContent className="p-5">
-                  <h3 className="text-lg font-bold text-foreground mb-1">{study.title}</h3>
-                  <p className="text-sm text-muted-foreground">{study.industry}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                <div className="p-5">
+                  <h3 className="font-bold text-base text-foreground">{client.name}</h3>
+                  <p className="text-sm text-muted-foreground mt-0.5">{client.industry}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
 
         {/* View All CTA */}
@@ -188,15 +82,6 @@ export const OurWorkCarousel = () => {
           </Link>
         </div>
       </div>
-
-      {/* Case Study Popup */}
-      <CaseStudyPopup
-        open={!!selectedStudy}
-        onOpenChange={(open) => !open && setSelectedStudy(null)}
-        brandName={selectedStudy?.title || ""}
-        industry={selectedStudy?.industry || ""}
-        logo={selectedStudy?.logo}
-      />
     </section>
   );
 };

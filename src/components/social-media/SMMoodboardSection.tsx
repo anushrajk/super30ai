@@ -2,14 +2,14 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Instagram, Palette, CheckCircle2 } from "lucide-react";
 import { BentoBadge } from "@/components/ui/bento-grid";
 
-import socialPost1 from "@/assets/portfolio/social-post-1.jpg";
-import socialPost2 from "@/assets/portfolio/social-post-2.jpg";
-import socialPost3 from "@/assets/portfolio/social-post-3.jpg";
-import socialPost4 from "@/assets/portfolio/social-post-4.jpg";
-import socialPost5 from "@/assets/portfolio/social-post-5.jpg";
-import socialPost6 from "@/assets/portfolio/social-post-6.jpg";
+import creative1 from "@/assets/social-creatives/creative-1.png";
+import creative2 from "@/assets/social-creatives/creative-2.png";
+import creative3 from "@/assets/social-creatives/creative-3.png";
+import creative4 from "@/assets/social-creatives/creative-4.png";
+import creative5 from "@/assets/social-creatives/creative-5.png";
+import creative6 from "@/assets/social-creatives/creative-6.png";
 
-const gridPosts = [socialPost1, socialPost2, socialPost3, socialPost4, socialPost5, socialPost6];
+const gridPosts = [creative1, creative2, creative3, creative4, creative5, creative6];
 
 const brandPoints = [
   "Custom color palette & typography for every client",
