@@ -251,7 +251,7 @@ const TrafficLineChart = () => {
         {/* X axis labels */}
         {data.filter((_, i) => i % 2 === 0).map((d) => {
           const origIdx = data.indexOf(d);
-          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#6b7280" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
+          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#4b5563" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
         })}
       </svg>
       <div className="flex gap-4 mt-3">
