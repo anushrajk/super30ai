@@ -142,16 +142,7 @@ const SocialCreativesGrid = () => (
   </div>
 );
 
-const ugcContent = [
-  { title: "Product Unboxing", views: "45K", likes: "3.2K", comments: "412", accent: "hsl(145,60%,45%)" },
-  { title: "Day-in-Life Vlog", views: "82K", likes: "6.8K", comments: "890", accent: "hsl(350,80%,55%)" },
-  { title: "Student Testimonial", views: "28K", likes: "1.9K", comments: "215", accent: "hsl(210,70%,50%)" },
-  { title: "How-To Guide", views: "35K", likes: "2.4K", comments: "320", accent: "hsl(160,60%,45%)" },
-  { title: "Behind the Scenes", views: "52K", likes: "4.1K", comments: "560", accent: "hsl(25,90%,55%)" },
-  { title: "Product Review", views: "19K", likes: "1.2K", comments: "145", accent: "hsl(220,80%,55%)" },
-];
-
-const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4", "/videos/ugc-4.mp4"];
+const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4", "/videos/ugc-4.mp4", "/videos/ugc-5.mp4", "/videos/ugc-6.mp4", "/videos/ugc-7.mp4"];
 
 const HoverVideo = ({ src }: { src: string }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
@@ -200,34 +191,8 @@ const UGCGrid = () => (
     {ugcVideos.map((src, i) => (
       <HoverVideo key={i} src={src} />
     ))}
-    {ugcContent.map((item, i) => (
-      <Card key={`placeholder-${i}`} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
-        <CardContent className="p-0">
-          <div className="aspect-[9/16] flex items-center justify-center relative" style={{ background: `linear-gradient(180deg, ${item.accent}18, ${item.accent}05)` }}>
-            <Video className="w-10 h-10" style={{ color: item.accent }} />
-            <div className="absolute bottom-2 left-2 right-2 bg-background/80 backdrop-blur-sm rounded-lg px-2 py-1.5">
-              <div className="text-[11px] font-medium text-foreground truncate">{item.title}</div>
-            </div>
-          </div>
-          <div className="p-3 flex items-center gap-3 text-[11px] text-muted-foreground">
-            <span className="flex items-center gap-1"><Eye className="w-3 h-3" />{item.views}</span>
-            <span className="flex items-center gap-1"><Heart className="w-3 h-3" />{item.likes}</span>
-            <span className="flex items-center gap-1"><MessageCircle className="w-3 h-3" />{item.comments}</span>
-          </div>
-        </CardContent>
-      </Card>
-    ))}
   </div>
 );
-
-const photoshootProjects = [
-  { product: "Skincare Range", client: "Mamaearth", shots: 48, style: "Flat Lay", accent: "hsl(145,60%,45%)" },
-  { product: "Furniture Collection", client: "Luxe Interiors", shots: 32, style: "Lifestyle", accent: "hsl(35,60%,50%)" },
-  { product: "Fitness Gear", client: "FitPulse", shots: 24, style: "Action", accent: "hsl(350,80%,55%)" },
-  { product: "Food Menu", client: "UrbanBite", shots: 56, style: "Styled", accent: "hsl(25,90%,55%)" },
-  { product: "Tech Gadgets", client: "TechVista", shots: 36, style: "Studio", accent: "hsl(220,80%,55%)" },
-  { product: "Health Supplements", client: "PureWell", shots: 28, style: "Clean", accent: "hsl(160,60%,45%)" },
-];
 
 const PhotoshootGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
