@@ -38,7 +38,7 @@ const navSections = [
 const MetricCard = ({ label, value, delta, direction }: { label: string; value: string; delta: string; direction: "up" | "down" | "neutral" }) => (
   <div className="report-card p-5">
     <div className="text-[11px] font-mono text-report-muted tracking-[0.06em] uppercase mb-1.5">{label}</div>
-    <div className="text-[32px] font-serif text-report-text leading-none">{value}</div>
+    <div className="text-[32px] font-bold text-report-text leading-none">{value}</div>
     <div className={`inline-flex items-center gap-1 text-xs mt-2 px-2 py-0.5 rounded-full font-mono ${
       direction === "up" ? "bg-emerald-500/12 text-emerald-400" :
       direction === "down" ? "bg-red-500/12 text-red-400" :
@@ -102,7 +102,7 @@ const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "
 const SectionHeader = ({ tag, title, sub }: { tag: string; title: string; sub: string }) => (
   <div className="mb-7">
     <div className="text-[11px] font-mono text-brand tracking-[0.12em] uppercase mb-1.5" style={{ color: "hsl(18,100%,48%)" }}>{tag}</div>
-    <h2 className="text-[30px] font-serif text-report-text leading-tight">{title}</h2>
+    <h2 className="text-[30px] font-bold text-report-text leading-tight">{title}</h2>
     <p className="text-sm text-report-muted mt-1.5">{sub}</p>
   </div>
 );
@@ -312,7 +312,7 @@ const ClientReport = () => {
       </Helmet>
 
       <Navbar forceWhiteBg />
-      <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9", fontFamily: "'Instrument Sans', 'Inter', sans-serif" }}>
+      <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9",  }}>
 
         {/* ── GO BACK BUTTON (right side) ── */}
         <button
@@ -363,7 +363,7 @@ const ClientReport = () => {
             <div className="flex items-start gap-5 mb-2">
               <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain flex-shrink-0 mt-1 rounded-xl" />
             </div>
-            <h1 className="text-4xl md:text-[38px] font-serif text-report-text leading-tight mb-2">
+            <h1 className="text-4xl md:text-[38px] font-bold text-report-text leading-tight mb-2">
               SEO Work<br /><em style={{ color: "hsl(18,100%,48%)" }}>Conducted</em>
             </h1>
             <p className="text-sm text-report-muted max-w-xl mb-6">
