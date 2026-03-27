@@ -221,7 +221,7 @@ const TrafficLineChart = () => {
         <path
           d={clicksPath}
           fill="none"
-          stroke="#60a5fa"
+          stroke="#2563eb"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
