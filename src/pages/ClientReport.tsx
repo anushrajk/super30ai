@@ -42,7 +42,7 @@ const MetricCard = ({ label, value, delta, direction }: { label: string; value: 
     <div className={`inline-flex items-center gap-1 text-xs mt-2 px-2 py-0.5 rounded-full font-mono ${
       direction === "up" ? "bg-emerald-500/12 text-emerald-400" :
       direction === "down" ? "bg-red-500/12 text-red-400" :
-      "bg-white/8 text-report-muted"
+      "bg-muted text-report-muted"
     }`}>{delta}</div>
   </div>
 );
@@ -193,19 +193,19 @@ const TrafficLineChart = () => {
           <button
             onClick={() => setQuarter("prev")}
             className={`text-[11px] font-mono px-3 py-1 rounded-full transition-colors ${quarter === "prev" ? "text-white" : "text-report-muted hover:text-report-text"}`}
-            style={quarter === "prev" ? { background: "hsl(18,100%,48%)" } : { background: "#1e2220" }}
+            style={quarter === "prev" ? { background: "hsl(18,100%,48%)" } : { background: "hsl(var(--muted))" }}
           >Oct – Dec '25</button>
           <button
             onClick={() => setQuarter("curr")}
             className={`text-[11px] font-mono px-3 py-1 rounded-full transition-colors ${quarter === "curr" ? "text-white" : "text-report-muted hover:text-report-text"}`}
-            style={quarter === "curr" ? { background: "hsl(18,100%,48%)" } : { background: "#1e2220" }}
+            style={quarter === "curr" ? { background: "hsl(18,100%,48%)" } : { background: "hsl(var(--muted))" }}
           >Jan – Mar '26</button>
         </div>
       </div>
       <svg viewBox={`0 0 ${w} ${h + 24}`} className="w-full" style={{ overflow: "visible" }}>
         {/* Grid lines */}
         {clicksTicks.map(v => (
-          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#1e2220" strokeWidth="0.5" />
+          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#e5e7eb" strokeWidth="0.5" />
         ))}
         {/* Left Y axis labels (Clicks) */}
         {clicksTicks.map(v => (
@@ -251,7 +251,7 @@ const TrafficLineChart = () => {
         {/* X axis labels */}
         {data.filter((_, i) => i % 2 === 0).map((d) => {
           const origIdx = data.indexOf(d);
-          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
+          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#6b7280" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
         })}
       </svg>
       <div className="flex gap-4 mt-3">
@@ -288,7 +288,7 @@ const ClientReport = () => {
 
   if (!client) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: "#0d0f0e", color: "#e8ede9" }}>
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Report Not Found</h1>
           <p className="text-report-muted mb-4">The requested report does not exist.</p>
@@ -312,20 +312,19 @@ const ClientReport = () => {
       </Helmet>
 
       <Navbar forceWhiteBg />
-      <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9" }}>
+      <div className="min-h-screen pt-20 md:pt-24 bg-background text-foreground">
 
         {/* ── GO BACK BUTTON (right side) ── */}
         <button
           onClick={() => navigate(-1)}
-          className="fixed right-6 top-[88px] z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors"
-          style={{ background: "#1e2220", color: "#e8ede9", border: "1px solid rgba(255,255,255,0.1)" }}
+          className="fixed right-6 top-[88px] z-50 flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors bg-muted text-foreground border border-border"
         >
           <ArrowLeft className="w-4 h-4" />
           Go Back
         </button>
 
         {/* ── SIDEBAR ── */}
-        <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" style={{ background: "#161918" }}>
+        <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex bg-card">
           <div className="mb-5">
             <div className="text-sm font-semibold text-report-text">{client.name}</div>
             <div className="text-[11px] font-mono text-report-muted mt-1 tracking-[0.06em]">Q1 · 2026</div>
@@ -338,9 +337,9 @@ const ClientReport = () => {
               className={`flex items-center gap-2.5 px-2.5 py-2 rounded-lg text-[13px] text-left w-full transition-colors ${
                 activeSection === s.id
                   ? "text-report-text" 
-                  : "text-report-muted hover:text-report-text hover:bg-white/5"
+                  : "text-report-muted hover:text-report-text hover:bg-muted"
               }`}
-              style={activeSection === s.id ? { background: "#1e2220", color: "hsl(18,100%,48%)" } : {}}
+              style={activeSection === s.id ? { background: "hsl(var(--muted))", color: "hsl(18,100%,48%)" } : {}}
             >
               <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${activeSection === s.id ? "opacity-100" : "opacity-40"}`} style={{ background: "currentColor" }} />
               {s.label}
@@ -358,7 +357,7 @@ const ClientReport = () => {
 
           {/* ── HERO ── */}
           <div className="report-card p-8 md:p-10 mb-14 relative overflow-hidden rounded-2xl">
-            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(18,100%,48%,0.07) 0%, transparent 70%)" }} />
+            <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, hsla(18,100%,48%,0.05) 0%, transparent 70%)" }} />
             <div className="text-[11px] font-mono text-report-muted tracking-[0.08em] mb-2.5">REPORT PERIOD — JAN 1 TO MAR 25, 2026</div>
             <div className="flex items-start gap-5 mb-2">
               <img src={client.logo} alt={client.name} className="h-14 w-auto object-contain flex-shrink-0 mt-1 rounded-xl" />
@@ -438,7 +437,7 @@ const ClientReport = () => {
                     { kw: "web design company bangalore", vol: "2,900", pos: "6", change: "↑ 19", changeBadge: "green", status: "Top 10", statusBadge: "green" },
                     { kw: "email marketing tools", vol: "12,100", pos: "31", change: "↓ 4", changeBadge: "red", status: "Below 30", statusBadge: "red" },
                   ].map((row) => (
-                    <tr key={row.kw} className="border-b border-report-border last:border-0 hover:bg-white/[0.02]">
+                    <tr key={row.kw} className="border-b border-report-border last:border-0 hover:bg-muted/50">
                       <td className="p-3.5 text-report-text">{row.kw}</td>
                       <td className="p-3.5 font-mono text-xs text-report-muted">{row.vol}</td>
                       <td className="p-3.5 font-mono">{row.pos}</td>
@@ -466,11 +465,11 @@ const ClientReport = () => {
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Overall On-Page Score</div>
                 <div className="flex items-center gap-7">
                   <svg viewBox="0 0 100 100" className="w-24 h-24 flex-shrink-0">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="#1e2220" strokeWidth="8" />
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
                     <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(18,100%,48%)" strokeWidth="8" strokeLinecap="round"
                       strokeDasharray="251.2" strokeDashoffset={251.2 - (251.2 * 78 / 100)} transform="rotate(-90 50 50)" />
-                    <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fill="#e8ede9" style={{ fontSize: 28, fontWeight: "bold" }}>78</text>
-                    <text x="50" y="68" textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 10, fontFamily: "monospace" }}>/100</text>
+                    <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fill="#1a1a2e" style={{ fontSize: 28, fontWeight: "bold" }}>78</text>
+                    <text x="50" y="68" textAnchor="middle" fill="#6b7280" style={{ fontSize: 10, fontFamily: "monospace" }}>/100</text>
                   </svg>
                   <div>
                     <div className="text-sm font-medium text-report-text">Good standing</div>
@@ -556,7 +555,7 @@ const ClientReport = () => {
                       { domain: "clutch.co", da: "76", links: "3", type: "Directory", badge: "blue" },
                       { domain: "searchengineland.com", da: "82", links: "1", type: "Editorial", badge: "green" },
                     ].map((row) => (
-                      <tr key={row.domain} className="border-b border-report-border last:border-0 hover:bg-white/[0.02]">
+                      <tr key={row.domain} className="border-b border-report-border last:border-0 hover:bg-muted/50">
                         <td className="px-3.5 py-2.5 text-report-text">{row.domain}</td>
                         <td className="px-3.5 py-2.5 font-mono text-xs text-report-muted">{row.da}</td>
                         <td className="px-3.5 py-2.5 font-mono text-xs text-report-muted">{row.links}</td>
@@ -589,7 +588,7 @@ function badgeColor(color: string) {
     case "yellow": return "bg-yellow-500/12 text-yellow-400";
     case "red": return "bg-red-500/12 text-red-400";
     case "blue": return "bg-blue-500/12 text-blue-400";
-    default: return "bg-white/8 text-report-muted";
+    default: return "bg-muted text-report-muted";
   }
 }
 
