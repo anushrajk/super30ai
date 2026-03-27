@@ -243,9 +243,18 @@ const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
             <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 p-6">
               <img src={client.logo} alt={client.name} className="max-h-20 max-w-[70%] object-contain" />
             </div>
-            <div className="p-5">
-              <h3 className="font-bold text-base text-foreground">{client.name}</h3>
-              <p className="text-sm text-muted-foreground mt-0.5">{client.industry}</p>
+            <div className="p-5 flex items-center justify-between">
+              <div>
+                <h3 className="font-bold text-base text-foreground">{client.name}</h3>
+                <p className="text-sm text-muted-foreground mt-0.5">{client.industry}</p>
+              </div>
+              <button
+                className="flex items-center gap-1.5 text-xs font-semibold text-white bg-brand px-3 py-2 rounded-lg hover:bg-brand/90 transition-colors whitespace-nowrap"
+                onClick={(e) => { e.stopPropagation(); navigate(`/report/${client.slug}`); }}
+              >
+                View Report
+                <ExternalLink className="w-3 h-3" />
+              </button>
             </div>
           </CardContent>
         </Card>
