@@ -80,10 +80,10 @@ const ProgressRow = ({ label, value, color }: { label: string; value: number; co
 
 const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "fail"; title: string; desc: string; badge: string }) => (
   <div className="flex items-start gap-3.5 py-3.5 border-b border-report-border last:border-0">
-    <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 text-sm ${
-      status === "pass" ? "bg-emerald-500/12 text-emerald-400" :
-      status === "warn" ? "bg-yellow-500/12 text-yellow-400" :
-      "bg-red-500/12 text-red-400"
+  <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 text-sm ${
+      status === "pass" ? "bg-emerald-50 text-emerald-700" :
+      status === "warn" ? "bg-yellow-50 text-yellow-700" :
+      "bg-red-50 text-red-700"
     }`}>
       {status === "pass" ? "✓" : status === "warn" ? "!" : "✕"}
     </div>
