@@ -211,12 +211,12 @@ const TrafficLineChart = () => {
         {clicksTicks.map(v => (
           <text key={`cl-${v}`} x={padX - 6} y={getYClicks(v) + 3} textAnchor="end" fill="#2563eb" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
         ))}
-        <text x={padX - 6} y={padY - 8} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>Clicks</text>
+        <text x={padX - 6} y={padY - 8} textAnchor="end" fill="#2563eb" style={{ fontSize: 9, fontFamily: "monospace" }}>Clicks</text>
         {/* Right Y axis labels (Impressions) */}
         {impressionsTicks.map(v => (
-          <text key={`im-${v}`} x={w - padR + 6} y={getYImpressions(v) + 3} textAnchor="start" fill="#8b5cf6" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
+          <text key={`im-${v}`} x={w - padR + 6} y={getYImpressions(v) + 3} textAnchor="start" fill="#7c3aed" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
         ))}
-        <text x={w - padR + 6} y={padY - 8} textAnchor="start" fill="#8b5cf6" style={{ fontSize: 9, fontFamily: "monospace" }}>Impressions</text>
+        <text x={w - padR + 6} y={padY - 8} textAnchor="start" fill="#7c3aed" style={{ fontSize: 9, fontFamily: "monospace" }}>Impressions</text>
         {/* Clicks line (blue) */}
         <path
           d={clicksPath}
