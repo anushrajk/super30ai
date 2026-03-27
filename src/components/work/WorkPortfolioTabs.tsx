@@ -67,6 +67,7 @@ const seoClients = [
   { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans" },
   { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational" },
   { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international" },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more" },
 ];
 
 const leadGenClients = [
