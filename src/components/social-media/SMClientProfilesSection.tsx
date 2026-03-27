@@ -139,10 +139,6 @@ export const SMClientProfilesSection = () => {
                 </div>
               </div>
 
-              {/* Stat badge */}
-              <div className="absolute top-4 right-4 sm:top-6 sm:right-6 bg-white/20 backdrop-blur-sm text-white text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1 sm:py-1.5 rounded-full z-10">
-                {client.stat}
-              </div>
 
               {/* Decorative circle */}
               <div className="absolute top-0 right-0 w-28 sm:w-40 h-28 sm:h-40 rounded-full bg-white/5 -translate-y-1/2 translate-x-1/2" />
