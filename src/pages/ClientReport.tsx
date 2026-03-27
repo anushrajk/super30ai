@@ -205,7 +205,7 @@ const TrafficLineChart = () => {
       <svg viewBox={`0 0 ${w} ${h + 24}`} className="w-full" style={{ overflow: "visible" }}>
         {/* Grid lines */}
         {clicksTicks.map(v => (
-          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="hsl(var(--border))" strokeWidth="0.5" />
+          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#e5e7eb" strokeWidth="0.5" />
         ))}
         {/* Left Y axis labels (Clicks) */}
         {clicksTicks.map(v => (
@@ -251,7 +251,7 @@ const TrafficLineChart = () => {
         {/* X axis labels */}
         {data.filter((_, i) => i % 2 === 0).map((d) => {
           const origIdx = data.indexOf(d);
-          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
+          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#6b7280" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
         })}
       </svg>
       <div className="flex gap-4 mt-3">
@@ -465,11 +465,11 @@ const ClientReport = () => {
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Overall On-Page Score</div>
                 <div className="flex items-center gap-7">
                   <svg viewBox="0 0 100 100" className="w-24 h-24 flex-shrink-0">
-                    <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(var(--border))" strokeWidth="8" />
+                    <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e7eb" strokeWidth="8" />
                     <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(18,100%,48%)" strokeWidth="8" strokeLinecap="round"
                       strokeDasharray="251.2" strokeDashoffset={251.2 - (251.2 * 78 / 100)} transform="rotate(-90 50 50)" />
-                    <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fill="hsl(var(--foreground))" style={{ fontSize: 28, fontWeight: "bold" }}>78</text>
-                    <text x="50" y="68" textAnchor="middle" fill="hsl(var(--muted-foreground))" style={{ fontSize: 10, fontFamily: "monospace" }}>/100</text>
+                    <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fill="#1a1a2e" style={{ fontSize: 28, fontWeight: "bold" }}>78</text>
+                    <text x="50" y="68" textAnchor="middle" fill="#6b7280" style={{ fontSize: 10, fontFamily: "monospace" }}>/100</text>
                   </svg>
                   <div>
                     <div className="text-sm font-medium text-report-text">Good standing</div>
