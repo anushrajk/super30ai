@@ -194,6 +194,15 @@ const UGCGrid = () => (
   </div>
 );
 
+const photoshootProjects = [
+  { product: "Skincare Range", client: "Mamaearth", shots: 48, style: "Flat Lay", accent: "hsl(145,60%,45%)" },
+  { product: "Furniture Collection", client: "Luxe Interiors", shots: 32, style: "Lifestyle", accent: "hsl(35,60%,50%)" },
+  { product: "Fitness Gear", client: "FitPulse", shots: 24, style: "Action", accent: "hsl(350,80%,55%)" },
+  { product: "Food Menu", client: "UrbanBite", shots: 56, style: "Styled", accent: "hsl(25,90%,55%)" },
+  { product: "Tech Gadgets", client: "TechVista", shots: 36, style: "Studio", accent: "hsl(220,80%,55%)" },
+  { product: "Health Supplements", client: "PureWell", shots: 28, style: "Clean", accent: "hsl(160,60%,45%)" },
+];
+
 const PhotoshootGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
     {photoshootProjects.map((p, i) => (
