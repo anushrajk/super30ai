@@ -229,30 +229,20 @@ const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {clients.map((client) => (
         <Card
           key={client.name}
-          className="group bg-background border-border/40 overflow-hidden cursor-pointer hover:shadow-xl hover:shadow-[hsl(18,100%,48%)]/10 hover:border-[hsl(18,100%,48%)]/30 transition-all duration-300 hover:-translate-y-1"
+          className="group bg-background border-border/30 overflow-hidden cursor-pointer hover:shadow-lg hover:border-border/60 transition-all duration-300 rounded-2xl"
           onClick={() => navigate(`/report/${client.slug}`)}
         >
           <CardContent className="p-0">
-            <div className="relative p-6 pb-4 flex flex-col items-center">
-              <div className="w-20 h-20 rounded-2xl bg-muted/50 flex items-center justify-center mb-4 group-hover:bg-[hsl(18,100%,48%)]/5 transition-colors duration-300">
-                <img src={client.logo} alt={client.name} className="h-12 w-auto object-contain" />
-              </div>
-              <h3 className="font-semibold text-sm text-foreground text-center">{client.name}</h3>
-              <span className="text-[11px] font-medium text-muted-foreground mt-1 px-2.5 py-0.5 rounded-full bg-muted/60">{client.industry}</span>
+            <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 p-6">
+              <img src={client.logo} alt={client.name} className="max-h-20 max-w-[70%] object-contain" />
             </div>
-            <div className="px-4 pb-4">
-              <button
-                className="w-full flex items-center justify-center gap-2 text-sm font-medium py-2.5 px-4 rounded-xl text-white group-hover:gap-3 transition-all duration-300"
-                style={{ background: "linear-gradient(135deg, hsl(18,100%,48%), hsl(18,80%,40%))" }}
-              >
-                <Eye className="w-4 h-4" />
-                View Report
-                <ExternalLink className="w-3.5 h-3.5 opacity-0 -ml-2 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
-              </button>
+            <div className="p-5">
+              <h3 className="font-bold text-base text-foreground">{client.name}</h3>
+              <p className="text-sm text-muted-foreground mt-0.5">{client.industry}</p>
             </div>
           </CardContent>
         </Card>
