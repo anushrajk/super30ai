@@ -40,8 +40,8 @@ const MetricCard = ({ label, value, delta, direction }: { label: string; value: 
     <div className="text-[11px] font-mono text-report-muted tracking-[0.06em] uppercase mb-1.5">{label}</div>
     <div className="text-[32px] font-bold text-report-text leading-none">{value}</div>
     <div className={`inline-flex items-center gap-1 text-xs mt-2 px-2 py-0.5 rounded-full font-mono ${
-      direction === "up" ? "bg-emerald-500/12 text-emerald-400" :
-      direction === "down" ? "bg-red-500/12 text-red-400" :
+  direction === "up" ? "bg-emerald-50 text-emerald-700" :
+      direction === "down" ? "bg-red-50 text-red-700" :
       "bg-muted text-report-muted"
     }`}>{delta}</div>
   </div>
@@ -80,10 +80,10 @@ const ProgressRow = ({ label, value, color }: { label: string; value: number; co
 
 const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "fail"; title: string; desc: string; badge: string }) => (
   <div className="flex items-start gap-3.5 py-3.5 border-b border-report-border last:border-0">
-    <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 text-sm ${
-      status === "pass" ? "bg-emerald-500/12 text-emerald-400" :
-      status === "warn" ? "bg-yellow-500/12 text-yellow-400" :
-      "bg-red-500/12 text-red-400"
+  <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5 text-sm ${
+      status === "pass" ? "bg-emerald-50 text-emerald-700" :
+      status === "warn" ? "bg-yellow-50 text-yellow-700" :
+      "bg-red-50 text-red-700"
     }`}>
       {status === "pass" ? "✓" : status === "warn" ? "!" : "✕"}
     </div>
@@ -92,9 +92,9 @@ const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "
       <div className="text-xs text-report-muted mt-0.5">{desc}</div>
     </div>
     <span className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full ${
-      status === "pass" ? "bg-emerald-500/12 text-emerald-400" :
-      status === "warn" ? "bg-yellow-500/12 text-yellow-400" :
-      "bg-red-500/12 text-red-400"
+      status === "pass" ? "bg-emerald-50 text-emerald-700" :
+      status === "warn" ? "bg-yellow-50 text-yellow-700" :
+      "bg-red-50 text-red-700"
     }`}>{badge}</span>
   </div>
 );
@@ -205,23 +205,23 @@ const TrafficLineChart = () => {
       <svg viewBox={`0 0 ${w} ${h + 24}`} className="w-full" style={{ overflow: "visible" }}>
         {/* Grid lines */}
         {clicksTicks.map(v => (
-          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#e5e7eb" strokeWidth="0.5" />
+          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#d1d5db" strokeWidth="0.5" />
         ))}
         {/* Left Y axis labels (Clicks) */}
         {clicksTicks.map(v => (
-          <text key={`cl-${v}`} x={padX - 6} y={getYClicks(v) + 3} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
+          <text key={`cl-${v}`} x={padX - 6} y={getYClicks(v) + 3} textAnchor="end" fill="#2563eb" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
         ))}
-        <text x={padX - 6} y={padY - 8} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>Clicks</text>
+        <text x={padX - 6} y={padY - 8} textAnchor="end" fill="#2563eb" style={{ fontSize: 9, fontFamily: "monospace" }}>Clicks</text>
         {/* Right Y axis labels (Impressions) */}
         {impressionsTicks.map(v => (
-          <text key={`im-${v}`} x={w - padR + 6} y={getYImpressions(v) + 3} textAnchor="start" fill="#8b5cf6" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
+          <text key={`im-${v}`} x={w - padR + 6} y={getYImpressions(v) + 3} textAnchor="start" fill="#7c3aed" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
         ))}
-        <text x={w - padR + 6} y={padY - 8} textAnchor="start" fill="#8b5cf6" style={{ fontSize: 9, fontFamily: "monospace" }}>Impressions</text>
+        <text x={w - padR + 6} y={padY - 8} textAnchor="start" fill="#7c3aed" style={{ fontSize: 9, fontFamily: "monospace" }}>Impressions</text>
         {/* Clicks line (blue) */}
         <path
           d={clicksPath}
           fill="none"
-          stroke="#60a5fa"
+          stroke="#2563eb"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -233,7 +233,7 @@ const TrafficLineChart = () => {
         <path
           d={impressionsPath}
           fill="none"
-          stroke="#8b5cf6"
+          stroke="#7c3aed"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -244,19 +244,19 @@ const TrafficLineChart = () => {
         {/* Dots */}
         {data.map((d, i) => (
           <g key={i}>
-            <circle cx={getX(i)} cy={getYClicks(d.clicks)} r="2.5" fill="#60a5fa" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1 + i * 0.05}s` }} />
-            <circle cx={getX(i)} cy={getYImpressions(d.impressions)} r="2.5" fill="#8b5cf6" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1.3 + i * 0.05}s` }} />
+            <circle cx={getX(i)} cy={getYClicks(d.clicks)} r="2.5" fill="#2563eb" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1 + i * 0.05}s` }} />
+            <circle cx={getX(i)} cy={getYImpressions(d.impressions)} r="2.5" fill="#7c3aed" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1.3 + i * 0.05}s` }} />
           </g>
         ))}
         {/* X axis labels */}
         {data.filter((_, i) => i % 2 === 0).map((d) => {
           const origIdx = data.indexOf(d);
-          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#6b7280" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
+          return <text key={d.label} x={getX(origIdx)} y={h + 16} textAnchor="middle" fill="#4b5563" style={{ fontSize: 9, fontFamily: "monospace" }}>{d.label}</text>;
         })}
       </svg>
       <div className="flex gap-4 mt-3">
-        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#60a5fa" }} />Clicks</div>
-        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#8b5cf6" }} />Impressions</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#2563eb" }} />Clicks</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#7c3aed" }} />Impressions</div>
       </div>
     </div>
   );
@@ -479,9 +479,9 @@ const ClientReport = () => {
               </div>
               <div className="report-card p-5 md:p-6">
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Issue Breakdown</div>
-                <ProgressRow label="Title tags optimised" value={91} color="bg-emerald-500" />
-                <ProgressRow label="Meta descriptions present" value={84} color="bg-emerald-500" />
-                <ProgressRow label="H1 tags correct" value={96} color="bg-emerald-500" />
+                <ProgressRow label="Title tags optimised" value={91} color="bg-emerald-600" />
+                <ProgressRow label="Meta descriptions present" value={84} color="bg-emerald-600" />
+                <ProgressRow label="H1 tags correct" value={96} color="bg-emerald-600" />
                 <ProgressRow label="Image alt attributes" value={67} color="bg-yellow-500" />
                 <ProgressRow label="Internal links optimised" value={72} color="bg-yellow-500" />
               </div>
@@ -512,9 +512,9 @@ const ClientReport = () => {
               <div className="report-card p-5 md:p-6">
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Site Speed</div>
                 <ProgressRow label="Mobile PageSpeed score" value={74} color="bg-yellow-500" />
-                <ProgressRow label="Desktop PageSpeed score" value={91} color="bg-emerald-500" />
-                <ProgressRow label="Time to First Byte (TTFB)" value={82} color="bg-emerald-500" />
-                <ProgressRow label="Pages indexed / submitted" value={97} color="bg-emerald-500" />
+                <ProgressRow label="Desktop PageSpeed score" value={91} color="bg-emerald-600" />
+                <ProgressRow label="Time to First Byte (TTFB)" value={82} color="bg-emerald-600" />
+                <ProgressRow label="Pages indexed / submitted" value={97} color="bg-emerald-600" />
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
@@ -567,8 +567,8 @@ const ClientReport = () => {
               </div>
               <div className="report-card p-5 md:p-6">
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Link Quality Distribution</div>
-                <ProgressRow label="High quality (DA 70+)" value={18} color="bg-emerald-500" />
-                <ProgressRow label="Medium quality (DA 40–69)" value={54} color="bg-blue-500" />
+                <ProgressRow label="High quality (DA 70+)" value={18} color="bg-emerald-600" />
+                <ProgressRow label="Medium quality (DA 40–69)" value={54} color="bg-blue-600" />
                 <ProgressRow label="Low quality (DA 10–39)" value={22} color="bg-yellow-500" />
                 <ProgressRow label="Toxic / spammy" value={6} color="bg-red-500" />
               </div>
@@ -584,10 +584,10 @@ const ClientReport = () => {
 
 function badgeColor(color: string) {
   switch (color) {
-    case "green": return "bg-emerald-500/12 text-emerald-400";
-    case "yellow": return "bg-yellow-500/12 text-yellow-400";
-    case "red": return "bg-red-500/12 text-red-400";
-    case "blue": return "bg-blue-500/12 text-blue-400";
+    case "green": return "bg-emerald-50 text-emerald-700";
+    case "yellow": return "bg-yellow-50 text-yellow-700";
+    case "red": return "bg-red-50 text-red-700";
+    case "blue": return "bg-blue-50 text-blue-700";
     default: return "bg-muted text-report-muted";
   }
 }
