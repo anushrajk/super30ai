@@ -1,5 +1,5 @@
 import { Linkedin, Twitter } from "lucide-react";
-import { BentoGrid, BentoCard, BentoBadge } from "@/components/ui/bento-grid";
+import { BentoBadge } from "@/components/ui/bento-grid";
 
 import amitImg from "@/assets/team/amit.png";
 import lalitImg from "@/assets/team/lalit.png";
@@ -31,9 +31,45 @@ const teamMembers = [
   { name: "Abhishek", expertise: "React & Node.js Expert", image: abhishekImg },
 ];
 
+const PolaroidCard = ({ member }: { member: typeof teamMembers[0] }) => (
+  <div className="group relative bg-card rounded-lg p-2.5 pb-4 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-border/40">
+    {/* Photo area */}
+    <div className="relative aspect-[4/5] rounded overflow-hidden bg-muted">
+      <img
+        src={member.image}
+        alt={`${member.name} at The Super 30`}
+        className="w-full h-full object-cover"
+        loading="lazy"
+      />
+      {/* Social overlay on hover */}
+      <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-3">
+        <a
+          href="#"
+          className="w-9 h-9 bg-white rounded-full flex items-center justify-center hover:bg-brand hover:text-white text-foreground transition-all duration-200 hover:scale-110"
+          aria-label={`${member.name}'s LinkedIn`}
+        >
+          <Linkedin className="w-4 h-4" />
+        </a>
+        <a
+          href="#"
+          className="w-9 h-9 bg-white rounded-full flex items-center justify-center hover:bg-foreground hover:text-white text-foreground transition-all duration-200 hover:scale-110"
+          aria-label={`${member.name}'s X`}
+        >
+          <Twitter className="w-4 h-4" />
+        </a>
+      </div>
+    </div>
+    {/* Name & role */}
+    <div className="mt-3 text-center">
+      <h3 className="font-bold text-sm md:text-base text-foreground">{member.name}</h3>
+      <p className="text-xs text-muted-foreground mt-0.5 leading-tight">{member.expertise}</p>
+    </div>
+  </div>
+);
+
 export const TeamSection = () => {
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-background">
+    <section className="py-12 md:py-16 lg:py-20 bg-muted/30">
       <div className="container mx-auto px-3 md:px-4">
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
           <BentoBadge className="mb-4">Our Team</BentoBadge>
@@ -45,45 +81,11 @@ export const TeamSection = () => {
           </p>
         </div>
 
-        <BentoGrid className="grid-cols-2 md:grid-cols-4 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6 max-w-6xl mx-auto">
           {teamMembers.map((member, index) => (
-            <BentoCard key={index} className="group text-center p-3 md:p-4">
-              {/* Avatar */}
-              <div className="relative w-16 h-16 md:w-20 md:h-20 rounded-full mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg overflow-hidden">
-                <img 
-                  src={member.image} 
-                  alt={`${member.name} at The Super 30`}
-                  className="w-full h-full object-cover"
-                />
-                {/* Online indicator */}
-                <div className="absolute bottom-0 right-0 w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded-full border-2 border-background" />
-              </div>
-
-              <h3 className="text-sm md:text-base font-bold text-foreground mb-0.5 group-hover:text-brand transition-colors">
-                {member.name}
-              </h3>
-              <p className="text-muted-foreground text-xs leading-tight hidden md:block">{member.expertise}</p>
-
-              {/* Social Links */}
-              <div className="flex items-center justify-center gap-2 mt-2">
-                <a
-                  href="#"
-                  className="w-6 h-6 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
-                  aria-label={`${member.name}'s LinkedIn`}
-                >
-                  <Linkedin className="w-3 h-3" />
-                </a>
-                <a
-                  href="#"
-                  className="w-6 h-6 icon-bg-glow rounded-full flex items-center justify-center hover:bg-brand-gradient hover:text-white transition-all duration-300"
-                  aria-label={`${member.name}'s Twitter`}
-                >
-                  <Twitter className="w-3 h-3" />
-                </a>
-              </div>
-            </BentoCard>
+            <PolaroidCard key={index} member={member} />
           ))}
-        </BentoGrid>
+        </div>
       </div>
     </section>
   );
