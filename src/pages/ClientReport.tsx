@@ -469,7 +469,7 @@ const ClientReport = () => {
                     <circle cx="50" cy="50" r="40" fill="none" stroke="#1e2220" strokeWidth="8" />
                     <circle cx="50" cy="50" r="40" fill="none" stroke="hsl(18,100%,48%)" strokeWidth="8" strokeLinecap="round"
                       strokeDasharray="251.2" strokeDashoffset={251.2 - (251.2 * 78 / 100)} transform="rotate(-90 50 50)" />
-                    <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fill="#e8ede9" style={{ fontSize: 28, fontFamily: "serif" }}>78</text>
+                    <text x="50" y="50" textAnchor="middle" dominantBaseline="middle" fill="#e8ede9" style={{ fontSize: 28, fontWeight: "bold" }}>78</text>
                     <text x="50" y="68" textAnchor="middle" fill="#7a8a7e" style={{ fontSize: 10, fontFamily: "monospace" }}>/100</text>
                   </svg>
                   <div>
