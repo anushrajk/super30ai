@@ -16,6 +16,7 @@ import logo8 from "@/assets/logos/logo-8.jpg";
 import logo9 from "@/assets/logos/logo-9.jpg";
 import logo10 from "@/assets/logos/logo-10.jpg";
 import logo11 from "@/assets/logos/logo-11.jpg";
+import da360Logo from "@/assets/logos/digital-academy-360.png";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
 import brand2 from "@/assets/brand-identity/brand-2.jpg";
 import brand3 from "@/assets/brand-identity/brand-3.jpg";
