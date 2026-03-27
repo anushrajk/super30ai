@@ -92,9 +92,9 @@ const AuditItem = ({ status, title, desc, badge }: { status: "pass" | "warn" | "
       <div className="text-xs text-report-muted mt-0.5">{desc}</div>
     </div>
     <span className={`text-[11px] font-mono px-2.5 py-0.5 rounded-full ${
-      status === "pass" ? "bg-emerald-500/12 text-emerald-400" :
-      status === "warn" ? "bg-yellow-500/12 text-yellow-400" :
-      "bg-red-500/12 text-red-400"
+      status === "pass" ? "bg-emerald-50 text-emerald-700" :
+      status === "warn" ? "bg-yellow-50 text-yellow-700" :
+      "bg-red-50 text-red-700"
     }`}>{badge}</span>
   </div>
 );
