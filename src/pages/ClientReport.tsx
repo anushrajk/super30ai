@@ -567,8 +567,8 @@ const ClientReport = () => {
               </div>
               <div className="report-card p-5 md:p-6">
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Link Quality Distribution</div>
-                <ProgressRow label="High quality (DA 70+)" value={18} color="bg-emerald-500" />
-                <ProgressRow label="Medium quality (DA 40–69)" value={54} color="bg-blue-500" />
+                <ProgressRow label="High quality (DA 70+)" value={18} color="bg-emerald-600" />
+                <ProgressRow label="Medium quality (DA 40–69)" value={54} color="bg-blue-600" />
                 <ProgressRow label="Low quality (DA 10–39)" value={22} color="bg-yellow-500" />
                 <ProgressRow label="Toxic / spammy" value={6} color="bg-red-500" />
               </div>
