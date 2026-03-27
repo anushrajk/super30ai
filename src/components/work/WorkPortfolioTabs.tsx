@@ -151,7 +151,7 @@ const ugcContent = [
   { title: "Product Review", views: "19K", likes: "1.2K", comments: "145", accent: "hsl(220,80%,55%)" },
 ];
 
-const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4"];
+const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4", "/videos/ugc-4.mp4"];
 
 const HoverVideo = ({ src }: { src: string }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
