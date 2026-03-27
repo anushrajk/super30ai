@@ -4,6 +4,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import logo1 from "@/assets/logos/logo-1.jpg";
+import logo2 from "@/assets/logos/logo-2.jpg";
+import logo3 from "@/assets/logos/logo-3.jpg";
+import logo4 from "@/assets/logos/logo-4.jpg";
+import logo5 from "@/assets/logos/logo-5.jpg";
+import logo6 from "@/assets/logos/logo-6.jpg";
+import logo7 from "@/assets/logos/logo-7.jpg";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
 import brand2 from "@/assets/brand-identity/brand-2.jpg";
 import brand3 from "@/assets/brand-identity/brand-3.jpg";
@@ -65,36 +72,26 @@ const leadGenClients = [
 
 /* ── Demo content for non-report tabs ── */
 
-const logoProjects = [
-  { name: "TechVista", style: "Minimalist", colors: ["hsl(220,80%,55%)", "hsl(220,30%,15%)"], initials: "TV" },
-  { name: "GreenLeaf Organics", style: "Organic", colors: ["hsl(145,60%,45%)", "hsl(90,40%,50%)"], initials: "GL" },
-  { name: "Luxe Interiors", style: "Elegant", colors: ["hsl(35,60%,50%)", "hsl(0,0%,15%)"], initials: "LI" },
-  { name: "FitPulse", style: "Dynamic", colors: ["hsl(350,80%,55%)", "hsl(15,90%,55%)"], initials: "FP" },
-  { name: "CloudNine Travel", style: "Playful", colors: ["hsl(200,80%,55%)", "hsl(280,60%,60%)"], initials: "CN" },
-  { name: "Nova Finance", style: "Corporate", colors: ["hsl(210,50%,40%)", "hsl(210,20%,70%)"], initials: "NF" },
-];
+const logoImages = [logo1, logo2, logo3, logo4, logo5, logo6, logo7];
 
 const LogoGrid = () => (
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-    {logoProjects.map((p) => (
-      <Card key={p.name} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
-        <CardContent className="p-6 flex flex-col items-center gap-4">
-          <div
-            className="w-20 h-20 rounded-2xl flex items-center justify-center text-2xl font-bold text-white shadow-md"
-            style={{ background: `linear-gradient(135deg, ${p.colors[0]}, ${p.colors[1]})` }}
-          >
-            {p.initials}
-          </div>
-          <div className="text-center">
-            <div className="font-semibold text-sm text-foreground">{p.name}</div>
-            <div className="text-xs text-muted-foreground">{p.style}</div>
+  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+    {logoImages.map((img, i) => (
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
+        <CardContent className="p-0">
+          <div className="aspect-square overflow-hidden">
+            <img
+              src={img}
+              alt={`Logo design project ${i + 1}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
           </div>
         </CardContent>
       </Card>
     ))}
   </div>
 );
-
 const brandImages = [brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10, brand11, brand12, brand13];
 
 const BrandIdentityGrid = () => (
