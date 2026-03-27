@@ -239,7 +239,7 @@ const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
         >
           <CardContent className="p-0">
             <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 p-6">
-              <img src={client.logo} alt={client.name} className="max-h-20 max-w-[70%] object-contain" />
+              <img src={client.logo} alt={client.name} className="max-h-28 max-w-[85%] object-contain" />
             </div>
             <div className="p-5 flex items-center justify-between">
               <div>
