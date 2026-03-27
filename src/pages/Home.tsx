@@ -11,7 +11,7 @@ import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
 import { ServicesCarousel } from "@/components/home/ServicesCarousel";
-import { OurWorkCarousel } from "@/components/home/OurWorkCarousel";
+
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Palette, Globe } from "lucide-react";
 
 const services = [{
