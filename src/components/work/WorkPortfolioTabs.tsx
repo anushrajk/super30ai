@@ -70,12 +70,8 @@ const seoClients = [
 ];
 
 const leadGenClients = [
-  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
-  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
-  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
-  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
-  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
-  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
+  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics" },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more" },
 ];
 
 /* ── Demo content for non-report tabs ── */
