@@ -512,9 +512,9 @@ const ClientReport = () => {
               <div className="report-card p-5 md:p-6">
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Site Speed</div>
                 <ProgressRow label="Mobile PageSpeed score" value={74} color="bg-yellow-500" />
-                <ProgressRow label="Desktop PageSpeed score" value={91} color="bg-emerald-500" />
-                <ProgressRow label="Time to First Byte (TTFB)" value={82} color="bg-emerald-500" />
-                <ProgressRow label="Pages indexed / submitted" value={97} color="bg-emerald-500" />
+                <ProgressRow label="Desktop PageSpeed score" value={91} color="bg-emerald-600" />
+                <ProgressRow label="Time to First Byte (TTFB)" value={82} color="bg-emerald-600" />
+                <ProgressRow label="Pages indexed / submitted" value={97} color="bg-emerald-600" />
               </div>
             </div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3.5">
