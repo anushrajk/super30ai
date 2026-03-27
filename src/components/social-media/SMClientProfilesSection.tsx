@@ -105,20 +105,27 @@ export const SMClientProfilesSection = () => {
                 </p>
               </div>
 
-              {/* Phone mockup only */}
+              {/* Laptop mockup */}
               <div className="absolute bottom-0 left-0 right-0 h-[55%] sm:h-[60%] flex items-end justify-center overflow-hidden">
                 <div className="relative w-full h-full flex items-end justify-center px-3 sm:px-5">
-                  <div className="relative w-[45%] sm:w-[40%] mb-0 transform group-hover:scale-110 group-hover:-translate-y-3 transition-all duration-500 z-[2]">
-                    <div className="bg-[hsl(var(--foreground))]/90 rounded-xl sm:rounded-2xl p-[2px] sm:p-[3px] shadow-2xl">
-                      <div className="rounded-lg sm:rounded-xl overflow-hidden aspect-[9/16] bg-muted">
+                  <div className="relative w-[85%] sm:w-[80%] mb-4 transform group-hover:scale-105 group-hover:-translate-y-3 transition-all duration-500 z-[2]">
+                    <div className="bg-[#1a1a2e] rounded-t-lg p-[2px] pt-2 border border-white/10">
+                      <div className="flex items-center gap-1 px-2 pb-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-red-500/70" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/70" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-green-500/70" />
+                      </div>
+                      <div className="rounded-sm overflow-hidden aspect-[16/10] bg-muted">
                         <img
                           src={client.images[0]}
-                          alt={`${client.brand} mobile`}
+                          alt={`${client.brand} website`}
                           className="w-full h-full object-cover object-top"
                           loading="lazy"
                         />
                       </div>
                     </div>
+                    <div className="bg-[#1a1a2e] h-2 rounded-b-md mx-6 border-x border-b border-white/10" />
+                    <div className="bg-[#1a1a2e]/60 h-1 rounded-b-lg mx-12 border-x border-b border-white/5" />
                   </div>
                 </div>
               </div>
