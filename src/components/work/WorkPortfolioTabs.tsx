@@ -62,14 +62,9 @@ const tabs = [
 ];
 
 const seoClients = [
-  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
-  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
-  { name: "Mamaearth", industry: "D2C", logo: mamaEarthLogo, slug: "mamaearth" },
-  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
-  { name: "Tata 1mg", industry: "Healthcare", logo: tata1mgLogo, slug: "tata-1mg" },
-  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
-  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
-  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
+  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans" },
+  { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational" },
+  { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international" },
 ];
 
 const leadGenClients = [
