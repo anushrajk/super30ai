@@ -244,8 +244,8 @@ const TrafficLineChart = () => {
         {/* Dots */}
         {data.map((d, i) => (
           <g key={i}>
-            <circle cx={getX(i)} cy={getYClicks(d.clicks)} r="2.5" fill="#60a5fa" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1 + i * 0.05}s` }} />
-            <circle cx={getX(i)} cy={getYImpressions(d.impressions)} r="2.5" fill="#8b5cf6" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1.3 + i * 0.05}s` }} />
+            <circle cx={getX(i)} cy={getYClicks(d.clicks)} r="2.5" fill="#2563eb" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1 + i * 0.05}s` }} />
+            <circle cx={getX(i)} cy={getYImpressions(d.impressions)} r="2.5" fill="#7c3aed" opacity={animated ? 1 : 0} style={{ transition: `opacity 0.4s ease-out ${1.3 + i * 0.05}s` }} />
           </g>
         ))}
         {/* X axis labels */}
