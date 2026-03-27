@@ -8,7 +8,7 @@ import logo1 from "@/assets/logos/logo-1.jpg";
 import logo2 from "@/assets/logos/logo-2.jpg";
 import logo3 from "@/assets/logos/logo-3.jpg";
 import logo4 from "@/assets/logos/logo-4.jpg";
-import logo5 from "@/assets/logos/logo-5.jpg";
+
 import logo6 from "@/assets/logos/logo-6.jpg";
 import logo7 from "@/assets/logos/logo-7.jpg";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
