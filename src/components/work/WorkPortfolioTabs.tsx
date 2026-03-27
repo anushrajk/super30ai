@@ -238,8 +238,8 @@ const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
           onClick={() => navigate(`/report/${client.slug}`)}
         >
           <CardContent className="p-0">
-            <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 p-4">
-              <img src={client.logo} alt={client.name} className="max-h-full max-w-[90%] object-contain" />
+            <div className="flex items-center justify-center h-44 bg-muted/30 border-b border-border/20 overflow-hidden">
+              <img src={client.logo} alt={client.name} className="w-full h-full object-cover" />
             </div>
             <div className="p-5 flex items-center justify-between">
               <div>
