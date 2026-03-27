@@ -233,7 +233,7 @@ const TrafficLineChart = () => {
         <path
           d={impressionsPath}
           fill="none"
-          stroke="#8b5cf6"
+          stroke="#7c3aed"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
