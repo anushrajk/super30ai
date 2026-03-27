@@ -69,24 +69,49 @@ export const ProjectShowcaseSection = () => {
       </div>
 
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-2xl mx-auto text-center min-h-[300px]">
-          <div className="space-y-6" key={activeIndex}>
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left: Text content */}
+          <div className="space-y-6 text-center md:text-left" key={activeIndex}>
             <p className="text-brand text-xs md:text-sm font-semibold tracking-[0.2em] uppercase animate-fade-in">
               {project.category}
             </p>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight animate-fade-in" style={{ animationDelay: "50ms" }}>
               {project.title}
             </h2>
-            <p className="text-white/60 text-base md:text-lg leading-relaxed mx-auto max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
+            <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-lg animate-fade-in" style={{ animationDelay: "100ms" }}>
               {project.description}
             </p>
-            <div className="animate-fade-in flex justify-center" style={{ animationDelay: "150ms" }}>
+            <div className="animate-fade-in flex justify-center md:justify-start" style={{ animationDelay: "150ms" }}>
               <Link to="/seo-agency-near-me">
                 <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 py-3 h-auto text-sm font-semibold group">
                   {project.cta}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
+            </div>
+          </div>
+
+          {/* Right: Laptop mockup */}
+          <div className="animate-fade-in" key={`img-${activeIndex}`} style={{ animationDelay: "100ms" }}>
+            <div className="relative mx-auto max-w-md md:max-w-lg">
+              {/* Laptop frame */}
+              <div className="bg-[#1a1a2e] rounded-t-xl p-1 pt-3 border border-white/10">
+                {/* Browser dots */}
+                <div className="flex items-center gap-1.5 px-3 pb-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/70" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/70" />
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-500/70" />
+                </div>
+                {/* Screenshot */}
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  className="w-full aspect-[16/10] object-cover object-top rounded-sm"
+                />
+              </div>
+              {/* Laptop base */}
+              <div className="bg-[#1a1a2e] h-3 rounded-b-lg mx-8 border-x border-b border-white/10" />
+              <div className="bg-[#1a1a2e]/60 h-1.5 rounded-b-xl mx-16 border-x border-b border-white/5" />
             </div>
           </div>
         </div>
