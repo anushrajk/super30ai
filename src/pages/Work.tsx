@@ -17,6 +17,7 @@ import { BarChart3, TrendingUp, Award, Users, Search, ArrowRight, MessageCircle 
 import { BentoBadge } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import mamaEarthLogo from "@/assets/case-studies/mamaearth.png";
@@ -289,6 +290,9 @@ const Work = () => {
           </div>
         </section>
 
+
+        {/* Client Logos + Stats */}
+        <ClientLogosSection />
 
         {/* Portfolio Tabs Section */}
         <WorkPortfolioTabs />
