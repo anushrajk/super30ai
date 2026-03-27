@@ -8,6 +8,8 @@ import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
 import suranaLogo from "@/assets/case-studies/surana-educational.png";
 import harvestLogo from "@/assets/case-studies/harvest-international.png";
+import aadhyaLogo from "@/assets/case-studies/aadhya-animatics.png";
+import interiorsLogo from "@/assets/case-studies/interiors-and-more.png";
 import logo1 from "@/assets/logos/logo-1.jpg";
 import logo2 from "@/assets/logos/logo-2.jpg";
 import logo3 from "@/assets/logos/logo-3.jpg";
