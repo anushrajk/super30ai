@@ -152,6 +152,20 @@ const ugcContent = [
 
 const UGCGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+    <Card className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+      <CardContent className="p-0">
+        <div className="aspect-[9/16] max-h-[300px] overflow-hidden">
+          <video
+            src="/videos/ugc-1.mp4"
+            className="w-full h-full object-cover"
+            controls
+            muted
+            playsInline
+            preload="metadata"
+          />
+        </div>
+      </CardContent>
+    </Card>
     {ugcContent.map((item, i) => (
       <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
         <CardContent className="p-0">
