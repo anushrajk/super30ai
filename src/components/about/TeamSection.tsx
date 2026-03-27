@@ -44,20 +44,20 @@ const PolaroidCard = ({ member }: { member: typeof teamMembers[0] }) => (
         loading="lazy"
       />
       {/* Small social icons on right side of image */}
-      <div className="absolute right-2 bottom-2 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+      <div className="absolute right-2 bottom-2 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <a
           href="#"
-          className="w-6 h-6 rounded-full bg-[#0A66C2]/90 backdrop-blur-sm flex items-center justify-center text-white hover:scale-110 transition-transform"
+          className="w-8 h-8 rounded-full bg-[#0A66C2]/90 backdrop-blur-sm flex items-center justify-center text-white hover:scale-110 transition-transform"
           aria-label={`${member.name}'s LinkedIn`}
         >
-          <Linkedin className="w-3 h-3" />
+          <Linkedin className="w-4 h-4" />
         </a>
         <a
           href="#"
-          className="w-6 h-6 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] backdrop-blur-sm flex items-center justify-center text-white hover:scale-110 transition-transform"
+          className="w-8 h-8 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] backdrop-blur-sm flex items-center justify-center text-white hover:scale-110 transition-transform"
           aria-label={`${member.name}'s Instagram`}
         >
-          <Instagram className="w-3 h-3" />
+          <Instagram className="w-4 h-4" />
         </a>
       </div>
     </div>
