@@ -5,6 +5,9 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle, Volume2, VolumeX } from "lucide-react";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
+import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
+import suranaLogo from "@/assets/case-studies/surana-educational.png";
+import harvestLogo from "@/assets/case-studies/harvest-international.png";
 import logo1 from "@/assets/logos/logo-1.jpg";
 import logo2 from "@/assets/logos/logo-2.jpg";
 import logo3 from "@/assets/logos/logo-3.jpg";
