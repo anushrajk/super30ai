@@ -205,11 +205,11 @@ const TrafficLineChart = () => {
       <svg viewBox={`0 0 ${w} ${h + 24}`} className="w-full" style={{ overflow: "visible" }}>
         {/* Grid lines */}
         {clicksTicks.map(v => (
-          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#e5e7eb" strokeWidth="0.5" />
+          <line key={v} x1={padX} x2={w - padR} y1={getYClicks(v)} y2={getYClicks(v)} stroke="#d1d5db" strokeWidth="0.5" />
         ))}
         {/* Left Y axis labels (Clicks) */}
         {clicksTicks.map(v => (
-          <text key={`cl-${v}`} x={padX - 6} y={getYClicks(v) + 3} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
+          <text key={`cl-${v}`} x={padX - 6} y={getYClicks(v) + 3} textAnchor="end" fill="#2563eb" style={{ fontSize: 9, fontFamily: "monospace" }}>{v}</text>
         ))}
         <text x={padX - 6} y={padY - 8} textAnchor="end" fill="#60a5fa" style={{ fontSize: 9, fontFamily: "monospace" }}>Clicks</text>
         {/* Right Y axis labels (Impressions) */}
