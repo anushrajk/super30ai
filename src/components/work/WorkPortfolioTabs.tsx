@@ -8,6 +8,8 @@ import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
 import suranaLogo from "@/assets/case-studies/surana-educational.png";
 import harvestLogo from "@/assets/case-studies/harvest-international.png";
+import aadhyaLogo from "@/assets/case-studies/aadhya-animatics.png";
+import interiorsLogo from "@/assets/case-studies/interiors-and-more.png";
 import logo1 from "@/assets/logos/logo-1.jpg";
 import logo2 from "@/assets/logos/logo-2.jpg";
 import logo3 from "@/assets/logos/logo-3.jpg";
@@ -68,12 +70,8 @@ const seoClients = [
 ];
 
 const leadGenClients = [
-  { name: "Jain University", industry: "Education", logo: jainUniversityLogo, slug: "jain-university" },
-  { name: "upGrad", industry: "Education", logo: upgradLogo, slug: "upgrad" },
-  { name: "Magicbricks", industry: "Real Estate", logo: magicbricksLogo, slug: "magicbricks" },
-  { name: "Atria Institute", industry: "Education", logo: atriaInstituteLogo, slug: "atria-institute" },
-  { name: "Shriram Properties", industry: "Real Estate", logo: shriramLogo, slug: "shriram-properties" },
-  { name: "Bhrighu Academy", industry: "Education", logo: bhrighuAcademyLogo, slug: "bhrighu-academy" },
+  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics" },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more" },
 ];
 
 /* ── Demo content for non-report tabs ── */
