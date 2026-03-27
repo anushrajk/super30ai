@@ -8,7 +8,7 @@ import logo1 from "@/assets/logos/logo-1.jpg";
 import logo2 from "@/assets/logos/logo-2.jpg";
 import logo3 from "@/assets/logos/logo-3.jpg";
 import logo4 from "@/assets/logos/logo-4.jpg";
-import logo5 from "@/assets/logos/logo-5.jpg";
+
 import logo6 from "@/assets/logos/logo-6.jpg";
 import logo7 from "@/assets/logos/logo-7.jpg";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
@@ -72,7 +72,7 @@ const leadGenClients = [
 
 /* ── Demo content for non-report tabs ── */
 
-const logoImages = [logo1, logo2, logo3, logo4, logo5, logo6, logo7];
+const logoImages = [logo1, logo2, logo3, logo4, logo6, logo7];
 
 const LogoGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
