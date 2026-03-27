@@ -479,9 +479,9 @@ const ClientReport = () => {
               </div>
               <div className="report-card p-5 md:p-6">
                 <div className="text-xs font-mono text-report-muted tracking-[0.06em] uppercase mb-3.5">Issue Breakdown</div>
-                <ProgressRow label="Title tags optimised" value={91} color="bg-emerald-500" />
-                <ProgressRow label="Meta descriptions present" value={84} color="bg-emerald-500" />
-                <ProgressRow label="H1 tags correct" value={96} color="bg-emerald-500" />
+                <ProgressRow label="Title tags optimised" value={91} color="bg-emerald-600" />
+                <ProgressRow label="Meta descriptions present" value={84} color="bg-emerald-600" />
+                <ProgressRow label="H1 tags correct" value={96} color="bg-emerald-600" />
                 <ProgressRow label="Image alt attributes" value={67} color="bg-yellow-500" />
                 <ProgressRow label="Internal links optimised" value={72} color="bg-yellow-500" />
               </div>
