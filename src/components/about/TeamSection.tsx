@@ -1,4 +1,4 @@
-import { Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Instagram } from "lucide-react";
 import { BentoBadge } from "@/components/ui/bento-grid";
 
 import amitImg from "@/assets/team/amit.png";
@@ -14,6 +14,7 @@ import deepakImg from "@/assets/team/deepak.png";
 import madhuImg from "@/assets/team/madhu.png";
 import anushImg from "@/assets/team/anush.png";
 import abhishekImg from "@/assets/team/abhishek.png";
+import azarudheeImg from "@/assets/team/azarudheen.jpg";
 
 const teamMembers = [
   { name: "Amit", expertise: "Growth Strategy & Business Development", image: amitImg },
@@ -29,40 +30,41 @@ const teamMembers = [
   { name: "Madhu", expertise: "E-commerce SEO Expert", image: madhuImg },
   { name: "Anush", expertise: "Google Ads Certified, ROI Expert", image: anushImg },
   { name: "Abhishek", expertise: "React & Node.js Expert", image: abhishekImg },
+  { name: "Azarudheen", expertise: "UI/UX & Creative Design", image: azarudheeImg },
 ];
 
 const PolaroidCard = ({ member }: { member: typeof teamMembers[0] }) => (
   <div className="group relative bg-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-400 hover:-translate-y-2 border border-border/30">
-    {/* Photo */}
-    <div className="aspect-[4/5] overflow-hidden">
+    {/* Photo with social icons */}
+    <div className="relative aspect-[4/5] overflow-hidden">
       <img
         src={member.image}
         alt={`${member.name} at The Super 30`}
         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         loading="lazy"
       />
+      {/* Small social icons on right side of image */}
+      <div className="absolute right-2 bottom-2 flex flex-col gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <a
+          href="#"
+          className="w-6 h-6 rounded-full bg-[#0A66C2]/90 backdrop-blur-sm flex items-center justify-center text-white hover:scale-110 transition-transform"
+          aria-label={`${member.name}'s LinkedIn`}
+        >
+          <Linkedin className="w-3 h-3" />
+        </a>
+        <a
+          href="#"
+          className="w-6 h-6 rounded-full bg-gradient-to-br from-[#F58529] via-[#DD2A7B] to-[#8134AF] backdrop-blur-sm flex items-center justify-center text-white hover:scale-110 transition-transform"
+          aria-label={`${member.name}'s Instagram`}
+        >
+          <Instagram className="w-3 h-3" />
+        </a>
+      </div>
     </div>
     {/* Info */}
     <div className="p-4 text-center">
       <h3 className="font-bold text-sm md:text-base text-foreground">{member.name}</h3>
       <p className="text-[11px] md:text-xs text-muted-foreground mt-1 leading-tight">{member.expertise}</p>
-      {/* Social links below text */}
-      <div className="flex items-center justify-center gap-2 mt-3 opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-        <a
-          href="#"
-          className="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:scale-110 transition-transform"
-          aria-label={`${member.name}'s LinkedIn`}
-        >
-          <Linkedin className="w-3.5 h-3.5" />
-        </a>
-        <a
-          href="#"
-          className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center text-background hover:scale-110 transition-transform"
-          aria-label={`${member.name}'s X`}
-        >
-          <Twitter className="w-3.5 h-3.5" />
-        </a>
-      </div>
     </div>
   </div>
 );
