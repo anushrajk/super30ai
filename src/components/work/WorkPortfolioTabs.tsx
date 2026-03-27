@@ -142,7 +142,7 @@ const SocialCreativesGrid = () => (
   </div>
 );
 
-const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4", "/videos/ugc-4.mp4", "/videos/ugc-5.mp4", "/videos/ugc-6.mp4", "/videos/ugc-7.mp4"];
+const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4", "/videos/ugc-4.mp4", "/videos/ugc-5.mp4", "/videos/ugc-6.mp4", "/videos/ugc-7.mp4", "/videos/ugc-reel-5.mp4"];
 
 const HoverVideo = ({ src }: { src: string }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
