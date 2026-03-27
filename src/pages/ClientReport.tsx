@@ -312,7 +312,7 @@ const ClientReport = () => {
       </Helmet>
 
       <Navbar forceWhiteBg />
-      <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9",  }}>
+      <div className="min-h-screen pt-20 md:pt-24" style={{ background: "#0d0f0e", color: "#e8ede9" }}>
 
         {/* ── GO BACK BUTTON (right side) ── */}
         <button
