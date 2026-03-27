@@ -584,10 +584,10 @@ const ClientReport = () => {
 
 function badgeColor(color: string) {
   switch (color) {
-    case "green": return "bg-emerald-500/12 text-emerald-400";
-    case "yellow": return "bg-yellow-500/12 text-yellow-400";
-    case "red": return "bg-red-500/12 text-red-400";
-    case "blue": return "bg-blue-500/12 text-blue-400";
+    case "green": return "bg-emerald-50 text-emerald-700";
+    case "yellow": return "bg-yellow-50 text-yellow-700";
+    case "red": return "bg-red-50 text-red-700";
+    case "blue": return "bg-blue-50 text-blue-700";
     default: return "bg-muted text-report-muted";
   }
 }
