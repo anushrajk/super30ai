@@ -288,7 +288,7 @@ const ClientReport = () => {
 
   if (!client) {
     return (
-      <div className="min-h-screen flex items-center justify-center" className="bg-background text-foreground">
+      <div className="min-h-screen flex items-center justify-center bg-background text-foreground">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Report Not Found</h1>
           <p className="text-report-muted mb-4">The requested report does not exist.</p>
