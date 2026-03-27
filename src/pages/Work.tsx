@@ -291,6 +291,9 @@ const Work = () => {
         </section>
 
 
+        {/* Client Logos + Stats */}
+        <ClientLogosSection />
+
         {/* Portfolio Tabs Section */}
         <WorkPortfolioTabs />
 
