@@ -324,7 +324,7 @@ const ClientReport = () => {
         </button>
 
         {/* ── SIDEBAR ── */}
-        <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex" className="bg-card">
+        <nav className="fixed left-0 top-[72px] w-[220px] h-[calc(100vh-72px)] border-r border-report-border flex-col gap-1.5 py-8 px-5 z-40 overflow-y-auto hidden md:flex bg-card">
           <div className="mb-5">
             <div className="text-sm font-semibold text-report-text">{client.name}</div>
             <div className="text-[11px] font-mono text-report-muted mt-1 tracking-[0.06em]">Q1 · 2026</div>
