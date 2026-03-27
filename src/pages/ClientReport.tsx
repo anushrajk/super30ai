@@ -255,8 +255,8 @@ const TrafficLineChart = () => {
         })}
       </svg>
       <div className="flex gap-4 mt-3">
-        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#60a5fa" }} />Clicks</div>
-        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#8b5cf6" }} />Impressions</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#2563eb" }} />Clicks</div>
+        <div className="flex items-center gap-1.5 text-xs text-report-muted"><span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#7c3aed" }} />Impressions</div>
       </div>
     </div>
   );
