@@ -54,13 +54,13 @@ import atriaInstituteLogo from "@/assets/case-studies/atria-institute.png";
 import bhrighuAcademyLogo from "@/assets/case-studies/bhrighu-academy.png";
 
 const tabs = [
-  { id: "logo", label: "Logo", icon: PenTool },
-  { id: "brand-identity", label: "Brand Identity", icon: Palette },
-  { id: "social-creatives", label: "Social Creatives", icon: Image },
-  { id: "seo", label: "SEO", icon: Search },
-  { id: "lead-generation", label: "Lead Generation", icon: TrendingUp },
-  { id: "ugc-content", label: "UGC Content", icon: Video },
-  { id: "product-photoshoot", label: "Product Photoshoot", icon: Camera },
+  { id: "logo", label: "Logo", icon: PenTool, caption: "Crafting identities that stick in every mind." },
+  { id: "brand-identity", label: "Brand Identity", icon: Palette, caption: "Building brands that speak before you do." },
+  { id: "social-creatives", label: "Social Creatives", icon: Image, caption: "Scroll-stopping designs for the social age." },
+  { id: "seo", label: "SEO", icon: Search, caption: "Ranking you where your customers are searching." },
+  { id: "lead-generation", label: "Lead Generation", icon: TrendingUp, caption: "Turning clicks into conversations that convert." },
+  { id: "ugc-content", label: "UGC Content", icon: Video, caption: "Authentic content that builds real trust." },
+  { id: "product-photoshoot", label: "Product Photoshoot", icon: Camera, caption: "Making your products the hero of every frame." },
 ];
 
 const seoClients = [
