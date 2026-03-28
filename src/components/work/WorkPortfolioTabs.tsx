@@ -307,8 +307,9 @@ export const WorkPortfolioTabs = () => {
             ))}
           </TabsList>
 
-          <p className="text-center text-sm md:text-base text-muted-foreground italic mb-8 transition-all duration-300">
-            {activeCaption}
+          <p className="text-center text-lg md:text-xl font-semibold text-brand mb-8 min-h-[2rem]">
+            {useTypewriter(activeCaption)}
+            <span className="inline-block w-[2px] h-5 bg-brand ml-0.5 animate-[pulse_1s_steps(1)_infinite] align-middle" />
           </p>
 
           <TabsContent value="logo">
