@@ -291,6 +291,10 @@ export const WorkPortfolioTabs = () => {
             ))}
           </TabsList>
 
+          <p className="text-center text-sm md:text-base text-muted-foreground italic mb-8 transition-all duration-300">
+            {activeCaption}
+          </p>
+
           <TabsContent value="logo">
             <LogoGrid />
           </TabsContent>
