@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle, Volume2, VolumeX } from "lucide-react";
+
+const useTypewriter = (text: string, speed = 40) => {
+  const [displayed, setDisplayed] = useState("");
+  useEffect(() => {
+    setDisplayed("");
+    if (!text) return;
+    let i = 0;
+    const interval = setInterval(() => {
+      i++;
+      setDisplayed(text.slice(0, i));
+      if (i >= text.length) clearInterval(interval);
+    }, speed);
+    return () => clearInterval(interval);
+  }, [text, speed]);
+  return displayed;
+};
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
@@ -291,8 +307,9 @@ export const WorkPortfolioTabs = () => {
             ))}
           </TabsList>
 
-          <p className="text-center text-sm md:text-base text-muted-foreground italic mb-8 transition-all duration-300">
-            {activeCaption}
+          <p className="text-center text-lg md:text-xl font-semibold text-brand mb-8 min-h-[2rem]">
+            {useTypewriter(activeCaption)}
+            <span className="inline-block w-[2px] h-5 bg-brand ml-0.5 animate-[pulse_1s_steps(1)_infinite] align-middle" />
           </p>
 
           <TabsContent value="logo">
