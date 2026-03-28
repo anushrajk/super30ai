@@ -9,7 +9,7 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
 import { BlogSection } from "@/components/landing/BlogSection";
 import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
-import { HeroDashboardPreview } from "@/components/home/HeroDashboardPreview";
+import heroRankingsImage from "@/assets/hero-rankings-climbing.jpg";
 import { ServicesCarousel } from "@/components/home/ServicesCarousel";
 
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Palette, Globe } from "lucide-react";
@@ -210,9 +210,17 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Side - Dashboard Preview */}
+            {/* Right Side - Rankings Image */}
             <div className="hidden lg:block">
-              <HeroDashboardPreview />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50">
+                <img 
+                  src={heroRankingsImage} 
+                  alt="Business professional watching search engine rankings climb up on screen" 
+                  width={1024} 
+                  height={1024} 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
