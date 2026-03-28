@@ -210,9 +210,17 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Side - Dashboard Preview */}
+            {/* Right Side - Rankings Image */}
             <div className="hidden lg:block">
-              <HeroDashboardPreview />
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-border/50">
+                <img 
+                  src={heroRankingsImage} 
+                  alt="Business professional watching search engine rankings climb up on screen" 
+                  width={1024} 
+                  height={1024} 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
