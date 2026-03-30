@@ -266,8 +266,10 @@ const PhotoshootGrid = () => (
   </div>
 );
 
-const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; bgColor?: string; metrics?: { label: string; value: string }[] }[] }) => {
+const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; bgColor?: string; reportImage?: string; metrics?: { label: string; value: string }[] }[] }) => {
   const navigate = useNavigate();
+  const [reportOpen, setReportOpen] = React.useState(false);
+  const [reportImage, setReportImage] = React.useState<string | null>(null);
   const [current, setCurrent] = React.useState(0);
   const total = clients.length;
 
