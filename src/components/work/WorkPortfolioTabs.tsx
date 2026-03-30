@@ -37,6 +37,14 @@ import brand10 from "@/assets/brand-identity/brand-10.jpg";
 import brand11 from "@/assets/brand-identity/brand-11.jpg";
 import brand12 from "@/assets/brand-identity/brand-12.jpg";
 import brand13 from "@/assets/brand-identity/brand-13.jpg";
+import brand14 from "@/assets/brand-identity/brand-14.jpg";
+import brand15 from "@/assets/brand-identity/brand-15.jpg";
+import brand16 from "@/assets/brand-identity/brand-16.jpg";
+import brand17 from "@/assets/brand-identity/brand-17.jpg";
+import brand18 from "@/assets/brand-identity/brand-18.jpg";
+import brand19 from "@/assets/brand-identity/brand-19.jpg";
+import brand20 from "@/assets/brand-identity/brand-20.jpg";
+import brand21 from "@/assets/brand-identity/brand-21.jpg";
 import creative1 from "@/assets/social-creatives/creative-1.png";
 import creative2 from "@/assets/social-creatives/creative-2.png";
 import creative3 from "@/assets/social-creatives/creative-3.png";
@@ -97,7 +105,7 @@ const LogoGrid = () => (
     ))}
   </div>
 );
-const brandImages = [brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10, brand11, brand12, brand13];
+const brandImages = [brand1, brand2, brand3, brand4, brand5, brand6, brand7, brand8, brand9, brand10, brand11, brand12, brand13, brand14, brand15, brand16, brand17, brand18, brand19, brand20, brand21];
 
 const BrandIdentityGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
