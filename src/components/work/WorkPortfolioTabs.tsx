@@ -358,23 +358,6 @@ const BentoClientGrid = ({ clients }: { clients: { name: string; industry: strin
     </>
   );
 };
-                <h3 className="font-bold text-base text-foreground">{client.name}</h3>
-                <p className="text-sm text-muted-foreground mt-0.5">{client.industry}</p>
-              </div>
-              <button
-                className="flex items-center gap-1.5 text-xs font-semibold text-white bg-brand px-3 py-2 rounded-lg hover:bg-brand/90 transition-colors whitespace-nowrap"
-                onClick={(e) => { e.stopPropagation(); navigate(`/report/${client.slug}`); }}
-              >
-                View Report
-                <ExternalLink className="w-3 h-3" />
-              </button>
-            </div>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  );
-};
 
 export const WorkPortfolioTabs = () => {
   const [activeTab, setActiveTab] = React.useState("logo");
