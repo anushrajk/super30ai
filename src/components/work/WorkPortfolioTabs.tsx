@@ -281,7 +281,7 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
 
             <button
               onClick={() => navigate(`/report/${client.slug}`)}
-              className="inline-flex items-center gap-2 self-start bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+              className="inline-flex items-center gap-2 self-start bg-brand hover:bg-brand/90 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
             >
               View Full Report
               <ExternalLink className="w-4 h-4" />
