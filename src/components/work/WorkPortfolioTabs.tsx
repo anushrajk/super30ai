@@ -251,7 +251,7 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
             <img
               src={client.logo}
               alt={client.name}
-              className="w-full h-full object-cover transition-all duration-500"
+              className="w-full h-full object-contain p-6 transition-all duration-500"
               key={current}
             />
           </div>
