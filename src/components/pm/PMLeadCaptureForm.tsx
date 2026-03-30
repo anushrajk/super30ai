@@ -116,6 +116,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           phone: phone ? `+91${phone}` : "",
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           ad_budget: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
+          message: message || "",
         },
       });
 
