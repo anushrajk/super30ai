@@ -347,6 +347,7 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
             className={`w-16 h-12 md:w-20 md:h-14 rounded-xl border-2 overflow-hidden transition-all duration-300 ${
               i === current ? "border-primary shadow-md scale-105" : "border-border/30 opacity-50 hover:opacity-80"
             }`}
+            style={{ backgroundColor: c.bgColor || undefined }}
           >
             <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1.5" />
           </button>
