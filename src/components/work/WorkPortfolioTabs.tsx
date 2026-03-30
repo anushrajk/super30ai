@@ -407,11 +407,11 @@ export const WorkPortfolioTabs = () => {
           </TabsContent>
 
           <TabsContent value="seo">
-            <SEOCarousel clients={seoClients} />
+            <BentoClientGrid clients={seoClients} />
           </TabsContent>
 
           <TabsContent value="lead-generation">
-            <SEOCarousel clients={leadGenClients} />
+            <BentoClientGrid clients={leadGenClients} />
           </TabsContent>
 
           <TabsContent value="ugc-content">
