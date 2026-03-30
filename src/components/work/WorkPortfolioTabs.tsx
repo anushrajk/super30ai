@@ -201,8 +201,8 @@ const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
 
 const UGCGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-    {ugcVideos.map((src, i) => (
-      <HoverVideo key={i} src={src} />
+    {ugcVideos.map((video, i) => (
+      <HoverVideo key={i} src={video.src} poster={video.poster} />
     ))}
   </div>
 );
