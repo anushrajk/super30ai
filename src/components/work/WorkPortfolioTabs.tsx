@@ -247,15 +247,13 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/60 via-background to-muted/40 border border-border/40 shadow-2xl">
         <div className="flex flex-col md:flex-row items-stretch min-h-[400px] md:min-h-[450px]">
           {/* Left: Logo area */}
-          <div className="flex-1 flex items-center justify-center p-8 md:p-12 bg-gradient-to-br from-muted/80 to-muted/20 border-b md:border-b-0 md:border-r border-border/20">
-            <div className="relative w-full max-w-[320px] aspect-[4/3] flex items-center justify-center">
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="max-w-full max-h-full object-contain drop-shadow-lg transition-all duration-500"
-                key={current}
-              />
-            </div>
+          <div className="flex-1 flex items-center justify-center bg-muted/30 border-b md:border-b-0 md:border-r border-border/20 overflow-hidden">
+            <img
+              src={client.logo}
+              alt={client.name}
+              className="w-full h-full object-cover transition-all duration-500"
+              key={current}
+            />
           </div>
 
           {/* Right: Info & Metrics */}
