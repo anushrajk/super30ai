@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle, Volume2, VolumeX, ArrowLeft, ArrowRight } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import bookMyScansReport from "@/assets/seo-reports/bookmyscans-report.png";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
@@ -72,7 +74,7 @@ const tabs = [
 ];
 
 const seoClients = [
-  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans", bgColor: "#7ED957", metrics: [{ label: "Organic Traffic", value: "+320%" }, { label: "Keywords Ranked", value: "1,200+" }, { label: "Domain Authority", value: "+18" }] },
+  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans", bgColor: "#7ED957", reportImage: bookMyScansReport, metrics: [{ label: "Organic Traffic", value: "+320%" }, { label: "Keywords Ranked", value: "1,200+" }, { label: "Domain Authority", value: "+18" }] },
   { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational", bgColor: "#ffffff", metrics: [{ label: "Organic Traffic", value: "+195%" }, { label: "Keywords Ranked", value: "850+" }, { label: "Lead Growth", value: "+140%" }] },
   { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international", bgColor: "#ffffff", metrics: [{ label: "Organic Traffic", value: "+30%" }, { label: "Keywords Ranked", value: "420+" }, { label: "Visibility", value: "+65%" }] },
   { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", bgColor: "#ffffff", metrics: [{ label: "Organic Traffic", value: "+250%" }, { label: "Keywords Ranked", value: "680+" }, { label: "Conversions", value: "+90%" }] },
@@ -264,8 +266,10 @@ const PhotoshootGrid = () => (
   </div>
 );
 
-const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; bgColor?: string; metrics?: { label: string; value: string }[] }[] }) => {
+const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; bgColor?: string; reportImage?: string; metrics?: { label: string; value: string }[] }[] }) => {
   const navigate = useNavigate();
+  const [reportOpen, setReportOpen] = React.useState(false);
+  const [reportImage, setReportImage] = React.useState<string | null>(null);
   const [current, setCurrent] = React.useState(0);
   const total = clients.length;
 
@@ -320,7 +324,14 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
             )}
 
             <button
-              onClick={() => navigate(`/report/${client.slug}`)}
+              onClick={() => {
+                if (client.reportImage) {
+                  setReportImage(client.reportImage);
+                  setReportOpen(true);
+                } else {
+                  navigate(`/report/${client.slug}`);
+                }
+              }}
               className="inline-flex items-center gap-2 self-start bg-brand hover:bg-brand/90 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
             >
               View Full Report
@@ -329,6 +340,15 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
           </div>
         </div>
       </div>
+
+      {/* Report Screenshot Modal */}
+      <Dialog open={reportOpen} onOpenChange={setReportOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-2 bg-background border-border/30">
+          {reportImage && (
+            <img src={reportImage} alt="SEO Report" className="w-full h-auto rounded-lg" />
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Navigation arrows */}
       <button
