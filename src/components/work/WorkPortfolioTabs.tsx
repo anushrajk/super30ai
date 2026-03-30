@@ -183,9 +183,6 @@ const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
             loop
             preload="metadata"
           />
-            loop
-            preload="metadata"
-          />
           <button
             onClick={toggleMute}
             className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-foreground hover:bg-background/90"
