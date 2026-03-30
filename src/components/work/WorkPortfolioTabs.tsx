@@ -291,7 +291,7 @@ const BentoClientGrid = ({ clients }: { clients: { name: string; industry: strin
           return (
             <div
               key={client.name}
-              className={`group relative overflow-hidden rounded-2xl border border-border/30 bg-gradient-to-br from-muted/40 via-background to-muted/20 hover:border-border/60 hover:shadow-2xl transition-all duration-500 ${
+              className={`group relative overflow-hidden rounded-2xl border-2 border-border/50 bg-gradient-to-br from-muted/40 via-background to-muted/20 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 transition-all duration-500 ${
                 isLarge ? "md:col-span-2 md:flex-row" : ""
               }`}
             >
