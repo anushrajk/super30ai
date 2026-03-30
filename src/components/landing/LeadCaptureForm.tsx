@@ -331,8 +331,18 @@ export const LeadCaptureForm = ({
             </Select>
           </div>
 
+          {/* Message */}
+          <Textarea
+            placeholder="Tell us about your project or goals (optional)"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onFocus={() => setFocusedField('message')}
+            onBlur={() => setFocusedField(null)}
+            className="w-full bg-background border-border focus:border-brand focus:ring-2 focus:ring-brand/20 transition-all duration-300 min-h-[80px] resize-none"
+          />
+
           <Button 
-            type="submit" 
+            type="submit"
             variant="unstyled"
             disabled={loading || !canSubmit}
             className="w-full h-14 bg-brand-gradient text-white text-lg font-semibold active:scale-[0.98] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
