@@ -69,6 +69,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [adBudget, setAdBudget] = useState("");
+  const [message, setMessage] = useState("");
   
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
