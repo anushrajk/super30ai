@@ -64,10 +64,10 @@ const tabs = [
 ];
 
 const seoClients = [
-  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans" },
-  { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational" },
-  { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international" },
-  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more" },
+  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans", metrics: [{ label: "Organic Traffic", value: "+320%" }, { label: "Keywords Ranked", value: "1,200+" }, { label: "Domain Authority", value: "+18" }] },
+  { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational", metrics: [{ label: "Organic Traffic", value: "+195%" }, { label: "Keywords Ranked", value: "850+" }, { label: "Lead Growth", value: "+140%" }] },
+  { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international", metrics: [{ label: "Organic Traffic", value: "+30%" }, { label: "Keywords Ranked", value: "420+" }, { label: "Visibility", value: "+65%" }] },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", metrics: [{ label: "Organic Traffic", value: "+250%" }, { label: "Keywords Ranked", value: "680+" }, { label: "Conversions", value: "+90%" }] },
 ];
 
 const leadGenClients = [
