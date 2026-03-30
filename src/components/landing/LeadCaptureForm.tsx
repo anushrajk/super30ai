@@ -123,7 +123,7 @@ export const LeadCaptureForm = ({
         company_name: companyName || undefined,
       };
 
-      // Submit to Google Sheets (non-blocking)
+      // Submit to Web3Forms (non-blocking)
       void submitFormToGoogleSheets({
         form_id: formId,
         form_name: formName,
@@ -138,7 +138,22 @@ export const LeadCaptureForm = ({
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
           message: message || "",
+          service,
         },
+      });
+
+      // Submit to Google Sheets via Apps Script (non-blocking)
+      void submitToGoogleSheets({
+        name: fullName,
+        company: companyName,
+        website: websiteUrl,
+        email: email,
+        phone: phone ? `+91${phone}` : "",
+        role: roleOptions.find(r => r.value === role)?.label || role || "",
+        revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
+        message: message || "",
+        service,
+        page_url: window.location.href,
       });
 
       onSubmit(formData);
