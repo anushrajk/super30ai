@@ -225,7 +225,120 @@ const PhotoshootGrid = () => (
   </div>
 );
 
-const ClientReportGrid = ({ clients }: { clients: typeof seoClients }) => {
+const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; metrics?: { label: string; value: string }[] }[] }) => {
+  const navigate = useNavigate();
+  const [current, setCurrent] = React.useState(0);
+  const total = clients.length;
+
+  const prev = () => setCurrent((c) => (c === 0 ? total - 1 : c - 1));
+  const next = () => setCurrent((c) => (c === total - 1 ? 0 : c + 1));
+
+  // Auto-advance every 5s
+  React.useEffect(() => {
+    const timer = setInterval(next, 5000);
+    return () => clearInterval(timer);
+  }, [current]);
+
+  const client = clients[current];
+
+  return (
+    <div className="relative max-w-5xl mx-auto">
+      {/* Main carousel card */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/60 via-background to-muted/40 border border-border/40 shadow-2xl">
+        <div className="flex flex-col md:flex-row items-stretch min-h-[400px] md:min-h-[450px]">
+          {/* Left: Logo area */}
+          <div className="flex-1 flex items-center justify-center p-8 md:p-12 bg-gradient-to-br from-muted/80 to-muted/20 border-b md:border-b-0 md:border-r border-border/20">
+            <div className="relative w-full max-w-[320px] aspect-[4/3] flex items-center justify-center">
+              <img
+                src={client.logo}
+                alt={client.name}
+                className="max-w-full max-h-full object-contain drop-shadow-lg transition-all duration-500"
+                key={current}
+              />
+            </div>
+          </div>
+
+          {/* Right: Info & Metrics */}
+          <div className="flex-1 flex flex-col justify-center p-8 md:p-12 space-y-6">
+            <div>
+              <span className="inline-block text-xs font-semibold uppercase tracking-wider text-primary bg-primary/10 px-3 py-1 rounded-full mb-3">
+                {client.industry}
+              </span>
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground">{client.name}</h3>
+            </div>
+
+            {/* Metrics */}
+            {client.metrics && (
+              <div className="grid grid-cols-3 gap-3">
+                {client.metrics.map((m, i) => (
+                  <div key={i} className="bg-muted/50 rounded-xl p-4 text-center border border-border/20">
+                    <div className="text-xl md:text-2xl font-bold text-primary">{m.value}</div>
+                    <div className="text-[11px] md:text-xs text-muted-foreground mt-1 font-medium">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <button
+              onClick={() => navigate(`/report/${client.slug}`)}
+              className="inline-flex items-center gap-2 self-start bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
+            >
+              View Full Report
+              <ExternalLink className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation arrows */}
+      <button
+        onClick={prev}
+        className="absolute left-2 md:-left-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/90 backdrop-blur border border-border/50 shadow-lg flex items-center justify-center text-foreground hover:bg-muted transition-colors z-10"
+        aria-label="Previous"
+      >
+        <ArrowLeft className="w-5 h-5" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-2 md:-right-5 top-1/2 -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 rounded-full bg-background/90 backdrop-blur border border-border/50 shadow-lg flex items-center justify-center text-foreground hover:bg-muted transition-colors z-10"
+        aria-label="Next"
+      >
+        <ArrowRight className="w-5 h-5" />
+      </button>
+
+      {/* Dot indicators */}
+      <div className="flex items-center justify-center gap-2 mt-6">
+        {clients.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
+              i === current ? "bg-primary w-8" : "bg-border hover:bg-muted-foreground/50"
+            }`}
+            aria-label={`Go to slide ${i + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Thumbnail strip */}
+      <div className="flex items-center justify-center gap-3 mt-4">
+        {clients.map((c, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            className={`w-16 h-12 md:w-20 md:h-14 rounded-xl border-2 overflow-hidden transition-all duration-300 ${
+              i === current ? "border-primary shadow-md scale-105" : "border-border/30 opacity-50 hover:opacity-80"
+            }`}
+          >
+            <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1.5" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ClientReportGrid = ({ clients }: { clients: typeof leadGenClients }) => {
   const navigate = useNavigate();
 
   return (
