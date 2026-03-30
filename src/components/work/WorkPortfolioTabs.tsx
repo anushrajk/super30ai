@@ -264,7 +264,10 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/60 via-background to-muted/40 border border-border/40 shadow-2xl">
         <div className="flex flex-col md:flex-row items-stretch min-h-[400px] md:min-h-[450px]">
           {/* Left: Logo area */}
-          <div className="flex-1 flex items-center justify-center bg-muted/30 border-b md:border-b-0 md:border-r border-border/20 overflow-hidden">
+          <div
+            className="flex-1 flex items-center justify-center border-b md:border-b-0 md:border-r border-border/20 overflow-hidden transition-colors duration-500"
+            style={{ backgroundColor: client.bgColor || undefined }}
+          >
             <img
               src={client.logo}
               alt={client.name}
