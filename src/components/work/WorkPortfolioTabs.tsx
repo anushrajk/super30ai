@@ -227,7 +227,7 @@ import photoshootTech from "@/assets/photoshoots/tech-studio.jpg";
 import photoshootSupplements from "@/assets/photoshoots/supplements-clean.jpg";
 
 const photoshootProjects = [
-  { product: "Skincare Range", client: "Mamaearth", shots: 48, style: "Flat Lay", accent: "hsl(145,60%,45%)", image: photoshootSkincare },
+  { product: "Skincare Range", client: "GlowNest", shots: 48, style: "Flat Lay", accent: "hsl(340,60%,65%)", image: photoshootSkincare },
   { product: "Furniture Collection", client: "Luxe Interiors", shots: 32, style: "Lifestyle", accent: "hsl(35,60%,50%)", image: photoshootFurniture },
   { product: "Fitness Gear", client: "FitPulse", shots: 24, style: "Action", accent: "hsl(350,80%,55%)", image: photoshootFitness },
   { product: "Food Menu", client: "UrbanBite", shots: 56, style: "Styled", accent: "hsl(25,90%,55%)", image: photoshootFood },
