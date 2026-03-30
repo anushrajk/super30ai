@@ -176,9 +176,13 @@ const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
           <video
             ref={videoRef}
             src={src}
+            poster={poster}
             className="w-full h-full object-cover"
             muted
             playsInline
+            loop
+            preload="metadata"
+          />
             loop
             preload="metadata"
           />
