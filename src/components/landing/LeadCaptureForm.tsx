@@ -65,13 +65,16 @@ export const LeadCaptureForm = ({
   onSubmit, 
   loading, 
   variant = "default",
-  formTitle = "Book Your Free AI Visibility Consultation",
+  formTitle,
   formDescription = "In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.",
   formBadgeText = "100% Free",
   formButtonText = "Book Your Free Consultation",
   formId = "lead_capture_form_seo",
   formName = "Free AI Visibility Consultation",
 }: LeadCaptureFormProps) => {
+  const service = useMemo(() => detectService(), []);
+  const dynamicTitle = formTitle || getServiceHeadline(service) || "Book Your Free AI Visibility Consultation";
+
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
@@ -80,6 +83,9 @@ export const LeadCaptureForm = ({
   const [role, setRole] = useState("");
   const [monthlyRevenue, setMonthlyRevenue] = useState("");
   const [message, setMessage] = useState("");
+  const [recentSignups, setRecentSignups] = useState(47);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
   const [recentSignups, setRecentSignups] = useState(47);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
