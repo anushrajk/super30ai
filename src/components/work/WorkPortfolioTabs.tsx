@@ -421,7 +421,7 @@ export const WorkPortfolioTabs = () => {
           </TabsContent>
 
           <TabsContent value="seo">
-            <ClientReportGrid clients={seoClients} />
+            <SEOCarousel clients={seoClients} />
           </TabsContent>
 
           <TabsContent value="lead-generation">
