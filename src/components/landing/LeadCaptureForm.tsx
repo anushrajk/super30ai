@@ -195,7 +195,7 @@ export const LeadCaptureForm = ({
       
       <CardContent className="p-4 sm:p-6 relative">
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
-          {formTitle}
+          {dynamicTitle}
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-1">
           {formDescription}
