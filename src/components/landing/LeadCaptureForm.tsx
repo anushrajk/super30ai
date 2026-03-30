@@ -78,6 +78,7 @@ export const LeadCaptureForm = ({
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
   const [monthlyRevenue, setMonthlyRevenue] = useState("");
+  const [message, setMessage] = useState("");
   const [recentSignups, setRecentSignups] = useState(47);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
