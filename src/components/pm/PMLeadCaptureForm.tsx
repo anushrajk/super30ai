@@ -63,6 +63,9 @@ const validatePhone = (phone: string): boolean => {
 };
 
 export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps) => {
+  const service = useMemo(() => detectService(), []);
+  const dynamicTitle = getServiceHeadline(service) || "Book Your Free Ads Performance Consultation";
+
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
