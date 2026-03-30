@@ -293,9 +293,9 @@ const BentoClientGrid = ({ clients }: { clients: { name: string; industry: strin
   // First card spans 2 cols for bento feel
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {clients.map((client, i) => {
-          const isLarge = i === 0;
+          const isLarge = false;
           return (
             <div
               key={client.name}
