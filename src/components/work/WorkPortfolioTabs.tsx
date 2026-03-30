@@ -440,7 +440,7 @@ export const WorkPortfolioTabs = () => {
           </TabsContent>
 
           <TabsContent value="lead-generation">
-            <ClientReportGrid clients={leadGenClients} />
+            <SEOCarousel clients={leadGenClients} />
           </TabsContent>
 
           <TabsContent value="ugc-content">
