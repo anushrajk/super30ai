@@ -156,6 +156,7 @@ const ugcVideos = [
 const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = React.useState(true);
+  const [isHovered, setIsHovered] = React.useState(false);
 
   const toggleMute = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -168,15 +169,21 @@ const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
   return (
     <Card
       className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow"
-      onMouseEnter={() => videoRef.current?.play()}
-      onMouseLeave={() => { if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; } }}
+      onMouseEnter={() => { setIsHovered(true); videoRef.current?.play(); }}
+      onMouseLeave={() => { setIsHovered(false); if (videoRef.current) { videoRef.current.pause(); videoRef.current.currentTime = 0; } }}
     >
       <CardContent className="p-0">
         <div className="aspect-[9/16] overflow-hidden relative group">
+          {poster && (
+            <img
+              src={poster}
+              alt=""
+              className={`absolute inset-0 w-full h-full object-cover z-10 transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+            />
+          )}
           <video
             ref={videoRef}
             src={src}
-            poster={poster}
             className="w-full h-full object-cover"
             muted
             playsInline
@@ -185,7 +192,7 @@ const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
           />
           <button
             onClick={toggleMute}
-            className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-foreground hover:bg-background/90"
+            className="absolute bottom-2 right-2 w-7 h-7 rounded-full bg-background/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity text-foreground hover:bg-background/90 z-20"
             aria-label={isMuted ? "Unmute" : "Mute"}
           >
             {isMuted ? <VolumeX className="w-3.5 h-3.5" /> : <Volume2 className="w-3.5 h-3.5" />}
