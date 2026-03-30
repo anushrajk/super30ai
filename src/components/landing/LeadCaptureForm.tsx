@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sparkles, Loader2, CheckCircle, AlertCircle, Phone } from "lucide-react";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
+import { detectService, getServiceHeadline, submitToGoogleSheets } from "@/lib/serviceDetection";
 
 interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
