@@ -71,8 +71,8 @@ const seoClients = [
 ];
 
 const leadGenClients = [
-  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics", bgColor: "#0a0a23", metrics: [{ label: "Leads Generated", value: "2,500+" }, { label: "Cost Per Lead", value: "-45%" }, { label: "Conversion Rate", value: "+120%" }] },
-  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", bgColor: "#1b1b1b", metrics: [{ label: "Leads Generated", value: "1,800+" }, { label: "Cost Per Lead", value: "-38%" }, { label: "ROI", value: "+210%" }] },
+  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics", bgColor: "#000000", metrics: [{ label: "Leads Generated", value: "2,500+" }, { label: "Cost Per Lead", value: "-45%" }, { label: "Conversion Rate", value: "+120%" }] },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", bgColor: "#ffffff", metrics: [{ label: "Leads Generated", value: "1,800+" }, { label: "Cost Per Lead", value: "-38%" }, { label: "ROI", value: "+210%" }] },
 ];
 
 /* ── Demo content for non-report tabs ── */
