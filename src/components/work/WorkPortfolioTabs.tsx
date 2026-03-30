@@ -64,15 +64,15 @@ const tabs = [
 ];
 
 const seoClients = [
-  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans", metrics: [{ label: "Organic Traffic", value: "+320%" }, { label: "Keywords Ranked", value: "1,200+" }, { label: "Domain Authority", value: "+18" }] },
-  { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational", metrics: [{ label: "Organic Traffic", value: "+195%" }, { label: "Keywords Ranked", value: "850+" }, { label: "Lead Growth", value: "+140%" }] },
-  { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international", metrics: [{ label: "Organic Traffic", value: "+30%" }, { label: "Keywords Ranked", value: "420+" }, { label: "Visibility", value: "+65%" }] },
-  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", metrics: [{ label: "Organic Traffic", value: "+250%" }, { label: "Keywords Ranked", value: "680+" }, { label: "Conversions", value: "+90%" }] },
+  { name: "Book My Scans", industry: "Healthcare", logo: bookMyScansLogo, slug: "book-my-scans", bgColor: "#ffffff", metrics: [{ label: "Organic Traffic", value: "+320%" }, { label: "Keywords Ranked", value: "1,200+" }, { label: "Domain Authority", value: "+18" }] },
+  { name: "Surana Educational Institutions", industry: "Education", logo: suranaLogo, slug: "surana-educational", bgColor: "#1a1a2e", metrics: [{ label: "Organic Traffic", value: "+195%" }, { label: "Keywords Ranked", value: "850+" }, { label: "Lead Growth", value: "+140%" }] },
+  { name: "Harvest International School", industry: "Education", logo: harvestLogo, slug: "harvest-international", bgColor: "#ffffff", metrics: [{ label: "Organic Traffic", value: "+30%" }, { label: "Keywords Ranked", value: "420+" }, { label: "Visibility", value: "+65%" }] },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", bgColor: "#1b1b1b", metrics: [{ label: "Organic Traffic", value: "+250%" }, { label: "Keywords Ranked", value: "680+" }, { label: "Conversions", value: "+90%" }] },
 ];
 
 const leadGenClients = [
-  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics", metrics: [{ label: "Leads Generated", value: "2,500+" }, { label: "Cost Per Lead", value: "-45%" }, { label: "Conversion Rate", value: "+120%" }] },
-  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", metrics: [{ label: "Leads Generated", value: "1,800+" }, { label: "Cost Per Lead", value: "-38%" }, { label: "ROI", value: "+210%" }] },
+  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics", bgColor: "#0a0a23", metrics: [{ label: "Leads Generated", value: "2,500+" }, { label: "Cost Per Lead", value: "-45%" }, { label: "Conversion Rate", value: "+120%" }] },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", bgColor: "#1b1b1b", metrics: [{ label: "Leads Generated", value: "1,800+" }, { label: "Cost Per Lead", value: "-38%" }, { label: "ROI", value: "+210%" }] },
 ];
 
 /* ── Demo content for non-report tabs ── */
@@ -242,7 +242,7 @@ const PhotoshootGrid = () => (
   </div>
 );
 
-const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; metrics?: { label: string; value: string }[] }[] }) => {
+const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; logo: string; slug: string; bgColor?: string; metrics?: { label: string; value: string }[] }[] }) => {
   const navigate = useNavigate();
   const [current, setCurrent] = React.useState(0);
   const total = clients.length;
@@ -264,7 +264,10 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-muted/60 via-background to-muted/40 border border-border/40 shadow-2xl">
         <div className="flex flex-col md:flex-row items-stretch min-h-[400px] md:min-h-[450px]">
           {/* Left: Logo area */}
-          <div className="flex-1 flex items-center justify-center bg-muted/30 border-b md:border-b-0 md:border-r border-border/20 overflow-hidden">
+          <div
+            className="flex-1 flex items-center justify-center border-b md:border-b-0 md:border-r border-border/20 overflow-hidden transition-colors duration-500"
+            style={{ backgroundColor: client.bgColor || undefined }}
+          >
             <img
               src={client.logo}
               alt={client.name}
@@ -344,6 +347,7 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
             className={`w-16 h-12 md:w-20 md:h-14 rounded-xl border-2 overflow-hidden transition-all duration-300 ${
               i === current ? "border-primary shadow-md scale-105" : "border-border/30 opacity-50 hover:opacity-80"
             }`}
+            style={{ backgroundColor: c.bgColor || undefined }}
           >
             <img src={c.logo} alt={c.name} className="w-full h-full object-contain p-1.5" />
           </button>
