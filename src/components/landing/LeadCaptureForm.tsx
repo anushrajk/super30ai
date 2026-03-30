@@ -86,9 +86,6 @@ export const LeadCaptureForm = ({
   const [recentSignups, setRecentSignups] = useState(47);
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
-  const [recentSignups, setRecentSignups] = useState(47);
-  const [focusedField, setFocusedField] = useState<string | null>(null);
-  const [touched, setTouched] = useState<Record<string, boolean>>({});
 
 
   const handleBlur = (field: string) => {
