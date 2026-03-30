@@ -219,22 +219,36 @@ const UGCGrid = () => (
   </div>
 );
 
+import photoshootSkincare from "@/assets/photoshoots/skincare-flatlay.jpg";
+import photoshootFurniture from "@/assets/photoshoots/furniture-lifestyle.jpg";
+import photoshootFitness from "@/assets/photoshoots/fitness-action.jpg";
+import photoshootFood from "@/assets/photoshoots/food-styled.jpg";
+import photoshootTech from "@/assets/photoshoots/tech-studio.jpg";
+import photoshootSupplements from "@/assets/photoshoots/supplements-clean.jpg";
+
 const photoshootProjects = [
-  { product: "Skincare Range", client: "Mamaearth", shots: 48, style: "Flat Lay", accent: "hsl(145,60%,45%)" },
-  { product: "Furniture Collection", client: "Luxe Interiors", shots: 32, style: "Lifestyle", accent: "hsl(35,60%,50%)" },
-  { product: "Fitness Gear", client: "FitPulse", shots: 24, style: "Action", accent: "hsl(350,80%,55%)" },
-  { product: "Food Menu", client: "UrbanBite", shots: 56, style: "Styled", accent: "hsl(25,90%,55%)" },
-  { product: "Tech Gadgets", client: "TechVista", shots: 36, style: "Studio", accent: "hsl(220,80%,55%)" },
-  { product: "Health Supplements", client: "PureWell", shots: 28, style: "Clean", accent: "hsl(160,60%,45%)" },
+  { product: "Skincare Range", client: "Mamaearth", shots: 48, style: "Flat Lay", accent: "hsl(145,60%,45%)", image: photoshootSkincare },
+  { product: "Furniture Collection", client: "Luxe Interiors", shots: 32, style: "Lifestyle", accent: "hsl(35,60%,50%)", image: photoshootFurniture },
+  { product: "Fitness Gear", client: "FitPulse", shots: 24, style: "Action", accent: "hsl(350,80%,55%)", image: photoshootFitness },
+  { product: "Food Menu", client: "UrbanBite", shots: 56, style: "Styled", accent: "hsl(25,90%,55%)", image: photoshootFood },
+  { product: "Tech Gadgets", client: "TechVista", shots: 36, style: "Studio", accent: "hsl(220,80%,55%)", image: photoshootTech },
+  { product: "Health Supplements", client: "PureWell", shots: 28, style: "Clean", accent: "hsl(160,60%,45%)", image: photoshootSupplements },
 ];
 
 const PhotoshootGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
     {photoshootProjects.map((p, i) => (
-      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow">
+      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
         <CardContent className="p-0">
-          <div className="aspect-square flex items-center justify-center" style={{ background: `linear-gradient(135deg, ${p.accent}15, ${p.accent}05)` }}>
-            <Camera className="w-12 h-12" style={{ color: p.accent, opacity: 0.6 }} />
+          <div className="aspect-square overflow-hidden">
+            <img
+              src={p.image}
+              alt={`${p.product} - ${p.client}`}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+              width={1024}
+              height={1024}
+            />
           </div>
           <div className="p-4">
             <div className="font-semibold text-sm text-foreground">{p.product}</div>
