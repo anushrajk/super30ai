@@ -71,8 +71,8 @@ const seoClients = [
 ];
 
 const leadGenClients = [
-  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics" },
-  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more" },
+  { name: "Aadhya Animatics", industry: "Animation", logo: aadhyaLogo, slug: "aadhya-animatics", metrics: [{ label: "Leads Generated", value: "2,500+" }, { label: "Cost Per Lead", value: "-45%" }, { label: "Conversion Rate", value: "+120%" }] },
+  { name: "Interiors & More", industry: "Home Decor", logo: interiorsLogo, slug: "interiors-and-more", metrics: [{ label: "Leads Generated", value: "1,800+" }, { label: "Cost Per Lead", value: "-38%" }, { label: "ROI", value: "+210%" }] },
 ];
 
 /* ── Demo content for non-report tabs ── */
@@ -440,7 +440,7 @@ export const WorkPortfolioTabs = () => {
           </TabsContent>
 
           <TabsContent value="lead-generation">
-            <ClientReportGrid clients={leadGenClients} />
+            <SEOCarousel clients={leadGenClients} />
           </TabsContent>
 
           <TabsContent value="ugc-content">
