@@ -106,7 +106,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
     if (canSubmit) {
       const urlWithProtocol = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
       
-      // Submit to Google Sheets (non-blocking)
+      // Submit to Web3Forms (non-blocking)
       void submitFormToGoogleSheets({
         form_id: "pm_lead_capture_form",
         form_name: "Free Ads Performance Consultation",
@@ -121,7 +121,22 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           ad_budget: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
           message: message || "",
+          service,
         },
+      });
+
+      // Submit to Google Sheets via Apps Script (non-blocking)
+      void submitToGoogleSheets({
+        name: fullName,
+        company: companyName,
+        website: urlWithProtocol,
+        email: email,
+        phone: phone ? `+91${phone}` : "",
+        role: roleOptions.find(r => r.value === role)?.label || role || "",
+        revenue: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
+        message: message || "",
+        service,
+        page_url: window.location.href,
       });
 
       onSubmit({ 
