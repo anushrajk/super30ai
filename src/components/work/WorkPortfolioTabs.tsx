@@ -324,7 +324,14 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
             )}
 
             <button
-              onClick={() => navigate(`/report/${client.slug}`)}
+              onClick={() => {
+                if (client.reportImage) {
+                  setReportImage(client.reportImage);
+                  setReportOpen(true);
+                } else {
+                  navigate(`/report/${client.slug}`);
+                }
+              }}
               className="inline-flex items-center gap-2 self-start bg-brand hover:bg-brand/90 text-white font-semibold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300"
             >
               View Full Report
@@ -333,6 +340,15 @@ const SEOCarousel = ({ clients }: { clients: { name: string; industry: string; l
           </div>
         </div>
       </div>
+
+      {/* Report Screenshot Modal */}
+      <Dialog open={reportOpen} onOpenChange={setReportOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto p-2 bg-background border-border/30">
+          {reportImage && (
+            <img src={reportImage} alt="SEO Report" className="w-full h-auto rounded-lg" />
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Navigation arrows */}
       <button
