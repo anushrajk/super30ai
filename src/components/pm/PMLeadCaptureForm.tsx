@@ -161,7 +161,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         <div className="flex items-center justify-center gap-2 mb-2">
           <Target className="w-5 h-5 text-primary" />
           <h3 className="text-xl font-bold text-foreground text-center">
-            Book Your Free Ads Performance Consultation
+            {dynamicTitle}
           </h3>
         </div>
         <p className="text-muted-foreground text-center text-sm mb-1">
