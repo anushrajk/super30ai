@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Card, CardContent } from "@/components/ui/card";
 import { Palette, PenTool, Image, Search, TrendingUp, Video, Camera, ExternalLink, Eye, Heart, MessageCircle, Volume2, VolumeX, ArrowLeft, ArrowRight } from "lucide-react";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
+import bookMyScansReport from "@/assets/seo-reports/bookmyscans-report.png";
 
 import magicbricksLogo from "@/assets/case-studies/magicbricks.png";
 import bookMyScansLogo from "@/assets/case-studies/book-my-scans.png";
