@@ -150,7 +150,7 @@ const ugcVideos = [
   { src: "/videos/ugc-5.mp4" },
   { src: "/videos/ugc-6.mp4" },
   { src: "/videos/ugc-7.mp4", poster: "/videos/ugc-7-thumb.jpg" },
-  { src: "/videos/ugc-reel-5.mp4" },
+  { src: "/videos/ugc-reel-5.mp4", poster: "/videos/ugc-8-thumb.png" },
 ];
 
 const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
