@@ -142,9 +142,18 @@ const SocialCreativesGrid = () => (
   </div>
 );
 
-const ugcVideos = ["/videos/ugc-1.mp4", "/videos/ugc-2.mp4", "/videos/ugc-3.mp4", "/videos/ugc-4.mp4", "/videos/ugc-5.mp4", "/videos/ugc-6.mp4", "/videos/ugc-7.mp4", "/videos/ugc-reel-5.mp4"];
+const ugcVideos = [
+  { src: "/videos/ugc-1.mp4" },
+  { src: "/videos/ugc-2.mp4" },
+  { src: "/videos/ugc-3.mp4", poster: "/videos/ugc-3-thumb.png" },
+  { src: "/videos/ugc-4.mp4" },
+  { src: "/videos/ugc-5.mp4" },
+  { src: "/videos/ugc-6.mp4" },
+  { src: "/videos/ugc-7.mp4" },
+  { src: "/videos/ugc-reel-5.mp4" },
+];
 
-const HoverVideo = ({ src }: { src: string }) => {
+const HoverVideo = ({ src, poster }: { src: string; poster?: string }) => {
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = React.useState(true);
 
