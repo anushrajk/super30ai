@@ -298,7 +298,17 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
             </Select>
           </div>
 
-          <Button 
+          {/* Message */}
+          <Textarea
+            placeholder="Tell us about your project or goals (optional)"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onFocus={() => setFocusedField('message')}
+            onBlur={() => setFocusedField(null)}
+            className="w-full bg-background border-border focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 min-h-[80px] resize-none"
+          />
+
+          <Button
             type="submit" 
             variant="unstyled"
             disabled={loading || !canSubmit}
