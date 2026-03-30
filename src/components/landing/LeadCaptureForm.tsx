@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sparkles, Loader2, CheckCircle, AlertCircle, Phone } from "lucide-react";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
+import { detectService, getServiceHeadline, submitToGoogleSheets } from "@/lib/serviceDetection";
 
 interface LeadCaptureFormProps {
   onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
@@ -64,13 +65,16 @@ export const LeadCaptureForm = ({
   onSubmit, 
   loading, 
   variant = "default",
-  formTitle = "Book Your Free AI Visibility Consultation",
+  formTitle,
   formDescription = "In a short consultation we'll show how your business can appear in AI search results and attract more qualified leads.",
   formBadgeText = "100% Free",
   formButtonText = "Book Your Free Consultation",
   formId = "lead_capture_form_seo",
   formName = "Free AI Visibility Consultation",
 }: LeadCaptureFormProps) => {
+  const service = useMemo(() => detectService(), []);
+  const dynamicTitle = formTitle || getServiceHeadline(service) || "Book Your Free AI Visibility Consultation";
+
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
@@ -119,7 +123,7 @@ export const LeadCaptureForm = ({
         company_name: companyName || undefined,
       };
 
-      // Submit to Google Sheets (non-blocking)
+      // Submit to Web3Forms (non-blocking)
       void submitFormToGoogleSheets({
         form_id: formId,
         form_name: formName,
@@ -134,7 +138,22 @@ export const LeadCaptureForm = ({
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
           message: message || "",
+          service,
         },
+      });
+
+      // Submit to Google Sheets via Apps Script (non-blocking)
+      void submitToGoogleSheets({
+        name: fullName,
+        company: companyName,
+        website: websiteUrl,
+        email: email,
+        phone: phone ? `+91${phone}` : "",
+        role: roleOptions.find(r => r.value === role)?.label || role || "",
+        revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
+        message: message || "",
+        service,
+        page_url: window.location.href,
       });
 
       onSubmit(formData);
@@ -176,7 +195,7 @@ export const LeadCaptureForm = ({
       
       <CardContent className="p-4 sm:p-6 relative">
         <h3 className="text-xl font-bold text-foreground text-center mb-1">
-          {formTitle}
+          {dynamicTitle}
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-1">
           {formDescription}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
+import { detectService, getServiceHeadline, submitToGoogleSheets } from "@/lib/serviceDetection";
 
 interface PMLeadCaptureFormProps {
   onSubmit: (data: { 
@@ -62,6 +63,9 @@ const validatePhone = (phone: string): boolean => {
 };
 
 export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps) => {
+  const service = useMemo(() => detectService(), []);
+  const dynamicTitle = getServiceHeadline(service) || "Book Your Free Ads Performance Consultation";
+
   const [fullName, setFullName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [websiteUrl, setWebsiteUrl] = useState("");
@@ -102,7 +106,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
     if (canSubmit) {
       const urlWithProtocol = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
       
-      // Submit to Google Sheets (non-blocking)
+      // Submit to Web3Forms (non-blocking)
       void submitFormToGoogleSheets({
         form_id: "pm_lead_capture_form",
         form_name: "Free Ads Performance Consultation",
@@ -117,7 +121,22 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           ad_budget: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
           message: message || "",
+          service,
         },
+      });
+
+      // Submit to Google Sheets via Apps Script (non-blocking)
+      void submitToGoogleSheets({
+        name: fullName,
+        company: companyName,
+        website: urlWithProtocol,
+        email: email,
+        phone: phone ? `+91${phone}` : "",
+        role: roleOptions.find(r => r.value === role)?.label || role || "",
+        revenue: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
+        message: message || "",
+        service,
+        page_url: window.location.href,
       });
 
       onSubmit({ 
@@ -142,7 +161,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         <div className="flex items-center justify-center gap-2 mb-2">
           <Target className="w-5 h-5 text-primary" />
           <h3 className="text-xl font-bold text-foreground text-center">
-            Book Your Free Ads Performance Consultation
+            {dynamicTitle}
           </h3>
         </div>
         <p className="text-muted-foreground text-center text-sm mb-1">
