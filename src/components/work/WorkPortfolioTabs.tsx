@@ -143,7 +143,7 @@ const SocialCreativesGrid = () => (
 );
 
 const ugcVideos = [
-  { src: "/videos/ugc-1.mp4" },
+  { src: "/videos/ugc-1.mp4", poster: "/videos/ugc-1-thumb.png" },
   { src: "/videos/ugc-2.mp4" },
   { src: "/videos/ugc-3.mp4", poster: "/videos/ugc-3-thumb.png" },
   { src: "/videos/ugc-4.mp4", poster: "/videos/ugc-4-thumb.png" },
