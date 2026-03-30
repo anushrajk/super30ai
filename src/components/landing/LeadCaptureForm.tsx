@@ -133,6 +133,7 @@ export const LeadCaptureForm = ({
           phone: phone ? `+91${phone}` : "",
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
+          message: message || "",
         },
       });
 
