@@ -55,7 +55,10 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
             <img 
               src={super30Logo} 
               alt="The Super 30 — AI SEO Agency Bangalore" 
-              className="h-8 md:h-10 w-auto group-hover:scale-105 transition-transform duration-300"
+              className="h-8 md:h-10 w-auto"
+              fetchPriority="high"
+              width="160"
+              height="40"
             />
           </Link>
 
