@@ -71,6 +71,10 @@ const CustomerEngagement = lazy(() => import("./pages/CustomerEngagement"));
 const SmsGateway = lazy(() => import("./pages/SmsGateway"));
 const RCS = lazy(() => import("./pages/RCS"));
 
+// Production sub-pages
+const VideoProduction = lazy(() => import("./pages/VideoProduction"));
+const Photography = lazy(() => import("./pages/Photography"));
+
 // Website sub-pages
 const EcommerceWebsite = lazy(() => import("./pages/EcommerceWebsite"));
 const WordpressWebsite = lazy(() => import("./pages/WordpressWebsite"));
