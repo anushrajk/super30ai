@@ -23,6 +23,7 @@ function isLovablePreviewOrigin(origin: string): boolean {
     const PROJECT_ID = '9fc41acf-a44c-4b4e-b257-9336c6b074a9';
     const ALLOWED_LOVABLE_HOSTS = [
       `id-preview--${PROJECT_ID}.lovableproject.com`,
+      `id-preview--${PROJECT_ID}.lovable.app`,
       `super30ai.lovable.app`,
     ];
     return ALLOWED_LOVABLE_HOSTS.includes(hostname);
