@@ -150,6 +150,28 @@ const App = () => (
                 <Route path="/design" element={<Design />} />
                 <Route path="/report/:slug" element={<ClientReport />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
+                {/* Digital Marketing */}
+                <Route path="/google-ads" element={<GoogleAds />} />
+                <Route path="/social-media-optimisation" element={<SocialMediaOptimisation />} />
+                {/* Design */}
+                <Route path="/ui-ux-design" element={<UIUXDesign />} />
+                <Route path="/logo-design" element={<LogoDesign />} />
+                <Route path="/brand-kit" element={<BrandKit />} />
+                {/* Content */}
+                <Route path="/website-content" element={<WebsiteContent />} />
+                <Route path="/blog-writing" element={<BlogWriting />} />
+                <Route path="/script-writing" element={<ScriptWriting />} />
+                <Route path="/guest-posting" element={<GuestPosting />} />
+                {/* SMS */}
+                <Route path="/whatsapp-business-api" element={<WhatsappBusinessApi />} />
+                <Route path="/chatbot" element={<Chatbot />} />
+                <Route path="/customer-engagement" element={<CustomerEngagement />} />
+                <Route path="/sms-gateway" element={<SmsGateway />} />
+                <Route path="/rcs" element={<RCS />} />
+                {/* Website */}
+                <Route path="/ecommerce-website" element={<EcommerceWebsite />} />
+                <Route path="/wordpress-website" element={<WordpressWebsite />} />
+                <Route path="/website-maintenance" element={<WebsiteMaintenance />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Suspense>
