@@ -541,13 +541,12 @@ const Design = () => {
           formId="lead_capture_design"
           formName="Creative Design Consultation"
         />
-        <DesignStatsSection />
-        <BentoServicesSection />
-        <SocialMediaShowcase />
-        
-        <PortfolioCaseStudySection />
-        <DesignProcessSection />
-        <DesignCTASection />
+        <LazySection minHeight="100px"><DesignStatsSection /></LazySection>
+        <LazySection minHeight="400px"><BentoServicesSection /></LazySection>
+        <LazySection minHeight="400px"><SocialMediaShowcase /></LazySection>
+        <LazySection minHeight="400px"><PortfolioCaseStudySection /></LazySection>
+        <LazySection minHeight="400px"><DesignProcessSection /></LazySection>
+        <LazySection minHeight="300px"><DesignCTASection /></LazySection>
       </main>
       <Footer />
     </>

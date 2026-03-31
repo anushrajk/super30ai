@@ -1,25 +1,27 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { TestimonialSection } from "@/components/landing/TestimonialSection";
-import { BlogSection } from "@/components/landing/BlogSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
-import { SMClientProfilesSection } from "@/components/social-media/SMClientProfilesSection";
-import { SMMoodboardSection } from "@/components/social-media/SMMoodboardSection";
-import { SMReelsContentSection } from "@/components/social-media/SMReelsContentSection";
-import { SMProcessSection } from "@/components/social-media/SMProcessSection";
-import { SMPricingSection } from "@/components/social-media/SMPricingSection";
-import { SMProblemSection } from "@/components/social-media/SMProblemSection";
-import { SMComparisonSection } from "@/components/social-media/SMComparisonSection";
-import { SMRelevanceSection } from "@/components/social-media/SMRelevanceSection";
-import { SMBenefitsSection } from "@/components/social-media/SMBenefitsSection";
-import { SMWhoIsThisForSection } from "@/components/social-media/SMWhoIsThisForSection";
-import { SMFinalCTASection } from "@/components/social-media/SMFinalCTASection";
-import { SMFAQSection } from "@/components/social-media/SMFAQSection";
 import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { LazySection } from "@/components/common/LazySection";
+import { lazy, Suspense } from "react";
+
+const SMProblemSection = lazy(() => import("@/components/social-media/SMProblemSection").then(m => ({ default: m.SMProblemSection })));
+const SMComparisonSection = lazy(() => import("@/components/social-media/SMComparisonSection").then(m => ({ default: m.SMComparisonSection })));
+const SMClientProfilesSection = lazy(() => import("@/components/social-media/SMClientProfilesSection").then(m => ({ default: m.SMClientProfilesSection })));
+const SMBenefitsSection = lazy(() => import("@/components/social-media/SMBenefitsSection").then(m => ({ default: m.SMBenefitsSection })));
+const SMMoodboardSection = lazy(() => import("@/components/social-media/SMMoodboardSection").then(m => ({ default: m.SMMoodboardSection })));
+const SMReelsContentSection = lazy(() => import("@/components/social-media/SMReelsContentSection").then(m => ({ default: m.SMReelsContentSection })));
+const SMWhoIsThisForSection = lazy(() => import("@/components/social-media/SMWhoIsThisForSection").then(m => ({ default: m.SMWhoIsThisForSection })));
+const SMProcessSection = lazy(() => import("@/components/social-media/SMProcessSection").then(m => ({ default: m.SMProcessSection })));
+const SMFinalCTASection = lazy(() => import("@/components/social-media/SMFinalCTASection").then(m => ({ default: m.SMFinalCTASection })));
+const SMPricingSection = lazy(() => import("@/components/social-media/SMPricingSection").then(m => ({ default: m.SMPricingSection })));
+const SMRelevanceSection = lazy(() => import("@/components/social-media/SMRelevanceSection").then(m => ({ default: m.SMRelevanceSection })));
+const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection })));
+const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m => ({ default: m.BlogSection })));
+const SMFAQSection = lazy(() => import("@/components/social-media/SMFAQSection").then(m => ({ default: m.SMFAQSection })));
 
 const SocialMediaDesign = () => {
   const { loading, handleFormSubmit } = useLeadSubmit({
@@ -92,21 +94,24 @@ const SocialMediaDesign = () => {
           />
         </div>
 
-        <SMProblemSection />
-        <SMComparisonSection />
-        <SMClientProfilesSection />
-        <SMBenefitsSection />
-        <SMMoodboardSection />
-        <SMReelsContentSection />
-        <SMWhoIsThisForSection />
-        <SMProcessSection />
-        <SMFinalCTASection />
-        <SMPricingSection />
-        <SMRelevanceSection />
-        <TestimonialSection />
-        <BlogSection />
-        <SMFinalCTASection />
-        <SMFAQSection />
+        <Suspense fallback={null}>
+          <LazySection minHeight="400px"><SMProblemSection /></LazySection>
+          <LazySection minHeight="400px"><SMComparisonSection /></LazySection>
+          <LazySection minHeight="400px"><SMClientProfilesSection /></LazySection>
+          <LazySection minHeight="400px"><SMBenefitsSection /></LazySection>
+          <LazySection minHeight="400px"><SMMoodboardSection /></LazySection>
+          <LazySection minHeight="400px"><SMReelsContentSection /></LazySection>
+          <LazySection minHeight="300px"><SMWhoIsThisForSection /></LazySection>
+          <LazySection minHeight="400px"><SMProcessSection /></LazySection>
+          <LazySection minHeight="200px"><SMFinalCTASection /></LazySection>
+          <LazySection minHeight="400px"><SMPricingSection /></LazySection>
+          <LazySection minHeight="300px"><SMRelevanceSection /></LazySection>
+          <LazySection minHeight="400px"><TestimonialSection /></LazySection>
+          <LazySection minHeight="300px"><BlogSection /></LazySection>
+          <LazySection minHeight="200px"><SMFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><SMFAQSection /></LazySection>
+        </Suspense>
+
         <Footer />
       </main>
 

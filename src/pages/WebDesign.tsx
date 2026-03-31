@@ -1,28 +1,28 @@
-import { useState } from "react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { TestimonialSection } from "@/components/landing/TestimonialSection";
-import { BlogSection } from "@/components/landing/BlogSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
-import { ProjectShowcaseSection } from "@/components/work/ProjectShowcaseSection";
-import { WDProblemSection } from "@/components/web-design/WDProblemSection";
-import { WDComparisonSection } from "@/components/web-design/WDComparisonSection";
-import { WDBenefitsSection } from "@/components/web-design/WDBenefitsSection";
-import { WDAISections } from "@/components/web-design/WDAISections";
-import { WDWhoIsThisForSection } from "@/components/web-design/WDWhoIsThisForSection";
-import { WDProcessSection } from "@/components/web-design/WDProcessSection";
-import { WDFinalCTASection } from "@/components/web-design/WDFinalCTASection";
-import { WDRelevanceSection } from "@/components/web-design/WDRelevanceSection";
-import { WDFAQSection } from "@/components/web-design/WDFAQSection";
 import { BentoBadge, BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
-import { openThankYouPage } from "@/lib/thankYouRedirect";
-import { toast } from "sonner";
+import { LazySection } from "@/components/common/LazySection";
+import { lazy, Suspense } from "react";
 import {
   Globe, Layout, ShoppingCart, Smartphone, Gauge, Shield, Code, Paintbrush, Monitor
 } from "lucide-react";
+
+const WDProblemSection = lazy(() => import("@/components/web-design/WDProblemSection").then(m => ({ default: m.WDProblemSection })));
+const WDComparisonSection = lazy(() => import("@/components/web-design/WDComparisonSection").then(m => ({ default: m.WDComparisonSection })));
+const ProjectShowcaseSection = lazy(() => import("@/components/work/ProjectShowcaseSection").then(m => ({ default: m.ProjectShowcaseSection })));
+const WDBenefitsSection = lazy(() => import("@/components/web-design/WDBenefitsSection").then(m => ({ default: m.WDBenefitsSection })));
+const WDAISections = lazy(() => import("@/components/web-design/WDAISections").then(m => ({ default: m.WDAISections })));
+const WDWhoIsThisForSection = lazy(() => import("@/components/web-design/WDWhoIsThisForSection").then(m => ({ default: m.WDWhoIsThisForSection })));
+const WDProcessSection = lazy(() => import("@/components/web-design/WDProcessSection").then(m => ({ default: m.WDProcessSection })));
+const WDFinalCTASection = lazy(() => import("@/components/web-design/WDFinalCTASection").then(m => ({ default: m.WDFinalCTASection })));
+const WDRelevanceSection = lazy(() => import("@/components/web-design/WDRelevanceSection").then(m => ({ default: m.WDRelevanceSection })));
+const WDFAQSection = lazy(() => import("@/components/web-design/WDFAQSection").then(m => ({ default: m.WDFAQSection })));
+const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection })));
+const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m => ({ default: m.BlogSection })));
 
 const services = [
   { icon: Layout, title: "Landing Pages", description: "High-converting landing pages designed to maximize lead generation & sales" },
@@ -111,58 +111,65 @@ const WebDesign = () => {
           />
         </div>
 
-        <WDProblemSection />
-        <WDComparisonSection />
-        <ProjectShowcaseSection />
+        <Suspense fallback={null}>
+          <LazySection minHeight="400px"><WDProblemSection /></LazySection>
+          <LazySection minHeight="400px"><WDComparisonSection /></LazySection>
+          <LazySection minHeight="400px"><ProjectShowcaseSection /></LazySection>
 
-        {/* Services Grid */}
-        <section className="py-6 md:py-10 lg:py-16 bg-muted/30">
-          <div className="container mx-auto px-3 md:px-4">
-            <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-              <BentoBadge className="mb-4">Our Services</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Web Design & Development Services</h2>
-              <p className="text-base md:text-lg text-muted-foreground">End-to-end web solutions for businesses of all sizes</p>
-            </div>
-            <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-              {services.map((service, i) => (
-                <BentoCard key={i} className="group">
-                  <BentoIcon size="md">
-                    <service.icon className="w-5 h-5 md:w-6 md:h-6 text-brand group-hover:text-white transition-colors duration-300" />
-                  </BentoIcon>
-                  <h3 className="text-base md:text-lg font-bold text-foreground mt-3 mb-2 group-hover:text-brand transition-colors duration-300">{service.title}</h3>
-                  <p className="text-muted-foreground text-sm">{service.description}</p>
-                </BentoCard>
-              ))}
-            </BentoGrid>
-          </div>
-        </section>
+          {/* Services Grid - inline since it's relatively light */}
+          <LazySection minHeight="400px">
+            <section className="py-6 md:py-10 lg:py-16 bg-muted/30">
+              <div className="container mx-auto px-3 md:px-4">
+                <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
+                  <BentoBadge className="mb-4">Our Services</BentoBadge>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Web Design & Development Services</h2>
+                  <p className="text-base md:text-lg text-muted-foreground">End-to-end web solutions for businesses of all sizes</p>
+                </div>
+                <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
+                  {services.map((service, i) => (
+                    <BentoCard key={i} className="group">
+                      <BentoIcon size="md">
+                        <service.icon className="w-5 h-5 md:w-6 md:h-6 text-brand group-hover:text-white transition-colors duration-300" />
+                      </BentoIcon>
+                      <h3 className="text-base md:text-lg font-bold text-foreground mt-3 mb-2 group-hover:text-brand transition-colors duration-300">{service.title}</h3>
+                      <p className="text-muted-foreground text-sm">{service.description}</p>
+                    </BentoCard>
+                  ))}
+                </BentoGrid>
+              </div>
+            </section>
+          </LazySection>
 
-        <WDBenefitsSection />
+          <LazySection minHeight="400px"><WDBenefitsSection /></LazySection>
 
-        {/* Tech Stack */}
-        <section className="py-6 md:py-10 lg:py-16 bg-[#020617]">
-          <div className="container mx-auto px-3 md:px-4">
-            <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-              <BentoBadge className="mb-4 !bg-white/10 !border-white/20 !text-white"><Code className="w-4 h-4" />Tech Stack</BentoBadge>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">Technologies We Work With</h2>
-            </div>
-            <div className="flex flex-wrap gap-3 justify-center max-w-3xl mx-auto">
-              {techStack.map((tech, i) => (
-                <span key={i} className="bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm font-semibold text-white hover:-translate-y-0.5 hover:border-brand/50 transition-all duration-300 cursor-default">{tech}</span>
-              ))}
-            </div>
-          </div>
-        </section>
+          {/* Tech Stack */}
+          <LazySection minHeight="200px">
+            <section className="py-6 md:py-10 lg:py-16 bg-[#020617]">
+              <div className="container mx-auto px-3 md:px-4">
+                <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
+                  <BentoBadge className="mb-4 !bg-white/10 !border-white/20 !text-white"><Code className="w-4 h-4" />Tech Stack</BentoBadge>
+                  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">Technologies We Work With</h2>
+                </div>
+                <div className="flex flex-wrap gap-3 justify-center max-w-3xl mx-auto">
+                  {techStack.map((tech, i) => (
+                    <span key={i} className="bg-white/5 border border-white/10 rounded-xl px-5 py-3 text-sm font-semibold text-white hover:-translate-y-0.5 hover:border-brand/50 transition-all duration-300 cursor-default">{tech}</span>
+                  ))}
+                </div>
+              </div>
+            </section>
+          </LazySection>
 
-        <WDAISections />
-        <WDWhoIsThisForSection />
-        <WDProcessSection />
-        <WDFinalCTASection />
-        <WDRelevanceSection />
-        <TestimonialSection />
-        <BlogSection />
-        <WDFinalCTASection />
-        <WDFAQSection />
+          <LazySection minHeight="400px"><WDAISections /></LazySection>
+          <LazySection minHeight="300px"><WDWhoIsThisForSection /></LazySection>
+          <LazySection minHeight="400px"><WDProcessSection /></LazySection>
+          <LazySection minHeight="200px"><WDFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><WDRelevanceSection /></LazySection>
+          <LazySection minHeight="400px"><TestimonialSection /></LazySection>
+          <LazySection minHeight="300px"><BlogSection /></LazySection>
+          <LazySection minHeight="200px"><WDFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><WDFAQSection /></LazySection>
+        </Suspense>
+
         <Footer />
       </main>
 
