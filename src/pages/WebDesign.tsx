@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
@@ -40,25 +41,11 @@ const techStack = [
 ];
 
 const WebDesign = () => {
-  const [loading, setLoading] = useState(false);
-
-  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
-    setLoading(true);
-    try {
-      toast.success("Form submitted successfully!");
-      openThankYouPage({
-        name: data.full_name || data.email?.split('@')[0],
-        email: data.email,
-        company: data.company_name,
-        source: 'web_design'
-      });
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { loading, handleFormSubmit } = useLeadSubmit({
+    source: 'web_design',
+    formId: 'web-design-form',
+    formName: 'Web Design Consultation',
+  });
 
   return (
     <>

@@ -7,6 +7,8 @@ const ALLOWED_ORIGINS = [
   'https://www.s30.co.in',
   'https://super30.io',
   'https://www.super30.io',
+  'https://thesuper30.ai',
+  'https://www.thesuper30.ai',
   'http://localhost:5173',  // Vite dev server
   'http://localhost:4173',  // Vite preview
   'http://localhost:8080',  // Alternative dev port
@@ -21,6 +23,7 @@ function isLovablePreviewOrigin(origin: string): boolean {
     const PROJECT_ID = '9fc41acf-a44c-4b4e-b257-9336c6b074a9';
     const ALLOWED_LOVABLE_HOSTS = [
       `id-preview--${PROJECT_ID}.lovableproject.com`,
+      `id-preview--${PROJECT_ID}.lovable.app`,
       `super30ai.lovable.app`,
     ];
     return ALLOWED_LOVABLE_HOSTS.includes(hostname);
