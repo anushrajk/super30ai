@@ -1,22 +1,29 @@
 import { lazy, Suspense, useState, useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
-
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
-import { ScrollToTopButton } from "@/components/ScrollToTopButton";
-import { ScrollProgressBar } from "@/components/ScrollProgressBar";
-import { CookieConsent } from "./components/CookieConsent";
-import { FloatingContactButtons } from "./components/FloatingContactButtons";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
 import { Loader2 } from "lucide-react";
 
-// Lazy load EngagementTracker - non-critical, can load after initial render
+// Lazy load ALL non-critical global components
 const EngagementTracker = lazy(() => 
   import("@/components/EngagementTracker").then(m => ({ default: m.EngagementTracker }))
+);
+const ScrollProgressBar = lazy(() => 
+  import("@/components/ScrollProgressBar").then(m => ({ default: m.ScrollProgressBar }))
+);
+const CookieConsent = lazy(() => 
+  import("@/components/CookieConsent").then(m => ({ default: m.CookieConsent }))
+);
+const FloatingContactButtons = lazy(() => 
+  import("@/components/FloatingContactButtons").then(m => ({ default: m.FloatingContactButtons }))
+);
+const ScrollToTopButton = lazy(() => 
+  import("@/components/ScrollToTopButton").then(m => ({ default: m.ScrollToTopButton }))
 );
 
 // Lazy load all pages for code splitting
@@ -45,8 +52,8 @@ const ClientReport = lazy(() => import("./pages/ClientReport"));
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
-      gcTime: 10 * 60 * 1000,   // 10 minutes
+      staleTime: 5 * 60 * 1000,
+      gcTime: 10 * 60 * 1000,
       retry: 2,
     },
   },
@@ -62,8 +69,8 @@ const PageLoader = () => (
   </div>
 );
 
-// Deferred engagement tracker - loads after 3 seconds
-const DeferredEngagementTracker = () => {
+// Deferred non-critical UI - loads after 3 seconds
+const DeferredUI = () => {
   const [shouldLoad, setShouldLoad] = useState(false);
 
   useEffect(() => {
@@ -76,6 +83,10 @@ const DeferredEngagementTracker = () => {
   return (
     <Suspense fallback={null}>
       <EngagementTracker />
+      <ScrollProgressBar />
+      <CookieConsent />
+      <FloatingContactButtons />
+      <ScrollToTopButton />
     </Suspense>
   );
 };
@@ -87,8 +98,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <ScrollProgressBar />
-          <DeferredEngagementTracker />
+          <DeferredUI />
           <ScrollToTop />
           <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
@@ -117,10 +127,6 @@ const App = () => (
               </Routes>
             </Suspense>
           </ErrorBoundary>
-          <CookieConsent />
-          <FloatingContactButtons />
-          <ScrollToTopButton />
-          
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
