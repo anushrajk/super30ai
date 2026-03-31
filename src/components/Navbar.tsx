@@ -64,32 +64,9 @@ const menuItems: NavMenuItem[] = [
   },
   {
     label: "Production",
-    categories: [
-      {
-        label: "Video Production",
-        items: [
-          { label: "Corporate Video", href: "/corporate-video" },
-          { label: "Podcast Production", href: "/podcast-production" },
-          { label: "Explainer Video", href: "/explainer-video" },
-          { label: "E Learning Video", href: "/e-learning-video" },
-          { label: "Training Video", href: "/training-video" },
-          { label: "Marketing Video", href: "/marketing-video" },
-          { label: "Video Editing Services", href: "/video-editing" },
-          { label: "Animation Video", href: "/animation-video" },
-        ],
-      },
-      {
-        label: "Photography",
-        items: [
-          { label: "Corporate Photography", href: "/corporate-photography" },
-          { label: "Ecommerce Photography", href: "/ecommerce-photography" },
-          { label: "Food Photography", href: "/food-photography" },
-          { label: "Fashion Photography", href: "/fashion-photography" },
-          { label: "Architectural Photography", href: "/architectural-photography" },
-          { label: "Event Photography", href: "/event-photography" },
-          { label: "Drone Photography", href: "/drone-photography" },
-        ],
-      },
+    items: [
+      { label: "Video Production", href: "/video-production" },
+      { label: "Photography", href: "/photography" },
     ],
   },
   {
