@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { Navbar } from "@/components/Navbar";

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
