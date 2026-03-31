@@ -1,24 +1,26 @@
-import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { TestimonialSection } from "@/components/landing/TestimonialSection";
-import { BlogSection } from "@/components/landing/BlogSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
-import { ServicesBentoGrid } from "@/components/digital-marketing/ServicesBentoGrid";
-import { ServicesDetailSection } from "@/components/digital-marketing/ServicesDetailSection";
-import { DMProblemSection } from "@/components/digital-marketing/DMProblemSection";
-import { DMComparisonSection } from "@/components/digital-marketing/DMComparisonSection";
-import { DMRelevanceSection } from "@/components/digital-marketing/DMRelevanceSection";
-import { DMBenefitsSection } from "@/components/digital-marketing/DMBenefitsSection";
-import { DMAISections } from "@/components/digital-marketing/DMAISections";
-import { DMProcessSection } from "@/components/digital-marketing/DMProcessSection";
-import { DMFinalCTASection } from "@/components/digital-marketing/DMFinalCTASection";
-import { DMFAQSection } from "@/components/digital-marketing/DMFAQSection";
-import { WhoIsThisForSection } from "@/components/landing/WhoIsThisForSection";
 import { Megaphone, Bot, BarChart3, Users, Zap } from "lucide-react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { LazySection } from "@/components/common/LazySection";
+import { lazy, Suspense } from "react";
+
+const DMProblemSection = lazy(() => import("@/components/digital-marketing/DMProblemSection").then(m => ({ default: m.DMProblemSection })));
+const DMComparisonSection = lazy(() => import("@/components/digital-marketing/DMComparisonSection").then(m => ({ default: m.DMComparisonSection })));
+const ServicesBentoGrid = lazy(() => import("@/components/digital-marketing/ServicesBentoGrid").then(m => ({ default: m.ServicesBentoGrid })));
+const DMBenefitsSection = lazy(() => import("@/components/digital-marketing/DMBenefitsSection").then(m => ({ default: m.DMBenefitsSection })));
+const ServicesDetailSection = lazy(() => import("@/components/digital-marketing/ServicesDetailSection").then(m => ({ default: m.ServicesDetailSection })));
+const DMAISections = lazy(() => import("@/components/digital-marketing/DMAISections").then(m => ({ default: m.DMAISections })));
+const WhoIsThisForSection = lazy(() => import("@/components/landing/WhoIsThisForSection").then(m => ({ default: m.WhoIsThisForSection })));
+const DMProcessSection = lazy(() => import("@/components/digital-marketing/DMProcessSection").then(m => ({ default: m.DMProcessSection })));
+const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then(m => ({ default: m.DMFinalCTASection })));
+const DMRelevanceSection = lazy(() => import("@/components/digital-marketing/DMRelevanceSection").then(m => ({ default: m.DMRelevanceSection })));
+const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection })));
+const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m => ({ default: m.BlogSection })));
+const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then(m => ({ default: m.DMFAQSection })));
 
 const DigitalMarketing = () => {
   const { loading, handleFormSubmit } = useLeadSubmit({
@@ -92,20 +94,23 @@ const DigitalMarketing = () => {
           />
         </div>
 
-        <DMProblemSection />
-        <DMComparisonSection />
-        <ServicesBentoGrid />
-        <DMBenefitsSection />
-        <ServicesDetailSection />
-        <DMAISections />
-        <WhoIsThisForSection />
-        <DMProcessSection />
-        <DMFinalCTASection />
-        <DMRelevanceSection />
-        <TestimonialSection />
-        <BlogSection />
-        <DMFinalCTASection />
-        <DMFAQSection />
+        <Suspense fallback={null}>
+          <LazySection minHeight="400px"><DMProblemSection /></LazySection>
+          <LazySection minHeight="400px"><DMComparisonSection /></LazySection>
+          <LazySection minHeight="400px"><ServicesBentoGrid /></LazySection>
+          <LazySection minHeight="400px"><DMBenefitsSection /></LazySection>
+          <LazySection minHeight="400px"><ServicesDetailSection /></LazySection>
+          <LazySection minHeight="400px"><DMAISections /></LazySection>
+          <LazySection minHeight="300px"><WhoIsThisForSection /></LazySection>
+          <LazySection minHeight="400px"><DMProcessSection /></LazySection>
+          <LazySection minHeight="200px"><DMFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><DMRelevanceSection /></LazySection>
+          <LazySection minHeight="400px"><TestimonialSection /></LazySection>
+          <LazySection minHeight="300px"><BlogSection /></LazySection>
+          <LazySection minHeight="200px"><DMFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><DMFAQSection /></LazySection>
+        </Suspense>
+
         <Footer />
       </main>
 

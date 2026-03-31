@@ -27,23 +27,6 @@
     <meta name="twitter:title" content="AI SEO & Performance Marketing Agency | The Super 30" />
     <meta name="twitter:description" content="We help brands grow with AI-powered SEO and performance marketing strategies that improve visibility, drive qualified traffic, and deliver higher ROI." />
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TN7P6SJH');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-00ZD51J4FS"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-00ZD51J4FS');
-    </script>
-
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -51,6 +34,7 @@
     
     <!-- DNS Prefetch for API endpoints -->
     <link rel="dns-prefetch" href="https://lunltoazmbezbfvozlfb.supabase.co" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
     <!-- Theme color for mobile browsers -->
     <meta name="theme-color" content="#f54a00" />
@@ -58,11 +42,37 @@
   </head>
 
   <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Google Tag Manager - DEFERRED to not block rendering -->
+    <script>
+      // Defer GTM load until after page is interactive
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-TN7P6SJH');
+
+          // Google Analytics
+          var gs = document.createElement('script');
+          gs.async = true;
+          gs.src = 'https://www.googletagmanager.com/gtag/js?id=G-00ZD51J4FS';
+          document.head.appendChild(gs);
+          gs.onload = function() {
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-00ZD51J4FS');
+          };
+        }, 2000); // 2 second delay - page is already visible
+      });
+    </script>
+    
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN7P6SJH"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
