@@ -172,6 +172,9 @@ const App = () => (
                 <Route path="/customer-engagement" element={<CustomerEngagement />} />
                 <Route path="/sms-gateway" element={<SmsGateway />} />
                 <Route path="/rcs" element={<RCS />} />
+                {/* Production */}
+                <Route path="/video-production" element={<VideoProduction />} />
+                <Route path="/photography" element={<Photography />} />
                 {/* Website */}
                 <Route path="/ecommerce-website" element={<EcommerceWebsite />} />
                 <Route path="/wordpress-website" element={<WordpressWebsite />} />
