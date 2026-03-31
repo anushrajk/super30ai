@@ -1,5 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
-import { FileText, PenTool, Target, Search, BarChart3, Users, Zap, Eye, Shield, Globe, Bot, Layers, MessageSquare, Award, TrendingUp, Clock } from "lucide-react";
+import { FileText, PenTool, Target, Search, BarChart3, Users, Zap, Eye, Shield, Globe, Bot, Layers, MessageSquare, Award, TrendingUp, Clock, Heart } from "lucide-react";
 
 const config: ServicePageConfig = {
   seo: {
