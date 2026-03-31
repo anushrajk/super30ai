@@ -71,6 +71,10 @@ const CustomerEngagement = lazy(() => import("./pages/CustomerEngagement"));
 const SmsGateway = lazy(() => import("./pages/SmsGateway"));
 const RCS = lazy(() => import("./pages/RCS"));
 
+// Production sub-pages
+const VideoProduction = lazy(() => import("./pages/VideoProduction"));
+const Photography = lazy(() => import("./pages/Photography"));
+
 // Website sub-pages
 const EcommerceWebsite = lazy(() => import("./pages/EcommerceWebsite"));
 const WordpressWebsite = lazy(() => import("./pages/WordpressWebsite"));
@@ -168,6 +172,9 @@ const App = () => (
                 <Route path="/customer-engagement" element={<CustomerEngagement />} />
                 <Route path="/sms-gateway" element={<SmsGateway />} />
                 <Route path="/rcs" element={<RCS />} />
+                {/* Production */}
+                <Route path="/video-production" element={<VideoProduction />} />
+                <Route path="/photography" element={<Photography />} />
                 {/* Website */}
                 <Route path="/ecommerce-website" element={<EcommerceWebsite />} />
                 <Route path="/wordpress-website" element={<WordpressWebsite />} />
