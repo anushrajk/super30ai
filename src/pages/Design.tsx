@@ -492,25 +492,11 @@ const DesignCTASection = () => {
 
 // ─── Main Page ───
 const Design = () => {
-  const [loading, setLoading] = useState(false);
-
-  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
-    setLoading(true);
-    try {
-      toast.success("Form submitted successfully!");
-      openThankYouPage({
-        name: data.full_name || data.email?.split('@')[0],
-        email: data.email,
-        company: data.company_name,
-        source: 'design'
-      });
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { loading, handleFormSubmit } = useLeadSubmit({
+    source: 'design',
+    formId: 'design-form',
+    formName: 'Design Consultation',
+  });
 
   return (
     <>

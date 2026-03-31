@@ -28,34 +28,6 @@ const AiSeo = () => {
     formName: 'Free AI SEO Consultation',
   });
 
-  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
-    setLoading(true);
-    try {
-      // Store in funnel data for persistence across pages
-      setLeadData({
-        website_url: data.website_url,
-        email: data.email,
-        phone: data.phone,
-        role: data.role,
-        monthly_revenue: data.monthly_revenue,
-      });
-
-      toast.success("Form submitted successfully!");
-      
-      // Open thank you page in new tab
-      openThankYouPage({
-        name: data.full_name || data.email?.split('@')[0],
-        email: data.email,
-        company: data.company_name,
-        source: 'ai_seo_audit'
-      });
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   return (
     <>

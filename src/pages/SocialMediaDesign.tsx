@@ -18,30 +18,15 @@ import { SMBenefitsSection } from "@/components/social-media/SMBenefitsSection";
 import { SMWhoIsThisForSection } from "@/components/social-media/SMWhoIsThisForSection";
 import { SMFinalCTASection } from "@/components/social-media/SMFinalCTASection";
 import { SMFAQSection } from "@/components/social-media/SMFAQSection";
-import { openThankYouPage } from "@/lib/thankYouRedirect";
-import { toast } from "sonner";
 import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 
 const SocialMediaDesign = () => {
-  const [loading, setLoading] = useState(false);
-
-  const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
-    setLoading(true);
-    try {
-      toast.success("Form submitted successfully!");
-      openThankYouPage({
-        name: data.full_name || data.email?.split('@')[0],
-        email: data.email,
-        company: data.company_name,
-        source: 'social_media_design'
-      });
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const { loading, handleFormSubmit } = useLeadSubmit({
+    source: 'social_media_design',
+    formId: 'social-media-form',
+    formName: 'Social Media Design Consultation',
+  });
 
   return (
     <>
