@@ -7,6 +7,8 @@ const ALLOWED_ORIGINS = [
   'https://www.s30.co.in',
   'https://super30.io',
   'https://www.super30.io',
+  'https://thesuper30.ai',
+  'https://www.thesuper30.ai',
   'http://localhost:5173',  // Vite dev server
   'http://localhost:4173',  // Vite preview
   'http://localhost:8080',  // Alternative dev port
