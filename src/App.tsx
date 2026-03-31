@@ -49,6 +49,33 @@ const WebDesign = lazy(() => import("./pages/WebDesign"));
 const Design = lazy(() => import("./pages/Design"));
 const ClientReport = lazy(() => import("./pages/ClientReport"));
 
+// Digital Marketing sub-pages
+const GoogleAds = lazy(() => import("./pages/GoogleAds"));
+const SocialMediaOptimisation = lazy(() => import("./pages/SocialMediaOptimisation"));
+
+// Design sub-pages
+const UIUXDesign = lazy(() => import("./pages/UIUXDesign"));
+const LogoDesign = lazy(() => import("./pages/LogoDesign"));
+const BrandKit = lazy(() => import("./pages/BrandKit"));
+
+// Content sub-pages
+const WebsiteContent = lazy(() => import("./pages/WebsiteContent"));
+const BlogWriting = lazy(() => import("./pages/BlogWriting"));
+const ScriptWriting = lazy(() => import("./pages/ScriptWriting"));
+const GuestPosting = lazy(() => import("./pages/GuestPosting"));
+
+// SMS sub-pages
+const WhatsappBusinessApi = lazy(() => import("./pages/WhatsappBusinessApi"));
+const Chatbot = lazy(() => import("./pages/Chatbot"));
+const CustomerEngagement = lazy(() => import("./pages/CustomerEngagement"));
+const SmsGateway = lazy(() => import("./pages/SmsGateway"));
+const RCS = lazy(() => import("./pages/RCS"));
+
+// Website sub-pages
+const EcommerceWebsite = lazy(() => import("./pages/EcommerceWebsite"));
+const WordpressWebsite = lazy(() => import("./pages/WordpressWebsite"));
+const WebsiteMaintenance = lazy(() => import("./pages/WebsiteMaintenance"));
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
