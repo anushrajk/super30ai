@@ -1,4 +1,3 @@
-import { useFunnelData } from "@/hooks/useFunnelData";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { Navbar } from "@/components/Navbar";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
@@ -20,12 +19,14 @@ import { BlogSection } from "@/components/landing/BlogSection";
 import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
-import { toast } from "sonner";
-import { useState } from "react";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 
 const AiSeo = () => {
-  const { setLeadData } = useFunnelData();
-  const [loading, setLoading] = useState(false);
+  const { loading, handleFormSubmit } = useLeadSubmit({
+    source: 'ai_seo_audit',
+    formId: 'ai-seo-hero-form',
+    formName: 'Free AI SEO Consultation',
+  });
 
   const handleFormSubmit = async (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => {
     setLoading(true);
