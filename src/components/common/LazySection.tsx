@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, ReactNode, Suspense } from "react";
+import { useRef, useState, useEffect, ReactNode } from "react";
 
 interface LazySectionProps {
   children: ReactNode;
@@ -9,7 +9,7 @@ interface LazySectionProps {
 
 /**
  * Renders children only when the section is near the viewport.
- * Uses content-visibility for additional performance gains.
+ * Includes a smooth fade-in transition to prevent content popping.
  */
 export const LazySection = ({
   children,
@@ -42,11 +42,11 @@ export const LazySection = ({
     <div
       ref={ref}
       className={className}
-      style={
-        !isVisible
-          ? { minHeight, contentVisibility: "auto" as any, containIntrinsicSize: `auto ${minHeight}` as any }
-          : undefined
-      }
+      style={{
+        minHeight: !isVisible ? minHeight : undefined,
+        opacity: isVisible ? 1 : 0,
+        transition: "opacity 0.4s ease-in-out",
+      }}
     >
       {isVisible ? children : null}
     </div>

@@ -118,9 +118,9 @@ const PerformanceMarketing = () => {
         preferred_platforms: questionnaireData.preferred_platforms
       };
 
-      // Send lead email
+      // Send lead email (non-blocking so redirect isn't blocked)
       if (session) {
-        await sendLeadEmail(
+        void sendLeadEmail(
           { ...fullFormData, step: 1 },
           session,
           "Performance Marketing - Ads Audit Request"
