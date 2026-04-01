@@ -150,16 +150,32 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                 onMouseLeave={() => hasDropdown(item) && handleMouseLeave()}
               >
                 {hasDropdown(item) ? (
-                  <button
-                    className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
-                      openDesktop === item.label
-                        ? "text-[hsl(var(--brand-orange))] bg-muted/50"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
-                    }`}
-                  >
-                    {item.label}
-                    <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openDesktop === item.label ? "rotate-180" : ""}`} />
-                  </button>
+                  item.href ? (
+                    <Link
+                      to={item.href}
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                        openDesktop === item.label
+                          ? "text-[hsl(var(--brand-orange))] bg-muted/50"
+                          : location.pathname === item.href
+                            ? "text-[hsl(var(--brand-orange))]"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openDesktop === item.label ? "rotate-180" : ""}`} />
+                    </Link>
+                  ) : (
+                    <button
+                      className={`flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                        openDesktop === item.label
+                          ? "text-[hsl(var(--brand-orange))] bg-muted/50"
+                          : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${openDesktop === item.label ? "rotate-180" : ""}`} />
+                    </button>
+                  )
                 ) : (
                   <Link
                     to={item.href || "/"}
@@ -261,6 +277,14 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                     </button>
                     {openMobile === item.label && (
                       <div className="ml-4 pl-4 border-l-2 border-border/50 mt-1 mb-2 flex flex-col gap-0.5">
+                        {item.href && (
+                          <Link
+                            to={item.href}
+                            className="block px-3 py-2.5 text-sm font-semibold text-[hsl(var(--brand-orange))] hover:bg-muted/30 rounded-lg transition-colors"
+                          >
+                            View All {item.label}
+                          </Link>
+                        )}
                         {item.categories
                           ? item.categories.map((cat) => (
                               <div key={cat.label}>
