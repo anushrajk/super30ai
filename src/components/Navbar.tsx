@@ -277,6 +277,14 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                     </button>
                     {openMobile === item.label && (
                       <div className="ml-4 pl-4 border-l-2 border-border/50 mt-1 mb-2 flex flex-col gap-0.5">
+                        {item.href && (
+                          <Link
+                            to={item.href}
+                            className="block px-3 py-2.5 text-sm font-semibold text-[hsl(var(--brand-orange))] hover:bg-muted/30 rounded-lg transition-colors"
+                          >
+                            View All {item.label}
+                          </Link>
+                        )}
                         {item.categories
                           ? item.categories.map((cat) => (
                               <div key={cat.label}>
