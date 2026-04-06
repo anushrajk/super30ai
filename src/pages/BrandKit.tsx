@@ -3,10 +3,10 @@ import { Palette, PenTool, Layers, FileText, Eye, Zap, Heart, Shield, Award, Tar
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Brand Kit Design Services in Bangalore | The Super 30",
-    description: "Complete brand kit design in Bangalore. Logo, color palette, typography, brand guidelines, templates & stationery — everything your brand needs to look professional.",
-    keywords: "brand kit design, brand identity, brand guidelines, brand design agency bangalore, visual identity, brand assets",
-    canonical: "https://www.thesuper30.ai/brand-kit",
+    title: "Brand Kit, Identity Design & Branding Agency in Bangalore",
+    description: "Build a brand people remember. Our branding company in Bangalore creates complete brand kits covering logo, colors, fonts & visual identity. Let's Connect!",
+    keywords: "branding agency in bangalore, branding company in bangalore, branding services in bangalore, brand kit design services in bangalore",
+    canonical: "https://www.thesuper30.ai/branding-agency-bangalore",
     serviceType: "Brand Kit Design",
   },
   hero: {
