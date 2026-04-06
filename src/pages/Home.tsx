@@ -88,6 +88,7 @@ const Home = () => {
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
       <meta name="twitter:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
+      <meta name="twitter:url" content="https://www.thesuper30.ai/" />
       <meta name="robots" content="index, follow" />
       <script type="application/ld+json">
         {JSON.stringify({

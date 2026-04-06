@@ -194,6 +194,7 @@ const Work = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Successful Digital Marketing Results Delivered For 300+ Brands" />
         <meta name="twitter:description" content="300+ successful campaigns. Real results from real clients." />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/our-work" />
         
         {/* Structured Data */}
         <script type="application/ld+json">

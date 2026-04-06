@@ -75,6 +75,12 @@ const parsePageMetadata = (source, routePath) => {
     description = getLiteralValue(seoBlock, "description");
     keywords = getLiteralValue(seoBlock, "keywords");
     canonical = getLiteralValue(seoBlock, "canonical");
+    // ServicePageTemplate uses seo.title/description/canonical for og/twitter too
+    ogTitle = title;
+    ogDescription = description;
+    ogUrl = canonical;
+    twitterTitle = title;
+    twitterDescription = description;
   } else {
     title = getTagContent(source, /<title>([\s\S]*?)<\/title>/);
     description = getTagAttribute(source, /<meta\s+name="description"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
@@ -88,6 +94,8 @@ const parsePageMetadata = (source, routePath) => {
     twitterCard = getTagAttribute(source, /<meta\s+name="twitter:card"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
     twitterTitle = getTagAttribute(source, /<meta\s+name="twitter:title"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
     twitterDescription = getTagAttribute(source, /<meta\s+name="twitter:description"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
+    const twitterUrlParsed = getTagAttribute(source, /<meta\s+name="twitter:url"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
+    if (twitterUrlParsed) ogUrl = ogUrl || twitterUrlParsed; // reuse for twitter:url fallback
   }
 
   if (!title || !description) return null;
@@ -119,6 +127,7 @@ const stripSeoTags = (html) =>
     .replace(/\s*<meta[^>]+name="twitter:card"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="twitter:title"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="twitter:description"[^>]*>/gi, "")
+    .replace(/\s*<meta[^>]+name="twitter:url"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+property="og:title"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+property="og:description"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+property="og:type"[^>]*>/gi, "")
@@ -140,6 +149,7 @@ const injectMetadata = (html, metadata) => {
     `<meta name="twitter:card" content="${escapeHtml(metadata.twitterCard)}" />`,
     `<meta name="twitter:title" content="${escapeHtml(metadata.twitterTitle)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(metadata.twitterDescription)}" />`,
+    `<meta name="twitter:url" content="${escapeHtml(metadata.ogUrl)}" />`,
   ]
     .filter(Boolean)
     .join("\n    ");

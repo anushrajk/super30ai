@@ -204,7 +204,7 @@ const Contact = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact TheSuper30 Agency | Let's Grow Your Brand" />
         <meta name="twitter:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries." />
-        
+        <meta name="twitter:url" content="https://www.thesuper30.ai/contact-us" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
