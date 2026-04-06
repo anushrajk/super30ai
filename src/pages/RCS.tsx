@@ -3,10 +3,10 @@ import { Sparkles, MessageSquare, Image, ShoppingCart, Target, BarChart3, Zap, S
 
 const config: ServicePageConfig = {
   seo: {
-    title: "RCS Messaging Services in Bangalore | Rich Communication | The Super 30",
-    description: "Rich Communication Services (RCS) in Bangalore. Send rich, interactive messages with images, carousels, buttons & verified branding. The future of business messaging.",
-    keywords: "RCS messaging, rich communication services, RCS business messaging, interactive SMS, rich messaging india, RCS services bangalore",
-    canonical: "https://www.thesuper30.ai/rcs",
+    title: "RCS Messaging Provider in Bangalore | Business Messaging",
+    description: "Go beyond plain SMS. Our RCS messaging services in Bangalore deliver rich business messages with images and buttons that boost engagement. Let's Connect!",
+    keywords: "RCS Messaging Provider In Bangalore, RCS messaging services in bangalore, RCS messaging solutions in bangalore, RCS messaging platform provider in bangalore, RCS messaging agency in bangalore",
+    canonical: "https://www.thesuper30.ai/rcs-messaging-provider-bangalore",
     serviceType: "Rich Communication Services (RCS)",
   },
   hero: {

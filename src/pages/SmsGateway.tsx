@@ -3,10 +3,10 @@ import { Send, MessageSquare, Shield, Zap, Target, BarChart3, Clock, Globe, User
 
 const config: ServicePageConfig = {
   seo: {
-    title: "SMS Gateway Services in Bangalore | Bulk SMS | The Super 30",
-    description: "Reliable SMS gateway services in Bangalore. Bulk SMS, transactional SMS, OTP services & promotional campaigns with 99.9% delivery rate and DLT compliance.",
-    keywords: "sms gateway, bulk sms services, transactional sms, otp sms, promotional sms, sms api bangalore",
-    canonical: "https://www.thesuper30.ai/sms-gateway",
+    title: "SMS Gateway Service Provider in Bangalore | OTP & API SMS",
+    description: "Send OTP and transactional messages instantly with our SMS gateway provider in Bangalore. Reliable SMS API integration for all businesses. Let's Connect!",
+    keywords: "sms gateway service provider bangalore, otp sms api in bangalore, sms api provider bangalore, sms gateway services in bangalore, transactional sms gateway bangalore",
+    canonical: "https://www.thesuper30.ai/sms-gateway-service-bangalore",
     serviceType: "SMS Gateway Services",
   },
   hero: {

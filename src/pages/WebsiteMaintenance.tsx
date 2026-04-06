@@ -3,10 +3,10 @@ import { Wrench, Shield, Gauge, RefreshCw, Clock, BarChart3, Zap, Globe, Users, 
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Website Maintenance Services in Bangalore | The Super 30",
-    description: "Professional website maintenance services in Bangalore. Security updates, speed optimization, content updates, backups & 24/7 monitoring. Keep your site fast and secure.",
-    keywords: "website maintenance services, website support, website security, wordpress maintenance, site maintenance bangalore",
-    canonical: "https://www.thesuper30.ai/website-maintenance",
+    title: "AMC & Website Maintenance Company in Bangalore",
+    description: "Keep your website secure, fast and always online with 99.9% uptime. Website maintenance in Bangalore handles updates, bug fixes, performance and security",
+    keywords: "website maintenance company in bangalore, website maintenance services bangalore, website maintenance in bangalore, website support services in bangalore, website annual maintenance contract, website maintenance packages",
+    canonical: "https://www.thesuper30.ai/website-maintenance-services-bangalore",
     serviceType: "Website Maintenance Services",
   },
   hero: {
