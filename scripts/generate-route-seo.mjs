@@ -127,6 +127,7 @@ const stripSeoTags = (html) =>
     .replace(/\s*<meta[^>]+name="twitter:card"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="twitter:title"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="twitter:description"[^>]*>/gi, "")
+    .replace(/\s*<meta[^>]+name="twitter:url"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+property="og:title"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+property="og:description"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+property="og:type"[^>]*>/gi, "")
