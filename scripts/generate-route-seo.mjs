@@ -75,6 +75,12 @@ const parsePageMetadata = (source, routePath) => {
     description = getLiteralValue(seoBlock, "description");
     keywords = getLiteralValue(seoBlock, "keywords");
     canonical = getLiteralValue(seoBlock, "canonical");
+    // ServicePageTemplate uses seo.title/description/canonical for og/twitter too
+    ogTitle = title;
+    ogDescription = description;
+    ogUrl = canonical;
+    twitterTitle = title;
+    twitterDescription = description;
   } else {
     title = getTagContent(source, /<title>([\s\S]*?)<\/title>/);
     description = getTagAttribute(source, /<meta\s+name="description"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
