@@ -178,7 +178,7 @@ const BlogPost = () => {
                     <p className="text-muted-foreground text-sm mb-4">
                       Get a free AI visibility audit and discover untapped growth opportunities.
                     </p>
-                    <Link to="/ai-seo-agency-bangalore">
+                    <Link to="/seo-company-bangalore">
                       <Button className="bg-brand-gradient hover:opacity-90 text-white">
                         Get Your Free Audit
                         <ArrowRight className="w-4 h-4 ml-2" />
@@ -201,14 +201,14 @@ const BlogPost = () => {
               Join 300+ brands that trust The Super 30 for AI SEO and performance marketing.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link to="/ai-seo-agency-bangalore">
+              <Link to="/seo-company-bangalore">
                 <Button size="lg" className="bg-brand-gradient hover:opacity-90 text-white">
                   <Sparkles className="w-4 h-4 mr-2" />
                   Start Free Audit
                   <ArrowRight className="w-4 h-4 ml-2" />
                 </Button>
               </Link>
-              <Link to="/seo-agency-near-me">
+              <Link to="/contact-us">
                 <Button size="lg" variant="outline">
                   Talk to Our Experts
                 </Button>

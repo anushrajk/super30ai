@@ -159,14 +159,14 @@ const Home = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
-                <Link to="/ai-seo-agency-bangalore">
+                <Link to="/seo-company-bangalore">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                     Get a Free Strategy Call
                     <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link to="/performance-marketing">
+                <Link to="/lead-generation-agency-bangalore">
                   <Button size="lg" variant="outline" className="border-2 bg-background/95 hover:bg-muted/50 hover:-translate-y-0.5 transition-[transform,background-color] duration-200 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <MousePointerClick className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                     Performance Marketing

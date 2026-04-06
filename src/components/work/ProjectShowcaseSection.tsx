@@ -82,7 +82,7 @@ export const ProjectShowcaseSection = () => {
               {project.description}
             </p>
             <div className="animate-fade-in flex justify-center md:justify-start" style={{ animationDelay: "150ms" }}>
-              <Link to="/seo-agency-near-me">
+              <Link to="/contact-us">
                 <Button className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 py-3 h-auto text-sm font-semibold group">
                   {project.cta}
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />

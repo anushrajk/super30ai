@@ -132,14 +132,14 @@ const About = () => {
 
               {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <Link to="/seo-agency-near-me">
+                <Link to="/contact-us">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
                     <Users className="w-4 h-4 mr-2" />
                     Get in Touch
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link to="/seo-results-bangalore">
+                <Link to="/our-work">
                   <Button 
                     size="lg" 
                     variant="outline" 

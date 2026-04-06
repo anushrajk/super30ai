@@ -213,7 +213,7 @@ const SocialMediaShowcase = () => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/social-media-post-design">
+          <Link to="/social-media-design-agency-bangalore">
             <Button variant="outline-brand" size="lg" className="rounded-xl group">
               View All Social Media Work
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
@@ -469,7 +469,7 @@ const DesignCTASection = () => {
             Whether it's a single social post or a complete brand overhaul — let's talk about what great design can do for your business.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/seo-agency-near-me">
+            <Link to="/contact-us">
               <Button size="lg" className="bg-brand-gradient text-white px-8 py-3 h-auto rounded-xl group hover:opacity-90">
                 Get Started
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
