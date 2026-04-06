@@ -233,7 +233,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center">
             <Link
-              to="/seo-agency-near-me"
+              to="/contact-us"
               className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-semibold text-white transition-all duration-300 active:scale-[0.98] bg-[hsl(var(--brand-orange))] shadow-lg hover:scale-105 hover:bg-[hsl(var(--brand-orange))]/90 hover:shadow-xl"
             >
               Contact
