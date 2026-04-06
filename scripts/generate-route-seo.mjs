@@ -94,6 +94,8 @@ const parsePageMetadata = (source, routePath) => {
     twitterCard = getTagAttribute(source, /<meta\s+name="twitter:card"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
     twitterTitle = getTagAttribute(source, /<meta\s+name="twitter:title"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
     twitterDescription = getTagAttribute(source, /<meta\s+name="twitter:description"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
+    const twitterUrlParsed = getTagAttribute(source, /<meta\s+name="twitter:url"\s+content="([\s\S]*?)"\s*\/?>(?:\s*)/i);
+    if (twitterUrlParsed) ogUrl = ogUrl || twitterUrlParsed; // reuse for twitter:url fallback
   }
 
   if (!title || !description) return null;
