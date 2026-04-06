@@ -61,6 +61,7 @@ const WebDesign = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Your Website Should Work for You. Not Against You." />
         <meta name="twitter:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/web-design-company-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
