@@ -5,21 +5,21 @@ const services = [
   {
     title: "AI SEO",
     description: "AI-powered search optimization that drives organic traffic and dominates rankings.",
-    href: "/ai-seo-agency-bangalore",
+    href: "/seo-company-bangalore",
     image: null,
     bg: "bg-[#7c3aed]",
   },
   {
     title: "Lead Generation",
     description: "Google & Meta Ads managed with AI-optimized bid strategies for maximum ROAS.",
-    href: "/performance-marketing",
+    href: "/lead-generation-agency-bangalore",
     image: null,
     bg: "bg-[#2563eb]",
   },
   {
     title: "Social Media Marketing",
     description: "Content calendars, community management, and viral short-form video strategies.",
-    href: "/social-media-post-design",
+    href: "/social-media-design-agency-bangalore",
     image: null,
     bg: "bg-[#d946ef]",
   },
@@ -33,7 +33,7 @@ const services = [
   {
     title: "Web Design",
     description: "High-converting landing pages and responsive websites optimized for speed.",
-    href: "/web-design-development",
+    href: "/web-design-company-bangalore",
     image: null,
     bg: "bg-[#14b8a6]",
   },
