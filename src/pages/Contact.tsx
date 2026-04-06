@@ -192,27 +192,26 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Talk to Our Digital Marketing Experts | The Super 30</title>
-        <meta name="description" content="Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services." />
-        <meta name="keywords" content="digital marketing agency, digital marketing experts, hire digital marketing experts, digital marketing services near me, digital marketing agency near me" />
-        <link rel="canonical" href="https://www.thesuper30.ai/seo-agency-near-me" />
+        <title>Contact TheSuper30 Agency | Let's Grow Your Brand</title>
+        <meta name="description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <link rel="canonical" href="https://www.thesuper30.ai/contact-us" />
         
-        <meta property="og:title" content="Talk to Our Digital Marketing Experts | The Super 30" />
-        <meta property="og:description" content="Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services." />
+        <meta property="og:title" content="Contact TheSuper30 Agency | Let's Grow Your Brand" />
+        <meta property="og:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/seo-agency-near-me" />
+        <meta property="og:url" content="https://www.thesuper30.ai/contact-us" />
         
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Talk to Our Digital Marketing Experts | The Super 30" />
-        <meta name="twitter:description" content="Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services." />
+        <meta name="twitter:title" content="Contact TheSuper30 Agency | Let's Grow Your Brand" />
+        <meta name="twitter:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries." />
         
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "name": "Talk to Our Digital Marketing Experts",
-            "url": "https://www.thesuper30.ai/seo-agency-near-me",
-            "description": "Connect with our digital marketing team to discuss your goals. We offer AI SEO, lead generation, social media, web design & branding services."
+            "name": "Contact TheSuper30 Agency",
+            "url": "https://www.thesuper30.ai/contact-us",
+            "description": "Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries."
           })}
         </script>
       </Helmet>

@@ -180,20 +180,19 @@ const Work = () => {
   return (
     <>
       <Helmet>
-        <title>Our Work | The Super 30 - Case Studies & Portfolio</title>
-        <meta name="description" content="Explore our portfolio of successful AI SEO and Performance Marketing campaigns. Real results from real clients including Magicbricks, Mamaearth & more." />
-        <meta name="keywords" content="SEO case studies, digital marketing portfolio, AI SEO results, performance marketing success, client testimonials" />
-        <link rel="canonical" href="https://www.thesuper30.ai/seo-results-bangalore" />
+        <title>Successful Digital Marketing Results Delivered For 300+ Brands</title>
+        <meta name="description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
+        <link rel="canonical" href="https://www.thesuper30.ai/our-work" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Case Studies & Portfolio | The Super 30" />
-        <meta property="og:description" content="300+ successful campaigns. See real results from clients like Magicbricks, Mamaearth, upGrad & more." />
+        <meta property="og:title" content="Successful Digital Marketing Results Delivered For 300+ Brands" />
+        <meta property="og:description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/seo-results-bangalore" />
+        <meta property="og:url" content="https://www.thesuper30.ai/our-work" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Case Studies & Portfolio | The Super 30" />
+        <meta name="twitter:title" content="Successful Digital Marketing Results Delivered For 300+ Brands" />
         <meta name="twitter:description" content="300+ successful campaigns. Real results from real clients." />
         
         {/* Structured Data */}
@@ -201,8 +200,9 @@ const Work = () => {
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "name": "The Super 30 Case Studies",
-            "description": "Portfolio of successful AI SEO and Performance Marketing campaigns",
+            "name": "Successful Digital Marketing Results Delivered For 300+ Brands",
+            "url": "https://www.thesuper30.ai/our-work",
+            "description": "Portfolio of successful digital marketing campaigns across SEO, ads, web and design",
             "mainEntity": {
               "@type": "ItemList",
               "numberOfItems": 10,

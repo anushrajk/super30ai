@@ -77,24 +77,18 @@ const whyChooseUs = [{
 const Home = () => {
   return <>
     <Helmet>
-      <title>AI Digital Marketing Agency in Bangalore | The Super 30</title>
-      <meta name="description" content="The Super 30 is an AI-powered digital marketing agency in Bangalore. We offer SEO, performance marketing, social media, web design & full-funnel growth strategies." />
-      <meta name="keywords" content="digital marketing agency, digital marketing agency bangalore, AI digital marketing, performance marketing, SEO agency bangalore, social media marketing, web design bangalore" />
+      <title>Digital Marketing Agency & AI Growth Company | TheSuper30</title>
+      <meta name="description" content="A leading AI-driven digital marketing agency helping businesses achieve real ROI and scalable growth with proven strategies. Book a free consultation now." />
+      <meta name="keywords" content="Digital Marketing Agency, Digital Marketing Company, AI digital marketing agency, AI Digital Marketing Company, AI based digital marketing agency" />
       <link rel="canonical" href="https://www.thesuper30.ai/" />
-      <meta property="og:title" content="AI Digital Marketing Agency in Bangalore | The Super 30" />
-      <meta property="og:description" content="The Super 30 is an AI-powered digital marketing agency offering SEO, ads, social media, web design & growth strategies. Trusted by 300+ brands." />
+      <meta property="og:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
+      <meta property="og:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.thesuper30.ai/" />
-      <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
-      <meta property="og:site_name" content="The Super 30" />
-      <meta property="og:locale" content="en_IN" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="AI Digital Marketing Agency in Bangalore | The Super 30" />
-      <meta name="twitter:description" content="AI-powered digital marketing agency offering SEO, performance marketing, social media & web design. Trusted by 300+ brands across India." />
+      <meta name="twitter:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
+      <meta name="twitter:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta name="robots" content="index, follow" />
-      <meta name="author" content="The Super 30" />
-      <meta name="geo.region" content="IN-KA" />
-      <meta name="geo.placename" content="Bangalore" />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -102,7 +96,7 @@ const Home = () => {
           "name": "The Super 30",
           "url": "https://www.thesuper30.ai/",
           "logo": "https://www.thesuper30.ai/logo.png",
-          "description": "AI-powered digital marketing agency in Bangalore offering SEO, performance marketing, social media, web design and growth strategies.",
+          "description": "A leading AI-driven digital marketing agency helping businesses achieve real ROI and scalable growth with proven strategies.",
           "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
           "sameAs": []
         })}
