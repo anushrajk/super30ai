@@ -146,30 +146,30 @@ const PerformanceMarketing = () => {
   return (
     <>
       <Helmet>
-        <title>AI Powered Ads & Performance Marketing Services | The Super 30</title>
-        <meta name="description" content="Boost conversions with AI powered ads and performance marketing services, including PPC services in Bangalore and data driven ad strategies." />
-        <meta name="keywords" content="AI Powered Ads, Performance Marketing Services, ppc services in bangalore, performance marketing agency bangalore, ai powered ads, ppc marketing" />
-        <link rel="canonical" href="https://www.thesuper30.ai/performance-marketing" />
+        <title>Lead Generation Agency in Bangalore | B2B Leads That Convert</title>
+        <meta name="description" content="Trusted lead generation agency in Bangalore helping B2B businesses attract & convert high-value leads. Real pipeline growth & measurable results. Let's Talk!" />
+        <meta name="keywords" content="lead generation agency in bangalore, b2b lead generation companies in bangalore, lead generation services in bangalore, lead generation company in bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="AI Powered Ads & Performance Marketing Services | The Super 30" />
-        <meta property="og:description" content="Boost conversions with AI powered ads and performance marketing services, including PPC services in Bangalore and data driven ad strategies." />
+        <meta property="og:title" content="Is Your Sales Pipeline Full Enough to Hit Your Targets?" />
+        <meta property="og:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/performance-marketing" />
+        <meta property="og:url" content="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI Powered Ads & Performance Marketing Services | The Super 30" />
-        <meta name="twitter:description" content="Boost conversions with AI powered ads and performance marketing services, including PPC services in Bangalore and data driven ad strategies." />
+        <meta name="twitter:title" content="Is Your Sales Pipeline Full Enough to Hit Your Targets?" />
+        <meta name="twitter:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "Performance Marketing",
-            "name": "AI Powered Ads & Performance Marketing Services",
-            "url": "https://www.thesuper30.ai/performance-marketing",
+            "serviceType": "Lead Generation",
+            "name": "Lead Generation Agency in Bangalore | B2B Leads That Convert",
+            "url": "https://www.thesuper30.ai/lead-generation-agency-bangalore",
             "provider": {
               "@type": "Organization",
               "name": "The Super 30",
@@ -179,7 +179,7 @@ const PerformanceMarketing = () => {
               "@type": "City",
               "name": "Bangalore"
             },
-            "description": "AI-powered performance marketing and PPC services in Bangalore delivering measurable ROI through data-driven ad strategies."
+            "description": "Trusted lead generation agency in Bangalore helping B2B businesses attract & convert high-value leads."
           })}
         </script>
       </Helmet>

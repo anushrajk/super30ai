@@ -33,31 +33,31 @@ const AiSeo = () => {
   return (
     <>
       <Helmet>
-        <title>AI SEO | Best SEO Services in Bangalore | The Super 30</title>
-        <meta name="description" content="Get expert AI SEO in Bangalore using technical SEO, on-page SEO, and off-page SEO services for better rankings and traffic." />
-        <meta name="keywords" content="AI SEO, best SEO services in bangalore, technical seo services, on page seo services, off page seo services, seo services in bangalore, seo agency in bangalore" />
-        <link rel="canonical" href="https://www.thesuper30.ai/ai-seo-agency-bangalore" />
-        <meta property="og:title" content="AI SEO | Best SEO Services in Bangalore | The Super 30" />
-        <meta property="og:description" content="Get expert AI SEO in Bangalore using technical SEO, on-page SEO, and off-page SEO services for better rankings and traffic." />
+        <title>SEO Company in Bangalore | #1 AI-Driven SEO Services Agency</title>
+        <meta name="description" content="Struggling to get organic leads? Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility & 300% traffic growth. Book a free call" />
+        <meta name="keywords" content="seo services in bangalore, seo agency in bangalore, seo company in bangalore, search engine optimization services in bangalore, search engine optimization company in bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-company-bangalore" />
+        <meta property="og:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
+        <meta property="og:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google & AI search results!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/ai-seo-agency-bangalore" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="AI SEO | Best SEO Services in Bangalore | The Super 30" />
-        <meta name="twitter:description" content="Get expert AI SEO in Bangalore using technical SEO, on-page SEO, and off-page SEO services for better rankings and traffic." />
+        <meta name="twitter:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
+        <meta name="twitter:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google & AI search results!" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
-            "serviceType": "AI SEO",
-            "name": "AI SEO | The Super 30",
-            "url": "https://www.thesuper30.ai/ai-seo-agency-bangalore",
+            "serviceType": "SEO Services",
+            "name": "SEO Company in Bangalore | #1 AI-Driven SEO Services Agency",
+            "url": "https://www.thesuper30.ai/seo-company-bangalore",
             "provider": {
               "@type": "Organization",
               "name": "The Super 30",
               "url": "https://www.thesuper30.ai/"
             },
             "areaServed": { "@type": "City", "name": "Bangalore" },
-            "description": "Expert AI SEO in Bangalore covering technical SEO, on-page SEO, and off-page SEO for improved rankings and qualified traffic."
+            "description": "Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility & 300% traffic growth."
           })}
         </script>
       </Helmet>
