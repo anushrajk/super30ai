@@ -44,6 +44,7 @@ const SocialMediaDesign = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Your Social Media Posts Should Stop the Scroll. Do They?" />
         <meta name="twitter:description" content="Scroll-stopping social creatives and post designs that make your brand impossible to ignore. Let's create!" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/social-media-design-agency-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

@@ -514,6 +514,7 @@ const Design = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="100+ Brands Designed. Yours Could Be Next in Line." />
         <meta name="twitter:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
       </Helmet>
       <Navbar />
       <main className="pt-16 md:pt-20">

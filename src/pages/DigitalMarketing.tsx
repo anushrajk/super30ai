@@ -43,6 +43,7 @@ const DigitalMarketing = () => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
         <meta name="twitter:description" content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

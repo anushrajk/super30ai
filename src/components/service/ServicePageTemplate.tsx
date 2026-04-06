@@ -358,6 +358,10 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         <meta property="og:description" content={config.seo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={config.seo.canonical} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={config.seo.title} />
+        <meta name="twitter:description" content={config.seo.description} />
+        <meta name="twitter:url" content={config.seo.canonical} />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
