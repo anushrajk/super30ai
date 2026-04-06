@@ -7,7 +7,7 @@ const services = [
     title: "AI SEO",
     description: "Our AI-powered SEO strategies go beyond traditional optimization. We use machine learning to analyze search patterns, predict algorithm changes, and create content that ranks. From technical audits to content strategy, we ensure your brand dominates organic search results.",
     features: ["AI-Powered Keyword Research", "Technical SEO Audits", "Content Strategy & Creation", "Link Building & Authority", "Local SEO & Google Business", "Schema Markup & Rich Snippets"],
-    href: "/ai-seo-agency-bangalore",
+    href: "/seo-company-bangalore",
     accent: "18 100% 48%",
   },
   {
@@ -15,7 +15,7 @@ const services = [
     title: "Lead Generation",
     description: "Maximize your ROAS with data-driven ad campaigns across Google, Meta, and LinkedIn. Our AI bid optimization ensures every rupee works harder, with real-time adjustments based on conversion data and audience behavior.",
     features: ["Google & Meta Ads Management", "AI Bid Optimization", "Conversion Rate Optimization", "Retargeting & Lookalike Audiences", "Landing Page A/B Testing", "Campaign Analytics & Reporting"],
-    href: "/performance-marketing",
+    href: "/lead-generation-agency-bangalore",
     accent: "217 91% 60%",
   },
   {
@@ -23,7 +23,7 @@ const services = [
     title: "Social Media Marketing",
     description: "Build a community, not just a following. We craft scroll-stopping content calendars, manage engagement, and create viral short-form videos that turn viewers into customers across Instagram, LinkedIn, and YouTube.",
     features: ["Content Calendar Planning", "Community Management", "Short-Form Video (Reels/Shorts)", "Influencer Collaborations", "Social Listening & Analytics", "Platform Growth Strategy"],
-    href: "/social-media-post-design",
+    href: "/social-media-design-agency-bangalore",
     accent: "292 84% 61%",
   },
   {
@@ -39,7 +39,7 @@ const services = [
     title: "Web Design & Development",
     description: "Your website is your 24/7 salesperson. We design high-converting landing pages and responsive websites that load fast, rank well, and guide visitors toward action — built with modern frameworks for performance.",
     features: ["Landing Page Design", "Responsive Web Development", "Speed & Core Web Vitals", "UI/UX Optimization", "CMS Integration & Setup", "E-commerce Development"],
-    href: "/web-design-development",
+    href: "/web-design-company-bangalore",
     accent: "168 76% 42%",
   },
   {

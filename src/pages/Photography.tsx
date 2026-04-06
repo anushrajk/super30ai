@@ -3,10 +3,10 @@ import { Camera, Image, Users, Target, TrendingUp, Zap, Shield, Eye, Clock, BarC
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Professional Photography Services in Bangalore | The Super 30",
-    description: "Professional photography services in Bangalore. Corporate, product, food, fashion, architectural, event & drone photography. Studio and on-location shoots.",
-    keywords: "photography services bangalore, corporate photography, product photography, food photography, event photography",
-    canonical: "https://www.thesuper30.ai/photography",
+    title: "Photography Services in Bangalore | Corporate & Brand Shoots",
+    description: "Make a strong first impression with our photography company in Bangalore. We handle corporate photography and brand shoots that tell your story. Let's Shoot!",
+    keywords: "photography services bangalore, photography company bangalore, professional photography in bangalore, corporate photography in bangalore, business photography in bangalore",
+    canonical: "https://www.thesuper30.ai/photography-services-bangalore",
     serviceType: "Photography Services",
   },
   hero: {

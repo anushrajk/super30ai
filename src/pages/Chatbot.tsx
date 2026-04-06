@@ -3,10 +3,10 @@ import { Bot, MessageSquare, Zap, Users, Shield, Target, BarChart3, Clock, Globe
 
 const config: ServicePageConfig = {
   seo: {
-    title: "AI Chatbot Development Services in Bangalore | The Super 30",
-    description: "Custom AI chatbot development in Bangalore. Intelligent chatbots for customer support, lead generation & sales automation. WhatsApp, website & social media bots.",
-    keywords: "chatbot development, AI chatbot, customer support chatbot, whatsapp bot, website chatbot, chatbot services bangalore",
-    canonical: "https://www.thesuper30.ai/chatbot",
+    title: "Smart AI Bot & Chatbot Development Company in Bangalore",
+    description: "Never miss a customer query. AI chatbot company in Bangalore builds RAG chatbots that handle conversations and drive lead generation 24/7. Build yours now!",
+    keywords: "chatbot companies in bangalore, chatbot development company in bangalore, chatbot development services in bangalore, chatbot development agency in bangalore, ai chatbot development company in bangalore",
+    canonical: "https://www.thesuper30.ai/chatbot-development-company-bangalore",
     serviceType: "AI Chatbot Development",
   },
   hero: {

@@ -108,7 +108,7 @@ export default function PerformancePlanner() {
 
   useEffect(() => {
     if (!formData) {
-      navigate("/performance-marketing");
+      navigate("/lead-generation-agency-bangalore");
       return;
     }
     runAnalysis();
@@ -422,7 +422,7 @@ export default function PerformancePlanner() {
             <h2 className="text-xl font-bold mb-2">Analysis Failed</h2>
             <p className="text-muted-foreground mb-4">{error}</p>
             <div className="flex gap-3 justify-center">
-              <Button variant="outline" onClick={() => navigate("/performance-marketing")}>
+              <Button variant="outline" onClick={() => navigate("/lead-generation-agency-bangalore")}>
                 Go Back
               </Button>
               <Button onClick={() => { setError(null); setIsLoading(true); runAnalysis(); }}>

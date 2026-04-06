@@ -3,10 +3,10 @@ import { Palette, PenTool, Layers, Eye, Zap, Heart, Shield, Award, Target, Users
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Logo Design Agency in Bangalore | Custom Logo Design | The Super 30",
-    description: "Professional logo design services in Bangalore. Custom, memorable logos that define your brand identity. From concept to final files — crafted by expert designers.",
-    keywords: "logo design bangalore, custom logo design, brand logo, logo designer, professional logo design, logo design agency",
-    canonical: "https://www.thesuper30.ai/logo-design",
+    title: "Logo Design Company in Bangalore | Build Your Brand Identity",
+    description: "We design logos that go beyond visuals. Our Bangalore logo design agency uses strategy, frameworks and brand insights to create meaningful identities.",
+    keywords: "logo design company bangalore, logo design agency in bangalore, logo design services bangalore, professional logo design company in bangalore, custom logo design company in bangalore",
+    canonical: "https://www.thesuper30.ai/logo-design-company-bangalore",
     serviceType: "Logo Design Services",
   },
   hero: {

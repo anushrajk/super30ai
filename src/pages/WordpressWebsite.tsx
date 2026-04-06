@@ -3,10 +3,10 @@ import { Globe, Layout, Shield, Gauge, Search, Zap, Users, Layers, Code, Smartph
 
 const config: ServicePageConfig = {
   seo: {
-    title: "WordPress Website Development in Bangalore | The Super 30",
-    description: "Professional WordPress website development in Bangalore. Custom themes, plugins, WooCommerce, speed optimization & ongoing maintenance. CMS you can manage yourself.",
-    keywords: "wordpress development bangalore, wordpress website, wordpress developer, custom wordpress theme, wordpress agency",
-    canonical: "https://www.thesuper30.ai/wordpress-website",
+    title: "WordPress Web Development Company in Bangalore",
+    description: "Build a powerful WordPress site with our WordPress development company in Bangalore. We create fast, flexible and easy to manage websites for businesses. Let's Build!",
+    keywords: "wordpress web development company in bangalore, wordpress development company bangalore, wordpress web design company in bangalore, wordpress website development services in bangalore, custom wordpress website design in bangalore",
+    canonical: "https://www.thesuper30.ai/wordpress-development-company-bangalore",
     serviceType: "WordPress Website Development",
   },
   hero: {

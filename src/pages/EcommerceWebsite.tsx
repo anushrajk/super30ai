@@ -3,10 +3,10 @@ import { ShoppingCart, Globe, CreditCard, Package, Smartphone, Gauge, Shield, Ta
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Ecommerce Website Development in Bangalore | The Super 30",
-    description: "Professional ecommerce website development in Bangalore. Shopify, WooCommerce & custom online stores. Payment integration, inventory management & SEO-optimized.",
-    keywords: "ecommerce website development, online store, shopify development, woocommerce, ecommerce website bangalore, online shop",
-    canonical: "https://www.thesuper30.ai/ecommerce-website",
+    title: "Ecommerce Website Development in Bangalore | Online Store",
+    description: "Launch or grow your online store with our ecommerce website development company in Bangalore. We build fast, secure and conversion-ready stores. Let's Build!",
+    keywords: "ecommerce website development company in bangalore, ecommerce web design company in bangalore, ecommerce website development services, ecommerce website development solutions, ecommerce account management services",
+    canonical: "https://www.thesuper30.ai/ecommerce-website-development-bangalore",
     serviceType: "Ecommerce Website Development",
   },
   hero: {

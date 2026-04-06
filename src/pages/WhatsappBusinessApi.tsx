@@ -3,10 +3,10 @@ import { MessageSquare, Bot, Users, Zap, Shield, Target, BarChart3, Clock, Send,
 
 const config: ServicePageConfig = {
   seo: {
-    title: "WhatsApp Business API Services in Bangalore | The Super 30",
-    description: "Official WhatsApp Business API setup and management in Bangalore. Automate customer communication, send bulk messages, build chatbots & drive sales via WhatsApp.",
-    keywords: "whatsapp business api, whatsapp marketing, whatsapp automation, whatsapp chatbot, bulk whatsapp messages bangalore",
-    canonical: "https://www.thesuper30.ai/whatsapp-business-api",
+    title: "WhatsApp Marketing in Bangalore | Bulk WhatsApp Services",
+    description: "Connect with customers on the app they use most. Our WhatsApp marketing company in Bangalore delivers bulk campaigns that drive results. Let's Connect!",
+    keywords: "whatsapp marketing bangalore, bulk whatsapp marketing in bangalore, whatsapp marketing company in bangalore, whatsapp marketing service in bangalore",
+    canonical: "https://www.thesuper30.ai/whatsapp-marketing-company-bangalore",
     serviceType: "WhatsApp Business API Services",
   },
   hero: {

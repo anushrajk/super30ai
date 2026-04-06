@@ -4,18 +4,18 @@ import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import super30FooterLogo from "@/assets/super30-footer-logo-white.png";
 
 const services = [
-  { name: "Digital Marketing", href: "/digital-marketing" },
-  { name: "AI SEO", href: "/ai-seo-agency-bangalore" },
-  { name: "Lead Generation", href: "/performance-marketing" },
-  { name: "Social Media", href: "/social-media-post-design" },
-  { name: "Design", href: "/design" },
-  { name: "Web Design", href: "/web-design-development" },
+  { name: "Digital Marketing", href: "/digital-marketing-agency-bangalore" },
+  { name: "AI SEO", href: "/seo-company-bangalore" },
+  { name: "Lead Generation", href: "/lead-generation-agency-bangalore" },
+  { name: "Social Media", href: "/social-media-design-agency-bangalore" },
+  { name: "Design", href: "/graphic-design-agency-bangalore" },
+  { name: "Web Design", href: "/web-design-company-bangalore" },
 ];
 
 const company = [
-  { name: "About / Team 30", href: "/seo-experts-bangalore" },
-  { name: "Our Work", href: "/seo-results-bangalore" },
-  { name: "Contact Our SEO Experts", href: "/seo-agency-near-me" },
+  { name: "About / Team 30", href: "/internet-marketing-agency" },
+  { name: "Our Work", href: "/our-work" },
+  { name: "Contact Us", href: "/contact-us" },
 ];
 
 const legal = [

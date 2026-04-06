@@ -3,10 +3,10 @@ import { Share2, TrendingUp, BarChart3, Users, Zap, Hash, Heart, MessageSquare, 
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Social Media Optimisation Services in Bangalore | The Super 30",
-    description: "Expert social media optimisation (SMO) services in Bangalore. Grow your organic reach, engagement & followers with data-driven social media strategies.",
-    keywords: "social media optimisation bangalore, SMO services, social media optimization, organic social media growth, social media strategy",
-    canonical: "https://www.thesuper30.ai/social-media-optimisation",
+    title: "Social Media Optimization Services in Bangalore | SMO",
+    description: "Build a stronger social presence with our SMO company in Bangalore. From reels and UGC to influencer marketing, we grow your brand organically. Let's Talk!",
+    keywords: "social media optimization company in bangalore, social media optimization services in bangalore, smo company in bangalore, influencer marketing services in bangalore, social content creation in bangalore",
+    canonical: "https://www.thesuper30.ai/social-media-optimization-services-bangalore",
     serviceType: "Social Media Optimisation",
   },
   hero: {

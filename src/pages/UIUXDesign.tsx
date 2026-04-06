@@ -3,10 +3,10 @@ import { MousePointerClick, Layout, Smartphone, Users, Zap, Eye, Layers, Figma, 
 
 const config: ServicePageConfig = {
   seo: {
-    title: "UI/UX Design Agency in Bangalore | The Super 30",
-    description: "Expert UI/UX design services in Bangalore. User-centered design that increases conversions, reduces bounce rates & delights users. From wireframes to pixel-perfect interfaces.",
-    keywords: "ui ux design agency bangalore, user experience design, user interface design, ux research, wireframing, prototyping, figma design",
-    canonical: "https://www.thesuper30.ai/ui-ux-design",
+    title: "UI UX Design Agency in Bangalore | Best UX Design Company",
+    description: "UI UX design company in Bangalore focused on creating experiences users love. We design simple and user friendly apps and websites that convert. Let's build!",
+    keywords: "ui ux design agency bangalore, ui ux design company in bangalore, ui ux design services in bangalore, ui ux company in bangalore, ui ux agency in bangalore",
+    canonical: "https://www.thesuper30.ai/ui-ux-design-agency-bangalore",
     serviceType: "UI/UX Design Services",
   },
   hero: {

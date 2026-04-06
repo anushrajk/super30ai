@@ -51,30 +51,30 @@ const About = () => {
   return (
     <>
       <Helmet>
-        <title>Meet Our Digital Marketing Experts | The Super 30</title>
-        <meta name="description" content="Get to know our team of digital marketing experts, SEO specialists, and PPC specialists who combine strategy, data, and creativity to help businesses achieve long-term growth." />
-        <meta name="keywords" content="digital marketing experts, digital marketing specialists, PPC specialists, seo expert in bangalore, digital marketing agency team" />
-        <link rel="canonical" href="https://www.thesuper30.ai/seo-experts-bangalore" />
+        <title>Internet Marketing Agency With 30+ Digital Marketing Experts</title>
+        <meta name="description" content="Meet 30+ experts at TheSuper30, a leading internet marketing company. SEO, design, content, ads and web under one roof. Trusted by 300+ businesses." />
+        <meta name="keywords" content="Internet marketing agency, Digital Marketing Experts, Internet marketing Company, Online marketing agency, Online marketing Company" />
+        <link rel="canonical" href="https://www.thesuper30.ai/internet-marketing-agency" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Meet Our Digital Marketing Experts | The Super 30" />
-        <meta property="og:description" content="Get to know our team of digital marketing experts who combine strategy, data, and creativity to help businesses achieve long-term growth." />
+        <meta property="og:title" content="Meet the 30+ Experts Behind Every Campaign We Run." />
+        <meta property="og:description" content="Real people. Real strategies. AI-powered results. See the team that scales brands & drives ROI." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/seo-experts-bangalore" />
+        <meta property="og:url" content="https://www.thesuper30.ai/internet-marketing-agency" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Meet Our Digital Marketing Experts | The Super 30" />
-        <meta name="twitter:description" content="Get to know our team of digital marketing experts who combine strategy, data, and creativity to help businesses achieve long-term growth." />
+        <meta name="twitter:title" content="Meet the 30+ Experts Behind Every Campaign We Run." />
+        <meta name="twitter:description" content="Real people. Real strategies. AI-powered results. See the team that scales brands & drives ROI." />
         
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "name": "Meet Our Digital Marketing Experts",
-            "url": "https://www.thesuper30.ai/seo-experts-bangalore",
-            "description": "Get to know our team of digital marketing experts who combine strategy, data, and creativity to help businesses achieve long-term growth."
+            "name": "Internet Marketing Agency With 30+ Digital Marketing Experts",
+            "url": "https://www.thesuper30.ai/internet-marketing-agency",
+            "description": "Meet 30+ experts at TheSuper30, a leading internet marketing company. SEO, design, content, ads and web under one roof."
           })}
         </script>
       </Helmet>
@@ -132,14 +132,14 @@ const About = () => {
 
               {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-3 justify-center pt-4">
-                <Link to="/seo-agency-near-me">
+                <Link to="/contact-us">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
                     <Users className="w-4 h-4 mr-2" />
                     Get in Touch
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link to="/seo-results-bangalore">
+                <Link to="/our-work">
                   <Button 
                     size="lg" 
                     variant="outline" 

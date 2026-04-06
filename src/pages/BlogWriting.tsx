@@ -3,10 +3,10 @@ import { BookOpen, PenTool, Search, TrendingUp, BarChart3, Users, Zap, Target, S
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Blog Writing Services in Bangalore | SEO Blog Content | The Super 30",
-    description: "Professional blog writing services in Bangalore. SEO-optimized blog posts that drive organic traffic, build authority & generate leads. Consistent, quality content.",
-    keywords: "blog writing services, SEO blog content, blog content agency, content writing bangalore, blog posts, content marketing",
-    canonical: "https://www.thesuper30.ai/blog-writing",
+    title: "Blog Writing Services in Bangalore | SEO Blogs That Work",
+    description: "Attract more visitors with blogs that rank. Our blog writing agency in Bangalore craft SEO articles that build authority and grow traffic. Let's Write!",
+    keywords: "blog writing services in bangalore, seo blog writing services in bangalore, article writing agency in bangalore, blog writing company in bangalore, blog writing agency in bangalore",
+    canonical: "https://www.thesuper30.ai/blog-writing-services-bangalore",
     serviceType: "Blog Writing Services",
   },
   hero: {

@@ -3,10 +3,10 @@ import { Video, Film, Users, Target, TrendingUp, Zap, Shield, Eye, Clock, BarCha
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Video Production Agency in Bangalore | The Super 30",
-    description: "Professional video production in Bangalore. Corporate videos, brand films, explainer videos, podcasts, training videos & more. End-to-end production.",
-    keywords: "video production bangalore, corporate video, brand film, explainer video, podcast production, training video",
-    canonical: "https://www.thesuper30.ai/video-production",
+    title: "Agency for Brand & Corporate Video Production in Bangalore",
+    description: "Affordable video production agency in Bangalore creating corporate explainer & marketing videos that connect with your audience through the right storytelling",
+    keywords: "video production agency in bangalore, video production company bangalore, video production services bangalore, video editing company in bangalore, media production companies in bangalore",
+    canonical: "https://www.thesuper30.ai/video-production-agency-bangalore",
     serviceType: "Video Production",
   },
   hero: {

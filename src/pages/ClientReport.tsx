@@ -292,7 +292,7 @@ const ClientReport = () => {
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-2">Report Not Found</h1>
           <p className="text-report-muted mb-4">The requested report does not exist.</p>
-          <button onClick={() => navigate("/seo-results-bangalore")} className="px-4 py-2 rounded-lg bg-brand text-white text-sm" style={{ background: "hsl(18,100%,48%)" }}>Back to Work</button>
+          <button onClick={() => navigate("/our-work")} className="px-4 py-2 rounded-lg bg-brand text-white text-sm" style={{ background: "hsl(18,100%,48%)" }}>Back to Work</button>
         </div>
       </div>
     );

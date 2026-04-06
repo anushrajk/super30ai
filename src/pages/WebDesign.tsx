@@ -50,21 +50,24 @@ const WebDesign = () => {
   return (
     <>
       <Helmet>
-        <title>Web Design & Development Services in Bangalore | The Super 30</title>
-        <meta name="description" content="Professional web design & development services in Bangalore. High-converting websites, landing pages, e-commerce stores & custom web applications. Get a free consultation." />
-        <meta name="keywords" content="web design bangalore, website development, landing page design, ecommerce development, web design agency, website design company bangalore" />
-        <link rel="canonical" href="https://www.thesuper30.ai/web-design-development" />
-        <meta property="og:title" content="Web Design & Development Services | The Super 30" />
-        <meta property="og:description" content="Professional web design & development. High-converting websites, landing pages & e-commerce stores." />
+        <title>Web Design Company in Bangalore | Custom Website Design</title>
+        <meta name="description" content="Looking for a website designing agency in Bangalore? We build custom, E-Commerce and responsive sites. 50+ delivered, 98% satisfaction. Let's Build!" />
+        <meta name="keywords" content="web design company in bangalore, website design services bangalore, website designing agency in bangalore, Custom website designing in bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/web-design-company-bangalore" />
+        <meta property="og:title" content="Your Website Should Work for You. Not Against You." />
+        <meta property="og:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/web-design-development" />
+        <meta property="og:url" content="https://www.thesuper30.ai/web-design-company-bangalore" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Your Website Should Work for You. Not Against You." />
+        <meta name="twitter:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Web Design & Development",
-            "name": "Web Design & Development Services | The Super 30",
-            "url": "https://www.thesuper30.ai/web-design-development",
+            "name": "Web Design Company in Bangalore | Custom Website Design",
+            "url": "https://www.thesuper30.ai/web-design-company-bangalore",
             "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" },
             "areaServed": { "@type": "City", "name": "Bangalore" }
           })}

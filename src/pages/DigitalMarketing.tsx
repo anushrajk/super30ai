@@ -32,24 +32,27 @@ const DigitalMarketing = () => {
   return (
     <>
       <Helmet>
-        <title>Digital Marketing Agency in Bangalore | The Super 30</title>
-        <meta name="description" content="The Super 30 is a full-service digital marketing agency in Bangalore offering AI SEO, performance marketing, social media, design, web design & growth strategies." />
-        <meta name="keywords" content="digital marketing agency bangalore, digital marketing services, online marketing agency, full service digital marketing, digital marketing company" />
-        <link rel="canonical" href="https://www.thesuper30.ai/digital-marketing" />
-        <meta property="og:title" content="Digital Marketing Agency in Bangalore | The Super 30" />
-        <meta property="og:description" content="Full-service digital marketing agency offering AI SEO, ads, social media, design, web design & growth strategies. Trusted by 300+ brands." />
+        <title>Digital Marketing Agency in Bangalore | 10x Your Growth</title>
+        <meta name="description" content="Scale your brand with leading digital marketing company in Bangalore. Our services deliver ROI-focused SEO, PPC & social media strategies. Get a free brand audit" />
+        <meta name="keywords" content="Digital Marketing Agency in Bangalore, Digital Marketing Company In Bangalore, Digital Marketing Services In Bangalore, Online marketing company in bangalore, Internet marketing services in bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
+        <meta property="og:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
+        <meta property="og:description" content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing" />
+        <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
+        <meta name="twitter:description" content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "Digital Marketing Services",
-            "name": "Digital Marketing Agency | The Super 30",
-            "url": "https://www.thesuper30.ai/digital-marketing",
+            "name": "Digital Marketing Agency in Bangalore | 10x Your Growth",
+            "url": "https://www.thesuper30.ai/digital-marketing-agency-bangalore",
             "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" },
             "areaServed": { "@type": "City", "name": "Bangalore" },
-            "description": "Full-service digital marketing agency in Bangalore offering AI-powered SEO, performance marketing, social media, design, web design & growth strategies."
+            "description": "Scale your brand with leading digital marketing company in Bangalore. ROI-focused SEO, PPC & social media strategies."
           })}
         </script>
       </Helmet>

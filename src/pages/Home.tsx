@@ -22,37 +22,37 @@ const services = [{
   icon: Bot,
   title: "AI-Powered SEO",
   features: ["AI Search Optimization", "LLM Visibility & Citations", "Technical SEO Audits", "Content Strategy & Creation", "Entity & Semantic SEO", "Local & International SEO"],
-  href: "/ai-seo-agency-bangalore",
+  href: "/seo-company-bangalore",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Target,
   title: "Lead Generation",
   features: ["Google Ads Management", "Meta & Instagram Ads", "LinkedIn B2B Campaigns", "YouTube Advertising", "Remarketing & Retargeting", "AI-Driven Bid Optimization"],
-  href: "/performance-marketing",
+  href: "/lead-generation-agency-bangalore",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Megaphone,
   title: "Digital Strategy & Growth",
   features: ["Content Marketing", "Email & Drip Campaigns", "Marketing Automation", "Conversion Rate Optimization", "Analytics & Reporting", "Full-Funnel Growth Strategy"],
-  href: "/digital-marketing",
+  href: "/digital-marketing-agency-bangalore",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Palette,
   title: "Social Media",
   features: ["Social Media Strategy", "Content Calendar & Posting", "Community Management", "Influencer Collaborations", "Ad Creative Design", "Reels & Short-Form Video"],
-  href: "/social-media-post-design",
+  href: "/social-media-design-agency-bangalore",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Sparkles,
   title: "Design",
   features: ["Brand Identity Design", "Marketing Collaterals", "Presentation Design", "Packaging Design", "Logo & Visual Identity", "Print & Digital Assets"],
-  href: "/design",
+  href: "/graphic-design-agency-bangalore",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }, {
   icon: Globe,
   title: "Web Design",
   features: ["High-Converting Landing Pages", "Corporate & Brand Websites", "E-commerce Development", "UI/UX Design", "CRO Optimization", "Speed & Core Web Vitals"],
-  href: "/web-design-development",
+  href: "/web-design-company-bangalore",
   color: "from-[hsl(var(--brand-orange))] to-[hsl(var(--brand-orange)/0.8)]",
 }];
 
@@ -77,24 +77,18 @@ const whyChooseUs = [{
 const Home = () => {
   return <>
     <Helmet>
-      <title>AI Digital Marketing Agency in Bangalore | The Super 30</title>
-      <meta name="description" content="The Super 30 is an AI-powered digital marketing agency in Bangalore. We offer SEO, performance marketing, social media, web design & full-funnel growth strategies." />
-      <meta name="keywords" content="digital marketing agency, digital marketing agency bangalore, AI digital marketing, performance marketing, SEO agency bangalore, social media marketing, web design bangalore" />
+      <title>Digital Marketing Agency & AI Growth Company | TheSuper30</title>
+      <meta name="description" content="A leading AI-driven digital marketing agency helping businesses achieve real ROI and scalable growth with proven strategies. Book a free consultation now." />
+      <meta name="keywords" content="Digital Marketing Agency, Digital Marketing Company, AI digital marketing agency, AI Digital Marketing Company, AI based digital marketing agency" />
       <link rel="canonical" href="https://www.thesuper30.ai/" />
-      <meta property="og:title" content="AI Digital Marketing Agency in Bangalore | The Super 30" />
-      <meta property="og:description" content="The Super 30 is an AI-powered digital marketing agency offering SEO, ads, social media, web design & growth strategies. Trusted by 300+ brands." />
+      <meta property="og:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
+      <meta property="og:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.thesuper30.ai/" />
-      <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
-      <meta property="og:site_name" content="The Super 30" />
-      <meta property="og:locale" content="en_IN" />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content="AI Digital Marketing Agency in Bangalore | The Super 30" />
-      <meta name="twitter:description" content="AI-powered digital marketing agency offering SEO, performance marketing, social media & web design. Trusted by 300+ brands across India." />
+      <meta name="twitter:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
+      <meta name="twitter:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta name="robots" content="index, follow" />
-      <meta name="author" content="The Super 30" />
-      <meta name="geo.region" content="IN-KA" />
-      <meta name="geo.placename" content="Bangalore" />
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
@@ -102,7 +96,7 @@ const Home = () => {
           "name": "The Super 30",
           "url": "https://www.thesuper30.ai/",
           "logo": "https://www.thesuper30.ai/logo.png",
-          "description": "AI-powered digital marketing agency in Bangalore offering SEO, performance marketing, social media, web design and growth strategies.",
+          "description": "A leading AI-driven digital marketing agency helping businesses achieve real ROI and scalable growth with proven strategies.",
           "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
           "sameAs": []
         })}
@@ -165,14 +159,14 @@ const Home = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start pt-2">
-                <Link to="/ai-seo-agency-bangalore">
+                <Link to="/seo-company-bangalore">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <Search className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                     Get a Free Strategy Call
                     <ArrowRight className="w-3.5 h-3.5 md:w-4 md:h-4 ml-2" />
                   </Button>
                 </Link>
-                <Link to="/performance-marketing">
+                <Link to="/lead-generation-agency-bangalore">
                   <Button size="lg" variant="outline" className="border-2 bg-background/95 hover:bg-muted/50 hover:-translate-y-0.5 transition-[transform,background-color] duration-200 w-full sm:w-auto text-sm md:text-base px-6 md:px-8">
                     <MousePointerClick className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                     Performance Marketing
