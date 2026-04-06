@@ -149,6 +149,7 @@ const injectMetadata = (html, metadata) => {
     `<meta name="twitter:card" content="${escapeHtml(metadata.twitterCard)}" />`,
     `<meta name="twitter:title" content="${escapeHtml(metadata.twitterTitle)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(metadata.twitterDescription)}" />`,
+    `<meta name="twitter:url" content="${escapeHtml(metadata.ogUrl)}" />`,
   ]
     .filter(Boolean)
     .join("\n    ");
