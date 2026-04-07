@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { lazy, useState, Suspense } from "react";
 import { LeadCaptureForm } from "@/components/landing/LeadCaptureForm";
-import { Award, ArrowRight, MessageCircle, LucideIcon } from "lucide-react";
+import { ArrowRight, MessageCircle, LucideIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+
+const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
 interface TrustSignal {
   icon: LucideIcon;
@@ -52,7 +53,6 @@ export const ServiceHeroSection = ({
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
-          {/* Left Column - Content */}
           <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
             <div className="inline-flex items-center gap-2 bg-accent border border-border px-4 py-1.5 rounded-full">
               <BadgeIcon className="w-4 h-4 text-brand" />
@@ -68,11 +68,10 @@ export const ServiceHeroSection = ({
               </p>
             </div>
 
-            {/* Trust Signals */}
             <div className="flex flex-col gap-3 py-2">
               {trustSignals.map((signal, index) => (
-                <div key={index} className="flex items-center gap-3 group cursor-default">
-                  <div className="w-8 h-8 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+                <div key={index} className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0">
                     <signal.icon className="w-4 h-4 text-white" />
                   </div>
                   <span className="font-medium text-foreground text-sm md:text-base">{signal.text}</span>
@@ -80,7 +79,6 @@ export const ServiceHeroSection = ({
               ))}
             </div>
 
-            {/* Enquire Now CTA */}
             <div className="pt-2">
               <Button
                 variant="outline-brand"
@@ -93,29 +91,28 @@ export const ServiceHeroSection = ({
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
-
           </div>
 
-          {/* Right Column - Form */}
           <div className="md:col-span-1 lg:col-span-5">
-            <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
-              <LeadCaptureForm 
-                onSubmit={onSubmit} 
-                loading={loading}
-                formTitle={formTitle}
-                formDescription={formDescription}
-                formBadgeText={formBadgeText}
-                formButtonText={formButtonText}
-                formId={formId}
-                formName={formName}
-              />
-            </div>
-
+            <LeadCaptureForm 
+              onSubmit={onSubmit} 
+              loading={loading}
+              formTitle={formTitle}
+              formDescription={formDescription}
+              formBadgeText={formBadgeText}
+              formButtonText={formButtonText}
+              formId={formId}
+              formName={formName}
+            />
           </div>
         </div>
       </div>
 
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      {showEnquiryPopup && (
+        <Suspense fallback={null}>
+          <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+        </Suspense>
+      )}
     </section>
   );
 };

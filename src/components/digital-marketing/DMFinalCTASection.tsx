@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { lazy, useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+
+const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
 export const DMFinalCTASection = () => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
@@ -24,7 +25,11 @@ export const DMFinalCTASection = () => {
           </Button>
         </div>
       </div>
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      {showEnquiryPopup && (
+        <Suspense fallback={null}>
+          <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+        </Suspense>
+      )}
     </section>
   );
 };

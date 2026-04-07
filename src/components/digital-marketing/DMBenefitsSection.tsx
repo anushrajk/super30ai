@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { lazy, useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle, CheckCircle2 } from "lucide-react";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+import { ArrowRight, MessageCircle } from "lucide-react";
+
+const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
 const benefits = [
   { title: "Organic Visibility", description: "Dominate Google rankings with proven SEO — a core strength of our digital marketing agency in Bangalore.", features: ["Technical SEO", "Content strategy", "Link building"] },
@@ -41,7 +42,7 @@ export const DMBenefitsSection = () => {
               <ul className="space-y-1.5">
                 {benefit.features.map((feature, fi) => (
                   <li key={fi} className="flex items-center gap-2 text-xs sm:text-sm text-foreground font-medium">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-brand flex-shrink-0" />
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0" />
                     {feature}
                   </li>
                 ))}
@@ -59,7 +60,11 @@ export const DMBenefitsSection = () => {
           </Button>
         </div>
       </div>
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      {showEnquiryPopup && (
+        <Suspense fallback={null}>
+          <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+        </Suspense>
+      )}
     </section>
   );
 };
