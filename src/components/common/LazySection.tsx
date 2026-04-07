@@ -9,7 +9,7 @@ interface LazySectionProps {
 
 /**
  * Renders children only when the section is near the viewport.
- * Smooth fade-in to prevent visual glitching on scroll.
+ * Keeps placeholder space stable so lazy-loaded sections don't flicker or jump.
  */
 export const LazySection = ({
   children,
@@ -18,7 +18,8 @@ export const LazySection = ({
   minHeight = "200px",
 }: LazySectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
+  const [shouldRender, setShouldRender] = useState(false);
+  const [isEntered, setIsEntered] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -27,7 +28,7 @@ export const LazySection = ({
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setShouldRender(true);
           observer.disconnect();
         }
       },
@@ -38,17 +39,39 @@ export const LazySection = ({
     return () => observer.disconnect();
   }, [rootMargin]);
 
+  useEffect(() => {
+    if (!shouldRender) return;
+
+    const frameId = window.requestAnimationFrame(() => {
+      setIsEntered(true);
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
+  }, [shouldRender]);
+
   return (
     <div
       ref={ref}
       className={className}
       style={{
-        minHeight: !isVisible ? minHeight : undefined,
-        opacity: isVisible ? 1 : 0,
-        transition: "opacity 0.3s ease",
+        contentVisibility: "auto",
+        containIntrinsicSize: `1px ${minHeight}`,
       }}
     >
-      {isVisible ? children : null}
+      {shouldRender ? (
+        <div
+          style={{
+            opacity: isEntered ? 1 : 0,
+            transform: isEntered ? "translate3d(0, 0, 0)" : "translate3d(0, 12px, 0)",
+            transition: "opacity 180ms ease-out, transform 180ms ease-out",
+            willChange: "opacity, transform",
+          }}
+        >
+          {children}
+        </div>
+      ) : (
+        <div aria-hidden style={{ minHeight }} />
+      )}
     </div>
   );
 };

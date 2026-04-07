@@ -1,76 +1,137 @@
 import { Helmet } from "react-helmet-async";
-import { Navbar } from "@/components/Navbar";
 import { lazy, Suspense } from "react";
-import { LazySection } from "@/components/common/LazySection";
-import { useLeadSubmit } from "@/hooks/useLeadSubmit";
-import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { Shield, BarChart3, Users, Zap, Megaphone } from "lucide-react";
+import { Navbar } from "@/components/Navbar";
+import { LazySection } from "@/components/common/LazySection";
+import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+import { DMSocialProofSection } from "@/components/digital-marketing/DMSocialProofSection";
 
-// Lazy load ALL below-fold sections
-const Footer = lazy(() => import("@/components/landing/Footer").then(m => ({ default: m.Footer })));
-const StickyCTA = lazy(() => import("@/components/landing/StickyCTA").then(m => ({ default: m.StickyCTA })));
-const ClientLogosSection = lazy(() => import("@/components/landing/ClientLogosSection").then(m => ({ default: m.ClientLogosSection })));
-const DMSocialProofSection = lazy(() => import("@/components/digital-marketing/DMSocialProofSection").then(m => ({ default: m.DMSocialProofSection })));
-const DMProblemSection = lazy(() => import("@/components/digital-marketing/DMProblemSection").then(m => ({ default: m.DMProblemSection })));
-const DMComparisonSection = lazy(() => import("@/components/digital-marketing/DMComparisonSection").then(m => ({ default: m.DMComparisonSection })));
-const ServicesBentoGrid = lazy(() => import("@/components/digital-marketing/ServicesBentoGrid").then(m => ({ default: m.ServicesBentoGrid })));
-const DMBenefitsSection = lazy(() => import("@/components/digital-marketing/DMBenefitsSection").then(m => ({ default: m.DMBenefitsSection })));
-const ServicesDetailSection = lazy(() => import("@/components/digital-marketing/ServicesDetailSection").then(m => ({ default: m.ServicesDetailSection })));
-const DMProcessSection = lazy(() => import("@/components/digital-marketing/DMProcessSection").then(m => ({ default: m.DMProcessSection })));
-const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then(m => ({ default: m.DMFinalCTASection })));
-const DMAISections = lazy(() => import("@/components/digital-marketing/DMAISections").then(m => ({ default: m.DMAISections })));
-const DMRelevanceSection = lazy(() => import("@/components/digital-marketing/DMRelevanceSection").then(m => ({ default: m.DMRelevanceSection })));
-const DMWhyBangaloreSection = lazy(() => import("@/components/digital-marketing/DMWhyBangaloreSection").then(m => ({ default: m.DMWhyBangaloreSection })));
-const DMContentSection = lazy(() => import("@/components/digital-marketing/DMContentSection").then(m => ({ default: m.DMContentSection })));
-const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then(m => ({ default: m.DMFAQSection })));
+const Footer = lazy(() => import("@/components/landing/Footer").then((m) => ({ default: m.Footer })));
+const StickyCTA = lazy(() => import("@/components/landing/StickyCTA").then((m) => ({ default: m.StickyCTA })));
+const DMProblemSection = lazy(() => import("@/components/digital-marketing/DMProblemSection").then((m) => ({ default: m.DMProblemSection })));
+const DMComparisonSection = lazy(() => import("@/components/digital-marketing/DMComparisonSection").then((m) => ({ default: m.DMComparisonSection })));
+const ServicesBentoGrid = lazy(() => import("@/components/digital-marketing/ServicesBentoGrid").then((m) => ({ default: m.ServicesBentoGrid })));
+const DMBenefitsSection = lazy(() => import("@/components/digital-marketing/DMBenefitsSection").then((m) => ({ default: m.DMBenefitsSection })));
+const ServicesDetailSection = lazy(() => import("@/components/digital-marketing/ServicesDetailSection").then((m) => ({ default: m.ServicesDetailSection })));
+const DMProcessSection = lazy(() => import("@/components/digital-marketing/DMProcessSection").then((m) => ({ default: m.DMProcessSection })));
+const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then((m) => ({ default: m.DMFinalCTASection })));
+const DMAISections = lazy(() => import("@/components/digital-marketing/DMAISections").then((m) => ({ default: m.DMAISections })));
+const DMRelevanceSection = lazy(() => import("@/components/digital-marketing/DMRelevanceSection").then((m) => ({ default: m.DMRelevanceSection })));
+const DMWhyBangaloreSection = lazy(() => import("@/components/digital-marketing/DMWhyBangaloreSection").then((m) => ({ default: m.DMWhyBangaloreSection })));
+const DMContentSection = lazy(() => import("@/components/digital-marketing/DMContentSection").then((m) => ({ default: m.DMContentSection })));
+const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
+
+const lazySectionRootMargin = "1000px 0px";
+const sectionFallback = (minHeight: string) => <div aria-hidden style={{ minHeight }} />;
 
 const DigitalMarketing = () => {
   const { loading, handleFormSubmit } = useLeadSubmit({
-    source: 'digital_marketing',
-    formId: 'digital-marketing-form',
-    formName: 'Digital Marketing Consultation',
+    source: "digital_marketing",
+    formId: "digital-marketing-form",
+    formName: "Digital Marketing Consultation",
   });
 
   return (
     <>
       <Helmet>
         <title>Digital Marketing Agency in Bangalore | 10x Your Growth</title>
-        <meta name="description" content="Scale your brand with the leading digital marketing agency in Bangalore. Our 30+ experts deliver ROI-focused SEO, PPC, social media & web design services. Get a free brand audit today." />
-        <meta name="keywords" content="digital marketing agency in bangalore, digital marketing company in bangalore, digital marketing services in bangalore, online marketing company in bangalore, internet marketing services in bangalore, best digital marketing agency bangalore, top digital marketing company bangalore" />
+        <meta
+          name="description"
+          content="Scale your brand with the leading digital marketing agency in Bangalore. Our 30+ experts deliver ROI-focused SEO, PPC, social media & web design services. Get a free brand audit today."
+        />
+        <meta
+          name="keywords"
+          content="digital marketing agency in bangalore, digital marketing company in bangalore, digital marketing services in bangalore, online marketing company in bangalore, internet marketing services in bangalore, best digital marketing agency bangalore, top digital marketing company bangalore"
+        />
         <link rel="canonical" href="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <meta property="og:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
-        <meta property="og:description" content="Most agencies promise results. We deliver 10x growth with proven strategies. Let's talk today!" />
+        <meta
+          property="og:description"
+          content="Most agencies promise results. We deliver 10x growth with proven strategies. Let's talk today!"
+        />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
-        <meta name="twitter:description" content="Most agencies promise results. We deliver 10x growth with proven strategies. Let's talk today!" />
+        <meta
+          name="twitter:description"
+          content="Most agencies promise results. We deliver 10x growth with proven strategies. Let's talk today!"
+        />
         <meta name="twitter:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfessionalService",
-            "name": "The Super 30 — Digital Marketing Agency in Bangalore",
-            "url": "https://www.thesuper30.ai/digital-marketing-agency-bangalore",
-            "description": "The Super 30 is a leading digital marketing agency in Bangalore offering SEO, PPC, social media marketing, web design, and content marketing services for businesses of all sizes.",
-            "telephone": "+91-9876543210",
-            "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressRegion": "Karnataka", "addressCountry": "IN" },
-            "areaServed": [{ "@type": "City", "name": "Bangalore" }, { "@type": "State", "name": "Karnataka" }, { "@type": "Country", "name": "India" }],
-            "serviceType": ["Digital Marketing", "Search Engine Optimization", "Pay Per Click Advertising", "Social Media Marketing", "Web Design and Development", "Content Marketing"],
-            "priceRange": "₹₹",
-            "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "127", "bestRating": "5" },
-            "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" }
+            name: "The Super 30 — Digital Marketing Agency in Bangalore",
+            url: "https://www.thesuper30.ai/digital-marketing-agency-bangalore",
+            description:
+              "The Super 30 is a leading digital marketing agency in Bangalore offering SEO, PPC, social media marketing, web design, and content marketing services for businesses of all sizes.",
+            telephone: "+91-9876543210",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Bangalore",
+              addressRegion: "Karnataka",
+              addressCountry: "IN",
+            },
+            areaServed: [
+              { "@type": "City", name: "Bangalore" },
+              { "@type": "State", name: "Karnataka" },
+              { "@type": "Country", name: "India" },
+            ],
+            serviceType: [
+              "Digital Marketing",
+              "Search Engine Optimization",
+              "Pay Per Click Advertising",
+              "Social Media Marketing",
+              "Web Design and Development",
+              "Content Marketing",
+            ],
+            priceRange: "₹₹",
+            aggregateRating: {
+              "@type": "AggregateRating",
+              ratingValue: "4.9",
+              reviewCount: "127",
+              bestRating: "5",
+            },
+            provider: {
+              "@type": "Organization",
+              name: "The Super 30",
+              url: "https://www.thesuper30.ai/",
+            },
           })}
         </script>
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "FAQPage",
-            "mainEntity": [
-              { "@type": "Question", "name": "What makes The Super 30 the best digital marketing agency in Bangalore?", "acceptedAnswer": { "@type": "Answer", "text": "The Super 30 combines 30+ in-house marketing experts with data-driven tools to deliver measurable results across SEO, PPC, social media, and web design. We focus on revenue attribution, not vanity metrics." } },
-              { "@type": "Question", "name": "How much does a digital marketing agency in Bangalore charge?", "acceptedAnswer": { "@type": "Answer", "text": "Digital marketing services in Bangalore typically range from ₹25,000 to ₹5,00,000 per month depending on scope, channels, and business goals." } },
-              { "@type": "Question", "name": "Which industries does your digital marketing agency in Bangalore serve?", "acceptedAnswer": { "@type": "Answer", "text": "We serve Real Estate, Education, Healthcare, E-commerce, SaaS, Professional Services, Hospitality, Legal, and Staffing industries." } }
-            ]
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: "What makes The Super 30 the best digital marketing agency in Bangalore?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "The Super 30 combines 30+ in-house marketing experts with data-driven tools to deliver measurable results across SEO, PPC, social media, and web design. We focus on revenue attribution, not vanity metrics.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "How much does a digital marketing agency in Bangalore charge?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "Digital marketing services in Bangalore typically range from ₹25,000 to ₹5,00,000 per month depending on scope, channels, and business goals.",
+                },
+              },
+              {
+                "@type": "Question",
+                name: "Which industries does your digital marketing agency in Bangalore serve?",
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: "We serve Real Estate, Education, Healthcare, E-commerce, SaaS, Professional Services, Hospitality, Legal, and Staffing industries.",
+                },
+              },
+            ],
           })}
         </script>
       </Helmet>
@@ -115,29 +176,94 @@ const DigitalMarketing = () => {
           />
         </div>
 
-        <Suspense fallback={null}>
-          <LazySection minHeight="80px"><ClientLogosSection /></LazySection>
-          <LazySection minHeight="60px"><DMSocialProofSection /></LazySection>
-          <LazySection minHeight="200px"><DMProblemSection /></LazySection>
-          <LazySection minHeight="200px"><DMComparisonSection /></LazySection>
-          <LazySection minHeight="200px"><ServicesBentoGrid /></LazySection>
-          <LazySection minHeight="200px"><DMBenefitsSection /></LazySection>
-          <LazySection minHeight="200px"><ServicesDetailSection /></LazySection>
-          <LazySection minHeight="200px"><DMProcessSection /></LazySection>
-          <LazySection minHeight="100px"><DMFinalCTASection /></LazySection>
-          <LazySection minHeight="200px"><DMAISections /></LazySection>
-          <LazySection minHeight="200px"><DMRelevanceSection /></LazySection>
-          <LazySection minHeight="200px"><DMWhyBangaloreSection /></LazySection>
-          <LazySection minHeight="200px"><DMContentSection /></LazySection>
-          <LazySection minHeight="100px"><DMFinalCTASection /></LazySection>
-          <LazySection minHeight="200px"><DMFAQSection /></LazySection>
-        </Suspense>
+        <ClientLogosSection />
+        <DMSocialProofSection />
 
-        <Suspense fallback={null}><Footer /></Suspense>
+        <LazySection minHeight="420px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("420px")}>
+            <DMProblemSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("520px")}>
+            <DMComparisonSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("520px")}>
+            <ServicesBentoGrid />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="760px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("760px")}>
+            <DMBenefitsSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="900px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("900px")}>
+            <ServicesDetailSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="420px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("420px")}>
+            <DMProcessSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="220px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("220px")}>
+            <DMFinalCTASection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="560px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("560px")}>
+            <DMAISections />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("520px")}>
+            <DMRelevanceSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("520px")}>
+            <DMWhyBangaloreSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="620px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("620px")}>
+            <DMContentSection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="220px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("220px")}>
+            <DMFinalCTASection />
+          </Suspense>
+        </LazySection>
+
+        <LazySection minHeight="500px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("500px")}>
+            <DMFAQSection />
+          </Suspense>
+        </LazySection>
+
+        <Suspense fallback={sectionFallback("220px")}>
+          <Footer />
+        </Suspense>
       </main>
 
       <Suspense fallback={null}>
-        <StickyCTA onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} />
+        <StickyCTA onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} />
       </Suspense>
     </>
   );
