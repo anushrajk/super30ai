@@ -216,9 +216,12 @@ const App = () => (
                 <Route path="/video-production" element={<Navigate to="/video-production-agency-bangalore" replace />} />
                 <Route path="/photography" element={<Navigate to="/photography-services-bangalore" replace />} />
                 <Route path="/web-design-development" element={<Navigate to="/web-design-company-bangalore" replace />} />
-                <Route path="/ecommerce-website" element={<Navigate to="/ecommerce-website-development-bangalore" replace />} />
-                <Route path="/wordpress-website" element={<Navigate to="/wordpress-development-company-bangalore" replace />} />
-                <Route path="/website-maintenance" element={<Navigate to="/website-maintenance-services-bangalore" replace />} />
+                <Route path="/ecommerce-website" element={<Navigate to="/ecommerce-website-development-company-bangalore" replace />} />
+                <Route path="/ecommerce-website-development-bangalore" element={<Navigate to="/ecommerce-website-development-company-bangalore" replace />} />
+                <Route path="/wordpress-website" element={<Navigate to="/wordpress-website-development-company-bangalore" replace />} />
+                <Route path="/wordpress-development-company-bangalore" element={<Navigate to="/wordpress-website-development-company-bangalore" replace />} />
+                <Route path="/website-maintenance" element={<Navigate to="/website-maintenance-company-bangalore" replace />} />
+                <Route path="/website-maintenance-services-bangalore" element={<Navigate to="/website-maintenance-company-bangalore" replace />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
