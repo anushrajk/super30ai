@@ -358,13 +358,13 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         <meta name="description" content={config.seo.description} />
         <meta name="keywords" content={config.seo.keywords} />
         <link rel="canonical" href={config.seo.canonical} />
-        <meta property="og:title" content={config.seo.title} />
-        <meta property="og:description" content={config.seo.description} />
+        <meta property="og:title" content={config.seo.ogTitle || config.seo.title} />
+        <meta property="og:description" content={config.seo.ogDescription || config.seo.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={config.seo.canonical} />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={config.seo.title} />
-        <meta name="twitter:description" content={config.seo.description} />
+        <meta name="twitter:title" content={config.seo.twitterTitle || config.seo.ogTitle || config.seo.title} />
+        <meta name="twitter:description" content={config.seo.twitterDescription || config.seo.ogDescription || config.seo.description} />
         <meta name="twitter:url" content={config.seo.canonical} />
         <script type="application/ld+json">
           {JSON.stringify({
