@@ -4,7 +4,7 @@ import { Target, TrendingUp, BarChart3, DollarSign, Eye, Zap, Users, Shield, Sea
 const config: ServicePageConfig = {
   seo: {
     title: "Google Ads Agency in Bangalore | PPC Service | Upto 10X ROAS",
-    description: "High intent leads with optimized budget. Google Ads agency in Bangalore running targeted PPC campaigns with quality traffic, high conversions & better ROAS",
+    description: "High intent leads with optimized budget. PPC company in Bangalore running targeted PPC campaigns with quality traffic, high conversions & better ROAS",
     keywords: "google ads agency in bangalore, ppc services in bangalore, ppc company in bangalore, ppc agency in bangalore, google adwords management agency in bangalore",
     canonical: "https://www.thesuper30.ai/google-ads-agency-bangalore",
     serviceType: "Google Ads Management",
