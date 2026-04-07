@@ -15,4 +15,17 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    target: "es2020",
+    cssMinify: "lightningcss",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "react-vendor": ["react", "react-dom"],
+          "router": ["react-router-dom"],
+          "ui-core": ["@radix-ui/react-dialog", "@radix-ui/react-select", "@radix-ui/react-accordion"],
+        },
+      },
+    },
+  },
 }));

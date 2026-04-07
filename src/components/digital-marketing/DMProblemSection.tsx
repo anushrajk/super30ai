@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { lazy, useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
+
+const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
 const problems = [
   { title: "Disconnected Marketing Channels", description: "Your SEO, ads, social media, and email are managed by different teams with no unified strategy — leading to missed opportunities and wasted budget." },
@@ -46,7 +47,11 @@ export const DMProblemSection = () => {
           </Button>
         </div>
       </div>
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+      {showEnquiryPopup && (
+        <Suspense fallback={null}>
+          <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
+        </Suspense>
+      )}
     </section>
   );
 };

@@ -9,12 +9,12 @@ interface LazySectionProps {
 
 /**
  * Renders children only when the section is near the viewport.
- * Includes a smooth fade-in transition to prevent content popping.
+ * Uses content-visibility: auto for massive rendering performance gains.
  */
 export const LazySection = ({
   children,
   className,
-  rootMargin = "400px",
+  rootMargin = "200px",
   minHeight = "200px",
 }: LazySectionProps) => {
   const ref = useRef<HTMLDivElement>(null);
@@ -44,8 +44,8 @@ export const LazySection = ({
       className={className}
       style={{
         minHeight: !isVisible ? minHeight : undefined,
-        opacity: isVisible ? 1 : 0,
-        transition: "opacity 0.4s ease-in-out",
+        contentVisibility: !isVisible ? "auto" : undefined,
+        containIntrinsicSize: !isVisible ? `0 ${minHeight}` : undefined,
       }}
     >
       {isVisible ? children : null}
