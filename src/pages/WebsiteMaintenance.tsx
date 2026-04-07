@@ -6,7 +6,7 @@ const config: ServicePageConfig = {
     title: "AMC & Website Maintenance Company in Bangalore",
     description: "Keep your website secure, fast and always online with 99.9% uptime. Website maintenance in Bangalore handles updates, bug fixes, performance and security",
     keywords: "website maintenance company in bangalore, website maintenance services bangalore, website maintenance in bangalore, website support services in bangalore, website annual maintenance contract, website maintenance packages",
-    canonical: "https://www.thesuper30.ai/website-maintenance-services-bangalore",
+    canonical: "https://www.thesuper30.ai/website-maintenance-company-bangalore",
     serviceType: "Website Maintenance Services",
     ogTitle: "A Website That Goes Down Is a Business That Loses Money.",
     ogDescription: "Updates, bug fixes and checks that keep your website secure and performing at its best. Let's talk!",
