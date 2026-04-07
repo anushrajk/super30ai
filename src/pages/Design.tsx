@@ -504,8 +504,8 @@ const Design = () => {
     <>
       <Helmet>
         <title>Design Agency in Bangalore | Graphic Design Services</title>
-        <meta name="description" content="Give your brand a bold identity with a creative design agency in Bangalore. Expert graphic design services. 100+ brands, 98% satisfaction. Let's Connect!" />
-        <meta name="keywords" content="design agency in bangalore, design company in bangalore, graphic design agency in bangalore, graphic design company in bangalore, creative design agency in bangalore" />
+        <meta name="description" content="Give your brand a bold identity with a creative design company in Bangalore. Expert graphic design services. 100+ brands, 98% satisfaction. Let's Connect!" />
+        <meta name="keywords" content="design agency in bangalore, design company in bangalore, graphic design services in bangalore, graphic design company in bangalore, creative design agency in bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
         <meta property="og:title" content="100+ Brands Designed. Yours Could Be Next in Line." />
         <meta property="og:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
