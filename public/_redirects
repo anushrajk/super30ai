@@ -12,7 +12,8 @@
 /ui-ux-design /ui-ux-design-agency-bangalore 301
 /logo-design /logo-design-company-bangalore 301
 /brand-kit /branding-agency-bangalore 301
-/website-content /seo-content-writing-services-bangalore 301
+/website-content /seo-content-writing-company-bangalore 301
+/seo-content-writing-services-bangalore /seo-content-writing-company-bangalore 301
 /blog-writing /blog-writing-services-bangalore 301
 /script-writing /script-writing-agency-bangalore 301
 /guest-posting /guest-posting-agency-bangalore 301
@@ -24,8 +25,11 @@
 /video-production /video-production-agency-bangalore 301
 /photography /photography-services-bangalore 301
 /web-design-development /web-design-company-bangalore 301
-/ecommerce-website /ecommerce-website-development-bangalore 301
-/wordpress-website /wordpress-development-company-bangalore 301
-/website-maintenance /website-maintenance-services-bangalore 301
+/ecommerce-website /ecommerce-website-development-company-bangalore 301
+/ecommerce-website-development-bangalore /ecommerce-website-development-company-bangalore 301
+/wordpress-website /wordpress-website-development-company-bangalore 301
+/wordpress-development-company-bangalore /wordpress-website-development-company-bangalore 301
+/website-maintenance /website-maintenance-company-bangalore 301
+/website-maintenance-services-bangalore /website-maintenance-company-bangalore 301
 
 /* /index.html 200

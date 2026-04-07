@@ -147,7 +147,7 @@ const PerformanceMarketing = () => {
     <>
       <Helmet>
         <title>Lead Generation Agency in Bangalore | B2B Leads That Convert</title>
-        <meta name="description" content="Trusted lead generation agency in Bangalore helping B2B businesses attract & convert high-value leads. Real pipeline growth & measurable results. Let's Talk!" />
+        <meta name="description" content="Trusted lead generation company in Bangalore helping B2B businesses attract & convert high-value leads. Real pipeline growth & measurable results. Let's Talk!" />
         <meta name="keywords" content="lead generation agency in bangalore, b2b lead generation companies in bangalore, lead generation services in bangalore, lead generation company in bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
         

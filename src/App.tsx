@@ -162,7 +162,7 @@ const App = () => (
                 <Route path="/branding-agency-bangalore" element={<BrandKit />} />
 
                 {/* Content */}
-                <Route path="/seo-content-writing-services-bangalore" element={<WebsiteContent />} />
+                <Route path="/seo-content-writing-company-bangalore" element={<WebsiteContent />} />
                 <Route path="/blog-writing-services-bangalore" element={<BlogWriting />} />
                 <Route path="/script-writing-agency-bangalore" element={<ScriptWriting />} />
                 <Route path="/guest-posting-agency-bangalore" element={<GuestPosting />} />
@@ -180,9 +180,9 @@ const App = () => (
 
                 {/* Website */}
                 <Route path="/web-design-company-bangalore" element={<WebDesign />} />
-                <Route path="/ecommerce-website-development-bangalore" element={<EcommerceWebsite />} />
-                <Route path="/wordpress-development-company-bangalore" element={<WordpressWebsite />} />
-                <Route path="/website-maintenance-services-bangalore" element={<WebsiteMaintenance />} />
+                <Route path="/ecommerce-website-development-company-bangalore" element={<EcommerceWebsite />} />
+                <Route path="/wordpress-website-development-company-bangalore" element={<WordpressWebsite />} />
+                <Route path="/website-maintenance-company-bangalore" element={<WebsiteMaintenance />} />
 
                 {/* Legal */}
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -203,7 +203,8 @@ const App = () => (
                 <Route path="/ui-ux-design" element={<Navigate to="/ui-ux-design-agency-bangalore" replace />} />
                 <Route path="/logo-design" element={<Navigate to="/logo-design-company-bangalore" replace />} />
                 <Route path="/brand-kit" element={<Navigate to="/branding-agency-bangalore" replace />} />
-                <Route path="/website-content" element={<Navigate to="/seo-content-writing-services-bangalore" replace />} />
+                <Route path="/website-content" element={<Navigate to="/seo-content-writing-company-bangalore" replace />} />
+                <Route path="/seo-content-writing-services-bangalore" element={<Navigate to="/seo-content-writing-company-bangalore" replace />} />
                 <Route path="/blog-writing" element={<Navigate to="/blog-writing-services-bangalore" replace />} />
                 <Route path="/script-writing" element={<Navigate to="/script-writing-agency-bangalore" replace />} />
                 <Route path="/guest-posting" element={<Navigate to="/guest-posting-agency-bangalore" replace />} />
@@ -215,9 +216,12 @@ const App = () => (
                 <Route path="/video-production" element={<Navigate to="/video-production-agency-bangalore" replace />} />
                 <Route path="/photography" element={<Navigate to="/photography-services-bangalore" replace />} />
                 <Route path="/web-design-development" element={<Navigate to="/web-design-company-bangalore" replace />} />
-                <Route path="/ecommerce-website" element={<Navigate to="/ecommerce-website-development-bangalore" replace />} />
-                <Route path="/wordpress-website" element={<Navigate to="/wordpress-development-company-bangalore" replace />} />
-                <Route path="/website-maintenance" element={<Navigate to="/website-maintenance-services-bangalore" replace />} />
+                <Route path="/ecommerce-website" element={<Navigate to="/ecommerce-website-development-company-bangalore" replace />} />
+                <Route path="/ecommerce-website-development-bangalore" element={<Navigate to="/ecommerce-website-development-company-bangalore" replace />} />
+                <Route path="/wordpress-website" element={<Navigate to="/wordpress-website-development-company-bangalore" replace />} />
+                <Route path="/wordpress-development-company-bangalore" element={<Navigate to="/wordpress-website-development-company-bangalore" replace />} />
+                <Route path="/website-maintenance" element={<Navigate to="/website-maintenance-company-bangalore" replace />} />
+                <Route path="/website-maintenance-services-bangalore" element={<Navigate to="/website-maintenance-company-bangalore" replace />} />
 
                 <Route path="*" element={<NotFound />} />
               </Routes>

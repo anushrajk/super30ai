@@ -3,10 +3,10 @@ import { FileText, PenTool, Target, Search, BarChart3, Users, Zap, Eye, Shield, 
 
 const config: ServicePageConfig = {
   seo: {
-    title: "SEO Content Writing Services in Bangalore | Copy That Ranks",
+    title: "SEO Content Writing company in Bangalore | Copy That Ranks",
     description: "SEO Optimize semantic website content that ranks & converts. Structured SEO copywriting services in Bangalore deliver website content for search engine",
     keywords: "seo copywriting services, website content writing services in bangalore, seo content writing services in bangalore, seo content writing company in bangalore, seo content writing agency in bangalore",
-    canonical: "https://www.thesuper30.ai/seo-content-writing-services-bangalore",
+    canonical: "https://www.thesuper30.ai/seo-content-writing-company-bangalore",
     serviceType: "Website Content Writing",
     ogTitle: "Your Website Content Should Rank on Google. Does It?",
     ogDescription: "SEO copywriting built to rank on Google and convert visitors into customers. Let's get writing!",
