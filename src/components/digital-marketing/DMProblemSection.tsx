@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Unplug, TrendingDown, Shuffle, DollarSign, ArrowRight, Sparkles, MessageCircle } from "lucide-react";
+import { Unplug, TrendingDown, Shuffle, DollarSign, ArrowRight, MessageCircle } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
@@ -9,22 +9,22 @@ const problems = [
   {
     icon: Shuffle,
     title: "Disconnected Marketing Channels",
-    description: "Your SEO, ads, social media, and email are managed by different teams with no unified digital marketing strategy — leading to missed opportunities and wasted budget in Bangalore's competitive market."
+    description: "Your SEO, ads, social media, and email are managed by different teams with no unified strategy — leading to missed opportunities and wasted budget."
   },
   {
     icon: TrendingDown,
     title: "Plateaued Growth Despite Spend",
-    description: "You've hired multiple digital marketing agencies in Bangalore but results flatline after the first quarter. Without an integrated approach, growth hits a ceiling every time."
+    description: "You've hired agencies but results flatline after the first quarter. Without an integrated approach, growth hits a ceiling every time."
   },
   {
     icon: DollarSign,
     title: "Rising Costs, Flat Revenue",
-    description: "Your digital marketing spend keeps climbing but customer acquisition cost stays stubbornly high. Without AI-driven optimization, every campaign leaks money in Bangalore's saturated market."
+    description: "Your marketing spend keeps climbing but customer acquisition cost stays stubbornly high. Every campaign leaks money without proper optimization."
   },
   {
     icon: Unplug,
     title: "Zero Attribution Clarity",
-    description: "You can't tell which digital marketing channel actually drives revenue vs. which just looks good on dashboards. A proper digital marketing agency in Bangalore should solve this on day one."
+    description: "You can't tell which channel actually drives revenue. A proper digital marketing agency in Bangalore should solve this on day one."
   }
 ];
 
@@ -33,13 +33,8 @@ export const DMProblemSection = () => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   return (
-    <section
-      ref={sectionRef}
-      className="py-10 md:py-16 lg:py-24 bg-white relative overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-10" />
-
-      <div className="container mx-auto px-4 relative">
+    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-white">
+      <div className="container mx-auto px-4">
         <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-sm font-medium mb-4 border border-brand/20">
             The Problem with Most Digital Marketing in Bangalore
@@ -48,7 +43,7 @@ export const DMProblemSection = () => {
             Digital Marketing Without Strategy Is Just <span className="text-brand">Expensive Noise</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Most Bangalore businesses juggle 5+ marketing tools, 3+ agencies, and still can't answer: <em>"Where did that lead come from?"</em> A proper digital marketing agency in Bangalore should eliminate this chaos.
+            Most Bangalore businesses juggle 5+ tools, 3+ agencies, and still can't answer: <em>"Where did that lead come from?"</em>
           </p>
         </div>
 
@@ -76,7 +71,6 @@ export const DMProblemSection = () => {
             size="lg"
             className="bg-brand hover:bg-brand/90 text-white rounded-full px-8"
           >
-            <Sparkles className="w-4 h-4 mr-2" />
             Get Your Free Digital Marketing Audit
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>

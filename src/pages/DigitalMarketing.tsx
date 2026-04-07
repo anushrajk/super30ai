@@ -21,8 +21,9 @@ const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFi
 const DMRelevanceSection = lazy(() => import("@/components/digital-marketing/DMRelevanceSection").then(m => ({ default: m.DMRelevanceSection })));
 const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection })));
 const DMWhyBangaloreSection = lazy(() => import("@/components/digital-marketing/DMWhyBangaloreSection").then(m => ({ default: m.DMWhyBangaloreSection })));
-const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then(m => ({ default: m.DMFAQSection })));
 const DMContentSection = lazy(() => import("@/components/digital-marketing/DMContentSection").then(m => ({ default: m.DMContentSection })));
+const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then(m => ({ default: m.DMFAQSection })));
+const DMAISections = lazy(() => import("@/components/digital-marketing/DMAISections").then(m => ({ default: m.DMAISections })));
 
 const DigitalMarketing = () => {
   const { loading, handleFormSubmit } = useLeadSubmit({
@@ -116,21 +117,22 @@ const DigitalMarketing = () => {
         </div>
 
         <Suspense fallback={null}>
-          <LazySection minHeight="150px"><ClientLogosSection /></LazySection>
-          <LazySection minHeight="200px"><DMSocialProofSection /></LazySection>
-          <LazySection minHeight="400px"><DMProblemSection /></LazySection>
-          <LazySection minHeight="400px"><DMComparisonSection /></LazySection>
-          <LazySection minHeight="400px"><ServicesBentoGrid /></LazySection>
-          <LazySection minHeight="400px"><DMBenefitsSection /></LazySection>
-          <LazySection minHeight="400px"><ServicesDetailSection /></LazySection>
-          <LazySection minHeight="300px"><WhoIsThisForSection /></LazySection>
-          <LazySection minHeight="400px"><DMProcessSection /></LazySection>
-          <LazySection minHeight="200px"><DMFinalCTASection /></LazySection>
+          <LazySection minHeight="100px"><ClientLogosSection /></LazySection>
+          <LazySection minHeight="80px"><DMSocialProofSection /></LazySection>
+          <LazySection minHeight="300px"><DMProblemSection /></LazySection>
+          <LazySection minHeight="300px"><DMComparisonSection /></LazySection>
+          <LazySection minHeight="300px"><ServicesBentoGrid /></LazySection>
+          <LazySection minHeight="300px"><DMBenefitsSection /></LazySection>
+          <LazySection minHeight="300px"><ServicesDetailSection /></LazySection>
+          <LazySection minHeight="200px"><WhoIsThisForSection /></LazySection>
+          <LazySection minHeight="300px"><DMProcessSection /></LazySection>
+          <LazySection minHeight="150px"><DMFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><DMAISections /></LazySection>
           <LazySection minHeight="300px"><DMRelevanceSection /></LazySection>
-          <LazySection minHeight="400px"><TestimonialSection /></LazySection>
-          <LazySection minHeight="400px"><DMWhyBangaloreSection /></LazySection>
-          <LazySection minHeight="600px"><DMContentSection /></LazySection>
-          <LazySection minHeight="200px"><DMFinalCTASection /></LazySection>
+          <LazySection minHeight="300px"><TestimonialSection /></LazySection>
+          <LazySection minHeight="300px"><DMWhyBangaloreSection /></LazySection>
+          <LazySection minHeight="300px"><DMContentSection /></LazySection>
+          <LazySection minHeight="150px"><DMFinalCTASection /></LazySection>
           <LazySection minHeight="300px"><DMFAQSection /></LazySection>
         </Suspense>
 
