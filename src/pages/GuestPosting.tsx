@@ -4,7 +4,7 @@ import { ExternalLink, Globe, Search, TrendingUp, BarChart3, Shield, Zap, Target
 const config: ServicePageConfig = {
   seo: {
     title: "Guest Posting Agency in Bangalore | Build Domain Authority",
-    description: "Boost your authority with our guest posting agency in Bangalore. Quality articles on relevant sites that build backlinks & drive organic traffic",
+    description: "Boost your authority with our guest posting services in Bangalore. Quality articles on relevant sites that build backlinks & drive organic traffic",
     keywords: "guest posting agency in bangalore, guest posting company in bangalore, guest posting services in bangalore, guest blog posting services in bangalore, guest post writing in bangalore",
     canonical: "https://www.thesuper30.ai/guest-posting-agency-bangalore",
     serviceType: "Guest Posting Services",
