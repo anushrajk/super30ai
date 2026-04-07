@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "ecommerce website development company in bangalore, ecommerce web design company in bangalore, ecommerce website development services, ecommerce website development solutions, ecommerce account management services",
     canonical: "https://www.thesuper30.ai/ecommerce-website-development-bangalore",
     serviceType: "Ecommerce Website Development",
+    ogTitle: "Your Online Store Should Sell While You Sleep. Does It?",
+    ogDescription: "Fast, secure and conversion-focused ecommerce sites built to help your store sell more. Let's build!",
+    twitterTitle: "Your Online Store Should Sell While You Sleep. Does It?",
+    twitterDescription: "Fast, secure and conversion-focused ecommerce sites built to help your store sell more. Let's build!",
   },
   hero: {
     badgeIcon: ShoppingCart,

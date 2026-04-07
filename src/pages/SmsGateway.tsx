@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "sms gateway service provider bangalore, otp sms api in bangalore, sms api provider bangalore, sms gateway services in bangalore, transactional sms gateway bangalore",
     canonical: "https://www.thesuper30.ai/sms-gateway-service-bangalore",
     serviceType: "SMS Gateway Services",
+    ogTitle: "Instant OTP and SMS Delivery Your Business Can Rely On.",
+    ogDescription: "Reliable SMS gateway and OTP API for fast, secure business messaging. Let's connect!",
+    twitterTitle: "Instant OTP and SMS Delivery Your Business Can Rely On.",
+    twitterDescription: "Reliable SMS gateway and OTP API for fast, secure business messaging. Let's connect!",
   },
   hero: {
     badgeIcon: Send,

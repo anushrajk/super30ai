@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "ad script writing in bangalore, script writing agency in bangalore, script writing services in bangalore, script writing company in bangalore, professional script writing services in bangalore",
     canonical: "https://www.thesuper30.ai/script-writing-agency-bangalore",
     serviceType: "Script Writing Services",
+    ogTitle: "A Great Script Is What Makes People Stop and Watch.",
+    ogDescription: "Compelling ad and video scripts that connect with audiences and make every campaign count. Write!",
+    twitterTitle: "A Great Script Is What Makes People Stop and Watch.",
+    twitterDescription: "Compelling ad and video scripts that connect with audiences and make every campaign count. Write!",
   },
   hero: {
     badgeIcon: Film,

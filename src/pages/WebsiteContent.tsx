@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "seo copywriting services, website content writing services in bangalore, seo content writing services in bangalore, seo content writing company in bangalore, seo content writing agency in bangalore",
     canonical: "https://www.thesuper30.ai/seo-content-writing-services-bangalore",
     serviceType: "Website Content Writing",
+    ogTitle: "Your Website Content Should Rank on Google. Does It?",
+    ogDescription: "SEO copywriting built to rank on Google and convert visitors into customers. Let's get writing!",
+    twitterTitle: "Your Website Content Should Rank on Google. Does It?",
+    twitterDescription: "SEO copywriting built to rank on Google and convert visitors into customers. Let's get writing!",
   },
   hero: {
     badgeIcon: FileText,

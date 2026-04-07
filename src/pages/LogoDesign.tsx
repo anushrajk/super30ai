@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "logo design company bangalore, logo design agency in bangalore, logo design services bangalore, professional logo design company in bangalore, custom logo design company in bangalore",
     canonical: "https://www.thesuper30.ai/logo-design-company-bangalore",
     serviceType: "Logo Design Services",
+    ogTitle: "Your Logo Says Everything About Your Brand. Make It Count.",
+    ogDescription: "Unique logos that capture your brand identity and make a strong first impression. Let's create!",
+    twitterTitle: "Your Logo Says Everything About Your Brand. Make It Count.",
+    twitterDescription: "Unique logos that capture your brand identity and make a strong first impression. Let's create!",
   },
   hero: {
     badgeIcon: PenTool,

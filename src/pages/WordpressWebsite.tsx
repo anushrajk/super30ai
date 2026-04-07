@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "wordpress web development company in bangalore, wordpress development company bangalore, wordpress web design company in bangalore, wordpress website development services in bangalore, custom wordpress website design in bangalore",
     canonical: "https://www.thesuper30.ai/wordpress-development-company-bangalore",
     serviceType: "WordPress Website Development",
+    ogTitle: "WordPress Done Right Makes Your Business Look Professional.",
+    ogDescription: "Fast, flexible and easy-to-manage WordPress websites that give your business full control. Let's go!",
+    twitterTitle: "WordPress Done Right Makes Your Business Look Professional.",
+    twitterDescription: "Fast, flexible and easy-to-manage WordPress websites that give your business full control. Let's go!",
   },
   hero: {
     badgeIcon: Globe,
