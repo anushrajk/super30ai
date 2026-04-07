@@ -1,13 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, Users, BarChart3, ArrowRight, Sparkles, LineChart } from "lucide-react";
+import { Target, BarChart3, ArrowRight, Sparkles, LineChart } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-const integrationIcons = [
-  { Icon: Target, label: "Strategy" },
-  { Icon: BarChart3, label: "Data Analysis" },
-  { Icon: Users, label: "Growth" }
-];
 
 const features = [
   { icon: Sparkles, title: "Content Engine", description: "Generate SEO-optimized content, ad copy, and social posts at scale for your Bangalore brand" },
