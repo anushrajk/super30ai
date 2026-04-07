@@ -1,77 +1,60 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, BarChart3, ArrowRight, Sparkles, LineChart } from "lucide-react";
+import { Target, BarChart3, ArrowRight, Layers, LineChart } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const features = [
-  { icon: Sparkles, title: "Content Engine", description: "Generate SEO-optimized content, ad copy, and social posts at scale for your Bangalore brand" },
-  { icon: Target, title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing that runs on autopilot" },
-  { icon: BarChart3, title: "Predictive Analytics", description: "Forecast campaign outcomes before spending — a unique advantage of our digital marketing agency" },
-  { icon: LineChart, title: "Unified Dashboard", description: "See all channels — SEO, ads, social, email — in one real-time view with revenue attribution" },
+  { icon: Layers, title: "Cross-Channel Strategy", description: "SEO insights feed ad targeting, social engagement drives email nurture — all channels work as one engine." },
+  { icon: Target, title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing that runs without manual intervention." },
+  { icon: BarChart3, title: "Revenue Attribution", description: "Track every lead from first click to closed deal. Know exactly which channel drives your revenue." },
+  { icon: LineChart, title: "Real-Time Dashboards", description: "See all channels — SEO, ads, social, email — in one live view. No more waiting for monthly PDFs." },
 ];
 
 export const DMAISections = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-white relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-10" />
-
-      <div className="container mx-auto px-4 relative">
+    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-white">
+      <div className="container mx-auto px-4">
         {/* Cross-Channel Integration */}
-        <div className={`bg-foreground rounded-2xl p-6 md:p-10 mb-8 md:mb-14 relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
-          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center relative">
-            <div>
-              <span className="inline-block px-4 py-1.5 bg-brand/20 text-brand rounded-full text-sm font-medium mb-4 border border-brand/30">
-                What Makes Our Digital Marketing Agency in Bangalore Unique
-              </span>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
-                Cross-Channel Integration Engine
-              </h3>
-              <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
-                Most digital marketing agencies in Bangalore run each channel independently. We connect SEO insights to ad targeting, social engagement to email nurture, and website data to campaign optimization — creating a unified growth loop that multiplies results.
-              </p>
-              <ul className="space-y-3 mb-6">
-                {["SEO keyword data feeds into Google Ads targeting automatically", "Social engagement signals inform content strategy in real-time", "Email automation triggered by website behaviour patterns"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-300 text-sm">
-                    <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-              <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-brand hover:bg-brand/90 text-white rounded-full px-6">
-                See Our Strategy in Action
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </div>
-            <div className="rounded-2xl overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&h=500&fit=crop"
-                alt="Digital marketing team strategy session at our Bangalore agency"
-                className="w-full h-full object-cover rounded-2xl"
-                loading="lazy"
-              />
-            </div>
+        <div className={`bg-foreground rounded-2xl p-6 md:p-10 mb-8 md:mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="max-w-3xl">
+            <span className="inline-block px-4 py-1.5 bg-brand/20 text-brand rounded-full text-sm font-medium mb-4 border border-brand/30">
+              What Makes Us Different
+            </span>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
+              Cross-Channel Integration That Actually Works
+            </h3>
+            <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
+              Most digital marketing agencies in Bangalore run each channel independently. We connect everything — SEO keyword data feeds into Google Ads targeting, social engagement informs content strategy, and website behaviour triggers email automation. One unified growth loop.
+            </p>
+            <ul className="space-y-3 mb-6">
+              {["SEO keyword data feeds into Google Ads targeting automatically", "Social engagement signals inform content strategy in real-time", "Website behaviour patterns trigger personalized email sequences"].map((item, i) => (
+                <li key={i} className="flex items-center gap-3 text-gray-300 text-sm">
+                  <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-brand hover:bg-brand/90 text-white rounded-full px-6">
+              See Our Strategy in Action
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
           </div>
         </div>
 
-        {/* Marketing Automation */}
-        <div className={`bg-white border border-border/50 rounded-2xl p-6 md:p-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        {/* Features Grid */}
+        <div className={`transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-8">
-            <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-sm font-medium mb-4 border border-brand/20">
-              Data-Driven Digital Marketing
-            </span>
             <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-3">
-              Smart Marketing Automation
+              How We Drive Results for Bangalore Businesses
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our digital marketing agency in Bangalore uses data-driven automation for content creation, campaign optimization, and performance reporting while your team focuses on strategy.
+              Data-driven execution across every channel, managed by our 30+ in-house digital marketing experts.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
             {features.map((feature, index) => (
               <Card key={index} className="bg-white border border-border/50 rounded-2xl">
                 <CardContent className="p-5 text-center">
@@ -83,21 +66,6 @@ export const DMAISections = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-border/50">
-            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
-              {[
-                { value: "300%", label: "Avg. Traffic Growth" },
-                { value: "5x", label: "Marketing ROI" },
-                { value: "30+", label: "Digital Marketing Experts" },
-              ].map((stat, i) => (
-                <div key={i} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-brand">{stat.value}</div>
-                  <div className="text-xs text-muted-foreground">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </div>
