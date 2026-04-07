@@ -1,6 +1,4 @@
-import { CheckCircle2, XCircle, Building2, Rocket } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { CheckCircle2, XCircle } from "lucide-react";
 
 const traditionalItems = [
   "Siloed channel management — SEO, ads, social run independently",
@@ -18,83 +16,61 @@ const integratedItems = [
   "100% in-house team of 30+ digital marketing experts",
 ];
 
-export const DMComparisonSection = () => {
-  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+export const DMComparisonSection = () => (
+  <section className="py-8 md:py-16 lg:py-24 bg-foreground">
+    <div className="container mx-auto px-4">
+      <div className="text-center max-w-3xl mx-auto mb-6 md:mb-14">
+        <span className="inline-block px-3 py-1 bg-brand/20 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/30">The Difference</span>
+        <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
+          Traditional Agency vs Our <span className="text-brand">Digital Marketing Agency in Bangalore</span>
+        </h2>
+        <p className="text-sm sm:text-base md:text-lg text-gray-300">See why 300+ Bangalore businesses switched to The Super 30</p>
+      </div>
 
-  return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-foreground">
-      <div className="container mx-auto px-4">
-        <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-brand/20 text-brand rounded-full text-sm font-medium mb-4 border border-brand/30">
-            The Difference
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Traditional Agency vs Our <span className="text-brand">Digital Marketing Agency in Bangalore</span>
-          </h2>
-          <p className="text-lg text-gray-300">
-            See why 300+ Bangalore businesses switched to The Super 30
-          </p>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
+        <div className="bg-white/5 border border-white/10 rounded-xl overflow-hidden">
+          <div className="h-1 bg-gray-500" />
+          <div className="p-4 sm:p-6 md:p-8">
+            <h3 className="text-lg sm:text-xl font-bold text-white mb-1">Generic Agency</h3>
+            <p className="text-xs sm:text-sm text-gray-400 mb-4 sm:mb-6">Outdated approach</p>
+            <ul className="space-y-3">
+              {traditionalItems.map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5">
+                  <XCircle className="w-4 h-4 sm:w-5 sm:h-5 text-gray-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-400 text-xs sm:text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 p-3 bg-white/5 rounded-xl border border-white/10 text-center">
+              <span className="text-xl sm:text-2xl font-bold text-gray-400">1.5-2x</span>
+              <p className="text-xs text-gray-500">Typical Marketing ROI</p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
-          <Card className={`bg-white/5 border-white/10 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="h-1 bg-gray-500" />
-            <CardContent className="p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center">
-                  <Building2 className="w-6 h-6 text-gray-400" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">Generic Agency</h3>
-                  <p className="text-sm text-gray-400">Outdated approach</p>
-                </div>
-              </div>
-              <ul className="space-y-4">
-                {traditionalItems.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <XCircle className="w-5 h-5 text-gray-500 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-400 text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/10 text-center">
-                <span className="text-2xl font-bold text-gray-400">1.5-2x</span>
-                <p className="text-sm text-gray-500">Typical Marketing ROI</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className={`bg-white/5 border-brand/30 transition-all duration-500 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="h-1 bg-brand" />
-            <CardContent className="p-6 md:p-8">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-brand rounded-xl flex items-center justify-center">
-                  <Rocket className="w-6 h-6 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">The Super 30</h3>
-                  <p className="text-sm text-brand">Integrated Digital Marketing</p>
-                </div>
-                <span className="ml-auto px-3 py-1 bg-brand/20 text-brand text-xs font-bold rounded-full border border-brand/30">
-                  RECOMMENDED
-                </span>
-              </div>
-              <ul className="space-y-4">
-                {integratedItems.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
-                    <span className="text-white font-medium text-sm">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 p-4 bg-brand/10 rounded-xl border border-brand/30 text-center">
-                <span className="text-2xl font-bold text-brand">5-8x</span>
-                <p className="text-sm text-brand font-medium">Average Marketing ROI</p>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="bg-white/5 border border-brand/30 rounded-xl overflow-hidden">
+          <div className="h-1 bg-brand" />
+          <div className="p-4 sm:p-6 md:p-8">
+            <div className="flex items-center justify-between mb-1">
+              <h3 className="text-lg sm:text-xl font-bold text-white">The Super 30</h3>
+              <span className="px-2 py-0.5 bg-brand/20 text-brand text-[10px] sm:text-xs font-bold rounded-full border border-brand/30">RECOMMENDED</span>
+            </div>
+            <p className="text-xs sm:text-sm text-brand mb-4 sm:mb-6">Integrated Digital Marketing</p>
+            <ul className="space-y-3">
+              {integratedItems.map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5">
+                  <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 text-brand flex-shrink-0 mt-0.5" />
+                  <span className="text-white font-medium text-xs sm:text-sm">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="mt-5 p-3 bg-brand/10 rounded-xl border border-brand/30 text-center">
+              <span className="text-xl sm:text-2xl font-bold text-brand">5-8x</span>
+              <p className="text-xs text-brand font-medium">Average Marketing ROI</p>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);

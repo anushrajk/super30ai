@@ -1,84 +1,44 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
-  {
-    title: "SEO Services",
-    description: "Dominate Google rankings with data-driven SEO. We deliver 300% average traffic growth for Bangalore businesses.",
-    href: "/seo-company-bangalore",
-  },
-  {
-    title: "Lead Generation & PPC",
-    description: "Google & Meta Ads with optimized bidding for maximum ROAS. We manage ₹50L+ in monthly ad spend.",
-    href: "/lead-generation-agency-bangalore",
-  },
-  {
-    title: "Social Media Marketing",
-    description: "Content calendars, community management, and viral short-form video strategies for Bangalore's audience.",
-    href: "/social-media-design-agency-bangalore",
-  },
-  {
-    title: "Brand & Design Services",
-    description: "Brand identity, social creatives, and marketing collaterals that make your business stand out.",
-    href: "/design",
-  },
-  {
-    title: "Web Design & Development",
-    description: "High-converting, responsive websites optimized for speed and SEO — built in-house in Bangalore.",
-    href: "/web-design-company-bangalore",
-  },
-  {
-    title: "Email & Content Marketing",
-    description: "Automated email sequences, lead nurturing funnels, and content that turns visitors into customers.",
-    href: "/contact",
-  },
+  { title: "SEO Services", description: "Dominate Google rankings with data-driven SEO. We deliver 300% average traffic growth for Bangalore businesses.", href: "/seo-company-bangalore" },
+  { title: "Lead Generation & PPC", description: "Google & Meta Ads with optimized bidding for maximum ROAS. We manage ₹50L+ in monthly ad spend.", href: "/lead-generation-agency-bangalore" },
+  { title: "Social Media Marketing", description: "Content calendars, community management, and viral short-form video strategies for Bangalore's audience.", href: "/social-media-design-agency-bangalore" },
+  { title: "Brand & Design Services", description: "Brand identity, social creatives, and marketing collaterals that make your business stand out.", href: "/design" },
+  { title: "Web Design & Development", description: "High-converting, responsive websites optimized for speed and SEO — built in-house in Bangalore.", href: "/web-design-company-bangalore" },
+  { title: "Email & Content Marketing", description: "Automated email sequences, lead nurturing funnels, and content that turns visitors into customers.", href: "/contact" },
 ];
 
-export const ServicesBentoGrid = () => {
-  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
+export const ServicesBentoGrid = () => (
+  <section className="py-8 md:py-16 lg:py-24 bg-foreground">
+    <div className="container mx-auto px-4">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between max-w-6xl mx-auto mb-6 md:mb-14 gap-3">
+        <div>
+          <span className="inline-block px-3 py-1 bg-brand/20 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/30">Our Digital Marketing Services in Bangalore</span>
+          <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold leading-[1.3]">
+            <span className="text-brand">What</span> <span className="text-white">We Excel At</span>
+          </h2>
+        </div>
+        <Link to="/contact" className="inline-flex items-center gap-2 bg-white rounded-full px-4 sm:px-6 py-2.5 text-foreground font-semibold text-xs sm:text-sm w-fit">
+          CONTACT US NOW
+          <span className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-brand flex items-center justify-center">
+            <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
+          </span>
+        </Link>
+      </div>
 
-  return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-foreground">
-      <div className="container mx-auto px-4">
-        <div className={`flex flex-col md:flex-row md:items-end md:justify-between max-w-6xl mx-auto mb-10 md:mb-14 gap-4 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div>
-            <span className="inline-block px-4 py-1.5 bg-brand/20 text-brand rounded-full text-sm font-medium mb-4 border border-brand/30">
-              Our Digital Marketing Services in Bangalore
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.3]">
-              <span className="text-brand">What</span>{" "}
-              <span className="text-white">We Excel At</span>
-            </h2>
-          </div>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-3 bg-white rounded-full px-6 py-3 text-foreground font-semibold text-sm tracking-wide w-fit"
-          >
-            CONTACT US NOW
-            <span className="w-8 h-8 rounded-full bg-brand flex items-center justify-center">
-              <ArrowRight className="w-4 h-4 text-white" />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 max-w-6xl mx-auto">
+        {services.map((service, i) => (
+          <Link key={i} to={service.href} className="rounded-xl border border-white/10 p-4 sm:p-6 block hover:border-brand/30 transition-colors">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-2">{service.title}</h3>
+            <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-3">{service.description}</p>
+            <span className="flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm">
+              Learn More <ArrowRight className="w-3.5 h-3.5" />
             </span>
           </Link>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <Link
-              key={index}
-              to={service.href}
-              className={`rounded-2xl overflow-hidden block border border-white/10 p-6 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${(index + 1) * 80}ms` }}
-            >
-              <h3 className="text-lg font-bold text-white mb-3">{service.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">{service.description}</p>
-              <div className="flex items-center gap-2 text-brand font-semibold text-sm">
-                Learn More <ArrowRight className="w-4 h-4" />
-              </div>
-            </Link>
-          ))}
-        </div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
