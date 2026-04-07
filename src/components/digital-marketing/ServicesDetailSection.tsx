@@ -5,31 +5,35 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const services = [
   {
     icon: Search,
-    title: "AI-Powered SEO Services",
-    description: "Our digital marketing agency in Bangalore uses AI to analyze search patterns, predict algorithm changes, and create content that ranks. From technical audits to content strategy, we ensure your brand dominates organic search results across Bangalore and India.",
-    features: ["AI-Powered Keyword Research", "Technical SEO Audits", "Content Strategy & Creation", "Link Building & Authority", "Local SEO for Bangalore", "Schema Markup & Rich Snippets"],
+    title: "SEO Services",
+    description: "Our digital marketing agency in Bangalore uses advanced data analytics to identify ranking opportunities, predict search trends, and create content that dominates organic search results across Bangalore and India.",
+    features: ["Keyword Research & Strategy", "Technical SEO Audits", "Content Strategy & Creation", "Link Building & Authority", "Local SEO for Bangalore", "Schema Markup & Rich Snippets"],
     href: "/seo-company-bangalore",
+    image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=500&h=300&fit=crop",
   },
   {
     icon: Target,
     title: "Lead Generation & PPC Management",
-    description: "Maximize your ROAS with AI-driven ad campaigns across Google, Meta, and LinkedIn. Our digital marketing experts in Bangalore manage real-time bid optimization to ensure every rupee works harder for your business.",
-    features: ["Google & Meta Ads Management", "AI Bid Optimization", "Conversion Rate Optimization", "Retargeting & Lookalike Audiences", "Landing Page A/B Testing", "Campaign Analytics & Reporting"],
+    description: "Maximize your ROAS with data-driven ad campaigns across Google, Meta, and LinkedIn. Our digital marketing experts in Bangalore manage real-time bid optimization to ensure every rupee works harder.",
+    features: ["Google & Meta Ads Management", "Bid Optimization", "Conversion Rate Optimization", "Retargeting & Lookalike Audiences", "Landing Page A/B Testing", "Campaign Analytics & Reporting"],
     href: "/lead-generation-agency-bangalore",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop",
   },
   {
     icon: Share2,
     title: "Social Media Marketing",
-    description: "Build a community, not just a following. Our digital marketing agency in Bangalore crafts scroll-stopping content calendars, manages engagement, and creates viral short-form videos that turn viewers into customers.",
+    description: "Build a community, not just a following. Our digital marketing agency in Bangalore crafts scroll-stopping content, manages engagement, and creates viral short-form videos that turn viewers into customers.",
     features: ["Content Calendar Planning", "Community Management", "Short-Form Video (Reels/Shorts)", "Influencer Collaborations", "Social Listening & Analytics", "Platform Growth Strategy"],
     href: "/social-media-design-agency-bangalore",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=500&h=300&fit=crop",
   },
   {
     icon: Palette,
     title: "Brand & Design Services",
-    description: "Stand out in Bangalore's crowded market with design that demands attention. From brand identity systems to daily social media creatives and marketing collaterals — our designers create visuals that communicate your story.",
+    description: "Stand out in Bangalore's crowded market with design that demands attention. From brand identity systems to daily social media creatives — our designers create visuals that communicate your story.",
     features: ["Brand Identity & Guidelines", "Social Media Creatives", "Marketing Collaterals", "Presentation Design", "Motion Graphics & Animation", "Packaging & Print Design"],
     href: "/design",
+    image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=500&h=300&fit=crop",
   },
   {
     icon: Globe,
@@ -37,6 +41,7 @@ const services = [
     description: "Your website is your 24/7 salesperson. Our digital marketing agency in Bangalore designs high-converting landing pages and responsive websites that load fast, rank well, and guide visitors toward action.",
     features: ["Landing Page Design", "Responsive Web Development", "Speed & Core Web Vitals", "UI/UX Optimization", "CMS Integration & Setup", "E-commerce Development"],
     href: "/web-design-company-bangalore",
+    image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=500&h=300&fit=crop",
   },
   {
     icon: Mail,
@@ -44,6 +49,7 @@ const services = [
     description: "Nurture leads on autopilot with intelligent email sequences and content funnels. Our digital marketing team in Bangalore creates personalized journeys that convert subscribers into loyal customers.",
     features: ["Automated Email Sequences", "Lead Nurturing Funnels", "Newsletter Strategy", "Content Writing & Blogs", "Drip Campaign Design", "Performance Tracking"],
     href: "/contact",
+    image: "https://images.unsplash.com/photo-1563986768609-322da13575f2?w=500&h=300&fit=crop",
   },
 ];
 
@@ -71,34 +77,40 @@ export const ServicesDetailSection = () => {
             return (
               <div
                 key={index}
-                className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-6 md:gap-10 items-center bg-white border border-border/50 rounded-2xl p-6 md:p-8 transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+                className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} gap-6 md:gap-8 items-center bg-white border border-border/50 rounded-2xl overflow-hidden transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
                 style={{ transitionDelay: `${(index + 1) * 100}ms` }}
               >
-                <div className="flex-1 w-full">
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-brand/10">
-                    <service.icon className="w-6 h-6 text-brand" />
+                {/* Image */}
+                <div className="w-full md:w-2/5 flex-shrink-0">
+                  <img
+                    src={service.image}
+                    alt={`${service.title} — digital marketing agency in Bangalore`}
+                    className="w-full h-48 md:h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 p-6 md:p-8">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-3 bg-brand/10">
+                    <service.icon className="w-5 h-5 text-brand" />
                   </div>
                   <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">{service.title}</h3>
                   <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">{service.description}</p>
+                  <div className="grid grid-cols-2 gap-2 mb-5">
+                    {service.features.map((feature, fi) => (
+                      <div key={fi} className="flex items-center gap-2 text-sm text-foreground font-medium">
+                        <div className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0" />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
                   <Link
                     to={service.href}
                     className="inline-flex items-center gap-2 text-brand font-semibold text-sm hover:gap-3 transition-all duration-300"
                   >
                     Learn More <ArrowRight className="w-4 h-4" />
                   </Link>
-                </div>
-                <div className="flex-1 w-full">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {service.features.map((feature, fi) => (
-                      <div
-                        key={fi}
-                        className="flex items-center gap-3 rounded-xl px-4 py-3 border border-border/50 bg-muted/30"
-                      >
-                        <div className="w-2 h-2 rounded-full flex-shrink-0 bg-brand" />
-                        <span className="text-foreground text-sm font-medium">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
                 </div>
               </div>
             );

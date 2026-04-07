@@ -1,18 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Target, Users, BarChart3, ArrowRight, Sparkles, Bot, BrainCircuit, LineChart } from "lucide-react";
+import { Target, BarChart3, ArrowRight, Sparkles, LineChart } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-const integrationIcons = [
-  { Icon: Target, label: "Strategy" },
-  { Icon: BarChart3, label: "AI Analysis" },
-  { Icon: Users, label: "Growth" }
-];
-
-const aiFeatures = [
-  { icon: Sparkles, title: "AI Content Engine", description: "Generate SEO-optimized content, ad copy, and social posts at scale for your Bangalore brand" },
-  { icon: Bot, title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing powered by AI" },
-  { icon: BrainCircuit, title: "Predictive Analytics", description: "Forecast campaign outcomes before spending — a unique advantage of our digital marketing agency" },
+const features = [
+  { icon: Sparkles, title: "Content Engine", description: "Generate SEO-optimized content, ad copy, and social posts at scale for your Bangalore brand" },
+  { icon: Target, title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing that runs on autopilot" },
+  { icon: BarChart3, title: "Predictive Analytics", description: "Forecast campaign outcomes before spending — a unique advantage of our digital marketing agency" },
   { icon: LineChart, title: "Unified Dashboard", description: "See all channels — SEO, ads, social, email — in one real-time view with revenue attribution" },
 ];
 
@@ -27,7 +21,7 @@ export const DMAISections = () => {
         {/* Cross-Channel Integration */}
         <div className={`bg-foreground rounded-2xl p-6 md:p-10 mb-8 md:mb-14 relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          
+
           <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center relative">
             <div>
               <span className="inline-block px-4 py-1.5 bg-brand/20 text-brand rounded-full text-sm font-medium mb-4 border border-brand/30">
@@ -52,45 +46,33 @@ export const DMAISections = () => {
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                {integrationIcons.map((item, i) => (
-                  <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
-                    <div className="flex flex-col items-center gap-2">
-                      <div className={`w-16 h-16 ${i === 2 ? 'bg-brand' : 'bg-brand/20'} rounded-2xl flex items-center justify-center`}>
-                        <item.Icon className={`w-8 h-8 ${i === 2 ? 'text-white' : 'text-brand'}`} />
-                      </div>
-                      <span className="text-xs text-gray-400 font-medium">{item.label}</span>
-                    </div>
-                    {i < 2 && (
-                      <div className="hidden sm:flex items-center mb-6">
-                        <div className="w-6 h-1 bg-brand/30 rounded-full" />
-                        <div className="w-0 h-0 border-t-4 border-b-4 border-l-6 border-transparent border-l-brand" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+            <div className="rounded-2xl overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=700&h=500&fit=crop"
+                alt="Digital marketing team strategy session at our Bangalore agency"
+                className="w-full h-full object-cover rounded-2xl"
+                loading="lazy"
+              />
             </div>
           </div>
         </div>
 
-        {/* AI Marketing Automation */}
+        {/* Marketing Automation */}
         <div className={`bg-white border border-border/50 rounded-2xl p-6 md:p-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="text-center mb-8">
             <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-sm font-medium mb-4 border border-brand/20">
-              AI-Powered Digital Marketing
+              Data-Driven Digital Marketing
             </span>
             <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-3">
-              AI-Powered Marketing Automation
+              Smart Marketing Automation
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our digital marketing agency in Bangalore lets AI handle content creation, campaign optimization, and performance reporting while your team focuses on strategy.
+              Our digital marketing agency in Bangalore uses data-driven automation for content creation, campaign optimization, and performance reporting while your team focuses on strategy.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
-            {aiFeatures.map((feature, index) => (
+            {features.map((feature, index) => (
               <Card key={index} className="bg-white border border-border/50 rounded-2xl">
                 <CardContent className="p-5 text-center">
                   <div className="w-14 h-14 bg-brand/10 rounded-xl flex items-center justify-center mx-auto mb-4">
