@@ -11,16 +11,17 @@ export const DMFinalCTASection = () => {
   return (
     <section ref={sectionRef} className="py-10 md:py-16 bg-brand relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
-      
-      <div className={`container mx-auto px-3 md:px-4 text-center relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ready to Build a Growth Engine for Your Business?</h2>
+
+      <div className={`container mx-auto px-4 text-center relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+          Ready to Partner with the Best Digital Marketing Agency in Bangalore?
+        </h2>
         <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-6">
-          Stop juggling agencies. Get a free digital marketing strategy from our 30+ member expert team — no commitments, just clarity.
+          Join 300+ Bangalore businesses that trust The Super 30 as their digital marketing partner. Get a free strategy session with our 30+ member expert team — no commitments, just clarity and a clear growth roadmap.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button 
-            size="lg" 
+          <Button
+            size="lg"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-8"
           >
@@ -28,11 +29,11 @@ export const DMFinalCTASection = () => {
             Get Free Strategy Session
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <Button 
-            size="lg" 
-            variant="outline-white" 
+          <Button
+            size="lg"
+            variant="outline"
             onClick={() => setShowEnquiryPopup(true)}
-            className="rounded-full px-8"
+            className="rounded-full px-8 border-white/30 text-white hover:bg-white/10"
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             Enquire Now

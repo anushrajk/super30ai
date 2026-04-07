@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Target, Users, BarChart3, ArrowRight, Sparkles, Bot, BrainCircuit, LineChart } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const integrationIcons = [
   { Icon: Target, label: "Strategy" },
@@ -9,69 +10,62 @@ const integrationIcons = [
 ];
 
 const aiFeatures = [
-  { icon: Sparkles, title: "AI Content Engine", description: "Generate SEO-optimized content, ad copy, and social posts at scale" },
-  { icon: Bot, title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing" },
-  { icon: BrainCircuit, title: "Predictive Analytics", description: "Forecast campaign outcomes before spending a single rupee" },
-  { icon: LineChart, title: "Unified Dashboard", description: "See all channels — SEO, ads, social, email — in one real-time view" },
+  { icon: Sparkles, title: "AI Content Engine", description: "Generate SEO-optimized content, ad copy, and social posts at scale for your Bangalore brand" },
+  { icon: Bot, title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing powered by AI" },
+  { icon: BrainCircuit, title: "Predictive Analytics", description: "Forecast campaign outcomes before spending — a unique advantage of our digital marketing agency" },
+  { icon: LineChart, title: "Unified Dashboard", description: "See all channels — SEO, ads, social, email — in one real-time view with revenue attribution" },
 ];
 
 export const DMAISections = () => {
-  const scrollToForm = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
 
   return (
-    <section className="py-6 md:py-10 lg:py-16 bg-muted/30 relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
-      
-      <div className="container mx-auto px-3 md:px-4 relative">
-        {/* Featured: Cross-Channel Integration */}
-        <div className="bg-[#0a0a0a] rounded-2xl p-6 md:p-10 mb-6 md:mb-12 relative overflow-hidden">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          <div className="absolute top-10 left-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
+    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:6rem_6rem] opacity-10" />
+
+      <div className="container mx-auto px-4 relative">
+        {/* Cross-Channel Integration */}
+        <div className={`bg-foreground rounded-2xl p-6 md:p-10 mb-8 md:mb-14 relative overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
           
-          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 items-center relative">
+          <div className="grid lg:grid-cols-2 gap-6 md:gap-8 items-center relative">
             <div>
-              <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-3 border border-orange-500/30">
-                Featured Capability
+              <span className="inline-block px-4 py-1.5 bg-brand/20 text-brand rounded-full text-sm font-medium mb-4 border border-brand/30">
+                What Makes Our Digital Marketing Agency in Bangalore Unique
               </span>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-4">
                 Cross-Channel Integration Engine
               </h3>
               <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
-                Most agencies run each channel independently. We connect SEO insights to ad targeting, social engagement to email nurture, and website data to campaign optimization — creating a unified growth loop.
+                Most digital marketing agencies in Bangalore run each channel independently. We connect SEO insights to ad targeting, social engagement to email nurture, and website data to campaign optimization — creating a unified growth loop that multiplies results.
               </p>
-              <ul className="space-y-2.5 mb-5">
-                {["SEO keyword data feeds into Google Ads targeting", "Social engagement signals inform content strategy", "Email automation triggered by website behavior"].map((item, i) => (
-                  <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
-                    <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
+              <ul className="space-y-3 mb-6">
+                {["SEO keyword data feeds into Google Ads targeting automatically", "Social engagement signals inform content strategy in real-time", "Email automation triggered by website behaviour patterns"].map((item, i) => (
+                  <li key={i} className="flex items-center gap-3 text-gray-300 text-sm">
+                    <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0" />
                     {item}
                   </li>
                 ))}
               </ul>
-              <Button onClick={scrollToForm} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300">
+              <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-brand hover:bg-brand/90 text-white rounded-full px-6">
                 See Our Strategy in Action
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-8 backdrop-blur-sm">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="bg-white/5 border border-white/10 rounded-2xl p-6 md:p-8">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                 {integrationIcons.map((item, i) => (
                   <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
                     <div className="flex flex-col items-center gap-2">
-                      <div className={`w-14 h-14 sm:w-18 sm:h-18 ${i === 2 ? 'bg-brand-gradient' : 'bg-brand/20'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
-                        <item.Icon className={`w-7 h-7 sm:w-9 sm:h-9 ${i === 2 ? 'text-white' : 'text-brand'}`} />
+                      <div className={`w-16 h-16 ${i === 2 ? 'bg-brand' : 'bg-brand/20'} rounded-2xl flex items-center justify-center`}>
+                        <item.Icon className={`w-8 h-8 ${i === 2 ? 'text-white' : 'text-brand'}`} />
                       </div>
                       <span className="text-xs text-gray-400 font-medium">{item.label}</span>
                     </div>
                     {i < 2 && (
                       <div className="hidden sm:flex items-center mb-6">
-                        <div className="w-6 h-1 bg-gradient-to-r from-brand/30 to-brand rounded-full" />
+                        <div className="w-6 h-1 bg-brand/30 rounded-full" />
                         <div className="w-0 h-0 border-t-4 border-b-4 border-l-6 border-transparent border-l-brand" />
-                      </div>
-                    )}
-                    {i < 2 && (
-                      <div className="flex sm:hidden items-center my-2">
-                        <div className="w-1 h-5 bg-gradient-to-b from-brand/30 to-brand rounded-full" />
                       </div>
                     )}
                   </div>
@@ -81,77 +75,46 @@ export const DMAISections = () => {
           </div>
         </div>
 
-        {/* AI Marketing Automation Infographic */}
-        <div className="bento-card p-4 md:p-8 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl" />
-            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
+        {/* AI Marketing Automation */}
+        <div className={`bg-white border border-border/50 rounded-2xl p-6 md:p-10 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="text-center mb-8">
+            <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-sm font-medium mb-4 border border-brand/20">
+              AI-Powered Digital Marketing
+            </span>
+            <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-foreground mb-3">
+              AI-Powered Marketing Automation
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Our digital marketing agency in Bangalore lets AI handle content creation, campaign optimization, and performance reporting while your team focuses on strategy.
+            </p>
           </div>
-          
-          <div className="relative">
-            <div className="text-center mb-8">
-              <span className="badge-brand mb-3">AI Marketing</span>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">
-                AI-Powered Marketing Automation
-              </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                Let AI handle content creation, campaign optimization, and performance reporting while your team focuses on strategy.
-              </p>
-            </div>
-            
-            <div className="relative max-w-4xl mx-auto">
-              <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 z-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
-                {aiFeatures.map((feature, index) => (
-                  <div key={index} className="group relative">
-                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center text-white text-xs font-bold z-20 group-hover:scale-125 transition-transform duration-300">
-                      {index + 1}
-                    </div>
-                    
-                    <Card className="bento-card transition-all duration-500 h-full overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:via-brand/10 group-hover:to-brand/5 transition-all duration-500" />
-                      <CardContent className="p-5 text-center relative">
-                        <div className="relative mx-auto mb-4 w-16 h-16">
-                          <div className="relative w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg">
-                            <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
-                          </div>
-                        </div>
-                        <h4 className="font-bold text-foreground mb-2 text-sm md:text-base group-hover:text-brand transition-colors duration-300">{feature.title}</h4>
-                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </CardContent>
-                    </Card>
-                    
-                    {index < 3 && (
-                      <div className="hidden lg:flex absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
-                        <ArrowRight className="w-4 h-4 text-brand/50 group-hover:text-brand group-hover:translate-x-1 transition-all duration-300" />
-                      </div>
-                    )}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
+            {aiFeatures.map((feature, index) => (
+              <Card key={index} className="bg-white border border-border/50 rounded-2xl">
+                <CardContent className="p-5 text-center">
+                  <div className="w-14 h-14 bg-brand/10 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <feature.icon className="w-7 h-7 text-brand" />
                   </div>
-                ))}
-              </div>
-            </div>
-            
-            <div className="mt-8 pt-6 border-t border-border/50">
-              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-                <div className="text-center group cursor-default">
-                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">300%</div>
-                  <div className="text-xs text-muted-foreground">Avg. Traffic Growth</div>
+                  <h4 className="font-bold text-foreground mb-2 text-sm md:text-base">{feature.title}</h4>
+                  <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-border/50">
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
+              {[
+                { value: "300%", label: "Avg. Traffic Growth" },
+                { value: "5x", label: "Marketing ROI" },
+                { value: "30+", label: "Digital Marketing Experts" },
+              ].map((stat, i) => (
+                <div key={i} className="text-center">
+                  <div className="text-2xl md:text-3xl font-bold text-brand">{stat.value}</div>
+                  <div className="text-xs text-muted-foreground">{stat.label}</div>
                 </div>
-                <div className="w-px h-8 bg-border/50 hidden sm:block" />
-                <div className="text-center group cursor-default">
-                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">5x</div>
-                  <div className="text-xs text-muted-foreground">Marketing ROI</div>
-                </div>
-                <div className="w-px h-8 bg-border/50 hidden sm:block" />
-                <div className="text-center group cursor-default">
-                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">30+</div>
-                  <div className="text-xs text-muted-foreground">Marketing Experts</div>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>

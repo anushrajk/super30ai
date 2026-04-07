@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { 
+import {
   Search, TrendingUp, Target, Users, BarChart3, Shield, Globe, Zap, Clock,
   CheckCircle2, ChevronLeft, ChevronRight, Sparkles, ArrowRight, MessageCircle
 } from "lucide-react";
@@ -8,71 +8,59 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Button } from "@/components/ui/button";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
-const iconColors = [
-  { bg: "from-violet-500 to-purple-600", text: "text-white", checkBg: "bg-violet-500", checkText: "text-white" },
-  { bg: "from-emerald-500 to-teal-600", text: "text-white", checkBg: "bg-emerald-500", checkText: "text-white" },
-  { bg: "from-amber-500 to-orange-600", text: "text-white", checkBg: "bg-amber-500", checkText: "text-white" },
-  { bg: "from-cyan-500 to-blue-600", text: "text-white", checkBg: "bg-cyan-500", checkText: "text-white" },
-  { bg: "from-rose-500 to-pink-600", text: "text-white", checkBg: "bg-rose-500", checkText: "text-white" },
-  { bg: "from-indigo-500 to-blue-600", text: "text-white", checkBg: "bg-indigo-500", checkText: "text-white" },
-  { bg: "from-lime-500 to-green-600", text: "text-white", checkBg: "bg-lime-500", checkText: "text-white" },
-  { bg: "from-fuchsia-500 to-purple-600", text: "text-white", checkBg: "bg-fuchsia-500", checkText: "text-white" },
-  { bg: "from-sky-500 to-cyan-600", text: "text-white", checkBg: "bg-sky-500", checkText: "text-white" },
-];
-
 const benefits = [
   {
     icon: Search,
     title: "Organic Visibility",
-    description: "Dominate Google and AI search results with AI-powered SEO that drives sustainable traffic.",
+    description: "Dominate Google rankings with AI-powered SEO — a core strength of our digital marketing agency in Bangalore.",
     features: ["AI SEO optimization", "Content strategy", "Technical SEO"],
   },
   {
     icon: Target,
     title: "Paid Acquisition",
-    description: "Google, Meta, and LinkedIn ads optimized by AI for maximum ROAS and lower CPA.",
-    features: ["Smart bidding", "AI audiences", "Cross-platform campaigns"],
+    description: "Google, Meta, and LinkedIn ads optimized by AI for maximum ROAS. Our Bangalore experts manage every rupee.",
+    features: ["Smart bidding", "AI audiences", "Cross-platform"],
   },
   {
     icon: TrendingUp,
     title: "Revenue Growth",
-    description: "Every marketing dollar is tracked from click to close — no guesswork, just data.",
+    description: "Every marketing dollar tracked from click to close. Our digital marketing services in Bangalore focus on pipeline, not vanity.",
     features: ["Full-funnel attribution", "Pipeline tracking", "Revenue dashboards"],
   },
   {
     icon: Users,
     title: "Brand Building",
-    description: "Build a brand that's recognized, trusted, and chosen — online and offline.",
+    description: "Build a brand recognized and trusted across Bangalore — through strategic social media, content, and community.",
     features: ["Social media strategy", "Content creation", "Community building"],
   },
   {
     icon: BarChart3,
     title: "Data-Driven Decisions",
-    description: "AI-powered analytics that predict outcomes and prescribe next actions.",
+    description: "AI-powered analytics that predict outcomes and prescribe next actions for your digital marketing campaigns.",
     features: ["Predictive analytics", "A/B testing", "Performance forecasting"],
   },
   {
     icon: Shield,
     title: "Competitive Intelligence",
-    description: "Know exactly what your competitors are doing — and stay three steps ahead.",
+    description: "Know what your Bangalore competitors are doing digitally — and stay three steps ahead with our AI tools.",
     features: ["Competitor monitoring", "Gap analysis", "Market positioning"],
   },
   {
     icon: Globe,
     title: "Multi-Channel Presence",
-    description: "Unified brand voice across SEO, ads, social, email, and web — orchestrated as one.",
+    description: "Unified brand voice across SEO, ads, social, email, and web — orchestrated as one coherent digital marketing engine.",
     features: ["Channel integration", "Consistent messaging", "Cross-platform synergy"],
   },
   {
     icon: Zap,
     title: "Speed to Market",
-    description: "Launch campaigns in days, not weeks — with AI handling the heavy lifting.",
+    description: "Launch digital marketing campaigns in days, not weeks. AI handles the heavy lifting so your Bangalore brand moves fast.",
     features: ["Rapid deployment", "AI content generation", "Automated workflows"],
   },
   {
     icon: Clock,
     title: "Always-On Marketing",
-    description: "Your marketing machine works 24/7 — SEO, retargeting, and automation never sleep.",
+    description: "Your digital marketing machine works 24/7 — SEO, retargeting, and automation never sleep even when you do.",
     features: ["Marketing automation", "Nurture sequences", "Retargeting funnels"],
   },
 ];
@@ -86,54 +74,35 @@ export const DMBenefitsSection = () => {
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container || !isVisible) return;
-
     let animationId: number;
-    const scrollSpeed = 0.5;
-
     const autoScroll = () => {
       if (!isPaused && container) {
         const maxScroll = container.scrollWidth - container.clientWidth;
-        if (container.scrollLeft >= maxScroll) {
-          container.scrollLeft = 0;
-        } else {
-          container.scrollLeft += scrollSpeed;
-        }
+        if (container.scrollLeft >= maxScroll) container.scrollLeft = 0;
+        else container.scrollLeft += 0.5;
       }
       animationId = requestAnimationFrame(autoScroll);
     };
-
     animationId = requestAnimationFrame(autoScroll);
     return () => cancelAnimationFrame(animationId);
   }, [isPaused, isVisible]);
 
   const scrollCards = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({
-        left: direction === 'left' ? -320 : 320,
-        behavior: 'smooth'
-      });
-    }
+    scrollContainerRef.current?.scrollBy({ left: direction === 'left' ? -320 : 320, behavior: 'smooth' });
   };
 
   return (
-    <section 
-      ref={sectionRef}
-      className="py-6 md:py-10 lg:py-16 bg-[#0a0a0a] relative overflow-hidden"
-    >
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-      <div className="absolute top-20 left-10 w-72 h-72 bg-brand/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-brand/10 rounded-full blur-3xl" />
-
-      <div className="container mx-auto px-3 md:px-4 relative">
-        <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
-            Why Full-Service Digital Marketing
+    <section ref={sectionRef} className="py-8 md:py-14 lg:py-20 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-4 relative">
+        <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-sm font-medium mb-4 border border-brand/20">
+            Why Choose Our Digital Marketing Agency in Bangalore
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Everything Your Business Needs to Grow Online
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
+            Everything Your Business Needs to <span className="text-brand">Grow Online</span>
           </h2>
-          <p className="text-base md:text-lg text-gray-300">
-            A complete digital marketing engine — from traffic to revenue
+          <p className="text-base md:text-lg text-muted-foreground">
+            A complete digital marketing engine — from traffic to revenue — built by Bangalore's top marketing experts
           </p>
         </div>
 
@@ -142,40 +111,35 @@ export const DMBenefitsSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollCards('left')}
-            className="hidden sm:flex absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 text-white"
+            className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white border border-border rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 text-foreground"
           >
             <ChevronLeft className="w-5 h-5" />
           </Button>
 
-          <div 
+          <div
             ref={scrollContainerRef}
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             onTouchStart={() => setIsPaused(true)}
             onTouchEnd={() => setIsPaused(false)}
-            className="flex gap-4 md:gap-5 overflow-x-auto pb-6 px-6 sm:px-12 snap-x snap-mandatory"
-            style={{ WebkitOverflowScrolling: 'touch', scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
+            className="flex gap-4 md:gap-5 overflow-x-auto pb-6 px-4 sm:px-12 snap-x snap-mandatory custom-scrollbar"
+            style={{ WebkitOverflowScrolling: 'touch' }}
           >
             {benefits.map((benefit, index) => (
-              <Card 
+              <Card
                 key={index}
-                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-gray-100 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                style={{ transitionDelay: `${(index + 1) * 50}ms` }}
+                className={`flex-shrink-0 w-[280px] sm:w-[300px] bg-white border border-border/50 shadow-none overflow-hidden snap-start rounded-2xl ${isVisible ? 'opacity-100' : 'opacity-0'}`}
               >
-                <CardContent className="p-5 md:p-6 relative">
-                  <div className="relative mb-4">
-                    <div className={`relative w-14 h-14 rounded-xl flex items-center justify-center bg-gradient-to-br ${iconColors[index % iconColors.length].bg}`}>
-                      <benefit.icon className={`w-7 h-7 ${iconColors[index % iconColors.length].text}`} />
-                    </div>
+                <CardContent className="p-5 md:p-6">
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-brand/10 mb-4">
+                    <benefit.icon className="w-6 h-6 text-brand" />
                   </div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{benefit.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed">{benefit.description}</p>
+                  <h3 className="text-lg font-bold text-foreground mb-2">{benefit.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4 leading-relaxed">{benefit.description}</p>
                   <ul className="space-y-2">
                     {benefit.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2.5 text-sm text-gray-800 font-medium">
-                        <div className={`w-5 h-5 rounded-full ${iconColors[index % iconColors.length].checkBg} flex items-center justify-center flex-shrink-0`}>
-                          <CheckCircle2 className={`w-3 h-3 ${iconColors[index % iconColors.length].checkText}`} />
-                        </div>
+                      <li key={i} className="flex items-center gap-2.5 text-sm text-foreground font-medium">
+                        <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -189,31 +153,31 @@ export const DMBenefitsSection = () => {
             variant="ghost"
             size="icon"
             onClick={() => scrollCards('right')}
-            className="hidden sm:flex absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white/5 backdrop-blur-md border border-white/10 rounded-full shadow-xl opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 hover:bg-white/10 text-white"
+            className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white border border-border rounded-full shadow-lg opacity-0 group-hover/carousel:opacity-100 transition-all duration-300 text-foreground"
           >
             <ChevronRight className="w-5 h-5" />
           </Button>
         </div>
 
-        <p className="text-center mt-3 text-sm text-gray-500 sm:hidden flex items-center justify-center gap-2">
+        <p className="text-center mt-3 text-sm text-muted-foreground sm:hidden flex items-center justify-center gap-2">
           <ChevronLeft className="w-4 h-4" /> Swipe to explore <ChevronRight className="w-4 h-4" />
         </p>
 
         <div className={`flex flex-col sm:flex-row gap-3 justify-center mt-8 md:mt-12 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <Button 
+          <Button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             size="lg"
-            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
+            className="bg-brand hover:bg-brand/90 text-white rounded-full px-8"
           >
             <Sparkles className="w-4 h-4 mr-2" />
-            Get Your Free Strategy
-            <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            Get Your Free Digital Marketing Strategy
+            <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <Button 
-            variant="outline-white"
+          <Button
+            variant="outline"
             size="lg"
             onClick={() => setShowEnquiryPopup(true)}
-            className="hover:scale-105 transition-all duration-300 group"
+            className="rounded-full px-8 border-brand/30 text-brand hover:bg-brand/5"
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             Enquire Now
