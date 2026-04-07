@@ -180,9 +180,9 @@ const App = () => (
 
                 {/* Website */}
                 <Route path="/web-design-company-bangalore" element={<WebDesign />} />
-                <Route path="/ecommerce-website-development-bangalore" element={<EcommerceWebsite />} />
-                <Route path="/wordpress-development-company-bangalore" element={<WordpressWebsite />} />
-                <Route path="/website-maintenance-services-bangalore" element={<WebsiteMaintenance />} />
+                <Route path="/ecommerce-website-development-company-bangalore" element={<EcommerceWebsite />} />
+                <Route path="/wordpress-website-development-company-bangalore" element={<WordpressWebsite />} />
+                <Route path="/website-maintenance-company-bangalore" element={<WebsiteMaintenance />} />
 
                 {/* Legal */}
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
