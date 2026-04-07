@@ -8,3 +8,6 @@ createRoot(document.getElementById("root")!).render(
     <App />
   </React.StrictMode>
 );
+
+// Remove static SEO content once React has mounted
+document.getElementById("seo-content")?.remove();
