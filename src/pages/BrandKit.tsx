@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "branding agency in bangalore, branding company in bangalore, branding services in bangalore, brand kit design services in bangalore",
     canonical: "https://www.thesuper30.ai/branding-agency-bangalore",
     serviceType: "Brand Kit Design",
+    ogTitle: "A Strong Brand Kit Makes Your Business Look Like a Leader.",
+    ogDescription: "Logo, colors and visual identity. Brand kits that make your business look consistent. Let's brand!",
+    twitterTitle: "A Strong Brand Kit Makes Your Business Look Like a Leader.",
+    twitterDescription: "Logo, colors and visual identity. Brand kits that make your business look consistent. Let's brand!",
   },
   hero: {
     badgeIcon: Palette,

@@ -7,7 +7,11 @@ const config: ServicePageConfig = {
     description: "Connect with customers on the app they use most. Our WhatsApp marketing company in Bangalore delivers bulk campaigns that drive results. Let's Connect!",
     keywords: "whatsapp marketing bangalore, bulk whatsapp marketing in bangalore, whatsapp marketing company in bangalore, whatsapp marketing service in bangalore",
     canonical: "https://www.thesuper30.ai/whatsapp-marketing-company-bangalore",
-    serviceType: "WhatsApp Business API Services",
+    serviceType: "WhatsApp Business API",
+    ogTitle: "Your Customers Are on WhatsApp. Are You Reaching Them?",
+    ogDescription: "Bulk WhatsApp campaigns that drive real engagement and boost conversions for your business. Let's go!",
+    twitterTitle: "Your Customers Are on WhatsApp. Are You Reaching Them?",
+    twitterDescription: "Bulk WhatsApp campaigns that drive real engagement and boost conversions for your business. Let's go!",
   },
   hero: {
     badgeIcon: MessageSquare,

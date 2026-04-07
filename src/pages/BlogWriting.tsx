@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "blog writing services in bangalore, seo blog writing services in bangalore, article writing agency in bangalore, blog writing company in bangalore, blog writing agency in bangalore",
     canonical: "https://www.thesuper30.ai/blog-writing-services-bangalore",
     serviceType: "Blog Writing Services",
+    ogTitle: "Blogs That Rank on Google Bring Free Traffic Every Day.",
+    ogDescription: "SEO-optimised blogs that grow your traffic and bring consistent visitors every day. Let's write!",
+    twitterTitle: "Blogs That Rank on Google Bring Free Traffic Every Day.",
+    twitterDescription: "SEO-optimised blogs that grow your traffic and bring consistent visitors every day. Let's write!",
   },
   hero: {
     badgeIcon: BookOpen,

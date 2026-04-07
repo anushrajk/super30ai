@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "google ads agency in bangalore, ppc services in bangalore, ppc company in bangalore, ppc agency in bangalore, google adwords management agency in bangalore",
     canonical: "https://www.thesuper30.ai/google-ads-agency-bangalore",
     serviceType: "Google Ads Management",
+    ogTitle: "Every Rupee You Spend on Google Ads Should Work Harder.",
+    ogDescription: "Targeted Google Ads & PPC that lower your cost per click and bring leads that convert. Let's talk!",
+    twitterTitle: "Every Rupee You Spend on Google Ads Should Work Harder.",
+    twitterDescription: "Targeted Google Ads & PPC that lower your cost per click and bring leads that convert. Let's talk!",
   },
   hero: {
     badgeIcon: Target,

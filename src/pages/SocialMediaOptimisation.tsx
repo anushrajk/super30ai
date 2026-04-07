@@ -8,6 +8,10 @@ const config: ServicePageConfig = {
     keywords: "social media optimization company in bangalore, social media optimization services in bangalore, smo company in bangalore, influencer marketing services in bangalore, social content creation in bangalore",
     canonical: "https://www.thesuper30.ai/social-media-optimization-services-bangalore",
     serviceType: "Social Media Optimisation",
+    ogTitle: "Your Social Media Presence Speaks Before You Do. Own It.",
+    ogDescription: "Reels, UGC & influencer marketing that grow your brand organically. Let's build a social presence!",
+    twitterTitle: "Your Social Media Presence Speaks Before You Do. Own It.",
+    twitterDescription: "Reels, UGC & influencer marketing that grow your brand organically. Let's build a social presence!",
   },
   hero: {
     badgeIcon: Share2,
