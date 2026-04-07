@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {
   Search, TrendingUp, Target, Users, BarChart3, Shield, Globe, Zap, Clock,
-  CheckCircle2, ChevronLeft, ChevronRight, ArrowRight, MessageCircle
+  CheckCircle2, ArrowRight, MessageCircle
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
