@@ -25,6 +25,10 @@ export interface ServicePageConfig {
     keywords: string;
     canonical: string;
     serviceType: string;
+    ogTitle?: string;
+    ogDescription?: string;
+    twitterTitle?: string;
+    twitterDescription?: string;
   };
   hero: {
     badgeIcon: LucideIcon;
