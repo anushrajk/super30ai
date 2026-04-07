@@ -203,7 +203,8 @@ const App = () => (
                 <Route path="/ui-ux-design" element={<Navigate to="/ui-ux-design-agency-bangalore" replace />} />
                 <Route path="/logo-design" element={<Navigate to="/logo-design-company-bangalore" replace />} />
                 <Route path="/brand-kit" element={<Navigate to="/branding-agency-bangalore" replace />} />
-                <Route path="/website-content" element={<Navigate to="/seo-content-writing-services-bangalore" replace />} />
+                <Route path="/website-content" element={<Navigate to="/seo-content-writing-company-bangalore" replace />} />
+                <Route path="/seo-content-writing-services-bangalore" element={<Navigate to="/seo-content-writing-company-bangalore" replace />} />
                 <Route path="/blog-writing" element={<Navigate to="/blog-writing-services-bangalore" replace />} />
                 <Route path="/script-writing" element={<Navigate to="/script-writing-agency-bangalore" replace />} />
                 <Route path="/guest-posting" element={<Navigate to="/guest-posting-agency-bangalore" replace />} />
