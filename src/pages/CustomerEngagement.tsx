@@ -4,7 +4,7 @@ import { Heart, Users, Target, BarChart3, Zap, Shield, Gift, Bell, Star, Trendin
 const config: ServicePageConfig = {
   seo: {
     title: "Customer Engagement Agency in Bangalore | Loyalty Programs",
-    description: "Keep customers coming back. Our customer engagement agency in Bangalore designs loyalty programs and customer rewards that drive repeat business. Let's Talk!",
+    description: "Keep customers coming back. Our customer engagement company in Bangalore designs loyalty programs and customer rewards that drive repeat business. Let's Talk!",
     keywords: "customer engagement agency in bangalore, customer engagement company in bangalore, customer engagement service provider in bangalore, customer engagement consultant in bangalore, customer engagement platform in bangalore, customer insight consulting in bangalore, customer analytics consulting in bangalore, customer loyalty consulting in bangalore",
     canonical: "https://www.thesuper30.ai/customer-engagement-agency-bangalore",
     serviceType: "Customer Engagement Programs",
