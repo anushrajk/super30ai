@@ -147,18 +147,13 @@ const DigitalMarketing = () => {
             badgeIcon={Megaphone}
             badgeText="#1 Digital Marketing Agency in Bangalore"
             headline={
-              <>
-                <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  Digital Marketing Agency in Bangalore
-                </span>
-                <span className="block text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl leading-[1.25]">
-                  Helping Startups & Enterprises Grow with ROI-Focused Digital Marketing
-                </span>
-              </>
+              <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.2]">
+                <span className="text-brand">Digital Marketing Agency</span> in Bangalore
+              </span>
             }
             description={
               <>
-                If your business is invisible online, it's invisible to your customers. As a performance-focused digital marketing agency in Bangalore, we combine data-driven strategy, Google-certified PPC, and expert-led SEO to help brands across Koramangala, HSR Layout, Whitefield, and Electronic City generate qualified leads, build authority, and scale revenue.
+                We help startups and enterprises generate qualified leads, build authority, and scale revenue with data-driven SEO, Google-certified PPC, and expert-led social media — across Koramangala, HSR Layout, Whitefield, and Electronic City.
               </>
             }
             trustSignals={[
