@@ -29,7 +29,7 @@ export const DMFinalCTASection = () => {
           <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-6 sm:px-8 text-sm sm:text-base">
             Start My Free Audit <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border-white/30 text-white hover:bg-white/10 text-sm sm:text-base">
+          <Button size="lg" variant="outline" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border-2 border-white bg-white/10 text-white hover:bg-white/20 text-sm sm:text-base font-semibold">
             <MessageCircle className="w-4 h-4 mr-2" /> Speak to a Strategist
           </Button>
         </div>
