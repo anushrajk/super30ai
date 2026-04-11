@@ -175,7 +175,6 @@ const DigitalMarketing = () => {
 
         {/* Client Logos */}
         <ClientLogosSection />
-        <DMSocialProofSection />
 
         {/* Section 2: Why Bangalore */}
         <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
