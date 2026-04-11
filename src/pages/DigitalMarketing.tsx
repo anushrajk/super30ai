@@ -46,7 +46,7 @@ const DigitalMarketing = () => {
         <title>Digital Marketing Agency in Bangalore | ROI-Focused SEO, PPC & Social Media</title>
         <meta
           name="description"
-          content="Top digital marketing agency in Bangalore helping startups & enterprises scale with ROI-focused SEO, PPC, and social media strategies. Get a free brand audit today."
+          content="Top digital marketing agency in Bangalore helping startups & enterprises scale with ROI-focused SEO, PPC, and social media strategies. Get free audit today"
         />
         <meta
           name="keywords"
@@ -56,7 +56,7 @@ const DigitalMarketing = () => {
         <meta property="og:title" content="Bangalore's Digital Marketing Agency That Delivers Measurable ROI" />
         <meta
           property="og:description"
-          content="From SEO and Google Ads to social media and content — our digital marketing services in Bangalore generate qualified leads and measurable ROI. Book a free audit."
+          content="From SEO and Google Ads to social media and content, our digital marketing services in Bangalore generate qualified leads and measurable ROI. Book a free audit."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
