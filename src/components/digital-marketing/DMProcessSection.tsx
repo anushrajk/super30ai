@@ -1,4 +1,10 @@
 import { ClipboardCheck, Map, Rocket, TrendingUp, BarChart3 } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const steps = [
   { icon: ClipboardCheck, number: "01", title: "Free Brand Audit", timeline: "Week 1", description: "We analyse your website, current rankings, competitor landscape, ad account performance, and social presence. You receive a detailed audit report regardless of whether you proceed." },
@@ -23,37 +29,33 @@ export const DMProcessSection = () => (
         </p>
       </div>
 
-      <div className="max-w-5xl mx-auto relative">
-        {/* Vertical connecting line */}
-        <div className="hidden md:block absolute left-[39px] top-8 bottom-8 w-0.5 bg-border" />
-
-        <div className="space-y-4 md:space-y-0">
+      <div className="max-w-4xl mx-auto">
+        <Accordion type="single" collapsible defaultValue="step-0" className="space-y-3">
           {steps.map((step, i) => (
-            <div
+            <AccordionItem
               key={i}
-              className="flex items-start gap-5 md:gap-8 animate-fade-in md:pb-10 last:pb-0"
-              style={{ animationDelay: `${i * 120}ms` }}
+              value={`step-${i}`}
+              className="bg-card border border-border/50 rounded-2xl px-5 sm:px-7 overflow-hidden data-[state=open]:border-brand/30 transition-colors"
             >
-              {/* Number circle */}
-              <div className="relative flex-shrink-0">
-                <div className="w-[52px] h-[52px] md:w-[60px] md:h-[60px] rounded-2xl bg-brand flex items-center justify-center shadow-lg relative z-10">
-                  <step.icon className="w-6 h-6 md:w-7 md:h-7 text-white" />
-                </div>
-              </div>
-
-              {/* Content card */}
-              <div className="bg-card border border-border/50 rounded-2xl p-5 md:p-7 flex-1">
-                <div className="flex items-center gap-3 mb-2">
-                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground">{step.title}</h3>
-                  <span className="inline-block px-2.5 py-0.5 bg-brand/10 text-brand text-[10px] sm:text-xs font-semibold rounded-full">
-                    {step.timeline}
+              <AccordionTrigger className="hover:no-underline gap-4 py-5">
+                <span className="flex items-center gap-4 text-left">
+                  <div className="w-11 h-11 rounded-2xl bg-brand flex items-center justify-center flex-shrink-0 shadow-md">
+                    <step.icon className="w-5 h-5 text-white" />
+                  </div>
+                  <span className="flex items-center gap-3">
+                    <span className="text-sm sm:text-base md:text-lg font-bold text-foreground">{step.title}</span>
+                    <span className="inline-block px-2.5 py-0.5 bg-brand/10 text-brand text-[10px] sm:text-xs font-semibold rounded-full">
+                      {step.timeline}
+                    </span>
                   </span>
-                </div>
-                <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed">{step.description}</p>
-              </div>
-            </div>
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed pb-6 pl-[60px]">
+                {step.description}
+              </AccordionContent>
+            </AccordionItem>
           ))}
-        </div>
+        </Accordion>
       </div>
     </div>
   </section>

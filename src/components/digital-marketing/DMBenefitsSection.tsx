@@ -1,4 +1,10 @@
 import { Eye, Unlock, UserCheck, Award, Headphones, Brain } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const trustSignals = [
   { icon: Eye, what: "Full transparency, no black-box reporting", why: "You get a live dashboard with real-time access to your campaign data — spend, leads, rankings, ROAS — 24/7. No waiting for monthly reports to know what's happening." },
@@ -24,20 +30,28 @@ export const DMBenefitsSection = () => (
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
-        {trustSignals.map((signal, i) => (
-          <div
-            key={i}
-            className="bg-card border border-border/50 rounded-2xl p-5 md:p-7 animate-fade-in"
-            style={{ animationDelay: `${i * 80}ms` }}
-          >
-            <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
-              <signal.icon className="w-6 h-6 text-brand" />
-            </div>
-            <h3 className="text-sm sm:text-base md:text-lg font-bold text-foreground mb-2">{signal.what}</h3>
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{signal.why}</p>
-          </div>
-        ))}
+      <div className="max-w-4xl mx-auto">
+        <Accordion type="single" collapsible defaultValue="benefit-0" className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {trustSignals.map((signal, i) => (
+            <AccordionItem
+              key={i}
+              value={`benefit-${i}`}
+              className="bg-card border border-border/50 rounded-2xl px-5 md:px-6 overflow-hidden data-[state=open]:border-brand/30 transition-colors"
+            >
+              <AccordionTrigger className="hover:no-underline gap-3 py-5">
+                <span className="flex items-center gap-3 text-left">
+                  <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
+                    <signal.icon className="w-5 h-5 text-brand" />
+                  </div>
+                  <span className="text-xs sm:text-sm font-bold text-foreground leading-snug">{signal.what}</span>
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs sm:text-sm leading-relaxed pb-5 pl-[52px]">
+                {signal.why}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   </section>
