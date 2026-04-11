@@ -1,14 +1,5 @@
 import { Eye, Unlock, UserCheck, Award, Headphones, Brain } from "lucide-react";
 
-const trustSignals = [
-  { icon: Eye, stat: "24/7", label: "live dashboard access", what: "Full transparency, no black-box reporting", bg: "bg-brand" },
-  { icon: Unlock, stat: "0", label: "lock-in contracts", what: "No lock-in contracts", bg: "bg-foreground" },
-  { icon: UserCheck, stat: "100%", label: "in-house execution", what: "100% in-house execution", bg: "bg-brand/90" },
-  { icon: Award, stat: "2x", label: "certified partner", what: "Google & Meta Partner Certified", bg: "bg-foreground" },
-  { icon: Headphones, stat: "1", label: "dedicated manager", what: "Dedicated account manager", bg: "bg-brand" },
-  { icon: Brain, stat: "AI+", label: "human strategy", what: "AI + Human strategy", bg: "bg-foreground" },
-];
-
 export const DMBenefitsSection = () => (
   <section className="py-12 md:py-20 lg:py-28 bg-card">
     <div className="container mx-auto px-4">
@@ -24,44 +15,82 @@ export const DMBenefitsSection = () => (
         </p>
       </div>
 
-      {/* Bento grid */}
-      <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
-        {trustSignals.map((signal, i) => {
-          const Icon = signal.icon;
-          const isLarge = i === 0 || i === 3;
+      <div className="max-w-5xl mx-auto grid grid-cols-6 auto-rows-[150px] sm:auto-rows-[170px] gap-3 sm:gap-4">
 
-          return (
-            <div
-              key={i}
-              className={`relative rounded-2xl sm:rounded-3xl overflow-hidden ${
-                isLarge ? "row-span-1" : ""
-              } ${signal.bg} ${
-                signal.bg === "bg-foreground" ? "text-background" : "text-white"
-              } p-5 sm:p-7 flex flex-col justify-between min-h-[160px] sm:min-h-[200px]`}
-            >
-              {/* Icon top-right */}
-              <div className="flex justify-between items-start">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${
-                  signal.bg === "bg-foreground" ? "bg-background/15" : "bg-white/15"
-                }`}>
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                </div>
-              </div>
-
-              {/* Stat + label */}
-              <div className="mt-auto">
-                <div className="text-3xl sm:text-4xl md:text-5xl font-black leading-none mb-1">
-                  {signal.stat}
-                </div>
-                <div className={`text-sm sm:text-base font-medium ${
-                  signal.bg === "bg-foreground" ? "text-background/70" : "text-white/80"
-                }`}>
-                  {signal.label}
-                </div>
-              </div>
+        {/* Card 1 — brand, spans 2 cols, 2 rows */}
+        <div className="col-span-3 md:col-span-2 row-span-2 relative rounded-2xl sm:rounded-3xl overflow-hidden bg-brand text-white p-5 sm:p-7 flex flex-col justify-between">
+          <div className="flex justify-between items-start">
+            <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+              <Eye className="w-5 h-5" />
             </div>
-          );
-        })}
+            <div className="w-16 h-16 rounded-full bg-white/10 -mr-2 -mt-2" />
+          </div>
+          <div>
+            <div className="text-5xl sm:text-6xl font-black leading-none mb-1">24/7</div>
+            <div className="text-sm font-medium text-white/80">live dashboard<br />access</div>
+          </div>
+        </div>
+
+        {/* Card 2 — light */}
+        <div className="col-span-3 md:col-span-2 rounded-2xl sm:rounded-3xl overflow-hidden bg-brand/10 text-foreground p-5 sm:p-6 flex flex-col justify-between">
+          <div className="w-9 h-9 rounded-xl bg-brand/15 flex items-center justify-center">
+            <Unlock className="w-4 h-4 text-brand" />
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-black leading-none mb-0.5">0</div>
+            <div className="text-xs sm:text-sm font-medium text-muted-foreground">lock-in contracts</div>
+          </div>
+        </div>
+
+        {/* Card 3 — dark */}
+        <div className="col-span-3 md:col-span-2 rounded-2xl sm:rounded-3xl overflow-hidden bg-foreground text-background p-5 sm:p-6 flex flex-col justify-between">
+          <div className="flex justify-between items-start">
+            <div className="w-9 h-9 rounded-xl bg-background/10 flex items-center justify-center">
+              <UserCheck className="w-4 h-4" />
+            </div>
+            <div className="w-10 h-10 rounded-full bg-brand/20 -mr-1 -mt-1" />
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-black leading-none mb-0.5">100%</div>
+            <div className="text-xs sm:text-sm font-medium text-background/60">in-house execution</div>
+          </div>
+        </div>
+
+        {/* Card 4 — dark */}
+        <div className="col-span-3 md:col-span-2 rounded-2xl sm:rounded-3xl overflow-hidden bg-foreground text-background p-5 sm:p-6 flex flex-col justify-between">
+          <div className="w-9 h-9 rounded-xl bg-background/10 flex items-center justify-center">
+            <Award className="w-4 h-4" />
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-black leading-none mb-0.5">2x</div>
+            <div className="text-xs sm:text-sm font-medium text-background/60">certified partner</div>
+          </div>
+        </div>
+
+        {/* Card 5 — light */}
+        <div className="col-span-3 md:col-span-2 rounded-2xl sm:rounded-3xl overflow-hidden bg-brand/10 text-foreground p-5 sm:p-6 flex flex-col justify-between">
+          <div className="w-9 h-9 rounded-xl bg-brand/15 flex items-center justify-center">
+            <Headphones className="w-4 h-4 text-brand" />
+          </div>
+          <div>
+            <div className="text-3xl sm:text-4xl font-black leading-none mb-0.5">1</div>
+            <div className="text-xs sm:text-sm font-medium text-muted-foreground">dedicated manager</div>
+          </div>
+        </div>
+
+        {/* Card 6 — brand, spans 2 cols, 2 rows */}
+        <div className="col-span-3 md:col-span-2 row-span-2 relative rounded-2xl sm:rounded-3xl overflow-hidden bg-brand text-white p-5 sm:p-7 flex flex-col justify-between">
+          <div className="flex justify-between items-start">
+            <div className="w-10 h-10 rounded-xl bg-white/15 flex items-center justify-center">
+              <Brain className="w-5 h-5" />
+            </div>
+            <div className="w-14 h-14 rounded-full bg-white/10 -mr-2 -mt-1" />
+          </div>
+          <div>
+            <div className="text-5xl sm:text-6xl font-black leading-none mb-1">AI+</div>
+            <div className="text-sm font-medium text-white/80">human strategy<br />combined</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
