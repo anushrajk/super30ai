@@ -1,98 +1,126 @@
-import { TrendingUp, ArrowDown, Target } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const caseStudies = [
   {
     industry: "E-commerce Brand",
     location: "Koramangala, Bangalore",
-    challenge: "Zero organic presence, entirely dependent on paid ads with 1.2x ROAS",
-    solution: "6-month SEO roadmap + Google Shopping campaign restructure + Meta retargeting",
-    results: [
-      { icon: TrendingUp, value: "340%", label: "increase in organic traffic" },
-      { icon: Target, value: "4.1x", label: "ROAS (up from 1.2x)" },
-      { icon: ArrowDown, value: "62%", label: "reduction in cost-per-lead" },
+    before: [
+      { metric: "Organic Traffic", value: "1,200/mo" },
+      { metric: "ROAS", value: "1.2x" },
+      { metric: "Cost Per Lead", value: "₹580" },
     ],
-    timeframe: "Results visible from Month 2; full impact by Month 6",
+    after: [
+      { metric: "Organic Traffic", value: "5,280/mo", highlight: true },
+      { metric: "ROAS", value: "4.1x", highlight: true },
+      { metric: "Cost Per Lead", value: "₹220", highlight: true },
+    ],
+    strategy: "SEO roadmap + Google Shopping restructure + Meta retargeting",
+    timeframe: "6 months",
   },
   {
     industry: "SaaS Startup",
     location: "HSR Layout, Bangalore",
-    challenge: "High CAC with no organic lead pipeline and low brand visibility in a crowded market",
-    solution: "Product-led SEO strategy + LinkedIn demand generation + content thought leadership",
-    results: [
-      { icon: TrendingUp, value: "280%", label: "growth in organic signups" },
-      { icon: ArrowDown, value: "54%", label: "reduction in cost-per-lead" },
-      { icon: Target, value: "3", label: "industry publication features" },
+    before: [
+      { metric: "Organic Signups", value: "45/mo" },
+      { metric: "CAC", value: "₹2,400" },
+      { metric: "Brand Mentions", value: "0" },
     ],
-    timeframe: "Pipeline impact from Month 3; sustained growth by Month 8",
+    after: [
+      { metric: "Organic Signups", value: "171/mo", highlight: true },
+      { metric: "CAC", value: "₹1,100", highlight: true },
+      { metric: "Brand Mentions", value: "3 publications", highlight: true },
+    ],
+    strategy: "Product-led SEO + LinkedIn demand gen + thought leadership",
+    timeframe: "8 months",
   },
   {
     industry: "Real Estate Developer",
     location: "Whitefield, Bangalore",
-    challenge: "Dependence on offline sales with declining walk-ins and no digital lead system",
-    solution: "Hyper-local Google Ads + WhatsApp lead funnels + video content for launches",
-    results: [
-      { icon: Target, value: "520+", label: "qualified leads in Q1" },
-      { icon: TrendingUp, value: "4.2x", label: "ROAS on Google Ads" },
-      { icon: TrendingUp, value: "38%", label: "bookings from digital" },
+    before: [
+      { metric: "Digital Leads", value: "12/mo" },
+      { metric: "Google Ads ROAS", value: "0.8x" },
+      { metric: "Digital Bookings", value: "0%" },
     ],
-    timeframe: "First leads within Week 2; full funnel operational by Month 2",
+    after: [
+      { metric: "Digital Leads", value: "173/mo", highlight: true },
+      { metric: "Google Ads ROAS", value: "4.2x", highlight: true },
+      { metric: "Digital Bookings", value: "38%", highlight: true },
+    ],
+    strategy: "Hyper-local Google Ads + WhatsApp funnels + video content",
+    timeframe: "3 months",
   },
 ];
 
 export const DMCaseStudySection = () => (
   <section className="py-12 md:py-20 lg:py-28 bg-muted/30">
     <div className="container mx-auto px-4">
-      <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
         <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
           Real Results
         </span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 leading-tight">
-          Real Results for <span className="text-brand">Bangalore Businesses</span>
+          Before & After: <span className="text-brand">Bangalore Businesses</span>
         </h2>
+        <p className="text-sm sm:text-base text-muted-foreground">
+          See the measurable impact our digital marketing delivers.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {caseStudies.map((cs, i) => (
-          <div
-            key={i}
-            className="bg-card border border-border/50 rounded-2xl overflow-hidden animate-fade-in"
-            style={{ animationDelay: `${i * 120}ms` }}
-          >
+          <div key={i} className="bg-card border border-border/50 rounded-3xl overflow-hidden">
             {/* Header */}
-            <div className="bg-foreground p-5">
-              <h3 className="text-base sm:text-lg font-bold text-white">{cs.industry}</h3>
-              <span className="text-xs text-gray-400">{cs.location}</span>
+            <div className="px-6 pt-6 pb-4">
+              <h3 className="text-lg font-bold text-foreground">{cs.industry}</h3>
+              <p className="text-xs text-muted-foreground">{cs.location}</p>
             </div>
 
-            <div className="p-5 sm:p-6">
-              {/* Challenge */}
-              <div className="mb-4">
-                <h4 className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">Challenge</h4>
-                <p className="text-xs sm:text-sm text-foreground leading-relaxed">{cs.challenge}</p>
-              </div>
-
-              {/* Solution */}
-              <div className="mb-5">
-                <h4 className="text-[10px] font-semibold text-muted-foreground uppercase tracking-wider mb-1">What We Did</h4>
-                <p className="text-xs sm:text-sm text-foreground leading-relaxed">{cs.solution}</p>
-              </div>
-
-              {/* Results as mini stat cards */}
-              <div className="space-y-2.5 mb-4">
-                {cs.results.map((r, ri) => (
-                  <div key={ri} className="flex items-center gap-3 bg-brand/5 rounded-xl p-3">
-                    <div className="w-8 h-8 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
-                      <r.icon className="w-4 h-4 text-brand" />
-                    </div>
-                    <div>
-                      <span className="text-lg font-bold text-brand">{r.value}</span>
-                      <span className="text-xs text-muted-foreground ml-1.5">{r.label}</span>
-                    </div>
+            {/* Before / After comparison */}
+            <div className="px-6 pb-5">
+              <div className="grid grid-cols-[1fr_auto_1fr] gap-0 items-stretch">
+                {/* Before column */}
+                <div>
+                  <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-3 text-center">Before</div>
+                  <div className="space-y-3">
+                    {cs.before.map((b, bi) => (
+                      <div key={bi} className="text-center py-2.5 px-2 bg-muted/50 rounded-xl">
+                        <div className="text-lg sm:text-xl font-bold text-muted-foreground">{b.value}</div>
+                        <div className="text-[10px] text-muted-foreground/70 mt-0.5">{b.metric}</div>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
 
-              <p className="text-[10px] sm:text-xs text-muted-foreground italic">{cs.timeframe}</p>
+                {/* Arrow divider */}
+                <div className="flex flex-col items-center justify-center px-3 gap-3 pt-6">
+                  {cs.before.map((_, bi) => (
+                    <div key={bi} className="h-[52px] sm:h-[58px] flex items-center">
+                      <ArrowRight className="w-4 h-4 text-brand" />
+                    </div>
+                  ))}
+                </div>
+
+                {/* After column */}
+                <div>
+                  <div className="text-[10px] font-semibold text-brand uppercase tracking-widest mb-3 text-center">After</div>
+                  <div className="space-y-3">
+                    {cs.after.map((a, ai) => (
+                      <div key={ai} className="text-center py-2.5 px-2 bg-brand/8 border border-brand/15 rounded-xl">
+                        <div className="text-lg sm:text-xl font-bold text-brand">{a.value}</div>
+                        <div className="text-[10px] text-muted-foreground mt-0.5">{a.metric}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 py-4 border-t border-border/30 bg-muted/20">
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                <span className="font-semibold text-foreground">Strategy:</span> {cs.strategy}
+              </p>
+              <p className="text-[10px] text-muted-foreground/60 mt-1.5">Results in {cs.timeframe}</p>
             </div>
           </div>
         ))}
