@@ -1,3 +1,11 @@
+import { HelpCircle } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const faqs = [
   {
     question: "How much do digital marketing services in Bangalore cost?",
@@ -17,7 +25,7 @@ const faqs = [
   },
   {
     question: "Which digital marketing services in Bangalore are most effective for B2B companies?",
-    answer: "For B2B companies in Bangalore, SEO with long-form thought leadership content, LinkedIn Ads targeting decision-makers, and Google Search Ads for high-intent keywords typically deliver the strongest results. We combine these with marketing automation and CRM-integrated lead nurturing to support long B2B sales cycles. The exact channel mix depends on your average deal size, sales cycle length, and target buyer persona.",
+    answer: "For B2B companies in Bangalore, SEO with long-form thought leadership content, LinkedIn Ads targeting decision-makers, and Google Search Ads for high-intent keywords typically deliver the strongest results. We combine these with marketing automation and CRM-integrated lead nurturing to support long B2B sales cycles.",
   },
   {
     question: "How is your digital marketing agency different from other agencies in Bangalore?",
@@ -30,29 +38,40 @@ const faqs = [
 ];
 
 export const DMFAQSection = () => (
-  <section className="py-8 md:py-16 lg:py-24 bg-white">
+  <section className="py-12 md:py-20 lg:py-28 bg-card">
     <div className="container mx-auto px-4">
-      <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
         <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
           FAQs — Digital Marketing Agency in Bangalore
         </span>
-        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground mb-2">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2 leading-tight">
           Frequently Asked Questions
         </h2>
-        <p className="text-xs sm:text-sm text-muted-foreground">
+        <p className="text-sm sm:text-base text-muted-foreground">
           Everything you need to know about hiring a digital marketing agency in Bangalore
         </p>
       </div>
-      <div className="max-w-3xl mx-auto space-y-2 sm:space-y-3">
-        {faqs.map((faq, i) => (
-          <details key={i} className="group bg-white border border-border/50 rounded-xl p-3.5 sm:p-5 cursor-pointer">
-            <summary className="font-semibold text-foreground list-none flex items-center justify-between text-sm sm:text-base gap-3">
-              {faq.question}
-              <span className="text-brand group-open:rotate-90 transition-transform flex-shrink-0 text-lg">›</span>
-            </summary>
-            <p className="text-muted-foreground text-xs sm:text-sm mt-2.5 leading-relaxed">{faq.answer}</p>
-          </details>
-        ))}
+
+      <div className="max-w-3xl mx-auto">
+        <Accordion type="single" collapsible className="space-y-3">
+          {faqs.map((faq, i) => (
+            <AccordionItem
+              key={i}
+              value={`faq-${i}`}
+              className="bg-card border border-border/50 rounded-2xl px-5 sm:px-6 overflow-hidden data-[state=open]:border-brand/30"
+            >
+              <AccordionTrigger className="text-sm sm:text-base font-semibold text-foreground hover:no-underline gap-3 py-5">
+                <span className="flex items-center gap-3 text-left">
+                  <HelpCircle className="w-5 h-5 text-brand flex-shrink-0" />
+                  {faq.question}
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs sm:text-sm leading-relaxed pb-5 pl-8">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   </section>
