@@ -10,8 +10,8 @@ import {
 const services = [
   {
     icon: Search,
-    color: "bg-blue-500/10 text-blue-500",
-    borderColor: "data-[state=open]:border-blue-500/30",
+    color: "bg-brand/10 text-brand",
+    borderColor: "data-[state=open]:border-brand/30",
     title: "Search Engine Optimisation (SEO)",
     description: "Rank higher, stay longer. Our SEO team combines technical audits, content authority building, and high-quality link acquisition to move your business to Page 1 — and keep it there.",
     features: [
@@ -26,8 +26,8 @@ const services = [
   },
   {
     icon: MousePointerClick,
-    color: "bg-green-500/10 text-green-500",
-    borderColor: "data-[state=open]:border-green-500/30",
+    color: "bg-brand/10 text-brand",
+    borderColor: "data-[state=open]:border-brand/30",
     title: "Pay-Per-Click (PPC) & Google Ads",
     description: "Generate qualified leads from day one. Our Google-certified PPC team manages Search, Display, Shopping, and Performance Max campaigns with rigorous bid strategy. Average client ROAS: 3.8x.",
     features: [
@@ -41,8 +41,8 @@ const services = [
   },
   {
     icon: Share2,
-    color: "bg-pink-500/10 text-pink-500",
-    borderColor: "data-[state=open]:border-pink-500/30",
+    color: "bg-brand/10 text-brand",
+    borderColor: "data-[state=open]:border-brand/30",
     title: "Social Media Marketing",
     description: "Build brand equity and generate leads across Meta (Facebook & Instagram), LinkedIn, and YouTube with full-funnel strategy from awareness to conversion.",
     features: [
@@ -56,8 +56,8 @@ const services = [
   },
   {
     icon: FileText,
-    color: "bg-amber-500/10 text-amber-500",
-    borderColor: "data-[state=open]:border-amber-500/30",
+    color: "bg-brand/10 text-brand",
+    borderColor: "data-[state=open]:border-brand/30",
     title: "Content Marketing & SEO Content",
     description: "Content is the foundation of long-term organic growth. We produce SEO-optimised blogs, pillar pages, case studies, and landing pages that rank, educate, and convert.",
     features: [
@@ -71,8 +71,8 @@ const services = [
   },
   {
     icon: Monitor,
-    color: "bg-purple-500/10 text-purple-500",
-    borderColor: "data-[state=open]:border-purple-500/30",
+    color: "bg-brand/10 text-brand",
+    borderColor: "data-[state=open]:border-brand/30",
     title: "Web Design & Development",
     description: "A website that doesn't convert is a liability. We build fast, mobile-first, SEO-ready websites with CRO baked in from the first wireframe.",
     features: [
@@ -86,8 +86,8 @@ const services = [
   },
   {
     icon: ShieldCheck,
-    color: "bg-teal-500/10 text-teal-500",
-    borderColor: "data-[state=open]:border-teal-500/30",
+    color: "bg-brand/10 text-brand",
+    borderColor: "data-[state=open]:border-brand/30",
     title: "Online Reputation Management (ORM)",
     description: "Your search results are your first impression. We monitor, manage, and build your brand's online reputation across Google, Clutch, and industry platforms.",
     features: [
