@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, Plus, Minus } from "lucide-react";
+import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, ArrowUpRight } from "lucide-react";
 
 const services = [
   {
     icon: TrendingUp,
-    number: "01",
-    title: "Digital\nMarketing",
+    number: "01.",
+    title: "Digital Marketing",
     description: "End-to-end digital marketing — from AI-powered SEO and Google Ads to social media strategy. We drive qualified traffic, generate leads, and scale your ROI across every channel.",
     subServices: [
       { label: "AI SEO", href: "/seo-company-bangalore" },
@@ -19,11 +19,11 @@ const services = [
   },
   {
     icon: Palette,
-    number: "02",
-    title: "Design\nServices",
+    number: "02.",
+    title: "Design Services",
     description: "From brand identities to scroll-stopping social media creatives and intuitive UI/UX — our design team builds visual systems that make your brand impossible to ignore.",
     subServices: [
-      { label: "UI / UX", href: "/ui-ux-design-agency-bangalore" },
+      { label: "UI / UX Design", href: "/ui-ux-design-agency-bangalore" },
       { label: "Social Media Posts", href: "/social-media-design-agency-bangalore" },
       { label: "Logo Design", href: "/logo-design-company-bangalore" },
       { label: "Brand Kit", href: "/branding-agency-bangalore" },
@@ -32,8 +32,8 @@ const services = [
   },
   {
     icon: FileText,
-    number: "03",
-    title: "Content\nMarketing",
+    number: "03.",
+    title: "Content Marketing",
     description: "SEO-optimised blogs, persuasive website copy, video scripts, and guest posts — content that ranks, educates, and converts at every stage of the funnel.",
     subServices: [
       { label: "Website Content", href: "/seo-content-writing-services-bangalore" },
@@ -45,8 +45,8 @@ const services = [
   },
   {
     icon: MessageSquare,
-    number: "04",
-    title: "SMS &\nMessaging",
+    number: "04.",
+    title: "SMS & Messaging",
     description: "Reach customers where they are — WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging for real-time engagement and higher open rates.",
     subServices: [
       { label: "WhatsApp Business API", href: "/whatsapp-marketing-company-bangalore" },
@@ -59,8 +59,8 @@ const services = [
   },
   {
     icon: Video,
-    number: "05",
-    title: "Production\nStudio",
+    number: "05.",
+    title: "Production Studio",
     description: "Professional video production and photography for ads, social media, and brand storytelling — from concept and scripting to shoot and post-production.",
     subServices: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
@@ -70,8 +70,8 @@ const services = [
   },
   {
     icon: Monitor,
-    number: "06",
-    title: "Website\nDesign",
+    number: "06.",
+    title: "Website Design",
     description: "Fast, mobile-first, SEO-ready websites that convert. Custom builds, WordPress, e-commerce, and ongoing maintenance — all with CRO baked in from the first wireframe.",
     subServices: [
       { label: "Website Development", href: "/web-design-company-bangalore" },
@@ -83,82 +83,88 @@ const services = [
   },
 ];
 
-const ServiceCard = ({ service, isOpen, onToggle }: { service: typeof services[0]; isOpen: boolean; onToggle: () => void }) => (
-  <div className="bg-foreground border border-white/10 rounded-2xl p-5 sm:p-6 flex flex-col justify-between min-h-[280px] sm:min-h-[320px] animate-fade-in">
-    {/* Number */}
-    <div>
-      <span className="text-xs text-gray-500 font-mono mb-4 block">{service.number}</span>
-      <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight whitespace-pre-line mb-4">
-        {service.title}
-      </h3>
-
-      {/* Sub-service chips */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {service.subServices.map((sub, i) => (
-          <Link
-            key={i}
-            to={sub.href}
-            className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-[11px] sm:text-xs text-gray-300 hover:bg-brand/10 hover:text-brand hover:border-brand/30 transition-colors"
-          >
-            {sub.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-
-    {/* Expand button */}
-    <div>
-      <button
-        onClick={onToggle}
-        className="w-10 h-10 rounded-full bg-brand flex items-center justify-center text-white transition-transform hover:scale-105"
-        aria-label={isOpen ? "Collapse" : "Expand"}
-      >
-        {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
-      </button>
-
-      {/* Expanded content */}
-      {isOpen && (
-        <div className="mt-4 pt-4 border-t border-white/10 animate-fade-in">
-          <p className="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">{service.description}</p>
-          <Link
-            to={service.href}
-            className="inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group"
-          >
-            Learn more <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-          </Link>
-        </div>
-      )}
-    </div>
-  </div>
-);
-
 export const ServicesDetailSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-foreground">
+    <section className="py-12 md:py-20 lg:py-28 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
-          <span className="inline-block px-3 py-1 bg-brand/20 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/30">
-            Our Digital Marketing Services in Bangalore
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-3 text-white">
-            End-to-End <span className="text-brand">Digital Marketing Services</span> Built for Growth
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14 max-w-5xl mx-auto">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground">
+            Services <span className="text-brand">We Provide</span>
           </h2>
-          <p className="text-gray-400 text-sm sm:text-base md:text-lg">
+          <p className="text-muted-foreground text-sm sm:text-base max-w-md">
             Every service is delivered in-house by certified specialists — no freelancer outsourcing, no black-box reporting.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto">
-          {services.map((service, i) => (
-            <ServiceCard
-              key={i}
-              service={service}
-              isOpen={openIndex === i}
-              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
-            />
-          ))}
+        {/* Accordion list */}
+        <div className="max-w-5xl mx-auto divide-y divide-border">
+          {services.map((service, i) => {
+            const isOpen = openIndex === i;
+            return (
+              <div
+                key={i}
+                className={`transition-colors duration-300 ${isOpen ? "bg-foreground rounded-2xl my-2" : ""}`}
+              >
+                {/* Row header */}
+                <button
+                  onClick={() => setOpenIndex(isOpen ? null : i)}
+                  className={`w-full flex items-center justify-between gap-4 py-5 px-4 sm:px-6 text-left group transition-colors ${
+                    isOpen ? "text-white" : "text-foreground hover:text-brand"
+                  }`}
+                >
+                  <div className="flex items-center gap-4 sm:gap-8">
+                    <span className={`text-sm font-mono ${isOpen ? "text-brand" : "text-muted-foreground"}`}>
+                      {service.number}
+                    </span>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold">
+                      {service.title}
+                    </h3>
+                  </div>
+                  <div
+                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${
+                      isOpen ? "bg-brand text-white" : "border border-border text-muted-foreground group-hover:border-brand group-hover:text-brand"
+                    }`}
+                  >
+                    <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`} />
+                  </div>
+                </button>
+
+                {/* Expanded content */}
+                {isOpen && (
+                  <div className="px-4 sm:px-6 pb-6 animate-fade-in">
+                    {/* Sub-service chips */}
+                    <div className="flex flex-wrap gap-2 mb-5 pl-0 sm:pl-[72px]">
+                      {service.subServices.map((sub, j) => (
+                        <Link
+                          key={j}
+                          to={sub.href}
+                          className="px-4 py-2 bg-white/10 border border-white/15 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+
+                    {/* Description + Learn more */}
+                    <div className="pl-0 sm:pl-[72px]">
+                      <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 max-w-2xl">
+                        {service.description}
+                      </p>
+                      <Link
+                        to={service.href}
+                        className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
+                      >
+                        Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
