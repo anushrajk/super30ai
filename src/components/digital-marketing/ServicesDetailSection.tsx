@@ -2,12 +2,20 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, ArrowUpRight } from "lucide-react";
 
+import digitalMarketingImg from "@/assets/services/digital-marketing.jpg";
+import designServicesImg from "@/assets/services/design-services.jpg";
+import contentMarketingImg from "@/assets/services/content-marketing.jpg";
+import smsMessagingImg from "@/assets/services/sms-messaging.jpg";
+import productionStudioImg from "@/assets/services/production-studio.jpg";
+import websiteDesignImg from "@/assets/services/website-design.jpg";
+
 const services = [
   {
     icon: TrendingUp,
     number: "01.",
     title: "Digital Marketing",
     description: "End-to-end digital marketing — from AI-powered SEO and Google Ads to social media strategy. We drive qualified traffic, generate leads, and scale your ROI across every channel.",
+    image: digitalMarketingImg,
     subServices: [
       { label: "AI SEO", href: "/seo-company-bangalore" },
       { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
@@ -22,6 +30,7 @@ const services = [
     number: "02.",
     title: "Design Services",
     description: "From brand identities to scroll-stopping social media creatives and intuitive UI/UX — our design team builds visual systems that make your brand impossible to ignore.",
+    image: designServicesImg,
     subServices: [
       { label: "UI / UX Design", href: "/ui-ux-design-agency-bangalore" },
       { label: "Social Media Posts", href: "/social-media-design-agency-bangalore" },
@@ -35,6 +44,7 @@ const services = [
     number: "03.",
     title: "Content Marketing",
     description: "SEO-optimised blogs, persuasive website copy, video scripts, and guest posts — content that ranks, educates, and converts at every stage of the funnel.",
+    image: contentMarketingImg,
     subServices: [
       { label: "Website Content", href: "/seo-content-writing-services-bangalore" },
       { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
@@ -48,6 +58,7 @@ const services = [
     number: "04.",
     title: "SMS & Messaging",
     description: "Reach customers where they are — WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging for real-time engagement and higher open rates.",
+    image: smsMessagingImg,
     subServices: [
       { label: "WhatsApp Business API", href: "/whatsapp-marketing-company-bangalore" },
       { label: "Chatbot", href: "/chatbot-development-company-bangalore" },
@@ -62,6 +73,7 @@ const services = [
     number: "05.",
     title: "Production Studio",
     description: "Professional video production and photography for ads, social media, and brand storytelling — from concept and scripting to shoot and post-production.",
+    image: productionStudioImg,
     subServices: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
       { label: "Photography", href: "/photography-services-bangalore" },
@@ -73,6 +85,7 @@ const services = [
     number: "06.",
     title: "Website Design",
     description: "Fast, mobile-first, SEO-ready websites that convert. Custom builds, WordPress, e-commerce, and ongoing maintenance — all with CRO baked in from the first wireframe.",
+    image: websiteDesignImg,
     subServices: [
       { label: "Website Development", href: "/web-design-company-bangalore" },
       { label: "E-commerce Website", href: "/ecommerce-website-development-bangalore" },
@@ -106,7 +119,7 @@ export const ServicesDetailSection = () => {
             return (
               <div
                 key={i}
-                className={`transition-colors duration-300 ${isOpen ? "bg-foreground rounded-2xl my-2" : ""}`}
+                className={`transition-all duration-300 ${isOpen ? "bg-foreground rounded-2xl my-2" : ""}`}
               >
                 {/* Row header */}
                 <button
@@ -148,17 +161,29 @@ export const ServicesDetailSection = () => {
                       ))}
                     </div>
 
-                    {/* Description + Learn more */}
-                    <div className="pl-0 sm:pl-[72px]">
-                      <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4 max-w-2xl">
-                        {service.description}
-                      </p>
-                      <Link
-                        to={service.href}
-                        className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
-                      >
-                        Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                      </Link>
+                    {/* Description + Image row */}
+                    <div className="pl-0 sm:pl-[72px] flex flex-col md:flex-row gap-5 md:gap-8">
+                      <div className="flex-1">
+                        <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+                          {service.description}
+                        </p>
+                        <Link
+                          to={service.href}
+                          className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
+                        >
+                          Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                        </Link>
+                      </div>
+                      <div className="w-full md:w-[280px] lg:w-[340px] shrink-0">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          loading="lazy"
+                          width={800}
+                          height={512}
+                          className="w-full h-[180px] md:h-[200px] object-cover rounded-xl"
+                        />
+                      </div>
                     </div>
                   </div>
                 )}
