@@ -162,30 +162,28 @@ export const ServicesDetailSection = () => {
                         ))}
                       </div>
 
-                      {/* Description + Image */}
-                      <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
-                        <div className="flex-1 min-w-0">
-                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
-                            {service.description}
-                          </p>
-                          <Link
-                            to={service.href}
-                            className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
-                          >
-                            Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                          </Link>
-                        </div>
-                        <div className="w-full md:w-[300px] lg:w-[360px] shrink-0">
-                          <img
-                            src={service.image}
-                            alt={service.title}
-                            loading="lazy"
-                            width={800}
-                            height={512}
-                            className="w-full h-[180px] md:h-[200px] object-cover rounded-xl"
-                          />
-                        </div>
+                      {/* Description + Learn more */}
+                      <div className="mb-5">
+                        <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+                          {service.description}
+                        </p>
+                        <Link
+                          to={service.href}
+                          className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
+                        >
+                          Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                        </Link>
                       </div>
+
+                      {/* Full-width landscape image */}
+                      <img
+                        src={service.image}
+                        alt={service.title}
+                        loading="lazy"
+                        width={800}
+                        height={512}
+                        className="w-full h-[200px] sm:h-[280px] md:h-[340px] object-cover rounded-xl"
+                      />
                     </div>
                   </div>
                 )}
