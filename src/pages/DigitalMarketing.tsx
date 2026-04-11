@@ -16,6 +16,7 @@ const DMIndustriesSection = lazy(() => import("@/components/digital-marketing/DM
 const DMBenefitsSection = lazy(() => import("@/components/digital-marketing/DMBenefitsSection").then((m) => ({ default: m.DMBenefitsSection })));
 const DMProcessSection = lazy(() => import("@/components/digital-marketing/DMProcessSection").then((m) => ({ default: m.DMProcessSection })));
 const DMPricingSection = lazy(() => import("@/components/digital-marketing/DMPricingSection").then((m) => ({ default: m.DMPricingSection })));
+const DMTestimonialsSection = lazy(() => import("@/components/digital-marketing/DMTestimonialsSection").then((m) => ({ default: m.DMTestimonialsSection })));
 const DMCaseStudySection = lazy(() => import("@/components/digital-marketing/DMCaseStudySection").then((m) => ({ default: m.DMCaseStudySection })));
 const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then((m) => ({ default: m.DMFinalCTASection })));
 const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
@@ -222,6 +223,13 @@ const DigitalMarketing = () => {
         <LazySection minHeight="420px" rootMargin={lazySectionRootMargin}>
           <Suspense fallback={sectionFallback("420px")}>
             <DMCaseStudySection />
+          </Suspense>
+        </LazySection>
+
+        {/* Testimonials */}
+        <LazySection minHeight="320px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("320px")}>
+            <DMTestimonialsSection />
           </Suspense>
         </LazySection>
 
