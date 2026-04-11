@@ -1,4 +1,10 @@
 import { Rocket, ShoppingCart, Building, GraduationCap, Stethoscope, Briefcase } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const industries = [
   { icon: Rocket, name: "SaaS & Tech Startups", approach: "Account-based marketing, product-led SEO, LinkedIn demand generation, free trial conversion flows" },
@@ -24,20 +30,28 @@ export const DMIndustriesSection = () => (
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
-        {industries.map((industry, i) => (
-          <div
-            key={i}
-            className="bg-card border border-border/50 rounded-2xl p-5 md:p-7 animate-fade-in"
-            style={{ animationDelay: `${i * 80}ms` }}
-          >
-            <div className="w-12 h-12 rounded-xl bg-brand/10 flex items-center justify-center mb-4">
-              <industry.icon className="w-6 h-6 text-brand" />
-            </div>
-            <h3 className="text-base sm:text-lg font-bold text-foreground mb-2">{industry.name}</h3>
-            <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{industry.approach}</p>
-          </div>
-        ))}
+      <div className="max-w-4xl mx-auto">
+        <Accordion type="single" collapsible defaultValue="industry-0" className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {industries.map((industry, i) => (
+            <AccordionItem
+              key={i}
+              value={`industry-${i}`}
+              className="bg-card border border-border/50 rounded-2xl px-5 md:px-6 overflow-hidden data-[state=open]:border-brand/30 transition-colors"
+            >
+              <AccordionTrigger className="hover:no-underline gap-3 py-5">
+                <span className="flex items-center gap-3 text-left">
+                  <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
+                    <industry.icon className="w-5 h-5 text-brand" />
+                  </div>
+                  <span className="text-sm sm:text-base font-bold text-foreground">{industry.name}</span>
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="text-muted-foreground text-xs sm:text-sm leading-relaxed pb-5 pl-[52px]">
+                {industry.approach}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   </section>

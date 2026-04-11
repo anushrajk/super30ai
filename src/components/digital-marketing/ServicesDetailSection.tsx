@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Search, MousePointerClick, Share2, FileText, Monitor, ShieldCheck } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const services = [
   {
     icon: Search,
     color: "bg-blue-500/10 text-blue-500",
+    borderColor: "data-[state=open]:border-blue-500/30",
     title: "Search Engine Optimisation (SEO)",
     description: "Rank higher, stay longer. Our SEO team combines technical audits, content authority building, and high-quality link acquisition to move your business to Page 1 — and keep it there.",
     features: [
@@ -20,6 +27,7 @@ const services = [
   {
     icon: MousePointerClick,
     color: "bg-green-500/10 text-green-500",
+    borderColor: "data-[state=open]:border-green-500/30",
     title: "Pay-Per-Click (PPC) & Google Ads",
     description: "Generate qualified leads from day one. Our Google-certified PPC team manages Search, Display, Shopping, and Performance Max campaigns with rigorous bid strategy. Average client ROAS: 3.8x.",
     features: [
@@ -34,6 +42,7 @@ const services = [
   {
     icon: Share2,
     color: "bg-pink-500/10 text-pink-500",
+    borderColor: "data-[state=open]:border-pink-500/30",
     title: "Social Media Marketing",
     description: "Build brand equity and generate leads across Meta (Facebook & Instagram), LinkedIn, and YouTube with full-funnel strategy from awareness to conversion.",
     features: [
@@ -48,6 +57,7 @@ const services = [
   {
     icon: FileText,
     color: "bg-amber-500/10 text-amber-500",
+    borderColor: "data-[state=open]:border-amber-500/30",
     title: "Content Marketing & SEO Content",
     description: "Content is the foundation of long-term organic growth. We produce SEO-optimised blogs, pillar pages, case studies, and landing pages that rank, educate, and convert.",
     features: [
@@ -62,6 +72,7 @@ const services = [
   {
     icon: Monitor,
     color: "bg-purple-500/10 text-purple-500",
+    borderColor: "data-[state=open]:border-purple-500/30",
     title: "Web Design & Development",
     description: "A website that doesn't convert is a liability. We build fast, mobile-first, SEO-ready websites with CRO baked in from the first wireframe.",
     features: [
@@ -76,6 +87,7 @@ const services = [
   {
     icon: ShieldCheck,
     color: "bg-teal-500/10 text-teal-500",
+    borderColor: "data-[state=open]:border-teal-500/30",
     title: "Online Reputation Management (ORM)",
     description: "Your search results are your first impression. We monitor, manage, and build your brand's online reputation across Google, Clutch, and industry platforms.",
     features: [
@@ -104,35 +116,39 @@ export const ServicesDetailSection = () => (
         </p>
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4 md:gap-6 max-w-6xl mx-auto">
-        {services.map((service, i) => (
-          <div
-            key={i}
-            className="bg-card border border-border/50 rounded-2xl p-5 sm:p-7 animate-fade-in"
-            style={{ animationDelay: `${i * 80}ms` }}
-          >
-            <div className="flex items-start gap-4 mb-4">
-              <div className={`w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0 ${service.color}`}>
-                <service.icon className="w-6 h-6" />
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg md:text-xl font-bold text-foreground">{service.title}</h3>
-              </div>
-            </div>
-            <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed mb-4">{service.description}</p>
-            <ul className="space-y-2 mb-5">
-              {service.features.map((feature, fi) => (
-                <li key={fi} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
-                  <div className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0 mt-1.5" />
-                  {feature}
-                </li>
-              ))}
-            </ul>
-            <Link to={service.href} className="inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group">
-              {service.linkText} <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        ))}
+      <div className="max-w-4xl mx-auto">
+        <Accordion type="single" collapsible defaultValue="service-0" className="space-y-3">
+          {services.map((service, i) => (
+            <AccordionItem
+              key={i}
+              value={`service-${i}`}
+              className={`bg-card border border-border/50 rounded-2xl px-5 sm:px-7 overflow-hidden transition-colors ${service.borderColor}`}
+            >
+              <AccordionTrigger className="hover:no-underline gap-4 py-5">
+                <span className="flex items-center gap-4 text-left">
+                  <div className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 ${service.color}`}>
+                    <service.icon className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm sm:text-base md:text-lg font-bold text-foreground">{service.title}</span>
+                </span>
+              </AccordionTrigger>
+              <AccordionContent className="pb-6 pl-[60px]">
+                <p className="text-muted-foreground text-xs sm:text-sm md:text-base leading-relaxed mb-4">{service.description}</p>
+                <ul className="space-y-2 mb-5">
+                  {service.features.map((feature, fi) => (
+                    <li key={fi} className="flex items-start gap-2.5 text-xs sm:text-sm text-foreground">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand flex-shrink-0 mt-1.5" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Link to={service.href} className="inline-flex items-center gap-1.5 text-brand font-semibold text-xs sm:text-sm group">
+                  {service.linkText} <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   </section>
