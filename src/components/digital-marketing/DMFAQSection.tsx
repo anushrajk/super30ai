@@ -1,21 +1,47 @@
 const faqs = [
-  { question: "What makes The Super 30 the best digital marketing agency in Bangalore?", answer: "Three things: (1) 30+ in-house specialists — zero outsourcing. (2) We track every lead from click to close, not just impressions. (3) No lock-in contracts. Our results earn your business." },
-  { question: "How much does a digital marketing agency in Bangalore charge?", answer: "Digital marketing services in Bangalore range from ₹25,000 to ₹5,00,000+ per month depending on scope. Our packages start at ₹50,000/month with transparent pricing." },
-  { question: "Which industries does your digital marketing agency in Bangalore serve?", answer: "Real Estate, Education, Healthcare, D2C & E-commerce, SaaS, Professional Services, Hospitality, Legal Services, and Staffing." },
-  { question: "How quickly can I expect results from your digital marketing services?", answer: "PPC shows results in 1-2 weeks. Social media traction builds in 4-8 weeks. SEO delivers significant results in 3-6 months." },
-  { question: "Do I need to commit to a long-term contract?", answer: "No. We offer month-to-month engagements. Most clients stay 12+ months because the compounding results speak for themselves." },
-  { question: "How is your approach different from other digital marketing agencies?", answer: "We connect all channels into one growth engine. Your SEO data feeds ad targeting, social engagement informs content, and website behaviour triggers email automation." },
-  { question: "Can your digital marketing agency handle everything in-house?", answer: "100% in-house. 30+ specialists covering SEO, paid media, social media, design, web development, content, and email marketing." },
-  { question: "How do you measure and report on performance?", answer: "Real-time dashboards showing traffic, leads, cost-per-lead, revenue attribution, and ROAS. Plus weekly and monthly strategy reviews." },
+  {
+    question: "How much do digital marketing services in Bangalore cost?",
+    answer: "Our digital marketing services in Bangalore start from ₹25,000/month for a focused single-channel engagement (SEO or PPC). Full-service retainers covering multiple channels range from ₹60,000 to ₹1,50,000+/month depending on the scope, industry competitiveness, and campaign goals. We offer a free brand audit before recommending any package — so you only pay for what you actually need.",
+  },
+  {
+    question: "How long does it take to see results from a digital marketing company in Bangalore?",
+    answer: "SEO typically delivers measurable ranking improvements within 3–6 months, with significant traffic growth building from Month 4 onwards. PPC and paid social campaigns can generate qualified leads within the first 2–4 weeks of launch. We set data-driven benchmarks in Month 1 so you always have clear expectations of what results to expect and when.",
+  },
+  {
+    question: "What is the difference between an online marketing company and a digital marketing agency in Bangalore?",
+    answer: "The terms are used interchangeably. An online marketing company in Bangalore and a digital marketing agency both offer services across SEO, paid advertising, social media, content, and email marketing. The key difference lies in specialisation and approach — a full-service digital marketing agency provides integrated strategy across all channels, while some online marketing companies focus on individual services like SEO or social media alone.",
+  },
+  {
+    question: "Do you work with startups or only large enterprises?",
+    answer: "Both. We work with early-stage startups in Koramangala and HSR Layout that need cost-efficient, high-impact digital marketing from a lean budget, and with enterprise brands in Electronic City, Whitefield, and MG Road that need scale, compliance, and multi-market reach. Our pricing plans are structured to serve both growth stages effectively.",
+  },
+  {
+    question: "Which digital marketing services in Bangalore are most effective for B2B companies?",
+    answer: "For B2B companies in Bangalore, SEO with long-form thought leadership content, LinkedIn Ads targeting decision-makers, and Google Search Ads for high-intent keywords typically deliver the strongest results. We combine these with marketing automation and CRM-integrated lead nurturing to support long B2B sales cycles. The exact channel mix depends on your average deal size, sales cycle length, and target buyer persona.",
+  },
+  {
+    question: "How is your digital marketing agency different from other agencies in Bangalore?",
+    answer: "Three things set us apart: full transparency (live dashboard access, no black-box reporting), no lock-in contracts (monthly retainers, cancel anytime), and 100% in-house execution (no outsourcing to freelancers). We are also one of the few digital marketing agencies in Bangalore actively integrating Generative Engine Optimisation (GEO) to ensure our clients appear in AI-generated search results alongside traditional Google rankings.",
+  },
+  {
+    question: "Do you offer SEO, PPC, and social media together as a package?",
+    answer: "Yes. As a full-service digital marketing agency in Bangalore, we manage SEO, Google Ads, Meta Ads, LinkedIn campaigns, content marketing, email marketing, and social media under one roof — with a unified strategy and single performance dashboard. Integrated campaigns consistently outperform siloed single-channel strategies because each channel reinforces the others.",
+  },
 ];
 
 export const DMFAQSection = () => (
   <section className="py-8 md:py-16 lg:py-24 bg-white">
     <div className="container mx-auto px-4">
       <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-        <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">FAQs About Our Digital Marketing Agency in Bangalore</span>
-        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground mb-2">Frequently Asked Questions</h2>
-        <p className="text-xs sm:text-sm text-muted-foreground">Everything you need to know about hiring a digital marketing agency in Bangalore</p>
+        <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
+          FAQs — Digital Marketing Agency in Bangalore
+        </span>
+        <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-foreground mb-2">
+          Frequently Asked Questions
+        </h2>
+        <p className="text-xs sm:text-sm text-muted-foreground">
+          Everything you need to know about hiring a digital marketing agency in Bangalore
+        </p>
       </div>
       <div className="max-w-3xl mx-auto space-y-2 sm:space-y-3">
         {faqs.map((faq, i) => (
