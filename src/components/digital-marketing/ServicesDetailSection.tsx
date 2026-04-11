@@ -129,7 +129,7 @@ export const ServicesDetailSection = () => {
                   }`}
                 >
                   <div className="flex items-center gap-4 sm:gap-8">
-                    <span className={`text-sm font-mono ${isOpen ? "text-brand" : "text-muted-foreground"}`}>
+                    <span className={`text-sm font-mono min-w-[28px] ${isOpen ? "text-brand" : "text-muted-foreground"}`}>
                       {service.number}
                     </span>
                     <h3 className="text-lg sm:text-xl md:text-2xl font-bold">
@@ -148,41 +148,43 @@ export const ServicesDetailSection = () => {
                 {/* Expanded content */}
                 {isOpen && (
                   <div className="px-4 sm:px-6 pb-6 animate-fade-in">
-                    {/* Sub-service chips */}
-                    <div className="flex flex-wrap gap-2 mb-5 pl-0 sm:pl-[72px]">
-                      {service.subServices.map((sub, j) => (
-                        <Link
-                          key={j}
-                          to={sub.href}
-                          className="px-4 py-2 bg-white/10 border border-white/15 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-colors"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-
-                    {/* Description + Image row */}
-                    <div className="pl-0 sm:pl-[72px] flex flex-col md:flex-row gap-5 md:gap-8">
-                      <div className="flex-1">
-                        <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
-                          {service.description}
-                        </p>
-                        <Link
-                          to={service.href}
-                          className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
-                        >
-                          Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                        </Link>
+                    <div className="pl-[44px] sm:pl-[60px]">
+                      {/* Sub-service chips */}
+                      <div className="flex flex-wrap gap-2 mb-5">
+                        {service.subServices.map((sub, j) => (
+                          <Link
+                            key={j}
+                            to={sub.href}
+                            className="px-4 py-2 bg-white/10 border border-white/15 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-colors"
+                          >
+                            {sub.label}
+                          </Link>
+                        ))}
                       </div>
-                      <div className="w-full md:w-[280px] lg:w-[340px] shrink-0">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          loading="lazy"
-                          width={800}
-                          height={512}
-                          className="w-full h-[180px] md:h-[200px] object-cover rounded-xl"
-                        />
+
+                      {/* Description + Image */}
+                      <div className="flex flex-col md:flex-row gap-5 md:gap-8 items-start">
+                        <div className="flex-1 min-w-0">
+                          <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+                            {service.description}
+                          </p>
+                          <Link
+                            to={service.href}
+                            className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
+                          >
+                            Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                          </Link>
+                        </div>
+                        <div className="w-full md:w-[300px] lg:w-[360px] shrink-0">
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            loading="lazy"
+                            width={800}
+                            height={512}
+                            className="w-full h-[180px] md:h-[200px] object-cover rounded-xl"
+                          />
+                        </div>
                       </div>
                     </div>
                   </div>
