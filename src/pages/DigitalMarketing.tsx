@@ -6,7 +6,7 @@ import { LazySection } from "@/components/common/LazySection";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
-import { DMSocialProofSection } from "@/components/digital-marketing/DMSocialProofSection";
+
 
 const Footer = lazy(() => import("@/components/landing/Footer").then((m) => ({ default: m.Footer })));
 const StickyCTA = lazy(() => import("@/components/landing/StickyCTA").then((m) => ({ default: m.StickyCTA })));
