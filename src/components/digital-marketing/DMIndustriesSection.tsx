@@ -35,8 +35,10 @@ const MarqueeRow = ({ items, direction = "left" }: { items: typeof industries; d
       style={{ animation: `${direction === "left" ? "marquee-left" : "marquee-right"} 60s linear infinite` }}
     >
       {[...items, ...items].map((ind, i) => (
-        <div key={i} className="flex items-center gap-2 px-4 py-2.5 bg-background border border-border rounded-full whitespace-nowrap shrink-0">
-          <ind.icon className="w-4 h-4 text-brand shrink-0" />
+        <div key={i} className="flex items-center gap-2.5 px-5 py-3 bg-background border border-border/50 rounded-full whitespace-nowrap shrink-0 backdrop-blur-sm">
+          <div className="w-7 h-7 rounded-lg bg-brand/10 flex items-center justify-center">
+            <ind.icon className="w-3.5 h-3.5 text-brand" />
+          </div>
           <span className="text-xs sm:text-sm font-medium text-foreground">{ind.name}</span>
         </div>
       ))}
@@ -45,13 +47,17 @@ const MarqueeRow = ({ items, direction = "left" }: { items: typeof industries; d
 );
 
 export const DMIndustriesSection = () => (
-  <section className="py-12 md:py-20 lg:py-28 bg-card">
+  <section className="py-12 md:py-20 lg:py-28 bg-background relative overflow-hidden">
     <style>{`
       @keyframes marquee-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
       @keyframes marquee-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
     `}</style>
+
+    {/* Subtle decorative */}
+    <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
     <div className="container mx-auto px-4">
-      <div className="text-center max-w-3xl mx-auto mb-8 md:mb-12">
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-14">
         <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
           Industry Expertise
         </span>
@@ -62,7 +68,7 @@ export const DMIndustriesSection = () => (
           We serve 18+ industries with tailored strategies built by vertical specialists.
         </p>
       </div>
-      <div className="-mx-4 sm:mx-0">
+      <div className="-mx-4 sm:mx-0 space-y-3">
         <MarqueeRow items={row1} direction="left" />
         <MarqueeRow items={row2} direction="right" />
       </div>

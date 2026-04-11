@@ -52,7 +52,10 @@ const caseStudies = [
 ];
 
 export const DMCaseStudySection = () => (
-  <section className="py-12 md:py-20 lg:py-28 bg-muted/30">
+  <section className="py-12 md:py-20 lg:py-28 bg-card relative overflow-hidden">
+    {/* Subtle decorative */}
+    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
     <div className="container mx-auto px-4">
       <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
         <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
@@ -68,11 +71,14 @@ export const DMCaseStudySection = () => (
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
         {caseStudies.map((cs, i) => (
-          <div key={i} className="bg-card border border-border/50 rounded-3xl overflow-hidden">
+          <div key={i} className="bg-background border border-border/40 rounded-3xl overflow-hidden shadow-[0_8px_30px_-12px_hsl(var(--foreground)/0.04)]">
             {/* Header */}
             <div className="px-6 pt-6 pb-4">
-              <h3 className="text-lg font-bold text-foreground">{cs.industry}</h3>
-              <p className="text-xs text-muted-foreground">{cs.location}</p>
+              <div className="flex items-center gap-2 mb-1">
+                <div className="w-2 h-2 rounded-full bg-brand" />
+                <h3 className="text-lg font-bold text-foreground">{cs.industry}</h3>
+              </div>
+              <p className="text-xs text-muted-foreground pl-4">{cs.location}</p>
             </div>
 
             {/* Before / After comparison */}
@@ -81,21 +87,23 @@ export const DMCaseStudySection = () => (
                 {/* Before column */}
                 <div>
                   <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-3 text-center">Before</div>
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {cs.before.map((b, bi) => (
-                      <div key={bi} className="text-center py-2.5 px-2 bg-muted/50 rounded-xl">
+                      <div key={bi} className="text-center py-3 px-2 bg-muted/40 rounded-xl border border-border/30">
                         <div className="text-lg sm:text-xl font-bold text-muted-foreground">{b.value}</div>
-                        <div className="text-[10px] text-muted-foreground/70 mt-0.5">{b.metric}</div>
+                        <div className="text-[10px] text-muted-foreground/60 mt-0.5">{b.metric}</div>
                       </div>
                     ))}
                   </div>
                 </div>
 
                 {/* Arrow divider */}
-                <div className="flex flex-col items-center justify-center px-3 gap-3 pt-6">
+                <div className="flex flex-col items-center justify-center px-3 gap-2.5 pt-6">
                   {cs.before.map((_, bi) => (
-                    <div key={bi} className="h-[52px] sm:h-[58px] flex items-center">
-                      <ArrowRight className="w-4 h-4 text-brand" />
+                    <div key={bi} className="h-[56px] sm:h-[62px] flex items-center">
+                      <div className="w-6 h-6 rounded-full bg-brand/10 flex items-center justify-center">
+                        <ArrowRight className="w-3 h-3 text-brand" />
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -103,9 +111,9 @@ export const DMCaseStudySection = () => (
                 {/* After column */}
                 <div>
                   <div className="text-[10px] font-semibold text-brand uppercase tracking-widest mb-3 text-center">After</div>
-                  <div className="space-y-3">
+                  <div className="space-y-2.5">
                     {cs.after.map((a, ai) => (
-                      <div key={ai} className="text-center py-2.5 px-2 bg-brand/8 border border-brand/15 rounded-xl">
+                      <div key={ai} className="text-center py-3 px-2 bg-brand/[0.06] border border-brand/15 rounded-xl">
                         <div className="text-lg sm:text-xl font-bold text-brand">{a.value}</div>
                         <div className="text-[10px] text-muted-foreground mt-0.5">{a.metric}</div>
                       </div>
@@ -116,11 +124,14 @@ export const DMCaseStudySection = () => (
             </div>
 
             {/* Footer */}
-            <div className="px-6 py-4 border-t border-border/30 bg-muted/20">
+            <div className="px-6 py-4 border-t border-border/20 bg-muted/20">
               <p className="text-xs text-muted-foreground leading-relaxed">
                 <span className="font-semibold text-foreground">Strategy:</span> {cs.strategy}
               </p>
-              <p className="text-[10px] text-muted-foreground/60 mt-1.5">Results in {cs.timeframe}</p>
+              <div className="flex items-center gap-1.5 mt-2">
+                <div className="w-1.5 h-1.5 rounded-full bg-brand/50" />
+                <p className="text-[10px] text-muted-foreground/60">Results in {cs.timeframe}</p>
+              </div>
             </div>
           </div>
         ))}

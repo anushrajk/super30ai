@@ -41,7 +41,9 @@ export const DMPricingSection = () => {
 
   return (
     <section className="py-12 md:py-20 lg:py-28 bg-foreground relative overflow-hidden">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand/5 rounded-full blur-3xl" />
+      {/* Decorative gradients */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-brand/[0.04] rounded-full blur-[120px]" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-brand/[0.03] rounded-full blur-[80px]" />
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
@@ -51,7 +53,7 @@ export const DMPricingSection = () => {
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight">
             Digital Marketing Services in Bangalore — <span className="text-brand">Pricing</span>
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300">
+          <p className="text-sm sm:text-base md:text-lg text-gray-400">
             All plans include no lock-in contracts and a free brand audit before you commit.
           </p>
         </div>
@@ -60,12 +62,11 @@ export const DMPricingSection = () => {
           {plans.map((plan, i) => (
             <div
               key={i}
-              className={`rounded-2xl p-5 sm:p-7 animate-fade-in relative ${
+              className={`rounded-2xl p-5 sm:p-7 relative transition-all duration-300 ${
                 plan.highlighted
-                  ? "bg-brand/10 border-2 border-brand/40 ring-1 ring-brand/20"
-                  : "bg-white/5 border border-white/10"
+                  ? "bg-brand/[0.08] border-2 border-brand/30 shadow-[0_0_40px_-10px_hsl(var(--brand)/0.15)]"
+                  : "bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.06]"
               }`}
-              style={{ animationDelay: `${i * 100}ms` }}
             >
               {plan.highlighted && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
@@ -75,15 +76,18 @@ export const DMPricingSection = () => {
                 </div>
               )}
               <h3 className="text-lg sm:text-xl font-bold text-white">{plan.name}</h3>
-              <p className="text-xs text-gray-400 mb-4">{plan.subtitle}</p>
+              <p className="text-xs text-gray-500 mb-4">{plan.subtitle}</p>
               <div className="mb-5">
                 <span className="text-2xl sm:text-3xl font-bold text-brand">{plan.price}</span>
-                <span className="text-gray-400 text-sm">{plan.period}</span>
+                <span className="text-gray-500 text-sm">{plan.period}</span>
               </div>
-              <ul className="space-y-2.5">
+              <div className="w-full h-px bg-white/[0.06] mb-5" />
+              <ul className="space-y-3">
                 {plan.features.map((feature, fi) => (
-                  <li key={fi} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-300">
-                    <Check className="w-4 h-4 text-brand flex-shrink-0 mt-0.5" />
+                  <li key={fi} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-400">
+                    <div className="w-4 h-4 rounded-full bg-brand/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <Check className="w-2.5 h-2.5 text-brand" />
+                    </div>
                     {feature}
                   </li>
                 ))}
@@ -92,14 +96,14 @@ export const DMPricingSection = () => {
           ))}
         </div>
 
-        <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 text-center max-w-3xl mx-auto backdrop-blur-sm">
+        <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 sm:p-8 text-center max-w-3xl mx-auto">
           <p className="text-white font-semibold text-base sm:text-lg mb-1">All plans start with a Free Brand Audit</p>
-          <p className="text-gray-400 text-xs sm:text-sm mb-5">We analyse your website, current digital presence, competitor landscape, and growth opportunities — delivered within 5 business days.</p>
+          <p className="text-gray-500 text-xs sm:text-sm mb-5">We analyse your website, current digital presence, competitor landscape, and growth opportunities — delivered within 5 business days.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} size="lg" className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 sm:px-8 text-sm sm:text-base">
               Start My Free Audit <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
-            <Button variant="outline" size="lg" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border-white/20 text-white hover:bg-white/10 text-sm sm:text-base">
+            <Button variant="outline" size="lg" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border-white/15 text-white hover:bg-white/[0.06] text-sm sm:text-base">
               <MessageCircle className="w-4 h-4 mr-2" /> Speak to a Strategist
             </Button>
           </div>

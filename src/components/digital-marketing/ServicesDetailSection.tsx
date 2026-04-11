@@ -100,45 +100,53 @@ export const ServicesDetailSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-background">
-      <div className="container mx-auto px-4">
+    <section className="py-12 md:py-20 lg:py-28 bg-card relative overflow-hidden">
+      {/* Decorative bg element */}
+      <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-brand/[0.02] rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="container mx-auto px-4 relative">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14 max-w-5xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground">
-            Services <span className="text-brand">We Provide</span>
-          </h2>
+          <div>
+            <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">
+              Our Services
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight text-foreground">
+              Services <span className="text-brand">We Provide</span>
+            </h2>
+          </div>
           <p className="text-muted-foreground text-sm sm:text-base max-w-md">
             Every service is delivered in-house by certified specialists — no freelancer outsourcing, no black-box reporting.
           </p>
         </div>
 
         {/* Accordion list */}
-        <div className="max-w-5xl mx-auto divide-y divide-border">
+        <div className="max-w-5xl mx-auto">
           {services.map((service, i) => {
             const isOpen = openIndex === i;
             return (
               <div
                 key={i}
-                className={`transition-all duration-300 ${isOpen ? "bg-foreground rounded-2xl my-2" : ""}`}
+                className={`transition-all duration-400 border-b border-border/40 last:border-b-0 ${isOpen ? "bg-foreground rounded-2xl my-3 border-b-0" : ""}`}
               >
                 {/* Row header */}
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full flex items-center justify-between gap-4 py-5 px-4 sm:px-6 text-left group transition-colors ${
+                  className={`w-full flex items-center justify-between gap-4 py-5 sm:py-6 px-4 sm:px-6 text-left group transition-colors ${
                     isOpen ? "text-white" : "text-foreground hover:text-brand"
                   }`}
                 >
                   <div className="flex items-center gap-4 sm:gap-8">
-                    <span className={`text-sm font-mono min-w-[28px] ${isOpen ? "text-brand" : "text-muted-foreground"}`}>
+                    <span className={`text-sm font-mono min-w-[28px] ${isOpen ? "text-brand" : "text-muted-foreground/50"}`}>
                       {service.number}
                     </span>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
                       {service.title}
                     </h3>
                   </div>
                   <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-colors ${
-                      isOpen ? "bg-brand text-white" : "border border-border text-muted-foreground group-hover:border-brand group-hover:text-brand"
+                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                      isOpen ? "bg-brand text-white" : "border border-border/60 text-muted-foreground group-hover:border-brand group-hover:text-brand"
                     }`}
                   >
                     <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`} />
@@ -155,7 +163,7 @@ export const ServicesDetailSection = () => {
                           <Link
                             key={j}
                             to={sub.href}
-                            className="px-4 py-2 bg-white/10 border border-white/15 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-colors"
+                            className="px-4 py-2 bg-white/[0.07] border border-white/10 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-all duration-200"
                           >
                             {sub.label}
                           </Link>
@@ -163,7 +171,7 @@ export const ServicesDetailSection = () => {
                       </div>
 
                       {/* Description + Learn more */}
-                      <div className="mb-5">
+                      <div className="mb-6">
                         <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
                           {service.description}
                         </p>
@@ -176,14 +184,16 @@ export const ServicesDetailSection = () => {
                       </div>
 
                       {/* Full-width landscape image */}
-                      <img
-                        src={service.image}
-                        alt={service.title}
-                        loading="lazy"
-                        width={800}
-                        height={512}
-                        className="w-full h-[200px] sm:h-[280px] md:h-[340px] object-cover rounded-xl"
-                      />
+                      <div className="rounded-xl overflow-hidden">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          loading="lazy"
+                          width={800}
+                          height={512}
+                          className="w-full h-[200px] sm:h-[280px] md:h-[340px] object-cover"
+                        />
+                      </div>
                     </div>
                   </div>
                 )}

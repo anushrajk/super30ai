@@ -20,7 +20,10 @@ export const DMProcessSection = () => {
   const ActiveIcon = active.icon;
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-muted/30">
+    <section className="py-12 md:py-20 lg:py-28 bg-background relative overflow-hidden">
+      {/* Subtle bg accent */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
           <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
@@ -36,7 +39,7 @@ export const DMProcessSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start max-w-6xl mx-auto">
           {/* Left: Step list */}
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-1 bg-card rounded-2xl border border-border/40 p-3">
             {steps.map((step, i) => {
               const Icon = step.icon;
               const isActive = i === activeIndex;
@@ -49,8 +52,8 @@ export const DMProcessSection = () => {
                     isActive ? "bg-brand/10 border border-brand/20" : "border border-transparent hover:bg-muted/50"
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 ${
-                    isActive ? "bg-brand text-white shadow-md" : "bg-muted text-muted-foreground"
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
+                    isActive ? "bg-brand text-white" : "bg-muted text-muted-foreground"
                   }`}>
                     <Icon className="w-4 h-4" />
                   </div>
@@ -64,7 +67,7 @@ export const DMProcessSection = () => {
                       <span className="text-xs text-brand font-medium">{step.timeline}</span>
                     )}
                   </div>
-                  <div className={`w-1.5 h-8 rounded-full transition-colors duration-300 ${
+                  <div className={`w-1.5 h-8 rounded-full transition-all duration-300 ${
                     isActive ? "bg-brand" : i < activeIndex ? "bg-brand/30" : "bg-muted"
                   }`} />
                 </button>
@@ -73,7 +76,7 @@ export const DMProcessSection = () => {
           </div>
 
           {/* Right: Active card */}
-          <div className="bg-card border border-border/50 rounded-3xl overflow-hidden shadow-xl">
+          <div className="bg-card border border-border/40 rounded-3xl overflow-hidden shadow-[0_20px_50px_-15px_hsl(var(--foreground)/0.06)]">
             <div className="relative h-48 sm:h-56 overflow-hidden">
               <img
                 src={active.image}
@@ -84,6 +87,7 @@ export const DMProcessSection = () => {
                 height={512}
                 key={activeIndex}
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent" />
               <div className="absolute top-4 left-4 px-3 py-1 bg-brand text-white text-xs font-bold rounded-full">
                 Step {active.number}
               </div>
@@ -101,7 +105,7 @@ export const DMProcessSection = () => {
               <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
                 {active.description}
               </p>
-              <div className="flex items-center gap-1.5 mt-5">
+              <div className="flex items-center gap-1.5 mt-6">
                 {steps.map((_, j) => (
                   <div
                     key={j}
