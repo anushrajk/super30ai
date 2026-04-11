@@ -1,10 +1,5 @@
-import { Eye, Unlock, UserCheck, Award, Headphones, Brain } from "lucide-react";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { useState } from "react";
+import { Eye, Unlock, UserCheck, Award, Headphones, Brain, ChevronDown } from "lucide-react";
 
 const trustSignals = [
   { icon: Eye, what: "Full transparency, no black-box reporting", why: "You get a live dashboard with real-time access to your campaign data — spend, leads, rankings, ROAS — 24/7. No waiting for monthly reports to know what's happening." },
@@ -15,10 +10,54 @@ const trustSignals = [
   { icon: Brain, what: "AI + Human strategy", why: "We use AI-powered tools for audience research, bid optimisation, and content strategy — but every campaign decision is reviewed and owned by a senior strategist." },
 ];
 
+const BenefitCard = ({ signal, index }: { signal: typeof trustSignals[0]; index: number }) => {
+  const [open, setOpen] = useState(index === 0);
+  const Icon = signal.icon;
+
+  return (
+    <div
+      className={`group relative rounded-3xl border-2 transition-all duration-300 overflow-hidden ${
+        open
+          ? "border-brand/30 bg-gradient-to-br from-brand/5 via-background to-background shadow-lg"
+          : "border-border/40 bg-background hover:border-brand/20"
+      }`}
+    >
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center gap-4 sm:gap-5 p-5 sm:p-7 text-left"
+      >
+        <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+          open ? "bg-brand/15" : "bg-brand/8"
+        }`}>
+          <Icon className={`w-6 h-6 sm:w-7 sm:h-7 text-brand transition-transform duration-300 ${open ? "scale-110" : ""}`} />
+        </div>
+        <span className="flex-1 text-base sm:text-lg font-bold text-foreground leading-snug">
+          {signal.what}
+        </span>
+        <ChevronDown className={`w-5 h-5 text-muted-foreground shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+      </button>
+
+      <div
+        className={`grid transition-all duration-300 ease-in-out ${
+          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 sm:px-7 pb-6 sm:pb-7 pl-[84px] sm:pl-[104px]">
+            <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+              {signal.why}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const DMBenefitsSection = () => (
   <section className="py-12 md:py-20 lg:py-28 bg-card">
     <div className="container mx-auto px-4">
-      <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
+      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
         <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
           Why Choose Us
         </span>
@@ -30,28 +69,10 @@ export const DMBenefitsSection = () => (
         </p>
       </div>
 
-      <div className="max-w-4xl mx-auto">
-        <Accordion type="single" collapsible defaultValue="benefit-0" className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          {trustSignals.map((signal, i) => (
-            <AccordionItem
-              key={i}
-              value={`benefit-${i}`}
-              className="bg-card border border-border/50 rounded-2xl px-5 md:px-6 overflow-hidden data-[state=open]:border-brand/30 transition-colors"
-            >
-              <AccordionTrigger className="hover:no-underline gap-3 py-5">
-                <span className="flex items-center gap-3 text-left">
-                  <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
-                    <signal.icon className="w-5 h-5 text-brand" />
-                  </div>
-                  <span className="text-xs sm:text-sm font-bold text-foreground leading-snug">{signal.what}</span>
-                </span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-xs sm:text-sm leading-relaxed pb-5 pl-[52px]">
-                {signal.why}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+        {trustSignals.map((signal, i) => (
+          <BenefitCard key={i} signal={signal} index={i} />
+        ))}
       </div>
     </div>
   </section>
