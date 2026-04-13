@@ -24,49 +24,56 @@ const cards = [
   },
 ];
 
-const ContentCard = ({ card, index }: { card: typeof cards[0]; index: number }) => {
+const PillCard = ({ card, index }: { card: typeof cards[0]; index: number }) => {
   const [open, setOpen] = useState(false);
 
   return (
     <div
-      className={`group rounded-2xl overflow-hidden transition-all duration-500 ease-out bg-foreground ${
-        open
-          ? "shadow-[0_20px_60px_-15px_rgba(0,0,0,0.4)]"
-          : "shadow-[0_4px_20px_-8px_rgba(0,0,0,0.2)] hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.3)]"
-      }`}
+      style={{ animationDelay: `${index * 0.12}s` }}
+      className="animate-[float_3s_ease-in-out_infinite] hover:animate-[bounce-soft_0.5s_ease-out]"
     >
-      <button
-        onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-4 p-6 sm:p-7 text-left cursor-pointer"
-      >
-        <div className="flex items-center gap-5">
-          <span className="text-sm font-mono font-bold text-brand min-w-[28px]">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <h3 className="text-sm sm:text-base font-semibold text-background leading-snug tracking-tight">
-            {card.title}
-          </h3>
-        </div>
-        <div
-          className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-500 ease-out ${
-            open
-              ? "bg-brand text-white rotate-180 scale-110"
-              : "bg-background/10 text-background/60 group-hover:bg-brand/20 group-hover:text-brand"
-          }`}
-        >
-          <ChevronDown className="w-4 h-4" />
-        </div>
-      </button>
-
       <div
-        className={`grid transition-all duration-500 ease-out ${
-          open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        className={`rounded-full cursor-pointer select-none transition-all duration-500 ease-out ${
+          open
+            ? "rounded-3xl bg-foreground shadow-[0_12px_40px_-10px_rgba(0,0,0,0.35)] scale-[1.02]"
+            : "bg-foreground shadow-[0_6px_24px_-8px_rgba(0,0,0,0.2)] hover:shadow-[0_10px_36px_-8px_rgba(0,0,0,0.3)] hover:scale-[1.03] hover:-translate-y-1"
         }`}
       >
-        <div className="overflow-hidden">
-          <div className="px-6 sm:px-7 pb-6 sm:pb-7 pl-[72px] sm:pl-[80px]">
-            <div className="w-10 h-[2px] bg-brand rounded-full mb-4" />
-            <p className="text-background/60 text-sm leading-relaxed">{card.text}</p>
+        <button
+          onClick={() => setOpen(!open)}
+          className={`w-full flex items-center justify-between gap-3 text-left cursor-pointer transition-all duration-300 ${
+            open ? "px-6 py-4 sm:px-7 sm:py-5" : "px-5 py-3.5 sm:px-6 sm:py-4"
+          }`}
+        >
+          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+            <span className="text-[11px] font-mono font-bold text-brand shrink-0">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="text-xs sm:text-sm font-semibold text-background leading-snug truncate">
+              {card.title}
+            </h3>
+          </div>
+          <div
+            className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-all duration-400 ease-out ${
+              open
+                ? "bg-brand text-white rotate-180"
+                : "bg-background/10 text-background/50"
+            }`}
+          >
+            <ChevronDown className="w-3.5 h-3.5" />
+          </div>
+        </button>
+
+        <div
+          className={`grid transition-all duration-500 ease-out ${
+            open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <div className="px-6 sm:px-7 pb-5 sm:pb-6 pl-[52px] sm:pl-[60px]">
+              <div className="w-8 h-[2px] bg-brand rounded-full mb-3" />
+              <p className="text-background/55 text-xs sm:text-sm leading-relaxed">{card.text}</p>
+            </div>
           </div>
         </div>
       </div>
@@ -79,7 +86,7 @@ export const DMWhyBangaloreSection = () => (
     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-[2px] bg-brand/20 rounded-full" />
 
     <div className="container mx-auto px-4">
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-5 border border-brand/20">
           Digital Marketing Agency in Bangalore
         </span>
@@ -90,7 +97,7 @@ export const DMWhyBangaloreSection = () => (
 
         <div className="space-y-3">
           {cards.map((card, i) => (
-            <ContentCard key={i} card={card} index={i} />
+            <PillCard key={i} card={card} index={i} />
           ))}
         </div>
 
@@ -99,5 +106,18 @@ export const DMWhyBangaloreSection = () => (
         </p>
       </div>
     </div>
+
+    <style>{`
+      @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-6px); }
+      }
+      @keyframes bounce-soft {
+        0% { transform: scale(1); }
+        40% { transform: scale(1.04); }
+        70% { transform: scale(0.98); }
+        100% { transform: scale(1); }
+      }
+    `}</style>
   </section>
 );
