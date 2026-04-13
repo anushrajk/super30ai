@@ -33,9 +33,9 @@ const PillCard = ({ card, index }: { card: typeof cards[0]; index: number }) => 
       className="animate-[float_3s_ease-in-out_infinite] hover:animate-[bounce-soft_0.5s_ease-out]"
     >
       <div
-        className={`rounded-full cursor-pointer select-none transition-all duration-500 ease-out ${
+        className={`rounded-2xl cursor-pointer select-none transition-all duration-500 ease-out ${
           open
-            ? "rounded-3xl bg-foreground shadow-[0_12px_40px_-10px_rgba(0,0,0,0.35)] scale-[1.02]"
+            ? "bg-foreground shadow-[0_12px_40px_-10px_rgba(0,0,0,0.35)] scale-[1.02]"
             : "bg-foreground shadow-[0_6px_24px_-8px_rgba(0,0,0,0.2)] hover:shadow-[0_10px_36px_-8px_rgba(0,0,0,0.3)] hover:scale-[1.03] hover:-translate-y-1"
         }`}
       >
