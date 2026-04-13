@@ -96,12 +96,104 @@ const services = [
   },
 ];
 
+const ServiceRow = ({ service, index, isOpen, onToggle }: {
+  service: typeof services[0];
+  index: number;
+  isOpen: boolean;
+  onToggle: () => void;
+}) => {
+  return (
+    <div className={`border-b border-border/30 last:border-b-0 transition-colors duration-300 ${isOpen ? "" : "hover:bg-muted/30"}`}>
+      {/* Row header */}
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between gap-4 py-7 sm:py-8 md:py-10 px-2 md:px-4 text-left group"
+      >
+        <div className="flex items-center gap-6 md:gap-10">
+          <span className="text-muted-foreground/40 text-xs md:text-sm font-medium tracking-widest tabular-nums">
+            {service.number}
+          </span>
+          <h3 className={`text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold uppercase tracking-wide transition-colors duration-300 ${
+            isOpen ? "text-brand" : "text-foreground group-hover:text-brand"
+          }`}>
+            {service.title}
+          </h3>
+        </div>
+        <div
+          className={`w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+            isOpen
+              ? "bg-brand border-brand text-white scale-110"
+              : "border border-border/60 text-muted-foreground group-hover:border-brand group-hover:text-brand"
+          }`}
+        >
+          <ArrowUpRight className={`w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`} />
+        </div>
+      </button>
+
+      {/* Expandable content with smooth grid animation */}
+      <div
+        className={`grid transition-all duration-500 ease-out ${
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        }`}
+      >
+        <div className="overflow-hidden">
+          <div className="px-2 md:px-4 pb-8 md:pb-12">
+            <div className="bg-foreground rounded-2xl p-5 sm:p-6 md:p-8 lg:p-10">
+              <div className="flex flex-col lg:flex-row gap-6 lg:gap-10">
+                {/* Left: Text content */}
+                <div className="flex-1 flex flex-col justify-between min-w-0">
+                  {/* Sub-service chips */}
+                  <div className="flex flex-wrap gap-2 mb-6">
+                    {service.subServices.map((sub, j) => (
+                      <Link
+                        key={j}
+                        to={sub.href}
+                        className="px-4 py-2 bg-white/[0.06] border border-white/10 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-all duration-200"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-400 text-sm sm:text-[15px] leading-relaxed mb-6 max-w-lg">
+                    {service.description}
+                  </p>
+
+                  {/* Learn more */}
+                  <Link
+                    to={service.href}
+                    className="inline-flex items-center gap-2 text-brand font-semibold text-sm uppercase tracking-wider group/link hover:gap-3 transition-all duration-300"
+                  >
+                    Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                  </Link>
+                </div>
+
+                {/* Right: Image */}
+                <div className="lg:w-[45%] flex-shrink-0 rounded-xl overflow-hidden">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    loading="lazy"
+                    width={800}
+                    height={512}
+                    className="w-full h-[200px] sm:h-[260px] md:h-[300px] object-cover transition-transform duration-700 hover:scale-105"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export const ServicesDetailSection = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
     <section className="py-12 md:py-20 lg:py-28 bg-card relative overflow-hidden">
-      {/* Decorative bg element */}
       <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-brand/[0.02] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-4 relative">
@@ -121,85 +213,16 @@ export const ServicesDetailSection = () => {
         </div>
 
         {/* Accordion list */}
-        <div className="max-w-5xl mx-auto">
-          {services.map((service, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div
-                key={i}
-                className={`transition-all duration-400 border-b border-border/40 last:border-b-0 ${isOpen ? "bg-foreground rounded-2xl my-3 border-b-0" : ""}`}
-              >
-                {/* Row header */}
-                <button
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className={`w-full flex items-center justify-between gap-4 py-5 sm:py-6 px-4 sm:px-6 text-left group transition-colors ${
-                    isOpen ? "text-white" : "text-foreground hover:text-brand"
-                  }`}
-                >
-                  <div className="flex items-center gap-4 sm:gap-8">
-                    <span className={`text-sm font-mono min-w-[28px] ${isOpen ? "text-brand" : "text-muted-foreground/50"}`}>
-                      {service.number}
-                    </span>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight">
-                      {service.title}
-                    </h3>
-                  </div>
-                  <div
-                    className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
-                      isOpen ? "bg-brand text-white" : "border border-border/60 text-muted-foreground group-hover:border-brand group-hover:text-brand"
-                    }`}
-                  >
-                    <ArrowUpRight className={`w-4 h-4 transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`} />
-                  </div>
-                </button>
-
-                {/* Expanded content */}
-                {isOpen && (
-                  <div className="px-4 sm:px-6 pb-6 animate-fade-in">
-                    <div className="pl-[44px] sm:pl-[60px]">
-                      {/* Sub-service chips */}
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {service.subServices.map((sub, j) => (
-                          <Link
-                            key={j}
-                            to={sub.href}
-                            className="px-4 py-2 bg-white/[0.07] border border-white/10 rounded-full text-xs sm:text-sm text-gray-300 hover:bg-brand/20 hover:text-brand hover:border-brand/40 transition-all duration-200"
-                          >
-                            {sub.label}
-                          </Link>
-                        ))}
-                      </div>
-
-                      {/* Description + Learn more */}
-                      <div className="mb-6">
-                        <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
-                          {service.description}
-                        </p>
-                        <Link
-                          to={service.href}
-                          className="inline-flex items-center gap-1.5 text-brand font-semibold text-sm group/link"
-                        >
-                          Learn more <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
-                        </Link>
-                      </div>
-
-                      {/* Full-width landscape image */}
-                      <div className="rounded-xl overflow-hidden">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          loading="lazy"
-                          width={800}
-                          height={512}
-                          className="w-full h-[200px] sm:h-[280px] md:h-[340px] object-cover"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+        <div className="max-w-5xl mx-auto border-t border-border/30">
+          {services.map((service, i) => (
+            <ServiceRow
+              key={i}
+              service={service}
+              index={i}
+              isOpen={openIndex === i}
+              onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+            />
+          ))}
         </div>
       </div>
     </section>
