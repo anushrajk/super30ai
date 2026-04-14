@@ -15,19 +15,17 @@ const row1 = testimonials.slice(0, 4);
 const row2 = testimonials.slice(4);
 
 const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
-  <div className="w-[320px] sm:w-[360px] shrink-0 bg-card border border-border/40 rounded-2xl p-5 sm:p-6 flex flex-col gap-3 relative overflow-hidden">
-    {/* Subtle quote mark */}
-    <Quote className="absolute top-4 right-4 w-8 h-8 text-brand/[0.06]" />
-
+  <div className="w-[340px] shrink-0 bg-card border border-border/40 rounded-2xl p-6 flex flex-col gap-4 relative">
+    <Quote className="absolute top-5 right-5 w-6 h-6 text-brand/[0.08]" />
     <div className="flex gap-0.5">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} className="w-3.5 h-3.5 fill-brand text-brand" />
+        <Star key={i} className="w-3 h-3 fill-brand text-brand" />
       ))}
     </div>
-    <p className="text-sm text-muted-foreground leading-relaxed flex-1 relative">"{t.text}"</p>
-    <div className="flex items-center gap-3 pt-1 border-t border-border/30">
-      <div className="w-8 h-8 rounded-full bg-brand/10 flex items-center justify-center">
-        <span className="text-xs font-bold text-brand">{t.name[0]}</span>
+    <p className="text-sm text-muted-foreground leading-relaxed flex-1">"{t.text}"</p>
+    <div className="flex items-center gap-3 pt-3 border-t border-border/30">
+      <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center">
+        <span className="text-xs font-bold text-foreground">{t.name[0]}</span>
       </div>
       <div>
         <div className="text-sm font-semibold text-foreground">{t.name}</div>
@@ -38,10 +36,10 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
 );
 
 const MarqueeRow = ({ items, direction = "left" }: { items: typeof testimonials; direction?: "left" | "right" }) => (
-  <div className="relative overflow-hidden py-2" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
+  <div className="relative overflow-hidden py-1.5" style={{ maskImage: "linear-gradient(to right, transparent, black 5%, black 95%, transparent)" }}>
     <div
-      className="flex gap-4 w-max"
-      style={{ animation: `${direction === "left" ? "tm-left" : "tm-right"} 45s linear infinite` }}
+      className="flex gap-3 w-max"
+      style={{ animation: `${direction === "left" ? "tm-l" : "tm-r"} 50s linear infinite` }}
     >
       {[...items, ...items].map((t, i) => (
         <TestimonialCard key={i} t={t} />
@@ -51,28 +49,28 @@ const MarqueeRow = ({ items, direction = "left" }: { items: typeof testimonials;
 );
 
 export const DMTestimonialsSection = () => (
-  <section className="py-12 md:py-20 lg:py-28 bg-background overflow-hidden relative">
+  <section className="py-20 md:py-28 lg:py-36 bg-background overflow-hidden relative">
     <style>{`
-      @keyframes tm-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-      @keyframes tm-right { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
+      @keyframes tm-l { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+      @keyframes tm-r { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
     `}</style>
 
-    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
-    <div className="container mx-auto px-4 mb-8 md:mb-12">
-      <div className="text-center max-w-3xl mx-auto">
-        <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
-          Client Testimonials
-        </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 leading-tight">
-          What Our <span className="text-brand">Clients Say</span>
-        </h2>
-        <p className="text-sm sm:text-base text-muted-foreground">
+    <div className="container mx-auto px-4 mb-12 md:mb-16">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+        <div>
+          <span className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+            Testimonials
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1]">
+            What our <span className="text-brand">clients say</span>
+          </h2>
+        </div>
+        <p className="text-muted-foreground text-sm max-w-sm">
           Real results from real businesses across Bangalore.
         </p>
       </div>
     </div>
-    <div className="-mx-4 sm:mx-0 space-y-3">
+    <div className="space-y-3">
       <MarqueeRow items={row1} direction="left" />
       <MarqueeRow items={row2} direction="right" />
     </div>

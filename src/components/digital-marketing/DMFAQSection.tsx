@@ -1,4 +1,3 @@
-import { HelpCircle } from "lucide-react";
 import {
   Accordion,
   AccordionContent,
@@ -38,44 +37,44 @@ const faqs = [
 ];
 
 export const DMFAQSection = () => (
-  <section className="py-12 md:py-20 lg:py-28 bg-background relative overflow-hidden">
-    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
+  <section className="py-20 md:py-28 lg:py-36 bg-background relative">
     <div className="container mx-auto px-4">
-      <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
-        <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
-          FAQs — Digital Marketing Agency in Bangalore
-        </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-2 leading-tight">
-          Frequently Asked Questions
-        </h2>
-        <p className="text-sm sm:text-base text-muted-foreground">
-          Everything you need to know about hiring a digital marketing agency in Bangalore
-        </p>
-      </div>
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Left: Header */}
+          <div className="lg:sticky lg:top-32 lg:self-start">
+            <span className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+              FAQs
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-6">
+              Frequently asked<br />
+              <span className="text-brand">questions</span>
+            </h2>
+            <p className="text-muted-foreground text-base max-w-md">
+              Everything you need to know about hiring a digital marketing agency in Bangalore.
+            </p>
+          </div>
 
-      <div className="max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="space-y-2.5">
-          {faqs.map((faq, i) => (
-            <AccordionItem
-              key={i}
-              value={`faq-${i}`}
-              className="bg-card border border-border/40 rounded-2xl px-5 sm:px-6 overflow-hidden data-[state=open]:border-brand/20 data-[state=open]:shadow-[0_8px_30px_-12px_hsl(var(--brand)/0.08)] transition-all duration-300"
-            >
-              <AccordionTrigger className="text-sm sm:text-base font-semibold text-foreground hover:no-underline gap-3 py-5">
-                <span className="flex items-center gap-3 text-left">
-                  <div className="w-8 h-8 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
-                    <HelpCircle className="w-4 h-4 text-brand" />
-                  </div>
-                  {faq.question}
-                </span>
-              </AccordionTrigger>
-              <AccordionContent className="text-muted-foreground text-xs sm:text-sm leading-relaxed pb-5 pl-11">
-                {faq.answer}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
+          {/* Right: Accordion */}
+          <div>
+            <Accordion type="single" collapsible className="space-y-2">
+              {faqs.map((faq, i) => (
+                <AccordionItem
+                  key={i}
+                  value={`faq-${i}`}
+                  className="border border-border/40 rounded-xl px-5 overflow-hidden data-[state=open]:border-brand/20 transition-all duration-300"
+                >
+                  <AccordionTrigger className="text-sm sm:text-[15px] font-semibold text-foreground hover:no-underline py-5 text-left">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground text-sm leading-relaxed pb-5">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </div>
       </div>
     </div>
   </section>
