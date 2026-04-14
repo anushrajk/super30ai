@@ -1,17 +1,42 @@
 import { useState } from "react";
-import { ClipboardCheck, Map, Rocket, TrendingUp, BarChart3 } from "lucide-react";
-import stepAudit from "@/assets/process/step-audit.jpg";
-import stepStrategy from "@/assets/process/step-strategy.jpg";
-import stepLaunch from "@/assets/process/step-launch.jpg";
-import stepOptimize from "@/assets/process/step-optimize.jpg";
-import stepReporting from "@/assets/process/step-reporting.jpg";
+import { ClipboardCheck, Map, Rocket, TrendingUp, BarChart3, ArrowRight } from "lucide-react";
 
 const steps = [
-  { icon: ClipboardCheck, number: "01", title: "Free Brand Audit", timeline: "Week 1", image: stepAudit, description: "We analyse your website, current rankings, competitor landscape, ad account performance, and social presence. You receive a detailed audit report regardless of whether you proceed." },
-  { icon: Map, number: "02", title: "Strategy & Roadmap", timeline: "Week 1–2", image: stepStrategy, description: "Based on the audit, we build a 90-day growth roadmap with channel priorities, budget allocation, keyword strategy, and KPI benchmarks." },
-  { icon: Rocket, number: "03", title: "Campaign Setup & Launch", timeline: "Week 2–3", image: stepLaunch, description: "Technical SEO fixes, PPC campaign builds, content calendar creation, tracking setup (GA4, GTM, conversion events), and creative production." },
-  { icon: TrendingUp, number: "04", title: "Optimisation & Scaling", timeline: "Month 1+", image: stepOptimize, description: "Weekly performance reviews, A/B testing, bid adjustments, content publishing, and link building. Monthly strategy calls to review results and plan the next cycle." },
-  { icon: BarChart3, number: "05", title: "Reporting & Transparency", timeline: "Ongoing", image: stepReporting, description: "Live dashboard access, monthly detailed reports, quarterly business reviews with growth benchmarks and projections." },
+  {
+    icon: ClipboardCheck,
+    number: "01",
+    title: "Free Brand Audit",
+    timeline: "Week 1",
+    description: "We analyse your website, current rankings, competitor landscape, ad account performance, and social presence. You receive a detailed audit report regardless of whether you proceed.",
+  },
+  {
+    icon: Map,
+    number: "02",
+    title: "Strategy & Roadmap",
+    timeline: "Week 1–2",
+    description: "Based on the audit, we build a 90-day growth roadmap with channel priorities, budget allocation, keyword strategy, and KPI benchmarks.",
+  },
+  {
+    icon: Rocket,
+    number: "03",
+    title: "Campaign Setup & Launch",
+    timeline: "Week 2–3",
+    description: "Technical SEO fixes, PPC campaign builds, content calendar creation, tracking setup (GA4, GTM, conversion events), and creative production.",
+  },
+  {
+    icon: TrendingUp,
+    number: "04",
+    title: "Optimisation & Scaling",
+    timeline: "Month 1+",
+    description: "Weekly performance reviews, A/B testing, bid adjustments, content publishing, and link building. Monthly strategy calls to review results.",
+  },
+  {
+    icon: BarChart3,
+    number: "05",
+    title: "Reporting & Transparency",
+    timeline: "Ongoing",
+    description: "Live dashboard access, monthly detailed reports, quarterly business reviews with growth benchmarks and projections.",
+  },
 ];
 
 export const DMProcessSection = () => {
@@ -20,100 +45,113 @@ export const DMProcessSection = () => {
   const ActiveIcon = active.icon;
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-background relative overflow-hidden">
-      {/* Subtle bg accent */}
-      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
+    <section className="py-20 md:py-28 lg:py-36 bg-background relative">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
-          <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
-            How We Work
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 leading-tight">
-            Our Proven <span className="text-brand">Digital Marketing Process</span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-            Every engagement follows a structured, repeatable process designed to minimise wasted spend and accelerate results.
-          </p>
-        </div>
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+            <span className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+              How We Work
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-4">
+              Our proven <span className="text-brand">growth process</span>
+            </h2>
+            <p className="text-muted-foreground text-base">
+              Every engagement follows a structured, repeatable process designed to minimise wasted spend and accelerate results.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-14 items-start max-w-6xl mx-auto">
-          {/* Left: Step list */}
-          <div className="flex flex-col gap-1 bg-card rounded-2xl border border-border/40 p-3">
-            {steps.map((step, i) => {
-              const Icon = step.icon;
-              const isActive = i === activeIndex;
-
-              return (
+          {/* Steps - Horizontal tabs */}
+          <div className="mb-10">
+            <div className="flex gap-0 border-b border-border/50 overflow-x-auto no-scrollbar">
+              {steps.map((step, i) => (
                 <button
                   key={i}
                   onClick={() => setActiveIndex(i)}
-                  className={`flex items-center gap-3 px-4 py-4 rounded-xl text-left transition-all duration-300 ${
-                    isActive ? "bg-brand/10 border border-brand/20" : "border border-transparent hover:bg-muted/50"
+                  className={`flex-1 min-w-[140px] flex flex-col items-center gap-2 py-5 px-4 text-center relative transition-all duration-300 ${
+                    i === activeIndex ? "text-foreground" : "text-muted-foreground hover:text-foreground/70"
                   }`}
                 >
-                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300 ${
-                    isActive ? "bg-brand text-white" : "bg-muted text-muted-foreground"
-                  }`}>
-                    <Icon className="w-4 h-4" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className={`text-sm sm:text-base font-semibold block transition-colors duration-300 ${
-                      isActive ? "text-foreground" : "text-muted-foreground"
-                    }`}>
-                      {step.title}
-                    </span>
-                    {isActive && (
-                      <span className="text-xs text-brand font-medium">{step.timeline}</span>
-                    )}
-                  </div>
-                  <div className={`w-1.5 h-8 rounded-full transition-all duration-300 ${
-                    isActive ? "bg-brand" : i < activeIndex ? "bg-brand/30" : "bg-muted"
+                  <span className={`text-[10px] font-mono tracking-widest ${i === activeIndex ? "text-brand" : ""}`}>
+                    {step.number}
+                  </span>
+                  <span className="text-xs sm:text-sm font-semibold whitespace-nowrap">
+                    {step.title}
+                  </span>
+                  {/* Active indicator */}
+                  <div className={`absolute bottom-0 left-0 right-0 h-0.5 transition-all duration-300 ${
+                    i === activeIndex ? "bg-brand" : "bg-transparent"
                   }`} />
                 </button>
-              );
-            })}
+              ))}
+            </div>
           </div>
 
-          {/* Right: Active card */}
-          <div className="bg-card border border-border/40 rounded-3xl overflow-hidden shadow-[0_20px_50px_-15px_hsl(var(--foreground)/0.06)]">
-            <div className="relative h-48 sm:h-56 overflow-hidden">
-              <img
-                src={active.image}
-                alt={active.title}
-                className="w-full h-full object-cover transition-opacity duration-300"
-                loading="lazy"
-                width={800}
-                height={512}
-                key={activeIndex}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent" />
-              <div className="absolute top-4 left-4 px-3 py-1 bg-brand text-white text-xs font-bold rounded-full">
-                Step {active.number}
-              </div>
-            </div>
-            <div className="p-6 sm:p-8">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center">
-                  <ActiveIcon className="w-5 h-5 text-brand" />
+          {/* Active Step Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Left: Content */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="w-14 h-14 rounded-2xl bg-brand/10 flex items-center justify-center">
+                  <ActiveIcon className="w-6 h-6 text-brand" />
                 </div>
                 <div>
-                  <span className="text-xs text-brand font-semibold">{active.timeline}</span>
-                  <h3 className="text-lg sm:text-xl font-bold text-foreground">{active.title}</h3>
+                  <span className="text-xs text-brand font-semibold uppercase tracking-wider">{active.timeline}</span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground">{active.title}</h3>
                 </div>
               </div>
-              <p className="text-muted-foreground text-sm sm:text-base leading-relaxed">
+
+              <p className="text-muted-foreground text-base leading-relaxed max-w-lg">
                 {active.description}
               </p>
-              <div className="flex items-center gap-1.5 mt-6">
-                {steps.map((_, j) => (
-                  <div
-                    key={j}
-                    className={`h-1.5 rounded-full transition-all duration-300 ${
-                      j === activeIndex ? "w-8 bg-brand" : j < activeIndex ? "w-3 bg-brand/30" : "w-3 bg-muted"
-                    }`}
-                  />
-                ))}
+
+              <button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                className="inline-flex items-center gap-2 text-brand font-semibold text-sm group"
+              >
+                Get started with step {active.number}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
+
+            {/* Right: Visual stepper */}
+            <div className="bg-muted/40 border border-border/50 rounded-2xl p-8">
+              <div className="space-y-0">
+                {steps.map((step, i) => {
+                  const StepIcon = step.icon;
+                  const isActive = i === activeIndex;
+                  const isPast = i < activeIndex;
+                  return (
+                    <div key={i} className="flex gap-4">
+                      {/* Vertical line + dot */}
+                      <div className="flex flex-col items-center">
+                        <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-all duration-300 ${
+                          isActive ? "bg-brand text-white scale-110" : isPast ? "bg-brand/20 text-brand" : "bg-muted text-muted-foreground"
+                        }`}>
+                          <StepIcon className="w-3.5 h-3.5" />
+                        </div>
+                        {i < steps.length - 1 && (
+                          <div className={`w-px flex-1 min-h-[32px] transition-colors duration-300 ${
+                            isPast ? "bg-brand/30" : "bg-border/50"
+                          }`} />
+                        )}
+                      </div>
+                      {/* Text */}
+                      <div className="pb-6">
+                        <span className={`text-sm font-semibold block transition-colors duration-300 ${
+                          isActive ? "text-foreground" : "text-muted-foreground"
+                        }`}>
+                          {step.title}
+                        </span>
+                        <span className={`text-xs transition-colors duration-300 ${
+                          isActive ? "text-brand" : "text-muted-foreground/50"
+                        }`}>
+                          {step.timeline}
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

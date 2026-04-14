@@ -1,18 +1,13 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
 const caseStudies = [
   {
     industry: "E-commerce Brand",
     location: "Koramangala, Bangalore",
-    before: [
-      { metric: "Organic Traffic", value: "1,200/mo" },
-      { metric: "ROAS", value: "1.2x" },
-      { metric: "Cost Per Lead", value: "₹580" },
-    ],
-    after: [
-      { metric: "Organic Traffic", value: "5,280/mo", highlight: true },
-      { metric: "ROAS", value: "4.1x", highlight: true },
-      { metric: "Cost Per Lead", value: "₹220", highlight: true },
+    metrics: [
+      { label: "Organic Traffic", before: "1,200/mo", after: "5,280/mo", change: "+340%" },
+      { label: "ROAS", before: "1.2x", after: "4.1x", change: "+242%" },
+      { label: "Cost Per Lead", before: "₹580", after: "₹220", change: "-62%" },
     ],
     strategy: "SEO roadmap + Google Shopping restructure + Meta retargeting",
     timeframe: "6 months",
@@ -20,15 +15,10 @@ const caseStudies = [
   {
     industry: "SaaS Startup",
     location: "HSR Layout, Bangalore",
-    before: [
-      { metric: "Organic Signups", value: "45/mo" },
-      { metric: "CAC", value: "₹2,400" },
-      { metric: "Brand Mentions", value: "0" },
-    ],
-    after: [
-      { metric: "Organic Signups", value: "171/mo", highlight: true },
-      { metric: "CAC", value: "₹1,100", highlight: true },
-      { metric: "Brand Mentions", value: "3 publications", highlight: true },
+    metrics: [
+      { label: "Organic Signups", before: "45/mo", after: "171/mo", change: "+280%" },
+      { label: "CAC", before: "₹2,400", after: "₹1,100", change: "-54%" },
+      { label: "Brand Mentions", before: "0", after: "3 pubs", change: "New" },
     ],
     strategy: "Product-led SEO + LinkedIn demand gen + thought leadership",
     timeframe: "8 months",
@@ -36,15 +26,10 @@ const caseStudies = [
   {
     industry: "Real Estate Developer",
     location: "Whitefield, Bangalore",
-    before: [
-      { metric: "Digital Leads", value: "12/mo" },
-      { metric: "Google Ads ROAS", value: "0.8x" },
-      { metric: "Digital Bookings", value: "0%" },
-    ],
-    after: [
-      { metric: "Digital Leads", value: "173/mo", highlight: true },
-      { metric: "Google Ads ROAS", value: "4.2x", highlight: true },
-      { metric: "Digital Bookings", value: "38%", highlight: true },
+    metrics: [
+      { label: "Digital Leads", before: "12/mo", after: "173/mo", change: "+1342%" },
+      { label: "Google Ads ROAS", before: "0.8x", after: "4.2x", change: "+425%" },
+      { label: "Digital Bookings", before: "0%", after: "38%", change: "New" },
     ],
     strategy: "Hyper-local Google Ads + WhatsApp funnels + video content",
     timeframe: "3 months",
@@ -52,89 +37,72 @@ const caseStudies = [
 ];
 
 export const DMCaseStudySection = () => (
-  <section className="py-12 md:py-20 lg:py-28 bg-card relative overflow-hidden">
-    {/* Subtle decorative */}
-    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
-
+  <section className="py-20 md:py-28 lg:py-36 bg-card relative">
     <div className="container mx-auto px-4">
-      <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-        <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
-          Real Results
-        </span>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 leading-tight">
-          Before & After: <span className="text-brand">Bangalore Businesses</span>
-        </h2>
-        <p className="text-sm sm:text-base text-muted-foreground">
-          See the measurable impact our digital marketing delivers.
-        </p>
-      </div>
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14 md:mb-20">
+          <div>
+            <span className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+              Real Results
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1]">
+              Before & after:<br className="hidden md:block" />
+              <span className="text-brand"> Bangalore businesses</span>
+            </h2>
+          </div>
+          <p className="text-muted-foreground text-sm max-w-sm">
+            See the measurable impact our digital marketing delivers for real clients.
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
-        {caseStudies.map((cs, i) => (
-          <div key={i} className="bg-background border border-border/40 rounded-3xl overflow-hidden shadow-[0_8px_30px_-12px_hsl(var(--foreground)/0.04)]">
-            {/* Header */}
-            <div className="px-6 pt-6 pb-4">
-              <div className="flex items-center gap-2 mb-1">
-                <div className="w-2 h-2 rounded-full bg-brand" />
-                <h3 className="text-lg font-bold text-foreground">{cs.industry}</h3>
-              </div>
-              <p className="text-xs text-muted-foreground pl-4">{cs.location}</p>
-            </div>
-
-            {/* Before / After comparison */}
-            <div className="px-6 pb-5">
-              <div className="grid grid-cols-[1fr_auto_1fr] gap-0 items-stretch">
-                {/* Before column */}
-                <div>
-                  <div className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-3 text-center">Before</div>
-                  <div className="space-y-2.5">
-                    {cs.before.map((b, bi) => (
-                      <div key={bi} className="text-center py-3 px-2 bg-muted/40 rounded-xl border border-border/30">
-                        <div className="text-lg sm:text-xl font-bold text-muted-foreground">{b.value}</div>
-                        <div className="text-[10px] text-muted-foreground/60 mt-0.5">{b.metric}</div>
-                      </div>
-                    ))}
+        {/* Case Study Cards */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
+          {caseStudies.map((cs, i) => (
+            <div
+              key={i}
+              className="bg-background border border-border/40 rounded-2xl overflow-hidden group hover:-translate-y-0.5 transition-all duration-300"
+            >
+              {/* Header */}
+              <div className="p-6 pb-4">
+                <div className="flex items-center justify-between mb-1">
+                  <h3 className="text-lg font-bold text-foreground">{cs.industry}</h3>
+                  <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center group-hover:bg-brand/10 transition-colors">
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-brand transition-colors" />
                   </div>
                 </div>
+                <p className="text-xs text-muted-foreground">{cs.location} · {cs.timeframe}</p>
+              </div>
 
-                {/* Arrow divider */}
-                <div className="flex flex-col items-center justify-center px-3 gap-2.5 pt-6">
-                  {cs.before.map((_, bi) => (
-                    <div key={bi} className="h-[56px] sm:h-[62px] flex items-center">
-                      <div className="w-6 h-6 rounded-full bg-brand/10 flex items-center justify-center">
-                        <ArrowRight className="w-3 h-3 text-brand" />
+              {/* Metrics */}
+              <div className="px-6 pb-6">
+                <div className="space-y-3">
+                  {cs.metrics.map((m, mi) => (
+                    <div key={mi} className="flex items-center justify-between py-3 border-b border-border/30 last:border-b-0">
+                      <div>
+                        <div className="text-xs text-muted-foreground mb-0.5">{m.label}</div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-sm text-muted-foreground/60 line-through">{m.before}</span>
+                          <span className="text-sm font-bold text-foreground">{m.after}</span>
+                        </div>
                       </div>
+                      <span className="text-xs font-bold text-brand bg-brand/8 px-2.5 py-1 rounded-full">
+                        {m.change}
+                      </span>
                     </div>
                   ))}
                 </div>
+              </div>
 
-                {/* After column */}
-                <div>
-                  <div className="text-[10px] font-semibold text-brand uppercase tracking-widest mb-3 text-center">After</div>
-                  <div className="space-y-2.5">
-                    {cs.after.map((a, ai) => (
-                      <div key={ai} className="text-center py-3 px-2 bg-brand/[0.06] border border-brand/15 rounded-xl">
-                        <div className="text-lg sm:text-xl font-bold text-brand">{a.value}</div>
-                        <div className="text-[10px] text-muted-foreground mt-0.5">{a.metric}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              {/* Footer */}
+              <div className="px-6 py-4 bg-muted/30 border-t border-border/20">
+                <p className="text-xs text-muted-foreground">
+                  <span className="font-semibold text-foreground">Strategy:</span> {cs.strategy}
+                </p>
               </div>
             </div>
-
-            {/* Footer */}
-            <div className="px-6 py-4 border-t border-border/20 bg-muted/20">
-              <p className="text-xs text-muted-foreground leading-relaxed">
-                <span className="font-semibold text-foreground">Strategy:</span> {cs.strategy}
-              </p>
-              <div className="flex items-center gap-1.5 mt-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-brand/50" />
-                <p className="text-[10px] text-muted-foreground/60">Results in {cs.timeframe}</p>
-              </div>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   </section>

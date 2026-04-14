@@ -40,72 +40,93 @@ export const DMPricingSection = () => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   return (
-    <section className="py-12 md:py-20 lg:py-28 bg-foreground relative overflow-hidden">
-      {/* Decorative gradients */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] bg-brand/[0.04] rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-brand/[0.03] rounded-full blur-[80px]" />
-
+    <section className="py-20 md:py-28 lg:py-36 bg-foreground relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
-          <span className="inline-block px-3 py-1 bg-brand/20 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/30">
-            Transparent Pricing
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight">
-            Digital Marketing Services in Bangalore — <span className="text-brand">Pricing</span>
-          </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-400">
-            All plans include no lock-in contracts and a free brand audit before you commit.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 max-w-6xl mx-auto mb-10">
-          {plans.map((plan, i) => (
-            <div
-              key={i}
-              className={`rounded-2xl p-5 sm:p-7 relative transition-all duration-300 ${
-                plan.highlighted
-                  ? "bg-brand/[0.08] border-2 border-brand/30 shadow-[0_0_40px_-10px_hsl(var(--brand)/0.15)]"
-                  : "bg-white/[0.04] border border-white/[0.08] hover:bg-white/[0.06]"
-              }`}
-            >
-              {plan.highlighted && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex items-center gap-1 px-3 py-1 bg-brand text-white text-[10px] font-bold rounded-full">
-                    <Star className="w-3 h-3" /> MOST POPULAR
-                  </span>
-                </div>
-              )}
-              <h3 className="text-lg sm:text-xl font-bold text-white">{plan.name}</h3>
-              <p className="text-xs text-gray-500 mb-4">{plan.subtitle}</p>
-              <div className="mb-5">
-                <span className="text-2xl sm:text-3xl font-bold text-brand">{plan.price}</span>
-                <span className="text-gray-500 text-sm">{plan.period}</span>
-              </div>
-              <div className="w-full h-px bg-white/[0.06] mb-5" />
-              <ul className="space-y-3">
-                {plan.features.map((feature, fi) => (
-                  <li key={fi} className="flex items-start gap-2.5 text-xs sm:text-sm text-gray-400">
-                    <div className="w-4 h-4 rounded-full bg-brand/15 flex items-center justify-center flex-shrink-0 mt-0.5">
-                      <Check className="w-2.5 h-2.5 text-brand" />
-                    </div>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-14 md:mb-20">
+            <div>
+              <span className="text-brand text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+                Pricing
+              </span>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-background leading-[1.1]">
+                Simple, transparent<br className="hidden md:block" />
+                <span className="text-brand"> pricing</span>
+              </h2>
             </div>
-          ))}
-        </div>
+            <p className="text-background/40 text-sm max-w-sm">
+              No lock-in contracts. All plans include a free brand audit before you commit.
+            </p>
+          </div>
 
-        <div className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-6 sm:p-8 text-center max-w-3xl mx-auto">
-          <p className="text-white font-semibold text-base sm:text-lg mb-1">All plans start with a Free Brand Audit</p>
-          <p className="text-gray-500 text-xs sm:text-sm mb-5">We analyse your website, current digital presence, competitor landscape, and growth opportunities — delivered within 5 business days.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} size="lg" className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 sm:px-8 text-sm sm:text-base">
-              Start My Free Audit <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
-            <Button variant="outline" size="lg" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border-white/15 text-white hover:bg-white/[0.06] text-sm sm:text-base">
-              <MessageCircle className="w-4 h-4 mr-2" /> Speak to a Strategist
-            </Button>
+          {/* Pricing Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
+            {plans.map((plan, i) => (
+              <div
+                key={i}
+                className={`rounded-2xl p-6 sm:p-7 relative transition-all duration-300 hover:-translate-y-0.5 ${
+                  plan.highlighted
+                    ? "bg-brand/10 border border-brand/20 ring-1 ring-brand/10"
+                    : "bg-background/[0.04] border border-background/[0.08] hover:bg-background/[0.06]"
+                }`}
+              >
+                {plan.highlighted && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="inline-flex items-center gap-1 px-3 py-1 bg-brand text-white text-[10px] font-bold uppercase tracking-wider rounded-full">
+                      <Star className="w-3 h-3" /> Popular
+                    </span>
+                  </div>
+                )}
+
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-background">{plan.name}</h3>
+                  <p className="text-xs text-background/30 mt-0.5">{plan.subtitle}</p>
+                </div>
+
+                <div className="mb-6">
+                  <span className="text-3xl font-bold text-brand">{plan.price}</span>
+                  <span className="text-background/30 text-sm">{plan.period}</span>
+                </div>
+
+                <div className="w-full h-px bg-background/[0.06] mb-6" />
+
+                <ul className="space-y-3">
+                  {plan.features.map((feature, fi) => (
+                    <li key={fi} className="flex items-start gap-2.5 text-sm text-background/50">
+                      <div className="w-4 h-4 rounded-full bg-brand/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <Check className="w-2.5 h-2.5 text-brand" />
+                      </div>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="bg-background/[0.04] border border-background/[0.08] rounded-2xl p-8 text-center max-w-2xl mx-auto">
+            <p className="text-background font-semibold text-lg mb-1">All plans start with a Free Brand Audit</p>
+            <p className="text-background/30 text-sm mb-6">
+              Delivered within 5 business days — no commitment required.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+                size="lg"
+                className="bg-brand hover:bg-brand/90 text-white rounded-full px-8"
+              >
+                Start My Free Audit <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => setShowEnquiryPopup(true)}
+                className="rounded-full px-8 border-background/15 text-background hover:bg-background/[0.06]"
+              >
+                <MessageCircle className="w-4 h-4 mr-2" /> Speak to a Strategist
+              </Button>
+            </div>
           </div>
         </div>
       </div>
