@@ -1,6 +1,6 @@
 import { ShieldCheck, Unlock, Users, UserCheck, Brain, TrendingUp } from "lucide-react";
 import dmExpert from "@/assets/dm-expert-woman.png";
-import s30Logo from "@/assets/super30-logo.svg";
+import s30Logo from "@/assets/s30-logo.svg";
 
 export const DMBenefitsSection = () => (
   <section className="py-24 md:py-32 bg-background relative overflow-hidden">
