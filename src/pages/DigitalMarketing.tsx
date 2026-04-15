@@ -226,7 +226,7 @@ const DigitalMarketing = () => {
           <DMFinalCTASection />
         </Suspense>
 
-        <Suspense fallback={sectionFallback("220px")}>
+        <Suspense fallback={null}>
           <Footer />
         </Suspense>
       </main>
