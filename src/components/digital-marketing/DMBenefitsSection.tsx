@@ -1,5 +1,6 @@
 import { ShieldCheck, Unlock, Users, UserCheck, Brain, TrendingUp } from "lucide-react";
 import dmExpert from "@/assets/dm-expert-woman.png";
+import s30Logo from "@/assets/super30-logo.svg";
 
 export const DMBenefitsSection = () => (
   <section className="py-24 md:py-32 bg-background relative overflow-hidden">
@@ -83,6 +84,12 @@ export const DMBenefitsSection = () => (
             <h3 className="text-lg md:text-xl font-bold leading-tight">
               Smart Digital Agency For Your Business
             </h3>
+          </div>
+
+          {/* Card: Logo */}
+          <div className="rounded-3xl bg-card border border-border/60 p-5 flex flex-col items-center justify-center">
+            <img src={s30Logo} alt="The Super 30" className="w-16 h-16 mb-2" loading="lazy" />
+            <span className="text-sm font-bold text-foreground tracking-tight">THE SUPER 30</span>
           </div>
 
           {/* Card 6: Center - Human image spanning 2 cols */}
