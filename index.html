@@ -29,7 +29,10 @@
     <!-- Preconnect to external domains for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <!-- Non-render-blocking font loading -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" /></noscript>
     <link rel="preconnect" href="https://images.unsplash.com" />
     
     <!-- DNS Prefetch for API endpoints -->
@@ -55,9 +58,9 @@
   </head>
 
   <body>
-    <div id="app-loader" style="position:fixed;inset:0;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;">
-      <div style="width:40px;height:40px;border:3px solid #e5e7eb;border-top-color:#f54a00;border-radius:50%;animation:spin .6s linear infinite;"></div>
-      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    <div id="app-loader" style="position:fixed;inset:0;z-index:99999;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:Inter,system-ui,-apple-system,sans-serif;">
+      <svg width="48" height="48" viewBox="0 0 48 48" style="margin-bottom:16px;"><circle cx="24" cy="24" r="20" fill="none" stroke="#e5e7eb" stroke-width="3"/><circle cx="24" cy="24" r="20" fill="none" stroke="#f54a00" stroke-width="3" stroke-dasharray="80 45" stroke-linecap="round"><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="0.7s" repeatCount="indefinite"/></circle></svg>
+      <div style="font-size:13px;color:#6b7280;letter-spacing:0.02em;">Loading...</div>
     </div>
     <div id="root" style="visibility:hidden;"></div>
 
