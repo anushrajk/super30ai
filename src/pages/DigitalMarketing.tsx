@@ -185,12 +185,7 @@ const DigitalMarketing = () => {
           </Suspense>
         </LazySection>
 
-        {/* Tools Rain */}
-        <LazySection minHeight="500px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("500px")}>
-            <DMToolsRainSection />
-          </Suspense>
-        </LazySection>
+
 
         {/* Section 3: Services */}
         <LazySection minHeight="900px" rootMargin={lazySectionRootMargin}>
