@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { LazySection } from "@/components/common/LazySection";
+
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
@@ -551,12 +551,12 @@ const Design = () => {
           formId="lead_capture_design"
           formName="Creative Design Consultation"
         />
-        <LazySection minHeight="100px"><DesignStatsSection /></LazySection>
-        <LazySection minHeight="400px"><BentoServicesSection /></LazySection>
-        <LazySection minHeight="400px"><SocialMediaShowcase /></LazySection>
-        <LazySection minHeight="400px"><PortfolioCaseStudySection /></LazySection>
-        <LazySection minHeight="400px"><DesignProcessSection /></LazySection>
-        <LazySection minHeight="300px"><DesignCTASection /></LazySection>
+        <DesignStatsSection />
+        <BentoServicesSection />
+        <SocialMediaShowcase />
+        <PortfolioCaseStudySection />
+        <DesignProcessSection />
+        <DesignCTASection />
       </main>
       <Footer />
     </>

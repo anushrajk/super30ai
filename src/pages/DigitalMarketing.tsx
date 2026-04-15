@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { lazy, Suspense } from "react";
 import { Shield, BarChart3, Users, Zap, Megaphone } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
-import { LazySection } from "@/components/common/LazySection";
+
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
@@ -22,8 +22,6 @@ const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFi
 const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
 const DMToolsRainSection = lazy(() => import("@/components/digital-marketing/DMToolsRainSection").then((m) => ({ default: m.DMToolsRainSection })));
 
-const lazySectionRootMargin = "1000px 0px";
-const sectionFallback = (minHeight: string) => <div aria-hidden style={{ minHeight }} />;
 
 const faqSchemaData = [
   { q: "How much do digital marketing services in Bangalore cost?", a: "Our digital marketing services in Bangalore start from ₹25,000/month for a focused single-channel engagement (SEO or PPC). Full-service retainers covering multiple channels range from ₹60,000 to ₹1,50,000+/month depending on the scope, industry competitiveness, and campaign goals." },
@@ -179,76 +177,54 @@ const DigitalMarketing = () => {
         <ClientLogosSection />
 
         {/* Section 2: Why Bangalore */}
-        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("520px")}>
-            <DMWhyBangaloreSection />
-          </Suspense>
-        </LazySection>
-
-
+        <Suspense fallback={null}>
+          <DMWhyBangaloreSection />
+        </Suspense>
 
         {/* Section 3: Services */}
-        <LazySection minHeight="900px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("900px")}>
-            <ServicesDetailSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <ServicesDetailSection />
+        </Suspense>
 
         {/* Section 4: Industries */}
-        <LazySection minHeight="420px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("420px")}>
-            <DMIndustriesSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMIndustriesSection />
+        </Suspense>
 
         {/* Section 5: Why Choose Us */}
-        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("520px")}>
-            <DMBenefitsSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMBenefitsSection />
+        </Suspense>
 
         {/* Section 6: Process */}
-        <LazySection minHeight="420px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("420px")}>
-            <DMProcessSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMProcessSection />
+        </Suspense>
 
         {/* Section 7: Pricing */}
-        <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("520px")}>
-            <DMPricingSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMPricingSection />
+        </Suspense>
 
         {/* Section 8: Case Studies */}
-        <LazySection minHeight="420px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("420px")}>
-            <DMCaseStudySection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMCaseStudySection />
+        </Suspense>
 
         {/* Testimonials */}
-        <LazySection minHeight="320px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("320px")}>
-            <DMTestimonialsSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMTestimonialsSection />
+        </Suspense>
 
         {/* Section 9: FAQ */}
-        <LazySection minHeight="500px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("500px")}>
-            <DMFAQSection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMFAQSection />
+        </Suspense>
 
         {/* Section 10: Final CTA */}
-        <LazySection minHeight="220px" rootMargin={lazySectionRootMargin}>
-          <Suspense fallback={sectionFallback("220px")}>
-            <DMFinalCTASection />
-          </Suspense>
-        </LazySection>
+        <Suspense fallback={null}>
+          <DMFinalCTASection />
+        </Suspense>
 
         <Suspense fallback={sectionFallback("220px")}>
           <Footer />
