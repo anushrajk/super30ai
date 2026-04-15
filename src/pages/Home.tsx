@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
-import { LazySection } from "@/components/common/LazySection";
+
 
 import { ArrowRight, Bot, Target, Users, Zap, BarChart3, Search, MousePointerClick, CheckCircle2, Sparkles, Award, Megaphone, Palette, Globe } from "lucide-react";
 
@@ -188,9 +188,7 @@ const Home = () => {
 
       <Suspense fallback={null}>
         {/* Client Logos */}
-        <LazySection minHeight="200px">
-          <ClientLogosSection />
-        </LazySection>
+        <ClientLogosSection />
 
         {/* Why Choose Us - kept inline since it's light */}
         <section id="home-why-us" className="py-24 bg-muted/30">
@@ -220,25 +218,11 @@ const Home = () => {
           </div>
         </section>
 
-        <LazySection minHeight="400px">
-          <ServicesCarousel services={services} />
-        </LazySection>
-
-        <LazySection minHeight="300px">
-          <WhoIsThisForSection />
-        </LazySection>
-
-        <LazySection minHeight="400px">
-          <TestimonialSection />
-        </LazySection>
-
-        <LazySection minHeight="300px">
-          <BlogSection />
-        </LazySection>
-
-        <LazySection minHeight="200px">
-          <UnifiedCTASection />
-        </LazySection>
+        <ServicesCarousel services={services} />
+        <WhoIsThisForSection />
+        <TestimonialSection />
+        <BlogSection />
+        <UnifiedCTASection />
       </Suspense>
 
       <Footer />

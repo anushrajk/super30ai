@@ -5,7 +5,7 @@ import { StickyCTA } from "@/components/landing/StickyCTA";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
-import { LazySection } from "@/components/common/LazySection";
+
 import { lazy, Suspense } from "react";
 
 const SMProblemSection = lazy(() => import("@/components/social-media/SMProblemSection").then(m => ({ default: m.SMProblemSection })));
@@ -99,21 +99,21 @@ const SocialMediaDesign = () => {
         </div>
 
         <Suspense fallback={null}>
-          <LazySection minHeight="400px"><SMProblemSection /></LazySection>
-          <LazySection minHeight="400px"><SMComparisonSection /></LazySection>
-          <LazySection minHeight="400px"><SMClientProfilesSection /></LazySection>
-          <LazySection minHeight="400px"><SMBenefitsSection /></LazySection>
-          <LazySection minHeight="400px"><SMMoodboardSection /></LazySection>
-          <LazySection minHeight="400px"><SMReelsContentSection /></LazySection>
-          <LazySection minHeight="300px"><SMWhoIsThisForSection /></LazySection>
-          <LazySection minHeight="400px"><SMProcessSection /></LazySection>
-          <LazySection minHeight="200px"><SMFinalCTASection /></LazySection>
-          <LazySection minHeight="400px"><SMPricingSection /></LazySection>
-          <LazySection minHeight="300px"><SMRelevanceSection /></LazySection>
-          <LazySection minHeight="400px"><TestimonialSection /></LazySection>
-          <LazySection minHeight="300px"><BlogSection /></LazySection>
-          <LazySection minHeight="200px"><SMFinalCTASection /></LazySection>
-          <LazySection minHeight="300px"><SMFAQSection /></LazySection>
+          <SMProblemSection />
+          <SMComparisonSection />
+          <SMClientProfilesSection />
+          <SMBenefitsSection />
+          <SMMoodboardSection />
+          <SMReelsContentSection />
+          <SMWhoIsThisForSection />
+          <SMProcessSection />
+          <SMFinalCTASection />
+          <SMPricingSection />
+          <SMRelevanceSection />
+          <TestimonialSection />
+          <BlogSection />
+          <SMFinalCTASection />
+          <SMFAQSection />
         </Suspense>
 
         <Footer />

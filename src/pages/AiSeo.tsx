@@ -5,7 +5,7 @@ import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
-import { LazySection } from "@/components/common/LazySection";
+
 import { lazy, Suspense } from "react";
 
 // Lazy load all below-fold sections
@@ -108,45 +108,19 @@ const AiSeo = () => {
         </div>
 
         <Suspense fallback={null}>
-          <LazySection minHeight="400px">
-            <ProblemSection />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <RelevanceFilterSection />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <AIComparisonSection />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <SEOBenefitsSection />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <ServicesSection />
-          </LazySection>
-          <LazySection minHeight="300px">
-            <WhoIsThisForSection />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <ProcessSection />
-          </LazySection>
-          <LazySection minHeight="300px">
-            <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <DashboardPreview />
-          </LazySection>
-          <LazySection minHeight="400px">
-            <TestimonialSection />
-          </LazySection>
-          <LazySection minHeight="300px">
-            <BlogSection />
-          </LazySection>
-          <LazySection minHeight="200px">
-            <SEOFinalCTASection />
-          </LazySection>
-          <LazySection minHeight="300px">
-            <FAQSection />
-          </LazySection>
+          <ProblemSection />
+          <RelevanceFilterSection />
+          <AIComparisonSection />
+          <SEOBenefitsSection />
+          <ServicesSection />
+          <WhoIsThisForSection />
+          <ProcessSection />
+          <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
+          <DashboardPreview />
+          <TestimonialSection />
+          <BlogSection />
+          <SEOFinalCTASection />
+          <FAQSection />
         </Suspense>
 
         <Footer />
