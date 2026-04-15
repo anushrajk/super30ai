@@ -20,6 +20,7 @@ const DMTestimonialsSection = lazy(() => import("@/components/digital-marketing/
 const DMCaseStudySection = lazy(() => import("@/components/digital-marketing/DMCaseStudySection").then((m) => ({ default: m.DMCaseStudySection })));
 const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then((m) => ({ default: m.DMFinalCTASection })));
 const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
+const DMToolsRainSection = lazy(() => import("@/components/digital-marketing/DMToolsRainSection").then((m) => ({ default: m.DMToolsRainSection })));
 
 const lazySectionRootMargin = "1000px 0px";
 const sectionFallback = (minHeight: string) => <div aria-hidden style={{ minHeight }} />;
@@ -181,6 +182,13 @@ const DigitalMarketing = () => {
         <LazySection minHeight="520px" rootMargin={lazySectionRootMargin}>
           <Suspense fallback={sectionFallback("520px")}>
             <DMWhyBangaloreSection />
+          </Suspense>
+        </LazySection>
+
+        {/* Tools Rain */}
+        <LazySection minHeight="500px" rootMargin={lazySectionRootMargin}>
+          <Suspense fallback={sectionFallback("500px")}>
+            <DMToolsRainSection />
           </Suspense>
         </LazySection>
 
