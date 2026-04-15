@@ -118,6 +118,12 @@ export default {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "tool-fall": {
+          "0%": { opacity: "0", transform: "translateY(-80px)" },
+          "10%": { opacity: "var(--fall-opacity, 0.3)" },
+          "90%": { opacity: "var(--fall-opacity, 0.3)" },
+          "100%": { opacity: "0", transform: "translateY(calc(100vh + 80px))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -129,6 +135,7 @@ export default {
         "bounce-subtle": "bounce-subtle 0.4s ease-out",
         "wiggle": "wiggle 0.3s ease-in-out",
         "slide-up-fade": "slide-up-fade 0.4s ease-out forwards",
+        "tool-fall": "tool-fall var(--fall-duration, 6s) ease-in forwards",
       },
     },
   },
