@@ -85,9 +85,9 @@ export const DMToolsRainSection = () => {
                 left: `${item.x}%`,
                 top: "-80px",
                 animationDelay: `${item.delay}s`,
-                animationDuration: `${item.duration}s`,
-                opacity: 0,
-              }}
+                "--fall-duration": `${item.duration}s`,
+                "--fall-opacity": `${item.opacity}`,
+              } as React.CSSProperties}
             >
               <div
                 className="rounded-2xl border border-white/10 bg-white/[0.06] backdrop-blur-sm flex items-center justify-center font-bold select-none"
