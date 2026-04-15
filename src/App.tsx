@@ -13,9 +13,7 @@ import { Loader2 } from "lucide-react";
 const EngagementTracker = lazy(() => 
   import("@/components/EngagementTracker").then(m => ({ default: m.EngagementTracker }))
 );
-const ScrollProgressBar = lazy(() => 
-  import("@/components/ScrollProgressBar").then(m => ({ default: m.ScrollProgressBar }))
-);
+const ScrollProgressBar = lazy(() => import("@/components/ScrollProgressBar"));
 const CookieConsent = lazy(() => 
   import("@/components/CookieConsent").then(m => ({ default: m.CookieConsent }))
 );
