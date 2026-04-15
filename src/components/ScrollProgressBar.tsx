@@ -36,3 +36,5 @@ export const ScrollProgressBar = () => {
     </div>
   );
 };
+
+export default ScrollProgressBar;
