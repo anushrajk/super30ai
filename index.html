@@ -55,7 +55,11 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="app-loader" style="position:fixed;inset:0;z-index:99999;background:#fff;display:flex;align-items:center;justify-content:center;">
+      <div style="width:40px;height:40px;border:3px solid #e5e7eb;border-top-color:#f54a00;border-radius:50%;animation:spin .6s linear infinite;"></div>
+      <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+    </div>
+    <div id="root" style="visibility:hidden;"></div>
 
     <!-- Static SEO content for crawlers — removed by React on mount -->
     <div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
