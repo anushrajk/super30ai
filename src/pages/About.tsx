@@ -169,6 +169,8 @@ const About = () => {
           </div>
         </section>
 
+        <ClientLogosSection />
+
         {/* Animated Stats Counter */}
         <div id="about-stats">
           <AnimatedStats />

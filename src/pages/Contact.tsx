@@ -306,6 +306,8 @@ const Contact = () => {
           </div>
         </section>
 
+        <ClientLogosSection />
+
         {/* Contact Section */}
         <section id="contact-form" className="py-12 md:py-16 lg:py-20 bg-muted/30">
           <div className="container mx-auto px-3 md:px-4">
