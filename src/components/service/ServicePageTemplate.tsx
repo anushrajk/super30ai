@@ -19,6 +19,9 @@ const TestimonialSection = lazy(() =>
 const DMIndustriesSection = lazy(() =>
   import("@/components/digital-marketing/DMIndustriesSection").then(m => ({ default: m.DMIndustriesSection }))
 );
+const ClientLogosSection = lazy(() =>
+  import("@/components/landing/ClientLogosSection").then(m => ({ default: m.ClientLogosSection }))
+);
 
 // ── Types ──
 export interface ServicePageConfig {
@@ -412,6 +415,7 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         />
 
         <Suspense fallback={null}>
+          <ClientLogosSection />
           <LazySection minHeight="400px"><ProblemSection problems={config.problems} /></LazySection>
           <LazySection minHeight="400px"><ServicesGrid services={config.services} /></LazySection>
           <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} /></LazySection>

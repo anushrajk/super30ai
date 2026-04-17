@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 
 import { TeamSection } from "@/components/about/TeamSection";
 import { InteractiveTimeline } from "@/components/about/InteractiveTimeline";
