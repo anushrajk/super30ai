@@ -240,14 +240,14 @@ const Work = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  Numbers Don't Lie.{" "}
+                  Digital Marketing Case Studies &{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">Neither Do We.</span>
+                    <span className="text-brand-gradient">SEO Results in Bangalore</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Real results from real businesses. See how we've helped 300+ companies{" "}
+                  Real digital marketing case studies and proven SEO results from 300+ Bangalore brands. See how we've helped businesses{" "}
                   <span className="text-foreground font-semibold">dominate their markets</span> with AI-powered marketing.
                 </p>
               </div>

@@ -126,10 +126,10 @@ const Home = () => {
 
               <h1 className="font-bold text-foreground">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.3] pb-1">
-                  AI-Powered Digital
+                  AI Digital Marketing
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.3]">
-                  Marketing Agency
+                  Agency &amp; AI Growth Company
                 </span>
               </h1>
 

@@ -69,17 +69,16 @@ const SocialMediaDesign = () => {
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  Social Media Posts That
+                  Social Media Design Agency
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  Stop the Scroll
+                  in Bangalore
                 </span>
               </>
             }
             description={
               <>
-                Eye-catching, on-brand social media creatives for Instagram, Facebook, LinkedIn & more —{" "}
-                <span className="text-foreground font-semibold">designed to engage and convert</span>.
+                Bangalore's leading <span className="text-foreground font-semibold">social media design company</span> creating scroll-stopping creatives, post designs and reels for Instagram, Facebook, LinkedIn & more — designed to engage and convert.
               </>
             }
             trustSignals={[

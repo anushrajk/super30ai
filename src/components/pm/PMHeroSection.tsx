@@ -55,9 +55,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
             {/* H1 and Description */}
             <div>
               <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4 md:mb-5">
-                <span className="text-foreground">
-                  AI Powered Ads &amp; Performance Marketing Services
-                </span>
+                <span className="text-brand">Lead Generation Agency</span> in Bangalore — B2B Leads That Convert
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
                 As a leading performance marketing agency in Bangalore, we deliver AI powered ads and performance marketing services built around your{" "}
