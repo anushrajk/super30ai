@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Palette,
     badgeText: "Brand Identity Experts",
-    headlineLine1: "Your Complete Brand",
-    headlineLine2: "Identity, In One Kit",
+    headlineLine1: "Branding Agency",
+    headlineLine2: "in Bangalore",
     description: <>From logo to guidelines, colors to templates — we build a <span className="text-foreground font-semibold">complete visual identity system</span> that makes your brand consistent, recognizable, and premium everywhere.</>,
     trustSignals: [
       { icon: Layers, text: "Complete Brand System" },

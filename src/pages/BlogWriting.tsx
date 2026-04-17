@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: BookOpen,
     badgeText: "Blog Content Experts",
-    headlineLine1: "Blog Content That",
-    headlineLine2: "Drives Traffic & Trust",
+    headlineLine1: "Blog Writing Services",
+    headlineLine2: "in Bangalore",
     description: <>SEO-optimized blog posts that <span className="text-foreground font-semibold">rank on Google, establish authority, and bring qualified traffic</span> to your website month after month.</>,
     trustSignals: [
       { icon: Search, text: "Keyword-Targeted SEO Blogs" },

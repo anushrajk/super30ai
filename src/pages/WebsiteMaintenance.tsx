@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Wrench,
     badgeText: "Website Maintenance Experts",
-    headlineLine1: "Keep Your Website",
-    headlineLine2: "Fast, Secure & Updated",
+    headlineLine1: "Website Maintenance",
+    headlineLine2: "Company in Bangalore",
     description: <>Ongoing website maintenance that keeps your site <span className="text-foreground font-semibold">running at peak performance, fully secure, and always up-to-date</span> — so you can focus on growing your business.</>,
     trustSignals: [
       { icon: Shield, text: "Security Monitoring & Patching" },

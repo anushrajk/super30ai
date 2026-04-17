@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Video,
     badgeText: "Video Production Experts",
-    headlineLine1: "Professional Video",
-    headlineLine2: "Production That Delivers",
+    headlineLine1: "Video Production Agency",
+    headlineLine2: "in Bangalore",
     description: <>We produce high-quality videos that <span className="text-foreground font-semibold">tell your brand story, build credibility, and convert viewers into clients</span>. From corporate films to social media reels.</>,
     trustSignals: [
       { icon: Film, text: "500+ Videos Produced" },

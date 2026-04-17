@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: FileText,
     badgeText: "Website Content Experts",
-    headlineLine1: "Words That Rank,",
-    headlineLine2: "Copy That Converts",
+    headlineLine1: "SEO Content Writing",
+    headlineLine2: "Company in Bangalore",
     description: <>SEO-optimized, persuasive website content that <span className="text-foreground font-semibold">ranks on Google and turns visitors into customers</span>. Every word earns its place.</>,
     trustSignals: [
       { icon: Search, text: "SEO-Optimized for Rankings" },

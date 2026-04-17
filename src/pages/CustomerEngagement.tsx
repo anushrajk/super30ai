@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Heart,
     badgeText: "Customer Engagement Experts",
-    headlineLine1: "Keep Customers Coming",
-    headlineLine2: "Back Again & Again",
+    headlineLine1: "Customer Engagement Agency",
+    headlineLine2: "in Bangalore",
     description: <>Strategic engagement programs that <span className="text-foreground font-semibold">increase retention, build loyalty, and maximize customer lifetime value</span> — turning one-time buyers into brand advocates.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 35% Retention Increase" },

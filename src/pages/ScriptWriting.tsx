@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Film,
     badgeText: "Script Writing Experts",
-    headlineLine1: "Scripts That Hook,",
-    headlineLine2: "Engage & Convert",
+    headlineLine1: "Script Writing Agency",
+    headlineLine2: "in Bangalore",
     description: <>From 15-second ad scripts to 30-minute explainer videos — we write scripts that <span className="text-foreground font-semibold">grab attention in the first 3 seconds</span> and keep audiences watching till the end.</>,
     trustSignals: [
       { icon: Play, text: "1,000+ Scripts Delivered" },
