@@ -525,16 +525,16 @@ const Design = () => {
           headline={
             <>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                Design That Converts,
+                Creative Design Agency
               </span>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                Branding That Lasts
+                in Bangalore
               </span>
             </>
           }
           description={
             <>
-              From <span className="text-foreground font-semibold">social media creatives</span> to full UI/UX design systems — we craft visual experiences that drive engagement and build brand authority.
+              Bangalore's trusted <span className="text-foreground font-semibold">graphic design company</span> — from brand identity and social media creatives to full UI/UX systems that drive engagement and build lasting authority.
             </>
           }
           trustSignals={[

@@ -86,17 +86,17 @@ const WebDesign = () => {
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  Websites That Convert
+                  Web Design Company
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  Visitors Into Customers
+                  in Bangalore
                 </span>
               </>
             }
             description={
               <>
-                Fast, responsive, SEO-optimized websites — from landing pages to full e-commerce stores.{" "}
-                <span className="text-foreground font-semibold">Built to grow your business</span>.
+                Custom, responsive, and SEO-optimized website design services from Bangalore's trusted{" "}
+                <span className="text-foreground font-semibold">website designing agency</span> — built to convert visitors into customers.
               </>
             }
             trustSignals={[

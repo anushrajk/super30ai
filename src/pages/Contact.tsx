@@ -193,8 +193,9 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact TheSuper30 Agency | Let's Grow Your Brand</title>
-        <meta name="description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <title>Contact Digital Marketing Agency in Bangalore | TheSuper30</title>
+        <meta name="description" content="Talk to a leading digital marketing agency in Bangalore. Get in touch with TheSuper30's 30+ experts for SEO, ads, web design & social media. Free consultation." />
+        <meta name="keywords" content="contact digital marketing agency bangalore, digital marketing agency contact, marketing agency near me bangalore, digital marketing consultation bangalore, thesuper30 contact" />
         <link rel="canonical" href="https://www.thesuper30.ai/contact-us" />
         
         <meta property="og:title" content="Contact TheSuper30 Agency | Let's Grow Your Brand" />
@@ -238,15 +239,15 @@ const Contact = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  Talk to Our{" "}
+                  Contact Bangalore's Trusted{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">Digital Marketing Experts</span>
+                    <span className="text-brand-gradient">Digital Marketing Agency</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Whether you need AI SEO, lead generation, social media management, web design, or full-scale digital marketing — our team is{" "}
-                  <span className="text-foreground font-semibold">ready to help</span>.
+                  Talk to TheSuper30 — a leading digital marketing agency in Bangalore offering AI SEO, lead generation, social media, web design and full-scale marketing.{" "}
+                  <span className="text-foreground font-semibold">Free 30-min consultation.</span>
                 </p>
               </div>
 
