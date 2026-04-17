@@ -116,6 +116,8 @@ const WebDesign = () => {
           />
         </div>
 
+        <ClientLogosSection />
+
         <Suspense fallback={null}>
           <WDProblemSection />
           <WDComparisonSection />

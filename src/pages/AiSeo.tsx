@@ -108,6 +108,8 @@ const AiSeo = () => {
           />
         </div>
 
+        <ClientLogosSection />
+
         <Suspense fallback={null}>
           <ProblemSection />
           <RelevanceFilterSection />

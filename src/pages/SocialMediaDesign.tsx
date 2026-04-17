@@ -99,6 +99,8 @@ const SocialMediaDesign = () => {
           />
         </div>
 
+        <ClientLogosSection />
+
         <Suspense fallback={null}>
           <SMProblemSection />
           <SMComparisonSection />
