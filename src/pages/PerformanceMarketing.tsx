@@ -6,6 +6,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 
 import { TestimonialSection } from "@/components/landing/TestimonialSection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
@@ -192,6 +193,7 @@ const PerformanceMarketing = () => {
             <PMHeroSection onSubmit={handleHeroFormSubmit} loading={loading} />
           </Suspense>
         </div>
+        <ClientLogosSection />
         <div id="pm-problem">
           <PMProblemSection />
         </div>

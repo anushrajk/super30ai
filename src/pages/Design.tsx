@@ -8,6 +8,7 @@ import { Footer } from "@/components/landing/Footer";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { Button } from "@/components/ui/button";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
@@ -551,6 +552,7 @@ const Design = () => {
           formId="lead_capture_design"
           formName="Creative Design Consultation"
         />
+        <ClientLogosSection />
         <DesignStatsSection />
         <BentoServicesSection />
         <SocialMediaShowcase />

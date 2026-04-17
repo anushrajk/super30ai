@@ -3,6 +3,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 
@@ -97,6 +98,8 @@ const SocialMediaDesign = () => {
             formName="Social Media Design Consultation"
           />
         </div>
+
+        <ClientLogosSection />
 
         <Suspense fallback={null}>
           <SMProblemSection />
