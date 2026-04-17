@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: PenTool,
     badgeText: "Logo Design Experts",
-    headlineLine1: "A Logo That Makes",
-    headlineLine2: "Your Brand Unforgettable",
+    headlineLine1: "Logo Design Company",
+    headlineLine2: "in Bangalore",
     description: <>We craft custom logos that capture your brand's essence — <span className="text-foreground font-semibold">memorable, versatile, and built to last decades</span>. Not templates. Not AI-generated. Hand-crafted.</>,
     trustSignals: [
       { icon: Award, text: "200+ Logos Designed" },

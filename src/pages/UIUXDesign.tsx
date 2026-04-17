@@ -12,8 +12,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: MousePointerClick,
     badgeText: "UI/UX Design Agency",
-    headlineLine1: "Design Experiences",
-    headlineLine2: "That Users Love & Convert",
+    headlineLine1: "UI UX Design Agency",
+    headlineLine2: "in Bangalore",
     description: <>We design intuitive, beautiful interfaces that <span className="text-foreground font-semibold">reduce friction and increase conversions</span> — backed by user research and data, not guesswork.</>,
     trustSignals: [
       { icon: Users, text: "User-Centered Design Process" },

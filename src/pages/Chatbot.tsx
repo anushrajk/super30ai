@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Bot,
     badgeText: "AI Chatbot Development",
-    headlineLine1: "AI Chatbots That Sell,",
-    headlineLine2: "Support & Never Sleep",
+    headlineLine1: "AI Chatbot Development",
+    headlineLine2: "Company in Bangalore",
     description: <>Custom AI chatbots that <span className="text-foreground font-semibold">qualify leads, answer questions, and close sales</span> — 24/7, across WhatsApp, your website, and social media.</>,
     trustSignals: [
       { icon: Brain, text: "AI-Powered Natural Conversations" },

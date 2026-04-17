@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Send,
     badgeText: "SMS Gateway Solutions",
-    headlineLine1: "Reliable SMS Delivery",
-    headlineLine2: "At Enterprise Scale",
+    headlineLine1: "SMS Gateway Service",
+    headlineLine2: "Provider in Bangalore",
     description: <>Enterprise-grade SMS gateway with <span className="text-foreground font-semibold">99.9% delivery rate, DLT compliance, and instant API integration</span> for transactional, promotional, and OTP messages.</>,
     trustSignals: [
       { icon: Shield, text: "99.9% Delivery Rate" },

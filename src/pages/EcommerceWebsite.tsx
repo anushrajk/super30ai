@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: ShoppingCart,
     badgeText: "Ecommerce Development Experts",
-    headlineLine1: "Online Stores That",
-    headlineLine2: "Sell While You Sleep",
+    headlineLine1: "Ecommerce Website Development",
+    headlineLine2: "Company in Bangalore",
     description: <>We build high-converting ecommerce stores with <span className="text-foreground font-semibold">seamless checkout, payment integration, and SEO optimization</span> — on Shopify, WooCommerce, or custom platforms.</>,
     trustSignals: [
       { icon: CreditCard, text: "Payment Gateway Integration" },

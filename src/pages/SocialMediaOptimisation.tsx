@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Share2,
     badgeText: "Social Media Optimisation Experts",
-    headlineLine1: "Turn Your Social Media",
-    headlineLine2: "Into a Growth Engine",
+    headlineLine1: "Social Media Optimization",
+    headlineLine2: "Company in Bangalore",
     description: <>We optimize your social media profiles, content, and strategy to <span className="text-foreground font-semibold">maximize organic reach and engagement</span> — without relying on paid ads.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 3x Engagement Increase" },

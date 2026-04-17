@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Target,
     badgeText: "Google Ads Experts",
-    headlineLine1: "Stop Wasting Money on",
-    headlineLine2: "Underperforming Google Ads",
+    headlineLine1: "Google Ads Agency",
+    headlineLine2: "in Bangalore",
     description: <>We build and manage high-ROI Google Ads campaigns that bring <span className="text-foreground font-semibold">qualified leads at the lowest possible cost</span>. Every rupee tracked, every click optimized.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 4.2x ROAS Across Clients" },

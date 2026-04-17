@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Camera,
     badgeText: "Professional Photography",
-    headlineLine1: "Stunning Photography",
-    headlineLine2: "That Sells Your Brand",
+    headlineLine1: "Photography Services",
+    headlineLine2: "in Bangalore",
     description: <>Professional photography that <span className="text-foreground font-semibold">captures your brand's essence and converts viewers into customers</span>. From product shots to corporate portraits.</>,
     trustSignals: [
       { icon: Camera, text: "10,000+ Photos Delivered" },

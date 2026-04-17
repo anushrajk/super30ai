@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: ExternalLink,
     badgeText: "Guest Posting & Link Building",
-    headlineLine1: "High-Authority Backlinks",
-    headlineLine2: "That Actually Move Rankings",
+    headlineLine1: "Guest Posting Agency",
+    headlineLine2: "in Bangalore",
     description: <>We secure placements on <span className="text-foreground font-semibold">niche-relevant, high-DA websites</span> with quality content — building your domain authority the right way.</>,
     trustSignals: [
       { icon: Globe, text: "DA 40-90+ Placements" },

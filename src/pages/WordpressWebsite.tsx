@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Globe,
     badgeText: "WordPress Development Experts",
-    headlineLine1: "WordPress Websites",
-    headlineLine2: "Built to Perform & Scale",
+    headlineLine1: "WordPress Website Development",
+    headlineLine2: "Company in Bangalore",
     description: <>Custom WordPress websites that are <span className="text-foreground font-semibold">fast, secure, SEO-optimized, and easy for you to manage</span> — no coding required. From blogs to enterprise sites.</>,
     trustSignals: [
       { icon: Gauge, text: "Speed-Optimized — Sub 2s Load" },

@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: MessageSquare,
     badgeText: "WhatsApp Business API Partner",
-    headlineLine1: "Turn WhatsApp Into Your",
-    headlineLine2: "Most Powerful Sales Channel",
+    headlineLine1: "WhatsApp Marketing",
+    headlineLine2: "Company in Bangalore",
     description: <>Official WhatsApp Business API setup with <span className="text-foreground font-semibold">automated messaging, chatbots, and bulk campaigns</span> that drive engagement and sales at scale.</>,
     trustSignals: [
       { icon: Shield, text: "Official Meta Business Partner" },

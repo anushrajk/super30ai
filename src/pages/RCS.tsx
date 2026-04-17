@@ -16,8 +16,8 @@ const config: ServicePageConfig = {
   hero: {
     badgeIcon: Sparkles,
     badgeText: "RCS Messaging Partner",
-    headlineLine1: "The Future of Business",
-    headlineLine2: "Messaging is Here",
+    headlineLine1: "RCS Messaging Provider",
+    headlineLine2: "in Bangalore",
     description: <>Send rich, interactive messages with <span className="text-foreground font-semibold">images, carousels, buttons, and verified branding</span> — directly in your customer's native messaging app. No app download needed.</>,
     trustSignals: [
       { icon: Image, text: "Rich Media — Images, Videos, Carousels" },
