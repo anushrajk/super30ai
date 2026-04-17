@@ -16,6 +16,9 @@ import { Link } from "react-router-dom";
 const TestimonialSection = lazy(() =>
   import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection }))
 );
+const DMIndustriesSection = lazy(() =>
+  import("@/components/digital-marketing/DMIndustriesSection").then(m => ({ default: m.DMIndustriesSection }))
+);
 
 // ── Types ──
 export interface ServicePageConfig {
@@ -413,6 +416,7 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
           <LazySection minHeight="400px"><ServicesGrid services={config.services} /></LazySection>
           <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} /></LazySection>
           <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} /></LazySection>
+          <LazySection minHeight="500px"><DMIndustriesSection /></LazySection>
           <LazySection minHeight="400px"><ProcessSection process={config.process} /></LazySection>
           <LazySection minHeight="300px"><WhoIsThisForSection data={config.whoIsThisFor} /></LazySection>
           <LazySection minHeight="200px"><FinalCTASection data={config.finalCTA} /></LazySection>
