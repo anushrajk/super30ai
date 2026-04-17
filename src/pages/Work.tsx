@@ -180,8 +180,9 @@ const Work = () => {
   return (
     <>
       <Helmet>
-        <title>Successful Digital Marketing Results Delivered For 300+ Brands</title>
-        <meta name="description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
+        <title>Digital Marketing Case Studies & SEO Results in Bangalore | TheSuper30</title>
+        <meta name="description" content="See real digital marketing case studies & SEO results from 300+ brands in Bangalore. Proven AI SEO, lead generation, web design & social media work by TheSuper30." />
+        <meta name="keywords" content="digital marketing case studies bangalore, seo case studies bangalore, digital marketing portfolio bangalore, seo results bangalore, marketing agency portfolio bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/our-work" />
         
         {/* Open Graph */}

@@ -193,8 +193,9 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact TheSuper30 Agency | Let's Grow Your Brand</title>
-        <meta name="description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <title>Contact Digital Marketing Agency in Bangalore | TheSuper30</title>
+        <meta name="description" content="Talk to a leading digital marketing agency in Bangalore. Get in touch with TheSuper30's 30+ experts for SEO, ads, web design & social media. Free consultation." />
+        <meta name="keywords" content="contact digital marketing agency bangalore, digital marketing agency contact, marketing agency near me bangalore, digital marketing consultation bangalore, thesuper30 contact" />
         <link rel="canonical" href="https://www.thesuper30.ai/contact-us" />
         
         <meta property="og:title" content="Contact TheSuper30 Agency | Let's Grow Your Brand" />
