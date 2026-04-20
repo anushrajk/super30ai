@@ -46,6 +46,7 @@ const SocialMediaDesign = lazy(() => import("./pages/SocialMediaDesign"));
 const WebDesign = lazy(() => import("./pages/WebDesign"));
 const Design = lazy(() => import("./pages/Design"));
 const ClientReport = lazy(() => import("./pages/ClientReport"));
+const LeadGenReport = lazy(() => import("./pages/LeadGenReport"));
 
 // Digital Marketing sub-pages
 const GoogleAds = lazy(() => import("./pages/GoogleAds"));
@@ -143,6 +144,7 @@ const App = () => (
                 <Route path="/thank-you" element={<ThankYou />} />
                 <Route path="/performance-planner" element={<PerformancePlanner />} />
                 <Route path="/report/:slug" element={<ClientReport />} />
+                <Route path="/lead-gen-report/:slug" element={<LeadGenReport />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
 
                 {/* Digital Marketing */}
