@@ -281,10 +281,15 @@ const BentoClientGrid = ({ clients }: { clients: { name: string; industry: strin
   const [reportOpen, setReportOpen] = React.useState(false);
   const [reportImg, setReportImg] = React.useState<string | null>(null);
 
+  // Lead-gen slugs route to the dedicated lead-gen report page
+  const leadGenSlugs = new Set(leadGenClients.map((c) => c.slug));
+
   const handleViewReport = (client: typeof clients[0]) => {
     if (client.reportImage) {
       setReportImg(client.reportImage);
       setReportOpen(true);
+    } else if (leadGenSlugs.has(client.slug)) {
+      navigate(`/lead-gen-report/${client.slug}`);
     } else {
       navigate(`/report/${client.slug}`);
     }
