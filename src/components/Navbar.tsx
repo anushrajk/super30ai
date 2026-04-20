@@ -45,6 +45,7 @@ const menuItems: NavMenuItem[] = [
   },
   {
     label: "Content",
+    href: "/content-marketing-agency-bangalore",
     items: [
       { label: "Website Content", href: "/seo-content-writing-services-bangalore" },
       { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
@@ -54,6 +55,7 @@ const menuItems: NavMenuItem[] = [
   },
   {
     label: "SMS",
+    href: "/bulk-sms-marketing-agency-bangalore",
     items: [
       { label: "Whatsapp Business API", href: "/whatsapp-marketing-company-bangalore" },
       { label: "Chatbot", href: "/chatbot-development-company-bangalore" },
@@ -64,6 +66,7 @@ const menuItems: NavMenuItem[] = [
   },
   {
     label: "Production",
+    href: "/video-photography-production-bangalore",
     items: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
       { label: "Photography", href: "/photography-services-bangalore" },
