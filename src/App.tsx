@@ -48,6 +48,11 @@ const Design = lazy(() => import("./pages/Design"));
 const ClientReport = lazy(() => import("./pages/ClientReport"));
 const LeadGenReport = lazy(() => import("./pages/LeadGenReport"));
 
+// Hub / parent pages
+const ContentMarketing = lazy(() => import("./pages/ContentMarketing"));
+const SmsMarketing = lazy(() => import("./pages/SmsMarketing"));
+const Production = lazy(() => import("./pages/Production"));
+
 // Digital Marketing sub-pages
 const GoogleAds = lazy(() => import("./pages/GoogleAds"));
 const SocialMediaOptimisation = lazy(() => import("./pages/SocialMediaOptimisation"));
@@ -162,12 +167,14 @@ const App = () => (
                 <Route path="/branding-agency-bangalore" element={<BrandKit />} />
 
                 {/* Content */}
+                <Route path="/content-marketing-agency-bangalore" element={<ContentMarketing />} />
                 <Route path="/seo-content-writing-company-bangalore" element={<WebsiteContent />} />
                 <Route path="/blog-writing-services-bangalore" element={<BlogWriting />} />
                 <Route path="/script-writing-agency-bangalore" element={<ScriptWriting />} />
                 <Route path="/guest-posting-agency-bangalore" element={<GuestPosting />} />
 
                 {/* SMS & Messaging */}
+                <Route path="/bulk-sms-marketing-agency-bangalore" element={<SmsMarketing />} />
                 <Route path="/whatsapp-marketing-company-bangalore" element={<WhatsappBusinessApi />} />
                 <Route path="/chatbot-development-company-bangalore" element={<Chatbot />} />
                 <Route path="/customer-engagement-agency-bangalore" element={<CustomerEngagement />} />
@@ -175,6 +182,7 @@ const App = () => (
                 <Route path="/rcs-messaging-provider-bangalore" element={<RCS />} />
 
                 {/* Production */}
+                <Route path="/video-photography-production-bangalore" element={<Production />} />
                 <Route path="/video-production-agency-bangalore" element={<VideoProduction />} />
                 <Route path="/photography-services-bangalore" element={<Photography />} />
 
