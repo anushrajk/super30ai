@@ -85,7 +85,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready to Elevate Your Brand with Video?",
     description: "Get a free consultation and custom quote for your video production project.",
-    buttonText: "Get Free Quote",
+    buttonText: "Get Free Video Quote",
   },
 };
 

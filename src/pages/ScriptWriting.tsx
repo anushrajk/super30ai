@@ -110,7 +110,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready for Scripts That Sell?",
     description: "Get a free script consultation and let's plan your next high-impact video.",
-    buttonText: "Get Free Consultation",
+    buttonText: "Get Free Script Consultation",
   },
 };
 

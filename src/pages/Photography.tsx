@@ -85,7 +85,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready for Stunning Brand Photography?",
     description: "Get a free consultation and custom quote for your photography project.",
-    buttonText: "Get Free Quote",
+    buttonText: "Get Free Photography Quote",
   },
 };
 

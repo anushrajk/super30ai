@@ -110,7 +110,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready to Launch Your Online Store?",
     description: "Get a free ecommerce consultation and start selling online within weeks.",
-    buttonText: "Get Free Quote",
+    buttonText: "Get Free Ecommerce Quote",
   },
 };
 

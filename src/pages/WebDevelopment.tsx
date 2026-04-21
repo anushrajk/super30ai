@@ -110,7 +110,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready to build a website that performs?",
     description: "Share your project brief — we'll send back a scope, timeline and budget in 3 business days. No commitment.",
-    buttonText: "Get Free Consultation",
+    buttonText: "Get Free Project Scope",
   },
 };
 

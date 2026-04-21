@@ -110,7 +110,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready for a WordPress Site That Performs?",
     description: "Get a free consultation and let's build a fast, secure, beautiful WordPress website.",
-    buttonText: "Get Free Consultation",
+    buttonText: "Get Free WordPress Quote",
   },
 };
 

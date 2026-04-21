@@ -121,7 +121,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready to Make Films That Build Your Brand?",
     description: "Get a free production quote and creative direction from Bangalore's top in-house video and photography team.",
-    buttonText: "Get Free Quote",
+    buttonText: "Get Free Production Quote",
   },
 };
 
