@@ -31,6 +31,7 @@ const menuItems: NavMenuItem[] = [
       { label: "Social Media Marketing", href: "/social-media-marketing-agency-bangalore" },
       { label: "Google Ads", href: "/google-ads-agency-bangalore" },
       { label: "Social Media Optimisation", href: "/social-media-optimization-services-bangalore" },
+      { label: "Ecommerce Marketing", href: "/ecommerce-marketing-agency-bangalore" },
     ],
   },
   {
