@@ -107,8 +107,8 @@ const WebDesign = () => {
             credentials={["200+ Websites Built", "Core Web Vitals Optimized", "SEO-Ready"]}
             onSubmit={handleFormSubmit}
             loading={loading}
-            formTitle="Get Your Free Website Consultation"
-            formDescription="Tell us about your project and we'll create a plan for a high-converting website that grows your business."
+            formTitle="Free Website Design Consultation in Bangalore"
+            formDescription="Share your project brief — Bangalore's top website designing agency will plan a custom, high-converting site that grows your business."
             formButtonText="Get Free Website Quote"
             formId="lead_capture_web_design"
             formName="Web Design Consultation"
