@@ -34,7 +34,7 @@ const SocialMediaDesign = () => {
   return (
     <>
       <Helmet>
-        <title>Creative Social Media Post Design Agency in Bangalore</title>
+        <title>Social Media Post Design Agency in Bangalore | Creative Posts</title>
         <meta name="description" content="Make every post count. Our social media design company in Bangalore creates scroll stopping creatives & post designs that boost engagement" />
         <meta name="keywords" content="social media design agency in bangalore, social media design company in bangalore, social media design services in bangalore, social media creative designing agency in bangalore, social media graphic design company in bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/social-media-design-agency-bangalore" />
