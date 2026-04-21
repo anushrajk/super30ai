@@ -126,15 +126,15 @@ const Home = () => {
 
               <h1 className="font-bold text-foreground">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.3] pb-1">
-                  AI Digital Marketing
+                  The Digital Marketing Agency
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.3]">
-                  Agency &amp; AI Growth Company
+                  That Turns Your Clicks into Revenue
                 </span>
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                From SEO to performance ads, social media to web design — we combine AI and human expertise to drive measurable growth. Trusted by 300+ brands across India.
+                Most brands struggle with traffic that does not convert. As a result-oriented <span className="text-foreground font-semibold">digital marketing company</span>, we build smart, AI-powered plans to help you find more customers and grow your sales faster through data.
               </p>
 
               {/* Platform Logos - simplified inline SVGs kept */}
@@ -198,10 +198,10 @@ const Home = () => {
                 Why Us
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Why Brands Choose The Super 30
+                Why We Are the Preferred AI Digital Marketing Agency for Rapid Growth
               </h2>
               <p className="text-lg text-muted-foreground">
-                We're a full-service AI digital marketing agency in Bangalore that combines technology, creativity, and data to deliver real business growth.
+                We combine human creativity with machine learning. This allows our AI based digital marketing agency to predict market trends and optimize your brand performance in real time for maximum profit.
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">

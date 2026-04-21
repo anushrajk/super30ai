@@ -43,28 +43,28 @@ const DigitalMarketing = () => {
   return (
     <>
       <Helmet>
-        <title>Digital Marketing Agency in Bangalore | ROI-Focused SEO, PPC & Social Media</title>
+        <title>Digital Marketing Agency in Bangalore | 10x Your Growth</title>
         <meta
           name="description"
-          content="Top digital marketing agency in Bangalore helping startups & enterprises scale with ROI-focused SEO, PPC, and social media strategies. Get free audit today"
+          content="Scale your brand with leading digital marketing company in Bangalore. Our services deliver ROI-focused SEO, PPC & social media strategies. Get a free brand audit"
         />
         <meta
           name="keywords"
-          content="digital marketing agency in bangalore, digital marketing company in bangalore, digital marketing services in bangalore, online marketing company in bangalore, internet marketing services in bangalore, best digital marketing agency bangalore, top digital marketing company bangalore"
+          content="digital marketing agency in bangalore, digital marketing company in bangalore, digital marketing services in bangalore, online marketing company in bangalore, internet marketing services in bangalore"
         />
         <link rel="canonical" href="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
-        <meta property="og:title" content="Bangalore's Digital Marketing Agency That Delivers Measurable ROI" />
+        <meta property="og:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
         <meta
           property="og:description"
-          content="From SEO and Google Ads to social media and content, our digital marketing services in Bangalore generate qualified leads and measurable ROI. Book a free audit."
+          content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!"
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Bangalore's Digital Marketing Agency That Delivers Measurable ROI" />
+        <meta name="twitter:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
         <meta
           name="twitter:description"
-          content="From SEO and Google Ads to social media and content — our digital marketing services in Bangalore generate qualified leads and measurable ROI. Book a free audit."
+          content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!"
         />
         <meta name="twitter:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <script type="application/ld+json">
@@ -148,12 +148,12 @@ const DigitalMarketing = () => {
             badgeText="#1 Digital Marketing Agency in Bangalore"
             headline={
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.2]">
-                <span className="text-brand">Digital Marketing Agency</span> in Bangalore
+                <span className="text-brand">Digital Marketing Agency in Bangalore</span> — 10x Your Business Growth
               </span>
             }
             description={
               <>
-                We help startups and enterprises generate qualified leads, build authority, and scale revenue with data-driven SEO, Google-certified PPC, and expert-led social media — across Koramangala, HSR Layout, Whitefield, and Electronic City.
+                Scale your brand with the leading <span className="text-foreground font-semibold">digital marketing company in Bangalore</span>. Our digital marketing services deliver ROI-focused SEO, PPC and social media strategies — across Koramangala, HSR Layout, Whitefield and Electronic City.
               </>
             }
             trustSignals={[
