@@ -239,15 +239,15 @@ const Contact = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  Contact Bangalore's Trusted{" "}
+                  Contact TheSuper30 Agency —{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">Digital Marketing Agency</span>
+                    <span className="text-brand-gradient">Let's Grow Your Brand</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Talk to TheSuper30 — a leading digital marketing agency in Bangalore offering AI SEO, lead generation, social media, web design and full-scale marketing.{" "}
-                  <span className="text-foreground font-semibold">Free 30-min consultation.</span>
+                  Ready to grow? Get in touch with TheSuper30 — a leading digital marketing agency in Bangalore with 30+ experts offering marketing support, strategy, AI SEO, ads, web and design.{" "}
+                  <span className="text-foreground font-semibold">Free 30-min consultation, 24-hour response.</span>
                 </p>
               </div>
 
@@ -315,7 +315,7 @@ const Contact = () => {
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
               {/* Contact Form */}
               <div className="bento-card p-6 md:p-8 h-full flex flex-col">
-                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Get in Touch With Our Digital Marketing Team</h2>
+                <h2 className="text-xl md:text-2xl font-bold text-foreground mb-6">Talk to Our Digital Marketing Experts in Bangalore</h2>
 
                 <form onSubmit={handleSubmit} className="flex-1 flex flex-col space-y-4" id="contact-form">
                   <div className="grid md:grid-cols-2 gap-4">

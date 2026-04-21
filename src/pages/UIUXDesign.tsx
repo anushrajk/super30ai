@@ -11,20 +11,20 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: MousePointerClick,
-    badgeText: "UI/UX Design Agency",
+    badgeText: "Best UI UX Design Company in Bangalore",
     headlineLine1: "UI UX Design Agency",
     headlineLine2: "in Bangalore",
-    description: <>We design intuitive, beautiful interfaces that <span className="text-foreground font-semibold">reduce friction and increase conversions</span> — backed by user research and data, not guesswork.</>,
+    description: <>Bad UX is quietly costing you customers every day. As a leading <span className="text-foreground font-semibold">UI UX design company in Bangalore</span>, we design simple, user-friendly apps and websites that keep visitors engaged and turn them into loyal customers.</>,
     trustSignals: [
       { icon: Users, text: "User-Centered Design Process" },
       { icon: BarChart3, text: "Avg. 40% Conversion Lift" },
       { icon: Figma, text: "Pixel-Perfect Figma Deliverables" },
       { icon: Smartphone, text: "Mobile-First Responsive" },
     ],
-    credentials: ["100+ Interfaces Designed", "Figma & Prototyping", "User Research Driven"],
-    formTitle: "Get a Free UX Consultation",
-    formDescription: "Tell us about your product and we'll identify quick UX wins to boost conversions.",
-    formButtonText: "Get Free Consultation",
+    credentials: ["UI UX Design Services in Bangalore", "Figma & Prototyping", "User Research Driven"],
+    formTitle: "Get a Free UI UX Audit",
+    formDescription: "Share your product and our UI UX design agency in Bangalore will identify quick UX wins to boost engagement and conversions.",
+    formButtonText: "Get Free UX Audit",
   },
   source: "ui_ux_design",
   problems: [
@@ -104,9 +104,9 @@ const config: ServicePageConfig = {
     { question: "Do you design for both web and mobile?", answer: "Yes. We design responsive interfaces that work seamlessly across desktop, tablet, and mobile — with mobile-first prioritization." },
   ],
   finalCTA: {
-    headline: "Ready to Design Experiences Users Love?",
-    description: "Get a free UX consultation and discover how better design can transform your business results.",
-    buttonText: "Get Free Consultation",
+    headline: "Hire Bangalore's Best UI UX Design Company Today",
+    description: "Bad UX is quietly costing you customers. Get a free UI UX audit from our award-winning UI UX design agency in Bangalore and discover how user-first design can transform your business.",
+    buttonText: "Get Free UI UX Audit",
   },
 };
 

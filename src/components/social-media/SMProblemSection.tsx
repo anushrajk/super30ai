@@ -44,10 +44,10 @@ export const SMProblemSection = () => {
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <BentoBadge className="bg-destructive/10 text-destructive mb-4">The Problem</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Your Social Media Looks Like <span className="text-destructive">Everyone Else's</span>
+            Your Social Media Posts Should Stop the Scroll. <span className="text-destructive">Do They?</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            In a feed where users scroll 91 meters of content daily, template designs don't stand a chance
+            Most brands need a real social media design agency in Bangalore — not another Canva template factory. Here's why generic creatives fail.
           </p>
         </div>
 
