@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "How do I get verified branding?", answer: "We handle the business verification process with Google/carriers to get your business name, logo, and verified badge on every RCS message." },
   ],
   finalCTA: {
-    headline: "Ready to Upgrade From SMS to Rich Messaging?",
-    description: "Get a free RCS demo and see how interactive messaging can transform your customer engagement.",
+    headline: "Hire Bangalore's Trusted RCS Messaging Provider",
+    description: "Get a free RCS messaging demo and see how rich, branded business messages can transform your customer engagement.",
     buttonText: "Get Free RCS Demo",
   },
 };

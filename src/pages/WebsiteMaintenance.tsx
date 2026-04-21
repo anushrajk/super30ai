@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "What happens to my site if I stop maintenance?", answer: "Your site continues working, but without updates, security monitoring, and optimization, risks increase over time. We provide a complete handoff if you decide to leave." },
   ],
   finalCTA: {
-    headline: "Ready to Keep Your Website in Perfect Shape?",
-    description: "Get a free website health check and see what your site needs to stay fast, secure, and updated.",
+    headline: "Hire Bangalore's Trusted Website Maintenance Company",
+    description: "Get a free website maintenance health check — discover security, speed, and AMC opportunities to keep your site fast and online.",
     buttonText: "Get Free Health Check",
   },
 };

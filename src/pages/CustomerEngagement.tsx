@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "Can you help with customer feedback and reviews?", answer: "Yes. We design and implement structured feedback collection programs, review generation campaigns, and NPS surveys." },
   ],
   finalCTA: {
-    headline: "Ready to Build Unbreakable Customer Loyalty?",
-    description: "Get a free engagement audit and discover how to increase retention and customer lifetime value.",
+    headline: "Hire Bangalore's Trusted Customer Engagement Agency",
+    description: "Get a free customer engagement audit and discover loyalty programs and lifecycle campaigns that boost retention and lifetime value.",
     buttonText: "Get Free Engagement Audit",
   },
 };

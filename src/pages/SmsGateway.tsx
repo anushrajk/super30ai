@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "Do you provide delivery reports?", answer: "Yes. Real-time delivery reports via API callbacks and a web dashboard with detailed analytics." },
   ],
   finalCTA: {
-    headline: "Ready for SMS Delivery You Can Rely On?",
-    description: "Get started with our enterprise-grade SMS gateway. No setup fees, no long-term contracts.",
-    buttonText: "Get Started Now",
+    headline: "Hire Bangalore's Trusted SMS Gateway Provider",
+    description: "Get started with our enterprise-grade SMS gateway and OTP SMS API. DLT-compliant, no setup fees, no long-term contracts.",
+    buttonText: "Get SMS Gateway Access",
   },
 };
 

@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "Can I integrate this with my existing CRM?", answer: "Yes. We integrate with Salesforce, HubSpot, Zoho, Freshworks, and most popular CRMs. Custom integrations are also available." },
   ],
   finalCTA: {
-    headline: "Ready to Transform Your WhatsApp Into a Sales Machine?",
-    description: "Get a free consultation and see how WhatsApp Business API can automate your customer communication.",
-    buttonText: "Get Free Consultation",
+    headline: "Hire Bangalore's Top WhatsApp Marketing Company",
+    description: "Get a free WhatsApp marketing consultation and see how WhatsApp Business API and bulk WhatsApp campaigns can automate your customer communication.",
+    buttonText: "Start WhatsApp Marketing",
   },
 };
 

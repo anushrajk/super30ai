@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "What metrics do you report on?", answer: "Monthly reports include: live URLs, DA of each site, anchor text used, domain authority growth, and keyword ranking changes." },
   ],
   finalCTA: {
-    headline: "Ready to Build Authority That Lasts?",
-    description: "Get a free backlink audit and discover how strategic link building can boost your rankings.",
+    headline: "Hire Bangalore's Trusted Guest Posting Agency",
+    description: "Get a free guest posting and backlink audit — discover how strategic link building boosts rankings and authority.",
     buttonText: "Get Free Link Audit",
   },
 };
