@@ -240,15 +240,15 @@ const Work = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  Digital Marketing Case Studies &{" "}
+                  Successful Digital Marketing Results{" "}
                   <span className="relative inline-block">
-                    <span className="text-brand-gradient">SEO Results in Bangalore</span>
+                    <span className="text-brand-gradient">Delivered For 300+ Brands</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Real digital marketing case studies and proven SEO results from 300+ Bangalore brands. See how we've helped businesses{" "}
-                  <span className="text-foreground font-semibold">dominate their markets</span> with AI-powered marketing.
+                  From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Real digital marketing case studies and proven SEO results across{" "}
+                  <span className="text-foreground font-semibold">SEO, ads, web and design</span> with a 98% satisfaction rate.
                 </p>
               </div>
 
