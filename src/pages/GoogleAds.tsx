@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Target,
-    badgeText: "Google Ads Experts",
-    headlineLine1: "Google Ads Agency",
-    headlineLine2: "in Bangalore",
-    description: <>We build and manage high-ROI Google Ads campaigns that bring <span className="text-foreground font-semibold">qualified leads at the lowest possible cost</span>. Every rupee tracked, every click optimized.</>,
+    badgeText: "Google Ads Agency in Bangalore",
+    headlineLine1: "Google Ads Agency in Bangalore",
+    headlineLine2: "PPC Services Up to 10X ROAS",
+    description: <>As a leading <span className="text-foreground font-semibold">PPC company in Bangalore</span>, we run targeted Google Ads and PPC campaigns that lower cost per click and bring leads that convert. Every rupee tracked, every click optimized.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 4.2x ROAS Across Clients" },
       { icon: BarChart3, text: "Real-Time Dashboard Access" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "No Long-Term Lock-ins" },
     ],
     credentials: ["Google Partner Agency", "₹2Cr+ Ad Spend Managed", "300+ Campaigns Optimized"],
-    formTitle: "Get Your Free Google Ads Audit",
-    formDescription: "Share your website and our PPC experts will identify wasted spend and high-ROI opportunities.",
-    formButtonText: "Get Free Audit",
+    formTitle: "Free Google Ads & PPC Audit",
+    formDescription: "Share your website and our PPC agency in Bangalore will identify wasted spend and high-ROI opportunities.",
+    formButtonText: "Get Free PPC Audit",
   },
   source: "google_ads",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "How do you report on performance?", answer: "You get a real-time dashboard plus weekly written reports with actionable insights — not just vanity metrics." },
   ],
   finalCTA: {
-    headline: "Ready to Get More Leads for Less?",
-    description: "Get a free Google Ads audit and discover how much revenue you're leaving on the table.",
-    buttonText: "Get Free Audit",
+    headline: "Hire the Top Google Ads Agency in Bangalore",
+    description: "Get a free PPC audit from our Google AdWords management agency in Bangalore and discover how much revenue you're leaving on the table.",
+    buttonText: "Get Free PPC Audit",
   },
 };
 

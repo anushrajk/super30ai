@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Share2,
-    badgeText: "Social Media Optimisation Experts",
-    headlineLine1: "Social Media Optimization",
-    headlineLine2: "Company in Bangalore",
-    description: <>We optimize your social media profiles, content, and strategy to <span className="text-foreground font-semibold">maximize organic reach and engagement</span> — without relying on paid ads.</>,
+    badgeText: "SMO Company in Bangalore",
+    headlineLine1: "Social Media Optimization Services",
+    headlineLine2: "in Bangalore — Own Your Presence",
+    description: <>Our <span className="text-foreground font-semibold">SMO company in Bangalore</span> grows your brand organically with reels, UGC, influencer marketing and social content creation — without relying on paid ads.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 3x Engagement Increase" },
       { icon: Users, text: "Organic Follower Growth Strategies" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Platform-Specific Optimization" },
     ],
     credentials: ["300+ Brands Optimized", "Multi-Platform Expertise", "Content-First Approach"],
-    formTitle: "Get Your Free SMO Audit",
-    formDescription: "Share your social profiles and we'll identify quick wins to boost your organic reach.",
-    formButtonText: "Get Free Audit",
+    formTitle: "Free SMO Audit in Bangalore",
+    formDescription: "Share your social profiles and our social media optimization company in Bangalore will identify quick wins to boost organic reach.",
+    formButtonText: "Get Free SMO Audit",
   },
   source: "social_media_optimisation",
   problems: [
@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "Can you help with negative reviews or brand reputation?", answer: "Yes. Our SMO strategy includes reputation management — monitoring mentions, responding to reviews, and building positive brand sentiment." },
   ],
   finalCTA: {
-    headline: "Ready to Grow Your Social Media Organically?",
-    description: "Get a free SMO audit and discover untapped opportunities to boost your reach and engagement.",
+    headline: "Partner with the Best SMO Company in Bangalore",
+    description: "Get a free audit from our social media optimization services in Bangalore and discover untapped opportunities to grow reach, engagement and influence.",
     buttonText: "Get Free SMO Audit",
   },
 };

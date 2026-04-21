@@ -101,15 +101,16 @@ const About = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  Meet Our{" "}
+                  The Best{" "}
                   <span className="relative inline-block">
                     <span className="text-brand-gradient">Digital Marketing Experts</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
+                  {" "}Delivering Predictable Growth
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Our digital marketing team is made up of experienced SEO specialists, PPC specialists, and growth experts who are passionate about{" "}
-                  <span className="text-foreground font-semibold">growing brands</span>.
+                  Success in the digital age needs more than tools. Our team of digital marketing experts at this leading{" "}
+                  <span className="text-foreground font-semibold">internet marketing agency</span> combines years of field experience with smart data so your brand leads the competition.
                 </p>
               </div>
 
@@ -183,13 +184,13 @@ const About = () => {
               <div>
                 <BentoBadge className="mb-4">Our Mission</BentoBadge>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 md:mb-6">
-                  The Super 30 Digital Marketing Team
+                  A Human-Driven Internet Marketing Agency for the AI Era
                 </h2>
                 <p className="text-muted-foreground mb-4 leading-relaxed">
-                  As a Bangalore-based digital marketing agency team, our experts bring years of hands-on experience in AI-driven strategies, SEO, and performance marketing.
+                  We believe that a great internet marketing agency should act as a true partner to your business. Our online marketing agency works with total transparency and passion to turn complex growth goals into measurable results.
                 </p>
                 <p className="text-muted-foreground mb-6 leading-relaxed">
-                  Our team combines ex-Google expertise with proprietary AI tools to deliver enterprise-grade results at founder-friendly prices.
+                  Our internet marketing company combines ex-Google expertise with proprietary AI tools to deliver enterprise-grade results at founder-friendly prices.
                 </p>
                 <ul className="space-y-3">
                   {[
