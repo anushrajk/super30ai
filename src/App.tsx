@@ -56,6 +56,8 @@ const Production = lazy(() => import("./pages/Production"));
 // Digital Marketing sub-pages
 const GoogleAds = lazy(() => import("./pages/GoogleAds"));
 const SocialMediaOptimisation = lazy(() => import("./pages/SocialMediaOptimisation"));
+const SocialMediaMarketing = lazy(() => import("./pages/SocialMediaMarketing"));
+const WebDevelopment = lazy(() => import("./pages/WebDevelopment"));
 
 // Design sub-pages
 const UIUXDesign = lazy(() => import("./pages/UIUXDesign"));
@@ -158,6 +160,7 @@ const App = () => (
                 <Route path="/lead-generation-agency-bangalore" element={<PerformanceMarketing />} />
                 <Route path="/google-ads-agency-bangalore" element={<GoogleAds />} />
                 <Route path="/social-media-optimization-services-bangalore" element={<SocialMediaOptimisation />} />
+                <Route path="/social-media-marketing-agency-bangalore" element={<SocialMediaMarketing />} />
 
                 {/* Design */}
                 <Route path="/graphic-design-agency-bangalore" element={<Design />} />
@@ -188,6 +191,7 @@ const App = () => (
 
                 {/* Website */}
                 <Route path="/web-design-company-bangalore" element={<WebDesign />} />
+                <Route path="/web-development-company-bangalore" element={<WebDevelopment />} />
                 <Route path="/ecommerce-website-development-company-bangalore" element={<EcommerceWebsite />} />
                 <Route path="/wordpress-website-development-company-bangalore" element={<WordpressWebsite />} />
                 <Route path="/website-maintenance-company-bangalore" element={<WebsiteMaintenance />} />
