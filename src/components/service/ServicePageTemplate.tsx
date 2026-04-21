@@ -422,10 +422,10 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
           <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} /></LazySection>
           <LazySection minHeight="500px"><DMIndustriesSection /></LazySection>
           <LazySection minHeight="400px"><ProcessSection process={config.process} /></LazySection>
-          <LazySection minHeight="300px"><WhoIsThisForSection data={config.whoIsThisFor} /></LazySection>
-          <LazySection minHeight="200px"><FinalCTASection data={config.finalCTA} /></LazySection>
           <LazySection minHeight="400px"><TestimonialSection /></LazySection>
+          <LazySection minHeight="300px"><WhoIsThisForSection data={config.whoIsThisFor} /></LazySection>
           <LazySection minHeight="300px"><FAQSection faq={config.faq} /></LazySection>
+          <LazySection minHeight="200px"><FinalCTASection data={config.finalCTA} /></LazySection>
         </Suspense>
 
         <Footer />
