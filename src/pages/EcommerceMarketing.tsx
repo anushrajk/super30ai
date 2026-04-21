@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: ShoppingBag,
-    badgeText: "D2C Growth Partner in Bangalore",
-    headlineLine1: "D2C & Ecommerce Marketing",
-    headlineLine2: "Agency in Bangalore",
-    description: <>Full-stack <span className="text-foreground font-semibold">ecommerce marketing services in Bangalore</span> for D2C brands — performance ads, SEO, CRO and retention built to scale revenue, not just traffic.</>,
+    badgeText: "D2C Ecommerce Agency in Bangalore",
+    headlineLine1: "D2C & Ecommerce Marketing Agency",
+    headlineLine2: "in Bangalore — Scale Profitably",
+    description: <>As your <span className="text-foreground font-semibold">D2C growth partner in Bangalore</span>, we deliver full-stack ecommerce marketing services in Bangalore — performance ads, SEO, CRO and retention built to scale revenue, not just traffic.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 3x ROAS in 90 Days" },
       { icon: ShoppingCart, text: "Shopify, WooCommerce & Magento" },
@@ -26,8 +26,8 @@ const config: ServicePageConfig = {
       { icon: BarChart3, text: "GA4, Meta & Shopify Reporting" },
     ],
     credentials: ["50+ D2C Brands Scaled", "₹10Cr+ Ad Spend Managed", "Full-Funnel D2C Strategy"],
-    formTitle: "Get Your Free Ecommerce Growth Audit",
-    formDescription: "Share your store URL — we'll send back a teardown with quick wins to lift ROAS and AOV.",
+    formTitle: "Free D2C Ecommerce Growth Audit",
+    formDescription: "Share your store URL — our D2C marketing services in Bangalore team will send a teardown with quick wins to lift ROAS and AOV.",
     formButtonText: "Get Free D2C Audit",
   },
   source: "ecommerce_marketing",
@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "Can you also manage Amazon and Flipkart?", answer: "Absolutely. We run coordinated DTC + marketplace growth so your brand grows on Amazon, Flipkart, Myntra and your own store together." },
   ],
   finalCTA: {
-    headline: "Ready to scale your D2C brand profitably?",
-    description: "Get a free ecommerce growth audit and a custom 90-day D2C roadmap built for your store.",
+    headline: "Hire the Top Ecommerce Marketing Agency in Bangalore",
+    description: "Get a free audit from our D2C ecommerce agency in Bangalore and a custom 90-day roadmap built to scale your store profitably.",
     buttonText: "Get Free Ecommerce Audit",
   },
 };

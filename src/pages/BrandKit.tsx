@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Palette,
-    badgeText: "Brand Identity Experts",
-    headlineLine1: "Branding Agency",
-    headlineLine2: "in Bangalore",
-    description: <>From logo to guidelines, colors to templates — we build a <span className="text-foreground font-semibold">complete visual identity system</span> that makes your brand consistent, recognizable, and premium everywhere.</>,
+    badgeText: "Branding Agency in Bangalore",
+    headlineLine1: "Branding Agency in Bangalore",
+    headlineLine2: "Brand Kit & Identity Design",
+    description: <>Our <span className="text-foreground font-semibold">branding company in Bangalore</span> delivers complete brand kit design services in Bangalore — logo, colors, fonts and visual identity that make your business look like a leader everywhere.</>,
     trustSignals: [
       { icon: Layers, text: "Complete Brand System" },
       { icon: BookOpen, text: "Professional Brand Guidelines" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Ready for Print & Digital" },
     ],
     credentials: ["150+ Brands Built", "End-to-End Identity", "Print + Digital Ready"],
-    formTitle: "Get Your Free Brand Consultation",
-    formDescription: "Tell us about your brand and we'll outline a custom identity package for you.",
-    formButtonText: "Get Free Consultation",
+    formTitle: "Free Brand Kit Consultation",
+    formDescription: "Tell us about your business and our branding services in Bangalore team will outline a custom brand identity package for you.",
+    formButtonText: "Get Free Brand Consultation",
   },
   source: "brand_kit",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "Do you offer ongoing brand support?", answer: "Yes. We offer monthly retainer packages for brands that need ongoing design support, new asset creation, and brand consistency management." },
   ],
   finalCTA: {
-    headline: "Ready to Build a Brand That Stands Out?",
-    description: "Get a free brand consultation and see how a complete identity kit can transform your business.",
-    buttonText: "Get Free Consultation",
+    headline: "Hire the Top Branding Agency in Bangalore",
+    description: "Get a free consultation from our branding company in Bangalore and see how a complete brand kit can transform your business.",
+    buttonText: "Get Free Brand Consultation",
   },
 };
 

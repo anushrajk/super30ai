@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: PenTool,
-    badgeText: "Logo Design Experts",
-    headlineLine1: "Logo Design Company",
-    headlineLine2: "in Bangalore",
-    description: <>We craft custom logos that capture your brand's essence — <span className="text-foreground font-semibold">memorable, versatile, and built to last decades</span>. Not templates. Not AI-generated. Hand-crafted.</>,
+    badgeText: "Logo Design Agency in Bangalore",
+    headlineLine1: "Logo Design Company in Bangalore",
+    headlineLine2: "Build Your Brand Identity",
+    description: <>Our <span className="text-foreground font-semibold">professional logo design company in Bangalore</span> crafts custom, hand-drawn logos using strategy, frameworks and brand insights — built to last decades. Not templates. Not AI-generated.</>,
     trustSignals: [
       { icon: Award, text: "200+ Logos Designed" },
       { icon: PenTool, text: "Hand-Crafted, Not Templates" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: RefreshCw, text: "Unlimited Revisions" },
     ],
     credentials: ["200+ Logos Designed", "Hand-Crafted Originals", "Full File Package"],
-    formTitle: "Get Your Free Logo Consultation",
-    formDescription: "Tell us about your brand and we'll share initial concepts and direction ideas.",
-    formButtonText: "Get Free Consultation",
+    formTitle: "Free Logo Design Consultation",
+    formDescription: "Tell us about your brand and our custom logo design company in Bangalore will share initial concepts and direction ideas.",
+    formButtonText: "Get Free Logo Consultation",
   },
   source: "logo_design",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "Can you also design business cards and stationery?", answer: "Yes! We offer complete brand identity packages including business cards, letterheads, envelopes, and more. Ask about our Brand Kit service." },
   ],
   finalCTA: {
-    headline: "Ready for a Logo Your Brand Deserves?",
-    description: "Get a free logo consultation and see how we can bring your brand vision to life.",
-    buttonText: "Get Free Consultation",
+    headline: "Hire the Best Logo Design Agency in Bangalore",
+    description: "Get a free consultation from our logo design services Bangalore team and see how we bring your brand vision to life.",
+    buttonText: "Get Free Logo Consultation",
   },
 };
 
