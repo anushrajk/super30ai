@@ -22,13 +22,12 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Video,
-    badgeText: "#1 Video & Photography Production in Bangalore",
+    badgeText: "Corporate Video Maker in Bangalore",
     headlineLine1: "Video & Photography",
     headlineLine2: "Production in Bangalore",
     description: (
       <>
-        Brand films, ad films, reels and product photography that <span className="text-foreground font-semibold">look premium</span>,{" "}
-        <span className="text-foreground font-semibold">tell your story</span> and convert viewers into customers.
+        Bangalore's trusted <span className="text-foreground font-semibold">corporate video maker</span> and <span className="text-foreground font-semibold">video production company</span> — brand films, ad films, reels and product photography that look premium, tell your story and convert viewers into customers.
       </>
     ),
     trustSignals: [
@@ -38,9 +37,9 @@ const config: ServicePageConfig = {
       { icon: Award, text: "500+ Films Delivered" },
     ],
     credentials: ["300+ Brands Served", "500+ Films & Shoots", "4.9/5 Client Rating"],
-    formTitle: "Get Your Free Production Quote",
+    formTitle: "Free Corporate Video Production Quote",
     formDescription: "Tell us about your shoot and we'll send a tailored production plan in 24 hours.",
-    formButtonText: "Get Free Quote",
+    formButtonText: "Get Free Production Quote",
   },
   source: "production",
   problems: [

@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: ShoppingCart,
-    badgeText: "Ecommerce Development Experts",
+    badgeText: "Ecommerce Website Development Company in Bangalore",
     headlineLine1: "Ecommerce Website Development",
     headlineLine2: "Company in Bangalore",
-    description: <>We build high-converting ecommerce stores with <span className="text-foreground font-semibold">seamless checkout, payment integration, and SEO optimization</span> — on Shopify, WooCommerce, or custom platforms.</>,
+    description: <>Bangalore's leading <span className="text-foreground font-semibold">ecommerce website development company</span> — fast, secure, conversion-ready online stores with <span className="text-foreground font-semibold">seamless checkout, payment integration, and ecommerce SEO</span> on Shopify, WooCommerce or custom platforms.</>,
     trustSignals: [
       { icon: CreditCard, text: "Payment Gateway Integration" },
       { icon: Smartphone, text: "Mobile-First Shopping Experience" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Secure & PCI Compliant" },
     ],
     credentials: ["100+ Stores Built", "Shopify & WooCommerce", "Payment Ready"],
-    formTitle: "Get Your Free Ecommerce Consultation",
+    formTitle: "Free Ecommerce Website Consultation",
     formDescription: "Tell us about your products and we'll plan a store that maximizes online sales.",
-    formButtonText: "Get Free Quote",
+    formButtonText: "Get Free Ecommerce Quote",
   },
   source: "ecommerce_website",
   problems: [

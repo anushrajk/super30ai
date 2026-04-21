@@ -82,7 +82,7 @@ const WebDesign = () => {
         <div id="wd-hero">
           <ServiceHeroSection
             badgeIcon={Globe}
-            badgeText="Web Design Agency"
+            badgeText="Web Design Company in Bangalore"
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
@@ -95,8 +95,7 @@ const WebDesign = () => {
             }
             description={
               <>
-                Custom, responsive, and SEO-optimized website design services from Bangalore's trusted{" "}
-                <span className="text-foreground font-semibold">website designing agency</span> — built to convert visitors into customers.
+                Bangalore's most trusted <span className="text-foreground font-semibold">website designing agency</span> — custom, responsive, and SEO-optimized <span className="text-foreground font-semibold">website design services</span> built to convert visitors into customers.
               </>
             }
             trustSignals={[

@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Video,
-    badgeText: "Video Production Experts",
+    badgeText: "Video Production Agency in Bangalore",
     headlineLine1: "Video Production Agency",
     headlineLine2: "in Bangalore",
-    description: <>We produce high-quality videos that <span className="text-foreground font-semibold">tell your brand story, build credibility, and convert viewers into clients</span>. From corporate films to social media reels.</>,
+    description: <>As an affordable <span className="text-foreground font-semibold">video production company in Bangalore</span>, we deliver corporate explainer and marketing videos that <span className="text-foreground font-semibold">tell your brand story, build credibility, and convert viewers into clients</span> — from brand films to social media reels.</>,
     trustSignals: [
       { icon: Film, text: "500+ Videos Produced" },
       { icon: Users, text: "200+ Corporate Clients" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "End-to-End Production" },
     ],
     credentials: ["Award-Winning Team", "Fortune 500 Clients", "Quick Turnaround"],
-    formTitle: "Get a Free Quote",
+    formTitle: "Free Video Production Quote",
     formDescription: "Tell us about your video project and get a custom production proposal.",
-    formButtonText: "Get Free Quote",
+    formButtonText: "Get Free Video Quote",
   },
   source: "video_production",
   problems: [

@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Send,
-    badgeText: "SMS Gateway Solutions",
+    badgeText: "SMS Gateway Service Provider in Bangalore",
     headlineLine1: "SMS Gateway Service",
     headlineLine2: "Provider in Bangalore",
-    description: <>Enterprise-grade SMS gateway with <span className="text-foreground font-semibold">99.9% delivery rate, DLT compliance, and instant API integration</span> for transactional, promotional, and OTP messages.</>,
+    description: <>Bangalore's leading <span className="text-foreground font-semibold">SMS gateway service provider</span> — enterprise-grade transactional SMS gateway and OTP SMS API with <span className="text-foreground font-semibold">99.9% delivery, DLT compliance, and instant API integration</span>.</>,
     trustSignals: [
       { icon: Shield, text: "99.9% Delivery Rate" },
       { icon: Lock, text: "DLT Compliant & TRAI Approved" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Globe, text: "Multi-Language Support" },
     ],
     credentials: ["10M+ SMS Delivered Monthly", "99.9% Delivery", "DLT Compliant"],
-    formTitle: "Get SMS Gateway Access",
+    formTitle: "Get SMS Gateway & OTP API Access",
     formDescription: "Tell us your volume requirements and we'll set up your gateway with priority routing.",
-    formButtonText: "Get Started",
+    formButtonText: "Get SMS Gateway Access",
   },
   source: "sms_gateway",
   problems: [

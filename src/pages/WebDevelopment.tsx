@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Code2,
-    badgeText: "Web Development Experts",
+    badgeText: "Web Development Company in Bangalore",
     headlineLine1: "Web Development Company",
     headlineLine2: "in Bangalore",
-    description: <>Custom-coded web applications engineered with React, Next.js, Node and modern cloud stacks — <span className="text-foreground font-semibold">built to scale with your business</span>, not against it.</>,
+    description: <>Bangalore's trusted <span className="text-foreground font-semibold">web development agency</span> — custom website development with React, Next.js and modern cloud stacks, <span className="text-foreground font-semibold">engineered to be fast, scalable, and built around your business goals</span>.</>,
     trustSignals: [
       { icon: Gauge, text: "100/100 PageSpeed Targets" },
       { icon: Shield, text: "OWASP-Hardened Security" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: GitBranch, text: "Clean Code, Full Handover" },
     ],
     credentials: ["200+ Sites Shipped", "Modern Tech Stack", "SLA-Backed Support"],
-    formTitle: "Get Your Free Project Scope",
+    formTitle: "Free Web Development Project Scope",
     formDescription: "Share your project brief and we'll send back a scope, timeline and budget within 3 business days.",
-    formButtonText: "Get Free Consultation",
+    formButtonText: "Get Free Project Scope",
   },
   source: "web_development",
   problems: [

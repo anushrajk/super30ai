@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Film,
-    badgeText: "Script Writing Experts",
+    badgeText: "Ad Script Writing Agency in Bangalore",
     headlineLine1: "Script Writing Agency",
     headlineLine2: "in Bangalore",
-    description: <>From 15-second ad scripts to 30-minute explainer videos — we write scripts that <span className="text-foreground font-semibold">grab attention in the first 3 seconds</span> and keep audiences watching till the end.</>,
+    description: <>Professional <span className="text-foreground font-semibold">script writing services in Bangalore</span> — from 15-second ad scripts to 30-minute explainers, we craft scripts that <span className="text-foreground font-semibold">grab attention in the first 3 seconds</span> and convert viewers into customers.</>,
     trustSignals: [
       { icon: Play, text: "1,000+ Scripts Delivered" },
       { icon: Target, text: "Conversion-Focused Storytelling" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Industry-Specific Expertise" },
     ],
     credentials: ["1,000+ Scripts Written", "Multiple Formats", "Conversion-Driven"],
-    formTitle: "Get Your Free Script Consultation",
+    formTitle: "Free Ad Script Writing Consultation",
     formDescription: "Tell us about your video project and we'll outline the script approach.",
-    formButtonText: "Get Free Consultation",
+    formButtonText: "Get Free Script Consultation",
   },
   source: "script_writing",
   problems: [

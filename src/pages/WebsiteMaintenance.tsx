@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Wrench,
-    badgeText: "Website Maintenance Experts",
+    badgeText: "AMC & Website Maintenance Company in Bangalore",
     headlineLine1: "Website Maintenance",
     headlineLine2: "Company in Bangalore",
-    description: <>Ongoing website maintenance that keeps your site <span className="text-foreground font-semibold">running at peak performance, fully secure, and always up-to-date</span> — so you can focus on growing your business.</>,
+    description: <>Bangalore's trusted <span className="text-foreground font-semibold">website maintenance services</span> and AMC packages — we keep your site <span className="text-foreground font-semibold">99.9% online, secure, fast, and always up-to-date</span> so you can focus on growing your business.</>,
     trustSignals: [
       { icon: Shield, text: "Security Monitoring & Patching" },
       { icon: Gauge, text: "Speed & Performance Optimization" },
@@ -26,7 +26,7 @@ const config: ServicePageConfig = {
       { icon: Clock, text: "24/7 Uptime Monitoring" },
     ],
     credentials: ["200+ Sites Maintained", "99.9% Uptime SLA", "Priority Support"],
-    formTitle: "Get a Free Website Health Check",
+    formTitle: "Free Website Maintenance Health Check",
     formDescription: "Share your website and we'll identify security risks, speed issues, and maintenance needs.",
     formButtonText: "Get Free Health Check",
   },

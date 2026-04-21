@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: ExternalLink,
-    badgeText: "Guest Posting & Link Building",
+    badgeText: "Guest Posting Agency in Bangalore",
     headlineLine1: "Guest Posting Agency",
     headlineLine2: "in Bangalore",
-    description: <>We secure placements on <span className="text-foreground font-semibold">niche-relevant, high-DA websites</span> with quality content — building your domain authority the right way.</>,
+    description: <>Bangalore's most trusted <span className="text-foreground font-semibold">guest posting services</span> — we secure white-hat placements on <span className="text-foreground font-semibold">niche-relevant, high-DA websites</span> that build domain authority and drive organic rankings.</>,
     trustSignals: [
       { icon: Globe, text: "DA 40-90+ Placements" },
       { icon: Shield, text: "White-Hat Link Building Only" },
@@ -26,7 +26,7 @@ const config: ServicePageConfig = {
       { icon: TrendingUp, text: "Measurable Ranking Improvements" },
     ],
     credentials: ["5,000+ Links Built", "DA 40-90+ Sites", "White-Hat Only"],
-    formTitle: "Get Your Free Link Audit",
+    formTitle: "Free Guest Posting & Backlink Audit",
     formDescription: "Share your website and we'll analyze your backlink profile and identify opportunities.",
     formButtonText: "Get Free Link Audit",
   },

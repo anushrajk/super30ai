@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Camera,
-    badgeText: "Professional Photography",
+    badgeText: "Photography Services in Bangalore",
     headlineLine1: "Photography Services",
     headlineLine2: "in Bangalore",
-    description: <>Professional photography that <span className="text-foreground font-semibold">captures your brand's essence and converts viewers into customers</span>. From product shots to corporate portraits.</>,
+    description: <>Bangalore's trusted <span className="text-foreground font-semibold">professional photography company</span> — corporate photography, brand shoots and product photography that <span className="text-foreground font-semibold">capture your brand's essence and convert viewers into customers</span>.</>,
     trustSignals: [
       { icon: Camera, text: "10,000+ Photos Delivered" },
       { icon: Users, text: "300+ Brands Served" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Same-Week Delivery" },
     ],
     credentials: ["Professional Equipment", "Experienced Photographers", "Pan-India Coverage"],
-    formTitle: "Get a Free Quote",
+    formTitle: "Free Photography Quote",
     formDescription: "Tell us about your photography needs and get a custom proposal.",
-    formButtonText: "Get Free Quote",
+    formButtonText: "Get Free Photography Quote",
   },
   source: "photography",
   problems: [
