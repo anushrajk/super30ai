@@ -189,11 +189,11 @@ export const ServicesDetailSection = () => {
                 Our Services
               </span>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-foreground">
-                Services <span className="text-brand">we provide</span>
+                Full-Stack <span className="text-brand">digital marketing services in Bangalore</span>
               </h2>
             </div>
             <p className="text-muted-foreground text-sm max-w-sm">
-              Every service is delivered in-house by certified specialists — no freelancer outsourcing, no black-box reporting.
+              Every service from our <span className="text-foreground font-semibold">digital marketing company in Bangalore</span> is delivered in-house by certified specialists — no freelancer outsourcing, no black-box reporting.
             </p>
           </div>
 
