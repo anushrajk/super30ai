@@ -11,14 +11,14 @@ import {
 } from "lucide-react";
 
 const WebDevelopment = () => {
-  const { submitLead, isSubmitting } = useLeadSubmit({ source: "web_development" });
+  const { handleFormSubmit, loading } = useLeadSubmit({ source: "web_development" });
   const [website, setWebsite] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    submitLead({ website_url: website, email, phone });
+    handleFormSubmit({ website_url: website, email, phone });
   };
 
   const stack = [
@@ -103,8 +103,8 @@ const WebDevelopment = () => {
                     <input required type="tel" placeholder="Phone" value={phone} onChange={e => setPhone(e.target.value)} className="px-4 py-3 rounded-lg border border-border bg-background text-sm" />
                   </div>
                 </div>
-                <button type="submit" disabled={isSubmitting} className="w-full bg-foreground text-background font-semibold py-3.5 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
-                  {isSubmitting ? "Sending..." : "$ run free-consultation"} <ArrowRight className="w-4 h-4" />
+                <button type="submit" disabled={loading} className="w-full bg-foreground text-background font-semibold py-3.5 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
+                  {loading ? "Sending..." : "$ run free-consultation"} <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-xs text-muted-foreground mt-3 text-center font-mono">scope + timeline + budget · 3 business days</p>
               </form>
