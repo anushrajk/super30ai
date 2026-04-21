@@ -11,14 +11,14 @@ import {
 } from "lucide-react";
 
 const SocialMediaMarketing = () => {
-  const { submitLead, isSubmitting } = useLeadSubmit({ source: "social_media_marketing" });
+  const { handleFormSubmit, loading } = useLeadSubmit({ source: "social_media_marketing" });
   const [website, setWebsite] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    submitLead({ website_url: website, email, phone });
+    handleFormSubmit({ website_url: website, email, phone });
   };
 
   const platforms = [
@@ -101,8 +101,8 @@ const SocialMediaMarketing = () => {
                   <input required type="email" placeholder="Work email" value={email} onChange={e => setEmail(e.target.value)} className="px-4 py-3 rounded-xl border border-border bg-background text-sm" />
                   <input required type="tel" placeholder="Phone" value={phone} onChange={e => setPhone(e.target.value)} className="px-4 py-3 rounded-xl border border-border bg-background text-sm" />
                 </div>
-                <button type="submit" disabled={isSubmitting} className="w-full bg-primary text-primary-foreground font-semibold py-3.5 rounded-xl hover:opacity-90 transition flex items-center justify-center gap-2">
-                  {isSubmitting ? "Sending..." : "Get My Free Social Audit"} <ArrowRight className="w-4 h-4" />
+                <button type="submit" disabled={loading} className="w-full bg-primary text-primary-foreground font-semibold py-3.5 rounded-xl hover:opacity-90 transition flex items-center justify-center gap-2">
+                  {loading ? "Sending..." : "Get My Free Social Audit"} <ArrowRight className="w-4 h-4" />
                 </button>
                 <p className="text-xs text-muted-foreground mt-3 text-center">90-day growth plan delivered in 5 business days · No spam</p>
               </form>
