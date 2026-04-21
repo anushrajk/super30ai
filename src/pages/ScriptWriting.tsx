@@ -26,8 +26,8 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Industry-Specific Expertise" },
     ],
     credentials: ["1,000+ Scripts Written", "Multiple Formats", "Conversion-Driven"],
-    formTitle: "Free Ad Script Writing Consultation",
-    formDescription: "Tell us about your video project and we'll outline the script approach.",
+    formTitle: "Free Ad Script Writing Consultation in Bangalore",
+    formDescription: "Tell us about your video project — our ad script writing agency in Bangalore will outline a script approach built to convert.",
     formButtonText: "Get Free Script Consultation",
   },
   source: "script_writing",
@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "Can you help with the video production too?", answer: "Yes! Our Production team handles filming, editing, and post-production. The script is just the beginning." },
   ],
   finalCTA: {
-    headline: "Ready for Scripts That Sell?",
-    description: "Get a free script consultation and let's plan your next high-impact video.",
+    headline: "Hire Bangalore's Top Ad Script Writing Agency",
+    description: "Get a free consultation from our ad script writing agency in Bangalore and let's plan your next high-impact video and ad script.",
     buttonText: "Get Free Script Consultation",
   },
 };
