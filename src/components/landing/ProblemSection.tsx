@@ -48,10 +48,10 @@ export const ProblemSection = () => {
             The Problem
           </BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            SEO Didn't Die. <span className="text-destructive">Control Did.</span>
+            Your Competitors Are Ranking on Google. <span className="text-destructive">Why Are You Not?</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            While you focus on traditional SEO, AI is rewriting the rules of discovery
+            Standard search results are changing fast. Our <span className="text-foreground font-semibold">SEO services in Bangalore</span> use smart data to find the exact gaps your rivals missed — so you can claim the top spot and stay there.
           </p>
         </div>
 

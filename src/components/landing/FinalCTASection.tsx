@@ -49,13 +49,13 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
             {/* Left Content */}
             <div className={`text-center lg:text-left transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
               <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight ${isDark ? 'text-white' : 'text-foreground'}`}>
-                Stop Guessing.{" "}
+                Why Partner with Our{" "}
                 <span className="text-brand-gradient">
-                  Start Dominating.
+                  SEO Company in Bangalore?
                 </span>
               </h2>
               <p className={`text-lg mb-8 leading-relaxed ${isDark ? 'text-white/70' : 'text-muted-foreground'}`}>
-                Your competitors are already optimizing for AI search. Get your free visibility audit and discover exactly what you're missing.
+                Transparency is our core value. Every move our SEO company in Bangalore makes is backed by data and shared with you through clear reporting — so you always know exactly how your brand is growing.
               </p>
 
               {/* Benefits checklist */}

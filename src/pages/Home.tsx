@@ -222,7 +222,12 @@ const Home = () => {
         <WhoIsThisForSection />
         <TestimonialSection />
         <BlogSection />
-        <UnifiedCTASection />
+        <UnifiedCTASection
+          headline="Partner with the Best Digital Marketing Agency Today"
+          subtext="Stop the guesswork and start growing. Contact our digital marketing experts for a free brand audit and see how our custom AI roadmap can help you lead your industry."
+          primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }}
+          secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }}
+        />
       </Suspense>
 
       <Footer />

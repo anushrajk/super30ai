@@ -42,11 +42,11 @@ export const DMWhyBangaloreSection = () => {
               Why Us
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-6">
-              What makes us a great digital marketing company in{" "}
-              <span className="text-brand">Bangalore</span>
+              Is Your Marketing Partner Actually Driving Growth in{" "}
+              <span className="text-brand">Bangalore?</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed max-w-md">
-              We combine deep local market knowledge with world-class digital marketing execution to deliver measurable results for Bangalore businesses.
+              Many firms promise results but few provide a clear roadmap. Our <span className="text-foreground font-semibold">digital marketing services in Bangalore</span> focus on fixing your funnel and optimizing your spend so every rupee brings real profit.
             </p>
 
             {/* Metric highlights */}

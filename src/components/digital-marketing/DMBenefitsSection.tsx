@@ -12,11 +12,11 @@ export const DMBenefitsSection = () => (
             Why Choose Us
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.08] mb-5">
-            Why 200+ brands choose
-            <span className="text-brand"> us</span>
+            Why Choose Our
+            <span className="text-brand"> Digital Marketing Company in Bangalore?</span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto">
-            Every advantage we offer is built to make your marketing accountable, transparent, and profitable.
+            We do not believe in generic templates. Every move our <span className="text-foreground font-semibold">internet marketing services in Bangalore</span> make is designed to help you win more business through total transparency and expert human guidance.
           </p>
         </div>
 
