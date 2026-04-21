@@ -109,7 +109,6 @@ const SocialMediaDesign = () => {
           <SMReelsContentSection />
           <SMWhoIsThisForSection />
           <SMProcessSection />
-          <SMFinalCTASection />
           <SMPricingSection />
           <SMRelevanceSection />
           <TestimonialSection />
