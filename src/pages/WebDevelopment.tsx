@@ -1,129 +1,285 @@
-import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { Helmet } from "react-helmet-async";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/landing/Footer";
+import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
-  Code2, Cpu, ServerCog, ShoppingCart, Smartphone, Gauge, Shield, Zap,
-  GitBranch, Database, Cloud, Layers, Wrench, Workflow, Globe, CheckCircle2,
+  Code2, Terminal, Cpu, Database, Cloud, GitBranch, Gauge, Shield,
+  ArrowRight, CheckCircle2, Zap, Workflow, Layers, Server, Boxes, Rocket,
+  Globe, Lock, Activity,
 } from "lucide-react";
 
-const config: ServicePageConfig = {
-  seo: {
-    title: "Web Development Company in Bangalore | Custom Web Solutions",
-    description:
-      "Build a website that performs. Our web development agency in Bangalore creates fast, scalable websites built for your business goals. Let's Build!",
-    keywords:
-      "web development company bangalore, website development services in bangalore, web development agency in bangalore, custom website development in bangalore",
-    canonical: "https://www.thesuper30.ai/web-development-company-bangalore",
-    serviceType: "Web Development",
-    ogTitle: "A Website That Performs Is Your Best Sales Tool. Period.",
-    ogDescription:
-      "Fast, scalable and custom web development solutions built around your business goals. Let's build!",
-    twitterTitle: "A Website That Performs Is Your Best Sales Tool. Period.",
-    twitterDescription:
-      "Fast, scalable and custom web development solutions built around your business goals. Let's build!",
-  },
-  hero: {
-    badgeIcon: Code2,
-    badgeText: "Custom Web Development Experts",
-    headlineLine1: "Web Development Company",
-    headlineLine2: "in Bangalore",
-    description: (
-      <>
-        Custom-coded, blazing-fast web applications and websites — engineered with <span className="text-foreground font-semibold">React, Next.js, Node.js, and modern cloud stacks</span> — built to scale with your business.
-      </>
-    ),
-    trustSignals: [
-      { icon: Shield, text: "Enterprise-Grade Security" },
-      { icon: Gauge, text: "100/100 PageSpeed Score" },
-      { icon: Cpu, text: "Modern Stack: React, Next.js, Node" },
-      { icon: Zap, text: "Agile Sprints, Weekly Demos" },
-    ],
-    credentials: ["100+ Sites Shipped", "98% On-Time Delivery", "4.9/5 Client Rating"],
-    formTitle: "Get Your Free Tech Consultation",
-    formDescription: "Share your project — we'll send back a scope, timeline, and budget in 3 business days.",
-    formButtonText: "Get Free Consultation",
-  },
-  source: "web_development",
-  problems: [
-    { icon: Gauge, title: "Slow Website Performance", description: "Your site takes 6+ seconds to load. Users bounce, Google penalises, and conversions tank." },
-    { icon: ServerCog, title: "Outdated Tech Stack", description: "Legacy WordPress themes or no-code builders that can't handle traffic spikes or custom logic." },
-    { icon: Wrench, title: "Constant Bugs & Downtime", description: "Every release breaks something. Your dev team spends more time fixing than shipping." },
-    { icon: Shield, title: "Security Vulnerabilities", description: "Outdated plugins, no SSL hardening, no audit trail. One breach away from disaster." },
-  ],
-  services: [
-    { icon: Code2, title: "Custom Web Apps", description: "Bespoke web applications built with React, Next.js, and Node.js — exactly to your spec." },
-    { icon: ShoppingCart, title: "E-Commerce Development", description: "Shopify, WooCommerce, and headless commerce stores that convert and scale." },
-    { icon: Workflow, title: "API Development", description: "REST and GraphQL APIs with auth, rate limits, and clean documentation." },
-    { icon: Database, title: "Database Architecture", description: "Postgres, MongoDB, and Supabase setups designed for performance and scale." },
-    { icon: Smartphone, title: "Progressive Web Apps", description: "PWAs that feel native on mobile — installable, offline-capable, and fast." },
-    { icon: Cloud, title: "Cloud Deployment", description: "Vercel, AWS, and GCP deployments with CI/CD pipelines and monitoring built in." },
-    { icon: GitBranch, title: "DevOps & Automation", description: "GitHub Actions, automated testing, and zero-downtime deployments." },
-    { icon: Wrench, title: "Maintenance & Support", description: "SLA-backed support, security patches, and feature releases on a monthly retainer." },
-  ],
-  comparison: {
-    traditional: [
-      "Generic templates with limited customisation",
-      "Slow load times — 5-8 seconds on mobile",
-      "Outdated stacks (PHP 5, jQuery, legacy WordPress)",
-      "No version control, no CI/CD pipeline",
-      "Surprise scope changes and missed deadlines",
-      "Hand-off then radio silence — no support",
-    ],
-    super30: [
-      "Custom-coded for your exact business requirements",
-      "<2 second load times with 100/100 PageSpeed scores",
-      "Modern stacks: React, Next.js, Node, TypeScript, Postgres",
-      "Git-based workflow with automated CI/CD on every push",
-      "Fixed sprints, weekly demos, transparent timelines",
-      "Ongoing SLA-backed support and proactive monitoring",
-    ],
-  },
-  benefits: [
-    { icon: Gauge, title: "Lightning Performance", description: "Sub-2-second loads, 100/100 PageSpeed — Google rewards it, users love it." },
-    { icon: Layers, title: "Truly Scalable", description: "Architectures that handle 10x traffic spikes without re-platforming." },
-    { icon: Shield, title: "Bank-Grade Security", description: "OWASP-compliant, SSL/TLS hardened, vulnerability-scanned every release." },
-    { icon: Cpu, title: "Modern Stack", description: "React, Next.js, Node.js, TypeScript — the same tools used by Stripe, Vercel, Notion." },
-    { icon: Workflow, title: "Clean Code", description: "Documented, tested, version-controlled code your future devs will thank you for." },
-    { icon: Zap, title: "Faster Time to Market", description: "Agile sprints with weekly demos — see progress every Friday, not after 6 months." },
-    { icon: Globe, title: "SEO-Ready", description: "Server-side rendering, structured data, and Core Web Vitals optimisation baked in." },
-    { icon: Cloud, title: "Cloud-Native", description: "Deployed on Vercel, AWS, or GCP with auto-scaling, CDN, and 99.9% uptime SLA." },
-    { icon: CheckCircle2, title: "Full Ownership", description: "You own the code, the repo, and the IP. No vendor lock-in, ever." },
-  ],
-  process: [
-    { icon: Layers, title: "Discovery & Scope", description: "Workshops to align on goals, features, tech stack, and timelines." },
-    { icon: Code2, title: "Design & Architecture", description: "UX wireframes, UI designs, and a technical architecture document signed off before code." },
-    { icon: GitBranch, title: "Build & Test", description: "2-week agile sprints with weekly demos, automated testing, and code reviews." },
-    { icon: Cloud, title: "Launch & Support", description: "Production deployment with monitoring, then ongoing SLA-backed maintenance." },
-  ],
-  whoIsThisFor: {
-    forYou: [
-      "You need a custom web application — not a template-based site",
-      "You're scaling and your current stack can't keep up",
-      "You want modern tech that future devs can maintain",
-      "You value performance, security, and clean code",
-      "You're ready to invest ₹2L+ for a project built right",
-    ],
-    notForYou: [
-      "You need a 1-page site for ₹10,000",
-      "You want a no-code Wix/Squarespace site",
-      "You expect a fully custom platform delivered in 2 weeks",
-      "You don't have time for sprint reviews and feedback",
-    ],
-  },
-  faq: [
-    { question: "What tech stack do you build with?", answer: "Frontend: React, Next.js, TypeScript, Tailwind CSS. Backend: Node.js, Express, NestJS. Database: Postgres, MongoDB, Supabase. Hosting: Vercel, AWS, GCP. We pick the stack based on your project, not what's trendy." },
-    { question: "How much does custom web development cost in Bangalore?", answer: "Custom web app projects typically range from ₹2L to ₹25L depending on scope, integrations, and complexity. We share a fixed-scope quote after a free discovery call." },
-    { question: "How long does a typical project take?", answer: "Marketing sites: 4–6 weeks. SaaS MVPs: 8–12 weeks. Enterprise platforms: 4–6 months. We work in 2-week sprints with weekly demos so you always know progress." },
-    { question: "Do you offer ongoing maintenance?", answer: "Yes. We offer SLA-backed monthly retainers covering security patches, bug fixes, performance monitoring, and small feature releases." },
-    { question: "Will I own the source code?", answer: "100%. You own the code, the GitHub repo, and all IP. We provide full handover documentation and zero vendor lock-in." },
-    { question: "Can you work with our existing dev team?", answer: "Absolutely. We collaborate with in-house teams via shared GitHub, Slack, and sprint planning — augmenting capacity without stepping on toes." },
-    { question: "Do you build on WordPress or only custom?", answer: "Both. For content-heavy sites we recommend headless WordPress or Webflow. For complex apps and SaaS products, we build custom with React/Next.js." },
-    { question: "Is the website mobile-responsive and SEO-optimised?", answer: "Yes. Every site is mobile-first, achieves 100/100 PageSpeed, has structured data, and ships with technical SEO best practices baked in." },
-  ],
-  finalCTA: {
-    headline: "Ready to Build a Website That Actually Performs?",
-    description: "Share your project brief — we'll send back a scope, timeline, and budget in 3 business days. No commitment.",
-    buttonText: "Get Free Consultation",
-  },
+const WebDevelopment = () => {
+  const { submitLead, isSubmitting } = useLeadSubmit({ source: "web_development" });
+  const [website, setWebsite] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    submitLead({ website_url: website, email, phone });
+  };
+
+  const stack = [
+    { tier: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind", "Vite", "Framer"], icon: Layers },
+    { tier: "Backend", items: ["Node.js", "Express", "NestJS", "tRPC", "GraphQL", "REST"], icon: Server },
+    { tier: "Database", items: ["PostgreSQL", "Supabase", "MongoDB", "Redis", "Prisma", "Drizzle"], icon: Database },
+    { tier: "Infra", items: ["Vercel", "AWS", "GCP", "Docker", "GitHub Actions", "Cloudflare"], icon: Cloud },
+  ];
+
+  const benchmarks = [
+    { value: "100", suffix: "/100", label: "PageSpeed Score", icon: Gauge },
+    { value: "<2s", suffix: "", label: "Time to Interactive", icon: Zap },
+    { value: "99.9", suffix: "%", label: "Uptime SLA", icon: Activity },
+    { value: "OWASP", suffix: "", label: "Security Hardened", icon: Shield },
+  ];
+
+  const services = [
+    { title: "Custom Web Applications", desc: "Bespoke React + Next.js apps with bulletproof TypeScript, built to your exact spec.", icon: Code2 },
+    { title: "SaaS MVPs", desc: "Idea to live MVP in 8–12 weeks. Auth, billing, dashboards, multi-tenancy — production ready.", icon: Rocket },
+    { title: "API Engineering", desc: "REST + GraphQL APIs with auth, rate limiting, caching, and clean OpenAPI docs.", icon: Workflow },
+    { title: "E-commerce Platforms", desc: "Headless commerce with Shopify, Medusa, or fully custom carts that scale to millions.", icon: Boxes },
+    { title: "DevOps & CI/CD", desc: "GitHub Actions, automated testing, preview environments, zero-downtime deployments.", icon: GitBranch },
+    { title: "Performance Engineering", desc: "From 6s loads to sub-2s. Edge caching, image pipelines, code splitting, CWV tuning.", icon: Gauge },
+  ];
+
+  const sprintFlow = [
+    { week: "W1–2", title: "Discovery & Architecture", desc: "Workshops, technical RFC, signed-off architecture doc, Figma wireframes." },
+    { week: "W3–8", title: "Sprint Build", desc: "2-week sprints. Friday demos. Automated tests, code reviews, preview URLs every PR." },
+    { week: "W9", title: "QA & Hardening", desc: "Lighthouse, OWASP scan, load testing, accessibility audit, security review." },
+    { week: "W10", title: "Launch & Handover", desc: "Production deploy, monitoring, full docs, repo handover. You own everything." },
+  ];
+
+  const faqs = [
+    { q: "What tech stack do you build with?", a: "Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Express, NestJS. Database: Postgres, MongoDB, Supabase. Infra: Vercel, AWS, GCP. We pick stack by problem, not trend." },
+    { q: "How much does custom web development cost in Bangalore?", a: "Marketing sites: ₹2L–5L. SaaS MVPs: ₹6L–15L. Enterprise platforms: ₹15L–25L+. Fixed-scope quote shared after a free discovery call." },
+    { q: "How long does a typical project take?", a: "Marketing sites: 4–6 weeks. SaaS MVPs: 8–12 weeks. Enterprise platforms: 4–6 months. Always 2-week sprints with weekly demos." },
+    { q: "Do you offer ongoing maintenance?", a: "Yes. SLA-backed monthly retainers cover security patches, bug fixes, performance monitoring, and small feature releases." },
+    { q: "Will I own the source code?", a: "100%. You own the code, the GitHub repo, and all IP. Full handover docs. Zero vendor lock-in." },
+    { q: "Can you work with our existing dev team?", a: "Absolutely. We collaborate via shared GitHub, Slack, sprint planning — augmenting capacity without stepping on toes." },
+  ];
+
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>Web Development Company in Bangalore | Custom Web Solutions</title>
+        <meta name="description" content="Build a website that performs. Our web development agency in Bangalore creates fast, scalable websites built for your business goals. Let's Build!" />
+        <meta name="keywords" content="web development company bangalore, website development services in bangalore, web development agency in bangalore, custom website development in bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/web-development-company-bangalore" />
+        <meta property="og:title" content="A Website That Performs Is Your Best Sales Tool. Period." />
+        <meta property="og:description" content="Fast, scalable and custom web development solutions built around your business goals. Let's build!" />
+        <meta name="twitter:title" content="A Website That Performs Is Your Best Sales Tool. Period." />
+        <meta name="twitter:description" content="Fast, scalable and custom web development solutions built around your business goals. Let's build!" />
+      </Helmet>
+
+      <Navbar />
+
+      {/* HERO — terminal/IDE aesthetic, dark canvas */}
+      <section className="relative pt-32 pb-20 bg-foreground text-background overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(hsl(var(--background)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--background)) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
+        <div className="container mx-auto px-4 relative">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-background/10 border border-background/20 text-background/80 text-xs font-mono mb-6">
+                <Terminal className="w-3.5 h-3.5" />
+                ~/super30 — building fast.
+              </div>
+              <h1 className="text-5xl lg:text-7xl font-black leading-[1.05] tracking-tight mb-6">
+                Code that <span className="text-primary">ships</span>.<br />
+                Sites that <span className="text-primary">scale</span>.
+              </h1>
+              <p className="text-lg text-background/70 mb-8 max-w-xl leading-relaxed">
+                Custom-coded web applications engineered with React, Next.js, Node and modern cloud stacks — built to scale with your business, not against it.
+              </p>
+
+              <form onSubmit={handleSubmit} className="bg-background text-foreground rounded-2xl p-5 max-w-lg shadow-2xl">
+                <div className="grid gap-3 mb-3">
+                  <input required type="url" placeholder="Project URL or idea (yourapp.com)" value={website} onChange={e => setWebsite(e.target.value)} className="px-4 py-3 rounded-lg border border-border bg-background text-sm font-mono" />
+                  <div className="grid grid-cols-2 gap-3">
+                    <input required type="email" placeholder="Work email" value={email} onChange={e => setEmail(e.target.value)} className="px-4 py-3 rounded-lg border border-border bg-background text-sm" />
+                    <input required type="tel" placeholder="Phone" value={phone} onChange={e => setPhone(e.target.value)} className="px-4 py-3 rounded-lg border border-border bg-background text-sm" />
+                  </div>
+                </div>
+                <button type="submit" disabled={isSubmitting} className="w-full bg-foreground text-background font-semibold py-3.5 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2">
+                  {isSubmitting ? "Sending..." : "$ run free-consultation"} <ArrowRight className="w-4 h-4" />
+                </button>
+                <p className="text-xs text-muted-foreground mt-3 text-center font-mono">scope + timeline + budget · 3 business days</p>
+              </form>
+            </div>
+
+            {/* IDE / code preview */}
+            <div className="relative">
+              <div className="rounded-2xl bg-background/5 border border-background/10 backdrop-blur-sm overflow-hidden shadow-2xl">
+                <div className="flex items-center gap-2 px-4 py-3 border-b border-background/10 bg-background/5">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-400" />
+                    <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                    <div className="w-3 h-3 rounded-full bg-green-400" />
+                  </div>
+                  <div className="text-xs font-mono text-background/50 ml-3">app/page.tsx</div>
+                </div>
+                <pre className="p-5 text-[13px] font-mono leading-relaxed text-background/90 overflow-x-auto">
+{`export default function Page() {
+  const { data } = useQuery({
+    queryKey: ['revenue'],
+    queryFn: getRevenue,
+  });
+
+  return (
+    <Dashboard
+      mrr={data.mrr}
+      growth={data.growth}
+      uptime="99.99%"
+    />
+  );
+}`}
+                </pre>
+              </div>
+              {/* Floating chips */}
+              <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground px-3 py-2 rounded-lg shadow-xl text-xs font-bold rotate-3">
+                <Gauge className="w-3.5 h-3.5 inline mr-1" /> 100/100 PageSpeed
+              </div>
+              <div className="absolute -bottom-4 -left-4 bg-background text-foreground px-3 py-2 rounded-lg shadow-xl text-xs font-bold -rotate-3">
+                <Shield className="w-3.5 h-3.5 inline mr-1 text-primary" /> OWASP Hardened
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* BENCHMARKS */}
+      <section className="border-b border-border">
+        <div className="container mx-auto px-4 py-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+            {benchmarks.map((b, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
+                  <b.icon className="w-6 h-6 text-primary" />
+                </div>
+                <div>
+                  <div className="text-3xl font-black tracking-tight font-mono">{b.value}<span className="text-primary">{b.suffix}</span></div>
+                  <div className="text-sm text-muted-foreground">{b.label}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STACK */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mb-12">
+            <div className="text-sm font-mono font-bold text-primary mb-3 tracking-widest">// the stack</div>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tight">Modern. Boring. Battle-tested.</h2>
+            <p className="text-muted-foreground mt-4">The same tools that power Stripe, Vercel, Linear and Notion. No experimental frameworks. No tech debt.</p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {stack.map((s, i) => (
+              <div key={i} className="rounded-2xl border border-border p-6 hover:border-primary/50 transition">
+                <s.icon className="w-8 h-8 text-primary mb-4" />
+                <div className="text-lg font-bold mb-4">{s.tier}</div>
+                <div className="flex flex-wrap gap-1.5">
+                  {s.items.map(it => (
+                    <span key={it} className="px-2.5 py-1 rounded-md bg-muted text-xs font-mono">{it}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-14 max-w-2xl mx-auto">
+            <div className="text-sm font-mono font-bold text-primary mb-3 tracking-widest">// what we build</div>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tight">Engineering as a service</h2>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {services.map((s, i) => (
+              <div key={i} className="bg-card rounded-2xl border border-border p-6 hover:shadow-lg transition group">
+                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-primary-foreground transition">
+                  <s.icon className="w-5 h-5 text-primary group-hover:text-primary-foreground" />
+                </div>
+                <h3 className="text-lg font-bold mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SPRINT TIMELINE */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mb-14">
+            <div className="text-sm font-mono font-bold text-primary mb-3 tracking-widest">// the sprint</div>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tight">10 weeks. Idea → live.</h2>
+          </div>
+          <div className="relative max-w-4xl mx-auto">
+            <div className="absolute left-[60px] md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-1/2" />
+            {sprintFlow.map((s, i) => (
+              <div key={i} className={`relative pl-32 md:pl-0 md:grid md:grid-cols-2 md:gap-12 mb-10 ${i % 2 === 1 ? 'md:text-right' : ''}`}>
+                <div className={`${i % 2 === 1 ? 'md:order-2 md:text-left' : ''}`}>
+                  <div className="absolute left-[44px] md:left-1/2 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold md:-translate-x-1/2 ring-4 ring-background">
+                    {i + 1}
+                  </div>
+                  <div className="absolute left-0 top-0 md:static font-mono text-xs font-bold text-primary mb-2">{s.week}</div>
+                  <h3 className="text-xl font-bold mb-2 mt-1">{s.title}</h3>
+                  <p className="text-sm text-muted-foreground">{s.desc}</p>
+                </div>
+                <div />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-3xl">
+          <div className="text-center mb-12">
+            <div className="text-sm font-mono font-bold text-primary mb-3 tracking-widest">// faqs</div>
+            <h2 className="text-4xl lg:text-5xl font-black tracking-tight">Engineering questions answered</h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.map((f, i) => (
+              <div key={i} className="bg-card rounded-2xl border border-border overflow-hidden">
+                <button onClick={() => setOpenFaq(openFaq === i ? null : i)} className="w-full text-left px-6 py-5 flex items-center justify-between gap-4 font-bold">
+                  {f.q}
+                  <ArrowRight className={`w-5 h-5 transition-transform shrink-0 ${openFaq === i ? 'rotate-90 text-primary' : 'text-muted-foreground'}`} />
+                </button>
+                {openFaq === i && (
+                  <div className="px-6 pb-5 text-muted-foreground leading-relaxed">{f.a}</div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA — terminal style */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="rounded-3xl bg-foreground text-background p-12 lg:p-16 max-w-5xl mx-auto">
+            <div className="font-mono text-sm text-background/50 mb-4">$ ./book-discovery-call</div>
+            <h2 className="text-4xl lg:text-5xl font-black mb-4">Build a website that performs.</h2>
+            <p className="text-lg text-background/70 mb-8 max-w-2xl">Share your project brief — we'll send back a scope, timeline, and budget in 3 business days. No commitment.</p>
+            <Link to="/contact-us" className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-bold px-8 py-4 rounded-full hover:scale-105 transition">
+              Get Free Consultation <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  );
 };
 
-const WebDevelopment = () => <ServicePageTemplate config={config} />;
 export default WebDevelopment;
