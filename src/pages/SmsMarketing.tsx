@@ -120,9 +120,9 @@ const config: ServicePageConfig = {
     { question: "Can you integrate messaging with our CRM and website?", answer: "Yes. We integrate with HubSpot, Salesforce, Zoho, Shopify, WooCommerce and custom CRMs — triggering messages from form fills, cart abandonment, purchases and lifecycle events." },
   ],
   finalCTA: {
-    headline: "Ready to Reach Customers Where They Actually Read?",
-    description: "Get a free messaging strategy and a customer journey map from Bangalore's top SMS, WhatsApp and chatbot team.",
-    buttonText: "Get Free Strategy",
+    headline: "Hire Bangalore's Top Bulk SMS Marketing Company",
+    description: "Get a free bulk SMS marketing strategy and a customer journey map from Bangalore's top SMS, WhatsApp and chatbot team.",
+    buttonText: "Get Free SMS Strategy",
   },
 };
 
