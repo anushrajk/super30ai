@@ -74,16 +74,16 @@ const AiSeo = () => {
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  SEO Company in Bangalore
+                  The SEO Company in Bangalore
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  AI-Powered SEO Services
+                  That Dominates the AI Search Era
                 </span>
               </>
             }
             description={
               <>
-                We are a results-driven <span className="text-foreground font-semibold">SEO agency in Bangalore</span> delivering AI-powered SEO services — technical SEO, on-page optimization, and authority-building link campaigns — to boost your rankings and drive qualified organic traffic.
+                Most brands are invisible because they use old search tactics. Our <span className="text-foreground font-semibold">SEO services in Bangalore</span> help you win with a strategy that ranks your brand on Google and AI search engines — driving 3x more visibility and 300% traffic growth.
               </>
             }
             trustSignals={[
