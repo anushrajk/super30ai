@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Globe,
-    badgeText: "WordPress Development Experts",
+    badgeText: "WordPress Development Company in Bangalore",
     headlineLine1: "WordPress Website Development",
     headlineLine2: "Company in Bangalore",
-    description: <>Custom WordPress websites that are <span className="text-foreground font-semibold">fast, secure, SEO-optimized, and easy for you to manage</span> — no coding required. From blogs to enterprise sites.</>,
+    description: <>Bangalore's trusted <span className="text-foreground font-semibold">WordPress development company</span> — custom WordPress website design and development that's <span className="text-foreground font-semibold">fast, secure, SEO-optimized, and easy to manage</span>. From blogs to enterprise sites.</>,
     trustSignals: [
       { icon: Gauge, text: "Speed-Optimized — Sub 2s Load" },
       { icon: Shield, text: "Security-Hardened" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Settings, text: "Easy Self-Management" },
     ],
     credentials: ["150+ WordPress Sites Built", "Speed-Optimized", "Security-First"],
-    formTitle: "Get Your Free WordPress Consultation",
+    formTitle: "Free WordPress Development Consultation",
     formDescription: "Tell us about your project and we'll plan a WordPress solution that fits your needs.",
-    formButtonText: "Get Free Consultation",
+    formButtonText: "Get Free WordPress Quote",
   },
   source: "wordpress_website",
   problems: [
@@ -110,7 +110,7 @@ const config: ServicePageConfig = {
   finalCTA: {
     headline: "Ready for a WordPress Site That Performs?",
     description: "Get a free consultation and let's build a fast, secure, beautiful WordPress website.",
-    buttonText: "Get Free Consultation",
+    buttonText: "Get Free WordPress Quote",
   },
 };
 

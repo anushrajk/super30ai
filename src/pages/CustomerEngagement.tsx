@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Heart,
-    badgeText: "Customer Engagement Experts",
+    badgeText: "Customer Engagement Agency in Bangalore",
     headlineLine1: "Customer Engagement Agency",
     headlineLine2: "in Bangalore",
-    description: <>Strategic engagement programs that <span className="text-foreground font-semibold">increase retention, build loyalty, and maximize customer lifetime value</span> — turning one-time buyers into brand advocates.</>,
+    description: <>Bangalore's trusted <span className="text-foreground font-semibold">customer engagement company</span> — we design loyalty programs, customer rewards, and lifecycle campaigns that <span className="text-foreground font-semibold">increase retention, build loyalty, and maximize customer lifetime value</span>.</>,
     trustSignals: [
       { icon: TrendingUp, text: "Avg. 35% Retention Increase" },
       { icon: Gift, text: "Custom Loyalty Programs" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: BarChart3, text: "Data-Driven Strategies" },
     ],
     credentials: ["200+ Programs Launched", "Multi-Channel", "Measurable Results"],
-    formTitle: "Get Your Free Engagement Audit",
+    formTitle: "Free Customer Engagement Audit",
     formDescription: "Tell us about your business and we'll identify quick wins to boost customer retention.",
-    formButtonText: "Get Free Audit",
+    formButtonText: "Get Free Engagement Audit",
   },
   source: "customer_engagement",
   problems: [
@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "Can you help with customer feedback and reviews?", answer: "Yes. We design and implement structured feedback collection programs, review generation campaigns, and NPS surveys." },
   ],
   finalCTA: {
-    headline: "Ready to Build Unbreakable Customer Loyalty?",
-    description: "Get a free engagement audit and discover how to increase retention and customer lifetime value.",
+    headline: "Hire Bangalore's Trusted Customer Engagement Agency",
+    description: "Get a free customer engagement audit and discover loyalty programs and lifecycle campaigns that boost retention and lifetime value.",
     buttonText: "Get Free Engagement Audit",
   },
 };

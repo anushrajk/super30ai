@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Sparkles,
-    badgeText: "RCS Messaging Partner",
+    badgeText: "RCS Messaging Provider in Bangalore",
     headlineLine1: "RCS Messaging Provider",
     headlineLine2: "in Bangalore",
-    description: <>Send rich, interactive messages with <span className="text-foreground font-semibold">images, carousels, buttons, and verified branding</span> — directly in your customer's native messaging app. No app download needed.</>,
+    description: <>Bangalore's early-mover <span className="text-foreground font-semibold">RCS messaging services provider</span> — send rich business messages with <span className="text-foreground font-semibold">images, carousels, buttons, and verified branding</span> directly in your customer's native messaging app. No download needed.</>,
     trustSignals: [
       { icon: Image, text: "Rich Media — Images, Videos, Carousels" },
       { icon: Shield, text: "Verified Business Branding" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: TrendingUp, text: "3x Higher Engagement Than SMS" },
     ],
     credentials: ["Early RCS Adopter Partner", "Verified Business Profiles", "Rich Interactive Messages"],
-    formTitle: "Get Your Free RCS Demo",
+    formTitle: "Free RCS Messaging Demo",
     formDescription: "See how RCS can transform your customer communication with rich, interactive messages.",
-    formButtonText: "Get Free Demo",
+    formButtonText: "Get Free RCS Demo",
   },
   source: "rcs",
   problems: [
@@ -108,8 +108,8 @@ const config: ServicePageConfig = {
     { question: "How do I get verified branding?", answer: "We handle the business verification process with Google/carriers to get your business name, logo, and verified badge on every RCS message." },
   ],
   finalCTA: {
-    headline: "Ready to Upgrade From SMS to Rich Messaging?",
-    description: "Get a free RCS demo and see how interactive messaging can transform your customer engagement.",
+    headline: "Hire Bangalore's Trusted RCS Messaging Provider",
+    description: "Get a free RCS messaging demo and see how rich, branded business messages can transform your customer engagement.",
     buttonText: "Get Free RCS Demo",
   },
 };

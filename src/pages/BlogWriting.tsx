@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: BookOpen,
-    badgeText: "Blog Content Experts",
+    badgeText: "Blog Writing Agency in Bangalore",
     headlineLine1: "Blog Writing Services",
     headlineLine2: "in Bangalore",
-    description: <>SEO-optimized blog posts that <span className="text-foreground font-semibold">rank on Google, establish authority, and bring qualified traffic</span> to your website month after month.</>,
+    description: <>As Bangalore's trusted <span className="text-foreground font-semibold">blog writing agency</span>, we deliver SEO blog writing services that <span className="text-foreground font-semibold">rank on Google, build authority, and drive qualified traffic</span> month after month.</>,
     trustSignals: [
       { icon: Search, text: "Keyword-Targeted SEO Blogs" },
       { icon: TrendingUp, text: "Avg. 3x Organic Traffic Growth" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "100% Original, Human-Written" },
     ],
     credentials: ["2,000+ Blogs Published", "SEO-First Approach", "Multiple Industries"],
-    formTitle: "Get Your Free Blog Strategy",
+    formTitle: "Free SEO Blog Writing Strategy",
     formDescription: "Tell us about your niche and we'll outline a content plan that drives traffic.",
-    formButtonText: "Get Free Strategy",
+    formButtonText: "Get Free Blog Strategy",
   },
   source: "blog_writing",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "Can you repurpose blog content for social media?", answer: "Yes. We offer content repurposing packages that turn each blog post into social media posts, email newsletter content, and quote graphics." },
   ],
   finalCTA: {
-    headline: "Ready to Build a Blog That Drives Revenue?",
-    description: "Get a free content strategy and discover the keywords your competitors are ranking for.",
-    buttonText: "Get Free Strategy",
+    headline: "Hire Bangalore's Top Blog Writing Agency Today",
+    description: "Get a free SEO blog writing strategy and discover the high-intent keywords your competitors are ranking for.",
+    buttonText: "Get Free Blog Strategy",
   },
 };
 

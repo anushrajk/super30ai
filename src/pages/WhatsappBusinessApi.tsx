@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: MessageSquare,
-    badgeText: "WhatsApp Business API Partner",
+    badgeText: "WhatsApp Marketing Company in Bangalore",
     headlineLine1: "WhatsApp Marketing",
     headlineLine2: "Company in Bangalore",
-    description: <>Official WhatsApp Business API setup with <span className="text-foreground font-semibold">automated messaging, chatbots, and bulk campaigns</span> that drive engagement and sales at scale.</>,
+    description: <>Bangalore's leading <span className="text-foreground font-semibold">WhatsApp marketing company</span> — official WhatsApp Business API setup with <span className="text-foreground font-semibold">bulk WhatsApp campaigns, chatbots, and automated messaging</span> that drive engagement and sales at scale.</>,
     trustSignals: [
       { icon: Shield, text: "Official Meta Business Partner" },
       { icon: Bot, text: "AI-Powered Chatbot Integration" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: BarChart3, text: "98% Open Rate on WhatsApp" },
     ],
     credentials: ["Official API Partner", "500+ Businesses Enabled", "98% Open Rates"],
-    formTitle: "Get WhatsApp API Setup Free",
+    formTitle: "Free WhatsApp Marketing Setup",
     formDescription: "Tell us about your business and we'll set up your WhatsApp Business API with automation.",
-    formButtonText: "Get Started Free",
+    formButtonText: "Start WhatsApp Marketing",
   },
   source: "whatsapp_business_api",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "Can I integrate this with my existing CRM?", answer: "Yes. We integrate with Salesforce, HubSpot, Zoho, Freshworks, and most popular CRMs. Custom integrations are also available." },
   ],
   finalCTA: {
-    headline: "Ready to Transform Your WhatsApp Into a Sales Machine?",
-    description: "Get a free consultation and see how WhatsApp Business API can automate your customer communication.",
-    buttonText: "Get Free Consultation",
+    headline: "Hire Bangalore's Top WhatsApp Marketing Company",
+    description: "Get a free WhatsApp marketing consultation and see how WhatsApp Business API and bulk WhatsApp campaigns can automate your customer communication.",
+    buttonText: "Start WhatsApp Marketing",
   },
 };
 

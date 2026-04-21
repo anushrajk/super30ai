@@ -22,12 +22,12 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: MessageSquare,
-    badgeText: "#1 SMS & Messaging Agency in Bangalore",
+    badgeText: "Bulk SMS Marketing Company in Bangalore",
     headlineLine1: "SMS & Messaging Marketing",
     headlineLine2: "Agency in Bangalore",
     description: (
       <>
-        Reach customers where they <span className="text-foreground font-semibold">actually read</span> — bulk SMS, WhatsApp Business API, RCS and chatbots with{" "}
+        Bangalore's leading <span className="text-foreground font-semibold">bulk SMS marketing company</span> and messaging agency — reach customers where they actually read with bulk SMS, WhatsApp Business API, RCS and chatbots delivering{" "}
         <span className="text-foreground font-semibold">40%+ open rates</span> and instant conversions.
       </>
     ),
@@ -38,9 +38,9 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "TRAI & Meta Compliant" },
     ],
     credentials: ["10M+ Messages Delivered", "98% Delivery Rate", "200+ Brands Served"],
-    formTitle: "Get Your Free Messaging Strategy",
+    formTitle: "Free Bulk SMS Marketing Strategy",
     formDescription: "We'll map your customer journey and recommend the right messaging stack.",
-    formButtonText: "Get Free Strategy",
+    formButtonText: "Get Free SMS Strategy",
   },
   source: "sms_marketing",
   problems: [
@@ -120,9 +120,9 @@ const config: ServicePageConfig = {
     { question: "Can you integrate messaging with our CRM and website?", answer: "Yes. We integrate with HubSpot, Salesforce, Zoho, Shopify, WooCommerce and custom CRMs — triggering messages from form fills, cart abandonment, purchases and lifecycle events." },
   ],
   finalCTA: {
-    headline: "Ready to Reach Customers Where They Actually Read?",
-    description: "Get a free messaging strategy and a customer journey map from Bangalore's top SMS, WhatsApp and chatbot team.",
-    buttonText: "Get Free Strategy",
+    headline: "Hire Bangalore's Top Bulk SMS Marketing Company",
+    description: "Get a free bulk SMS marketing strategy and a customer journey map from Bangalore's top SMS, WhatsApp and chatbot team.",
+    buttonText: "Get Free SMS Strategy",
   },
 };
 

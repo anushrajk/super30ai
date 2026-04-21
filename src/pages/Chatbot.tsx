@@ -15,10 +15,10 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: Bot,
-    badgeText: "AI Chatbot Development",
+    badgeText: "AI Chatbot Development Company in Bangalore",
     headlineLine1: "AI Chatbot Development",
     headlineLine2: "Company in Bangalore",
-    description: <>Custom AI chatbots that <span className="text-foreground font-semibold">qualify leads, answer questions, and close sales</span> — 24/7, across WhatsApp, your website, and social media.</>,
+    description: <>As Bangalore's top <span className="text-foreground font-semibold">chatbot development company</span>, we build custom AI chatbots and RAG bots that <span className="text-foreground font-semibold">qualify leads, answer queries, and close sales 24/7</span> — on WhatsApp, your website, and social media.</>,
     trustSignals: [
       { icon: Brain, text: "AI-Powered Natural Conversations" },
       { icon: Clock, text: "24/7 Instant Responses" },
@@ -26,9 +26,9 @@ const config: ServicePageConfig = {
       { icon: TrendingUp, text: "Avg. 60% Support Cost Reduction" },
     ],
     credentials: ["200+ Chatbots Deployed", "AI-Powered NLP", "Multi-Platform"],
-    formTitle: "Get a Free Chatbot Demo",
+    formTitle: "Free AI Chatbot Demo",
     formDescription: "Tell us your use case and we'll show you how a chatbot can transform your business.",
-    formButtonText: "Get Free Demo",
+    formButtonText: "Get Free Chatbot Demo",
   },
   source: "chatbot",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "How much does a chatbot cost?", answer: "Pricing depends on complexity and platform. Basic bots start from ₹25,000 for setup. AI-powered bots with integrations are quoted custom based on requirements." },
   ],
   finalCTA: {
-    headline: "Ready to Put Your Customer Support on Autopilot?",
-    description: "Get a free chatbot demo and see how AI can transform your customer experience.",
-    buttonText: "Get Free Demo",
+    headline: "Hire Bangalore's Top AI Chatbot Development Company",
+    description: "Get a free AI chatbot demo and see how our chatbot development services automate support and boost lead generation 24/7.",
+    buttonText: "Get Free Chatbot Demo",
   },
 };
 
