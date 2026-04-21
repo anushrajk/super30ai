@@ -35,10 +35,10 @@ export const PMFinalCTASection = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to <span className="text-[#F95B00]">Maximize Your Ad ROI?</span>
+            Partner with Bangalore's Top <span className="text-[#F95B00]">Lead Generation Agency</span>
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Book a free consultation with our ads experts. Get a complete audit of your campaigns and discover hidden revenue opportunities.
+            Book a free consultation with our lead generation company in Bangalore. Get a complete audit of your B2B campaigns and discover hidden pipeline opportunities.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
