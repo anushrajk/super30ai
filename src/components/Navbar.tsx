@@ -28,7 +28,7 @@ const menuItems: NavMenuItem[] = [
     items: [
       { label: "AI SEO", href: "/seo-company-bangalore" },
       { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
-      { label: "Social Media Marketing", href: "/social-media-design-agency-bangalore" },
+      { label: "Social Media Marketing", href: "/social-media-marketing-agency-bangalore" },
       { label: "Google Ads", href: "/google-ads-agency-bangalore" },
       { label: "Social Media Optimisation", href: "/social-media-optimization-services-bangalore" },
     ],
@@ -76,7 +76,7 @@ const menuItems: NavMenuItem[] = [
     label: "Website Design",
     href: "/web-design-company-bangalore",
     items: [
-      { label: "Website Development", href: "/web-design-company-bangalore" },
+      { label: "Website Development", href: "/web-development-company-bangalore" },
       { label: "Ecommerce Website", href: "/ecommerce-website-development-bangalore" },
       { label: "Wordpress Website", href: "/wordpress-development-company-bangalore" },
       { label: "Website Maintenance Service", href: "/website-maintenance-services-bangalore" },
