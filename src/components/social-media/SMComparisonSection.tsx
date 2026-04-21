@@ -30,10 +30,10 @@ export const SMComparisonSection = () => {
             The Difference
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Template Designs vs Custom Brand Creatives
+            Template Designs vs a Real Social Media Design Company in Bangalore
           </h2>
           <p className="text-lg text-gray-300">
-            See why brands that invest in custom design outperform template-based content by 3-5x
+            See why brands using a dedicated social media creative designing agency in Bangalore outperform template-based content by 3–5x
           </p>
         </div>
 

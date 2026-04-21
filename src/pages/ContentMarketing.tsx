@@ -6,29 +6,29 @@ import {
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Content Marketing Agency in Bangalore | SEO Content That Converts",
+    title: "Copywriting & Content Writing Agency in Bangalore",
     description:
-      "Top content marketing agency in Bangalore. Website content, SEO blogs, scripts & guest posts that rank on Google and convert visitors. Get a free content audit.",
+      "Copywriting done by experienced writers, customized for your business. Content writing services in Bangalore that build authority and trust for brands.",
     keywords:
-      "content marketing agency in bangalore, content writing services in bangalore, content writing agency in bangalore, seo content writing company bangalore, blog writing company bangalore, copywriting agency bangalore",
-    canonical: "https://www.thesuper30.ai/content-marketing-agency-bangalore",
+      "content writing services bangalore, content writing agency bangalore, content marketing services bangalore, content writing company bangalore, copywriting agency bangalore, blog writing company bangalore",
+    canonical: "https://www.thesuper30.ai/content-writing-agency-bangalore",
     serviceType: "Content Marketing",
-    ogTitle: "Content Marketing Agency in Bangalore — Words That Rank & Convert",
+    ogTitle: "Great Content Brings the Right Audience to Your Business.",
     ogDescription:
-      "Website content, SEO blogs, scripts and guest posts crafted by Bangalore's top content marketing team. Build authority and drive qualified traffic.",
-    twitterTitle: "Content Marketing Agency in Bangalore — Words That Rank & Convert",
+      "SEO-ready content and marketing copy that attract the right audience and drive growth. Let's write!",
+    twitterTitle: "Great Content Brings the Right Audience to Your Business.",
     twitterDescription:
-      "Website content, SEO blogs, scripts and guest posts crafted to rank on Google and turn visitors into customers.",
+      "SEO-ready content and marketing copy that attract the right audience and drive growth. Let's write!",
   },
   hero: {
     badgeIcon: FileText,
-    badgeText: "#1 Content Marketing Agency in Bangalore",
-    headlineLine1: "Content Marketing Agency",
-    headlineLine2: "in Bangalore",
+    badgeText: "Top Content Writing Agency in Bangalore",
+    headlineLine1: "Copywriting & Content Writing",
+    headlineLine2: "Agency in Bangalore",
     description: (
       <>
-        From <span className="text-foreground font-semibold">website content and SEO blogs</span> to{" "}
-        <span className="text-foreground font-semibold">scripts and guest posts</span> — content engineered to rank on Google, build authority, and convert readers into customers.
+        Great content brings the right audience to your business. Our <span className="text-foreground font-semibold">content writing services in Bangalore</span> are crafted by experienced writers and customized for your brand — from{" "}
+        <span className="text-foreground font-semibold">SEO blogs and website copy</span> to scripts and guest posts that build authority and trust.
       </>
     ),
     trustSignals: [
@@ -38,8 +38,8 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "100% Original, Human-Written" },
     ],
     credentials: ["300+ Brands Served", "4.9/5 Client Rating", "30+ Industries Covered"],
-    formTitle: "Get Your Free Content Audit",
-    formDescription: "We'll review your existing content and outline a strategy to grow traffic.",
+    formTitle: "Get a Free Content Audit",
+    formDescription: "Bangalore's leading content writing agency will review your existing copy and outline a strategy to grow traffic and conversions.",
     formButtonText: "Get Free Content Audit",
   },
   source: "content_marketing",
@@ -120,8 +120,8 @@ const config: ServicePageConfig = {
     { question: "Can you take over content from our existing team or agency?", answer: "Absolutely. We start with a content audit, identify gaps and underperformers, then build a transition plan that preserves your existing equity." },
   ],
   finalCTA: {
-    headline: "Ready to Build a Content Engine That Drives Revenue?",
-    description: "Get a free content audit and a 90-day editorial roadmap from Bangalore's top content marketing team.",
+    headline: "Hire Bangalore's Top Content Writing Agency Today",
+    description: "Get a free content audit and a 90-day editorial roadmap from our experienced content marketing services team in Bangalore. Let's write!",
     buttonText: "Get Free Content Audit",
   },
 };

@@ -21,9 +21,9 @@ export const SMProcessSection = () => {
         <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <BentoBadge className="mb-4">Our Process</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            From Brief to <span className="text-brand">Beautiful</span>
+            How Our Social Media Design Agency in Bangalore <span className="text-brand">Works</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground">A structured, brand-first approach to social media design</p>
+          <p className="text-base md:text-lg text-muted-foreground">A structured, brand-first approach to social media post design — from brief to scroll-stopping creative</p>
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">

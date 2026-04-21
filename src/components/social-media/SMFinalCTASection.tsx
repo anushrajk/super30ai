@@ -14,8 +14,8 @@ export const SMFinalCTASection = () => {
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
       
       <div className={`container mx-auto px-3 md:px-4 text-center relative transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Ready to Make Your Brand Unforgettable on Social?</h2>
-        <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-6">Get a free consultation and see sample designs customized for your brand — zero commitments, 100% clarity.</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Hire Bangalore's Best Social Media Design Agency Today</h2>
+        <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-6">Make every post count. Get a free consultation from our social media design company in Bangalore and see sample creatives customized for your brand — zero commitments, 100% clarity.</p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-8">
             <Sparkles className="w-4 h-4 mr-2" />Get Free Design Consultation<ArrowRight className="w-4 h-4 ml-2" />

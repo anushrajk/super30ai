@@ -67,8 +67,8 @@ export const SMBenefitsSection = () => {
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-pink-500/20 text-pink-400 rounded-full text-sm font-medium mb-4 border border-pink-500/30">Why Choose Us</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Why Brands Choose Our Social Media Design</h2>
-          <p className="text-base md:text-lg text-gray-300">Beyond pretty visuals — we design for engagement, reach, and brand recall</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Why Brands Choose Our Social Media Design Company in Bangalore</h2>
+          <p className="text-base md:text-lg text-gray-300">Beyond pretty visuals — Bangalore's leading social media graphic design company designs for engagement, reach, and brand recall</p>
         </div>
 
         <div className="relative group/carousel">

@@ -15,20 +15,20 @@ const config: ServicePageConfig = {
   },
   hero: {
     badgeIcon: FileText,
-    badgeText: "Website Content Experts",
+    badgeText: "#1 SEO Content Writing Company in Bangalore",
     headlineLine1: "SEO Content Writing",
     headlineLine2: "Company in Bangalore",
-    description: <>SEO-optimized, persuasive website content that <span className="text-foreground font-semibold">ranks on Google and turns visitors into customers</span>. Every word earns its place.</>,
+    description: <>Your website content should rank on Google — does it? Our <span className="text-foreground font-semibold">SEO content writing agency in Bangalore</span> delivers structured, semantic SEO copywriting services that rank for search engines and convert visitors into customers.</>,
     trustSignals: [
       { icon: Search, text: "SEO-Optimized for Rankings" },
       { icon: Target, text: "Conversion-Focused Copy" },
       { icon: Bot, text: "AI-Enhanced Research" },
       { icon: Shield, text: "100% Original Content" },
     ],
-    credentials: ["500+ Pages Written", "SEO-Optimized", "Conversion-Focused"],
-    formTitle: "Get Your Free Content Audit",
-    formDescription: "Share your website and we'll identify content gaps hurting your rankings and conversions.",
-    formButtonText: "Get Free Audit",
+    credentials: ["SEO Copywriting Services", "500+ Pages Written", "Conversion-Focused"],
+    formTitle: "Get a Free SEO Content Audit",
+    formDescription: "Share your website and Bangalore's top SEO content writing company will identify content gaps hurting your rankings and conversions.",
+    formButtonText: "Get Free SEO Content Audit",
   },
   source: "website_content",
   problems: [
@@ -108,9 +108,9 @@ const config: ServicePageConfig = {
     { question: "What if I'm not happy with the content?", answer: "We offer unlimited revisions until you're satisfied. If the direction isn't right, we'll rewrite from scratch at no extra cost." },
   ],
   finalCTA: {
-    headline: "Ready for Content That Ranks & Converts?",
-    description: "Get a free content audit and discover how better copy can transform your website's performance.",
-    buttonText: "Get Free Content Audit",
+    headline: "Hire Bangalore's #1 SEO Content Writing Agency",
+    description: "Get a free SEO content audit from our SEO copywriting services team and discover how structured, semantic website content can rank on Google and turn visitors into customers.",
+    buttonText: "Get Free SEO Content Audit",
   },
 };
 
