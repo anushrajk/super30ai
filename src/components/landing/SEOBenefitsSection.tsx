@@ -157,10 +157,10 @@ export const SEOBenefitsSection = () => {
             Why Choose AI SEO
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            This is How Our SEO Services Will Help Your Business Thrive
+            Content That Wins in the Age of AI Search
           </h2>
           <p className="text-base md:text-lg text-gray-300">
-            Comprehensive AI-powered SEO that delivers real business results
+            We don't just write for bots — we write for your customers. Our <span className="text-white font-semibold">search engine optimization services in Bangalore</span> focus on high-quality authority building that proves to Google and AI engines that you are the leader in your niche.
           </p>
         </div>
 

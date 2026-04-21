@@ -127,10 +127,10 @@ export const ServicesSection = () => {
             Our Services
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            AI SEO
+            Measurable ROI from Your Search Strategy
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Comprehensive AI SEO coverage across technical SEO, on-page SEO, and off-page SEO services
+            We focus on the numbers that move your business forward. Our <span className="text-foreground font-semibold">search engine optimization services in Bangalore</span> have helped 300+ brands scale organic leads and dominate their market — across technical, on-page and off-page SEO.
           </p>
         </div>
 

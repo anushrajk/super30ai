@@ -47,10 +47,10 @@ export const ProcessSection = () => {
             How It Works
           </BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Our AI SEO Process
+            Our 4-Step AI SEO Process for 300% Traffic Growth
           </h2>
           <p className="text-lg text-muted-foreground">
-            As a leading provider of SEO services in Bangalore, we follow a structured AI SEO process — from audit to execution to monthly reporting.
+            We follow a strict path to success. From deep audits to multi-channel execution, our <span className="text-foreground font-semibold">SEO services in Bangalore</span> ensure your growth is predictable, scalable and built for the long term.
           </p>
         </div>
 

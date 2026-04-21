@@ -35,10 +35,10 @@ export const SEOFinalCTASection = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Dominate AI Search?</span>
+            Ready to <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Dominate AI Search in Bangalore?</span>
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Book a free consultation with our SEO experts. Get a complete audit of your AI visibility and discover hidden ranking opportunities.
+            Stop letting your rivals take your leads. Connect with the best <span className="text-white font-semibold">SEO agency in Bangalore</span> today for a free audit and see how our AI growth plan can help you own the first page of Google.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -57,7 +57,7 @@ export const SEOFinalCTASection = () => {
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2" />
-              Start Free Audit Now
+              Get My Free SEO Audit
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 

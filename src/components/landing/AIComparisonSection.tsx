@@ -27,10 +27,10 @@ export const AIComparisonSection = () => {
             The Difference
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            What is <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">AI SEO</span>?
+            Future-Proof Your Site with Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">AI SEO Agency</span> in Bangalore
           </h2>
           <p className="text-lg text-muted-foreground">
-            Traditional SEO optimizes for search engines. AI SEO optimizes for how AI systems understand, recommend, and cite your brand. AI-powered search is fundamentally different — instead of matching keywords, AI systems understand context, entities, and authority signals to recommend solutions.
+            Technical errors kill your rankings before you even start. As a leading <span className="text-foreground font-semibold">SEO agency in Bangalore</span>, we fix your site structure, speed and entity signals so search engines — and AI search — can find, trust and reward your content.
           </p>
         </div>
 
