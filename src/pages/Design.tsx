@@ -464,10 +464,10 @@ const DesignCTASection = () => {
             <span className="text-sm font-medium">Let's Create Together</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Ready to <span className="text-brand">Elevate</span> Your Brand?
+            Hire Bangalore's Top <span className="text-brand">Graphic Design Agency</span>
           </h2>
           <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-            Whether it's a single social post or a complete brand overhaul — let's talk about what great design can do for your business.
+            From a single social post to a complete brand overhaul — talk to our graphic design agency in Bangalore and see what great design can do for your business.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/contact-us">

@@ -26,8 +26,8 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "End-to-End Production" },
     ],
     credentials: ["Award-Winning Team", "Fortune 500 Clients", "Quick Turnaround"],
-    formTitle: "Free Video Production Quote",
-    formDescription: "Tell us about your video project and get a custom production proposal.",
+    formTitle: "Free Video Production Quote in Bangalore",
+    formDescription: "Tell us about your video project — our video production company in Bangalore will send a custom proposal and timeline.",
     formButtonText: "Get Free Video Quote",
   },
   source: "video_production",
@@ -83,8 +83,8 @@ const config: ServicePageConfig = {
     { question: "Can you create videos in multiple languages?", answer: "Yes, we produce videos in English, Hindi, Kannada, Tamil, Telugu, and other regional languages." },
   ],
   finalCTA: {
-    headline: "Ready to Elevate Your Brand with Video?",
-    description: "Get a free consultation and custom quote for your video production project.",
+    headline: "Hire Bangalore's Trusted Video Production Company",
+    description: "Get a free consultation and custom quote from our video production company in Bangalore for your next corporate, explainer or marketing video.",
     buttonText: "Get Free Video Quote",
   },
 };

@@ -26,8 +26,8 @@ const config: ServicePageConfig = {
       { icon: Shield, text: "Same-Week Delivery" },
     ],
     credentials: ["Professional Equipment", "Experienced Photographers", "Pan-India Coverage"],
-    formTitle: "Free Photography Quote",
-    formDescription: "Tell us about your photography needs and get a custom proposal.",
+    formTitle: "Free Photography Quote in Bangalore",
+    formDescription: "Tell us about your photography needs — Bangalore's trusted professional photography company will send a custom proposal.",
     formButtonText: "Get Free Photography Quote",
   },
   source: "photography",
@@ -83,8 +83,8 @@ const config: ServicePageConfig = {
     { question: "Do you offer drone photography?", answer: "Yes, we have licensed drone operators for aerial photography of properties, events, and landscapes." },
   ],
   finalCTA: {
-    headline: "Ready for Stunning Brand Photography?",
-    description: "Get a free consultation and custom quote for your photography project.",
+    headline: "Hire Bangalore's Top Professional Photography Company",
+    description: "Get a free consultation and custom quote from our professional photography company in Bangalore for corporate, brand or product shoots.",
     buttonText: "Get Free Photography Quote",
   },
 };
