@@ -237,7 +237,6 @@ export const ServicesDetailSection = () => {
                 ))}
               </div>
             </div>
-          </div>
 
             <div className="order-1 lg:order-2">
               <div className="relative overflow-hidden rounded-[24px] border border-border bg-muted/30 aspect-[4/3] lg:aspect-[1.08/1]">
