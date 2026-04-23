@@ -1,14 +1,16 @@
 import { lazy, useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, Search, BadgeDollarSign, Megaphone, PenSquare, Mail, LayoutGrid } from "lucide-react";
 
 const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
-const problems = [
-  { title: "Disconnected Marketing Channels", description: "Your SEO, ads, social media, and email are managed by different teams with no unified strategy — leading to missed opportunities and wasted budget." },
-  { title: "Plateaued Growth Despite Spend", description: "You've hired agencies but results flatline after the first quarter. Without an integrated approach, growth hits a ceiling every time." },
-  { title: "Rising Costs, Flat Revenue", description: "Your marketing spend keeps climbing but customer acquisition cost stays stubbornly high. Every campaign leaks money without proper optimization." },
-  { title: "Zero Attribution Clarity", description: "You can't tell which channel actually drives revenue. A proper digital marketing agency in Bangalore should solve this on day one." },
+const services = [
+  { icon: Search, title: "SEO Services", description: "Technical SEO, local visibility, content clusters, and authority building that improve rankings and lead quality." },
+  { icon: BadgeDollarSign, title: "Google Ads", description: "Search, display, and remarketing campaigns built to lower CAC and improve qualified conversions." },
+  { icon: Megaphone, title: "Social Media Marketing", description: "Platform strategy, campaign creatives, reels, and monthly content systems that drive awareness and engagement." },
+  { icon: PenSquare, title: "Content Marketing", description: "Blogs, landing pages, ad copy, and funnel content mapped to search intent and buyer stages." },
+  { icon: Mail, title: "Email Automation", description: "Lifecycle flows, lead nurture sequences, and retention campaigns designed to turn traffic into repeat revenue." },
+  { icon: LayoutGrid, title: "Web Design & CRO", description: "Conversion-focused pages, UX improvements, and fast landing experiences that turn clicks into enquiries." },
 ];
 
 export const DMProblemSection = () => {
@@ -19,21 +21,24 @@ export const DMProblemSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-14">
           <span className="inline-block px-3 py-1 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/20">
-            The Problem with Most Digital Marketing in Bangalore
+            Digital Marketing Services in Bangalore
           </span>
           <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            Digital Marketing Without Strategy Is Just <span className="text-brand">Expensive Noise</span>
+            Full-Funnel Services Built to <span className="text-brand">Grow Bangalore Brands</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-            Most Bangalore businesses juggle 5+ tools, 3+ agencies, and still can't answer: <em>"Where did that lead come from?"</em>
+            The same compact card layout — now focused on the core services we execute in-house to drive traffic, leads, and revenue.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 mb-6 md:mb-12">
-          {problems.map((problem, i) => (
-            <div key={i} className="bg-white border border-border/50 rounded-xl p-4 md:p-6">
-              <h3 className="text-base sm:text-lg font-bold text-foreground mb-2">{problem.title}</h3>
-              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{problem.description}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5 mb-6 md:mb-12 max-w-6xl mx-auto">
+          {services.map((service, i) => (
+            <div key={i} className="bg-background border border-brand/15 rounded-xl p-4 md:p-5">
+              <div className="w-11 h-11 rounded-2xl bg-brand/10 text-brand flex items-center justify-center mb-4">
+                <service.icon className="w-5 h-5" />
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-foreground mb-2">{service.title}</h3>
+              <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">{service.description}</p>
             </div>
           ))}
         </div>
