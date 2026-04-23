@@ -202,9 +202,9 @@ export const ServicesDetailSection = () => {
           })}
         </div>
 
-        <article className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] gap-6 lg:gap-8 rounded-[28px] border border-border/60 bg-background/95 p-5 sm:p-6 md:p-8 shadow-[0_30px_90px_-50px_hsl(var(--foreground)/0.18)] animate-fade-in">
-          <div className="flex flex-col justify-between min-w-0 order-2 lg:order-1">
-            <div>
+        <article className="grid gap-6 lg:gap-8 rounded-[28px] border border-border/60 bg-background/95 p-5 sm:p-6 md:p-8 shadow-[0_30px_90px_-50px_hsl(var(--foreground)/0.18)] animate-fade-in">
+          <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] lg:gap-8">
+            <div className="min-w-0 order-2 lg:order-1">
               <div className="flex flex-wrap items-center gap-3 mb-5">
                 <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 border border-brand/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
                   <activeService.icon className="w-4 h-4" />
@@ -238,45 +238,45 @@ export const ServicesDetailSection = () => {
               </div>
             </div>
 
-            <div className="grid gap-5 rounded-[24px] border border-border/70 bg-muted/30 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-              <div className="min-w-0">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-3">
-                  What you get
-                </div>
-                <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
-                  {activeService.metrics.map((metric) => (
-                    <div key={metric} className="rounded-2xl border border-brand/15 bg-background px-4 py-3 text-sm font-medium text-foreground shadow-[0_10px_30px_-24px_hsl(var(--foreground)/0.28)]">
-                      {metric}
-                    </div>
-                  ))}
+            <div className="order-1 lg:order-2">
+              <div className="relative overflow-hidden rounded-[24px] border border-border bg-muted/30 aspect-[4/3] lg:aspect-[1.08/1]">
+                <img src={activeService.image} alt={activeService.title} loading="lazy" width={1200} height={900} className="h-full w-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
+                <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col gap-3">
+                  <div className="w-fit rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
+                    <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {activeService.subServices.slice(0, 3).map((sub) => (
+                      <div key={sub.label} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
+                        {sub.label}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-
-              <Link to={activeService.href} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand/90 lg:min-w-[220px]">
-                Explore {activeService.title}
-                <ArrowRight className="w-4 h-4" />
-              </Link>
             </div>
           </div>
 
-          <div className="order-1 lg:order-2">
-            <div className="relative overflow-hidden rounded-[24px] border border-border bg-muted/30 aspect-[4/3]">
-              <img src={activeService.image} alt={activeService.title} loading="lazy" width={1200} height={900} className="h-full w-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
-              <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col gap-3">
-                <div className="w-fit rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
-                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
-                  <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {activeService.subServices.slice(0, 3).map((sub) => (
-                    <div key={sub.label} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
-                      {sub.label}
-                    </div>
-                  ))}
-                </div>
+          <div className="grid gap-5 rounded-[24px] border border-border/70 bg-muted/30 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center">
+            <div className="min-w-0">
+              <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-3">
+                What you get
+              </div>
+              <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+                {activeService.metrics.map((metric) => (
+                  <div key={metric} className="rounded-2xl border border-brand/15 bg-background px-4 py-3 text-sm font-medium text-foreground shadow-[0_10px_30px_-24px_hsl(var(--foreground)/0.28)]">
+                    {metric}
+                  </div>
+                ))}
               </div>
             </div>
+
+            <Link to={activeService.href} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand/90 lg:min-w-[220px]">
+              Explore {activeService.title}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </article>
 
