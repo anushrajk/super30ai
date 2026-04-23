@@ -1,13 +1,13 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
+import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, ChevronLeft, ChevronRight, Sparkles, CheckCircle2 } from "lucide-react";
 
-import digitalMarketingImg from "@/assets/services/digital-marketing.jpg";
-import designServicesImg from "@/assets/services/design-services.jpg";
+import digitalMarketingImg from "@/assets/services/performance-marketing-card.jpg";
+import designServicesImg from "@/assets/services/design-card.jpg";
 import contentMarketingImg from "@/assets/services/content-marketing.jpg";
-import smsMessagingImg from "@/assets/services/sms-messaging.jpg";
+import smsMessagingImg from "@/assets/services/email-marketing-card.jpg";
 import productionStudioImg from "@/assets/services/production-studio.jpg";
-import websiteDesignImg from "@/assets/services/website-design.jpg";
+import websiteDesignImg from "@/assets/services/web-design-card.jpg";
 
 const services = [
   {
@@ -18,6 +18,11 @@ const services = [
     image: digitalMarketingImg,
     eyebrow: "Growth Engine",
     metrics: ["300%+ Growth", "Multi-channel attribution", "30+ in-house experts"],
+    highlights: [
+      "SEO, ads, and social managed as one coordinated engine",
+      "Budget allocation shaped by live performance data",
+      "Campaign reporting tied to lead quality and revenue",
+    ],
     subServices: [
       { label: "AI SEO", href: "/seo-company-bangalore" },
       { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
@@ -35,6 +40,11 @@ const services = [
     image: designServicesImg,
     eyebrow: "Visual Identity",
     metrics: ["Brand systems", "Creative production", "UI/UX direction"],
+    highlights: [
+      "Consistent branding across every marketing touchpoint",
+      "Creative assets built for paid and organic distribution",
+      "Interfaces designed to improve clarity and conversion",
+    ],
     subServices: [
       { label: "UI / UX Design", href: "/ui-ux-design-agency-bangalore" },
       { label: "Social Media Posts", href: "/social-media-design-agency-bangalore" },
@@ -51,6 +61,11 @@ const services = [
     image: contentMarketingImg,
     eyebrow: "Content That Converts",
     metrics: ["Search-led content", "Authority building", "Funnel messaging"],
+    highlights: [
+      "Long-form content aligned to search demand",
+      "Landing page copy crafted to improve enquiries",
+      "Editorial systems that keep publishing consistent",
+    ],
     subServices: [
       { label: "Website Content", href: "/seo-content-writing-services-bangalore" },
       { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
@@ -67,6 +82,11 @@ const services = [
     image: smsMessagingImg,
     eyebrow: "Direct Response",
     metrics: ["Instant delivery", "Automated journeys", "High open rates"],
+    highlights: [
+      "Conversational journeys across chat and messaging",
+      "Retention campaigns triggered by user behaviour",
+      "Fast-response systems for support and sales teams",
+    ],
     subServices: [
       { label: "WhatsApp Business API", href: "/whatsapp-marketing-company-bangalore" },
       { label: "Chatbot", href: "/chatbot-development-company-bangalore" },
@@ -84,6 +104,11 @@ const services = [
     image: productionStudioImg,
     eyebrow: "Content Studio",
     metrics: ["Ad-ready shoots", "Photo + video", "Post-production"],
+    highlights: [
+      "Shoot planning, scripting, and creative direction",
+      "Performance visuals for paid and social campaigns",
+      "Fast turnaround post-production for ongoing output",
+    ],
     subServices: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
       { label: "Photography", href: "/photography-services-bangalore" },
@@ -98,6 +123,11 @@ const services = [
     image: websiteDesignImg,
     eyebrow: "Conversion Systems",
     metrics: ["Fast builds", "SEO-ready", "CRO-first UX"],
+    highlights: [
+      "Landing pages designed around lead capture",
+      "E-commerce and CMS builds with cleaner UX",
+      "SEO structure and conversion logic baked in",
+    ],
     subServices: [
       { label: "Website Development", href: "/web-design-company-bangalore" },
       { label: "E-commerce Website", href: "/ecommerce-website-development-bangalore" },
@@ -114,25 +144,19 @@ export const ServicesDetailSection = () => {
   useEffect(() => {
     const interval = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % services.length);
-    }, 4200);
+    }, 4800);
 
     return () => window.clearInterval(interval);
   }, []);
 
   const activeService = services[activeIndex];
 
-  const orderedServices = useMemo(
-    () => services.map((_, index) => services[(activeIndex + index) % services.length]),
-    [activeIndex],
-  );
-
   const goToPrevious = () => setActiveIndex((current) => (current - 1 + services.length) % services.length);
   const goToNext = () => setActiveIndex((current) => (current + 1) % services.length);
 
   return (
     <section className="py-20 md:py-28 lg:py-36 bg-card relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--brand)/0.14),transparent_32%),radial-gradient(circle_at_bottom_right,hsl(var(--brand)/0.1),transparent_30%)]" />
-      <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background via-background/80 to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--brand)/0.12),transparent_30%),radial-gradient(circle_at_bottom_right,hsl(var(--brand)/0.08),transparent_28%)]" />
 
       <div className="container mx-auto px-4 relative">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10 md:mb-14">
@@ -142,13 +166,13 @@ export const ServicesDetailSection = () => {
               Our Services
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.02] text-foreground">
-              Huge service experiences for brands that want <span className="text-brand">more than one-channel growth</span>
+              Services that are <span className="text-brand">easy to scan</span> and built for growth
             </h2>
           </div>
 
           <div className="max-w-md">
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
-              Explore our core verticals through oversized carousel cards, sub-service pills, and image-led layouts built to feel premium and immediate.
+              One featured service at a time, a stronger image hierarchy, and cleaner cards so the section feels premium without feeling heavy.
             </p>
             <div className="flex items-center gap-3">
               <button onClick={goToPrevious} aria-label="Previous service" className="w-11 h-11 rounded-full border border-border bg-background text-foreground flex items-center justify-center transition-colors hover:border-brand hover:text-brand">
@@ -161,83 +185,94 @@ export const ServicesDetailSection = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-[minmax(0,1.25fr)_320px] gap-6 lg:gap-8 items-stretch">
-          <article className="relative min-h-[560px] md:min-h-[620px] overflow-hidden rounded-[28px] border border-border/60 bg-foreground text-primary-foreground animate-fade-in">
-            <img src={activeService.image} alt={activeService.title} loading="lazy" width={1280} height={860} className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-r from-foreground via-foreground/92 to-foreground/66" />
-            <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--primary-foreground)/0.08)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--primary-foreground)/0.08)_1px,transparent_1px)] bg-[size:5rem_5rem] opacity-30" />
-
-            <div className="relative z-10 flex h-full flex-col justify-between p-6 sm:p-8 md:p-10 lg:p-12">
-              <div className="flex items-start justify-between gap-6">
-                <div>
-                  <div className="inline-flex items-center gap-3 rounded-full border border-primary-foreground/15 bg-background/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary-foreground/80 backdrop-blur-sm">
-                    <activeService.icon className="w-4 h-4 text-brand" />
-                    {activeService.eyebrow}
-                  </div>
-                  <div className="mt-5 text-primary-foreground/30 text-sm font-medium tracking-[0.25em] uppercase">{activeService.number}</div>
+        <article className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] gap-6 lg:gap-8 rounded-[28px] border border-border/60 bg-background/95 p-5 sm:p-6 md:p-8 shadow-[0_30px_90px_-50px_hsl(var(--foreground)/0.18)] animate-fade-in">
+          <div className="flex flex-col justify-between min-w-0 order-2 lg:order-1">
+            <div>
+              <div className="flex flex-wrap items-center gap-3 mb-5">
+                <div className="inline-flex items-center gap-2 rounded-full bg-brand/10 border border-brand/20 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-brand">
+                  <activeService.icon className="w-4 h-4" />
+                  {activeService.eyebrow}
                 </div>
-
-                <div className="hidden sm:grid grid-cols-1 gap-2 min-w-[180px]">
-                  {activeService.metrics.map((metric) => (
-                    <div key={metric} className="rounded-2xl border border-primary-foreground/10 bg-background/10 px-4 py-3 text-sm text-primary-foreground/85 backdrop-blur-sm">
-                      {metric}
-                    </div>
-                  ))}
-                </div>
+                <span className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">{activeService.number}</span>
               </div>
 
-              <div className="max-w-2xl">
-                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.02] mb-4">{activeService.title}</h3>
-                <p className="text-sm sm:text-base md:text-lg leading-relaxed text-primary-foreground/78 max-w-xl mb-6 md:mb-8">{activeService.description}</p>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-[1.04] text-foreground mb-4">
+                {activeService.title}
+              </h3>
+              <p className="text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground max-w-xl mb-6">
+                {activeService.description}
+              </p>
 
-                <div className="flex flex-wrap gap-2.5 mb-8 md:mb-10 max-w-2xl">
-                  {activeService.subServices.map((sub) => (
-                    <Link key={sub.label} to={sub.href} className="rounded-full border border-primary-foreground/12 bg-background/10 px-4 py-2.5 text-sm text-primary-foreground/88 backdrop-blur-sm transition-colors hover:border-brand/40 hover:bg-brand/15 hover:text-primary-foreground">
-                      {sub.label}
-                    </Link>
-                  ))}
-                </div>
+              <div className="grid gap-3 mb-6 md:mb-8 max-w-xl">
+                {activeService.highlights.map((highlight) => (
+                  <div key={highlight} className="flex items-start gap-3 rounded-2xl border border-border/70 bg-muted/40 px-4 py-3">
+                    <CheckCircle2 className="w-5 h-5 text-brand flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-foreground leading-relaxed">{highlight}</span>
+                  </div>
+                ))}
+              </div>
 
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link to={activeService.href} className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand/90">
-                    Explore {activeService.title}
-                    <ArrowRight className="w-4 h-4" />
+              <div className="flex flex-wrap gap-2.5 mb-8">
+                {activeService.subServices.map((sub) => (
+                  <Link key={sub.label} to={sub.href} className="rounded-full border border-border bg-background px-4 py-2.5 text-sm text-foreground transition-colors hover:border-brand/30 hover:bg-brand/5 hover:text-brand">
+                    {sub.label}
                   </Link>
-                  <button onClick={goToNext} className="inline-flex items-center justify-center gap-2 rounded-full border border-primary-foreground/14 bg-background/10 px-6 py-3 text-sm font-semibold text-primary-foreground backdrop-blur-sm transition-colors hover:border-primary-foreground/30 hover:bg-background/15">
-                    See Next Service
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
+                ))}
               </div>
             </div>
-          </article>
 
-          <div className="space-y-3">
-            {orderedServices.slice(0, 4).map((service) => {
-              const originalIndex = services.findIndex((item) => item.title === service.title);
-              const isActive = originalIndex === activeIndex;
-
-              return (
-                <button
-                  key={service.title}
-                  onClick={() => setActiveIndex(originalIndex)}
-                  className={`w-full text-left rounded-[24px] border p-4 transition-all duration-500 ${isActive ? "border-brand/30 bg-brand/10 shadow-[0_20px_60px_-35px_hsl(var(--brand)/0.65)]" : "border-border/60 bg-background/80 hover:border-brand/20"}`}
-                >
-                  <div className="flex items-start gap-4">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${isActive ? "bg-brand text-primary-foreground" : "bg-muted text-foreground"}`}>
-                      <service.icon className="w-5 h-5" />
-                    </div>
-                    <div className="min-w-0 flex-1">
-                      <div className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-1">{service.number}</div>
-                      <h4 className="text-lg font-medium text-foreground mb-1">{service.title}</h4>
-                      <p className="text-sm text-muted-foreground line-clamp-2">{service.description}</p>
-                    </div>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex flex-wrap gap-2.5">
+                {activeService.metrics.map((metric) => (
+                  <div key={metric} className="rounded-full border border-brand/15 bg-brand/5 px-4 py-2 text-xs sm:text-sm font-medium text-foreground">
+                    {metric}
                   </div>
-                </button>
-              );
-            })}
+                ))}
+              </div>
+
+              <Link to={activeService.href} className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand/90">
+                Explore {activeService.title}
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
-        </div>
+
+          <div className="order-1 lg:order-2 flex flex-col gap-4">
+            <div className="relative overflow-hidden rounded-[24px] border border-border bg-muted/30 aspect-[4/3]">
+              <img src={activeService.image} alt={activeService.title} loading="lazy" width={1200} height={900} className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
+              <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-auto rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
+                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
+                <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+              {services.map((service, index) => {
+                const isActive = index === activeIndex;
+
+                return (
+                  <button
+                    key={service.title}
+                    onClick={() => setActiveIndex(index)}
+                    className={`text-left rounded-[20px] border overflow-hidden transition-all duration-300 ${isActive ? "border-brand/30 bg-brand/5 shadow-[0_20px_50px_-35px_hsl(var(--brand)/0.65)]" : "border-border/60 bg-background hover:border-brand/20"}`}
+                  >
+                    <div className="aspect-[16/11] overflow-hidden bg-muted/40">
+                      <img src={service.image} alt={service.title} loading="lazy" width={480} height={330} className="h-full w-full object-cover" />
+                    </div>
+                    <div className="p-3">
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <service.icon className={`w-4 h-4 ${isActive ? "text-brand" : "text-muted-foreground"}`} />
+                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{service.number}</span>
+                      </div>
+                      <div className="text-sm sm:text-[15px] font-medium text-foreground leading-snug">{service.title}</div>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </article>
 
         <div className="flex flex-wrap items-center justify-between gap-4 mt-8 md:mt-10">
           <div className="flex items-center gap-2">
