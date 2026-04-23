@@ -26,7 +26,6 @@ const DMContentSection = lazy(() => import("@/components/digital-marketing/DMCon
 const DMRelevanceSection = lazy(() => import("@/components/digital-marketing/DMRelevanceSection").then((m) => ({ default: m.DMRelevanceSection })));
 const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then((m) => ({ default: m.DMFinalCTASection })));
 const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
-const DMToolsRainSection = lazy(() => import("@/components/digital-marketing/DMToolsRainSection").then((m) => ({ default: m.DMToolsRainSection })));
 
 
 const faqSchemaData = [
@@ -212,7 +211,6 @@ const DigitalMarketing = () => {
         {/* Section 6: Process */}
         <Suspense fallback={null}>
           <DMProcessSection />
-          <DMToolsRainSection />
         </Suspense>
 
         <Suspense fallback={null}>
