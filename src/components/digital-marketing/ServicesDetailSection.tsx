@@ -185,7 +185,24 @@ export const ServicesDetailSection = () => {
           </div>
         </div>
 
-        <article className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] gap-6 lg:gap-8 rounded-[28px] border border-border/60 bg-background/95 p-5 sm:p-6 md:p-8 shadow-[0_30px_90px_-50px_hsl(var(--foreground)/0.18)] animate-fade-in">
+        <div className="flex flex-wrap gap-3 mb-6 md:mb-8">
+          {services.map((service, index) => {
+            const isActive = index === activeIndex;
+
+            return (
+              <button
+                key={service.title}
+                onClick={() => setActiveIndex(index)}
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm transition-all duration-300 ${isActive ? "border-brand/30 bg-brand/10 text-brand shadow-[0_16px_40px_-28px_hsl(var(--brand)/0.75)]" : "border-border/70 bg-background text-muted-foreground hover:border-brand/20 hover:text-foreground"}`}
+              >
+                <service.icon className="w-4 h-4" />
+                <span className="font-medium">{service.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        <article className="grid lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)] gap-6 lg:gap-8 rounded-[28px] border border-border/60 bg-background/95 p-5 sm:p-6 md:p-8 shadow-[0_30px_90px_-50px_hsl(var(--foreground)/0.18)] animate-fade-in">
           <div className="flex flex-col justify-between min-w-0 order-2 lg:order-1">
             <div>
               <div className="flex flex-wrap items-center gap-3 mb-5">
@@ -237,39 +254,23 @@ export const ServicesDetailSection = () => {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2 flex flex-col gap-4">
+          <div className="order-1 lg:order-2">
             <div className="relative overflow-hidden rounded-[24px] border border-border bg-muted/30 aspect-[4/3]">
               <img src={activeService.image} alt={activeService.title} loading="lazy" width={1200} height={900} className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/40 via-transparent to-transparent" />
-              <div className="absolute left-4 bottom-4 right-4 sm:left-6 sm:bottom-6 sm:right-auto rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
-                <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
-                <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
+              <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col gap-3">
+                <div className="w-fit rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
+                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
+                  <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {activeService.subServices.slice(0, 3).map((sub) => (
+                    <div key={sub.label} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
+                      {sub.label}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-              {services.map((service, index) => {
-                const isActive = index === activeIndex;
-
-                return (
-                  <button
-                    key={service.title}
-                    onClick={() => setActiveIndex(index)}
-                    className={`text-left rounded-[20px] border overflow-hidden transition-all duration-300 ${isActive ? "border-brand/30 bg-brand/5 shadow-[0_20px_50px_-35px_hsl(var(--brand)/0.65)]" : "border-border/60 bg-background hover:border-brand/20"}`}
-                  >
-                    <div className="aspect-[16/11] overflow-hidden bg-muted/40">
-                      <img src={service.image} alt={service.title} loading="lazy" width={480} height={330} className="h-full w-full object-cover" />
-                    </div>
-                    <div className="p-3">
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <service.icon className={`w-4 h-4 ${isActive ? "text-brand" : "text-muted-foreground"}`} />
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">{service.number}</span>
-                      </div>
-                      <div className="text-sm sm:text-[15px] font-medium text-foreground leading-snug">{service.title}</div>
-                    </div>
-                  </button>
-                );
-              })}
             </div>
           </div>
         </article>
