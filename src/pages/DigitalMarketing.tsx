@@ -10,6 +10,10 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 
 const Footer = lazy(() => import("@/components/landing/Footer").then((m) => ({ default: m.Footer })));
 const StickyCTA = lazy(() => import("@/components/landing/StickyCTA").then((m) => ({ default: m.StickyCTA })));
+const DMProblemSection = lazy(() => import("@/components/digital-marketing/DMProblemSection").then((m) => ({ default: m.DMProblemSection })));
+const DMSocialProofSection = lazy(() => import("@/components/digital-marketing/DMSocialProofSection").then((m) => ({ default: m.DMSocialProofSection })));
+const DMComparisonSection = lazy(() => import("@/components/digital-marketing/DMComparisonSection").then((m) => ({ default: m.DMComparisonSection })));
+const DMAISections = lazy(() => import("@/components/digital-marketing/DMAISections").then((m) => ({ default: m.DMAISections })));
 const DMWhyBangaloreSection = lazy(() => import("@/components/digital-marketing/DMWhyBangaloreSection").then((m) => ({ default: m.DMWhyBangaloreSection })));
 const ServicesDetailSection = lazy(() => import("@/components/digital-marketing/ServicesDetailSection").then((m) => ({ default: m.ServicesDetailSection })));
 const DMIndustriesSection = lazy(() => import("@/components/digital-marketing/DMIndustriesSection").then((m) => ({ default: m.DMIndustriesSection })));
@@ -18,6 +22,8 @@ const DMProcessSection = lazy(() => import("@/components/digital-marketing/DMPro
 const DMPricingSection = lazy(() => import("@/components/digital-marketing/DMPricingSection").then((m) => ({ default: m.DMPricingSection })));
 const DMTestimonialsSection = lazy(() => import("@/components/digital-marketing/DMTestimonialsSection").then((m) => ({ default: m.DMTestimonialsSection })));
 const DMCaseStudySection = lazy(() => import("@/components/digital-marketing/DMCaseStudySection").then((m) => ({ default: m.DMCaseStudySection })));
+const DMContentSection = lazy(() => import("@/components/digital-marketing/DMContentSection").then((m) => ({ default: m.DMContentSection })));
+const DMRelevanceSection = lazy(() => import("@/components/digital-marketing/DMRelevanceSection").then((m) => ({ default: m.DMRelevanceSection })));
 const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFinalCTASection").then((m) => ({ default: m.DMFinalCTASection })));
 const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
 const DMToolsRainSection = lazy(() => import("@/components/digital-marketing/DMToolsRainSection").then((m) => ({ default: m.DMToolsRainSection })));
@@ -176,6 +182,12 @@ const DigitalMarketing = () => {
         {/* Client Logos */}
         <ClientLogosSection />
 
+        <Suspense fallback={null}>
+          <DMProblemSection />
+          <DMSocialProofSection />
+          <DMComparisonSection />
+        </Suspense>
+
         {/* Section 2: Why Bangalore */}
         <Suspense fallback={null}>
           <DMWhyBangaloreSection />
@@ -184,6 +196,7 @@ const DigitalMarketing = () => {
         {/* Section 3: Services */}
         <Suspense fallback={null}>
           <ServicesDetailSection />
+          <DMAISections />
         </Suspense>
 
         {/* Section 4: Industries */}
@@ -199,6 +212,11 @@ const DigitalMarketing = () => {
         {/* Section 6: Process */}
         <Suspense fallback={null}>
           <DMProcessSection />
+          <DMToolsRainSection />
+        </Suspense>
+
+        <Suspense fallback={null}>
+          <DMContentSection />
         </Suspense>
 
         {/* Section 7: Pricing */}
@@ -214,6 +232,7 @@ const DigitalMarketing = () => {
         {/* Testimonials */}
         <Suspense fallback={null}>
           <DMTestimonialsSection />
+          <DMRelevanceSection />
         </Suspense>
 
         {/* Section 9: FAQ */}
