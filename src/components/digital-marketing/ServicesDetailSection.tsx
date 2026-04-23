@@ -238,16 +238,21 @@ export const ServicesDetailSection = () => {
               </div>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-              <div className="flex flex-wrap gap-2.5">
-                {activeService.metrics.map((metric) => (
-                  <div key={metric} className="rounded-full border border-brand/15 bg-brand/5 px-4 py-2 text-xs sm:text-sm font-medium text-foreground">
-                    {metric}
-                  </div>
-                ))}
+            <div className="grid gap-5 rounded-[24px] border border-border/70 bg-muted/30 p-4 sm:p-5 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+              <div className="min-w-0">
+                <div className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground mb-3">
+                  What you get
+                </div>
+                <div className="grid gap-2.5 sm:grid-cols-2 xl:grid-cols-3">
+                  {activeService.metrics.map((metric) => (
+                    <div key={metric} className="rounded-2xl border border-brand/15 bg-background px-4 py-3 text-sm font-medium text-foreground shadow-[0_10px_30px_-24px_hsl(var(--foreground)/0.28)]">
+                      {metric}
+                    </div>
+                  ))}
+                </div>
               </div>
 
-              <Link to={activeService.href} className="inline-flex items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand/90">
+              <Link to={activeService.href} className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-semibold text-primary-foreground transition-colors hover:bg-brand/90 lg:min-w-[220px]">
                 Explore {activeService.title}
                 <ArrowRight className="w-4 h-4" />
               </Link>
