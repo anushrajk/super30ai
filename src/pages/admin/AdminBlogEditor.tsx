@@ -157,7 +157,7 @@ const AdminBlogEditor = () => {
       toast.success(status === "published" ? "Published" : "Saved");
       setForm((f) => ({ ...f, status }));
     } else {
-      const { data, error } = await supabase.from("blogs").insert(payload).select("id").single();
+      const { data, error } = await supabase.from("blogs").insert([payload]).select("id").single();
       setSaving(false);
       if (error) return toast.error(error.message);
       toast.success(status === "published" ? "Published" : "Saved as draft");
