@@ -12,6 +12,7 @@ import { Switch } from "@/components/ui/switch";
 import { RichTextEditor } from "@/components/cms/RichTextEditor";
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
+import type { Json } from "@/integrations/supabase/types";
 import { ArrowLeft, Loader2, Save, Eye } from "lucide-react";
 
 interface FormState {
@@ -115,10 +116,10 @@ const AdminBlogEditor = () => {
     if (!form.title.trim()) return toast.error("Title is required");
     if (!form.slug.trim()) return toast.error("Slug is required");
 
-    let jsonLd: unknown = null;
+    let jsonLd: Json | null = null;
     if (form.json_ld.trim()) {
       try {
-        jsonLd = JSON.parse(form.json_ld);
+        jsonLd = JSON.parse(form.json_ld) as Json;
       } catch {
         return toast.error("JSON-LD is not valid JSON");
       }
