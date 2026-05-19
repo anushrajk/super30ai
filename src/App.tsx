@@ -41,6 +41,10 @@ const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
+const BlogList = lazy(() => import("./pages/BlogList"));
+const Auth = lazy(() => import("./pages/Auth"));
+const AdminBlogs = lazy(() => import("./pages/admin/AdminBlogs"));
+const AdminBlogEditor = lazy(() => import("./pages/admin/AdminBlogEditor"));
 const DigitalMarketing = lazy(() => import("./pages/DigitalMarketing"));
 const SocialMediaDesign = lazy(() => import("./pages/SocialMediaDesign"));
 const WebDesign = lazy(() => import("./pages/WebDesign"));
@@ -154,6 +158,12 @@ const App = () => (
                 <Route path="/report/:slug" element={<ClientReport />} />
                 <Route path="/lead-gen-report/:slug" element={<LeadGenReport />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/blog" element={<BlogList />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/admin" element={<Navigate to="/admin/blogs" replace />} />
+                <Route path="/admin/blogs" element={<AdminBlogs />} />
+                <Route path="/admin/blogs/new" element={<AdminBlogEditor />} />
+                <Route path="/admin/blogs/:id/edit" element={<AdminBlogEditor />} />
 
                 {/* Digital Marketing */}
                 <Route path="/digital-marketing-agency-bangalore" element={<DigitalMarketing />} />

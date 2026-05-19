@@ -73,6 +73,81 @@ export type Database = {
           },
         ]
       }
+      blogs: {
+        Row: {
+          author_id: string
+          author_name: string | null
+          canonical_url: string | null
+          category: string | null
+          content: string
+          cover_image_url: string | null
+          created_at: string
+          excerpt: string | null
+          id: string
+          json_ld: Json | null
+          meta_description: string | null
+          meta_keywords: string | null
+          meta_title: string | null
+          og_description: string | null
+          og_image_url: string | null
+          og_title: string | null
+          published_at: string | null
+          read_time: string | null
+          slug: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          author_id: string
+          author_name?: string | null
+          canonical_url?: string | null
+          category?: string | null
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          json_ld?: Json | null
+          meta_description?: string | null
+          meta_keywords?: string | null
+          meta_title?: string | null
+          og_description?: string | null
+          og_image_url?: string | null
+          og_title?: string | null
+          published_at?: string | null
+          read_time?: string | null
+          slug: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          author_id?: string
+          author_name?: string | null
+          canonical_url?: string | null
+          category?: string | null
+          content?: string
+          cover_image_url?: string | null
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          json_ld?: Json | null
+          meta_description?: string | null
+          meta_keywords?: string | null
+          meta_title?: string | null
+          og_description?: string | null
+          og_image_url?: string | null
+          og_title?: string | null
+          published_at?: string | null
+          read_time?: string | null
+          slug?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       competitor_analysis: {
         Row: {
           analyzed_url: string | null

@@ -1,98 +1,80 @@
+import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, Calendar, Clock, User, Sparkles } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { ArrowLeft, ArrowRight, Calendar, Clock, User, Sparkles, Loader2 } from "lucide-react";
+import type { Json } from "@/integrations/supabase/types";
 
-const blogData: Record<string, {
+interface Post {
+  id: string;
+  slug: string;
   title: string;
-  date: string;
-  readTime: string;
-  author: string;
-  category: string;
-  image: string;
-  content: { type: "p" | "h2" | "h3" | "ul"; text: string | string[] }[];
-}> = {
-  "how-ai-is-changing-seo-2025": {
-    title: "How AI is Changing SEO: What Founders Need to Know in 2025",
-    date: "Dec 15, 2024",
-    readTime: "8 min read",
-    author: "The Super 30 Team",
-    category: "AI SEO Strategy",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&h=600&fit=crop",
-    content: [
-      { type: "p", text: "The search landscape is undergoing its most dramatic transformation in two decades. With the rise of AI-powered search experiences like Google AI Overviews, ChatGPT, and Perplexity, the way users discover and interact with content has fundamentally changed. For founders and business leaders, understanding these shifts isn't optional — it's essential for survival." },
-      { type: "h2", text: "The Rise of AI-Powered Search" },
-      { type: "p", text: "Google's AI Overviews now appear in over 40% of search queries, providing synthesized answers directly in the search results. ChatGPT processes over 100 million queries daily, and users increasingly trust AI-generated recommendations over traditional search results." },
-      { type: "p", text: "This shift means that traditional SEO tactics — keyword stuffing, link building at scale, and thin content — are no longer sufficient. AI systems evaluate content quality, topical authority, and entity relationships in ways that are fundamentally different from traditional ranking algorithms." },
-      { type: "h2", text: "What This Means for Your Business" },
-      { type: "ul", text: ["Your content must be structured for AI consumption, not just human readers", "Entity-based SEO is replacing keyword-based optimization", "E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) signals matter more than ever", "Technical SEO foundations must support AI crawling and indexing", "Content depth and accuracy are weighted more heavily than content volume"] },
-      { type: "h2", text: "How to Adapt Your Strategy" },
-      { type: "p", text: "Start by auditing your current AI visibility. Check whether your brand appears in ChatGPT responses, Google AI Overviews, and Perplexity answers for your target queries. If you're invisible to AI, you're invisible to a growing segment of your audience." },
-      { type: "p", text: "Next, restructure your content around entities and topics rather than individual keywords. Build comprehensive topic clusters that demonstrate deep expertise. Use structured data (Schema markup) to help AI systems understand your content's context and relationships." },
-      { type: "h2", text: "The Bottom Line" },
-      { type: "p", text: "AI is not replacing SEO — it's evolving it. The businesses that adapt fastest will capture the lion's share of AI-driven traffic and recommendations. Those that cling to outdated tactics will find themselves increasingly invisible in the new search landscape." },
-    ],
-  },
-  "getting-cited-by-chatgpt-guide": {
-    title: "Getting Cited by ChatGPT: A Complete Guide for B2B Brands",
-    date: "Dec 10, 2024",
-    readTime: "12 min read",
-    author: "The Super 30 Team",
-    category: "LLM Optimization",
-    image: "https://images.unsplash.com/photo-1676299081847-824916de030a?w=1200&h=600&fit=crop",
-    content: [
-      { type: "p", text: "Large language models like ChatGPT, Claude, and Gemini are becoming the new gatekeepers of business recommendations. When a founder asks ChatGPT 'What's the best CRM for startups?' or 'Which marketing agency should I hire?', the brands that appear in those responses capture high-intent demand that traditional search can't match." },
-      { type: "h2", text: "Why LLM Citations Matter" },
-      { type: "p", text: "Unlike traditional search where users see a list of links, LLM responses provide direct recommendations. When ChatGPT recommends your brand, it carries implicit trust — users treat AI recommendations similarly to personal referrals. Studies show that brands mentioned in AI responses see 3-5x higher conversion rates compared to traditional search traffic." },
-      { type: "h2", text: "How LLMs Select Brands to Recommend" },
-      { type: "ul", text: ["Training data prevalence: How often your brand appears in authoritative sources", "Content quality signals: Depth, accuracy, and comprehensiveness of your content", "Entity associations: How strongly your brand is linked to relevant topics", "Third-party validation: Reviews, case studies, and mentions from credible sources", "Recency and relevance: How current and contextually appropriate your content is"] },
-      { type: "h2", text: "Tactical Steps to Get Cited" },
-      { type: "p", text: "First, create definitive, comprehensive content around your core topics. LLMs favor content that serves as the authoritative source on a subject. Think 'ultimate guides' and 'complete frameworks' rather than brief blog posts." },
-      { type: "p", text: "Second, build your brand's entity profile. Ensure consistent information across Wikipedia, Crunchbase, LinkedIn, and industry directories. The more authoritative sources that reference your brand in context, the more likely LLMs are to surface you." },
-      { type: "p", text: "Third, generate genuine third-party mentions. Guest posts on industry publications, podcast appearances, conference talks, and customer case studies all contribute to your brand's training data footprint." },
-      { type: "h2", text: "Measuring Your LLM Visibility" },
-      { type: "p", text: "Regularly test your brand's visibility by asking relevant queries across ChatGPT, Claude, and Perplexity. Track how often you're mentioned, in what context, and against which competitors. This ongoing monitoring helps you identify gaps and measure progress over time." },
-    ],
-  },
-  "roi-of-ai-seo-case-studies": {
-    title: "The ROI of AI SEO: Case Studies from Our Top Clients",
-    date: "Dec 5, 2024",
-    readTime: "10 min read",
-    author: "The Super 30 Team",
-    category: "Case Studies",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=600&fit=crop",
-    content: [
-      { type: "p", text: "Every marketing investment needs to prove its worth. AI SEO is no different. Over the past 12 months, we've tracked the precise revenue impact of AI SEO strategies across our client portfolio. The results speak for themselves — businesses that invest in AI-optimized search visibility see measurably higher returns than those relying on traditional SEO alone." },
-      { type: "h2", text: "Case Study 1: SaaS Company — 340% Traffic Growth" },
-      { type: "p", text: "A B2B SaaS company in the HR tech space came to us with stagnant organic traffic and zero AI visibility. Within 6 months of implementing our AI SEO strategy, they saw a 340% increase in organic traffic, appeared in 45+ ChatGPT responses for their target queries, and generated ₹2.3 Cr in pipeline directly attributable to organic search." },
-      { type: "h2", text: "Case Study 2: E-commerce Brand — 280% Revenue Increase" },
-      { type: "p", text: "An e-commerce brand selling premium wellness products was struggling to compete against larger competitors in traditional search. Our AI-first approach focused on building topical authority and securing AI citations. Results: 280% increase in organic revenue, 67% reduction in customer acquisition cost, and consistent mentions in Google AI Overviews for 30+ high-intent queries." },
-      { type: "h2", text: "Case Study 3: Professional Services — 5x Lead Generation" },
-      { type: "p", text: "A legal services firm wanted to establish thought leadership and generate high-quality inbound leads. Through our entity-based SEO and LLM optimization strategy, they achieved 5x increase in qualified leads, reduced average cost per lead by 58%, and became the top-cited legal consultancy in ChatGPT for their practice areas." },
-      { type: "h2", text: "Key Patterns Across All Cases" },
-      { type: "ul", text: ["AI visibility compounds over time — early movers capture disproportionate share", "Technical SEO foundations are essential prerequisites for AI optimization", "Content quality matters more than content quantity", "Entity-based strategies outperform keyword-based approaches consistently", "ROI from AI SEO typically exceeds traditional SEO by 2-4x within 6 months"] },
-      { type: "h2", text: "Start Your AI SEO Journey" },
-      { type: "p", text: "These results aren't anomalies — they're repeatable outcomes of a systematic AI-first SEO approach. The question isn't whether AI SEO works, but how quickly you can implement it before your competitors do." },
-    ],
-  },
-};
+  excerpt: string | null;
+  content: string;
+  cover_image_url: string | null;
+  category: string | null;
+  read_time: string | null;
+  author_name: string | null;
+  published_at: string | null;
+  meta_title: string | null;
+  meta_description: string | null;
+  meta_keywords: string | null;
+  canonical_url: string | null;
+  og_title: string | null;
+  og_description: string | null;
+  og_image_url: string | null;
+  json_ld: Json | null;
+}
+
+const SITE = "https://super30ai.lovable.app";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
-  const blog = slug ? blogData[slug] : null;
+  const [post, setPost] = useState<Post | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
-  if (!blog) {
+  useEffect(() => {
+    if (!slug) return;
+    (async () => {
+      setLoading(true);
+      const { data, error } = await supabase
+        .from("blogs")
+        .select("*")
+        .eq("slug", slug)
+        .eq("status", "published")
+        .maybeSingle();
+      if (error || !data) {
+        setNotFound(true);
+      } else {
+        setPost(data as Post);
+      }
+      setLoading(false);
+    })();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <>
+        <Navbar />
+        <main className="min-h-screen pt-20 flex items-center justify-center">
+          <Loader2 className="w-6 h-6 animate-spin text-muted-foreground" />
+        </main>
+      </>
+    );
+  }
+
+  if (notFound || !post) {
     return (
       <>
         <Navbar />
         <main className="min-h-screen pt-20 flex items-center justify-center">
           <div className="text-center">
             <h1 className="text-2xl font-bold text-foreground mb-4">Blog post not found</h1>
-            <Link to="/">
-              <Button><ArrowLeft className="w-4 h-4 mr-2" /> Back to Home</Button>
-            </Link>
+            <Link to="/blog"><Button><ArrowLeft className="w-4 h-4 mr-2" /> Back to Blog</Button></Link>
           </div>
         </main>
         <Footer />
@@ -100,134 +82,123 @@ const BlogPost = () => {
     );
   }
 
-  const slugs = Object.keys(blogData);
-  const currentIndex = slug ? slugs.indexOf(slug) : -1;
-  const prevSlug = currentIndex > 0 ? slugs[currentIndex - 1] : null;
-  const nextSlug = currentIndex < slugs.length - 1 ? slugs[currentIndex + 1] : null;
+  const url = `${SITE}/blog/${post.slug}`;
+  const title = post.meta_title || post.title;
+  const description = post.meta_description || post.excerpt || "";
+  const ogTitle = post.og_title || title;
+  const ogDesc = post.og_description || description;
+  const ogImage = post.og_image_url || post.cover_image_url || undefined;
+  const canonical = post.canonical_url || url;
+
+  const jsonLd = post.json_ld ?? {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description,
+    image: ogImage ? [ogImage] : undefined,
+    datePublished: post.published_at,
+    dateModified: post.published_at,
+    author: post.author_name ? { "@type": "Person", name: post.author_name } : undefined,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    publisher: {
+      "@type": "Organization",
+      name: "The Super 30",
+      logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
+    },
+  };
 
   return (
     <>
       <Helmet>
-        <title>{blog.title} | The Super 30 Blog</title>
-        <meta name="description" content={blog.content[0]?.type === "p" ? (blog.content[0].text as string).slice(0, 155) : blog.title} />
-        <link rel="canonical" href={`https://www.thesuper30.ai/blog/${slug}`} />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        {post.meta_keywords && <meta name="keywords" content={post.meta_keywords} />}
+        <link rel="canonical" href={canonical} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={ogTitle} />
+        <meta property="og:description" content={ogDesc} />
+        <meta property="og:url" content={url} />
+        {ogImage && <meta property="og:image" content={ogImage} />}
+        <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
+        <meta name="twitter:title" content={ogTitle} />
+        <meta name="twitter:description" content={ogDesc} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
+        {post.published_at && <meta property="article:published_time" content={post.published_at} />}
+        {post.author_name && <meta property="article:author" content={post.author_name} />}
+        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
       </Helmet>
 
       <Navbar />
 
       <main className="min-h-screen pt-16 md:pt-20">
-        {/* Hero */}
-        <div className="relative h-64 md:h-96 overflow-hidden">
-          <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-            <div className="container mx-auto max-w-3xl">
-              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full mb-3">
-                {blog.category}
-              </span>
-              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-                {blog.title}
-              </h1>
+        {post.cover_image_url && (
+          <div className="relative h-64 md:h-96 overflow-hidden">
+            <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
+              <div className="container mx-auto max-w-3xl">
+                {post.category && (
+                  <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full mb-3">
+                    {post.category}
+                  </span>
+                )}
+                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">{post.title}</h1>
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* Meta */}
+        {!post.cover_image_url && (
+          <div className="container mx-auto max-w-3xl px-4 pt-8">
+            {post.category && (
+              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full mb-3">
+                {post.category}
+              </span>
+            )}
+            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">{post.title}</h1>
+          </div>
+        )}
+
         <div className="container mx-auto max-w-3xl px-4 py-6 border-b border-border">
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <div className="flex items-center gap-1.5"><User className="w-4 h-4" />{blog.author}</div>
-            <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{blog.date}</div>
-            <div className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{blog.readTime}</div>
+            {post.author_name && (
+              <div className="flex items-center gap-1.5"><User className="w-4 h-4" />{post.author_name}</div>
+            )}
+            {post.published_at && (
+              <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{new Date(post.published_at).toLocaleDateString()}</div>
+            )}
+            {post.read_time && (
+              <div className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.read_time}</div>
+            )}
           </div>
         </div>
 
-        {/* Content */}
         <article className="container mx-auto max-w-3xl px-4 py-8 md:py-12">
-          <div className="prose prose-lg max-w-none">
-            {blog.content.map((block, i) => {
-              // Insert CRO banner after every 3rd block
-              const elements: React.ReactNode[] = [];
+          <div
+            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground"
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
-              if (block.type === "p") {
-                elements.push(<p key={`p-${i}`} className="text-muted-foreground leading-relaxed mb-6">{block.text as string}</p>);
-              } else if (block.type === "h2") {
-                elements.push(<h2 key={`h2-${i}`} className="text-xl md:text-2xl font-bold text-foreground mt-10 mb-4">{block.text as string}</h2>);
-              } else if (block.type === "h3") {
-                elements.push(<h3 key={`h3-${i}`} className="text-lg md:text-xl font-bold text-foreground mt-8 mb-3">{block.text as string}</h3>);
-              } else if (block.type === "ul") {
-                elements.push(
-                  <ul key={`ul-${i}`} className="space-y-2 mb-6 pl-4">
-                    {(block.text as string[]).map((item, j) => (
-                      <li key={j} className="text-muted-foreground flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                );
-              }
-
-              // CRO Banner after every 4th content block
-              if ((i + 1) % 4 === 0 && i < blog.content.length - 1) {
-                elements.push(
-                  <div key={`cro-${i}`} className="my-10 p-6 md:p-8 rounded-2xl bg-muted/50 border border-border text-center">
-                    <Sparkles className="w-6 h-6 text-primary mx-auto mb-3" />
-                    <h3 className="text-lg md:text-xl font-bold text-foreground mb-2">
-                      Want to see how AI SEO can transform your business?
-                    </h3>
-                    <p className="text-muted-foreground text-sm mb-4">
-                      Get a free AI visibility audit and discover untapped growth opportunities.
-                    </p>
-                    <Link to="/seo-company-bangalore">
-                      <Button className="bg-brand-gradient hover:opacity-90 text-white">
-                        Get Your Free Audit
-                        <ArrowRight className="w-4 h-4 ml-2" />
-                      </Button>
-                    </Link>
-                  </div>
-                );
-              }
-
-              return elements;
-            })}
-          </div>
-
-          {/* Bottom CRO */}
           <div className="mt-12 p-6 md:p-10 rounded-2xl bg-muted/50 border border-border text-center">
-            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-              Ready to dominate AI-powered search?
-            </h3>
+            <Sparkles className="w-6 h-6 text-primary mx-auto mb-3" />
+            <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">Ready to dominate AI-powered search?</h3>
             <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
-              Join 300+ brands that trust The Super 30 for AI SEO and performance marketing.
+              Join 300+ brands that trust The Super 30 for AI SEO and lead generation.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link to="/seo-company-bangalore">
-                <Button size="lg" className="bg-brand-gradient hover:opacity-90 text-white">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  Start Free Audit
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                <Button size="lg">Start Free Audit <ArrowRight className="w-4 h-4 ml-2" /></Button>
               </Link>
               <Link to="/contact-us">
-                <Button size="lg" variant="outline">
-                  Talk to Our Experts
-                </Button>
+                <Button size="lg" variant="outline">Talk to Our Experts</Button>
               </Link>
             </div>
           </div>
 
-          {/* Navigation */}
-          <div className="mt-10 pt-8 border-t border-border flex justify-between">
-            {prevSlug ? (
-              <Link to={`/blog/${prevSlug}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                <ArrowLeft className="w-4 h-4" /> Previous Article
-              </Link>
-            ) : <div />}
-            {nextSlug ? (
-              <Link to={`/blog/${nextSlug}`} className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
-                Next Article <ArrowRight className="w-4 h-4" />
-              </Link>
-            ) : <div />}
+          <div className="mt-10 pt-8 border-t border-border">
+            <Link to="/blog" className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+              <ArrowLeft className="w-4 h-4" /> All articles
+            </Link>
           </div>
         </article>
       </main>
