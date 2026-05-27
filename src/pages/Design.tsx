@@ -525,7 +525,7 @@ const Design = () => {
           headline={
             <>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                Creative Design Agency
+                Creative Design Agency Solutions
               </span>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
                 in Bangalore
@@ -534,14 +534,14 @@ const Design = () => {
           }
           description={
             <>
-              Bangalore's trusted <span className="text-foreground font-semibold">graphic design company</span> — from brand identity and social media creatives to full UI/UX systems that drive engagement and build lasting authority.
+              Bangalore's trusted <span className="text-foreground font-semibold">creative design agency</span> delivering brand identity, social creatives, and UI UX systems built for visibility, engagement, and brand growth.
             </>
           }
           trustSignals={[
-            { icon: Palette, text: "Brand Identity & Visual Systems" },
-            { icon: Layout, text: "UI/UX & Product Design" },
-            { icon: Instagram, text: "Social Media Creatives" },
-            { icon: Bot, text: "AI-Enhanced Design Workflows" },
+            { icon: Palette, text: "Brand Identity and Visual Systems" },
+            { icon: Layout, text: "UI UX and Product Design" },
+            { icon: Instagram, text: "Social Media Creative Design" },
+            { icon: Bot, text: "AI Powered Design Workflows" },
           ]}
           credentials={["100+ Brands Designed", "UI/UX Specialists", "Figma & Adobe Suite"]}
           onSubmit={handleFormSubmit}
