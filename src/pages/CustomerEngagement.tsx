@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "Customer Engagement Agency in Bangalore | Loyalty Programs",
     description: "Keep customers coming back. Our customer engagement company in Bangalore designs loyalty programs and customer rewards that drive repeat business. Let's Talk!",
     keywords: "customer engagement agency in bangalore, customer engagement company in bangalore, customer engagement service provider in bangalore, customer engagement consultant in bangalore, customer engagement platform in bangalore, customer insight consulting in bangalore, customer analytics consulting in bangalore, customer loyalty consulting in bangalore",
-    canonical: "https://www.thesuper30.ai/customer-engagement-agency-bangalore",
+    canonical: "https://super30ai.lovable.app/customer-engagement-agency-bangalore",
     serviceType: "Customer Engagement Programs",
     ogTitle: "Happy Customers Come Back. Loyal Customers Bring Others.",
     ogDescription: "Loyalty programs and rewards that keep customers coming back and help your business grow. Let's talk!",

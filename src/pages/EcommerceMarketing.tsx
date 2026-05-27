@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "D2C & Ecommerce Marketing Agency in Bangalore",
     description: "Ecommerce marketing agency in Bangalore offering D2C marketing services, performance strategies, and scalable solutions for online brands. Book a free call",
-    keywords: "ecommerce marketing services in bangalore, ecommerce marketing agency in bangalore, d2c marketing services in bangalore, d2c ecommerce agency in bangalore, d2c growth partner in bangalore",
-    canonical: "https://www.thesuper30.ai/ecommerce-marketing-agency-bangalore",
+    keywords: "AI ecommerce marketing services in bangalore, AI ecommerce marketing agency in bangalore, Ecommerce marketing services in bangalore, Ecommerce marketing agency in bangalore, d2c ecommerce agency in bangalore, d2c marketing services in bangalore, d2c growth partner in bangalore",
+    canonical: "https://super30ai.lovable.app/ecommerce-marketing-agency-bangalore",
     serviceType: "Ecommerce & D2C Marketing",
     ogTitle: "Ecommerce Marketing Agency in Bangalore for D2C Brands",
     ogDescription: "D2C ecommerce agency in Bangalore offering marketing strategies for online brands.",

@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "Script Writing Agency in Bangalore | Ad Scripts That Convert",
     description: "The right script makes ads more powerful. Our ad script writing agency in Bangalore crafts ad and video scripts that connect with audiences. Let's Write!",
     keywords: "ad script writing in bangalore, script writing agency in bangalore, script writing services in bangalore, script writing company in bangalore, professional script writing services in bangalore",
-    canonical: "https://www.thesuper30.ai/script-writing-agency-bangalore",
+    canonical: "https://super30ai.lovable.app/script-writing-agency-bangalore",
     serviceType: "Script Writing Services",
     ogTitle: "A Great Script Is What Makes People Stop and Watch.",
     ogDescription: "Compelling ad and video scripts that connect with audiences and make every campaign count. Write!",

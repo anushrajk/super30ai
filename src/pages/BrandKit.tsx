@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "Brand Kit, Identity Design & Branding Agency in Bangalore",
     description: "Build a brand people remember. Our branding company in Bangalore creates complete brand kits covering logo, colors, fonts & visual identity. Let's Connect!",
     keywords: "branding agency in bangalore, branding company in bangalore, branding services in bangalore, brand kit design services in bangalore",
-    canonical: "https://www.thesuper30.ai/branding-agency-bangalore",
+    canonical: "https://super30ai.lovable.app/branding-agency-bangalore",
     serviceType: "Brand Kit Design",
     ogTitle: "A Strong Brand Kit Makes Your Business Look Like a Leader.",
     ogDescription: "Logo, colors and visual identity. Brand kits that make your business look consistent. Let's brand!",

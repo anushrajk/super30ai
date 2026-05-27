@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "Web Development Company in Bangalore | Custom Web Solutions",
     description: "Build a website that performs. Our web development agency in Bangalore creates fast, scalable websites built for your business goals. Let's Build!",
     keywords: "web development company bangalore, website development services in bangalore, web development agency in bangalore, custom website development in bangalore",
-    canonical: "https://www.thesuper30.ai/web-development-company-bangalore",
+    canonical: "https://super30ai.lovable.app/web-development-company-bangalore",
     serviceType: "Web Development",
     ogTitle: "A Website That Performs Is Your Best Sales Tool. Period.",
     ogDescription: "Fast, scalable and custom web development solutions built around your business goals. Let's build!",

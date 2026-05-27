@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "Guest Posting Agency in Bangalore | Build Domain Authority",
     description: "Boost your authority with our guest posting services in Bangalore. Quality articles on relevant sites that build backlinks & drive organic traffic",
     keywords: "guest posting agency in bangalore, guest posting company in bangalore, guest posting services in bangalore, guest blog posting services in bangalore, guest post writing in bangalore",
-    canonical: "https://www.thesuper30.ai/guest-posting-agency-bangalore",
+    canonical: "https://super30ai.lovable.app/guest-posting-agency-bangalore",
     serviceType: "Guest Posting Services",
     ogTitle: "More Backlinks. More Authority. More Organic Traffic.",
     ogDescription: "Quality guest posts on relevant sites that build backlinks and grow your organic traffic. Let's go!",

@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "SMS Gateway Service Provider in Bangalore | OTP & API SMS",
     description: "Send OTP and transactional messages instantly with our SMS gateway provider in Bangalore. Reliable SMS API integration for all businesses. Let's Connect!",
     keywords: "sms gateway service provider bangalore, otp sms api in bangalore, sms api provider bangalore, sms gateway services in bangalore, transactional sms gateway bangalore",
-    canonical: "https://www.thesuper30.ai/sms-gateway-service-bangalore",
+    canonical: "https://super30ai.lovable.app/sms-gateway-service-bangalore",
     serviceType: "SMS Gateway Services",
     ogTitle: "Instant OTP and SMS Delivery Your Business Can Rely On.",
     ogDescription: "Reliable SMS gateway and OTP API for fast, secure business messaging. Let's connect!",

@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Social Media Marketing Agency in Bangalore | SMM Services",
     description: "Grow your brand with a social media marketing company in Bangalore. We run Meta Ads, Instagram & LinkedIn campaigns that drive real engagement & ROI.",
-    keywords: "social media marketing company bangalore, social media marketing agency bangalore, social media marketing services bangalore, facebook marketing agency bangalore, social media agency bangalore, social media advertising company in bangalore, linkedin marketing in bangalore",
-    canonical: "https://www.thesuper30.ai/social-media-marketing-agency-bangalore",
+    keywords: "AI social media marketing company bangalore, AI social media marketing agency bangalore, AI social media marketing services bangalore, social media marketing company bangalore, social media marketing agency bangalore, social media marketing services bangalore, social media agency bangalore, social media advertising company in bangalore, facebook marketing agency bangalore, linkedin marketing in bangalore",
+    canonical: "https://super30ai.lovable.app/social-media-marketing-agency-bangalore",
     serviceType: "Social Media Marketing",
     ogTitle: "Likes Don't Pay Bills. But Our Social Media Strategy Does.",
     ogDescription: "Meta Ads to LinkedIn. We turn followers into real customers. Let's make social media work for you!",

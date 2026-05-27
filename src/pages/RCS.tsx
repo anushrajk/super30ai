@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "RCS Messaging Provider in Bangalore | Business Messaging",
     description: "Go beyond plain SMS. Our RCS messaging services in Bangalore deliver rich business messages with images and buttons that boost engagement. Let's Connect!",
     keywords: "RCS Messaging Provider In Bangalore, RCS messaging services in bangalore, RCS messaging solutions in bangalore, RCS messaging platform provider in bangalore, RCS messaging agency in bangalore",
-    canonical: "https://www.thesuper30.ai/rcs-messaging-provider-bangalore",
+    canonical: "https://super30ai.lovable.app/rcs-messaging-provider-bangalore",
     serviceType: "RCS Messaging Services",
     ogTitle: "Plain SMS Is Old News. RCS Messaging Is What Works Now.",
     ogDescription: "Rich messages with images and buttons that drive far better engagement than plain SMS. Let's connect!",

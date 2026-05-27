@@ -7,19 +7,15 @@ import {
 
 const config: ServicePageConfig = {
   seo: {
-    title: "Video & Photography Production Agency in Bangalore | Films, Reels, Shoots",
-    description:
-      "Bangalore's top video production & photography agency. Brand films, ads, reels, product shoots & corporate photography that look premium and convert viewers.",
-    keywords:
-      "video production agency in bangalore, video production company in bangalore, photography services in bangalore, product photography bangalore, corporate video production bangalore, ad film production bangalore",
-    canonical: "https://www.thesuper30.ai/video-photography-production-bangalore",
+    title: "Corporate Video maker in Bangalore | Visual Storytellers",
+    description: "Professional video maker in Bangalore offering corporate video making services, storytelling & high quality production for brands. Let’s create your video",
+    keywords: "corporate video maker in bangalore, professional video maker in bangalore, corporate storytelling in bangalore, corporate video making services in bangalore",
+    canonical: "https://super30ai.lovable.app/video-photography-production-bangalore",
     serviceType: "Video & Photography Production",
-    ogTitle: "Video & Photography Production Agency in Bangalore",
-    ogDescription:
-      "Brand films, ad films, reels, product shoots and corporate photography produced by Bangalore's top in-house production team.",
-    twitterTitle: "Video & Photography Production Agency in Bangalore",
-    twitterDescription:
-      "Premium video production and photography that builds brands and drives conversions — shot, edited and delivered in-house.",
+    ogTitle: "Corporate Video Maker in Bangalore | Professional Services",
+    ogDescription: "Corporate video maker in Bangalore delivering storytelling and production services.",
+    twitterTitle: "Corporate Video Maker in Bangalore | Professional Services",
+    twitterDescription: "Corporate video maker in Bangalore delivering storytelling and production services.",
   },
   hero: {
     badgeIcon: Video,
