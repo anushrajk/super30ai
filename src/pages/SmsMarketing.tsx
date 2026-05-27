@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import {
   MessageSquare, Send, Bot, Users, Zap, Shield, BarChart3, Target,
   Smartphone, Megaphone, Award, Clock, TrendingUp, Eye, Layers, Globe,
@@ -109,16 +110,7 @@ const config: ServicePageConfig = {
       "You don't have a clear product, offer or audience yet",
     ],
   },
-  faq: [
-    { question: "What does an SMS and messaging marketing agency in Bangalore do?", answer: "We design and run SMS, WhatsApp, RCS and chatbot campaigns end-to-end — strategy, DLT compliance, template approvals, automation, broadcasts and performance reporting." },
-    { question: "Is bulk SMS marketing still effective in 2025?", answer: "Yes — when done right. SMS averages 98% open rates and is read within 3 minutes. Combined with WhatsApp and RCS, it's the highest-engagement channel in India." },
-    { question: "Are you an official WhatsApp Business API provider?", answer: "Yes. We onboard clients on the official Meta-approved WhatsApp Business API with green-tick eligibility, template approvals and full automation." },
-    { question: "How much does SMS and WhatsApp marketing cost in Bangalore?", answer: "Bulk SMS starts at ₹0.15–₹0.25 per message. WhatsApp Business API conversations start at ₹0.35–₹0.85 depending on category. Strategy and automation retainers start from ₹25,000/month." },
-    { question: "Do you handle DLT registration and template approvals?", answer: "Yes. We handle the full DLT registration, sender ID approval and template submission process — typically completed within 5–7 business days." },
-    { question: "Can you build chatbots for WhatsApp and websites?", answer: "Yes. We build AI-powered chatbots for WhatsApp, web, Instagram and Facebook that qualify leads, answer FAQs, book meetings and integrate with your CRM." },
-    { question: "What is RCS messaging and should I invest in it?", answer: "RCS (Rich Communication Services) is the next-gen SMS — supports images, carousels, buttons and verified branding. It delivers 5–10x higher engagement than plain SMS for compatible devices." },
-    { question: "Can you integrate messaging with our CRM and website?", answer: "Yes. We integrate with HubSpot, Salesforce, Zoho, Shopify, WooCommerce and custom CRMs — triggering messages from form fills, cart abandonment, purchases and lifecycle events." },
-  ],
+  faq: getFaqs("sms-marketing"),
   finalCTA: {
     headline: "Hire Bangalore's Top Bulk SMS Marketing Company",
     description: "Get a free bulk SMS marketing strategy and a customer journey map from Bangalore's top SMS, WhatsApp and chatbot team.",

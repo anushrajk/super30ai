@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Bot, MessageSquare, Zap, Users, Shield, Target, BarChart3, Clock, Globe, Brain, Layers, Eye, Award, HeadphonesIcon, TrendingUp, Settings, ShoppingCart } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You expect the chatbot to replace all human interaction",
     ],
   },
-  faq: [
-    { question: "What platforms can the chatbot work on?", answer: "We deploy chatbots on your website, WhatsApp Business API, Facebook Messenger, Instagram DMs, and custom mobile apps." },
-    { question: "How 'smart' is the AI chatbot?", answer: "Our chatbots use advanced NLP (Natural Language Processing) to understand intent, handle typos and slang, maintain context across conversations, and provide relevant responses." },
-    { question: "Can the chatbot hand off to a human agent?", answer: "Yes. When a query is too complex or a customer requests human support, the chatbot seamlessly transfers the conversation with full context." },
-    { question: "How long does it take to build a chatbot?", answer: "A basic FAQ chatbot can be deployed in 1-2 weeks. AI-powered chatbots with complex flows and integrations typically take 3-6 weeks." },
-    { question: "Can it integrate with my CRM?", answer: "Yes. We integrate with Salesforce, HubSpot, Zoho, Freshworks, and most popular CRMs and helpdesk tools." },
-    { question: "What happens if the chatbot can't answer a question?", answer: "It gracefully acknowledges the limitation, collects the user's details, and either escalates to a human agent or creates a support ticket." },
-    { question: "How do you train the chatbot?", answer: "We train it using your FAQ documents, past support transcripts, product information, and custom scenarios. The bot continuously learns from real conversations." },
-    { question: "How much does a chatbot cost?", answer: "Pricing depends on complexity and platform. Basic bots start from ₹25,000 for setup. AI-powered bots with integrations are quoted custom based on requirements." },
-  ],
+  faq: getFaqs("chatbot"),
   finalCTA: {
     headline: "Hire Bangalore's Top AI Chatbot Development Company",
     description: "Get a free AI chatbot demo and see how our chatbot development services automate support and boost lead generation 24/7.",

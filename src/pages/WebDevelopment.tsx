@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Code2, Rocket, Gauge, Shield, Server, Database, Cloud, GitBranch, Workflow, Boxes, Layers, Globe, Zap, Lock, Activity, CheckCircle, Cpu, Terminal } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You expect a production app delivered in 2 weeks",
     ],
   },
-  faq: [
-    { question: "What tech stack do you build with?", answer: "Frontend: React, Next.js, TypeScript, Tailwind. Backend: Node.js, Express, NestJS. Database: Postgres, MongoDB, Supabase. Infra: Vercel, AWS, GCP. We pick the stack by problem, not trend." },
-    { question: "How much does custom web development cost in Bangalore?", answer: "Marketing sites: ₹2L-5L. SaaS MVPs: ₹6L-15L. Enterprise platforms: ₹15L-25L+. Fixed-scope quote shared after a free discovery call." },
-    { question: "How long does a typical project take?", answer: "Marketing sites: 4-6 weeks. SaaS MVPs: 8-12 weeks. Enterprise platforms: 4-6 months. Always 2-week sprints with weekly demos." },
-    { question: "Do you offer ongoing maintenance?", answer: "Yes. SLA-backed monthly retainers cover security patches, bug fixes, performance monitoring and small feature releases." },
-    { question: "Will I own the source code?", answer: "100%. You own the code, the GitHub repo and all IP. Full handover docs included. Zero vendor lock-in." },
-    { question: "Can you work with our existing dev team?", answer: "Absolutely. We collaborate via shared GitHub, Slack and sprint planning — augmenting capacity without stepping on toes." },
-    { question: "Do you handle hosting and DevOps?", answer: "Yes. We set up Vercel, AWS or GCP infrastructure with CI/CD, monitoring and autoscaling — and document everything." },
-    { question: "Is the website SEO-ready?", answer: "Every build ships with server-side rendering, structured data, Core Web Vitals tuning and clean semantic HTML — the foundation SEO needs." },
-  ],
+  faq: getFaqs("web-development"),
   finalCTA: {
     headline: "Ready to build a website that performs?",
     description: "Share your project brief — we'll send back a scope, timeline and budget in 3 business days. No commitment.",

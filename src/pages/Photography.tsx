@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Camera, Image, Users, Target, TrendingUp, Zap, Shield, Eye, Clock, BarChart3, Layers, Aperture, Focus, ScanLine } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -72,16 +73,7 @@ const config: ServicePageConfig = {
     forYou: ["You need professional photos for your website or e-commerce store", "You're launching a new product or menu and need stunning visuals", "You want consistent brand photography across all channels", "You need corporate headshots or office photography", "You're planning an event that needs professional coverage"],
     notForYou: ["You just need casual phone photos for personal use", "You have no budget for professional photography", "You need photos delivered within 24 hours of the shoot", "You're looking for stock photos, not custom photography"],
   },
-  faq: [
-    { question: "How much does a photo shoot cost?", answer: "Pricing starts from ₹10,000 for product photography and ₹25,000 for corporate shoots. Contact us for a custom quote based on your needs." },
-    { question: "How quickly will I get the edited photos?", answer: "Standard delivery is 3-5 business days. Express delivery (24-48 hours) is available for an additional fee." },
-    { question: "Do you provide a studio?", answer: "Yes, we have a fully equipped professional studio. We also do on-location shoots at your office or any location." },
-    { question: "How many photos will I receive?", answer: "This depends on the package. A typical product shoot delivers 20-50 edited images. Corporate shoots deliver 50-100+ images." },
-    { question: "Do you handle styling and props?", answer: "For food and product shoots, we can arrange styling and props. Discuss your requirements during the brief." },
-    { question: "Can you shoot across multiple locations?", answer: "Yes, we cover shoots across Bangalore and travel pan-India for projects." },
-    { question: "What format are the photos delivered in?", answer: "High-resolution JPEG and PNG files, optimized for web and print. RAW files available on request." },
-    { question: "Do you offer drone photography?", answer: "Yes, we have licensed drone operators for aerial photography of properties, events, and landscapes." },
-  ],
+  faq: getFaqs("photography"),
   finalCTA: {
     headline: "Hire Bangalore's Top Professional Photography Company",
     description: "Get a free consultation and custom quote from our professional photography company in Bangalore for corporate, brand or product shoots.",

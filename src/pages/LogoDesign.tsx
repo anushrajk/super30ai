@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Palette, PenTool, Layers, Eye, Zap, Heart, Shield, Award, Target, Users, Sparkles, FileText, RefreshCw, Globe, Clock } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You think all logos look the same anyway",
     ],
   },
-  faq: [
-    { question: "How much does a logo design cost?", answer: "Our logo design packages start from ₹15,000 for startups and go up based on complexity. Every package includes multiple concepts, revisions, and complete file delivery." },
-    { question: "How many concepts will I see?", answer: "You'll receive 3-5 unique concepts in the first round. You pick your favorite direction, and we refine it until it's perfect." },
-    { question: "How long does the process take?", answer: "Typically 2-3 weeks from discovery to final delivery. Rush delivery is available for an additional fee." },
-    { question: "What file formats do I get?", answer: "You receive SVG, PNG (transparent), JPG, PDF, AI, and EPS files — suitable for web, print, merchandise, and signage." },
-    { question: "Do you provide brand guidelines?", answer: "Yes. Every logo package includes a brand guidelines document covering logo usage, spacing, colors, and do's/don'ts." },
-    { question: "Can you redesign my existing logo?", answer: "Absolutely. We can modernize your current logo while preserving brand recognition that you've already built." },
-    { question: "Do I own the logo after the project?", answer: "Yes. Full copyright and ownership transfer to you upon final payment. We never reuse or resell your design." },
-    { question: "Can you also design business cards and stationery?", answer: "Yes! We offer complete brand identity packages including business cards, letterheads, envelopes, and more. Ask about our Brand Kit service." },
-  ],
+  faq: getFaqs("logo-design"),
   finalCTA: {
     headline: "Hire the Best Logo Design Agency in Bangalore",
     description: "Get a free consultation from our logo design services Bangalore team and see how we bring your brand vision to life.",

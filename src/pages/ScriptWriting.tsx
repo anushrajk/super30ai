@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Film, PenTool, MessageSquare, Target, Users, Zap, Eye, Shield, Award, Megaphone, Clock, Sparkles, Play, Mic, FileText, BarChart3 } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You don't have a clear objective for the video",
     ],
   },
-  faq: [
-    { question: "How much does script writing cost?", answer: "Scripts are priced by format and length. A 60-second ad script starts from ₹5,000. Explainer videos and corporate videos are quoted based on duration and complexity." },
-    { question: "Do you write scripts for all video types?", answer: "Yes — ad scripts, explainer videos, corporate videos, YouTube content, social media reels, podcasts, webinar scripts, and more." },
-    { question: "How long does a script take to deliver?", answer: "First draft is typically delivered within 3-5 business days. Complex projects like documentaries may take 1-2 weeks." },
-    { question: "Do you include visual/shot directions?", answer: "Yes. Our scripts include scene descriptions, visual cues, timing notes, and camera direction suggestions to make production smooth." },
-    { question: "Can you match our brand voice?", answer: "Absolutely. We study your existing content, brand guidelines, and tone preferences to write in your authentic voice." },
-    { question: "Do you do voiceover scripts too?", answer: "Yes. We write voiceover narration scripts with proper pacing, emphasis marks, and pronunciation guides." },
-    { question: "What if the script needs major changes?", answer: "We include revision rounds in every project. If the direction needs a complete change, we'll rewrite from scratch based on updated feedback." },
-    { question: "Can you help with the video production too?", answer: "Yes! Our Production team handles filming, editing, and post-production. The script is just the beginning." },
-  ],
+  faq: getFaqs("script-writing"),
   finalCTA: {
     headline: "Hire Bangalore's Top Ad Script Writing Agency",
     description: "Get a free consultation from our ad script writing agency in Bangalore and let's plan your next high-impact video and ad script.",
