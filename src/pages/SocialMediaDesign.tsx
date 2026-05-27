@@ -69,23 +69,23 @@ const SocialMediaDesign = () => {
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  Social Media Design Agency
+                  Social Media Design Agency in Bangalore
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  in Bangalore
+                  for Scroll Stopping Visual Content
                 </span>
               </>
             }
             description={
               <>
-                Bangalore's leading <span className="text-foreground font-semibold">social media design company</span> creating scroll-stopping creatives, post designs and reels for Instagram, Facebook, LinkedIn & more — designed to engage and convert.
+                Bangalore's trusted <span className="text-foreground font-semibold">social media design company</span> producing attention grabbing visuals, reels, and branded content for Instagram, Facebook, LinkedIn, and growing digital platforms.
               </>
             }
             trustSignals={[
-              { icon: Instagram, text: "Instagram, Facebook & LinkedIn" },
-              { icon: Layers, text: "Carousels, Stories & Reels" },
-              { icon: Sparkles, text: "On-Brand Creative Design" },
-              { icon: Zap, text: "Quick Turnaround" },
+              { icon: Instagram, text: "Instagram, Facebook, and LinkedIn" },
+              { icon: Layers, text: "Carousels, Stories, and Reels" },
+              { icon: Sparkles, text: "Brand Focused Creative Design" },
+              { icon: Zap, text: "Fast Project Delivery" },
             ]}
             credentials={["500+ Brands Designed", "All Platforms Covered", "Quick Turnaround"]}
             onSubmit={handleFormSubmit}
