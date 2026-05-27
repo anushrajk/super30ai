@@ -5,20 +5,20 @@ import { ArrowRight, MessageCircle } from "lucide-react";
 const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
 const forYou = [
-  "You're spending ₹1L+/month on marketing but can't connect spend to revenue",
-  "You want one agency managing SEO, ads, social, and design together",
-  "You need compounding growth, not just quick wins",
-  "You're tired of agencies that report impressions but not pipeline",
-  "You value transparency, real-time dashboards, and clear reporting",
-  "You want a Bangalore-based team you can meet in person",
+  "Invest significantly in marketing, but need clearer revenue visibility",
+  "Prefer one agency managing SEO, advertising, social media, and design",
+  "Focus on long-term business growth instead of short-term results",
+  "Need performance reporting connected directly to leads and revenue",
+  "Value transparency, live dashboards, and measurable campaign insights",
+  "Want an experienced Bangalore marketing team with direct collaboration",
 ];
 
 const notForYou = [
-  "You just want to buy followers or fake engagement",
-  "Your total monthly marketing budget is under ₹25,000",
-  "You expect overnight results without investing in strategy",
-  "You're looking for a single freelancer, not a full-service agency",
-  "You change agencies every 2 months without giving strategies time",
+  "You are focused only on vanity metrics or artificial engagement",
+  "Your current marketing budget is extremely limited for growth (under ₹25,000)",
+  "You expect instant results without strategic planning and optimization",
+  "You prefer hiring individual freelancers instead of a connected agency",
+  "You frequently switch agencies before strategies have time to perform",
 ];
 
 export const DMRelevanceSection = () => {
@@ -30,14 +30,14 @@ export const DMRelevanceSection = () => {
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-3 py-1 bg-brand/20 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/30">Is Our Digital Marketing Agency Right for You?</span>
           <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-3">
-            Is a Full-Service <span className="text-brand">Digital Marketing Agency in Bangalore</span> Right For You?
+            Is a Full-Service <span className="text-brand">Digital Marketing Agency in Bangalore</span> the Right Fit for Your Business?
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-gray-300">We're honest about who we can help — and who would be better served elsewhere</p>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300">We believe in honest partnerships, measurable expectations, and long-term business growth focused on strategy, performance, and sustainable digital success.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
           <div className="bg-white/5 border border-brand/30 rounded-xl p-4 sm:p-6 md:p-8">
-            <h3 className="text-lg sm:text-xl font-bold text-brand mb-4">✓ For you if...</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-brand mb-4">✓ Best for businesses that...</h3>
             <ul className="space-y-3">
               {forYou.map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">
@@ -49,7 +49,7 @@ export const DMRelevanceSection = () => {
           </div>
 
           <div className="bg-white/5 border border-white/10 rounded-xl p-4 sm:p-6 md:p-8">
-            <h3 className="text-lg sm:text-xl font-bold text-gray-400 mb-4">✗ Not for you if...</h3>
+            <h3 className="text-lg sm:text-xl font-bold text-gray-400 mb-4">✗ May not be the right fit if...</h3>
             <ul className="space-y-3">
               {notForYou.map((item, i) => (
                 <li key={i} className="flex items-start gap-2.5">

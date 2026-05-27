@@ -14,14 +14,14 @@ const services = [
     icon: TrendingUp,
     number: "01",
     title: "Digital Marketing",
-    description: "End-to-end digital marketing — from AI-powered SEO and Google Ads to social media strategy. We drive qualified traffic, generate leads, and scale your ROI across every channel.",
+    description: "Complete digital marketing solutions covering AI-powered SEO, Google Ads, and social media strategy. We help businesses increase qualified traffic, generate leads, and improve ROI across every digital channel.",
     image: digitalMarketingImg,
-    eyebrow: "Growth Engine",
+    eyebrow: "Growth Engine 01",
     metrics: ["300%+ Growth", "Multi-channel attribution", "30+ in-house experts"],
     highlights: [
-      "SEO, ads, and social managed as one coordinated engine",
-      "Budget allocation shaped by live performance data",
-      "Campaign reporting tied to lead quality and revenue",
+      "SEO, ads, and social media managed through one unified strategy",
+      "Budget allocation guided by live campaign performance data",
+      "Campaign reporting connected directly to lead quality and revenue",
     ],
     subServices: [
       { label: "AI SEO", href: "/seo-company-bangalore" },
@@ -35,15 +35,15 @@ const services = [
   {
     icon: Palette,
     number: "02",
-    title: "Design Services",
-    description: "From brand identities to scroll-stopping social media creatives and intuitive UI/UX — our design team builds visual systems that make your brand impossible to ignore.",
+    title: "Creative Design Services",
+    description: "From brand identity systems to social media creatives and intuitive UI UX experiences, our design team creates visual assets that improve recognition, engagement, and conversion performance.",
     image: designServicesImg,
-    eyebrow: "Visual Identity",
+    eyebrow: "Visual Identity 02",
     metrics: ["Brand systems", "Creative production", "UI/UX direction"],
     highlights: [
-      "Consistent branding across every marketing touchpoint",
-      "Creative assets built for paid and organic distribution",
-      "Interfaces designed to improve clarity and conversion",
+      "Consistent branding across every customer touchpoint",
+      "Creative assets designed for paid and organic distribution",
+      "Interfaces created to improve usability and conversion rates",
     ],
     subServices: [
       { label: "UI / UX Design", href: "/ui-ux-design-agency-bangalore" },
@@ -56,15 +56,15 @@ const services = [
   {
     icon: FileText,
     number: "03",
-    title: "Content Marketing",
-    description: "SEO-optimised blogs, persuasive website copy, video scripts, and guest posts — content that ranks, educates, and converts at every stage of the funnel.",
+    title: "Content Marketing Services",
+    description: "SEO-optimized blogs, persuasive website copy, video scripts, and guest posts designed to improve rankings, strengthen authority, and increase conversions across every stage of the customer journey.",
     image: contentMarketingImg,
-    eyebrow: "Content That Converts",
+    eyebrow: "Content That Converts 03",
     metrics: ["Search-led content", "Authority building", "Funnel messaging"],
     highlights: [
-      "Long-form content aligned to search demand",
-      "Landing page copy crafted to improve enquiries",
-      "Editorial systems that keep publishing consistent",
+      "Long-form content aligned with customer search intent",
+      "Landing page copy designed to improve conversion inquiries",
+      "Editorial systems created for consistent content publishing",
     ],
     subServices: [
       { label: "Website Content", href: "/seo-content-writing-services-bangalore" },
@@ -77,15 +77,15 @@ const services = [
   {
     icon: MessageSquare,
     number: "04",
-    title: "SMS & Messaging",
-    description: "Reach customers where they are — WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging for real-time engagement and higher open rates.",
+    title: "SMS & Messaging Solutions",
+    description: "Connect with customers through WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging designed to improve engagement, response rates, and customer communication performance.",
     image: smsMessagingImg,
-    eyebrow: "Direct Response",
+    eyebrow: "Direct Response 04",
     metrics: ["Instant delivery", "Automated journeys", "High open rates"],
     highlights: [
-      "Conversational journeys across chat and messaging",
-      "Retention campaigns triggered by user behaviour",
-      "Fast-response systems for support and sales teams",
+      "Conversational journeys across chat and messaging platforms",
+      "Retention campaigns activated through customer behaviour insights",
+      "Rapid response systems for customer support and sales teams",
     ],
     subServices: [
       { label: "WhatsApp Business API", href: "/whatsapp-marketing-company-bangalore" },
@@ -99,15 +99,15 @@ const services = [
   {
     icon: Video,
     number: "05",
-    title: "Production Studio",
-    description: "Professional video production and photography for ads, social media, and brand storytelling — from concept and scripting to shoot and post-production.",
+    title: "Creative Production Studio",
+    description: "Professional video production and photography services for advertising, social media, and brand storytelling from creative planning and scripting to filming and final content delivery.",
     image: productionStudioImg,
-    eyebrow: "Content Studio",
+    eyebrow: "Content Studio 05",
     metrics: ["Ad-ready shoots", "Photo + video", "Post-production"],
     highlights: [
-      "Shoot planning, scripting, and creative direction",
-      "Performance visuals for paid and social campaigns",
-      "Fast turnaround post-production for ongoing output",
+      "Creative shoot planning, scripting, and visual direction",
+      "Performance-focused visuals for paid and social campaigns",
+      "Quick-turnaround editing for continuous content production",
     ],
     subServices: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
@@ -118,15 +118,15 @@ const services = [
   {
     icon: Monitor,
     number: "06",
-    title: "Website Design",
-    description: "Fast, mobile-first, SEO-ready websites that convert. Custom builds, WordPress, e-commerce, and ongoing maintenance — all with CRO baked in from the first wireframe.",
+    title: "Website Design Services",
+    description: "Fast, mobile-first, SEO-ready websites designed for conversions. Custom website development, WordPress solutions, e-commerce platforms, and ongoing maintenance created with CRO-focused user experiences from the first wireframe.",
     image: websiteDesignImg,
-    eyebrow: "Conversion Systems",
+    eyebrow: "Conversion Systems 06",
     metrics: ["Fast builds", "SEO-ready", "CRO-first UX"],
     highlights: [
-      "Landing pages designed around lead capture",
-      "E-commerce and CMS builds with cleaner UX",
-      "SEO structure and conversion logic baked in",
+      "Landing pages created around lead generation goals",
+      "E-commerce and CMS websites designed with cleaner user experience",
+      "SEO structure and conversion strategy integrated from launch",
     ],
     subServices: [
       { label: "Website Development", href: "/web-design-company-bangalore" },
@@ -166,13 +166,13 @@ export const ServicesDetailSection = () => {
               Our Services
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium leading-[1.02] text-foreground">
-              Services that are <span className="text-brand">easy to scan</span> and built for growth
+              Full-Funnel <span className="text-brand">Marketing Services</span> for Modern Business Growth
             </h2>
           </div>
 
           <div className="max-w-md">
             <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5">
-              One featured service at a time, a stronger image hierarchy, and cleaner cards so the section feels premium without feeling heavy.
+              Integrated digital marketing services focused on customer acquisition, conversion growth, and scalable brand performance across every channel.
             </p>
             <div className="flex items-center gap-3">
               <button onClick={goToPrevious} aria-label="Previous service" className="w-11 h-11 rounded-full border border-border bg-background text-foreground flex items-center justify-center transition-colors hover:border-brand hover:text-brand">

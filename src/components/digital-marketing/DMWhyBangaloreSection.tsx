@@ -4,28 +4,28 @@ import { ChevronRight } from "lucide-react";
 const cards = [
   {
     number: "01",
-    title: "Deep Industry Knowledge",
-    text: "Bangalore is home to over 10,000 startups, hundreds of global enterprises, and one of the most digitally literate consumer bases in India. For businesses operating in this market, choosing the right digital marketing agency in Bangalore is not optional — it is a growth prerequisite.",
+    title: "In-depth Industry Expertise",
+    text: "Bangalore is home to over 10,000 startups, hundreds of global enterprises, and one of India's most digitally active consumer markets. For businesses competing in this environment, choosing the right digital marketing agency in Bangalore is no longer optional because strategic digital growth drives long-term success.",
   },
   {
     number: "02",
     title: "Multi-Channel Strategy",
-    text: "A results-driven digital marketing company in Bangalore combines deep expertise in SEO, Google Ads, social media marketing, and content strategy with local market intelligence. Whether you are a D2C brand in Koramangala, a SaaS company in Whitefield, or a healthcare provider in Jayanagar, your digital strategy must be built around how Bangalore consumers search, compare, and convert.",
+    text: "A performance-driven digital marketing company in Bangalore combines expertise in SEO, Google Ads, social media marketing, and content strategy with a strong understanding of the local market. Whether you are a D2C brand in Koramangala, a SaaS company in Whitefield, or a healthcare provider in Jayanagar, your digital strategy should align with how Bangalore consumers discover, evaluate, and convert online.",
   },
   {
     number: "03",
     title: "Data-Driven Decisions",
-    text: "At Super 30, we operate as a full-service online marketing agency in Bangalore — covering everything from technical SEO audits and Google Ads management to LinkedIn lead generation and Instagram content strategy. Our campaigns are built on real data, not assumptions.",
+    text: "At Super 30, we operate as a full-service online marketing agency in Bangalore, covering everything from technical SEO audits and Google Ads management to LinkedIn lead generation and Instagram content strategy. Our campaigns are guided by real performance data, customer behaviour, and measurable business insights.",
   },
   {
     number: "04",
-    title: "Results-First Engagement",
-    text: "What separates us as an effective internet marketing company in Bangalore from the rest is transparency, vertical expertise, and accountability. We provide live dashboards, monthly performance reports, and quarterly business reviews.",
+    title: "Performance-Focused Partnership",
+    text: "What separates us as a leading internet marketing company in Bangalore is transparency, industry expertise, and consistent accountability. We provide live dashboards, detailed monthly performance reports, and quarterly business reviews focused on measurable growth, campaign clarity, and long-term marketing success.",
   },
   {
     number: "05",
-    title: "Agile Optimisation",
-    text: "If you are looking for a digital marketing agency near you that understands the Bangalore ecosystem — from startup funding cycles to enterprise procurement timelines — Super 30 is built for this market. Every strategy is calibrated for Bangalore's unique competitive landscape.",
+    title: "Market-Focused Execution",
+    text: "If you are searching for an AI digital marketing agency in Bangalore that understands the local business ecosystem from startup funding cycles to enterprise procurement processes, Super 30 is designed for this market. Every strategy is crafted to Bangalore's competitive environment, customer behaviour, and evolving digital landscape.",
   },
 ];
 
@@ -46,7 +46,7 @@ export const DMWhyBangaloreSection = () => {
               <span className="text-brand">Bangalore?</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed max-w-md">
-              Many firms promise results but few provide a clear roadmap. Our <span className="text-foreground font-semibold">digital marketing services in Bangalore</span> focus on fixing your funnel and optimizing your spend so every rupee brings real profit.
+              Many agencies promise results, but very few deliver a clear strategy. Our <span className="text-foreground font-semibold">AI digital marketing services in Bangalore</span> focus on improving your funnel and optimizing ad spend so every rupee contributes to real business profit.
             </p>
 
             {/* Metric highlights */}

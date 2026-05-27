@@ -1,18 +1,18 @@
 import { CheckCircle2, XCircle } from "lucide-react";
 
 const traditionalItems = [
-  "Siloed channel management — SEO, ads, social run independently",
-  "Monthly PDF reports with vanity metrics (impressions, likes)",
-  "Reactive strategy adjustments after budget is already wasted",
-  "One-size-fits-all playbooks not built for Bangalore's market",
-  "Outsourced execution to freelancers with no accountability",
+  "Silo-based channel management where SEO, ads, and social operate separately",
+  "Monthly PDF reports focused on vanity metrics and impressions",
+  "Delayed strategy changes after marketing budgets are already spent",
+  "Repeated pattern playbooks that are not aligned with Bangalore market standards",
+  "Outsourced execution with limited accountability and fragmented communication",
 ];
 
 const integratedItems = [
   "Unified cross-channel digital marketing strategy",
-  "Real-time performance dashboards tied to revenue",
-  "Proactive optimization across all channels",
-  "Custom strategies built for Bangalore's competitive landscape",
+  "Real-time performance dashboards connected directly to revenue",
+  "Proactive optimization across every marketing channel",
+  "Custom growth strategies aligned with Bangalore's competitive market",
   "100% in-house team of 30+ digital marketing experts",
 ];
 
@@ -24,7 +24,7 @@ export const DMComparisonSection = () => (
         <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
           Traditional Agency vs Our <span className="text-brand">Digital Marketing Agency in Bangalore</span>
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-gray-300">See why 300+ Bangalore businesses switched to The Super 30</p>
+        <p className="text-sm sm:text-base md:text-lg text-gray-300">See why 300+ Bangalore businesses chose The Super 30</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">

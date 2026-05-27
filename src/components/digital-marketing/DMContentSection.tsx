@@ -2,12 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { FileText, MapPin, BadgeCheck, Layers3, TrendingUp, Sparkles } from "lucide-react";
 
 const topics = [
-  { heading: "What Does a Digital Marketing Agency in Bangalore Actually Do?", text: "A digital marketing agency in Bangalore handles your entire online presence — SEO, paid ads, social media, content, email, and web design. The best agencies don't run these channels in silos. They connect your SEO data to ad targeting, social engagement to email nurture, and website analytics to campaign decisions." },
-  { heading: "Why Bangalore Businesses Need a Local Digital Marketing Partner", text: "Bangalore has 10,000+ startups, 400+ MNCs, and 13 million digitally active consumers. The competition for online attention here is brutal. A digital marketing agency in Bangalore understands the local market — the B2B corridors of Whitefield, the D2C brands of Indiranagar, the enterprise clients of MG Road." },
-  { heading: "How to Evaluate a Digital Marketing Agency in Bangalore", text: "With 500+ agencies in Bangalore, picking the right one matters. Look for an in-house team, revenue attribution, real-time dashboards, no lock-in contracts, and relevant industry experience. A good agency should prove ROI within the first 90 days." },
-  { heading: "Services You Should Expect from a Full-Service Agency", text: "SEO that drives organic traffic. Google & Meta Ads that maximize ROAS. Social media that builds community. Content that converts. Email automation that nurtures leads. Web design that loads fast and ranks well." },
-  { heading: "Digital Marketing Trends Bangalore Businesses Should Watch in 2025", text: "Voice search optimization, short-form video content, first-party data strategies, and hyper-local SEO are reshaping digital marketing in Bangalore. 60%+ of searches happen on mobile. Reels and Shorts drive 3x more engagement than static posts." },
-  { heading: "Why The Super 30 Is Different", text: "We're a 30+ member in-house team. We've served 300+ brands. We track every rupee from click to close. No long-term lock-in contracts — our results earn your business. Real-time dashboards, not monthly PDFs." },
+  { heading: "What Does a Digital Marketing Agency in Bangalore Actually Deliver?", text: "A digital marketing agency in Bangalore manages SEO, paid advertising, social media, content marketing, email campaigns, and website performance through one connected strategy designed for business growth." },
+  { heading: "Why Bangalore Businesses Need a Local Digital Marketing Partner", text: "Bangalore businesses operate in one of India's most competitive digital markets. A local marketing agency understands audience behaviour, business ecosystems, and region-specific customer trends that shape long-term growth." },
+  { heading: "How to Evaluate a Digital Marketing Agency Properly", text: "Look for an experienced in-house team, transparent reporting systems, industry expertise, conversion-focused strategy, and measurable performance visibility across every marketing channel." },
+  { heading: "Services Businesses Should Expect from a Full-Service Agency", text: "SEO focused on visibility. Paid advertising designed for conversions. Social media strategies that improve engagement. Content, automation, and websites created for scalable business growth." },
+  { heading: "Digital Marketing Trends That Businesses Should Closely Watch", text: "AI search experiences, short-form video content, customer data strategy, and local SEO continue to shape how businesses attract audiences, improve engagement, and increase conversions online." },
+  { heading: "Why Businesses Choose The Super 30", text: "Our in-house marketing specialists combine strategy, creative execution, automation, and performance tracking to deliver measurable growth with transparent reporting and connected campaign systems." },
 ];
 
 const icons = [FileText, MapPin, BadgeCheck, Layers3, TrendingUp, Sparkles];
@@ -19,10 +19,10 @@ export const DMContentSection = () => (
       <div className="relative text-center max-w-3xl mx-auto mb-6 md:mb-12">
         <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">Everything You Need to Know</span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-          Your Guide to Choosing the Right <span className="text-brand">Digital Marketing Agency in Bangalore</span>
+          The Complete Guide to Choosing a <span className="text-brand">Digital Marketing Agency in Bangalore</span>
         </h2>
         <p className="text-base md:text-lg text-muted-foreground">
-          The same strategy depth you expect from our AI SEO page — but focused on how Bangalore brands should evaluate channels, partners, and growth decisions.
+          Understand how modern digital marketing agencies operate, what services matter most, and how businesses can choose the right marketing partner for measurable growth and long-term performance.
         </p>
       </div>
 
