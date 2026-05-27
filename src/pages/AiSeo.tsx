@@ -123,7 +123,7 @@ const AiSeo = () => {
           <TestimonialSection />
           <BlogSection />
           <SEOFinalCTASection />
-          <FAQSection />
+          <FAQSection slug="ai-seo" />
         </Suspense>
 
         <Footer />
