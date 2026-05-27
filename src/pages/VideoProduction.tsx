@@ -7,7 +7,7 @@ const config: ServicePageConfig = {
     title: "Agency for Brand & Corporate Video Production in Bangalore",
     description: "Affordable video production company in Bangalore creating corporate explainer & marketing videos that connect with your audience through the right storytelling",
     keywords: "video production agency in bangalore, video production company bangalore, video production services bangalore, video editing company in bangalore, media production companies in bangalore",
-    canonical: "https://www.thesuper30.ai/video-production-agency-bangalore",
+    canonical: "https://super30ai.lovable.app/video-production-agency-bangalore",
     serviceType: "Video Production",
     ogTitle: "Your Brand Has a Story Worth Telling. Let's Shoot It.",
     ogDescription: "Corporate videos and brand storytelling that help your business connect and stand out. Let's shoot!",

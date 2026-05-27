@@ -7,19 +7,15 @@ import {
 
 const config: ServicePageConfig = {
   seo: {
-    title: "SMS & Messaging Marketing Agency in Bangalore | WhatsApp, RCS, Chatbots",
-    description:
-      "Bangalore's top SMS, WhatsApp & messaging marketing agency. Bulk SMS, WhatsApp Business API, chatbots, RCS & engagement programs that drive 40%+ open rates.",
-    keywords:
-      "bulk sms marketing agency in bangalore, sms marketing services in bangalore, whatsapp marketing agency bangalore, whatsapp business api provider bangalore, chatbot development company bangalore, rcs messaging provider bangalore",
-    canonical: "https://www.thesuper30.ai/bulk-sms-marketing-agency-bangalore",
+    title: "Bulk SMS marketing company in Bangalore | Reach More Customers Fast",
+    description: "Reach thousands instantly with bulk SMS services in Bangalore. We deliver promotional and transactional messages with high open rates. Let's Connect!",
+    keywords: "bulk sms services bangalore, bulk sms marketing company bangalore, bulk sms service provider bangalore, bulk sms marketing services in bangalore, bulk sms provider in bangalore",
+    canonical: "https://super30ai.lovable.app/bulk-sms-marketing-agency-bangalore",
     serviceType: "SMS & Conversational Marketing",
-    ogTitle: "SMS, WhatsApp & RCS Marketing Agency in Bangalore",
-    ogDescription:
-      "Reach customers where they actually read — SMS, WhatsApp, RCS and chatbots that drive 40%+ open rates and instant conversions.",
-    twitterTitle: "SMS, WhatsApp & RCS Marketing Agency in Bangalore",
-    twitterDescription:
-      "Bulk SMS, WhatsApp Business API, RCS and chatbot solutions that turn messages into measurable revenue.",
+    ogTitle: "Reach Thousands of Customers With One Click. That Simple.",
+    ogDescription: "Promotional & transactional bulk SMS that reach thousands with high open rates. Let's connect!",
+    twitterTitle: "Reach Thousands of Customers With One Click. That Simple.",
+    twitterDescription: "Promotional & transactional bulk SMS that reach thousands with high open rates. Let's connect!",
   },
   hero: {
     badgeIcon: MessageSquare,

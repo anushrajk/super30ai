@@ -506,16 +506,16 @@ const Design = () => {
       <Helmet>
         <title>Design Agency in Bangalore | Graphic Design Services</title>
         <meta name="description" content="Give your brand a bold identity with a creative design company in Bangalore. Expert graphic design services. 100+ brands, 98% satisfaction. Let's Connect!" />
-        <meta name="keywords" content="design agency in bangalore, design company in bangalore, graphic design services in bangalore, graphic design company in bangalore, creative design agency in bangalore" />
-        <link rel="canonical" href="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
+        <meta name="keywords" content="graphic design agency in bangalore, design agency in bangalore, design company in bangalore, graphic design services in bangalore, graphic design company in bangalore, creative design agency in bangalore" />
+        <link rel="canonical" href="https://super30ai.lovable.app/graphic-design-agency-bangalore" />
         <meta property="og:title" content="100+ Brands Designed. Yours Could Be Next in Line." />
         <meta property="og:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
+        <meta property="og:url" content="https://super30ai.lovable.app/graphic-design-agency-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="100+ Brands Designed. Yours Could Be Next in Line." />
         <meta name="twitter:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
-        <meta name="twitter:url" content="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
+        <meta name="twitter:url" content="https://super30ai.lovable.app/graphic-design-agency-bangalore" />
       </Helmet>
       <Navbar />
       <main className="pt-16 md:pt-20">

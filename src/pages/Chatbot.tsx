@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Smart AI Bot & Chatbot Development Company in Bangalore",
     description: "Never miss a customer query. AI chatbot company in Bangalore builds RAG chatbots that handle conversations and drive lead generation 24/7. Build yours now!",
-    keywords: "chatbot companies in bangalore, chatbot development company in bangalore, chatbot development services in bangalore, chatbot development agency in bangalore, ai chatbot development company in bangalore",
-    canonical: "https://www.thesuper30.ai/chatbot-development-company-bangalore",
+    keywords: "chatbot company in bangalore, chatbot development company in bangalore, chatbot development services in bangalore, chatbot development agency in bangalore, ai chatbot development company in bangalore",
+    canonical: "https://super30ai.lovable.app/chatbot-development-company-bangalore",
     serviceType: "Chatbot Development",
     ogTitle: "What If Your Business Could Respond to Customers 24/7?",
     ogDescription: "Smart chatbots that qualify leads and engage customers even when your team is away. Let's build!",

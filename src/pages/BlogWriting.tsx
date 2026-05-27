@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Blog Writing Services in Bangalore | SEO Blogs That Work",
     description: "Attract more visitors with blogs that rank. Our blog writing agency in Bangalore craft SEO articles that build authority and grow traffic. Let's Write!",
-    keywords: "blog writing services in bangalore, seo blog writing services in bangalore, article writing agency in bangalore, blog writing company in bangalore, blog writing agency in bangalore",
-    canonical: "https://www.thesuper30.ai/blog-writing-services-bangalore",
+    keywords: "blog writing services in bangalore, seo blog writing services in bangalore, blog writing agency in bangalore, article writing agency in bangalore, blog writing company in bangalore",
+    canonical: "https://super30ai.lovable.app/blog-writing-services-bangalore",
     serviceType: "Blog Writing Services",
     ogTitle: "Blogs That Rank on Google Bring Free Traffic Every Day.",
     ogDescription: "SEO-optimised blogs that grow your traffic and bring consistent visitors every day. Let's write!",
