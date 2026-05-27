@@ -1,13 +1,8 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { BentoBadge } from "@/components/ui/bento-grid";
+import { getFaqs } from "@/data/faqs";
 
-const faqs = [
-  { q: "What platforms do you manage?", a: "We manage Google Ads (Search, Display, Shopping, YouTube), Meta Ads (Facebook & Instagram), LinkedIn Ads, and programmatic advertising." },
-  { q: "What's your minimum ad spend requirement?", a: "We recommend a minimum of ₹1 Lakh/month in ad spend to see meaningful results. Our management fees are separate." },
-  { q: "How do you track attribution?", a: "We set up comprehensive tracking using Google Analytics 4, conversion APIs, and UTM parameters to track the full customer journey." },
-  { q: "What's your reporting cadence?", a: "Weekly performance updates, bi-weekly strategy calls, and detailed monthly reports with insights and recommendations." },
-  { q: "Do you provide creatives?", a: "Yes, we have an in-house creative team for ad design. Creative development is included in our full-service packages." },
-];
+const faqs = getFaqs("performance-marketing").map(f => ({ q: f.question, a: f.answer }));
 
 export const PMFAQSection = () => {
   return (
