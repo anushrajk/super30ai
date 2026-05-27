@@ -7,7 +7,7 @@ const steps = [
     number: "01",
     title: "Free Brand Audit",
     timeline: "Week 1",
-    description: "We analyse your website, current rankings, competitor landscape, ad account performance, and social presence. You receive a detailed audit report regardless of whether you proceed.",
+    description: "We analyze your website performance, search visibility, competitor landscape, advertising performance, and social media presence. You receive a detailed audit report with strategic insights before proceeding with execution.",
   },
   {
     icon: Map,
