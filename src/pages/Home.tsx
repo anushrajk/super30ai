@@ -80,15 +80,15 @@ const Home = () => {
       <title>Digital Marketing Agency & AI Growth Company | TheSuper30</title>
       <meta name="description" content="A leading AI-driven digital marketing agency helping businesses achieve real ROI and scalable growth with proven strategies. Book a free consultation now." />
       <meta name="keywords" content="Digital Marketing Agency, Digital Marketing Company, AI digital marketing agency, AI Digital Marketing Company, AI based digital marketing agency" />
-      <link rel="canonical" href="https://www.thesuper30.ai/" />
+      <link rel="canonical" href="https://super30ai.lovable.app/" />
       <meta property="og:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
       <meta property="og:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta property="og:type" content="website" />
-      <meta property="og:url" content="https://www.thesuper30.ai/" />
+      <meta property="og:url" content="https://super30ai.lovable.app/" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
       <meta name="twitter:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
-      <meta name="twitter:url" content="https://www.thesuper30.ai/" />
+      <meta name="twitter:url" content="https://super30ai.lovable.app/" />
       <meta name="robots" content="index, follow" />
       <script type="application/ld+json">
         {JSON.stringify({

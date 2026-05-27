@@ -55,13 +55,13 @@ const About = () => {
         <title>Internet Marketing Agency With 30+ Digital Marketing Experts</title>
         <meta name="description" content="Meet 30+ experts at TheSuper30, a leading internet marketing company. SEO, design, content, ads and web under one roof. Trusted by 300+ businesses." />
         <meta name="keywords" content="Internet marketing agency, Digital Marketing Experts, Internet marketing Company, Online marketing agency, Online marketing Company" />
-        <link rel="canonical" href="https://www.thesuper30.ai/internet-marketing-agency" />
+        <link rel="canonical" href="https://super30ai.lovable.app/internet-marketing-agency" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Meet the 30+ Experts Behind Every Campaign We Run." />
         <meta property="og:description" content="Real people. Real strategies. AI-powered results. See the team that scales brands & drives ROI." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/internet-marketing-agency" />
+        <meta property="og:url" content="https://super30ai.lovable.app/internet-marketing-agency" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />

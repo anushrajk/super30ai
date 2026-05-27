@@ -149,20 +149,20 @@ const PerformanceMarketing = () => {
       <Helmet>
         <title>Lead Generation Agency in Bangalore | B2B Leads That Convert</title>
         <meta name="description" content="Trusted lead generation company in Bangalore helping B2B businesses attract & convert high-value leads. Real pipeline growth & measurable results. Let's Talk!" />
-        <meta name="keywords" content="lead generation agency in bangalore, b2b lead generation companies in bangalore, lead generation services in bangalore, lead generation company in bangalore" />
-        <link rel="canonical" href="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
+        <meta name="keywords" content="AI lead generation agency in bangalore, AI lead generation services in bangalore, AI lead generation company in bangalore, lead generation agency in bangalore, lead generation services in bangalore, lead generation company in bangalore, b2b lead generation company in bangalore, performance marketing agency in bangalore, performance marketing services in bangalore" />
+        <link rel="canonical" href="https://super30ai.lovable.app/lead-generation-agency-bangalore" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Is Your Sales Pipeline Full Enough to Hit Your Targets?" />
         <meta property="og:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
+        <meta property="og:url" content="https://super30ai.lovable.app/lead-generation-agency-bangalore" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Is Your Sales Pipeline Full Enough to Hit Your Targets?" />
         <meta name="twitter:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
-        <meta name="twitter:url" content="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
+        <meta name="twitter:url" content="https://super30ai.lovable.app/lead-generation-agency-bangalore" />
         {/* Structured Data */}
         <script type="application/ld+json">
           {JSON.stringify({
