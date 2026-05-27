@@ -52,10 +52,10 @@ export const WhoIsThisForSection = () => {
             Perfect Fit
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Who Is This For?
+            Industry-Leading AI Digital Marketing Company for Every Sector
           </h2>
           <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-            Our AI-powered digital marketing solutions are built for ambitious businesses ready to scale across every channel
+            Our AI-powered digital marketing solutions are designed for ambitious businesses ready to scale across every channel.
           </p>
         </div>
 

@@ -126,15 +126,15 @@ const Home = () => {
 
               <h1 className="font-bold text-foreground">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.3] pb-1">
-                  The Digital Marketing Agency
+                  The AI Digital Marketing Agency
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.3]">
-                  That Turns Your Clicks into Revenue
+                  That Turns Your Growth into Revenue
                 </span>
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Most brands struggle with traffic that does not convert. As a result-oriented <span className="text-foreground font-semibold">digital marketing company</span>, we build smart, AI-powered plans to help you find more customers and grow your sales faster through data.
+                Many brands struggle with traffic that fails to convert. As a performance-focused <span className="text-foreground font-semibold">digital marketing company</span>, we create AI-powered strategies that help attract qualified customers and grow your revenue faster through data.
               </p>
 
               {/* Platform Logos - simplified inline SVGs kept */}
@@ -223,8 +223,8 @@ const Home = () => {
         <TestimonialSection />
         <BlogSection />
         <UnifiedCTASection
-          headline="Partner with the Best Digital Marketing Agency Today"
-          subtext="Stop the guesswork and start growing. Contact our digital marketing experts for a free brand audit and see how our custom AI roadmap can help you lead your industry."
+          headline="Work with a Growth-Oriented AI Digital Marketing Agency Today"
+          subtext="Stop the guesswork and start growing with strategies focused on traffic, conversions, and revenue. Connect with our digital marketing experts for a free brand audit and discover a smarter path to lead your industry."
           primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }}
           secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }}
         />

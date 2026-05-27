@@ -186,7 +186,7 @@ export const TestimonialSection = () => {
             Testimonials
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            What Our Clients Say
+            Why Clients Trust Our Digital Marketing Agency
           </h2>
           <p className="text-lg md:text-xl text-gray-400">
             Real results from real businesses
