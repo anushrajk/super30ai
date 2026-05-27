@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { MousePointerClick, Layout, Smartphone, Users, Zap, Eye, Layers, Figma, Target, BarChart3, Shield, Bot, Palette, Heart, RefreshCw, Clock } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -93,16 +94,7 @@ const config: ServicePageConfig = {
       "You think design is just 'making things pretty'",
     ],
   },
-  faq: [
-    { question: "What tools do you use for UI/UX design?", answer: "We primarily use Figma for design, prototyping, and handoff. For research, we use tools like Hotjar, Google Analytics, and user interview platforms." },
-    { question: "Do you do user research or just design?", answer: "Both. We always start with understanding your users — through interviews, surveys, analytics, and competitive analysis. Design without research is just guessing." },
-    { question: "How long does a typical UI/UX project take?", answer: "A complete redesign typically takes 4-8 weeks depending on scope. Smaller projects like single-page designs or audits can be completed in 1-2 weeks." },
-    { question: "Do you also develop the designs?", answer: "We focus on design. For development, we work closely with your dev team or our in-house developers to ensure pixel-perfect implementation." },
-    { question: "What deliverables do I get?", answer: "You receive Figma files with design systems, interactive prototypes, user flow maps, developer handoff documentation, and all source assets." },
-    { question: "Can you redesign an existing product?", answer: "Absolutely. We start with a UX audit of your current product, identify pain points, and then redesign with data-driven improvements." },
-    { question: "How do you handle feedback and revisions?", answer: "We build in revision rounds at each stage. You'll review wireframes, prototypes, and final designs — with unlimited minor revisions to get it perfect." },
-    { question: "Do you design for both web and mobile?", answer: "Yes. We design responsive interfaces that work seamlessly across desktop, tablet, and mobile — with mobile-first prioritization." },
-  ],
+  faq: getFaqs("uiux-design"),
   finalCTA: {
     headline: "Hire Bangalore's Best UI UX Design Company Today",
     description: "Bad UX is quietly costing you customers. Get a free UI UX audit from our award-winning UI UX design agency in Bangalore and discover how user-first design can transform your business.",

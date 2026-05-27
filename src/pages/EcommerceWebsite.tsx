@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { ShoppingCart, Globe, CreditCard, Package, Smartphone, Gauge, Shield, Target, BarChart3, Search, Layers, Zap, Users, Award, TrendingUp, Clock } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You want a marketplace like Amazon — not a standalone store",
     ],
   },
-  faq: [
-    { question: "Shopify or WooCommerce — which is better?", answer: "Shopify is ideal for businesses wanting a hosted, easy-to-manage solution. WooCommerce is better for businesses wanting full customization and control. We'll recommend based on your needs." },
-    { question: "How much does an ecommerce website cost?", answer: "Basic stores start from ₹50,000. Feature-rich stores with custom design, integrations, and advanced functionality range from ₹1-3 lakhs. We provide detailed quotes after understanding requirements." },
-    { question: "How long does it take to build?", answer: "A standard ecommerce store takes 4-8 weeks. Complex stores with custom features may take 8-12 weeks." },
-    { question: "Which payment gateways do you integrate?", answer: "We integrate Razorpay, PayU, Stripe, PayPal, Cashfree, and UPI. We can work with any payment provider available in India." },
-    { question: "Will the store be mobile-friendly?", answer: "Absolutely. All our stores are mobile-first — designed and tested to work perfectly on smartphones, tablets, and desktops." },
-    { question: "Do you help with product photography and content?", answer: "Yes. Our design and content teams can help with product photography, descriptions, and category pages." },
-    { question: "Can you migrate from an existing platform?", answer: "Yes. We handle migrations from Shopify to WooCommerce, WooCommerce to Shopify, or from any other platform — with all data preserved." },
-    { question: "Do you offer ongoing maintenance?", answer: "Yes. We offer maintenance packages for updates, security patches, new features, and performance optimization." },
-  ],
+  faq: getFaqs("ecommerce-website"),
   finalCTA: {
     headline: "Ready to Launch Your Online Store?",
     description: "Get a free ecommerce consultation and start selling online within weeks.",

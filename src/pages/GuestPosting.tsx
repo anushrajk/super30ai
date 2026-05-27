@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { ExternalLink, Globe, Search, TrendingUp, BarChart3, Shield, Zap, Target, Users, Award, Link2, FileText, Eye, PenTool, Clock, Layers } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You don't care about link quality, just quantity",
     ],
   },
-  faq: [
-    { question: "What DA websites do you get placements on?", answer: "We primarily target DA 40-70 for standard packages and DA 70-90+ for premium placements. All websites have real organic traffic and editorial standards." },
-    { question: "How many links do I need per month?", answer: "Quality matters more than quantity. Most clients see significant results with 5-15 high-quality links per month. We'll recommend based on your competitive landscape." },
-    { question: "Are the links permanent?", answer: "Yes. We negotiate permanent placements. If any link is removed within 12 months, we replace it free of charge." },
-    { question: "Is this white-hat?", answer: "100%. We use manual outreach, quality content, and real editorial placements. No PBNs, no link farms, no automated tools." },
-    { question: "How long until I see ranking improvements?", answer: "Typically 2-3 months to see measurable ranking improvements from link building. Domain authority growth is gradual and compounds over time." },
-    { question: "Can you do a backlink audit first?", answer: "Yes. We offer standalone backlink audits where we analyze your current profile, identify toxic links, and create a link building strategy." },
-    { question: "Do you write the guest post content?", answer: "Yes. Our writers create original, high-quality articles tailored to each publisher's audience and editorial guidelines." },
-    { question: "What metrics do you report on?", answer: "Monthly reports include: live URLs, DA of each site, anchor text used, domain authority growth, and keyword ranking changes." },
-  ],
+  faq: getFaqs("guest-posting"),
   finalCTA: {
     headline: "Hire Bangalore's Trusted Guest Posting Agency",
     description: "Get a free guest posting and backlink audit — discover how strategic link building boosts rankings and authority.",

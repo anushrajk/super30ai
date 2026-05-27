@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { FileText, PenTool, Target, Search, BarChart3, Users, Zap, Eye, Shield, Globe, Bot, Layers, MessageSquare, Award, TrendingUp, Clock, Heart } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You want to copy competitor content with minor changes",
     ],
   },
-  faq: [
-    { question: "How much does website content writing cost?", answer: "Pricing depends on the number of pages and complexity. A typical 8-10 page website starts from ₹25,000. We provide a custom quote after understanding your needs." },
-    { question: "Do you do keyword research?", answer: "Yes. Every content project starts with comprehensive keyword research to ensure your content ranks for the right search terms." },
-    { question: "How long does it take?", answer: "A typical website content project takes 7-14 business days depending on the number of pages and revision cycles." },
-    { question: "Will the content be SEO-optimized?", answer: "Absolutely. We include meta titles, descriptions, header tag optimization, keyword placement, internal linking, and schema markup recommendations." },
-    { question: "Do you write in different tones?", answer: "Yes. We adapt our writing style to match your brand — whether that's professional, conversational, technical, playful, or authoritative." },
-    { question: "Can you write content for specific industries?", answer: "Yes. We have experience writing for healthcare, finance, technology, education, real estate, e-commerce, and many other industries." },
-    { question: "Do you offer content updates and maintenance?", answer: "Yes. We offer monthly content retainer packages for ongoing updates, new pages, blog posts, and content optimization." },
-    { question: "What if I'm not happy with the content?", answer: "We offer unlimited revisions until you're satisfied. If the direction isn't right, we'll rewrite from scratch at no extra cost." },
-  ],
+  faq: getFaqs("website-content"),
   finalCTA: {
     headline: "Hire Bangalore's #1 SEO Content Writing Agency",
     description: "Get a free SEO content audit from our SEO copywriting services team and discover how structured, semantic website content can rank on Google and turn visitors into customers.",

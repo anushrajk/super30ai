@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Palette, PenTool, Layers, FileText, Eye, Zap, Heart, Shield, Award, Target, Users, Sparkles, Globe, BookOpen, Brush, Type } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You think branding is just picking nice colors",
     ],
   },
-  faq: [
-    { question: "What's included in a brand kit?", answer: "A complete brand kit includes: logo system (all variations), color palette, typography system, brand guidelines document, business card design, letterhead, social media templates, and presentation templates." },
-    { question: "How long does a brand kit take?", answer: "A complete brand kit typically takes 3-5 weeks from discovery to final delivery, depending on the scope and revision cycles." },
-    { question: "Can you work with my existing logo?", answer: "Yes. If you love your logo, we can build the entire brand system around it — adding colors, typography, guidelines, and templates." },
-    { question: "Do you provide editable templates?", answer: "Absolutely. Social media templates come in Canva or Figma. Presentation templates in PowerPoint and Google Slides. All fully editable." },
-    { question: "What file formats are included?", answer: "All logo files in SVG, PNG, JPG, PDF, AI, EPS. Brand guidelines as a PDF. Templates in their native editable formats." },
-    { question: "Can you do brand strategy too?", answer: "Yes. Our brand discovery workshop covers positioning, personality, voice, audience personas, and competitive analysis — the strategic foundation for your visual identity." },
-    { question: "What if my brand evolves over time?", answer: "Our brand systems are designed to be flexible and scalable. We also offer brand refresh packages to update your kit as your business grows." },
-    { question: "Do you offer ongoing brand support?", answer: "Yes. We offer monthly retainer packages for brands that need ongoing design support, new asset creation, and brand consistency management." },
-  ],
+  faq: getFaqs("brand-kit"),
   finalCTA: {
     headline: "Hire the Top Branding Agency in Bangalore",
     description: "Get a free consultation from our branding company in Bangalore and see how a complete brand kit can transform your business.",

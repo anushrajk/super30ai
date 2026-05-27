@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import {
   Video, Camera, Film, Aperture, Mic, Lightbulb, Palette, Zap,
   Users, Award, Shield, Target, Clock, Eye, Layers, TrendingUp,
@@ -108,16 +109,7 @@ const config: ServicePageConfig = {
       "You want hundreds of low-quality videos instead of a few great ones",
     ],
   },
-  faq: [
-    { question: "What does a video production agency in Bangalore do?", answer: "We handle end-to-end video production — concept, scripting, storyboarding, casting, shoot, editing, colour grading, sound and multi-platform deliverables — all in-house." },
-    { question: "How much does video production cost in Bangalore?", answer: "Reels start from ₹15,000–₹40,000 per video. Brand films range ₹1.5L–₹8L+. Ad films range ₹3L–₹25L+ depending on cast, locations and production scale." },
-    { question: "How long does it take to produce a brand film?", answer: "A typical 2–3 minute brand film takes 3–4 weeks end-to-end — 1 week pre-production, shoot in 1–3 days, 2 weeks post-production." },
-    { question: "Do you handle product photography for e-commerce?", answer: "Yes. We shoot studio, lifestyle and 360° product photography optimised for Amazon, Flipkart, Shopify and your own D2C site." },
-    { question: "Can you produce reels and short-form video monthly?", answer: "Yes. Our monthly reels packages cover 8–30 reels per month including concept, shoot, editing and platform-specific delivery." },
-    { question: "Do you have your own studio and equipment?", answer: "Yes. We own studios, cinema-grade cameras (RED, Sony FX), lighting, gimbals, drones and full post-production setups in Bangalore." },
-    { question: "Do you provide voiceovers and music?", answer: "Yes. We offer professional voiceovers in 12+ Indian and international languages, custom music composition and licensed track libraries." },
-    { question: "Can you shoot outside Bangalore?", answer: "Yes. We shoot pan-India and internationally. Travel and logistics are quoted transparently in the production estimate." },
-  ],
+  faq: getFaqs("production"),
   finalCTA: {
     headline: "Ready to Make Films That Build Your Brand?",
     description: "Get a free production quote and creative direction from Bangalore's top in-house video and photography team.",

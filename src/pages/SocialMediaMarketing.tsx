@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Megaphone, TrendingUp, Users, Target, DollarSign, Instagram, Facebook, Linkedin, Youtube, BarChart3, Zap, Eye, Sparkles, Rocket, MessageCircle, Calendar, Shield, Globe, Clock, Heart } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You want the cheapest option in the market",
     ],
   },
-  faq: [
-    { question: "Which platforms do you manage?", answer: "We manage Instagram, Facebook, LinkedIn, YouTube, Twitter/X and Pinterest — with platform-specific strategies for each. Most clients focus on 2-3 platforms where their audience actually is." },
-    { question: "How is this different from SMO?", answer: "SMO focuses on organic optimization. Social Media Marketing covers the full funnel — strategy, content, paid ads, influencers and community management end-to-end." },
-    { question: "What does it cost?", answer: "Packages typically start from ₹50,000+/month depending on platforms, content volume and ad spend management. We share a clear, fixed-scope quote after a discovery call." },
-    { question: "Do you create the content too?", answer: "Yes. Our in-house team produces graphics, carousels, reels, shorts and ad creatives. You approve everything before it goes live." },
-    { question: "How soon will I see results?", answer: "Engagement lift in the first 30-45 days. Meaningful follower growth and lead flow typically within 60-90 days as the algorithm rewards consistency." },
-    { question: "Do you handle paid ads as well?", answer: "Absolutely. We run Meta, LinkedIn and YouTube ads with full targeting, creative testing, conversion tracking and weekly optimization." },
-    { question: "Will I own the content and accounts?", answer: "100%. You own the accounts, the content library, and all creative assets. Zero lock-in." },
-    { question: "Can you work with our internal team?", answer: "Yes. We collaborate with in-house marketing, design and product teams via Slack, Notion or your tool of choice." },
-  ],
+  faq: getFaqs("social-media-marketing"),
   finalCTA: {
     headline: "Ready to turn social into a revenue channel?",
     description: "Get a free social media audit and a custom 90-day growth roadmap for your brand.",

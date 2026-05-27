@@ -1,17 +1,9 @@
 import { BentoBadge } from "@/components/ui/bento-grid";
 import { ArrowRight } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { getFaqs } from "@/data/faqs";
 
-const faqs = [
-  { question: "What formats do you deliver the designs in?", answer: "We deliver in all standard formats — PNG, JPG, PDF, and platform-specific dimensions (1080x1080 for feed posts, 1080x1920 for stories/reels covers, 1200x628 for Facebook links, 1584x396 for LinkedIn banners, etc.). We also provide editable source files (Figma/PSD) for Premium plan clients." },
-  { question: "Can you match our existing brand guidelines?", answer: "Absolutely! We start every engagement by studying your existing brand — colors, fonts, tone of voice, photography style, and content themes. We create a Social Media Brand Kit that ensures every post is instantly recognizable as yours, even without your logo." },
-  { question: "How many revisions are included?", answer: "Our Starter plan includes 2 revisions per post. Growth and Premium plans include unlimited revisions until you're 100% satisfied. In practice, our revision rate is under 15% because we invest heavily in the discovery phase to nail your brand direction from day one." },
-  { question: "Do you also write captions and hashtags?", answer: "Yes! Our Growth and Premium plans include SEO-optimized captions with strategic hashtag sets (researched for your niche and audience). We provide both primary and secondary hashtag groups, along with engagement hooks and CTAs that drive real action." },
-  { question: "What's the turnaround time?", answer: "Standard turnaround is 3-5 business days for a monthly batch. Premium clients get priority delivery within 24-48 hours. For urgent requests, we offer same-day rush delivery at an additional fee. We never compromise quality for speed." },
-  { question: "Do you handle video content and reels?", answer: "Yes! We design reel covers, motion graphics, animated posts, and provide direction for video shoots. For reels editing, we work with our in-house video team to deliver platform-optimized short-form video content that drives engagement and saves." },
-  { question: "What if I don't have brand guidelines yet?", answer: "No problem — we'll create them for you! Our onboarding includes a Brand Discovery session where we define your visual identity — colors, fonts, photography style, tone, and design direction. You'll get a complete Social Media Brand Kit before we start designing content." },
-  { question: "Can you design for multiple brands or sub-brands?", answer: "Yes! We work with agencies and companies managing multiple brands. Each brand gets its own visual identity system and dedicated design queue. Our Premium plan supports up to 3 brands under one subscription." },
-];
+const faqs = getFaqs("social-media-design");
 
 export const SMFAQSection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });

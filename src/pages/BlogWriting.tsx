@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { BookOpen, PenTool, Search, TrendingUp, BarChart3, Users, Zap, Target, Shield, Calendar, Bot, Layers, Eye, Award, Clock, FileText } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You want to micromanage every sentence and word choice",
     ],
   },
-  faq: [
-    { question: "How many blog posts do you recommend per month?", answer: "For meaningful SEO impact, we recommend 4-8 posts per month. The exact number depends on your industry competition and growth goals." },
-    { question: "How long are your blog posts?", answer: "Our standard posts are 1,500-2,000 words. Pillar content and in-depth guides range from 2,500-4,000 words. Length is determined by keyword competition and topic depth." },
-    { question: "Do you provide images and graphics?", answer: "Yes. We include royalty-free featured images and recommend custom graphics where needed. For infographics, our design team can create custom visuals." },
-    { question: "Can you write for technical industries?", answer: "Absolutely. We have writers experienced in technology, healthcare, finance, SaaS, manufacturing, and other technical fields." },
-    { question: "How do you handle approvals?", answer: "You receive an outline for approval before writing. Then a draft for review with one round of revisions included. Additional revision rounds are available." },
-    { question: "Will the blogs be published on my website?", answer: "We deliver CMS-ready content. We can publish directly to your WordPress, Webflow, or other CMS — or deliver formatted documents for your team." },
-    { question: "Do you guarantee Google rankings?", answer: "We can't guarantee specific rankings (no ethical SEO provider can), but our content consistently ranks on page 1 for target keywords within 3-6 months." },
-    { question: "Can you repurpose blog content for social media?", answer: "Yes. We offer content repurposing packages that turn each blog post into social media posts, email newsletter content, and quote graphics." },
-  ],
+  faq: getFaqs("blog-writing"),
   finalCTA: {
     headline: "Hire Bangalore's Top Blog Writing Agency Today",
     description: "Get a free SEO blog writing strategy and discover the high-intent keywords your competitors are ranking for.",

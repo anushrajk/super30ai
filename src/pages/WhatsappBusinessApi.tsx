@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { MessageSquare, Bot, Users, Zap, Shield, Target, BarChart3, Clock, Send, Bell, ShoppingCart, Globe, Eye, Award, Phone, Layers } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You don't have a registered business entity",
     ],
   },
-  faq: [
-    { question: "What is WhatsApp Business API?", answer: "It's the official enterprise version of WhatsApp that allows businesses to send bulk messages, automate responses, integrate chatbots, and manage conversations at scale — with Meta's approval." },
-    { question: "How is this different from WhatsApp Business app?", answer: "The app is for small businesses with limited features. The API supports unlimited agents, automation, chatbots, bulk messaging, CRM integration, and advanced analytics." },
-    { question: "How much does it cost?", answer: "API setup costs vary. Meta charges per-conversation pricing. Our setup and management fees start from ₹15,000/month. We'll provide a custom quote based on your message volume." },
-    { question: "Can I get the green tick verification?", answer: "Yes. We handle the entire green tick verification process. It requires a registered business, Facebook Business Manager, and compliance with Meta's policies." },
-    { question: "How long does setup take?", answer: "Basic API setup takes 2-3 business days. Full chatbot and automation setup typically takes 1-2 weeks depending on complexity." },
-    { question: "Will my number get banned?", answer: "No. The official API is Meta-approved. Unlike unofficial tools, there's zero risk of getting banned when following Meta's messaging policies." },
-    { question: "Can the chatbot handle complex queries?", answer: "Yes. Our AI-powered chatbots can handle multi-step conversations, product recommendations, appointment booking, and even process payments." },
-    { question: "Can I integrate this with my existing CRM?", answer: "Yes. We integrate with Salesforce, HubSpot, Zoho, Freshworks, and most popular CRMs. Custom integrations are also available." },
-  ],
+  faq: getFaqs("whatsapp-business-api"),
   finalCTA: {
     headline: "Hire Bangalore's Top WhatsApp Marketing Company",
     description: "Get a free WhatsApp marketing consultation and see how WhatsApp Business API and bulk WhatsApp campaigns can automate your customer communication.",

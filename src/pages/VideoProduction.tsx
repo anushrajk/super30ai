@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Video, Film, Users, Target, TrendingUp, Zap, Shield, Eye, Clock, BarChart3, Layers, Camera, Clapperboard, Megaphone } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -72,16 +73,7 @@ const config: ServicePageConfig = {
     forYou: ["You need professional videos to elevate your brand image", "You want to build trust and credibility with potential clients", "You're launching a new product, service, or campaign", "You need training, onboarding, or educational content", "You want to stand out from competitors on social media"],
     notForYou: ["You just need a quick phone recording, not professional production", "You have zero budget allocated for video content", "You're not ready to invest in your brand's visual presence", "You need final delivery in less than 3 days"],
   },
-  faq: [
-    { question: "How much does video production cost?", answer: "Pricing depends on complexity, duration, and requirements. A standard corporate video starts from ₹50,000. Explainer animations start from ₹30,000. Contact us for a custom quote." },
-    { question: "How long does production take?", answer: "Typically 2-4 weeks from brief to final delivery, depending on project scope and revision rounds needed." },
-    { question: "Do you provide scriptwriting?", answer: "Yes, our team includes professional scriptwriters who craft compelling narratives tailored to your brand and audience." },
-    { question: "What equipment do you use?", answer: "We use cinema-grade cameras (RED, Sony FX), professional lighting rigs, and broadcast audio equipment for every shoot." },
-    { question: "Can you shoot at our location?", answer: "Absolutely. We do on-location shoots at offices, factories, events, or any location across Bangalore and India." },
-    { question: "How many revisions are included?", answer: "We include 2-3 rounds of revisions in our standard packages. Additional rounds can be arranged if needed." },
-    { question: "Do you handle drone shots and aerial footage?", answer: "Yes, we have licensed drone operators for stunning aerial cinematography when your project requires it." },
-    { question: "Can you create videos in multiple languages?", answer: "Yes, we produce videos in English, Hindi, Kannada, Tamil, Telugu, and other regional languages." },
-  ],
+  faq: getFaqs("video-production"),
   finalCTA: {
     headline: "Hire Bangalore's Trusted Video Production Company",
     description: "Get a free consultation and custom quote from our video production company in Bangalore for your next corporate, explainer or marketing video.",

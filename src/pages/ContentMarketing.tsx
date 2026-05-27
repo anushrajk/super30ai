@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import {
   FileText, BookOpen, PenTool, Megaphone, Search, TrendingUp, Award, Target,
   Users, Zap, Shield, Calendar, Layers, Eye, Bot, Clock, BarChart3,
@@ -109,16 +110,7 @@ const config: ServicePageConfig = {
       "You want to micromanage every sentence and revision round",
     ],
   },
-  faq: [
-    { question: "What does a content marketing agency in Bangalore actually do?", answer: "We plan, create and distribute content across formats — website copy, SEO blogs, scripts, guest posts and email — built around a keyword and audience strategy that drives qualified traffic and conversions." },
-    { question: "How is content marketing different from blog writing?", answer: "Blog writing is one tactic. Content marketing is the full strategy — topic research, content calendars, multiple formats (blogs, scripts, guest posts, emails), distribution and performance measurement." },
-    { question: "How long does content marketing take to show results?", answer: "Most clients see meaningful organic traffic growth in 3–6 months. Brand authority and lead-quality improvements compound from month 4 onwards." },
-    { question: "How much does content marketing cost in Bangalore?", answer: "Our content marketing retainers start from ₹35,000/month for a focused engagement and scale to ₹1,50,000+/month for full-stack content programs across formats." },
-    { question: "Do you write for technical or niche industries?", answer: "Yes. We have specialist writers across SaaS, fintech, healthcare, manufacturing, real estate, D2C and B2B industries." },
-    { question: "Do you handle content distribution too?", answer: "Yes — we publish to your CMS, distribute via email, repurpose into social posts and run guest posting outreach for backlinks and authority." },
-    { question: "Will the content be 100% original?", answer: "Yes. Every piece is human-written, plagiarism-checked and AI-detection clean. We use AI only for research and outlining." },
-    { question: "Can you take over content from our existing team or agency?", answer: "Absolutely. We start with a content audit, identify gaps and underperformers, then build a transition plan that preserves your existing equity." },
-  ],
+  faq: getFaqs("content-marketing"),
   finalCTA: {
     headline: "Hire Bangalore's Top Content Writing Agency Today",
     description: "Get a free content audit and a 90-day editorial roadmap from our experienced content marketing services team in Bangalore. Let's write!",

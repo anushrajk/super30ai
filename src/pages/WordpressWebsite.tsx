@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Globe, Layout, Shield, Gauge, Search, Zap, Users, Layers, Code, Smartphone, PenTool, BarChart3, Award, Target, Clock, Settings } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You expect a WordPress site to work like a mobile app",
     ],
   },
-  faq: [
-    { question: "How much does a WordPress website cost?", answer: "Basic WordPress sites start from ₹30,000. Custom theme development and WooCommerce stores range from ₹50,000-2 lakhs depending on features and complexity." },
-    { question: "How long does it take to build?", answer: "A standard WordPress site takes 2-4 weeks. Complex sites with custom functionality may take 4-8 weeks." },
-    { question: "Will I be able to update content myself?", answer: "Absolutely. We build with intuitive admin panels and provide a training session so you can update text, images, pages, and blog posts on your own." },
-    { question: "Do you use page builders like Elementor?", answer: "We use Elementor for sites where easy client editing is a priority. For performance-critical sites, we use custom-coded themes with Gutenberg." },
-    { question: "Is WordPress secure?", answer: "WordPress core is secure. Vulnerabilities come from poor setup, outdated software, and low-quality plugins. We implement security best practices and monitoring." },
-    { question: "Do you provide hosting?", answer: "We recommend and can set up managed WordPress hosting on platforms like Cloudways, SiteGround, or AWS — optimized for speed and security." },
-    { question: "Can you migrate my existing site to WordPress?", answer: "Yes. We handle migrations from Wix, Squarespace, Joomla, Drupal, or any other platform to WordPress with content and SEO preserved." },
-    { question: "Do you offer ongoing maintenance?", answer: "Yes. Our maintenance packages include updates, security monitoring, backups, speed checks, and priority support starting from ₹5,000/month." },
-  ],
+  faq: getFaqs("wordpress-website"),
   finalCTA: {
     headline: "Ready for a WordPress Site That Performs?",
     description: "Get a free consultation and let's build a fast, secure, beautiful WordPress website.",

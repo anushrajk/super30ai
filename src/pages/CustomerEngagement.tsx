@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Heart, Users, Target, BarChart3, Zap, Shield, Gift, Bell, Star, TrendingUp, MessageSquare, Award, Globe, Clock, Mail, Layers } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You expect overnight results from engagement programs",
     ],
   },
-  faq: [
-    { question: "How quickly can a loyalty program be set up?", answer: "A basic loyalty program can be launched in 2-3 weeks. Complex multi-tier programs with app integration take 4-8 weeks." },
-    { question: "What platforms do you use for email campaigns?", answer: "We work with Mailchimp, Klaviyo, HubSpot, SendGrid, and other leading email platforms — choosing the best fit for your needs and scale." },
-    { question: "How do you measure engagement success?", answer: "We track retention rate, repeat purchase rate, customer lifetime value (CLV), email open/click rates, loyalty program participation, and NPS scores." },
-    { question: "Can you integrate with our existing CRM?", answer: "Yes. We integrate with Salesforce, HubSpot, Zoho, and most CRM platforms to ensure seamless data flow." },
-    { question: "Do you handle the content creation for campaigns?", answer: "Yes. Our team creates email copy, SMS messages, push notification content, and loyalty program communications." },
-    { question: "What industries do you work with?", answer: "We've built engagement programs for e-commerce, SaaS, hospitality, healthcare, education, and retail businesses." },
-    { question: "How much does a customer engagement program cost?", answer: "Programs start from ₹25,000/month depending on channels, automation complexity, and scale. We provide custom quotes." },
-    { question: "Can you help with customer feedback and reviews?", answer: "Yes. We design and implement structured feedback collection programs, review generation campaigns, and NPS surveys." },
-  ],
+  faq: getFaqs("customer-engagement"),
   finalCTA: {
     headline: "Hire Bangalore's Trusted Customer Engagement Agency",
     description: "Get a free customer engagement audit and discover loyalty programs and lifecycle campaigns that boost retention and lifetime value.",

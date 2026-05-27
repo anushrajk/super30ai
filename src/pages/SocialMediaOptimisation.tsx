@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Share2, TrendingUp, BarChart3, Users, Zap, Hash, Heart, MessageSquare, Eye, Target, Calendar, Bot, Shield, Globe, Clock, Sparkles } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You only care about vanity metrics, not business results",
     ],
   },
-  faq: [
-    { question: "What's the difference between SMO and social media marketing?", answer: "SMO focuses on optimizing your profiles, content, and strategy for organic growth. Social media marketing typically includes paid advertising. We focus on maximizing your organic reach and engagement first." },
-    { question: "Which platforms do you optimize?", answer: "We optimize for Instagram, Facebook, LinkedIn, Twitter/X, YouTube, and Pinterest — with strategies tailored specifically to each platform's algorithm and audience behavior." },
-    { question: "How long does it take to see results?", answer: "Profile optimizations show immediate improvements. Content strategy results typically become significant within 60-90 days as the algorithm recognizes and rewards consistent, optimized posting." },
-    { question: "Do you create the content too?", answer: "We focus on strategy and optimization. We provide content calendars, caption frameworks, and creative direction. For content creation (graphics, videos), check out our Social Media Design service." },
-    { question: "How do you measure success?", answer: "We track reach, engagement rate, follower growth rate, profile visits, website clicks, and conversions — not just likes and follower count." },
-    { question: "Will this work for B2B companies?", answer: "Absolutely. We have strong experience optimizing LinkedIn and other platforms for B2B lead generation. The strategy differs from B2C, and we tailor accordingly." },
-    { question: "Do I need to be on every platform?", answer: "No. We'll identify the 2-3 platforms where your audience is most active and focus your efforts there for maximum impact." },
-    { question: "Can you help with negative reviews or brand reputation?", answer: "Yes. Our SMO strategy includes reputation management — monitoring mentions, responding to reviews, and building positive brand sentiment." },
-  ],
+  faq: getFaqs("social-media-optimisation"),
   finalCTA: {
     headline: "Partner with the Best SMO Company in Bangalore",
     description: "Get a free audit from our social media optimization services in Bangalore and discover untapped opportunities to grow reach, engagement and influence.",

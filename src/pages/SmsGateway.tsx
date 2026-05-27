@@ -1,4 +1,5 @@
 import { ServicePageTemplate, ServicePageConfig } from "@/components/service/ServicePageTemplate";
+import { getFaqs } from "@/data/faqs";
 import { Send, MessageSquare, Shield, Zap, Target, BarChart3, Clock, Globe, Users, Bell, Layers, Award, TrendingUp, Lock, Phone, Settings } from "lucide-react";
 
 const config: ServicePageConfig = {
@@ -97,16 +98,7 @@ const config: ServicePageConfig = {
       "You're looking for the cheapest option regardless of delivery quality",
     ],
   },
-  faq: [
-    { question: "What is DLT and is it mandatory?", answer: "DLT (Distributed Ledger Technology) registration is mandatory per TRAI regulations for all commercial SMS in India. We handle the entire registration process for you." },
-    { question: "What's the delivery rate?", answer: "We maintain a 99.9% delivery rate across all operators through priority routing and multi-operator redundancy." },
-    { question: "How fast are OTP deliveries?", answer: "OTPs are delivered in under 5 seconds on average. We use dedicated OTP routes for maximum speed." },
-    { question: "How much does SMS cost?", answer: "Pricing is per SMS with volume-based discounts. Promotional SMS start from 10-15 paisa per SMS. Transactional and OTP pricing varies. Contact us for a custom quote." },
-    { question: "Do you support Unicode/regional language SMS?", answer: "Yes. We support Unicode SMS for Hindi, Kannada, Tamil, Telugu, and all other Indian languages." },
-    { question: "What programming languages does your API support?", answer: "Our RESTful API works with any language. We provide SDKs for PHP, Python, Node.js, Java, .NET, and Ruby." },
-    { question: "Is there a minimum commitment?", answer: "No minimum contract. You can start with a prepaid balance and scale as needed." },
-    { question: "Do you provide delivery reports?", answer: "Yes. Real-time delivery reports via API callbacks and a web dashboard with detailed analytics." },
-  ],
+  faq: getFaqs("sms-gateway"),
   finalCTA: {
     headline: "Hire Bangalore's Trusted SMS Gateway Provider",
     description: "Get started with our enterprise-grade SMS gateway and OTP SMS API. DLT-compliant, no setup fees, no long-term contracts.",
