@@ -77,20 +77,20 @@ const AiSeo = () => {
                   The SEO Company in Bangalore
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  That Dominates the AI Search Era
+                  Driving the AI Search Revolution
                 </span>
               </>
             }
             description={
               <>
-                Most brands are invisible because they use old search tactics. Our <span className="text-foreground font-semibold">SEO services in Bangalore</span> help you win with a strategy that ranks your brand on Google and AI search engines — driving 3x more visibility and 300% traffic growth.
+                Most businesses struggle to stay visible because outdated search strategies no longer perform. Our <span className="text-foreground font-semibold">AI SEO services in Bangalore</span> help brands grow through intelligent search strategies that improve Google rankings, strengthen AI visibility, and drive 300% traffic growth.
               </>
             }
             trustSignals={[
               { icon: Search, text: "Technical & On-Page SEO Audits" },
-              { icon: Globe, text: "Local & International SEO" },
-              { icon: Bot, text: "AI-Driven Keyword Research" },
-              { icon: BarChart3, text: "Transparent Ranking Reports" },
+              { icon: Globe, text: "Local & Global SEO Services" },
+              { icon: Bot, text: "AI-Powered Keyword Research" },
+              { icon: BarChart3, text: "Transparent SEO Performance Reports" },
             ]}
             credentials={[
               "Google Certified SEO Experts",

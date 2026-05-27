@@ -20,7 +20,7 @@ export const DMFinalCTASection = () => {
           Book Your Free Brand Audit with Bangalore's Top Digital Marketing Agency Today
         </h2>
         <p className="text-white/50 text-base max-w-2xl mx-auto mb-10">
-          Ready to stop the guesswork and start growing with a leading <span className="text-white font-semibold">digital marketing agency in Bangalore</span>? Connect with our experts for a strategy session and see how our AI roadmap can help you lead your industry.
+          Ready to move beyond assumptions and accelerate business growth with a top-trusted <span className="text-white font-semibold">digital marketing company in Bangalore</span>? Connect with our experts for a strategic consultation and discover how our performance roadmap supports long-term business success.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
@@ -28,7 +28,7 @@ export const DMFinalCTASection = () => {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-8"
           >
-            Start My Free Audit <ArrowRight className="w-4 h-4 ml-2" />
+            Claim Your Free Audit <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
           <Button
             size="lg"
@@ -36,7 +36,7 @@ export const DMFinalCTASection = () => {
             onClick={() => setShowEnquiryPopup(true)}
             className="rounded-full px-8 border-2 border-white/20 bg-white/[0.08] text-white hover:bg-white/15 font-semibold backdrop-blur-sm"
           >
-            <MessageCircle className="w-4 h-4 mr-2" /> Speak to a Strategist
+            <MessageCircle className="w-4 h-4 mr-2" /> Speak with Our Strategists
           </Button>
         </div>
       </div>

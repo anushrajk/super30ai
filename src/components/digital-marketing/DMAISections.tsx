@@ -3,27 +3,27 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Check, X } from "lucide-react";
 
 const features = [
-  { title: "Cross-Channel Strategy", description: "SEO insights feed ad targeting, social engagement drives email nurture — all channels work as one engine." },
-  { title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing that runs without manual intervention." },
-  { title: "Revenue Attribution", description: "Track every lead from first click to closed deal. Know exactly which channel drives your revenue." },
-  { title: "Real-Time Dashboards", description: "See all channels — SEO, ads, social, email — in one live view. No more waiting for monthly PDFs." },
+  { title: "Connected Strategy", description: "SEO insights improve ad targeting, while social engagement strengthens email nurturing, so every marketing channel operates through one connected growth system." },
+  { title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing systems designed to improve engagement without constant manual management or intervention." },
+  { title: "Revenue Attribution", description: "Track every lead journey from first click to final conversion, while understanding which marketing channels directly contribute to business revenue growth." },
+  { title: "Live Performance Dashboards", description: "Monitor SEO, paid ads, social media, and email marketing performance through a single central dashboard, without relying on delayed monthly reports." },
 ];
 
 const comparisons = [
-  { traditional: "Channel-by-channel execution", modern: "One connected growth system" },
-  { traditional: "Vanity metrics only", modern: "Revenue and lead attribution" },
-  { traditional: "Manual follow-ups", modern: "Automation across the funnel" },
-  { traditional: "Monthly static PDFs", modern: "Real-time performance visibility" },
+  { traditional: "Channel-focused execution", modern: "One connected marketing system" },
+  { traditional: "Vanity metrics reporting", modern: "Revenue and lead attribution" },
+  { traditional: "Manual customer follow-ups", modern: "Funnel-based automation systems" },
+  { traditional: "Static monthly PDF reports", modern: "Real-time campaign visibility" },
 ];
 
 export const DMAISections = () => (
   <section className="py-8 md:py-14 lg:py-20 bg-background">
     <div className="container mx-auto px-4">
       <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-        <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">What Makes Us Different</span>
-        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Cross-Channel Integration That Actually Works</h3>
+        <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">What Makes Super 30 Different?</span>
+        <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Integrated Digital Marketing That Drives Real Growth</h3>
         <p className="text-base md:text-lg text-muted-foreground">
-          Most digital marketing agencies in Bangalore run disconnected campaigns. We connect SEO, paid media, social, and automation into one system that compounds growth.
+          Most digital marketing agencies in Bangalore manage disconnected campaigns. We connect SEO, paid media, social media, and automation into one performance-focused system designed to improve visibility, conversions, and long-term growth.
         </p>
       </div>
 
@@ -64,12 +64,12 @@ export const DMAISections = () => (
 
         <Card className="border-border/50 shadow-none h-full bg-foreground text-primary-foreground">
           <CardContent className="p-5 md:p-8 h-full flex flex-col justify-center">
-            <h4 className="text-lg md:text-2xl font-bold mb-3">Built Around How Buyers Actually Move</h4>
+            <h4 className="text-lg md:text-2xl font-bold mb-3">Marketing Systems Guided by Buyer Intent</h4>
             <p className="text-primary-foreground/80 mb-5 text-sm md:text-base leading-relaxed">
-              SEO keyword data feeds paid media. Social engagement shapes content angles. Website behaviour triggers nurture flows. Every channel informs the next move instead of operating in isolation.
+              SEO insights improve Google Ads targeting. Social engagement shapes content strategy. Website behaviour activates nurture flows. Every channel works together to improve performance rather than operate independently.
             </p>
             <ul className="space-y-3 mb-6 text-sm md:text-base">
-              {["SEO insights sharpen Google Ads targeting", "Social trends influence content and campaign creatives", "Behavioural signals trigger personalized email journeys"].map((item, i) => (
+              {["SEO insights strengthen Google Ads targeting", "Social trends improve campaign creative direction", "Behavioural signals activate personalized email journeys"].map((item, i) => (
                 <li key={i} className="flex items-start gap-3">
                   <div className="w-2 h-2 rounded-full bg-brand mt-2 flex-shrink-0" />
                   <span className="text-primary-foreground/85">{item}</span>
@@ -84,8 +84,8 @@ export const DMAISections = () => (
       </div>
 
       <div className="text-center mb-6">
-        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">How We Drive Results for Bangalore Businesses</h3>
-        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">Data-led execution across every channel, presented in the same premium visual language as our AI SEO experience.</p>
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">How We Scale Growth for Bangalore Businesses</h3>
+        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">Data-driven execution across every marketing channel delivered through one connected performance system by an AI digital marketing company in Bangalore, designed to improve AI SEO visibility, engagement, lead quality, and business growth.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">

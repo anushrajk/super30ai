@@ -141,12 +141,12 @@ const DigitalMarketing = () => {
             badgeText="#1 Digital Marketing Agency in Bangalore"
             headline={
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.2]">
-                <span className="text-brand">Digital Marketing Agency in Bangalore</span> — 10x Your Business Growth
+                <span className="text-brand">AI Digital Marketing Agency in Bangalore</span> for 10x Business Growth
               </span>
             }
             description={
               <>
-                Scale your brand with the leading <span className="text-foreground font-semibold">digital marketing company in Bangalore</span>. Our digital marketing services deliver ROI-focused SEO, PPC and social media strategies — across Koramangala, HSR Layout, Whitefield and Electronic City.
+                Scale your brand with the leading <span className="text-foreground font-semibold">digital marketing company in Bangalore</span>. Our digital marketing services deliver ROI-focused SEO, PPC, and social media strategies across Koramangala, HSR Layout, Whitefield, and Electronic City.
               </>
             }
             trustSignals={[
