@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
+import "./rich-text-editor.css";
 
 interface Props {
   value: string;
@@ -24,7 +25,7 @@ export const RichTextEditor = ({ value, onChange, placeholder }: Props) => {
   );
 
   return (
-    <div className="bg-background rounded-md border border-input">
+    <div className="cms-editor bg-background rounded-lg border border-input shadow-sm overflow-hidden">
       <ReactQuill
         theme="snow"
         value={value}
