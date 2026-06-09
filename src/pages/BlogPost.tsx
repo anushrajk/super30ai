@@ -5,7 +5,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { ArrowLeft, ArrowRight, Calendar, Clock, User, Sparkles, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Calendar, Clock, User, Sparkles, Loader2, Share2 } from "lucide-react";
+import { toast } from "sonner";
 import type { Json } from "@/integrations/supabase/types";
 
 interface Post {
@@ -130,52 +131,74 @@ const BlogPost = () => {
 
       <Navbar />
 
-      <main className="min-h-screen pt-16 md:pt-20">
-        {post.cover_image_url && (
-          <div className="relative h-64 md:h-96 overflow-hidden">
-            <img src={post.cover_image_url} alt={post.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12">
-              <div className="container mx-auto max-w-3xl">
-                {post.category && (
-                  <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full mb-3">
-                    {post.category}
-                  </span>
-                )}
-                <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">{post.title}</h1>
-              </div>
-            </div>
-          </div>
-        )}
+      <main className="min-h-screen pt-20 md:pt-24 bg-background">
+        <div className="container mx-auto max-w-3xl px-4">
+          <Link to="/blog" className="inline-flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground mb-6">
+            <ArrowLeft className="w-4 h-4" /> All articles
+          </Link>
 
-        {!post.cover_image_url && (
-          <div className="container mx-auto max-w-3xl px-4 pt-8">
+          <header className="mb-8">
             {post.category && (
-              <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full mb-3">
+              <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-semibold tracking-wide uppercase rounded-full mb-4">
                 {post.category}
               </span>
             )}
-            <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">{post.title}</h1>
-          </div>
-        )}
+            <h1 className="text-3xl md:text-5xl font-bold text-foreground leading-tight tracking-tight mb-5">
+              {post.title}
+            </h1>
+            {post.excerpt && (
+              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">{post.excerpt}</p>
+            )}
 
-        <div className="container mx-auto max-w-3xl px-4 py-6 border-b border-border">
-          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            {post.author_name && (
-              <div className="flex items-center gap-1.5"><User className="w-4 h-4" />{post.author_name}</div>
-            )}
-            {post.published_at && (
-              <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{new Date(post.published_at).toLocaleDateString()}</div>
-            )}
-            {post.read_time && (
-              <div className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.read_time}</div>
-            )}
-          </div>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-muted-foreground mt-6 pb-6 border-b border-border">
+              {post.author_name && (
+                <div className="flex items-center gap-1.5"><User className="w-4 h-4" />{post.author_name}</div>
+              )}
+              {post.published_at && (
+                <div className="flex items-center gap-1.5"><Calendar className="w-4 h-4" />{new Date(post.published_at).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" })}</div>
+              )}
+              {post.read_time && (
+                <div className="flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.read_time}</div>
+              )}
+              <button
+                onClick={() => {
+                  if (navigator.share) navigator.share({ title: post.title, url }).catch(() => {});
+                  else { navigator.clipboard.writeText(url); toast.success("Link copied"); }
+                }}
+                className="ml-auto inline-flex items-center gap-1.5 hover:text-foreground transition"
+              >
+                <Share2 className="w-4 h-4" /> Share
+              </button>
+            </div>
+          </header>
+
+          {post.cover_image_url && (
+            <figure className="mb-10 -mx-4 md:mx-0">
+              <img
+                src={post.cover_image_url}
+                alt={post.title}
+                className="w-full aspect-[16/9] object-cover md:rounded-2xl shadow-sm"
+              />
+            </figure>
+          )}
         </div>
 
-        <article className="container mx-auto max-w-3xl px-4 py-8 md:py-12">
+        <article className="container mx-auto max-w-3xl px-4 pb-16">
           <div
-            className="prose prose-lg max-w-none prose-headings:text-foreground prose-p:text-muted-foreground prose-a:text-primary prose-strong:text-foreground prose-li:text-muted-foreground"
+            className="prose prose-lg max-w-none
+              prose-headings:text-foreground prose-headings:font-bold prose-headings:tracking-tight
+              prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
+              prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-3
+              prose-h4:text-xl prose-h4:mt-8 prose-h4:mb-2
+              prose-p:text-foreground/80 prose-p:leading-relaxed
+              prose-a:text-primary prose-a:no-underline hover:prose-a:underline
+              prose-strong:text-foreground prose-strong:font-semibold
+              prose-li:text-foreground/80 prose-li:marker:text-primary
+              prose-blockquote:border-l-primary prose-blockquote:bg-muted/40 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r-lg prose-blockquote:not-italic prose-blockquote:text-foreground
+              prose-img:rounded-xl prose-img:shadow-sm
+              prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+              prose-pre:bg-muted prose-pre:text-foreground prose-pre:border prose-pre:border-border
+              prose-hr:border-border"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
