@@ -1,0 +1,60 @@
+/* Polished styling for the Quill-based CMS editor */
+.cms-editor .ql-toolbar.ql-snow {
+  border: none;
+  border-bottom: 1px solid hsl(var(--border));
+  background: hsl(var(--muted) / 0.4);
+  border-radius: 0.5rem 0.5rem 0 0;
+  padding: 0.6rem 0.75rem;
+}
+.cms-editor .ql-container.ql-snow {
+  border: none;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.cms-editor .ql-editor {
+  min-height: 420px;
+  padding: 1.5rem 1.25rem;
+  color: hsl(var(--foreground));
+  line-height: 1.7;
+}
+.cms-editor .ql-editor.ql-blank::before {
+  color: hsl(var(--muted-foreground));
+  font-style: normal;
+  left: 1.25rem;
+  right: 1.25rem;
+}
+.cms-editor .ql-editor h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
+.cms-editor .ql-editor h3 { font-size: 1.35rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+.cms-editor .ql-editor h4 { font-size: 1.1rem;  font-weight: 600; margin: 1rem 0 0.5rem; }
+.cms-editor .ql-editor p  { margin: 0 0 1rem; }
+.cms-editor .ql-editor blockquote {
+  border-left: 3px solid hsl(var(--primary));
+  padding: 0.25rem 0 0.25rem 1rem;
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+  margin: 1rem 0;
+}
+.cms-editor .ql-editor pre.ql-syntax,
+.cms-editor .ql-editor code {
+  background: hsl(var(--muted));
+  color: hsl(var(--foreground));
+  border-radius: 0.375rem;
+  padding: 0.15rem 0.4rem;
+  font-size: 0.9em;
+}
+.cms-editor .ql-editor pre.ql-syntax { padding: 1rem; overflow-x: auto; }
+.cms-editor .ql-editor img { border-radius: 0.5rem; margin: 1rem 0; max-width: 100%; height: auto; }
+.cms-editor .ql-editor a { color: hsl(var(--primary)); text-decoration: underline; text-underline-offset: 3px; }
+.cms-editor .ql-snow .ql-stroke { stroke: hsl(var(--foreground)); }
+.cms-editor .ql-snow .ql-fill   { fill:   hsl(var(--foreground)); }
+.cms-editor .ql-snow .ql-picker { color:  hsl(var(--foreground)); }
+.cms-editor .ql-snow.ql-toolbar button:hover,
+.cms-editor .ql-snow.ql-toolbar button.ql-active {
+  background: hsl(var(--primary) / 0.1);
+  border-radius: 0.25rem;
+}
+.cms-editor .ql-snow.ql-toolbar button:hover .ql-stroke,
+.cms-editor .ql-snow.ql-toolbar button.ql-active .ql-stroke { stroke: hsl(var(--primary)); }
+.cms-editor .ql-snow.ql-toolbar button:hover .ql-fill,
+.cms-editor .ql-snow.ql-toolbar button.ql-active .ql-fill { fill: hsl(var(--primary)); }
