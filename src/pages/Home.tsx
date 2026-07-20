@@ -14,6 +14,7 @@ const UnifiedCTASection = lazy(() => import("@/components/landing/UnifiedCTASect
 const ClientLogosSection = lazy(() => import("@/components/landing/ClientLogosSection").then(m => ({ default: m.ClientLogosSection })));
 const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection })));
 const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m => ({ default: m.BlogSection })));
+const FAQSection = lazy(() => import("@/components/landing/FAQSection").then(m => ({ default: m.FAQSection })));
 const WhoIsThisForSection = lazy(() => import("@/components/landing/WhoIsThisForSection").then(m => ({ default: m.WhoIsThisForSection })));
 const HeroDashboardPreview = lazy(() => import("@/components/home/HeroDashboardPreview").then(m => ({ default: m.HeroDashboardPreview })));
 const ServicesCarousel = lazy(() => import("@/components/home/ServicesCarousel").then(m => ({ default: m.ServicesCarousel })));
@@ -213,6 +214,7 @@ const Home = () => {
         <WhoIsThisForSection />
         <TestimonialSection />
         <BlogSection />
+        <FAQSection slug="home" />
         <UnifiedCTASection
           headline="Work with a Growth-Oriented AI Digital Marketing Agency Today"
           subtext="We are a seasoned AI-Powered digital marketing company with a legacy of building advanced strategies that focus on growth that drives traffic, conversions, and revenues. We offer a free brand audit with our team of 30 experts to build a plan that helps you focus on your growth."
