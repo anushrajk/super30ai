@@ -7,20 +7,20 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const forYou = [
-  "Spending ₹50,000+/mo but can't predict ROI",
-  "Revenue from organic is important",
-  "You want visibility inside ChatGPT & Google AI",
-  "You want one agency accountable for outcomes",
-  "You're ready to invest in long-term growth",
-  "You value data-driven decision making",
+  "You invest ₹50,000 monthly and expect measurable SEO performance",
+  "Organic search visibility directly impacts your business growth",
+  "You want stronger visibility across ChatGPT and Google AI results",
+  "You prefer one accountable agency managing complete SEO execution",
+  "You value sustainable long-term search growth and brand authority",
+  "You rely on data driven decisions for marketing performance",
 ];
 
 const notForYou = [
-  "Bloggers looking for quick traffic",
-  "₹10k/month SEO budget expectations",
-  "Link sellers and black-hat practitioners",
-  "Looking for overnight results",
-  "Not ready to commit to a strategy",
+  "You only want short-term traffic spikes without a strategy",
+  "You expect enterprise level SEO growth with only a 10k/mo budget",
+  "You rely on outdated backlink selling or spam SEO tactics",
+  "You expect overnight rankings without consistent optimization efforts",
+  "You are not ready for a structured long-term SEO strategy",
 ];
 
 export const RelevanceFilterSection = () => {
@@ -45,13 +45,13 @@ export const RelevanceFilterSection = () => {
       <div className="container mx-auto px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
-            Instant Relevance Filter
+            Instant Fit Assessment
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Is This Right For You?
+            Is This SEO Strategy Right for Your Business?
           </h2>
           <p className="text-lg text-gray-300">
-            We're selective about who we work with — and honest about who we can help
+            We're selective about who we work with and honest about who we can help. We partner with businesses that prioritize growth, search visibility, and measurable performance outcomes across Google and AI driven search platforms.
           </p>
         </div>
 
@@ -67,7 +67,7 @@ export const RelevanceFilterSection = () => {
                   <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30">
                     <Check className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-green-400">This is for you if...</h3>
+                  <h3 className="text-xl font-bold text-green-400">This Is Best for You If...</h3>
                 </div>
                 <ul className="space-y-4">
                   {forYou.map((item, index) => (
@@ -98,7 +98,7 @@ export const RelevanceFilterSection = () => {
                   <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/30">
                     <X className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-red-400">Not for you if...</h3>
+                  <h3 className="text-xl font-bold text-red-400">Not the Right Fit If...</h3>
                 </div>
                 <ul className="space-y-4">
                   {notForYou.map((item, index) => (
@@ -127,7 +127,7 @@ export const RelevanceFilterSection = () => {
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
           >
             <Sparkles className="w-4 h-4 mr-2" />
-            Start Free Audit Now
+            Start Your Free SEO Audit
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button 
