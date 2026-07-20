@@ -2,15 +2,15 @@ import { Card, CardContent } from "@/components/ui/card";
 import { X, Check, Search, Bot, Building2, Users } from "lucide-react";
 
 const comparisons = [
-  { traditional: "Keyword chasing", ai: "Entity & intent ownership" },
-  { traditional: "Monthly reports", ai: "Predictive dashboards" },
-  { traditional: "Traffic focus", ai: "Revenue & lead focus" },
-  { traditional: "Google only", ai: "Google + AI + LLMs" },
+  { traditional: "Only keyword focused targeting", ai: "AI and intent driven SEO" },
+  { traditional: "Static performance reporting", ai: "Predictive AI search reporting" },
+  { traditional: "Traffic driven strategy", ai: "Revenue & lead focused optimization" },
+  { traditional: "Google focused optimization", ai: "Google AI and LLMs visibility" },
 ];
 
 const journeySteps = [
   { icon: Search, label: "User Search", color: "bg-muted" },
-  { icon: Bot, label: "AI Processing", color: "bg-orange-100" },
+  { icon: Bot, label: "AI Analysis", color: "bg-orange-100" },
   { icon: Building2, label: "Your Brand", color: "bg-gradient-to-br from-orange-500 to-orange-600", textColor: "text-white" },
   { icon: Users, label: "Qualified Leads", color: "bg-green-100" },
 ];
@@ -27,10 +27,10 @@ export const AIComparisonSection = () => {
             The Difference
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Future-Proof Your Site with Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">AI SEO Agency</span> in Bangalore
+            Traditional SEO vs Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Modern AI SEO Strategy</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Technical errors kill your rankings before you even start. As a leading <span className="text-foreground font-semibold">SEO agency in Bangalore</span>, we fix your site structure, speed and entity signals so search engines — and AI search — can find, trust and reward your content.
+            Search behavior is shifting from keyword based results to AI generated answers. Our <span className="text-foreground font-semibold">SEO agency in Bangalore</span> combines technical accuracy, intent driven strategy, and authority signals so search engines and AI platforms better understand, trust, and rank your business.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export const AIComparisonSection = () => {
                 {/* AI SEO Column */}
                 <div className="p-4 md:p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 flex flex-col">
                   <h3 className="text-lg font-bold text-orange-600 mb-4 text-center">
-                    The Super 30 AI SEO
+                    Modern AI SEO Strategy
                   </h3>
                   <div className="space-y-3 flex-1">
                     {comparisons.map((item, index) => (
@@ -87,7 +87,7 @@ export const AIComparisonSection = () => {
           <Card className="border-border/50 shadow-2xl hover:shadow-xl transition-all duration-500 h-full">
             <CardContent className="p-4 md:p-6 h-full flex flex-col justify-center">
               <h3 className="text-lg font-bold text-foreground mb-6 text-center">
-                The AI Search Journey
+                The AI SEO Search Journey
               </h3>
               <div className="flex flex-wrap items-center justify-center gap-3 flex-1">
                 {journeySteps.map((step, index) => (
@@ -108,7 +108,7 @@ export const AIComparisonSection = () => {
                 ))}
               </div>
               <p className="text-center text-muted-foreground mt-6 text-sm bg-gradient-to-r from-orange-50 to-orange-100/50 p-4 rounded-xl border border-orange-200/50">
-                AI SEO ensures your brand is <span className="font-semibold text-orange-600">recognized</span>, <span className="font-semibold text-orange-600">recommended</span>, and <span className="font-semibold text-orange-600">cited</span> throughout this journey.
+                AI SEO can make your business <span className="font-semibold text-orange-600">recognizable</span>, <span className="font-semibold text-orange-600">trusted</span>, <span className="font-semibold text-orange-600">recommended</span>, and <span className="font-semibold text-orange-600">referenced</span> across the complete search journey.
               </p>
             </CardContent>
           </Card>
