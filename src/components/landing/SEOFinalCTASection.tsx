@@ -5,10 +5,10 @@ import { ArrowRight, Search, TrendingUp, Brain, Zap, Sparkles, MessageCircle } f
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const benefits = [
-  { icon: Brain, text: "Complete AI visibility audit" },
-  { icon: Search, text: "Custom SEO strategy" },
-  { icon: TrendingUp, text: "Traffic growth projections" },
-  { icon: Zap, text: "Quick wins identification" },
+  { icon: Brain, text: "Complete AI search visibility" },
+  { icon: Search, text: "Customized SEO growth strategy" },
+  { icon: TrendingUp, text: "Organic traffic growth forecasting" },
+  { icon: Zap, text: "Priority opportunity identification" },
 ];
 
 export const SEOFinalCTASection = () => {
@@ -31,14 +31,14 @@ export const SEOFinalCTASection = () => {
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-brand/20 border border-brand/30 px-4 py-1.5 rounded-full mb-6">
             <Search className="w-4 h-4 text-brand" />
-            <span className="text-brand text-sm font-medium">Free AI SEO Strategy Session</span>
+            <span className="text-brand text-sm font-medium">Free AI SEO Consultation</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Dominate AI Search in Bangalore?</span>
+            Ready to Lead with <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">AI SEO Company in Bangalore?</span>
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Stop letting your rivals take your leads. Connect with the best <span className="text-white font-semibold">SEO agency in Bangalore</span> today for a free audit and see how our AI growth plan can help you own the first page of Google.
+            Stop losing qualified search traffic to your competitors. Connect with a leading <span className="text-white font-semibold">AI SEO agency in Bangalore</span> for a strategic AI visibility audit and discover how advanced search optimization can boost your rankings, increase qualified inquiries, and improve sustainable organic growth.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -57,7 +57,7 @@ export const SEOFinalCTASection = () => {
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2" />
-              Get My Free SEO Audit
+              Get Your Free SEO Audit
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
