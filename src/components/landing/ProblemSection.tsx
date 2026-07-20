@@ -7,23 +7,23 @@ import { BentoGrid, BentoBadge } from "@/components/ui/bento-grid";
 const problems = [
   {
     icon: Bot,
-    title: "AI Assistants Don't Recommend You",
-    description: "ChatGPT and Perplexity recommend your competitors. Not you."
+    title: "AI Platforms Do Not Feature Your Business",
+    description: "ChatGPT and Perplexity reference competitors rather than your brand."
   },
   {
     icon: TrendingDown,
-    title: "Your Rankings Are Declining",
-    description: "Google's AI Overviews are pushing organic results down."
+    title: "Your Search Visibility Keeps Dropping Lower",
+    description: "Google AI results continue to reduce traditional organic search visibility."
   },
   {
     icon: FileX,
-    title: "Content Gets Ignored",
-    description: "You publish quality content, but AI systems don't cite you."
+    title: "Your Content Fails to Gain Visibility",
+    description: "You create valuable content, but AI platforms rarely reference it."
   },
   {
     icon: DollarSign,
-    title: "Rankings ≠ Revenue Anymore",
-    description: "Traditional SEO metrics don't translate to business growth."
+    title: "Search Rankings No Longer Drive Revenue",
+    description: "Traditional SEO reporting no longer reflects actual business performance."
   }
 ];
 
@@ -51,7 +51,7 @@ export const ProblemSection = () => {
             Your Competitors Are Ranking on Google. <span className="text-destructive">Why Are You Not?</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Standard search results are changing fast. Our <span className="text-foreground font-semibold">SEO services in Bangalore</span> use smart data to find the exact gaps your rivals missed — so you can claim the top spot and stay there.
+            Search visibility is evolving rapidly, and outdated SEO methods are becoming less effective. Our <span className="text-foreground font-semibold">SEO services in Bangalore</span> leverage advanced search intelligence to identify missed ranking opportunities, enhance AI visibility, and position your business ahead of competitors.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export const ProblemSection = () => {
             size="lg"
             className="bg-brand-gradient hover:opacity-90 text-white hover:scale-105 transition-all duration-300"
           >
-            See how your site looks to AI
+            Discover Your Search Visibility
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </div>

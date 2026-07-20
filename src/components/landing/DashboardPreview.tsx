@@ -6,16 +6,16 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const features = [
   { 
     id: "visibility",
-    label: "Real-time AI visibility tracking",
+    label: "Real time AI visibility monitoring",
     metrics: [
-      { label: "AI Visibility", value: "78%", icon: Eye, color: "from-orange-500 to-orange-600" },
-      { label: "Impressions", value: "12.4K", icon: TrendingUp, color: "from-blue-500 to-blue-600" },
-      { label: "Growth", value: "+24%", icon: BarChart3, color: "from-green-500 to-green-600" }
+      { label: "AI Search Visibility", value: "78%", icon: Eye, color: "from-orange-500 to-orange-600" },
+      { label: "Search Impressions", value: "12.4K", icon: TrendingUp, color: "from-blue-500 to-blue-600" },
+      { label: "Organic Growth Rate", value: "+24%", icon: BarChart3, color: "from-green-500 to-green-600" }
     ]
   },
   { 
     id: "chatgpt",
-    label: "ChatGPT & Perplexity monitoring",
+    label: "ChatGPT and Perplexity visibility monitoring",
     metrics: [
       { label: "ChatGPT Mentions", value: "89", icon: MessageSquare, color: "from-purple-500 to-purple-600" },
       { label: "Perplexity Cites", value: "56", icon: Target, color: "from-pink-500 to-pink-600" },
@@ -24,7 +24,7 @@ const features = [
   },
   { 
     id: "competitor",
-    label: "Competitor AI presence analysis",
+    label: "Competitor AI visibility analysis",
     metrics: [
       { label: "Your Rank", value: "#2", icon: TrendingUp, color: "from-orange-500 to-orange-600" },
       { label: "Share of Voice", value: "34%", icon: BarChart3, color: "from-blue-500 to-blue-600" },
@@ -33,7 +33,7 @@ const features = [
   },
   { 
     id: "citations",
-    label: "Citation & mention tracking",
+    label: "Brand citation and mention monitoring",
     metrics: [
       { label: "Citations", value: "124", icon: MessageSquare, color: "from-green-500 to-green-600" },
       { label: "Brand Mentions", value: "287", icon: Users, color: "from-orange-500 to-orange-600" },
@@ -42,7 +42,7 @@ const features = [
   },
   { 
     id: "roi",
-    label: "ROI & revenue attribution",
+    label: "Revenue focused SEO attribution",
     metrics: [
       { label: "AI Revenue", value: "$48K", icon: TrendingUp, color: "from-green-500 to-green-600" },
       { label: "ROI", value: "340%", icon: BarChart3, color: "from-orange-500 to-orange-600" },
@@ -51,7 +51,7 @@ const features = [
   },
   { 
     id: "custom",
-    label: "Custom reporting dashboards",
+    label: "Customized performance reporting dashboards",
     metrics: [
       { label: "Reports", value: "12", icon: BarChart3, color: "from-purple-500 to-purple-600" },
       { label: "Widgets", value: "48", icon: Eye, color: "from-pink-500 to-pink-600" },
@@ -78,10 +78,10 @@ export const DashboardPreview = () => {
             Analytics
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Reporting & Dashboard
+            AI SEO Reporting & Performance Dashboard
           </h2>
           <p className="text-lg text-muted-foreground">
-            See your AI SEO performance in real-time
+            Monitor your AI SEO performance in real time through advanced reporting dashboards.
           </p>
         </div>
 

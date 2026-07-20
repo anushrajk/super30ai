@@ -38,56 +38,56 @@ const benefits = [
   {
     icon: Search,
     title: "AI Search Visibility",
-    description: "Dominate ChatGPT, Perplexity, and Google AI Overviews with optimized content.",
-    features: ["AI query optimization", "LLM citations", "Generative search visibility"],
+    description: "Dominate visibility across ChatGPT, Perplexity, and Google AI platforms with strategically optimized search content.",
+    features: ["AI search optimization", "LLM brand citations", "Generative search visibility"],
   },
   {
     icon: TrendingUp,
     title: "Organic Traffic Growth",
-    description: "Drive sustainable, high-quality traffic that converts without paid ads.",
-    features: ["Long-term rankings", "Compound growth", "Zero ad spend"],
+    description: "Drive sustainable organic traffic growth through search strategies focused on qualified business conversions without paid ads.",
+    features: ["Long-term rankings", "Compounding search growth", "Zero paid ad spend"],
   },
   {
     icon: Target,
-    title: "High-Intent Leads",
-    description: "Attract visitors actively searching for your solutions.",
-    features: ["Intent mapping", "Buyer journey targeting", "Conversion optimization"],
+    title: "Highly Qualified Leads",
+    description: "Attract high intent visitors actively searching for products, services, and business solutions.",
+    features: ["Search intent mapping", "Customer journey targeting", "Conversion focused optimization"],
   },
   {
     icon: Users,
-    title: "Brand Authority",
-    description: "Position your business as the trusted expert in your industry.",
-    features: ["Thought leadership", "Industry citations", "Trust signals"],
+    title: "Brand Authority Growth",
+    description: "Position your business as a credible industry leader through trusted search visibility and authority signals.",
+    features: ["Thought leadership content", "Industry mentions and citations", "Brand trust signals"],
   },
   {
     icon: BarChart3,
     title: "Measurable ROI",
-    description: "Track every lead and sale back to your SEO investment.",
-    features: ["Revenue attribution", "Clear reporting", "Performance metrics"],
+    description: "Track every qualified lead and conversion generated through your SEO strategy and search visibility.",
+    features: ["Revenue attribution", "Transparent growth insights", "Performance driven metrics"],
   },
   {
     icon: Shield,
-    title: "Future-Proof Strategy",
-    description: "Stay ahead as AI transforms how people discover businesses.",
-    features: ["Algorithm-proof", "AI-ready content", "Adaptive optimization"],
+    title: "Future Ready SEO Strategy",
+    description: "Stay visible as AI driven search experiences continue to reshape how customers discover businesses online.",
+    features: ["Algorithm proof optimization", "AI optimized content", "Adaptive search strategy"],
   },
   {
     icon: Globe,
-    title: "Global Reach",
-    description: "Expand your visibility beyond local markets to global audiences.",
-    features: ["International SEO", "Multi-language", "Market expansion"],
+    title: "Expanded Global Reach",
+    description: "Grow your online presence beyond regional markets and connect with wider international audiences.",
+    features: ["International SEO growth", "Multilingual search visibility", "Global market expansion"],
   },
   {
     icon: Zap,
-    title: "Faster Results",
-    description: "See meaningful improvements in weeks, not months.",
-    features: ["Quick wins", "Prioritized actions", "Accelerated growth"],
+    title: "Faster Organic Results",
+    description: "Achieve measurable SEO improvements through focused optimization strategies and smarter search execution.",
+    features: ["Early growth momentum", "Priority based execution", "Accelerated search visibility"],
   },
   {
     icon: Clock,
     title: "24/7 Visibility",
-    description: "Your content works around the clock to attract customers.",
-    features: ["Always-on marketing", "Passive lead gen", "Consistent presence"],
+    description: "Your search visibility continues working around the clock to attract relevant customers and qualified business inquiries.",
+    features: ["Consistent search presence", "Passive lead generation", "Consistent brand marketing"],
   },
 ];
 
@@ -154,13 +154,13 @@ export const SEOBenefitsSection = () => {
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
-            Why Choose AI SEO
+            Why Modern AI SEO Matters?
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Content That Wins in the Age of AI Search
+            Content Strategies Designed for Modern AI Search Visibility
           </h2>
           <p className="text-base md:text-lg text-gray-300">
-            We don't just write for bots — we write for your customers. Our <span className="text-white font-semibold">search engine optimization services in Bangalore</span> focus on high-quality authority building that proves to Google and AI engines that you are the leader in your niche.
+            We don't just write for bots, we write for your customers. Modern SEO goes beyond just search rankings. Our <span className="text-white font-semibold">search engine optimization services in Bangalore</span> develop authoritative content strategies to boost your Google visibility, enhance your relevance for AI Search, and establish your brand as a trusted industry leader in your niche.
           </p>
         </div>
 
@@ -260,7 +260,7 @@ export const SEOBenefitsSection = () => {
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
           >
             <Sparkles className="w-4 h-4 mr-2" />
-            Start Free Audit Now
+            Start Your Free SEO Audit
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button 
