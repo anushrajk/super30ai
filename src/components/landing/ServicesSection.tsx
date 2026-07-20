@@ -5,44 +5,44 @@ import { Search, Target, BarChart3, FileText, Shield, Zap, ArrowRight, Quote, Us
 import { BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
 const coreServices = [{
   icon: Search,
-  title: "AI Search Optimization",
-  description: "Optimize for AI-powered search results"
+  title: "AI SEO Visibility",
+  description: "Improve visibility across AI powered search engines and GEO discovery platforms."
 }, {
   icon: Target,
-  title: "Intent Mapping",
-  description: "Map user intent to AI understanding"
+  title: "Intent Based SEO Mapping",
+  description: "Align search intent with structured AI understanding and smarter organic discovery patterns."
 }, {
   icon: BarChart3,
-  title: "Predictive Analytics",
-  description: "Data-driven SEO forecasting"
+  title: "Predictive SEO Analytics",
+  description: "Use performance forecasting and search behavior analysis to guide strategic SEO decisions."
 }, {
   icon: FileText,
   title: "AI Content Strategy",
-  description: "Content that AI systems cite"
+  description: "Develop authoritative content frameworks designed for AI indexing and search relevance."
 }, {
   icon: Shield,
-  title: "Authority Building",
-  description: "Establish AI trust signals"
+  title: "Digital Authority Signals",
+  description: "Establish brand credibility through trusted entity signals and authoritative SEO positioning."
 }, {
   icon: Zap,
-  title: "Technical AI SEO",
-  description: "Technical foundation for AI"
+  title: "Advanced Technical AI SEO",
+  description: "Build a search optimized technical structure designed for modern AI search systems."
 }, {
   icon: Globe,
-  title: "LLM Visibility Optimization",
-  description: "Get cited in ChatGPT & Perplexity"
+  title: "LLM Search Visibility",
+  description: "Improve discoverability across ChatGPT, Perplexity, and evolving AI driven search platforms."
 }, {
   icon: MessageSquare,
-  title: "AI Brand Mentions",
-  description: "Build brand presence in AI responses"
+  title: "AI Brand Presence",
+  description: "Increase brand visibility within AI generated search responses and recommendation systems."
 }, {
   icon: TrendingUp,
-  title: "Revenue Attribution",
-  description: "Track SEO-to-revenue pipeline"
+  title: "Revenue Focused SEO",
+  description: "Track business growth through measurable SEO attribution and qualified conversion performance."
 }];
 const intentMappingIcons = [{
   Icon: Search,
-  label: "Query Analysis"
+  label: "Search Analysis"
 }, {
   Icon: Target,
   label: "Intent Mapping"
@@ -53,19 +53,19 @@ const intentMappingIcons = [{
 const aiPromptFeatures = [{
   icon: Sparkles,
   title: "Optimize for AI",
-  description: "Structure content for LLM consumption"
+  description: "Develop and optimize content for sophisticated AI search comprehension and LLM content processing."
 }, {
   icon: Bot,
-  title: "LLM Training Signals",
-  description: "Build authority AI systems recognize"
+  title: "LLM Authority Signals",
+  description: "Develop trusted authority signals that AI systems recognize and prioritize across search results."
 }, {
   icon: BrainCircuit,
-  title: "Citation Building",
-  description: "Get cited as trusted source"
+  title: "Authority Citation Growth",
+  description: "Increase trusted brand mentions across AI search responses and discovery platforms."
 }, {
   icon: LineChart,
-  title: "Monitor & Track",
-  description: "Real-time AI visibility metrics"
+  title: "Tracking & Monitoring",
+  description: "Track AI search visibility through live performance reporting and discovery insights."
 }];
 const technicalTabs = [{
   id: "schema",
@@ -127,10 +127,10 @@ export const ServicesSection = () => {
             Our Services
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            Measurable ROI from Your Search Strategy
+            Advanced AI SEO Strategies To Drive Scalable Business Growth
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            We focus on the numbers that move your business forward. Our <span className="text-foreground font-semibold">search engine optimization services in Bangalore</span> have helped 300+ brands scale organic leads and dominate their market — across technical, on-page and off-page SEO.
+            We prioritize measurable growth in search presence that boosts AI visibility, generates high quality leads, and drives long-term growth in business performance. For 300+ brands, our <span className="text-foreground font-semibold">AI SEO services in Bangalore</span> have enabled them to enhance their organic reach, boost their AI search visibility, and drive revenue growth through advanced search optimization techniques, ranging from technical SEO to content systems and authority building.
           </p>
         </div>
 
@@ -159,16 +159,16 @@ export const ServicesSection = () => {
               </span>
               <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">AI Search & Intent Mapping</h3>
               <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
-                Understand how AI systems interpret search queries and map your content to user intent.
+                Understand how AI search systems process search queries and align your content with users' intent.
               </p>
               <ul className="space-y-2.5 mb-5">
-                {["AI query analysis and intent classification", "Semantic search optimization", "User journey mapping for AI platforms"].map((item, i) => <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
+                {["AI search analysis and intent classification", "Semantic search performance optimization", "User journey mapping for AI platforms"].map((item, i) => <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
                     <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
                     {item}
                   </li>)}
               </ul>
               <Button onClick={scrollToForm} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300">
-                Map My AI Visibility
+                Improve AI Visibility
                 <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
@@ -212,7 +212,7 @@ export const ServicesSection = () => {
                 AI Prompt & Generative Search Optimization
               </h3>
               <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                Optimize your content to appear in AI-generated answers and become the trusted source LLMs cite.
+                Optimize your content to appear in AI generated responses and become a trusted source cited by AI systems.
               </p>
             </div>
             
@@ -284,12 +284,12 @@ export const ServicesSection = () => {
               <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">95%</div>
-                  <div className="text-xs text-muted-foreground">AI Citation Rate</div>
+                  <div className="text-xs text-muted-foreground">AI Visibility Accuracy</div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">3x</div>
-                  <div className="text-xs text-muted-foreground">Visibility Boost</div>
+                  <div className="text-xs text-muted-foreground">Search Discovery Growth</div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="text-center group cursor-default">
