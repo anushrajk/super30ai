@@ -284,17 +284,17 @@ export const ServicesSection = () => {
               <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">95%</div>
-                  <div className="text-xs text-muted-foreground">AI Visibility Accuracy</div>
+                  <div className="text-xs text-muted-foreground">AI Citation Rate</div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">3x</div>
-                  <div className="text-xs text-muted-foreground">Search Discovery Growth</div>
+                  <div className="text-xs text-muted-foreground">AI Visibility Growth</div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">24/7</div>
-                  <div className="text-xs text-muted-foreground">AI Monitoring</div>
+                  <div className="text-xs text-muted-foreground">AI Search Monitoring</div>
                 </div>
               </div>
             </div>
