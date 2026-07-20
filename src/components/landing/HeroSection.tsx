@@ -57,7 +57,7 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                The Super 30 is a full-service <span className="text-foreground font-semibold">digital marketing agency in Bangalore</span>. We combine AI-driven strategies with expert execution across SEO, paid ads, social media, and web design to accelerate your growth.
+                There are many brands out there that have trouble with traffic that doesn't convert. We are a <span className="text-foreground font-semibold">performance driven digital marketing company</span> that provide AI driven strategies to bring in qualified customers and accelerate revenue growth with insights.
               </p>
             </div>
 
