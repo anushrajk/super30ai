@@ -221,7 +221,7 @@ const Home = () => {
         <BlogSection />
         <UnifiedCTASection
           headline="Work with a Growth-Oriented AI Digital Marketing Agency Today"
-          subtext="Stop the guesswork and start growing with strategies focused on traffic, conversions, and revenue. Connect with our digital marketing experts for a free brand audit and discover a smarter path to lead your industry."
+          subtext="We are a seasoned AI-Powered digital marketing company with a legacy of building advanced strategies that focus on growth that drives traffic, conversions, and revenues. We offer a free brand audit with our team of 30 experts to build a plan that helps you focus on your growth."
           primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }}
           secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }}
         />
