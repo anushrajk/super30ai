@@ -20,15 +20,15 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const audiences = [
-  { icon: Building2, title: "B2B SaaS", description: "Full-funnel digital marketing for SaaS — from SEO and content to paid campaigns that generate qualified pipeline." },
-  { icon: ShoppingCart, title: "E-commerce", description: "AI-driven eCommerce marketing combining SEO, paid ads, and social media to boost conversions and ROAS." },
-  { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to build authority, drive inbound leads, and grow your practice." },
-  { icon: GraduationCap, title: "EdTech", description: "Multi-channel digital marketing for EdTech — SEO, paid campaigns, and social media to reach learners at scale." },
-  { icon: Stethoscope, title: "Healthcare", description: "Compliance-ready digital marketing for healthcare — from patient acquisition ads to trust-building content." },
-  { icon: Rocket, title: "Tech Startups", description: "Growth marketing for startups — rapid experimentation across SEO, ads, social, and content to find product-market fit." },
-  { icon: HomeIcon, title: "Real Estate", description: "Digital marketing strategies for real estate — SEO, Google Ads, social media, and landing pages that generate quality leads." },
-  { icon: Scale, title: "Legal Services", description: "Targeted digital marketing for law firms — from local SEO to paid ads that attract high-intent clients." },
-  { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality — social media, SEO, and paid campaigns that drive bookings." },
+  { icon: Building2, title: "B2B SaaS", description: "Full funnel digital marketing for SaaS from SEO and content to paid campaigns that generate a qualified pipeline." },
+  { icon: ShoppingCart, title: "E-commerce", description: "AI driven e-commerce marketing combining SEO, paid ads, and social media to increase conversions and ROAS." },
+  { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to establish authority, attract inbound leads, and grow your practice." },
+  { icon: GraduationCap, title: "EdTech", description: "Multi channel digital marketing for EdTech using SEO, paid campaigns, and social media to scale learner acquisition." },
+  { icon: Stethoscope, title: "Healthcare", description: "Compliance ready digital marketing for healthcare, from patient acquisition ads to trust building content that converts." },
+  { icon: Rocket, title: "Tech Startups", description: "Growth marketing for startups using rapid experimentation across SEO, ads, social, and content to achieve the best product market fit." },
+  { icon: HomeIcon, title: "Real Estate", description: "Digital marketing strategies for real estate using SEO, Google Ads, social media, and landing pages that generate quality leads." },
+  { icon: Scale, title: "Legal Services", description: "Targeted digital marketing for law firms, from local SEO to paid ads that attract high intent clients." },
+  { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality using social media, SEO, and paid campaigns that drive bookings." },
 ];
 
 export const WhoIsThisForSection = () => {
@@ -55,7 +55,7 @@ export const WhoIsThisForSection = () => {
             Industry-Leading AI Digital Marketing Company for Every Sector
           </h2>
           <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-            Our AI-powered digital marketing solutions are designed for ambitious businesses ready to scale across every channel.
+            Our digital marketing company is custom built for dynamic business models that are prepared to grow across every channel.
           </p>
         </div>
 
@@ -83,7 +83,7 @@ export const WhoIsThisForSection = () => {
         </BentoGrid>
 
         <div className={`text-center transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
-          <p className="text-gray-400 mb-5 text-sm md:text-base">Don't see your industry? We work with all growth-focused businesses.</p>
+          <p className="text-gray-400 mb-5 text-sm md:text-base">Is Your Industry Not Listed? We help businesses across every sector grow with confidence.</p>
           
           {/* Dual CTA */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

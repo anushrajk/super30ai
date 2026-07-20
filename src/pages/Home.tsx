@@ -131,7 +131,7 @@ const Home = () => {
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                Many brands struggle with traffic that fails to convert. As a performance-focused <span className="text-foreground font-semibold">digital marketing company</span>, we create AI-powered strategies that help attract qualified customers and grow your revenue faster through data.
+                There are many brands out there that have trouble with traffic that doesn't convert. We are a performance driven <span className="text-foreground font-semibold">digital marketing company</span> and provide AI driven strategies to bring in qualified customers and accelerate revenue growth with insights.
               </p>
 
               {/* Platform Logos - simplified inline SVGs kept */}
@@ -195,10 +195,10 @@ const Home = () => {
                 Why Us
               </span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-                Why We Are the Preferred AI Digital Marketing Agency for Rapid Growth
+                Why We Are the Preferred AI Digital Marketing Company for Rapid Growth
               </h2>
               <p className="text-lg text-muted-foreground">
-                We combine human creativity with machine learning. This allows our AI based digital marketing agency to predict market trends and optimize your brand performance in real time for maximum profit.
+                We combine human creativity with machine learning. This facilitates our digital marketing company in predicting market trends and optimizing your brand to get more profitable in real-time with our AI tools.
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -221,7 +221,7 @@ const Home = () => {
         <BlogSection />
         <UnifiedCTASection
           headline="Work with a Growth-Oriented AI Digital Marketing Agency Today"
-          subtext="Stop the guesswork and start growing with strategies focused on traffic, conversions, and revenue. Connect with our digital marketing experts for a free brand audit and discover a smarter path to lead your industry."
+          subtext="We are a seasoned AI-Powered digital marketing company with a legacy of building advanced strategies that focus on growth that drives traffic, conversions, and revenues. We offer a free brand audit with our team of 30 experts to build a plan that helps you focus on your growth."
           primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }}
           secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }}
         />
