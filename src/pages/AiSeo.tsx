@@ -1,7 +1,11 @@
 import { Navbar } from "@/components/Navbar";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
-import { Search, Globe, Bot, BarChart3, TrendingUp } from "lucide-react";
+import { 
+  Search, Globe, Bot, BarChart3, TrendingUp,
+  Building2, ShoppingCart, Briefcase, GraduationCap, 
+  Stethoscope, Rocket, Home as HomeIcon, Scale, Utensils
+} from "lucide-react";
 import { Footer } from "@/components/landing/Footer";
 import { StickyCTA } from "@/components/landing/StickyCTA";
 import { Helmet } from "react-helmet-async";
