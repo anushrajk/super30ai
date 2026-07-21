@@ -2,12 +2,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { FileText, MapPin, BadgeCheck, Layers3, TrendingUp, Sparkles } from "lucide-react";
 
 const topics = [
-  { heading: "What Does a Digital Marketing Agency in Bangalore Actually Deliver?", text: "A digital marketing agency in Bangalore manages SEO, paid advertising, social media, content marketing, email campaigns, and website performance through one connected strategy designed for business growth." },
-  { heading: "Why Bangalore Businesses Need a Local Digital Marketing Partner", text: "Bangalore businesses operate in one of India's most competitive digital markets. A local marketing agency understands audience behaviour, business ecosystems, and region-specific customer trends that shape long-term growth." },
-  { heading: "How to Evaluate a Digital Marketing Agency Properly", text: "Look for an experienced in-house team, transparent reporting systems, industry expertise, conversion-focused strategy, and measurable performance visibility across every marketing channel." },
-  { heading: "Services Businesses Should Expect from a Full-Service Agency", text: "SEO focused on visibility. Paid advertising designed for conversions. Social media strategies that improve engagement. Content, automation, and websites created for scalable business growth." },
-  { heading: "Digital Marketing Trends That Businesses Should Closely Watch", text: "AI search experiences, short-form video content, customer data strategy, and local SEO continue to shape how businesses attract audiences, improve engagement, and increase conversions online." },
-  { heading: "Why Businesses Choose The Super 30", text: "Our in-house marketing specialists combine strategy, creative execution, automation, and performance tracking to deliver measurable growth with transparent reporting and connected campaign systems." },
+  { heading: "What Does a Digital Marketing Agency in Bangalore Actually Handle?", text: "A digital marketing agency in Bangalore takes care of the SEO, paid marketing, social media marketing, content marketing, email marketing, and website performance, all within a single coordinated strategy that is aimed at business growth." },
+  { heading: "Why Bangalore Businesses Need a Local Digital Marketing Partner?", text: "Bangalore is one of the most competitive e-markets in India for businesses. A local marketing agency has the local knowledge and access to customers' habits and trends, which are unique to a geographic area's business ecosystem." },
+  { heading: "How to Evaluate an Online Marketing Company in Bangalore Properly", text: "Look for an in-house team that has experience, transparency from a reporting system, industry knowledge, a focused conversion approach, and visibility of performance results across all marketing channels." },
+  { heading: "Services Businesses Should Expect from a Full Service Agency", text: "SEO is all about visibility. Retargeted paid ads for conversion. Social media techniques that make engagement better. Content automation, and websites for scalability in business growth." },
+  { heading: "Digital Marketing Trends That Businesses Should Closely Watch", text: "The future of AI search experiences, short-form video, customer data strategy, and local SEO remains bright, continuing to drive improved engagement and conversion rates and attract audiences online." },
+  { heading: "Why Businesses Choose TheSuper 30", text: "Our built-in digital marketing team combines strategy, creative development, automation, and tracking to ensure measurable growth with clear reporting and a linked marketing system." },
 ];
 
 const icons = [FileText, MapPin, BadgeCheck, Layers3, TrendingUp, Sparkles];
@@ -22,7 +22,7 @@ export const DMContentSection = () => (
           The Complete Guide to Choosing a <span className="text-brand">Digital Marketing Agency in Bangalore</span>
         </h2>
         <p className="text-base md:text-lg text-muted-foreground">
-          Understand how modern digital marketing agencies operate, what services matter most, and how businesses can choose the right marketing partner for measurable growth and long-term performance.
+          Learn about the operations of modern digital marketing agencies and the services they provide that make the most impact, and how businesses can select a digital marketing partner that can help them achieve measurable results and sustainable success.
         </p>
       </div>
 
