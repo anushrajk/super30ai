@@ -28,6 +28,18 @@ const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m
 const SEOFinalCTASection = lazy(() => import("@/components/landing/SEOFinalCTASection").then(m => ({ default: m.SEOFinalCTASection })));
 const FAQSection = lazy(() => import("@/components/landing/FAQSection").then(m => ({ default: m.FAQSection })));
 
+const aiSeoAudiences = [
+  { icon: Building2, title: "B2B SaaS", description: "Integrated digital marketing strategies for SaaS brands combining SEO, content, and paid campaigns that generate qualified business leads." },
+  { icon: ShoppingCart, title: "E-commerce Brands", description: "Performance focused e-commerce marketing combining SEO, paid advertising, and social campaigns that improve conversions and increase ROAS." },
+  { icon: Briefcase, title: "Professional Services", description: "Strategic digital marketing solutions designed to strengthen authority, increase qualified inquiries, and improve client acquisition performance." },
+  { icon: GraduationCap, title: "EdTech Companies", description: "Scalable digital marketing campaigns for EdTech brands using SEO, paid media, and social strategies to attract high intent learners." },
+  { icon: Stethoscope, title: "Healthcare Brands", description: "Compliance focused digital marketing solutions for healthcare businesses designed to improve trust, visibility, and patient acquisition." },
+  { icon: Rocket, title: "Technology Startups", description: "Growth focused digital marketing for startups using SEO, paid campaigns, social media, and content strategies that support rapid expansion." },
+  { icon: HomeIcon, title: "Real Estate Brands", description: "Strategic digital marketing solutions for real estate businesses using SEO, Google Ads, and landing pages that generate qualified inquiries." },
+  { icon: Scale, title: "Legal Firm Services", description: "Targeted digital marketing strategies for legal practices, combining local SEO and paid campaigns that attract qualified legal inquiries." },
+  { icon: Utensils, title: "Hospitality & Travel", description: "Integrated digital marketing campaigns for hospitality brands using SEO, social media, and paid advertising that increase direct bookings." },
+];
+
 const AiSeo = () => {
   const { loading, handleFormSubmit } = useLeadSubmit({
     source: 'ai_seo_audit',
