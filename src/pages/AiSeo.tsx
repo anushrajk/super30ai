@@ -132,7 +132,15 @@ const AiSeo = () => {
           <AIComparisonSection />
           <SEOBenefitsSection />
           <ServicesSection />
-          <WhoIsThisForSection />
+          <WhoIsThisForSection 
+            label="Ideal Business Fit"
+            heading={<>Who Benefits Most From Our AI SEO Services in Bangalore?</>}
+            description="Businesses that need to scale their growth across all major digital platforms are the most benefited clients for our AI SEO powered digital marketing strategies."
+            audiences={aiSeoAudiences}
+            bottomText="Don't see your industry here? Don't worry, we partner across every business sector."
+            primaryCtaLabel="Get a Free Strategy Call"
+            secondaryCtaLabel="Enquire Now"
+          />
           <ProcessSection />
           <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
           <DashboardPreview />
