@@ -27,10 +27,10 @@ export const AIComparisonSection = () => {
             The Difference
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Traditional SEO vs Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Modern AI SEO Strategy</span>
+            Make Your Site AI Ready With Our <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">AI SEO Agency In Bangalore</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Search behavior is shifting from keyword based results to AI generated answers. Our <span className="text-foreground font-semibold">SEO agency in Bangalore</span> combines technical accuracy, intent driven strategy, and authority signals so search engines and AI platforms better understand, trust, and rank your business.
+            Technical errors on your website limit visibility before it even starts ranking. As a leading <span className="text-foreground font-semibold">AI SEO company in Bangalore</span>, we fix your website structure, optimize search performance, and improve entity signals so Google and AI search platforms can better understand, trust, and rank your business.
           </p>
         </div>
 
