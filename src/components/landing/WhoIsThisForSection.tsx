@@ -12,14 +12,31 @@ import {
   Home as HomeIcon, 
   Scale, 
   Utensils,
-  MessageCircle
+  MessageCircle,
+  type LucideIcon
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
-const audiences = [
+interface Audience {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
+
+interface WhoIsThisForSectionProps {
+  label?: string;
+  heading?: React.ReactNode;
+  description?: string;
+  audiences?: Audience[];
+  bottomText?: string;
+  primaryCtaLabel?: string;
+  secondaryCtaLabel?: string;
+}
+
+const defaultAudiences: Audience[] = [
   { icon: Building2, title: "B2B SaaS", description: "Full funnel digital marketing for SaaS from SEO and content to paid campaigns that generate a qualified pipeline." },
   { icon: ShoppingCart, title: "E-commerce", description: "AI driven e-commerce marketing combining SEO, paid ads, and social media to increase conversions and ROAS." },
   { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to establish authority, attract inbound leads, and grow your practice." },
@@ -31,7 +48,15 @@ const audiences = [
   { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality using social media, SEO, and paid campaigns that drive bookings." },
 ];
 
-export const WhoIsThisForSection = () => {
+export const WhoIsThisForSection = ({
+  label = "Perfect Fit",
+  heading = "Industry-Leading AI Digital Marketing Company for Every Sector",
+  description = "Our digital marketing company is custom built for dynamic business models that are prepared to grow across every channel.",
+  audiences = defaultAudiences,
+  bottomText = "Is Your Industry Not Listed? We help businesses across every sector grow with confidence.",
+  primaryCtaLabel = "Get a Free Strategy Call",
+  secondaryCtaLabel = "Enquire Now",
+}: WhoIsThisForSectionProps) => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   const [showAuditPopup, setShowAuditPopup] = useState(false);
@@ -49,13 +74,13 @@ export const WhoIsThisForSection = () => {
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-5 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
-            Perfect Fit
+            {label}
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Industry-Leading AI Digital Marketing Company for Every Sector
+            {heading}
           </h2>
           <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-            Our digital marketing company is custom built for dynamic business models that are prepared to grow across every channel.
+            {description}
           </p>
         </div>
 
@@ -83,7 +108,7 @@ export const WhoIsThisForSection = () => {
         </BentoGrid>
 
         <div className={`text-center transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
-          <p className="text-gray-400 mb-5 text-sm md:text-base">Is Your Industry Not Listed? We help businesses across every sector grow with confidence.</p>
+          <p className="text-gray-400 mb-5 text-sm md:text-base">{bottomText}</p>
           
           {/* Dual CTA */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -93,7 +118,7 @@ export const WhoIsThisForSection = () => {
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2" />
-              Get a Free Strategy Call
+              {primaryCtaLabel}
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
@@ -103,7 +128,7 @@ export const WhoIsThisForSection = () => {
               className="hover:scale-105 transition-all duration-300 group"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              Enquire Now
+              {secondaryCtaLabel}
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
