@@ -91,7 +91,14 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
 
             {/* Right - Form */}
             <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-              <LeadCaptureForm onSubmit={onSubmit} loading={loading} />
+              <LeadCaptureForm 
+                onSubmit={onSubmit} 
+                loading={loading} 
+                formTitle="Book Your Free AI Visibility Consultation"
+                formDescription="In a brief consultation session, learn how you can enhance AI search results and generate higher-quality organic leads for your business."
+                formBadgeText="100% Free"
+                formButtonText="Book Your Free Consultation Now"
+              />
             </div>
           </div>
 
