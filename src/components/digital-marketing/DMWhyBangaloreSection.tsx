@@ -46,7 +46,7 @@ export const DMWhyBangaloreSection = () => {
               <span className="text-brand">Bangalore?</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed max-w-md">
-              Many agencies promise results, but very few deliver a clear strategy. Our <span className="text-foreground font-semibold">AI digital marketing services in Bangalore</span> focus on improving your funnel and optimizing ad spend so every rupee contributes to real business profit.
+              Many agencies promise results, but few agencies can provide a clear strategy. We're here to help maximize your ROI by optimizing your ad spend and improving your funnel in our <span className="text-foreground font-semibold">AI digital marketing service in Bangalore</span>.
             </p>
 
             {/* Metric highlights */}
