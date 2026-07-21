@@ -100,7 +100,7 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
             <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 text-sm ${isDark ? 'text-white/60' : 'text-muted-foreground'}`}>
               <span>Trusted by leaders at:</span>
               <div className="flex items-center gap-4">
-                {["TechFlow", "ScaleUp", "GrowthIQ", "VentureX"].map((company, i) => (
+                {["Digital Academy 360", "ICS", "BuildingWorld", "I-Sit"].map((company, i) => (
                   <span key={i} className={`font-medium ${isDark ? 'text-white' : 'text-foreground'}`}>{company}</span>
                 ))}
               </div>
