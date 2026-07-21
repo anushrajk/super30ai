@@ -6,11 +6,11 @@ const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({
 
 const services = [
   { icon: Search, title: "SEO Services", description: "Technical SEO, local visibility, content clusters, and authority building that improve rankings and lead quality." },
-  { icon: BadgeDollarSign, title: "Google Ads", description: "Search, display, and remarketing campaigns built to lower CAC and improve qualified conversions." },
-  { icon: Megaphone, title: "Social Media Marketing", description: "Platform strategy, campaign creatives, reels, and monthly content systems that drive awareness and engagement." },
-  { icon: PenSquare, title: "Content Marketing", description: "Blogs, landing pages, ad copy, and funnel content mapped to search intent and buyer stages." },
-  { icon: Mail, title: "Email Automation", description: "Lifecycle flows, lead nurture sequences, and retention campaigns designed to turn traffic into repeat revenue." },
-  { icon: LayoutGrid, title: "Web Design & CRO", description: "Conversion-focused pages, UX improvements, and fast landing experiences that turn clicks into enquiries." },
+  { icon: BadgeDollarSign, title: "Google Ads", description: "Search, display, and remarketing campaigns designed to reduce CAC and improve qualified conversions." },
+  { icon: Megaphone, title: "Social Media Marketing", description: "Platform strategy, campaign creatives, reels, and monthly content systems that increase awareness and engagement." },
+  { icon: PenSquare, title: "Content Marketing", description: "Blogs, landing pages, ad copy, and funnel content aligned with search intent and buyer journeys." },
+  { icon: Mail, title: "Email Automation", description: "Lifecycle flows, lead nurture sequences, and retention campaigns designed to convert traffic into repeat revenue." },
+  { icon: LayoutGrid, title: "Web Design & CRO", description: "Conversion focused pages, UX improvements, and fast landing experiences that turn clicks into inquiries." },
 ];
 
 export const DMProblemSection = () => {
@@ -24,10 +24,10 @@ export const DMProblemSection = () => {
             Digital Marketing Services in Bangalore
           </span>
           <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            Full-Funnel Services Built to <span className="text-brand">Grow Bangalore Brands</span>
+            Full Funnel Services Built to <span className="text-brand">Grow Bangalore Brands</span>
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-muted-foreground">
-            The same compact card layout — now focused on the core services we execute in-house to drive traffic, leads, and revenue.
+            Our AI digital marketing services in Bangalore cater to the needs of businesses seeking to generate leads, drive traffic, and boost their revenue.
           </p>
         </div>
 

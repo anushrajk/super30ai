@@ -28,9 +28,8 @@ export const DMRelevanceSection = () => {
     <section className="py-8 md:py-16 lg:py-24 bg-foreground">
       <div className="container mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-          <span className="inline-block px-3 py-1 bg-brand/20 text-brand rounded-full text-xs sm:text-sm font-medium mb-3 border border-brand/30">Is Our Digital Marketing Agency Right for You?</span>
           <h2 className="text-xl sm:text-2xl md:text-4xl font-bold text-white mb-3">
-            Is a Full-Service <span className="text-brand">Digital Marketing Agency in Bangalore</span> the Right Fit for Your Business?
+            Is a Full Service <span className="text-brand">Digital Marketing Agency in Bangalore</span> the Right Fit for Your Business?
           </h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-300">We believe in honest partnerships, measurable expectations, and long-term business growth focused on strategy, performance, and sustainable digital success.</p>
         </div>

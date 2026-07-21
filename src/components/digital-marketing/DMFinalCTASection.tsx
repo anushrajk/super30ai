@@ -20,7 +20,7 @@ export const DMFinalCTASection = () => {
           Book Your Free Brand Audit with Bangalore's Top Digital Marketing Agency Today
         </h2>
         <p className="text-white/50 text-base max-w-2xl mx-auto mb-10">
-          Ready to move beyond assumptions and accelerate business growth with a top-trusted <span className="text-white font-semibold">digital marketing company in Bangalore</span>? Connect with our experts for a strategic consultation and discover how our performance roadmap supports long-term business success.
+          Ready to move beyond assumptions and accelerate business growth with a top trusted <span className="text-white font-semibold">AI digital marketing company in Bangalore</span>? Connect with our experts for a strategic consultation and discover how our performance roadmap supports long-term business success.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button
