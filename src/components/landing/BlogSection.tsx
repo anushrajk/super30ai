@@ -52,7 +52,7 @@ export const BlogSection = forwardRef<HTMLElement>((_, ref) => {
             Latest Insights
           </h2>
           <p className="text-lg text-muted-foreground">
-            Stay ahead with the latest trends in AI-based digital marketing, performance strategies, and business growth.
+            Stay ahead with the latest trends in digital marketing, performance strategies, and business growth.
           </p>
         </div>
 
