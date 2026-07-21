@@ -23,7 +23,7 @@ const WhoIsThisForSection = lazy(() => import("@/components/landing/WhoIsThisFor
 const ProcessSection = lazy(() => import("@/components/landing/ProcessSection").then(m => ({ default: m.ProcessSection })));
 const FinalCTASection = lazy(() => import("@/components/landing/FinalCTASection").then(m => ({ default: m.FinalCTASection })));
 const DashboardPreview = lazy(() => import("@/components/landing/DashboardPreview").then(m => ({ default: m.DashboardPreview })));
-const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSection").then(m => ({ default: m.TestimonialSection })));
+
 const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m => ({ default: m.BlogSection })));
 const SEOFinalCTASection = lazy(() => import("@/components/landing/SEOFinalCTASection").then(m => ({ default: m.SEOFinalCTASection })));
 const FAQSection = lazy(() => import("@/components/landing/FAQSection").then(m => ({ default: m.FAQSection })));
@@ -144,7 +144,7 @@ const AiSeo = () => {
           <ProcessSection />
           <FinalCTASection onSubmit={handleFormSubmit} loading={loading} />
           <DashboardPreview />
-          <TestimonialSection />
+          
           <BlogSection />
           <SEOFinalCTASection />
           <FAQSection slug="ai-seo" />
