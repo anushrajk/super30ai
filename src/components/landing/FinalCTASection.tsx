@@ -9,10 +9,10 @@ interface FinalCTASectionProps {
 }
 
 const benefits = [
-  "Complete AI visibility score across ChatGPT, Perplexity & Google AI",
-  "Competitor analysis with actionable insights",
-  "Custom 90-day growth roadmap",
-  "Direct access to senior SEO strategists",
+  "Comprehensive AI visibility analysis across ChatGPT, Perplexity, and Google AI",
+  "Competitor research supported by actionable SEO growth insights",
+  "Personalized 90-day SEO growth strategy roadmap",
+  "Direct collaboration with experienced SEO consultants",
 ];
 
 const guarantees = [
@@ -49,13 +49,13 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
             {/* Left Content */}
             <div className={`text-center lg:text-left transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
               <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-5 leading-tight ${isDark ? 'text-white' : 'text-foreground'}`}>
-                Why Partner with Our{" "}
+                Why Brands Choose Our{" "}
                 <span className="text-brand-gradient">
                   SEO Company in Bangalore?
                 </span>
               </h2>
               <p className={`text-lg mb-8 leading-relaxed ${isDark ? 'text-white/70' : 'text-muted-foreground'}`}>
-                Transparency is our core value. Every move our SEO company in Bangalore makes is backed by data and shared with you through clear reporting — so you always know exactly how your brand is growing.
+                Transparency is our core value. Our SEO agency in Bangalore combines data backed execution, advanced AI visibility insights, and performance driven reporting so your business clearly understands how search growth contributes to revenue.
               </p>
 
               {/* Benefits checklist */}
