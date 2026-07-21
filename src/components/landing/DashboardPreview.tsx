@@ -6,7 +6,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const features = [
   { 
     id: "visibility",
-    label: "Real time AI visibility monitoring",
+    label: "Real time AI visibility insights",
     metrics: [
       { label: "AI Search Visibility", value: "78%", icon: Eye, color: "from-orange-500 to-orange-600" },
       { label: "Search Impressions", value: "12.4K", icon: TrendingUp, color: "from-blue-500 to-blue-600" },
