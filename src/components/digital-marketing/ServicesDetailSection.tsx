@@ -155,7 +155,7 @@ const services: Service[] = [
     ],
     href: "/web-design-company-bangalore",
   },
-] as const;
+];
 
 export const ServicesDetailSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
