@@ -138,13 +138,14 @@ const services: Service[] = [
     icon: Monitor,
     number: "06",
     title: "Website Design Services",
-    description: "Fast, mobile-first, SEO-ready websites designed for conversions. Custom website development, WordPress solutions, e-commerce platforms, and ongoing maintenance created with CRO-focused user experiences from the first wireframe.",
+    featuredTitle: "Website Design",
+    description: "Fast and mobile first, SEO optimized, conversion driven websites. From the initial wireframe, custom website development, WordPress solutions, e-commerce platforms, and continuous maintenance. These are built with CRO and user experience as a priority.",
     image: websiteDesignImg,
     eyebrow: "CONVERSION SYSTEMS",
     metrics: ["Fast builds", "SEO-ready", "CRO-first UX"],
     highlights: [
       "Landing pages created around lead generation goals",
-      "E-commerce and CMS websites designed with cleaner user experience",
+      "E-commerce and CMS websites designed with a cleaner user experience",
       "SEO structure and conversion strategy integrated from launch",
     ],
     subServices: [
@@ -153,6 +154,7 @@ const services: Service[] = [
       { label: "WordPress Website", href: "/wordpress-development-company-bangalore" },
       { label: "Website Maintenance", href: "/website-maintenance-services-bangalore" },
     ],
+    featuredTags: ["Website Development", "E-commerce Website", "WordPress Website"],
     href: "/web-design-company-bangalore",
   },
 ];
