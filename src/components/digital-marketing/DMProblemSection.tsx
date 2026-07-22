@@ -1,6 +1,6 @@
 import { lazy, useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle, Search, BadgeDollarSign, Megaphone, PenSquare, Mail, LayoutGrid } from "lucide-react";
+import { ArrowRight, MessageCircle, Search, BadgeDollarSign, Megaphone, PenSquare, MessageSquare, LayoutGrid } from "lucide-react";
 
 const EnquiryPopup = lazy(() => import("@/components/EnquiryPopup").then(m => ({ default: m.EnquiryPopup })));
 
@@ -9,7 +9,7 @@ const services = [
   { icon: BadgeDollarSign, title: "Google Ads", description: "Search, display, and remarketing campaigns designed to reduce CAC and improve qualified conversions." },
   { icon: Megaphone, title: "Social Media Marketing", description: "Platform strategy, campaign creatives, reels, and monthly content systems that increase awareness and engagement." },
   { icon: PenSquare, title: "Content Marketing", description: "Blogs, landing pages, ad copy, and funnel content aligned with search intent and buyer journeys." },
-  { icon: Mail, title: "Email Automation", description: "Lifecycle flows, lead nurture sequences, and retention campaigns designed to convert traffic into repeat revenue." },
+  { icon: MessageSquare, title: "SMS & Messaging", description: "WhatsApp Business API, RCS, SMS gateway, and chatbot campaigns that reach customers instantly and drive higher engagement." },
   { icon: LayoutGrid, title: "Web Design & CRO", description: "Conversion focused pages, UX improvements, and fast landing experiences that turn clicks into inquiries." },
 ];
 
