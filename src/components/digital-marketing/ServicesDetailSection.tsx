@@ -249,12 +249,12 @@ export const ServicesDetailSection = () => {
                 <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col gap-3">
                   <div className="w-fit rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
                     <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
-                    <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
+                    <div className="text-white text-base sm:text-lg font-medium">{activeService.featuredTitle || activeService.title}</div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {activeService.subServices.slice(0, 3).map((sub) => (
-                      <div key={sub.label} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
-                        {sub.label}
+                    {(activeService.featuredTags || activeService.subServices.slice(0, 3).map((sub) => sub.label)).map((tag) => (
+                      <div key={tag} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
+                        {tag}
                       </div>
                     ))}
                   </div>
