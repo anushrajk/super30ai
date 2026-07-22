@@ -49,7 +49,7 @@ export const DMIndustriesSection = () => (
           Marketing Strategies for <span className="text-brand">Every Industry</span>
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Industry-focused digital marketing strategies trusted across 18+ business sectors. We align every campaign, platform, and customer journey with how your market searches, engages, and converts online.
+          Industry trusted digital marketing strategies across 18+ business sectors. Each campaign, platform, and customer journey is aligned to your market's search, engagement, and conversion patterns.
         </p>
       </div>
     </div>
