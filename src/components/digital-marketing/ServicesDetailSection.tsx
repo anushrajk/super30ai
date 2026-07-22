@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import type { LucideIcon } from "lucide-react";
 import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, ChevronLeft, ChevronRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 import digitalMarketingImg from "@/assets/services/performance-marketing-card.jpg";
@@ -9,7 +10,22 @@ import smsMessagingImg from "@/assets/services/email-marketing-card.jpg";
 import productionStudioImg from "@/assets/services/production-studio.jpg";
 import websiteDesignImg from "@/assets/services/web-design-card.jpg";
 
-const services = [
+interface Service {
+  icon: LucideIcon;
+  number: string;
+  title: string;
+  featuredTitle?: string;
+  description: string;
+  image: string;
+  eyebrow: string;
+  metrics: string[];
+  highlights: string[];
+  subServices: { label: string; href: string }[];
+  featuredTags?: string[];
+  href: string;
+}
+
+const services: Service[] = [
   {
     icon: TrendingUp,
     number: "01",
@@ -101,19 +117,21 @@ const services = [
     icon: Video,
     number: "05",
     title: "Creative Production Studio",
+    featuredTitle: "Production Studio",
     description: "Professional video production and photography services for advertising, social media, and brand storytelling from creative planning and scripting to filming and final content delivery.",
     image: productionStudioImg,
     eyebrow: "CONTENT STUDIO",
     metrics: ["Ad-ready shoots", "Photo + video", "Post-production"],
     highlights: [
       "Creative shoot planning, scripting, and visual direction",
-      "Performance-focused visuals for paid and social campaigns",
-      "Quick-turnaround editing for continuous content production",
+      "Performance focused visuals for paid and social campaigns",
+      "Quick turnaround editing for continuous content production",
     ],
     subServices: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
       { label: "Photography", href: "/photography-services-bangalore" },
     ],
+    featuredTags: ["Video Production", "Photography"],
     href: "/contact",
   },
   {
@@ -137,7 +155,7 @@ const services = [
     ],
     href: "/web-design-company-bangalore",
   },
-] as const;
+];
 
 export const ServicesDetailSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -247,12 +265,12 @@ export const ServicesDetailSection = () => {
                 <div className="absolute inset-x-4 bottom-4 sm:inset-x-6 sm:bottom-6 flex flex-col gap-3">
                   <div className="w-fit rounded-2xl border border-white/15 bg-foreground/75 px-4 py-3 backdrop-blur-sm">
                     <div className="text-xs font-semibold uppercase tracking-[0.18em] text-brand mb-1">Featured Service</div>
-                    <div className="text-white text-base sm:text-lg font-medium">{activeService.title}</div>
+                    <div className="text-white text-base sm:text-lg font-medium">{activeService.featuredTitle || activeService.title}</div>
                   </div>
                   <div className="flex flex-wrap gap-2">
-                    {activeService.subServices.slice(0, 3).map((sub) => (
-                      <div key={sub.label} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
-                        {sub.label}
+                    {(activeService.featuredTags || activeService.subServices.slice(0, 3).map((sub) => sub.label)).map((tag) => (
+                      <div key={tag} className="rounded-full border border-white/15 bg-background/85 px-3 py-2 text-xs font-medium text-foreground backdrop-blur-sm">
+                        {tag}
                       </div>
                     ))}
                   </div>
