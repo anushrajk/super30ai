@@ -122,7 +122,7 @@ export const DMPricingSection = () => {
                 variant="outline"
                 size="lg"
                 onClick={() => setShowEnquiryPopup(true)}
-                className="rounded-full px-8 border-background/15 text-background hover:bg-background/[0.06]"
+                className="rounded-full px-8 border-foreground/20 text-foreground hover:bg-foreground/[0.06]"
               >
                 <MessageCircle className="w-4 h-4 mr-2" /> Speak to a Strategist
               </Button>
