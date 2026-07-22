@@ -79,7 +79,7 @@ const services = [
     icon: MessageSquare,
     number: "04",
     title: "SMS & Messaging Solutions",
-    description: "Connect with customers through WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging designed to improve engagement, response rates, and customer communication performance.",
+    description: "Engage with customers through WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging to boost engagement, response rates, and improve customer communication and retention.",
     image: smsMessagingImg,
     eyebrow: "DIRECT RESPONSE",
     metrics: ["Instant delivery", "Automated journeys", "High open rates"],
