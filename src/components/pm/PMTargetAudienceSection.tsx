@@ -132,12 +132,12 @@ export const PMTargetAudienceSection = () => {
 
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <BentoBadge className="mb-4">Who We Help</BentoBadge>
+          <BentoBadge className="mb-4">Who We Support</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            Built for Growth-Focused Businesses
+            Designed for Growth Driven Businesses
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Our AI-powered approach works across industries and business models
+            Our AI-driven approach thrives in all sectors and business categories, making us one of the premier AI lead generation companies in Bangalore to support and scale business growth.
           </p>
         </div>
 
