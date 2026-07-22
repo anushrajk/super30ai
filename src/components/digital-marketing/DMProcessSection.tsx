@@ -54,10 +54,10 @@ export const DMProcessSection = () => {
               How We Work
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-4">
-              Our AI-Driven <span className="text-brand">Process for Predictable Success</span>
+              Our AI Powered <span className="text-brand">Strategy for Scalable Business Growth</span>
             </h2>
             <p className="text-muted-foreground text-base">
-              We believe in a structured approach to growth. Our <span className="text-foreground font-semibold">digital marketing services in Bangalore</span> follow a four-step process designed to study your market, launch smart campaigns and scale your revenue.
+              Structured Growth is what we believe in. Our <span className="text-foreground font-semibold">AI digital marketing services in Bangalore</span> have a four step process, which involves analysing your market, developing targeted strategies, launching smart campaigns, and increasing your revenue.
             </p>
           </div>
 
