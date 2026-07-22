@@ -23,7 +23,7 @@ export const DMAISections = () => (
         <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">What Makes Super 30 Different?</span>
         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Integrated Digital Marketing That Drives Real Growth</h3>
         <p className="text-base md:text-lg text-muted-foreground">
-          Most digital marketing agencies in Bangalore manage disconnected campaigns. We connect SEO, paid media, social media, and automation into one performance-focused system designed to improve visibility, conversions, and long-term growth.
+          The majority of digital marketing companies in Bangalore operate within unstructured campaign frameworks. We integrate the 3 disciplines of SEO, paid media, social media, and automation into one performance based system that optimises visibility, conversions, and long-term business growth.
         </p>
       </div>
 
