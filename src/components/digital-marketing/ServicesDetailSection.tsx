@@ -36,7 +36,7 @@ const services = [
   {
     icon: Palette,
     number: "02",
-    title: "Creative Design Services",
+    title: "Creative Design",
     description: "Whether it's a brand identity system, social media creatives, or a user friendly UI UX experience, our design team brings everything together to boost recognition, engagement, and conversions.",
     image: designServicesImg,
     eyebrow: "VISUAL IDENTITY",
