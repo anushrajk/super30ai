@@ -17,7 +17,7 @@ export const DMFinalCTASection = () => {
           Get Started
         </span>
         <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 max-w-3xl mx-auto leading-[1.1]">
-          Book Your Free Brand Audit with Bangalore's Top Digital Marketing Agency Today
+          Book Your Free Brand Audit with Bangalore’s Leading Digital Marketing Agency Today
         </h2>
         <p className="text-white/50 text-base max-w-2xl mx-auto mb-10">
           Ready to move beyond assumptions and accelerate business growth with a top trusted <span className="text-white font-semibold">AI digital marketing company in Bangalore</span>? Connect with our experts for a strategic consultation and discover how our performance roadmap supports long-term business success.
