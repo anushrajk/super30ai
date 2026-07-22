@@ -29,6 +29,7 @@ const services = [
       { label: "Social Media Marketing", href: "/social-media-design-agency-bangalore" },
       { label: "Google Ads", href: "/google-ads-agency-bangalore" },
       { label: "Social Media Optimization", href: "/social-media-optimization-services-bangalore" },
+      { label: "Ecommerce Marketing", href: "/ecommerce-marketing-agency-bangalore" },
     ],
     href: "/digital-marketing-agency-bangalore",
   },
