@@ -13,7 +13,7 @@ const services = [
   {
     icon: TrendingUp,
     number: "01",
-    title: "Digital Marketing Solutions",
+    title: "Digital Marketing",
     description: "All-in-one digital marketing solutions, including AI-Powered SEO, Google Ads, and social media strategy. We enhance ROI, leads, and qualified traffic for businesses on all digital channels.",
     image: digitalMarketingImg,
     eyebrow: "GROWTH ENGINE",
