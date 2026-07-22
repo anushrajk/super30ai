@@ -16,10 +16,10 @@ interface PMHeroSectionProps {
 }
 
 const trustSignals = [
-  { icon: Target, text: "Revenue Focused Campaign Management" },
-  { icon: Globe, text: "Cross Platform Advertising Expertise" },
-  { icon: Bot, text: "AI Powered Campaign Optimization" },
-  { icon: Handshake, text: "Flexible Performance Partnerships" },
+  { icon: Target, text: "Revenue focused campaign management" },
+  { icon: Globe, text: "Cross platform advertising expertise" },
+  { icon: Bot, text: "AI powered campaign optimization" },
+  { icon: Handshake, text: "Flexible performance partnerships" },
 ];
 
 const expertCredentials = [
@@ -58,7 +58,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
                 <span className="text-brand">Lead Generation Agency</span> in Bangalore for High Intent B2B Growth
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                As a leading <span className="text-foreground font-semibold">performance marketing agency in Bangalore</span>, we deliver AI powered advertising and lead generation strategies designed around measurable business growth and long-term revenue performance.
+                As a leading <span className="text-foreground font-semibold">performance marketing agency in Bangalore</span>, we deliver AI powered advertising and lead generation strategies designed around measurable business growth for sustainable revenue performance.
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
                 className="px-6 py-3 h-auto rounded-xl group"
               >
                 <MessageCircle className="w-5 h-5 mr-2" />
-                Enquire Now
+                Connect With Our Team
                 <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </div>
