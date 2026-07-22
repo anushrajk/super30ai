@@ -5,10 +5,10 @@ import { ArrowRight, Target, TrendingUp, BarChart3, Zap, Sparkles, MessageCircle
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const benefits = [
-  { icon: BarChart3, text: "Complete ads account audit" },
-  { icon: Target, text: "Custom campaign strategy" },
-  { icon: TrendingUp, text: "ROI projections & forecasts" },
-  { icon: Zap, text: "Quick wins identification" },
+  { icon: BarChart3, text: "Complete the ad campaign account audit" },
+  { icon: Target, text: "Custom growth campaign strategy" },
+  { icon: TrendingUp, text: "ROI forecasting and projections" },
+  { icon: Zap, text: "Quick opportunity identification" },
 ];
 
 export const PMFinalCTASection = () => {
@@ -35,10 +35,10 @@ export const PMFinalCTASection = () => {
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Partner with Bangalore's Top <span className="text-[#F95B00]">Lead Generation Agency</span>
+            Partner with Bangalore's Top <span className="text-[#F95B00]">Lead generation Agency</span>
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Book a free consultation with our lead generation company in Bangalore. Get a complete audit of your B2B campaigns and discover hidden pipeline opportunities.
+            Book a free consultation with our B2B lead generation company in Bangalore. Get a complete review of your campaigns and uncover untapped pipeline opportunities.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -57,7 +57,7 @@ export const PMFinalCTASection = () => {
               className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2" />
-              Start Free Audit Now
+              Start Your Free Audit Now
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 

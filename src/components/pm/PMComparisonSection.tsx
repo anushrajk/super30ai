@@ -2,19 +2,19 @@ import { CheckCircle2, XCircle, Zap, Bot, Target, TrendingUp } from "lucide-reac
 import { Card, CardContent } from "@/components/ui/card";
 
 const traditionalItems = [
-  { text: "Manual bidding adjustments", icon: XCircle },
+  { text: "Manual campaign biddings", icon: XCircle },
   { text: "Limited audience targeting", icon: XCircle },
-  { text: "Slow optimization cycles", icon: XCircle },
-  { text: "Guesswork-based decisions", icon: XCircle },
-  { text: "Reactive campaign changes", icon: XCircle },
+  { text: "Delayed optimization cycles", icon: XCircle },
+  { text: "Assumption based decisions", icon: XCircle },
+  { text: "Reactive campaign management", icon: XCircle },
 ];
 
 const aiPoweredItems = [
   { text: "Smart automated bidding", icon: CheckCircle2 },
   { text: "Predictive audience targeting", icon: CheckCircle2 },
-  { text: "Real-time optimization", icon: CheckCircle2 },
-  { text: "Data-driven decisions", icon: CheckCircle2 },
-  { text: "Proactive campaign scaling", icon: CheckCircle2 },
+  { text: "Real time optimization", icon: CheckCircle2 },
+  { text: "Data backed decision making", icon: CheckCircle2 },
+  { text: "Proactive campaign expansion", icon: CheckCircle2 },
 ];
 
 export const PMComparisonSection = () => {
@@ -28,13 +28,13 @@ export const PMComparisonSection = () => {
       <div className="container relative mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium mb-4 border border-blue-500/30">
-            Why Choose AI
+            Why AI Lead Generation
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Traditional Ads vs AI-Powered Ads
+            Traditional Ads vs AI Powered Ads
           </h2>
           <p className="text-lg text-gray-300">
-            See the difference AI makes in performance marketing
+            See how AI improves results across performance marketing campaigns
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export const PMComparisonSection = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Traditional Ads</h3>
-                  <p className="text-sm text-gray-400">Manual approach</p>
+                  <p className="text-sm text-gray-400">Conventional approach</p>
                 </div>
               </div>
               
@@ -64,8 +64,8 @@ export const PMComparisonSection = () => {
 
               <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10">
                 <div className="text-center">
-                  <span className="text-2xl font-bold text-gray-400">2-3x</span>
-                  <p className="text-sm text-gray-500">Typical ROAS</p>
+                  <span className="text-2xl font-bold text-gray-400">2 to 3x</span>
+                  <p className="text-sm text-gray-500">Average ROAS</p>
                 </div>
               </div>
             </CardContent>
@@ -81,8 +81,8 @@ export const PMComparisonSection = () => {
                   <Bot className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">AI-Powered Ads</h3>
-                  <p className="text-sm text-blue-400">Smart automation</p>
+                  <h3 className="text-xl font-bold text-white">AI Driven Ads</h3>
+                  <p className="text-sm text-blue-400">Intelligent campaign automation</p>
                 </div>
                 <span className="ml-auto px-2 py-1 bg-blue-500/20 text-blue-400 text-xs font-medium rounded-full border border-blue-500/30">
                   Recommended
@@ -102,9 +102,9 @@ export const PMComparisonSection = () => {
                 <div className="text-center">
                   <div className="flex items-center justify-center gap-2">
                     <TrendingUp className="w-5 h-5 text-blue-400" />
-                    <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">4-6x</span>
+                    <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 bg-clip-text text-transparent">4 to 6x</span>
                   </div>
-                  <p className="text-sm text-blue-400 font-medium">Average ROAS</p>
+                  <p className="text-sm text-blue-400 font-medium">Improved ROAS</p>
                 </div>
               </div>
             </CardContent>

@@ -3,10 +3,10 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { Search, Settings, Rocket, BarChart3 } from "lucide-react";
 
 const steps = [
-  { icon: Search, number: "01", title: "Audit & Analysis", description: "Deep dive into your current ad performance and identify opportunities" },
-  { icon: Settings, number: "02", title: "Strategy & Setup", description: "Build campaigns with proper tracking, audiences, and creative" },
-  { icon: Rocket, number: "03", title: "Launch & Optimize", description: "Go live with AI-powered bid management and continuous optimization" },
-  { icon: BarChart3, number: "04", title: "Scale & Report", description: "Scale winning campaigns and provide transparent reporting" },
+  { icon: Search, number: "01", title: "Audit & Analysis", description: "Evaluate current advertising performance and uncover scalable growth opportunities" },
+  { icon: Settings, number: "02", title: "Strategy & Setup", description: "Create campaigns with accurate tracking, audience targeting, and creative assets" },
+  { icon: Rocket, number: "03", title: "Launch & Optimized", description: "Go live with AI powered bidding systems and consistent performance optimization" },
+  { icon: BarChart3, number: "04", title: "Scale & Report", description: "Expand successful campaigns and deliver transparent performance reporting" },
 ];
 
 export const PMProcessSection = () => {
@@ -23,13 +23,13 @@ export const PMProcessSection = () => {
       <div className="container mx-auto px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="badge-brand mb-4">
-            Our Process
+            Our Workflow
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Our Performance Marketing Process
+            Our AI Powered Advertising Process
           </h2>
           <p className="text-lg text-muted-foreground">
-            A data-driven approach to PPC marketing and AI powered ads success
+            A data driven approach to PPC campaign marketing and AI powered advertising growth
           </p>
         </div>
 

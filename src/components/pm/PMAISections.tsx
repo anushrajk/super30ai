@@ -4,7 +4,7 @@ import { Target, Users, TrendingUp, ArrowRight, Sparkles, Bot, BrainCircuit, Lin
 
 const intentMappingIcons = [
   { Icon: Target, label: "Audience Targeting" },
-  { Icon: BarChart3, label: "AI Analysis" },
+  { Icon: BarChart3, label: "AI Analytics" },
   { Icon: Users, label: "Lead Conversion" }
 ];
 
@@ -12,22 +12,22 @@ const aiOptimizationFeatures = [
   {
     icon: Sparkles,
     title: "AI Bid Optimization",
-    description: "Smart bidding strategies powered by machine learning"
+    description: "Smart bidding strategies powered through machine learning"
   },
   {
     icon: Bot,
     title: "Automated Audiences",
-    description: "AI-built lookalike and intent audiences"
+    description: "AI generated lookalike and intent focused audience targeting"
   },
   {
     icon: BrainCircuit,
     title: "Predictive Targeting",
-    description: "Reach high-intent buyers before competitors"
+    description: "Reach high intent buyers before competing brands engage them"
   },
   {
     icon: LineChart,
-    title: "Real-Time Attribution",
-    description: "Track every touchpoint to revenue"
+    title: "Real Time Attribution",
+    description: "Track every customer interaction connected to revenue performance"
   }
 ];
 
@@ -55,19 +55,19 @@ export const PMAISections = () => {
           <div className="grid lg:grid-cols-2 gap-4 md:gap-8 items-center relative">
             <div>
               <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-3 border border-orange-500/30">
-                AI-Powered Targeting
+                AI Powered Analytics
               </span>
               <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">
-                AI Audience & Intent Mapping
+                AI Audience and Intent Mapping
               </h3>
               <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
-                Leverage AI to identify and target high-intent audiences across platforms before your competitors reach them.
+                Use AI to discover and target high intent audiences across platforms before your competitors reach them.
               </p>
               <ul className="space-y-2.5 mb-5">
                 {[
-                  "AI-powered audience segmentation & lookalikes",
-                  "Cross-platform intent signal mapping",
-                  "Predictive lead scoring for ad targeting"
+                  "AI powered audience segmentation & lookalike targeting",
+                  "Cross platform intent signal analysis",
+                  "Predictive lead scoring for campaign targeting"
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
                     <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
@@ -126,10 +126,10 @@ export const PMAISections = () => {
                 AI Automation
               </span>
               <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">
-                AI-Powered Campaign Optimization
+                AI Powered Campaign Optimization
               </h3>
               <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                Let AI handle bidding, audience building, and budget allocation while you focus on strategy and growth.
+                Allow AI to manage bidding, audience targeting, and budget distribution while you focus on business strategy and growth.
               </p>
             </div>
             
@@ -202,12 +202,12 @@ export const PMAISections = () => {
               <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">40%</div>
-                  <div className="text-xs text-muted-foreground">Lower CPA</div>
+                  <div className="text-xs text-muted-foreground">Reduced CPA</div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="text-center group cursor-default">
                   <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">3x</div>
-                  <div className="text-xs text-muted-foreground">ROAS Improvement</div>
+                  <div className="text-xs text-muted-foreground">ROAS Growth</div>
                 </div>
                 <div className="w-px h-8 bg-border/50 hidden sm:block" />
                 <div className="text-center group cursor-default">

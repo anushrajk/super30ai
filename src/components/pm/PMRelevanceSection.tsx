@@ -7,14 +7,14 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 const forYou = [
   "You spend ₹50,000+/month on ads",
   "You want measurable ROI",
-  "You need multi-platform expertise",
-  "You value data-driven decisions",
+  "You need cross platform advertising expertise",
+  "You value data driven decisions",
 ];
 
 const notForYou = [
-  "You're not ready to invest in ads",
-  "You expect overnight results",
-  "You want to micromanage campaigns",
+  "You are not ready to invest in ads",
+  "You expect immediate campaign results",
+  "You prefer controlling every campaign decision",
   "You're not tracking conversions",
 ];
 
@@ -36,11 +36,11 @@ export const PMRelevanceSection = () => {
       
       <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Is This Right For You?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Is Your Business Ready for Scalable Growth with Expert Lead Generation Services in Bangalore?</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto">
           <div className="bg-green-950/50 border border-green-800 rounded-2xl p-6 md:p-8">
-            <h3 className="text-xl font-bold text-green-400 mb-6">This is for you if:</h3>
+            <h3 className="text-xl font-bold text-green-400 mb-6">This Works Best for You If:</h3>
             <ul className="space-y-4">
               {forYou.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-slate-300">
@@ -51,7 +51,7 @@ export const PMRelevanceSection = () => {
             </ul>
           </div>
           <div className="bg-red-950/50 border border-red-800 rounded-2xl p-6 md:p-8">
-            <h3 className="text-xl font-bold text-red-400 mb-6">This is NOT for you if:</h3>
+            <h3 className="text-xl font-bold text-red-400 mb-6">This May Not Suit You If:</h3>
             <ul className="space-y-4">
               {notForYou.map((item, i) => (
                 <li key={i} className="flex items-center gap-3 text-slate-300">
@@ -69,7 +69,7 @@ export const PMRelevanceSection = () => {
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
           >
             <Sparkles className="w-4 h-4 mr-2" />
-            Start Free Audit Now
+            Claim Your Free Audit Now
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button 

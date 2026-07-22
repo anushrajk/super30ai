@@ -2,14 +2,14 @@ import { Search, Facebook, Linkedin, Youtube, RefreshCw, BarChart3, Palette, Tar
 import { BentoGrid, BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
 
 const services = [
-  { icon: Search, title: "PPC Services in Bangalore", description: "Google Ads Search, Display, Shopping & YouTube campaigns optimized with AI" },
-  { icon: Facebook, title: "Meta Ads", description: "Facebook & Instagram advertising for targeted reach" },
-  { icon: Linkedin, title: "LinkedIn Ads", description: "B2B lead generation campaigns" },
-  { icon: Youtube, title: "YouTube Ads", description: "Video advertising for brand awareness" },
-  { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Re-engage visitors who didn't convert" },
-  { icon: BarChart3, title: "Performance Tracking & Reporting", description: "Full-funnel tracking & transparent reporting" },
-  { icon: Palette, title: "AI Powered Ad Campaigns", description: "AI powered ads that learn, adapt, and improve in real time" },
-  { icon: Target, title: "Landing Page CRO", description: "Optimize pages for conversions" },
+  { icon: Search, title: "Pay Per Click Services", description: "Google Search, Display, Shopping, and YouTube campaigns optimized with AI" },
+  { icon: Facebook, title: "Meta Ads", description: "Facebook and Instagram advertising for a targeted audience brand reach" },
+  { icon: Linkedin, title: "LinkedIn Ads", description: "B2B lead acquisition campaigns for a professional audience targeting" },
+  { icon: Youtube, title: "YouTube Ads", description: "Video marketing campaigns designed for brand visibility and engagement" },
+  { icon: RefreshCw, title: "Remarketing & Retargeting", description: "Reconnect with visitors who previously showed interest but did not convert" },
+  { icon: BarChart3, title: "Performance Analytics & Reporting", description: "Full funnel campaign tracking with transparent performance reporting" },
+  { icon: Palette, title: "AI Powered Ad Campaigns", description: "AI powered campaigns that improve, optimize, and adapt continuously in real time" },
+  { icon: Target, title: "Landing Page Conversion Optimization", description: "Improve landing pages for stronger conversion performance" },
 ];
 
 export const PMServicesSection = () => {
@@ -17,12 +17,12 @@ export const PMServicesSection = () => {
     <section className="py-6 md:py-10 lg:py-16 bg-background">
       <div className="container mx-auto px-3 md:px-4">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-          <BentoBadge className="mb-4">Our Services</BentoBadge>
+          <BentoBadge className="mb-4">Our Expertise</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Performance Marketing Services
+            Performance Marketing Services in Bangalore
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Full-funnel paid advertising across all major platforms
+            Complete paid advertising solutions from a trusted performance marketing agency in Bangalore across leading digital platforms.
           </p>
         </div>
         <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
