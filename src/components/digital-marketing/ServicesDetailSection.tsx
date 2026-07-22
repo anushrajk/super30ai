@@ -57,7 +57,7 @@ const services = [
   {
     icon: FileText,
     number: "03",
-    title: "Content Marketing Services",
+    title: "Content Marketing",
     description: "Blogs optimized for search, website copy, and lead conversion at every stage of the funnel, video scripts, and guest posts that generate ranking, authority, and conversions.",
     image: contentMarketingImg,
     eyebrow: "CONTENT THAT CONVERTS",
