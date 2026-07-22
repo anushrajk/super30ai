@@ -42,8 +42,8 @@ export const DMWhyBangaloreSection = () => {
               Why Us
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-6">
-              Is Your Marketing Partner Actually Driving Growth in{" "}
-              <span className="text-brand">Bangalore?</span>
+              Is Your Marketing Partner Actually Growing Your{" "}
+              <span className="text-brand">Business in Bangalore?</span>
             </h2>
             <p className="text-muted-foreground text-base leading-relaxed max-w-md">
               Many agencies promise results, but few agencies can provide a clear strategy. We're here to help maximize your ROI by optimizing your ad spend and improving your funnel in our <span className="text-foreground font-semibold">AI digital marketing service in Bangalore</span>.
