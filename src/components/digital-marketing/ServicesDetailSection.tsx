@@ -289,7 +289,7 @@ export const ServicesDetailSection = () => {
           </div>
 
           <p className="text-sm text-muted-foreground">
-            Auto-looping through <span className="text-foreground font-medium">{services.length} core service clusters</span>
+            Explore <span className="text-foreground font-medium">{services.length} core service clusters</span>
           </p>
         </div>
       </div>
