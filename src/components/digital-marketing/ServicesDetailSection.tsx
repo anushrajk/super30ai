@@ -101,19 +101,21 @@ const services = [
     icon: Video,
     number: "05",
     title: "Creative Production Studio",
+    featuredTitle: "Production Studio",
     description: "Professional video production and photography services for advertising, social media, and brand storytelling from creative planning and scripting to filming and final content delivery.",
     image: productionStudioImg,
     eyebrow: "CONTENT STUDIO",
     metrics: ["Ad-ready shoots", "Photo + video", "Post-production"],
     highlights: [
       "Creative shoot planning, scripting, and visual direction",
-      "Performance-focused visuals for paid and social campaigns",
-      "Quick-turnaround editing for continuous content production",
+      "Performance focused visuals for paid and social campaigns",
+      "Quick turnaround editing for continuous content production",
     ],
     subServices: [
       { label: "Video Production", href: "/video-production-agency-bangalore" },
       { label: "Photography", href: "/photography-services-bangalore" },
     ],
+    featuredTags: ["Video Production", "Photography"],
     href: "/contact",
   },
   {
