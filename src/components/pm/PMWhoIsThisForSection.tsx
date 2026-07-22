@@ -19,15 +19,15 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const audiences = [
-  { icon: Building2, title: "B2B SaaS", description: "Software companies looking to scale MQLs with AI-optimized paid campaigns" },
-  { icon: ShoppingCart, title: "E-commerce", description: "Online stores seeking higher ROAS through smart bidding & AI audiences" },
-  { icon: Briefcase, title: "Lead Generation", description: "Businesses needing a predictable pipeline of qualified leads" },
-  { icon: Rocket, title: "Tech Startups", description: "Fast-growing companies scaling user acquisition cost-effectively" },
-  { icon: BarChart3, title: "DTC Brands", description: "Direct-to-consumer brands maximizing ad spend efficiency" },
-  { icon: Target, title: "Local Services", description: "Service businesses targeting high-intent local customers" },
-  { icon: Building, title: "Enterprise", description: "Large organizations optimizing multi-million ad budgets" },
-  { icon: TrendingUp, title: "High-Ticket Sales", description: "Businesses selling premium products/services with longer sales cycles" },
-  { icon: Users, title: "Subscription Businesses", description: "SaaS & membership companies reducing CAC and increasing LTV" },
+  { icon: Building2, title: "B2B SaaS", description: "Software businesses that are looking to scale MQL growth through AI optimized advertising campaigns" },
+  { icon: ShoppingCart, title: "E-commerce", description: "Online brands aiming for higher ROAS through intelligent bidding and AI audiences" },
+  { icon: Briefcase, title: "Lead Generation", description: "Businesses requiring a reliable pipeline of qualified lead opportunities" },
+  { icon: Rocket, title: "Tech Startups", description: "Rapidly growing companies that want to scale customer acquisition more efficiently" },
+  { icon: BarChart3, title: "DTC Brands", description: "Direct-to-consumer brands are improving advertising efficiency and customer acquisition performance" },
+  { icon: Target, title: "Local Services", description: "Service based businesses targeting qualified local customer inquiries" },
+  { icon: Building, title: "Enterprise", description: "Large organizations managing and optimizing multi million ad budgets" },
+  { icon: TrendingUp, title: "Premium Sales", description: "Businesses selling premium products and services with extended customer sales cycles" },
+  { icon: Users, title: "Subscription Businesses", description: "SaaS and membership brands that are lowering CAC while increasing long-term customer value" },
 ];
 
 export const PMWhoIsThisForSection = () => {
@@ -57,10 +57,10 @@ export const PMWhoIsThisForSection = () => {
             Perfect Fit
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
-            Who Is This For?
+            Who Benefits Most From This?
           </h2>
           <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
-            Our AI-powered performance marketing strategies work best for businesses ready to scale their paid advertising
+            Our AI lead generation services in Bangalore work best for businesses prepared to scale paid advertising growth.
           </p>
         </div>
 
@@ -88,7 +88,7 @@ export const PMWhoIsThisForSection = () => {
         </BentoGrid>
 
         <div className={`text-center transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
-          <p className="text-gray-400 mb-5 text-sm md:text-base">Don't see your industry? We work with all growth-focused businesses.</p>
+          <p className="text-gray-400 mb-5 text-sm md:text-base">Don't see your industry here? Don't worry, we partner across every business Industry.</p>
           
           {/* Dual CTA */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
