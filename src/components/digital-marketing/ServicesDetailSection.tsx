@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import type { LucideIcon } from "lucide-react";
 import { ArrowRight, TrendingUp, Palette, FileText, MessageSquare, Video, Monitor, ChevronLeft, ChevronRight, Sparkles, CheckCircle2 } from "lucide-react";
 
 import digitalMarketingImg from "@/assets/services/performance-marketing-card.jpg";
@@ -9,7 +10,22 @@ import smsMessagingImg from "@/assets/services/email-marketing-card.jpg";
 import productionStudioImg from "@/assets/services/production-studio.jpg";
 import websiteDesignImg from "@/assets/services/web-design-card.jpg";
 
-const services = [
+interface Service {
+  icon: LucideIcon;
+  number: string;
+  title: string;
+  featuredTitle?: string;
+  description: string;
+  image: string;
+  eyebrow: string;
+  metrics: string[];
+  highlights: string[];
+  subServices: { label: string; href: string }[];
+  featuredTags?: string[];
+  href: string;
+}
+
+const services: Service[] = [
   {
     icon: TrendingUp,
     number: "01",
