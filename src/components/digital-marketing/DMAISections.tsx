@@ -85,7 +85,7 @@ export const DMAISections = () => (
 
       <div className="text-center mb-6">
         <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2">How We Scale Growth for Bangalore Businesses</h3>
-        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">Data-driven execution across every marketing channel delivered through one connected performance system by an AI digital marketing company in Bangalore, designed to improve AI SEO visibility, engagement, lead quality, and business growth.</p>
+        <p className="text-muted-foreground text-sm md:text-base max-w-2xl mx-auto">Data-driven execution across every marketing channel through a single connected performance system to enhance visibility, engagement, lead quality and business growth by an AI digital marketing company in Bangalore.</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-5xl mx-auto">
