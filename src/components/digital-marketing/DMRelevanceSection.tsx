@@ -64,7 +64,7 @@ export const DMRelevanceSection = () => {
           <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} size="lg" className="bg-brand hover:bg-brand/90 text-white rounded-full px-6 sm:px-8 text-sm sm:text-base">
             Get Free Digital Marketing Strategy <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <Button variant="outline" size="lg" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border-white/20 text-white hover:bg-white/10 text-sm sm:text-base">
+          <Button variant="unstyled" size="lg" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-6 sm:px-8 border border-border bg-background text-foreground hover:bg-background/90 text-sm sm:text-base min-w-[220px]">
             <MessageCircle className="w-4 h-4 mr-2" /> Enquire Now
           </Button>
         </div>
