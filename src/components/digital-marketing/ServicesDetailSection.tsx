@@ -141,13 +141,14 @@ const services = [
 export const ServicesDetailSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % services.length);
-    }, 4800);
-
-    return () => window.clearInterval(interval);
-  }, []);
+  // Auto-cycling paused; user can still navigate via tabs, arrows, and dots.
+  // useEffect(() => {
+  //   const interval = window.setInterval(() => {
+  //     setActiveIndex((current) => (current + 1) % services.length);
+  //   }, 4800);
+  //
+  //   return () => window.clearInterval(interval);
+  // }, []);
 
   const activeService = services[activeIndex];
 
