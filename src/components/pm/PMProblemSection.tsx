@@ -5,10 +5,10 @@ import { Button } from "@/components/ui/button";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const problems = [
-  { icon: DollarSign, title: "High CPC, Low Returns", description: "Your cost-per-click keeps rising but conversions stay flat" },
-  { icon: Users, title: "Wrong Audiences", description: "Ads reaching people who will never convert" },
-  { icon: TrendingDown, title: "No Attribution", description: "Can't track which channels actually drive revenue" },
-  { icon: AlertTriangle, title: "Wasted Budget", description: "50%+ of ad spend goes to non-converting clicks" },
+  { icon: DollarSign, title: "High CPC, Low Returns", description: "Ad campaign costs continue increasing while conversions remain inconsistent" },
+  { icon: Users, title: "Incorrect Audience Targeting", description: "Campaigns reach users who rarely become paying customers" },
+  { icon: TrendingDown, title: "Missing Revenue Tracking", description: "Businesses cannot identify which channels generate actual revenue" },
+  { icon: AlertTriangle, title: "Unproductive Ad Spend", description: "50%+ of advertising investment goes toward low quality clicks" },
 ];
 
 export const PMProblemSection = () => {
@@ -24,8 +24,8 @@ export const PMProblemSection = () => {
       <div className="container mx-auto px-4 relative">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
           <span className="inline-block px-4 py-1.5 bg-red-100 text-red-600 rounded-full text-sm font-medium mb-4">The Problem</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Your Ads Burn Money Without Results</h2>
-          <p className="text-lg text-muted-foreground">Most businesses waste 40-60% of their ad budget on ineffective campaigns</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Do Your Campaigns Spend Budget Without Driving Results?</h2>
+          <p className="text-lg text-muted-foreground">Most companies lose 40 to 60% of their advertising budget on underperforming campaigns</p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 max-w-6xl mx-auto">
           {problems.map((problem, index) => (
@@ -45,7 +45,7 @@ export const PMProblemSection = () => {
             className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
           >
             <Sparkles className="w-4 h-4 mr-2" />
-            Start Free Audit Now
+            Claim Your Free Audit Now
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button 
