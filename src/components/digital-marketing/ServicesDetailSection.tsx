@@ -13,10 +13,10 @@ const services = [
   {
     icon: TrendingUp,
     number: "01",
-    title: "Digital Marketing",
-    description: "Complete digital marketing solutions covering AI-powered SEO, Google Ads, and social media strategy. We help businesses increase qualified traffic, generate leads, and improve ROI across every digital channel.",
+    title: "Digital Marketing Solutions",
+    description: "All-in-one digital marketing solutions, including AI-Powered SEO, Google Ads, and social media strategy. We enhance ROI, leads, and qualified traffic for businesses on all digital channels.",
     image: digitalMarketingImg,
-    eyebrow: "Growth Engine 01",
+    eyebrow: "GROWTH ENGINE 01",
     metrics: ["300%+ Growth", "Multi-channel attribution", "30+ in-house experts"],
     highlights: [
       "SEO, ads, and social media managed through one unified strategy",
@@ -28,7 +28,7 @@ const services = [
       { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
       { label: "Social Media Marketing", href: "/social-media-design-agency-bangalore" },
       { label: "Google Ads", href: "/google-ads-agency-bangalore" },
-      { label: "Social Media Optimisation", href: "/social-media-optimization-services-bangalore" },
+      { label: "Social Media Optimization", href: "/social-media-optimization-services-bangalore" },
     ],
     href: "/digital-marketing-agency-bangalore",
   },
