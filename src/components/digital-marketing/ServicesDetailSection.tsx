@@ -60,7 +60,7 @@ const services = [
     title: "Content Marketing Services",
     description: "SEO-optimized blogs, persuasive website copy, video scripts, and guest posts designed to improve rankings, strengthen authority, and increase conversions across every stage of the customer journey.",
     image: contentMarketingImg,
-    eyebrow: "Content That Converts 03",
+    eyebrow: "CONTENT THAT CONVERTS",
     metrics: ["Search-led content", "Authority building", "Funnel messaging"],
     highlights: [
       "Long-form content aligned with customer search intent",
@@ -81,7 +81,7 @@ const services = [
     title: "SMS & Messaging Solutions",
     description: "Connect with customers through WhatsApp Business API, AI chatbots, SMS campaigns, and RCS messaging designed to improve engagement, response rates, and customer communication performance.",
     image: smsMessagingImg,
-    eyebrow: "Direct Response 04",
+    eyebrow: "DIRECT RESPONSE",
     metrics: ["Instant delivery", "Automated journeys", "High open rates"],
     highlights: [
       "Conversational journeys across chat and messaging platforms",
@@ -103,7 +103,7 @@ const services = [
     title: "Creative Production Studio",
     description: "Professional video production and photography services for advertising, social media, and brand storytelling from creative planning and scripting to filming and final content delivery.",
     image: productionStudioImg,
-    eyebrow: "Content Studio 05",
+    eyebrow: "CONTENT STUDIO",
     metrics: ["Ad-ready shoots", "Photo + video", "Post-production"],
     highlights: [
       "Creative shoot planning, scripting, and visual direction",
@@ -122,7 +122,7 @@ const services = [
     title: "Website Design Services",
     description: "Fast, mobile-first, SEO-ready websites designed for conversions. Custom website development, WordPress solutions, e-commerce platforms, and ongoing maintenance created with CRO-focused user experiences from the first wireframe.",
     image: websiteDesignImg,
-    eyebrow: "Conversion Systems 06",
+    eyebrow: "CONVERSION SYSTEMS",
     metrics: ["Fast builds", "SEO-ready", "CRO-first UX"],
     highlights: [
       "Landing pages created around lead generation goals",
