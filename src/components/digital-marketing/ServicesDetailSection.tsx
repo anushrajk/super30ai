@@ -16,7 +16,7 @@ const services = [
     title: "Digital Marketing Solutions",
     description: "All-in-one digital marketing solutions, including AI-Powered SEO, Google Ads, and social media strategy. We enhance ROI, leads, and qualified traffic for businesses on all digital channels.",
     image: digitalMarketingImg,
-    eyebrow: "GROWTH ENGINE 01",
+    eyebrow: "GROWTH ENGINE",
     metrics: ["300%+ Growth", "Multi-channel attribution", "30+ in-house experts"],
     highlights: [
       "SEO, ads, and social media managed through one unified strategy",
