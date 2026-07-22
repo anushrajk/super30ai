@@ -37,9 +37,9 @@ const services = [
     icon: Palette,
     number: "02",
     title: "Creative Design Services",
-    description: "From brand identity systems to social media creatives and intuitive UI UX experiences, our design team creates visual assets that improve recognition, engagement, and conversion performance.",
+    description: "Whether it's a brand identity system, social media creatives, or a user friendly UI UX experience, our design team brings everything together to boost recognition, engagement, and conversions.",
     image: designServicesImg,
-    eyebrow: "Visual Identity 02",
+    eyebrow: "VISUAL IDENTITY 02",
     metrics: ["Brand systems", "Creative production", "UI/UX direction"],
     highlights: [
       "Consistent branding across every customer touchpoint",
@@ -47,7 +47,7 @@ const services = [
       "Interfaces created to improve usability and conversion rates",
     ],
     subServices: [
-      { label: "UI / UX Design", href: "/ui-ux-design-agency-bangalore" },
+      { label: "UI UX Design", href: "/ui-ux-design-agency-bangalore" },
       { label: "Social Media Posts", href: "/social-media-design-agency-bangalore" },
       { label: "Logo Design", href: "/logo-design-company-bangalore" },
       { label: "Brand Kit", href: "/branding-agency-bangalore" },
