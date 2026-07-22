@@ -39,7 +39,7 @@ const services = [
     title: "Creative Design Services",
     description: "Whether it's a brand identity system, social media creatives, or a user friendly UI UX experience, our design team brings everything together to boost recognition, engagement, and conversions.",
     image: designServicesImg,
-    eyebrow: "VISUAL IDENTITY 02",
+    eyebrow: "VISUAL IDENTITY",
     metrics: ["Brand systems", "Creative production", "UI/UX direction"],
     highlights: [
       "Consistent branding across every customer touchpoint",
