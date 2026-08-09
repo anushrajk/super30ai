@@ -521,11 +521,11 @@ const Design = () => {
       <main className="pt-16 md:pt-20">
         <ServiceHeroSection
           badgeIcon={Sparkles}
-          badgeText="Creative Design Agency"
+          badgeText="Design Company in Bangalore"
           headline={
             <>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                Creative Design Agency
+                Graphic Design Agency
               </span>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
                 in Bangalore
@@ -534,7 +534,7 @@ const Design = () => {
           }
           description={
             <>
-              Bangalore's trusted <span className="text-foreground font-semibold">creative design agency</span> delivering brand identity, social creatives, and UI UX systems built for visibility, engagement, and brand growth.
+              A trusted <span className="text-foreground font-semibold">graphic design company in Bangalore</span> delivering brand identity, social creatives, and UI UX systems built for visibility, engagement, and brand growth.
             </>
           }
           trustSignals={[
@@ -548,7 +548,7 @@ const Design = () => {
           loading={loading}
           formTitle="Get Your Free Design Consultation"
           formDescription="Share your brand vision and our creative team will show you how great design can elevate your business."
-          formButtonText="Get Free Design Quote"
+          formButtonText="Enquire Now"
           formId="lead_capture_design"
           formName="Creative Design Consultation"
         />
@@ -558,6 +558,7 @@ const Design = () => {
         <SocialMediaShowcase />
         <PortfolioCaseStudySection />
         <DesignProcessSection />
+        <DesignFAQSection />
         <DesignCTASection />
       </main>
       <Footer />
