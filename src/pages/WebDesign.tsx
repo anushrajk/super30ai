@@ -26,14 +26,14 @@ const TestimonialSection = lazy(() => import("@/components/landing/TestimonialSe
 const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m => ({ default: m.BlogSection })));
 
 const services = [
-  { icon: Layout, title: "Landing Pages", description: "High-converting landing pages designed to maximize lead generation & sales" },
-  { icon: Monitor, title: "Corporate Websites", description: "Professional brand websites that build trust and showcase your business" },
-  { icon: ShoppingCart, title: "E-Commerce Development", description: "Online stores with product catalogs, payment gateways & order management" },
-  { icon: Smartphone, title: "Responsive Design", description: "Pixel-perfect designs that look stunning on desktop, tablet & mobile" },
-  { icon: Paintbrush, title: "UI/UX Design", description: "User-centric design with intuitive navigation and beautiful interfaces" },
-  { icon: Gauge, title: "Speed Optimization", description: "Core Web Vitals optimization for fast loading & better SEO rankings" },
-  { icon: Code, title: "Custom Development", description: "Custom features, integrations, CMS setup & API connections" },
-  { icon: Shield, title: "Maintenance & Support", description: "Ongoing updates, security patches & performance monitoring" },
+  { icon: Layout, title: "Landing Page Design", description: "Conversion focused landing pages built to generate quality leads and increase sales performance" },
+  { icon: Monitor, title: "Corporate Website Design", description: "Professional business websites that strengthen brand credibility and clearly communicate your services" },
+  { icon: ShoppingCart, title: "E-Commerce Website Development", description: "Online stores with product catalogs, secure payment gateways, and complete order management systems" },
+  { icon: Smartphone, title: "Responsive Website Design", description: "Seamless website experiences that perform consistently across desktop, tablet, and mobile devices" },
+  { icon: Paintbrush, title: "UI/UX Website Design", description: "User focused interface design with intuitive navigation and engaging visual experiences" },
+  { icon: Gauge, title: "Website Speed Optimization", description: "Performance optimization for faster loading and improved search engine visibility" },
+  { icon: Code, title: "Custom Website Development", description: "Custom features, third party integrations, CMS setup, and API connectivity" },
+  { icon: Shield, title: "Website Maintenance & Support", description: "Regular updates, security monitoring, and ongoing performance management" },
 ];
 
 const techStack = [
@@ -52,8 +52,8 @@ const WebDesign = () => {
     <>
       <Helmet>
         <title>Web Design Company in Bangalore | Custom Website Design</title>
-        <meta name="description" content="Looking for a website designing agency in Bangalore? We build custom, E-Commerce and responsive sites. 50+ delivered, 98% satisfaction. Let's Build!" />
-        <meta name="keywords" content="web design company in bangalore, website design services bangalore, website designing agency in bangalore, Custom website designing in bangalore" />
+        <meta name="description" content="Professional web design company in Bangalore offering custom, responsive and SEO ready websites built to improve performance and generate business enquiries." />
+        <meta name="keywords" content="web design company in bangalore, website design services bangalore, website designing agency in bangalore, custom website designing in bangalore" />
         <link rel="canonical" href="https://super30ai.lovable.app/web-design-company-bangalore" />
         <meta property="og:title" content="Your Website Should Work for You. Not Against You." />
         <meta property="og:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
@@ -86,30 +86,30 @@ const WebDesign = () => {
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  Web Design Company
+                  Professional Web Design Company
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  in Bangalore
+                  in Bangalore for Custom Website Solutions
                 </span>
               </>
             }
             description={
               <>
-                Bangalore's most trusted <span className="text-foreground font-semibold">website designing agency</span> — custom, responsive, and SEO-optimized <span className="text-foreground font-semibold">website design services</span> built to convert visitors into customers.
+                A trusted <span className="text-foreground font-semibold">website designing agency in Bangalore</span> delivering custom, responsive, and SEO ready <span className="text-foreground font-semibold">website design services</span> that turn visitors into customers.
               </>
             }
             trustSignals={[
-              { icon: Layout, text: "High-Converting Landing Pages" },
-              { icon: Smartphone, text: "Mobile-First Responsive Design" },
-              { icon: Gauge, text: "Core Web Vitals Optimized" },
-              { icon: Shield, text: "Ongoing Maintenance & Support" },
+              { icon: Layout, text: "Conversion Focused Landing Pages" },
+              { icon: Smartphone, text: "Mobile Responsive Website Design" },
+              { icon: Gauge, text: "Optimized Website Performance" },
+              { icon: Shield, text: "Ongoing Maintenance and Support" },
             ]}
-            credentials={["200+ Websites Built", "Core Web Vitals Optimized", "SEO-Ready"]}
+            credentials={["200+ Websites Delivered", "Performance Optimized", "SEO Ready"]}
             onSubmit={handleFormSubmit}
             loading={loading}
             formTitle="Free Website Design Consultation in Bangalore"
-            formDescription="Share your project brief — Bangalore's top website designing agency will plan a custom, high-converting site that grows your business."
-            formButtonText="Get Free Website Quote"
+            formDescription="Share your project requirements and our website designing agency in Bangalore will plan a custom, high performing website for your business growth."
+            formButtonText="Get Free Website Consultation"
             formId="lead_capture_web_design"
             formName="Web Design Consultation"
           />
