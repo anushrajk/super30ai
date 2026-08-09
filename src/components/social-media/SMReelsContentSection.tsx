@@ -6,32 +6,32 @@ const contentTypes = [
   {
     icon: Video,
     title: "Instagram Reels",
-    description: "Trending, short-form vertical videos — from product demos to behind-the-scenes stories that drive massive reach.",
+    description: "Trending short-form vertical videos created for product showcases, brand storytelling, and engaging social media visibility.",
   },
   {
     icon: Camera,
     title: "Product Shoots",
-    description: "Professional flat-lays, lifestyle shots, and product photography optimized for social media feeds.",
+    description: "Professional flat lays, lifestyle photography, and product visuals created for modern social media and e-commerce content.",
   },
   {
     icon: Clapperboard,
-    title: "Brand Films & Promos",
-    description: "Short promotional videos and brand intro clips for Instagram, YouTube Shorts, and LinkedIn.",
+    title: "Brand Films and Promos",
+    description: "Short promotional brand videos and introduction clips created for Instagram, YouTube Shorts, LinkedIn, and digital campaigns.",
   },
   {
     icon: Mic,
     title: "Talking Head Videos",
-    description: "Founder/CEO thought-leadership reels, testimonials, and expert opinion clips that build trust.",
+    description: "Founder & CEO videos, expert insights, testimonials, and leadership content designed to build audience trust and credibility.",
   },
   {
     icon: Film,
     title: "Motion Graphics",
-    description: "Animated posts, logo reveals, explainer reels, and kinetic typography for higher engagement.",
+    description: "Animated creatives, logo animations, explainer reels, and typography visuals designed to increase audience engagement.",
   },
   {
     icon: Sparkles,
-    title: "UGC-Style Content",
-    description: "Authentic, raw-feeling content designed to blend with user feeds — the format audiences trust most.",
+    title: "UGC Style Content",
+    description: "Authentic creator style content developed to feel natural within user feeds and improved formats that audiences trust the most.",
   },
 ];
 
@@ -44,10 +44,10 @@ export const SMReelsContentSection = () => {
         <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <BentoBadge className="mb-4"><Video className="w-4 h-4" />Reels & Content Production</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3">
-            Reels, Shoots & <span className="text-brand">Video Content</span>
+            Reels, Shoots, and <span className="text-brand">Video Content That Performs</span>
           </h2>
           <p className="text-base md:text-lg text-white/60">
-            From concept to final cut — we produce scroll-stopping video content that gets your brand seen and shared.
+            Our social media graphic designing company in Bangalore creates content to promote increased visibility, reach and engagement for videos. From creative planning to final edits.
           </p>
         </div>
 
