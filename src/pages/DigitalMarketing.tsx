@@ -146,7 +146,7 @@ const DigitalMarketing = () => {
             }
             description={
               <>
-                Grow your brand with the leading <span className="text-foreground font-semibold">digital marketing company in Bangalore</span>. Our Digital Marketing Services offer ROI driven SEO, PPC & Social Media marketing in Koramangala, HSR Layout, Whitefield & Electronic City.
+                Grow your brand with the leading <span className="text-foreground font-semibold">Digital Marketing Company in Bangalore</span>. Our ROI driven Digital Marketing Services include SEO, PPC and Social Media Marketing across Bangalore, including Koramangala, HSR Layout, Whitefield, Electronic City and other major business hubs.
               </>
             }
             trustSignals={[
