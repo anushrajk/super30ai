@@ -9,15 +9,15 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const audiences = [
-  { icon: Cloud, title: "SaaS & Tech", description: "Product pages, feature showcases, pricing sections, and demo booking flows — designed to convert free users into paying customers." },
-  { icon: ShoppingCart, title: "E-commerce", description: "Product catalogs, checkout optimization, payment gateway integration, and inventory management — online stores built for revenue." },
-  { icon: Building2, title: "Real Estate", description: "Property listing portals, virtual tour integration, lead capture forms, and area-specific landing pages for builders and developers." },
-  { icon: GraduationCap, title: "Education & EdTech", description: "Course catalogs, enrollment funnels, student portals, and LMS integration — websites that drive admissions and engagement." },
-  { icon: Stethoscope, title: "Healthcare", description: "Patient-friendly interfaces, appointment booking, doctor profiles, and HIPAA-compliant designs that build trust." },
-  { icon: Rocket, title: "Startups", description: "MVP landing pages, investor pitch sites, and growth-ready web apps — launch fast without sacrificing quality." },
-  { icon: Briefcase, title: "Professional Services", description: "Portfolio sites, case study showcases, booking flows, and credibility-building designs for consultancies and agencies." },
-  { icon: Scale, title: "Legal & Finance", description: "Trust-focused designs, practice area pages, attorney profiles, and consultation booking — websites that win client confidence." },
-  { icon: HomeIcon, title: "Hospitality", description: "Booking engines, room galleries, restaurant menus, event spaces, and review integration — experiences that drive reservations." },
+  { icon: Cloud, title: "SaaS & Technology", description: "Product showcases, feature highlights, pricing pages, and demo booking experiences with a focus on converting prospects to customers." },
+  { icon: ShoppingCart, title: "E-commerce", description: "Product catalogs, checkout optimization, payment gateway integration and inventory management that is optimized to push sales and revenue online." },
+  { icon: Building2, title: "Real Estate", description: "Property listing portals, virtual tours, lead generation forms, and location driven landing pages for developers and builders." },
+  { icon: GraduationCap, title: "Education & EdTech", description: "Improved admissions and engagement through course sections, enrollment journeys, student portals and learning management integrations." },
+  { icon: Stethoscope, title: "Healthcare", description: "Patient friendly interfaces, appointment scheduling, doctor profiles, and compliant website solutions that create credibility." },
+  { icon: Rocket, title: "Startups", description: "MVP websites, presentation sites for investors, and scalable digital experiences and web apps for quick business expansion." },
+  { icon: Briefcase, title: "Professional Services", description: "For service-based companies, consultancies and agencies, portfolio websites, case study presentations, trust building digital experiences & consultation booking systems." },
+  { icon: Scale, title: "Legal & Finance", description: "Websites that build trust and confidence such as credibility focused, service pages, professional profiles and consultation booking systems." },
+  { icon: HomeIcon, title: "Hospitality", description: "Reservation systems, room showcases, restaurant menus, event spaces, and guest experiences designed to increase bookings." },
 ];
 
 export const WDWhoIsThisForSection = () => {
@@ -33,8 +33,8 @@ export const WDWhoIsThisForSection = () => {
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-5 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">Industries We Serve</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Websites Built for Every Industry</h2>
-          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">We've built 200+ websites across industries — each customized for its unique audience and goals</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Custom Websites Designed for Every Industry</h2>
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">Our web design company in Bangalore has delivered 200+ websites across diverse industries, each strategically designed to meet unique business goals, audience expectations, and growth objectives.</p>
         </div>
 
         <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto mb-5 md:mb-8">
@@ -54,10 +54,10 @@ export const WDWhoIsThisForSection = () => {
         </BentoGrid>
 
         <div className={`text-center transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
-          <p className="text-gray-400 mb-5 text-sm md:text-base">Don't see your industry? We build custom websites for every business type.</p>
+          <p className="text-gray-400 mb-5 text-sm md:text-base">Don't see your industry? We've got you covered with custom design websites for businesses across every sector.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group">
-              <Sparkles className="w-4 h-4 mr-2" />Get Free Website Quote<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+              <Sparkles className="w-4 h-4 mr-2" />Get Free Website Consultation<ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button variant="outline-white" size="lg" onClick={() => setShowEnquiryPopup(true)} className="hover:scale-105 transition-all duration-300"><MessageCircle className="w-4 h-4 mr-2" />Enquire Now</Button>
           </div>

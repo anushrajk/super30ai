@@ -9,23 +9,23 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 const problems = [
   {
     icon: Gauge,
-    title: "Your Website Is Slow",
-    description: "Pages take 5+ seconds to load — Google penalizes you, visitors bounce, and conversions plummet."
+    title: "Website Performance Slows Growth",
+    description: "Pages that take over 5 seconds to load trigger search engines to reduce visibility; visitors leave quickly, and enquiries decline."
   },
   {
     icon: Smartphone,
-    title: "Not Mobile-Optimized",
-    description: "60%+ of your traffic is mobile, but your site looks broken on phones — you're losing half your audience."
+    title: "Not Optimized For Mobile Users",
+    description: "More than 60% of traffic comes from mobile devices, yet your website is not performing well on mobile devices."
   },
   {
     icon: AlertTriangle,
-    title: "Outdated Design = Lost Trust",
-    description: "Users judge your business in 0.05 seconds. An outdated website signals an outdated company."
+    title: "Outdated Design Reduces Credibility",
+    description: "Visitors evaluate your business within seconds. An outdated website creates doubts about professionalism and trust."
   },
   {
     icon: DollarSign,
-    title: "Traffic But No Conversions",
-    description: "You get visitors but nobody fills a form, calls, or buys — your website is a brochure, not a sales machine."
+    title: "High Website Traffic but Low Conversions",
+    description: "Visitors arrive but do not enquire, call, or purchase. Your website informs users but fails to convert."
   }
 ];
 
@@ -41,10 +41,10 @@ export const WDProblemSection = () => {
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <BentoBadge className="bg-destructive/10 text-destructive mb-4">The Problem</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Your Website Is Costing You <span className="text-destructive">Customers Every Day</span>
+            Your Website Is Losing <span className="text-destructive">Potential Customers Every Day</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            88% of online users won't return to a website after a bad experience — is yours driving people away?
+            88% of online users leave a website after a bad experience. Low enquiries, leads, and sales due to slow performance, poor usability, and outdated design.
           </p>
         </div>
 

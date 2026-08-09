@@ -2,19 +2,19 @@ import { CheckCircle2, XCircle, Globe, Bot } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const oldWayItems = [
-  { text: "WordPress themes with no customization" },
-  { text: "Slow 8-12 week timelines" },
-  { text: "Not optimized for mobile or speed" },
-  { text: "No SEO or conversion strategy built in" },
-  { text: "Expensive ongoing maintenance" },
+  { text: "Generic WordPress themes with no customization" },
+  { text: "Slow 8-12 week project delivery timelines" },
+  { text: "Not optimized for mobile users and performance" },
+  { text: "No SEO strategy or conversion foundation" },
+  { text: "Higher long-term maintenance costs" },
 ];
 
 const newWayItems = [
-  { text: "Custom-designed for your brand & audience" },
-  { text: "Fast 2-4 week delivery" },
-  { text: "Mobile-first, Core Web Vitals optimized" },
-  { text: "SEO & conversion strategy baked into every page" },
-  { text: "Affordable maintenance with real support" },
+  { text: "Custom design websites for your brand and audience" },
+  { text: "Faster project delivery within the timeline of 2-4 weeks" },
+  { text: "Mobile responsive with Core Web Vitals optimization" },
+  { text: "SEO and conversion strategy integrated with every page" },
+  { text: "Cost effective maintenance with dedicated support" },
 ];
 
 export const WDComparisonSection = () => {
@@ -26,9 +26,9 @@ export const WDComparisonSection = () => {
       
       <div className="container relative mx-auto px-4">
         <div className="text-center max-w-3xl mx-auto mb-6 md:mb-12">
-          <span className="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium mb-4 border border-emerald-500/30">The Difference</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Template Websites vs Custom-Built Websites</h2>
-          <p className="text-lg text-gray-300">See why a custom website outperforms template-based alternatives in every metric</p>
+          <span className="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium mb-4 border border-emerald-500/30">Difference</span>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">Template Websites vs Custom Website Development</h2>
+          <p className="text-lg text-gray-300">Discover how professionally developed custom websites outperform in terms of performance, user experience, and higher conversion potential across every key business metric.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
@@ -37,7 +37,7 @@ export const WDComparisonSection = () => {
             <CardContent className="p-6 md:p-8">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center"><Globe className="w-6 h-6 text-gray-400" /></div>
-                <div><h3 className="text-xl font-bold text-white">Template Websites</h3><p className="text-sm text-gray-400">Cookie-cutter approach</p></div>
+                <div><h3 className="text-xl font-bold text-white">Template Websites</h3><p className="text-sm text-gray-400">Standardized website approach</p></div>
               </div>
               <ul className="space-y-4">
                 {oldWayItems.map((item, index) => (
@@ -45,7 +45,7 @@ export const WDComparisonSection = () => {
                 ))}
               </ul>
               <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10">
-                <div className="text-center"><span className="text-2xl font-bold text-gray-400">1-2%</span><p className="text-sm text-gray-500">Avg. Conversion Rate</p></div>
+                <div className="text-center"><span className="text-2xl font-bold text-gray-400">1% to 2%</span><p className="text-sm text-gray-500">Average Conversion Rate</p></div>
               </div>
             </CardContent>
           </Card>
@@ -56,7 +56,7 @@ export const WDComparisonSection = () => {
             <CardContent className="p-6 md:p-8 relative">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-brand rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/30"><Bot className="w-6 h-6 text-white" /></div>
-                <div><h3 className="text-xl font-bold text-white">Super 30 Custom Websites</h3><p className="text-sm text-emerald-400">Built for performance</p></div>
+                <div><h3 className="text-xl font-bold text-white">Super 30 Custom Websites</h3><p className="text-sm text-emerald-400">Designed for high business performance</p></div>
                 <span className="ml-auto px-2 py-1 bg-emerald-500/20 text-emerald-400 text-xs font-medium rounded-full border border-emerald-500/30">Recommended</span>
               </div>
               <ul className="space-y-4">
@@ -65,7 +65,7 @@ export const WDComparisonSection = () => {
                 ))}
               </ul>
               <div className="mt-8 p-4 bg-emerald-500/10 rounded-xl border border-emerald-500/30">
-                <div className="text-center"><span className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-brand bg-clip-text text-transparent">4-8%</span><p className="text-sm text-emerald-400 font-medium">Avg. Conversion Rate</p></div>
+                <div className="text-center"><span className="text-2xl font-bold bg-gradient-to-r from-emerald-400 to-brand bg-clip-text text-transparent">4% to 8%</span><p className="text-sm text-emerald-400 font-medium">Average Conversion Rate</p></div>
               </div>
             </CardContent>
           </Card>
