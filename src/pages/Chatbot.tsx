@@ -38,7 +38,6 @@ const config: ServicePageConfig = {
       description: "Slow customer responses, rising support workloads, and missed engagement opportunities often limit growth, reduce conversions, and affect customer experience.",
     },
     services: {
-      eyebrow: "What We Offer",
       title: "Chatbot Development Services in Bangalore For Customer Engagement And Automation",
       description: "Custom AI chatbot solutions designed to automate conversations, improve customer support, qualify leads, and enhance user experiences across digital platforms.",
     },
