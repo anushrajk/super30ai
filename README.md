@@ -1,73 +1,28 @@
-# Welcome to your Lovable project
+# S30
 
-## Project info
+Based on the document, build me a modern-looking landing page for the SEO agency in a funnel style. Plan all the features, UI, usability, adaptability, responsiveness, and structure. Based on this, we will need to think about the structure, restructure, and reconstruct the layout if needed. Increase the usability, responsiveness, keep the new UI highly interactive, give a look of SAAS like platform but for service-based. Build the functionality and make it work. Build all 3 pages with thank you as a full funnel. All the pages, each functionality should be fully working and build all the dependent logic & UI. Plan for the complete tech stack, database, and integrated component needed before starting the execution. Share data collected at each level/ form along with the information from all the previous steps of each session via email. Build the reach to track and share detail at the browser level information like First page URL, Current PAGE URL, Referrer, IP, IP city, IP country, Browser, First landed time, current submission time.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Also copy the complete UI with content exactly like: https://aiseoserviceagencybangalore.lovable.app
 
-## How can I edit this code?
+This project was built with [Lovable](https://lovable.dev).
 
-There are several ways of editing your application.
+**Live app**: https://super30ai.lovable.app
 
-**Use Lovable**
+## Build with Lovable
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/9fc41acf-a44c-4b4e-b257-9336c6b074a9).
 
-Changes made via Lovable will be committed automatically to this repo.
+- **Ship faster**: describe what you want to build and Lovable handles the code.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
-**Use your preferred IDE**
+## Development
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
+git clone <this-repository-url>
+cd <repository-name>
 npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
