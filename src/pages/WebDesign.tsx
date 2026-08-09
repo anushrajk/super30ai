@@ -127,8 +127,8 @@ const WebDesign = () => {
             <div className="container mx-auto px-3 md:px-4">
               <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
                 <BentoBadge className="mb-4">Our Services</BentoBadge>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Web Design & Development Services</h2>
-                <p className="text-base md:text-lg text-muted-foreground">End-to-end web solutions for businesses of all sizes</p>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">Website Design and Development Services</h2>
+                <p className="text-base md:text-lg text-muted-foreground">Complete website solutions designed for businesses of every size and industry</p>
               </div>
               <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
                 {services.map((service, i) => (
@@ -164,7 +164,6 @@ const WebDesign = () => {
           <WDAISections />
           <WDWhoIsThisForSection />
           <WDProcessSection />
-          <WDFinalCTASection />
           <WDRelevanceSection />
           <TestimonialSection />
           <BlogSection />
