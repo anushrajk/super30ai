@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { getFaqs } from "@/data/faqs";
 import { lazy, Suspense } from "react";
 import { Shield, BarChart3, Users, Zap, Megaphone } from "lucide-react";
 import { Navbar } from "@/components/Navbar";
@@ -28,15 +29,7 @@ const DMFinalCTASection = lazy(() => import("@/components/digital-marketing/DMFi
 const DMFAQSection = lazy(() => import("@/components/digital-marketing/DMFAQSection").then((m) => ({ default: m.DMFAQSection })));
 
 
-const faqSchemaData = [
-  { q: "How much do digital marketing services in Bangalore cost?", a: "Our digital marketing services in Bangalore start from ₹25,000/month for a focused single-channel engagement (SEO or PPC). Full-service retainers covering multiple channels range from ₹60,000 to ₹1,50,000+/month depending on the scope, industry competitiveness, and campaign goals." },
-  { q: "How long does it take to see results from a digital marketing company in Bangalore?", a: "SEO typically delivers measurable ranking improvements within 3–6 months, with significant traffic growth building from Month 4 onwards. PPC and paid social campaigns can generate qualified leads within the first 2–4 weeks of launch." },
-  { q: "What is the difference between an online marketing company and a digital marketing agency in Bangalore?", a: "The terms are used interchangeably. A full-service digital marketing agency provides integrated strategy across all channels, while some online marketing companies focus on individual services like SEO or social media alone." },
-  { q: "Do you work with startups or only large enterprises?", a: "Both. We work with early-stage startups in Koramangala and HSR Layout that need cost-efficient digital marketing, and with enterprise brands in Electronic City, Whitefield, and MG Road that need scale, compliance, and multi-market reach." },
-  { q: "Which digital marketing services in Bangalore are most effective for B2B companies?", a: "For B2B companies in Bangalore, SEO with long-form thought leadership content, LinkedIn Ads targeting decision-makers, and Google Search Ads for high-intent keywords typically deliver the strongest results." },
-  { q: "How is your digital marketing agency different from other agencies in Bangalore?", a: "Full transparency (live dashboard access), no lock-in contracts (monthly retainers, cancel anytime), and 100% in-house execution (no outsourcing). We also integrate Generative Engine Optimisation (GEO) for AI search visibility." },
-  { q: "Do you offer SEO, PPC, and social media together as a package?", a: "Yes. We manage SEO, Google Ads, Meta Ads, LinkedIn campaigns, content marketing, email marketing, and social media under one roof with a unified strategy and single performance dashboard." },
-];
+const faqSchemaData = getFaqs("digital-marketing").map((f) => ({ q: f.question, a: f.answer }));
 
 const DigitalMarketing = () => {
   const { loading, handleFormSubmit } = useLeadSubmit({
