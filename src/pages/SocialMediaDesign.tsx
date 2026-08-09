@@ -6,6 +6,7 @@ import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { getFaqs } from "@/data/faqs";
 
 import { lazy, Suspense } from "react";
 
@@ -25,6 +26,7 @@ const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m
 const SMFAQSection = lazy(() => import("@/components/social-media/SMFAQSection").then(m => ({ default: m.SMFAQSection })));
 
 const SocialMediaDesign = () => {
+  const smFaqs = getFaqs("social-media-design");
   const { loading, handleFormSubmit } = useLeadSubmit({
     source: 'social_media_design',
     formId: 'social-media-form',
@@ -55,6 +57,17 @@ const SocialMediaDesign = () => {
             "url": "https://www.thesuper30.ai/social-media-design-agency-bangalore",
             "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" },
             "areaServed": { "@type": "City", "name": "Bangalore" }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": smFaqs.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+            })),
           })}
         </script>
       </Helmet>
