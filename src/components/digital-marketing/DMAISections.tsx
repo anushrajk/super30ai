@@ -4,7 +4,7 @@ import { ArrowRight, Check, X } from "lucide-react";
 
 const features = [
   { title: "Connected Strategy", description: "SEO insights improve ad targeting, while social engagement strengthens email nurturing, so every marketing channel operates through one connected growth system." },
-  { title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing systems designed to improve engagement without constant manual management or intervention." },
+  { title: "Smart Automation", description: "Automated email sequences, social scheduling, and lead nurturing systems are designed to improve engagement without constant manual management or intervention." },
   { title: "Revenue Attribution", description: "Track every lead journey from first click to final conversion, while understanding which marketing channels directly contribute to business revenue growth." },
   { title: "Live Performance Dashboards", description: "Monitor SEO, paid ads, social media, and email marketing performance through a single central dashboard, without relying on delayed monthly reports." },
 ];
@@ -20,7 +20,7 @@ export const DMAISections = () => (
   <section className="py-8 md:py-14 lg:py-20 bg-background">
     <div className="container mx-auto px-4">
       <div className="text-center max-w-3xl mx-auto mb-6 md:mb-10">
-        <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">What Makes Super 30 Different?</span>
+        <span className="inline-block px-4 py-1.5 bg-brand/10 text-brand rounded-full text-xs sm:text-sm font-medium mb-4 border border-brand/20">What Makes TheSuper30 Different?</span>
         <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">Integrated Digital Marketing That Drives Real Growth</h3>
         <p className="text-base md:text-lg text-muted-foreground">
           The majority of digital marketing companies in Bangalore operate within unstructured campaign frameworks. We integrate the 3 disciplines of SEO, paid media, social media, and automation into one performance based system that optimises visibility, conversions, and long-term business growth.
