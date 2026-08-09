@@ -78,7 +78,7 @@ const SocialMediaDesign = () => {
             }
             description={
               <>
-                Bangalore's trusted <span className="text-foreground font-semibold">social media design company</span> producing attention grabbing visuals, reels, and branded content for Instagram, Facebook, LinkedIn, and growing digital platforms.
+                Creative <span className="text-foreground font-semibold">social media design services in Bangalore</span> with the main objective of creating scroll stopping visuals, reels and branded content for Instagram, Facebook, LinkedIn and emerging digital platforms.
               </>
             }
             trustSignals={[
