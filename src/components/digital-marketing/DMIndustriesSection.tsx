@@ -38,18 +38,26 @@ const IndustryPill = ({ icon: Icon, name }: { icon: React.ElementType; name: str
   </div>
 );
 
-export const DMIndustriesSection = () => (
+export const DMIndustriesSection = ({
+  eyebrow = "Industry Expertise",
+  title,
+  description = "Industry trusted digital marketing strategies across 18+ business sectors. Each campaign, platform, and customer journey is aligned to your market's search, engagement, and conversion patterns.",
+}: {
+  eyebrow?: string;
+  title?: React.ReactNode;
+  description?: string;
+} = {}) => (
   <section className="py-24 md:py-32 lg:py-40 bg-background relative overflow-hidden">
     <div className="container mx-auto px-4 mb-16 md:mb-20">
       <div className="max-w-6xl mx-auto text-center">
         <span className="text-brand text-xs font-bold uppercase tracking-[0.25em] mb-4 block">
-          Industry Expertise
+          {eyebrow}
         </span>
         <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-[1.1] mb-5">
-          Marketing Strategies for <span className="text-brand">Every Industry</span>
+          {title ?? <>Marketing Strategies for <span className="text-brand">Every Industry</span></>}
         </h2>
         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-          Industry trusted digital marketing strategies across 18+ business sectors. Each campaign, platform, and customer journey is aligned to your market's search, engagement, and conversion patterns.
+          {description}
         </p>
       </div>
     </div>
