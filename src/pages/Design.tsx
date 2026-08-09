@@ -12,6 +12,7 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
+import { getFaqs } from "@/data/faqs";
 import {
   Palette, Layout, Smartphone, PenTool, Layers, Monitor,
   MessageCircle, ArrowRight, TrendingUp, Bot, Award,
@@ -51,7 +52,7 @@ const useParallax = (speed: number = 0.3) => {
 const serviceCards = [
   {
     title: "UI/UX Design",
-    description: "Design experiences that feel effortless, premium, and built to win loyalty.",
+    description: "Premium digital designs for a seamless navigation experience, better engagement, and intuitive customer interaction.",
     icon: MousePointerClick,
     gradient: "from-[hsl(270,80%,55%)] to-[hsl(290,70%,40%)]",
     colSpan: "md:col-span-2",
@@ -60,7 +61,7 @@ const serviceCards = [
   },
   {
     title: "Landing Page Design",
-    description: "Turn first impressions into momentum with landing pages built to convert.",
+    description: "Let your landing pages create the first impressions that drive engagement, lead generation, and campaign performance.",
     icon: Monitor,
     gradient: "from-[hsl(240,70%,55%)] to-[hsl(260,60%,45%)]",
     colSpan: "md:col-span-2",
@@ -68,8 +69,8 @@ const serviceCards = [
     size: "md" as const,
   },
   {
-    title: "Social Media Design",
-    description: "Scroll-stopping creatives for Instagram, LinkedIn, Facebook & more.",
+    title: "Social Media Creative Designs",
+    description: "Scroll stopping social media creatives crafted for Instagram, LinkedIn, Facebook, and performance campaigns and more.",
     icon: Instagram,
     gradient: "from-[hsl(330,80%,55%)] to-[hsl(350,70%,45%)]",
     colSpan: "md:col-span-2",
@@ -77,8 +78,8 @@ const serviceCards = [
     size: "md" as const,
   },
   {
-    title: "Brand Identity",
-    description: "Logos, color systems, and guidelines that make your brand unforgettable.",
+    title: "Brand Identity Design",
+    description: "Logos, visual systems, and brand guidelines created to establish an unforgettable and professional brand identity that scales.",
     icon: Palette,
     gradient: "from-[hsl(18,100%,48%)] to-[hsl(30,90%,40%)]",
     colSpan: "md:col-span-2",
@@ -86,8 +87,8 @@ const serviceCards = [
     size: "md" as const,
   },
   {
-    title: "Design for AI Products",
-    description: "Design AI experiences that go far beyond chat and feel clear in context.",
+    title: "AI Product Designs",
+    description: "AI focused digital experiences designed to deliver clarity, usability, and intelligent user interaction that go beyond chat and feel clear in context.",
     icon: Bot,
     gradient: "from-[hsl(340,75%,55%)] to-[hsl(320,65%,45%)]",
     colSpan: "md:col-span-2",
@@ -105,13 +106,13 @@ const BentoServicesSection = () => {
         <div className="text-center mb-12 md:mb-16">
           <div className="badge-brand mx-auto mb-4">
             <Layers className="w-4 h-4" />
-            <span className="text-sm font-medium">Our Design Services</span>
+            <span className="text-sm font-medium">What We Offer</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Everything You Need, <span className="text-brand">Designed Right</span>
+            Graphic Design Services in Bangalore <span className="text-brand">That Elevate Your Brand Presence</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From pixel-perfect interfaces to scroll-stopping social creatives — we've got your visual needs covered.
+            From perfect pixel interfaces to attention driven social creatives, we deliver complete visual solutions designed specifically for your business goals.
           </p>
         </div>
 
@@ -187,10 +188,10 @@ const SocialMediaShowcase = () => {
             <span className="text-sm font-medium">Social Media Creatives</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Scroll-Stopping <span className="text-brand">Social Designs</span>
+            High Impact Social Media Creatives <span className="text-brand">That Drive Engagement</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We design branded content for Instagram, LinkedIn, Facebook, and every platform your audience lives on.
+            Our design agency in Bangalore creates platform specific social media designs that strengthen brand visibility, increase audience engagement, and help your business stand out across every digital channel right from Instagram, Facebook to LinkedIn.
           </p>
         </div>
 
@@ -450,6 +451,47 @@ const DesignStatsSection = () => {
 };
 
 // ─── CTA Section ───
+const designFaqs = getFaqs("design");
+
+const DesignFAQSection = () => {
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>();
+
+  return (
+    <section ref={sectionRef} className="py-16 md:py-24 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-10 md:mb-14">
+          <div className="badge-brand mx-auto mb-4">
+            <MessageCircle className="w-4 h-4" />
+            <span className="text-sm font-medium">FAQs</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Frequently Asked <span className="text-brand">Questions</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Everything you need to know about working with our design agency in Bangalore.
+          </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          {designFaqs.map((faq, i) => (
+            <details
+              key={i}
+              className={`group bg-card border border-border rounded-xl p-4 cursor-pointer transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: `${(i + 1) * 60}ms` }}
+            >
+              <summary className="font-semibold text-foreground list-none flex items-center justify-between gap-3">
+                {faq.question}
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform flex-shrink-0" />
+              </summary>
+              <p className="text-muted-foreground text-sm mt-3 leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const DesignCTASection = () => {
   const [showEnquiry, setShowEnquiry] = useState(false);
 
@@ -464,10 +506,10 @@ const DesignCTASection = () => {
             <span className="text-sm font-medium">Let's Create Together</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Hire Bangalore's Top <span className="text-brand">Graphic Design Agency</span>
+            Partner with Bangalore's <span className="text-brand">Leading Graphic Design Agency</span>
           </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-            From a single social post to a complete brand overhaul — talk to our graphic design agency in Bangalore and see what great design can do for your business.
+          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+            From social media creatives and marketing collateral to complete brand identity systems, our graphic design agency in Bangalore creates impactful visuals that strengthen brand presence, enhance communication, and support business growth.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/contact-us">
@@ -516,16 +558,27 @@ const Design = () => {
         <meta name="twitter:title" content="100+ Brands Designed. Yours Could Be Next in Line." />
         <meta name="twitter:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
         <meta name="twitter:url" content="https://super30ai.lovable.app/graphic-design-agency-bangalore" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: designFaqs.map((f) => ({
+              "@type": "Question",
+              name: f.question,
+              acceptedAnswer: { "@type": "Answer", text: f.answer },
+            })),
+          })}
+        </script>
       </Helmet>
       <Navbar />
       <main className="pt-16 md:pt-20">
         <ServiceHeroSection
           badgeIcon={Sparkles}
-          badgeText="Creative Design Agency"
+          badgeText="Design Company in Bangalore"
           headline={
             <>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                Creative Design Agency
+                Graphic Design Agency
               </span>
               <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
                 in Bangalore
@@ -534,7 +587,7 @@ const Design = () => {
           }
           description={
             <>
-              Bangalore's trusted <span className="text-foreground font-semibold">creative design agency</span> delivering brand identity, social creatives, and UI UX systems built for visibility, engagement, and brand growth.
+              A trusted <span className="text-foreground font-semibold">graphic design company in Bangalore</span> delivering brand identity, social creatives, and UI UX systems built for visibility, engagement, and brand growth.
             </>
           }
           trustSignals={[
@@ -548,7 +601,7 @@ const Design = () => {
           loading={loading}
           formTitle="Get Your Free Design Consultation"
           formDescription="Share your brand vision and our creative team will show you how great design can elevate your business."
-          formButtonText="Get Free Design Quote"
+          formButtonText="Enquire Now"
           formId="lead_capture_design"
           formName="Creative Design Consultation"
         />
@@ -558,6 +611,7 @@ const Design = () => {
         <SocialMediaShowcase />
         <PortfolioCaseStudySection />
         <DesignProcessSection />
+        <DesignFAQSection />
         <DesignCTASection />
       </main>
       <Footer />
