@@ -450,6 +450,47 @@ const DesignStatsSection = () => {
 };
 
 // ─── CTA Section ───
+const designFaqs = getFaqs("design");
+
+const DesignFAQSection = () => {
+  const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>();
+
+  return (
+    <section ref={sectionRef} className="py-16 md:py-24 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-10 md:mb-14">
+          <div className="badge-brand mx-auto mb-4">
+            <MessageCircle className="w-4 h-4" />
+            <span className="text-sm font-medium">FAQs</span>
+          </div>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+            Frequently Asked <span className="text-brand">Questions</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Everything you need to know about working with our design agency in Bangalore.
+          </p>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          {designFaqs.map((faq, i) => (
+            <details
+              key={i}
+              className={`group bg-card border border-border rounded-xl p-4 cursor-pointer transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              style={{ transitionDelay: `${(i + 1) * 60}ms` }}
+            >
+              <summary className="font-semibold text-foreground list-none flex items-center justify-between gap-3">
+                {faq.question}
+                <ArrowRight className="w-4 h-4 text-muted-foreground group-open:rotate-90 transition-transform flex-shrink-0" />
+              </summary>
+              <p className="text-muted-foreground text-sm mt-3 leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const DesignCTASection = () => {
   const [showEnquiry, setShowEnquiry] = useState(false);
 
