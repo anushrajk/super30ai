@@ -280,7 +280,7 @@ const ProcessSection = ({ process, heading }: { process: ServicePageConfig["proc
 };
 
 // ── Who Is This For ──
-const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode } }) => {
+const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
@@ -289,6 +289,9 @@ const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIs
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Is This <span className="text-brand">Right For You?</span></>}
           </h2>
+          {heading?.description && (
+            <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">{heading.description}</p>
+          )}
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="bg-brand/5 border border-brand/20 rounded-2xl p-6">
