@@ -1,0 +1,43 @@
+name: Sync to Super30
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Start SSH agent
+        uses: webfactory/ssh-agent@v0.9.1
+        with:
+          ssh-private-key: ${{ secrets.SUPER30_DEPLOY_KEY }}
+
+      - name: Add GitHub to known hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Add Super30 repository
+        run: |
+          git remote add destination git@github.com:thesuper30/super30ai-53d3e5d6.git
+
+      - name: Test SSH connection
+        run: |
+          ssh -T git@github.com || true
+
+      - name: Push to Super30 sync branch
+        run: |
+          git push destination HEAD:refs/heads/lovable-sync --force
