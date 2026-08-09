@@ -6,20 +6,20 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const forYou = [
-  "You want a consistent, premium brand look across all social platforms",
-  "You post regularly but your visuals don't match your brand quality",
-  "You need carousels, stories, reels covers & highlight covers",
-  "You want a design partner who understands social media strategy",
-  "You're ready to invest in creatives that actually drive engagement",
-  "You value fast turnaround without compromising quality",
+  "You want a premium & consistent brand presence across social platforms",
+  "You post regularly, but your creatives lack visual consistency",
+  "You need carousel posts, stories, reel covers, and highlights",
+  "You want a creative partner who understands social media strategy",
+  "You are ready to invest in visuals that improve audience engagement",
+  "You value quick delivery without compromising creative quality",
 ];
 
 const notForYou = [
-  "You just want a Canva template pack",
-  "You need one-off logo design only",
-  "Your budget is under ₹5k/month for all design work",
-  "You expect virality from design alone without content strategy",
-  "You change design direction every week",
+  "You only want Canva template designs",
+  "You need a one time logo design requirement only",
+  "Your monthly budget is limited to under ₹5k for all design work",
+  "You expect virality from design alone without a content strategy",
+  "You frequently change creative direction every single week",
 ];
 
 export const SMRelevanceSection = () => {
@@ -41,8 +41,8 @@ export const SMRelevanceSection = () => {
           <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
             Instant Relevance Filter
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Is This Right For Your Brand?</h2>
-          <p className="text-lg text-gray-300">We're selective about partnerships to ensure every client gets exceptional results</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Is This the Right Creative Partner for Your Brand?</h2>
+          <p className="text-lg text-gray-300">We work with brands that value consistency, quality, and long-term creative performance across social platforms.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
@@ -51,7 +51,7 @@ export const SMRelevanceSection = () => {
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30"><Check className="w-5 h-5 text-white" /></div>
-                  <h3 className="text-xl font-bold text-green-400">This is for you if...</h3>
+                  <h3 className="text-xl font-bold text-green-400">This Works Well for You If…</h3>
                 </div>
                 <ul className="space-y-4">
                   {forYou.map((item, index) => (
@@ -70,7 +70,7 @@ export const SMRelevanceSection = () => {
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/30"><X className="w-5 h-5 text-white" /></div>
-                  <h3 className="text-xl font-bold text-red-400">Not for you if...</h3>
+                  <h3 className="text-xl font-bold text-red-400">This May Not Be Right for You If…</h3>
                 </div>
                 <ul className="space-y-4">
                   {notForYou.map((item, index) => (

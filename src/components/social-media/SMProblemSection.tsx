@@ -10,22 +10,22 @@ const problems = [
   {
     icon: Eye,
     title: "Your Posts Get Scrolled Past",
-    description: "Generic Canva templates blend into the feed — no one stops, no one clicks, no one remembers your brand."
+    description: "Generic social media creatives blend into crowded feeds, failing to generate clicks, engagement, or meaningful brand recall."
   },
   {
     icon: ThumbsDown,
     title: "Low Engagement Despite Posting Daily",
-    description: "You're consistent but your likes, comments, and shares have flatlined for months."
+    description: "Regular posting alone is not improving likes, comments, shares, or audience interaction across your social platforms."
   },
   {
     icon: Palette,
     title: "Inconsistent Brand Identity",
-    description: "Every post looks different — no cohesive color palette, typography, or visual language across platforms."
+    description: "Every creative looks disconnected without unified colours, typography, or a recognizable visual identity across channels."
   },
   {
     icon: Clock,
-    title: "Design Takes Too Long",
-    description: "Your team spends hours on each post instead of focusing on strategy and growth."
+    title: "Design Delays Slow Growth",
+    description: "Your internal team spends excessive time creating posts instead of focusing on strategy and business growth."
   }
 ];
 
@@ -44,10 +44,10 @@ export const SMProblemSection = () => {
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <BentoBadge className="bg-destructive/10 text-destructive mb-4">The Problem</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Your Social Media Posts Should Stop the Scroll. <span className="text-destructive">Do They?</span>
+            Does Your Social Media Content Retain <span className="text-destructive">Audience Attention?</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Most brands need a real social media design agency in Bangalore — not another Canva template factory. Here's why generic creatives fail.
+            Most businesses need a strategic social media design agency in Bangalore, not repetitive template based creatives that fail to create engagement or recall.
           </p>
         </div>
 

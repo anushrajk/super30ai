@@ -12,12 +12,12 @@ import creative6 from "@/assets/social-creatives/creative-6.png";
 const gridPosts = [creative1, creative2, creative3, creative4, creative5, creative6];
 
 const brandPoints = [
-  "Custom color palette & typography for every client",
-  "Consistent visual language across all platforms",
-  "Mood board & style guide before first post",
-  "Grid-planned Instagram feeds for aesthetic cohesion",
-  "Template systems for scalable, on-brand posting",
-  "Tone-matched visuals — corporate, playful, or luxury",
+  "Custom colour palettes & typography for every client",
+  "Consistent visual styling across all social platforms",
+  "Moodboards & style references before the launch phase",
+  "Grid planned Instagram feeds with aesthetic consistency",
+  "Template systems for scalable, on-brand content creation",
+  "Brand aligned visuals for corporate, playful, or luxury styles",
 ];
 
 export const SMMoodboardSection = () => {
@@ -27,11 +27,11 @@ export const SMMoodboardSection = () => {
     <section ref={sectionRef} className="py-10 md:py-16 lg:py-20 bg-muted/30 relative overflow-hidden">
       <div className="container mx-auto px-4">
         <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <BentoBadge className="mb-4"><Palette className="w-4 h-4" />Moodboards & Brand Consistency</BentoBadge>
+          <BentoBadge className="mb-4"><Palette className="w-4 h-4" />Moodboards & Visual Brand Consistency</BentoBadge>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Instagram Feeds That <span className="text-brand">Tell Your Story</span>
+            Instagram Feeds That <span className="text-brand">Reflect Your Brand Story</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground">We don't just design posts — we craft cohesive visual identities that make your Instagram profile look like a premium brand.</p>
+          <p className="text-base md:text-lg text-muted-foreground">We create more than just social media posts. Our team creates cohesive Instagram visual identities that give your profile a refined, premium brand presence.</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto items-center">

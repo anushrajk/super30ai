@@ -2,19 +2,19 @@ import { CheckCircle2, XCircle, Palette, Bot } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const templateItems = [
-  { text: "Generic Canva/template designs" },
-  { text: "Inconsistent brand identity" },
-  { text: "No content strategy behind visuals" },
-  { text: "Same formats recycled endlessly" },
-  { text: "Low engagement and reach" },
+  { text: "Generic Canva template social media creatives" },
+  { text: "Inconsistent brand identity across platforms" },
+  { text: "No strategic direction behind content visuals" },
+  { text: "Repeated formats reused without creative variation" },
+  { text: "Weak engagement and limited audience reach" },
 ];
 
 const customItems = [
-  { text: "Custom designs tailored to your brand" },
-  { text: "Cohesive visual identity system" },
-  { text: "Strategy-first, design-second approach" },
-  { text: "Platform-optimized formats & trends" },
-  { text: "Scroll-stopping engagement rates" },
+  { text: "Custom creatives aligned with your brand identity" },
+  { text: "Consistent visual language across all platforms" },
+  { text: "Strategy led approach focused on audience engagement" },
+  { text: "Platform optimized formats aligned with content trends" },
+  { text: "Higher engagement designed to capture attention" },
 ];
 
 export const SMComparisonSection = () => {
@@ -30,10 +30,10 @@ export const SMComparisonSection = () => {
             The Difference
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Template Designs vs a Real Social Media Design Company in Bangalore
+            Template Creatives vs Strategic Social Media Design in Bangalore
           </h2>
           <p className="text-lg text-gray-300">
-            See why brands using a dedicated social media creative designing agency in Bangalore outperform template-based content by 3–5x
+            See why brands partnering with a dedicated social media creative designing agency in Bangalore achieve 3-5x stronger engagement than repetitive template based content.
           </p>
         </div>
 
@@ -47,7 +47,7 @@ export const SMComparisonSection = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-white">Template Designs</h3>
-                  <p className="text-sm text-gray-400">Generic approach</p>
+                  <p className="text-sm text-gray-400">Generic Approach</p>
                 </div>
               </div>
               <ul className="space-y-4">
@@ -60,7 +60,7 @@ export const SMComparisonSection = () => {
               </ul>
               <div className="mt-8 p-4 bg-white/5 rounded-xl border border-white/10">
                 <div className="text-center">
-                  <span className="text-2xl font-bold text-gray-400">0.5-1%</span>
+                  <span className="text-2xl font-bold text-gray-400">0.5–1%</span>
                   <p className="text-sm text-gray-500">Avg. Engagement Rate</p>
                 </div>
               </div>
@@ -76,8 +76,8 @@ export const SMComparisonSection = () => {
                   <Bot className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-white">The Super 30 Creatives</h3>
-                  <p className="text-sm text-pink-400">Custom & strategic</p>
+                  <h3 className="text-xl font-bold text-white">TheSuper 30 Creatives</h3>
+                  <p className="text-sm text-pink-400">Custom and strategic</p>
                 </div>
                 <span className="ml-auto px-2 py-1 bg-pink-500/20 text-pink-400 text-xs font-medium rounded-full border border-pink-500/30">
                   Recommended

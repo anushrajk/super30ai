@@ -6,6 +6,7 @@ import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { Palette, Instagram, Layers, Sparkles, Zap } from "lucide-react";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
+import { getFaqs } from "@/data/faqs";
 
 import { lazy, Suspense } from "react";
 
@@ -25,6 +26,7 @@ const BlogSection = lazy(() => import("@/components/landing/BlogSection").then(m
 const SMFAQSection = lazy(() => import("@/components/social-media/SMFAQSection").then(m => ({ default: m.SMFAQSection })));
 
 const SocialMediaDesign = () => {
+  const smFaqs = getFaqs("social-media-design");
   const { loading, handleFormSubmit } = useLeadSubmit({
     source: 'social_media_design',
     formId: 'social-media-form',
@@ -57,6 +59,17 @@ const SocialMediaDesign = () => {
             "areaServed": { "@type": "City", "name": "Bangalore" }
           })}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": smFaqs.map((f) => ({
+              "@type": "Question",
+              "name": f.question,
+              "acceptedAnswer": { "@type": "Answer", "text": f.answer },
+            })),
+          })}
+        </script>
       </Helmet>
 
       <Navbar />
@@ -78,7 +91,7 @@ const SocialMediaDesign = () => {
             }
             description={
               <>
-                Bangalore's trusted <span className="text-foreground font-semibold">social media design company</span> producing attention grabbing visuals, reels, and branded content for Instagram, Facebook, LinkedIn, and growing digital platforms.
+                Creative <span className="text-foreground font-semibold">social media design services in Bangalore</span> with the main objective of creating scroll stopping visuals, reels and branded content for Instagram, Facebook, LinkedIn and emerging digital platforms.
               </>
             }
             trustSignals={[

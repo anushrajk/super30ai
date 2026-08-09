@@ -21,15 +21,15 @@ const iconColors = [
 ];
 
 const benefits = [
-  { icon: Instagram, title: "Platform-Native Design", description: "Creatives optimized for each platform's algorithm — Instagram favors carousels, LinkedIn loves infographics, Facebook rewards video.", features: ["Algorithm-optimized formats", "Platform-specific sizing", "Trend-aware design"] },
-  { icon: Palette, title: "Brand Identity System", description: "We build a visual identity system for your social — color palettes, typography, grid layouts, and signature styles.", features: ["Custom color system", "Typography guidelines", "Grid consistency"] },
-  { icon: Layers, title: "Content Variety", description: "From carousels and stories to reels covers and highlight icons — never run out of fresh, on-brand content.", features: ["Carousel designs", "Story templates", "Reel covers & highlights"] },
-  { icon: Heart, title: "Engagement-Driven", description: "Every design is crafted with engagement psychology — color theory, visual hierarchy, and CTA placement that drives action.", features: ["Psychological triggers", "CTA optimization", "Visual hierarchy"] },
-  { icon: TrendingUp, title: "Performance Analytics", description: "We track which designs perform best and continuously iterate to improve your engagement rates.", features: ["A/B testing", "Performance reports", "Design iteration"] },
-  { icon: Eye, title: "Scroll-Stopping Visuals", description: "Bold, distinctive designs that make users pause mid-scroll — the most valuable 0.5 seconds in social media.", features: ["Attention-grabbing layouts", "Bold typography", "Dynamic compositions"] },
-  { icon: Sparkles, title: "Trend Integration", description: "We stay ahead of social media design trends — from glassmorphism to 3D elements to AI-generated backgrounds.", features: ["Trend monitoring", "Style evolution", "Fresh aesthetics"] },
-  { icon: Zap, title: "Rapid Turnaround", description: "Get your monthly content batch designed and delivered within 3-5 business days — no delays, no excuses.", features: ["3-5 day delivery", "Batch efficiency", "Priority support"] },
-  { icon: Image, title: "Product Photography", description: "Professional product shoot direction and editing — making your products look as premium as they deserve.", features: ["Shoot direction", "Photo editing", "Lifestyle compositions"] },
+  { icon: Instagram, title: "Platform First Design", description: "Creatives optimized for every platform algorithm. Instagram prefers carousels, LinkedIn values infographics, and Facebook rewards engaging video content.", features: ["Algorithm optimized formats", "Platform specific sizing", "Trend aligned creatives"] },
+  { icon: Palette, title: "Brand Identity System", description: "We create consistent visual systems for social media through colour palettes, typography, layouts, and signature creative styling.", features: ["Custom colour systems", "Typography guidelines", "Consistent grid layouts"] },
+  { icon: Layers, title: "Content Variety", description: "From carousel creatives and stories to reel covers and highlight icons, every asset is designed to keep content fresh and engaging.", features: ["Carousel designs", "Story templates", "Reel covers & highlights"] },
+  { icon: Heart, title: "Engagement Focused", description: "Every creative is developed using engagement psychology, visual hierarchy, and strategic CTA placement that encourages audience interaction.", features: ["Engagement triggers", "CTA optimization", "Visual hierarchy"] },
+  { icon: TrendingUp, title: "Performance Analytics", description: "We analyze which design performs best and continuously improve designs to increase engagement and audience interaction.", features: ["A/B testing", "Performance reports", "Design iteration"] },
+  { icon: Eye, title: "Scroll Stopping Visuals", description: "Bold and distinctive creatives designed to capture attention during the most valuable 0.5 seconds of social media browsing.", features: ["Attention grabbing layouts", "Bold typography styles", "Dynamic compositions"] },
+  { icon: Sparkles, title: "Trend Focused Design", description: "We stay up to date with evolving social media design trends, right from glassmorphism to 3D modern aesthetics, and creative styles that keep brands relevant.", features: ["Trend tracking", "Style refinement", "Fresh visual concepts"] },
+  { icon: Zap, title: "Fast Delivery Process", description: "Receive your monthly social media creative batch delivered on time with organized workflows and reliable support.", features: ["Fast delivery timelines", "Efficient workflow", "Priority assistance"] },
+  { icon: Image, title: "Product Photography", description: "Professional product shoot direction and editing designed to present products with a polished and premium visual appearance.", features: ["Shoot direction", "Image editing", "Lifestyle compositions"] },
 ];
 
 export const SMBenefitsSection = () => {
@@ -67,8 +67,8 @@ export const SMBenefitsSection = () => {
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-pink-500/20 text-pink-400 rounded-full text-sm font-medium mb-4 border border-pink-500/30">Why Choose Us</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Why Brands Choose Our Social Media Design Company in Bangalore</h2>
-          <p className="text-base md:text-lg text-gray-300">Beyond pretty visuals — Bangalore's leading social media graphic design company designs for engagement, reach, and brand recall</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Why Leading Brands Trust Our Social Media Design Company in Bangalore</h2>
+          <p className="text-base md:text-lg text-gray-300">More than attractive creatives, our social media design services in Bangalore creates strategic visuals focused on engagement, visibility, and lasting brand recognition.</p>
         </div>
 
         <div className="relative group/carousel">
