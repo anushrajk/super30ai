@@ -89,11 +89,11 @@ export interface ServicePageConfig {
   sections?: {
     problems?: { title?: React.ReactNode; description?: string };
     services?: { title?: React.ReactNode; description?: string };
-    comparison?: { title?: React.ReactNode };
+    comparison?: { title?: React.ReactNode; description?: string };
     benefits?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     industries?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     process?: { title?: React.ReactNode };
-    whoIsThisFor?: { title?: React.ReactNode };
+    whoIsThisFor?: { title?: React.ReactNode; description?: string };
   };
 }
 
@@ -166,7 +166,7 @@ const ServicesGrid = ({ services, title, description }: { services: ServicePageC
 };
 
 // ── Comparison ──
-const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { title?: React.ReactNode } }) => {
+const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
@@ -175,6 +175,9 @@ const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageCon
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Traditional Agency <span className="text-brand">vs. The Super 30</span></>}
           </h2>
+          {heading?.description && (
+            <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">{heading.description}</p>
+          )}
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="bg-background border border-border/50 rounded-2xl p-6">
@@ -277,7 +280,7 @@ const ProcessSection = ({ process, heading }: { process: ServicePageConfig["proc
 };
 
 // ── Who Is This For ──
-const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode } }) => {
+const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
@@ -286,6 +289,9 @@ const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIs
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Is This <span className="text-brand">Right For You?</span></>}
           </h2>
+          {heading?.description && (
+            <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">{heading.description}</p>
+          )}
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="bg-brand/5 border border-brand/20 rounded-2xl p-6">
