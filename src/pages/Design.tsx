@@ -12,6 +12,7 @@ import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
 import { openThankYouPage } from "@/lib/thankYouRedirect";
 import { toast } from "sonner";
 import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
+import { getFaqs } from "@/data/faqs";
 import {
   Palette, Layout, Smartphone, PenTool, Layers, Monitor,
   MessageCircle, ArrowRight, TrendingUp, Bot, Award,
