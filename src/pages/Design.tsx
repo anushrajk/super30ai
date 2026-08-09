@@ -51,7 +51,7 @@ const useParallax = (speed: number = 0.3) => {
 const serviceCards = [
   {
     title: "UI/UX Design",
-    description: "Design experiences that feel effortless, premium, and built to win loyalty.",
+    description: "Premium digital designs for a seamless navigation experience, better engagement, and intuitive customer interaction.",
     icon: MousePointerClick,
     gradient: "from-[hsl(270,80%,55%)] to-[hsl(290,70%,40%)]",
     colSpan: "md:col-span-2",
@@ -60,7 +60,7 @@ const serviceCards = [
   },
   {
     title: "Landing Page Design",
-    description: "Turn first impressions into momentum with landing pages built to convert.",
+    description: "Let your landing pages create the first impressions that drive engagement, lead generation, and campaign performance.",
     icon: Monitor,
     gradient: "from-[hsl(240,70%,55%)] to-[hsl(260,60%,45%)]",
     colSpan: "md:col-span-2",
@@ -68,8 +68,8 @@ const serviceCards = [
     size: "md" as const,
   },
   {
-    title: "Social Media Design",
-    description: "Scroll-stopping creatives for Instagram, LinkedIn, Facebook & more.",
+    title: "Social Media Creative Designs",
+    description: "Scroll stopping social media creatives crafted for Instagram, LinkedIn, Facebook, and performance campaigns and more.",
     icon: Instagram,
     gradient: "from-[hsl(330,80%,55%)] to-[hsl(350,70%,45%)]",
     colSpan: "md:col-span-2",
@@ -77,8 +77,8 @@ const serviceCards = [
     size: "md" as const,
   },
   {
-    title: "Brand Identity",
-    description: "Logos, color systems, and guidelines that make your brand unforgettable.",
+    title: "Brand Identity Design",
+    description: "Logos, visual systems, and brand guidelines created to establish an unforgettable and professional brand identity that scales.",
     icon: Palette,
     gradient: "from-[hsl(18,100%,48%)] to-[hsl(30,90%,40%)]",
     colSpan: "md:col-span-2",
@@ -86,8 +86,8 @@ const serviceCards = [
     size: "md" as const,
   },
   {
-    title: "Design for AI Products",
-    description: "Design AI experiences that go far beyond chat and feel clear in context.",
+    title: "AI Product Designs",
+    description: "AI focused digital experiences designed to deliver clarity, usability, and intelligent user interaction that go beyond chat and feel clear in context.",
     icon: Bot,
     gradient: "from-[hsl(340,75%,55%)] to-[hsl(320,65%,45%)]",
     colSpan: "md:col-span-2",
@@ -105,13 +105,13 @@ const BentoServicesSection = () => {
         <div className="text-center mb-12 md:mb-16">
           <div className="badge-brand mx-auto mb-4">
             <Layers className="w-4 h-4" />
-            <span className="text-sm font-medium">Our Design Services</span>
+            <span className="text-sm font-medium">What We Offer</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Everything You Need, <span className="text-brand">Designed Right</span>
+            Graphic Design Services in Bangalore <span className="text-brand">That Elevate Your Brand Presence</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            From pixel-perfect interfaces to scroll-stopping social creatives — we've got your visual needs covered.
+            From perfect pixel interfaces to attention driven social creatives, we deliver complete visual solutions designed specifically for your business goals.
           </p>
         </div>
 
