@@ -86,20 +86,29 @@ export interface ServicePageConfig {
     description: string;
     buttonText: string;
   };
+  sections?: {
+    problems?: { title?: React.ReactNode; description?: string };
+    services?: { title?: React.ReactNode; description?: string };
+    comparison?: { title?: React.ReactNode };
+    benefits?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    industries?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    process?: { title?: React.ReactNode };
+    whoIsThisFor?: { title?: React.ReactNode };
+  };
 }
 
 // ── Problem Section ──
-const ProblemSection = ({ problems }: { problems: ServicePageConfig["problems"] }) => {
+const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["problems"]; heading?: { title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            The Problem Most Businesses <span className="text-brand">Face</span>
+            {heading?.title ?? <>The Problem Most Businesses <span className="text-brand">Face</span></>}
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Sound familiar? You're not alone.
+            {heading?.description ?? "Sound familiar? You're not alone."}
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
@@ -123,7 +132,7 @@ const ProblemSection = ({ problems }: { problems: ServicePageConfig["problems"] 
 };
 
 // ── Services Grid ──
-const ServicesGrid = ({ services, title }: { services: ServicePageConfig["services"]; title?: string }) => {
+const ServicesGrid = ({ services, title, description }: { services: ServicePageConfig["services"]; title?: React.ReactNode; description?: string }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
@@ -132,6 +141,9 @@ const ServicesGrid = ({ services, title }: { services: ServicePageConfig["servic
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {title || <>What We <span className="text-brand">Offer</span></>}
           </h2>
+          {description && (
+            <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">{description}</p>
+          )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
           {services.map((s, i) => (
@@ -154,14 +166,14 @@ const ServicesGrid = ({ services, title }: { services: ServicePageConfig["servic
 };
 
 // ── Comparison ──
-const ComparisonSection = ({ comparison }: { comparison: ServicePageConfig["comparison"] }) => {
+const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { title?: React.ReactNode } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Traditional Agency <span className="text-brand">vs. The Super 30</span>
+            {heading?.title ?? <>Traditional Agency <span className="text-brand">vs. The Super 30</span></>}
           </h2>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
@@ -194,15 +206,21 @@ const ComparisonSection = ({ comparison }: { comparison: ServicePageConfig["comp
 };
 
 // ── Benefits ──
-const BenefitsSection = ({ benefits }: { benefits: ServicePageConfig["benefits"] }) => {
+const BenefitsSection = ({ benefits, heading }: { benefits: ServicePageConfig["benefits"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          {heading?.eyebrow && (
+            <span className="text-brand text-xs font-bold uppercase tracking-[0.25em] mb-3 block">{heading.eyebrow}</span>
+          )}
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Why Brands <span className="text-brand">Choose Us</span>
+            {heading?.title ?? <>Why Brands <span className="text-brand">Choose Us</span></>}
           </h2>
+          {heading?.description && (
+            <p className="text-muted-foreground text-base md:text-lg max-w-3xl mx-auto">{heading.description}</p>
+          )}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
           {benefits.map((b, i) => (
@@ -225,14 +243,14 @@ const BenefitsSection = ({ benefits }: { benefits: ServicePageConfig["benefits"]
 };
 
 // ── Process ──
-const ProcessSection = ({ process }: { process: ServicePageConfig["process"] }) => {
+const ProcessSection = ({ process, heading }: { process: ServicePageConfig["process"]; heading?: { title?: React.ReactNode } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Our Proven <span className="text-brand">Process</span>
+            {heading?.title ?? <>Our Proven <span className="text-brand">Process</span></>}
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
@@ -259,14 +277,14 @@ const ProcessSection = ({ process }: { process: ServicePageConfig["process"] }) 
 };
 
 // ── Who Is This For ──
-const WhoIsThisForSection = ({ data }: { data: ServicePageConfig["whoIsThisFor"] }) => {
+const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            Is This <span className="text-brand">Right For You?</span>
+            {heading?.title ?? <>Is This <span className="text-brand">Right For You?</span></>}
           </h2>
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
@@ -416,14 +434,14 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
 
         <Suspense fallback={null}>
           <ClientLogosSection />
-          <LazySection minHeight="400px"><ProblemSection problems={config.problems} /></LazySection>
-          <LazySection minHeight="400px"><ServicesGrid services={config.services} /></LazySection>
-          <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} /></LazySection>
-          <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} /></LazySection>
-          <LazySection minHeight="500px"><DMIndustriesSection /></LazySection>
-          <LazySection minHeight="400px"><ProcessSection process={config.process} /></LazySection>
+          <LazySection minHeight="400px"><ProblemSection problems={config.problems} heading={config.sections?.problems} /></LazySection>
+          <LazySection minHeight="400px"><ServicesGrid services={config.services} title={config.sections?.services?.title} description={config.sections?.services?.description} /></LazySection>
+          <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} heading={config.sections?.comparison} /></LazySection>
+          <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} heading={config.sections?.benefits} /></LazySection>
+          <LazySection minHeight="500px"><DMIndustriesSection {...(config.sections?.industries ?? {})} /></LazySection>
+          <LazySection minHeight="400px"><ProcessSection process={config.process} heading={config.sections?.process} /></LazySection>
           <LazySection minHeight="400px"><TestimonialSection /></LazySection>
-          <LazySection minHeight="300px"><WhoIsThisForSection data={config.whoIsThisFor} /></LazySection>
+          <LazySection minHeight="300px"><WhoIsThisForSection data={config.whoIsThisFor} heading={config.sections?.whoIsThisFor} /></LazySection>
           <LazySection minHeight="200px"><FinalCTASection data={config.finalCTA} /></LazySection>
           <LazySection minHeight="300px"><FAQSection faq={config.faq} /></LazySection>
         </Suspense>
