@@ -187,10 +187,10 @@ const SocialMediaShowcase = () => {
             <span className="text-sm font-medium">Social Media Creatives</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Scroll-Stopping <span className="text-brand">Social Designs</span>
+            High Impact Social Media Creatives <span className="text-brand">That Drive Engagement</span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            We design branded content for Instagram, LinkedIn, Facebook, and every platform your audience lives on.
+            Our design agency in Bangalore creates platform specific social media designs that strengthen brand visibility, increase audience engagement, and help your business stand out across every digital channel right from Instagram, Facebook to LinkedIn.
           </p>
         </div>
 
@@ -464,10 +464,10 @@ const DesignCTASection = () => {
             <span className="text-sm font-medium">Let's Create Together</span>
           </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            Hire Bangalore's Top <span className="text-brand">Graphic Design Agency</span>
+            Partner with Bangalore's <span className="text-brand">Leading Graphic Design Agency</span>
           </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-xl mx-auto">
-            From a single social post to a complete brand overhaul — talk to our graphic design agency in Bangalore and see what great design can do for your business.
+          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+            From social media creatives and marketing collateral to complete brand identity systems, our graphic design agency in Bangalore creates impactful visuals that strengthen brand presence, enhance communication, and support business growth.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/contact-us">
