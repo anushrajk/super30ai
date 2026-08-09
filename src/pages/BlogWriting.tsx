@@ -38,12 +38,10 @@ const config: ServicePageConfig = {
       description: "Publishing content regularly is no longer enough. Without strategy, search visibility, and consistency, most business blogs fail to generate meaningful traffic or qualified leads.",
     },
     services: {
-      eyebrow: "What We Offer?",
       title: "Blog Writing Services in Bangalore That Improve Visibility",
       description: "Strategic blog content crafted to improve rankings, strengthen authority, and keep your brand visible across search engines and AI driven discovery platforms.",
     },
     comparison: {
-      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs TheSuper 30",
       description: "Unlike a typical article writing agency in Bangalore focused on content volume, we create search optimized blog content designed to improve rankings, authority, and long-term organic growth.",
     },
