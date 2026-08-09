@@ -38,7 +38,6 @@ const config: ServicePageConfig = {
       description: "Reliable message delivery, compliance requirements, and API integration challenges often affect communication performance and customer experience.",
     },
     services: {
-      eyebrow: "What We Offer",
       title: "Complete SMS Gateway Services in Bangalore for Business Communication",
       description: "High-quality SMS infrastructure to enhance the delivery of messages, communication efficiency, customer engagement, and smooth business SMS operations.",
     },
