@@ -21,15 +21,15 @@ const iconColors = [
 ];
 
 const benefits = [
-  { icon: Layout, title: "Conversion-Focused Design", description: "Every element — headlines, CTAs, forms — is strategically placed to guide visitors toward action.", features: ["Strategic CTA placement", "Visual hierarchy", "Conversion optimization"] },
-  { icon: Smartphone, title: "Mobile-First Architecture", description: "60%+ of web traffic is mobile. We design for phones first, then scale up to desktop.", features: ["Responsive breakpoints", "Touch-friendly UI", "Mobile-first CSS"] },
-  { icon: Gauge, title: "Core Web Vitals Perfect", description: "90+ scores on Google PageSpeed. Fast LCP, zero CLS, instant FID — because speed = revenue.", features: ["Sub-2s load time", "Image optimization", "Code splitting"] },
-  { icon: Search, title: "SEO-Ready From Day One", description: "Semantic HTML, schema markup, meta tags, sitemaps — your site is ready to rank from launch.", features: ["Technical SEO setup", "Schema markup", "Sitemap & robots.txt"] },
-  { icon: Shield, title: "Secure & Reliable", description: "SSL, security headers, DDoS protection, and regular backups — your site is fortress-level secure.", features: ["HTTPS everywhere", "Security headers", "Automated backups"] },
-  { icon: Zap, title: "Fast Delivery", description: "Landing pages in 1-2 weeks. Full websites in 3-4 weeks. E-commerce in 4-6 weeks. No delays.", features: ["Clear timelines", "Agile process", "Weekly updates"] },
-  { icon: Globe, title: "Multi-Platform Expertise", description: "React, Next.js, WordPress, Shopify, Webflow — we choose the best tech for your specific needs.", features: ["Tech-stack flexibility", "CMS setup", "Headless options"] },
-  { icon: Code, title: "Clean, Maintainable Code", description: "No bloated plugins or spaghetti code. Clean, documented code that's easy to maintain and scale.", features: ["Modern frameworks", "Documentation", "Scalable architecture"] },
-  { icon: Paintbrush, title: "UI/UX Excellence", description: "Beautiful interfaces backed by UX research — intuitive navigation, clear hierarchy, delightful interactions.", features: ["User research", "Wireframes & prototypes", "Interaction design"] },
+  { icon: Layout, title: "Conversion Driven Design", description: "All sections, including headlines, CTAs, and forms, are strategically created to facilitate user interactions and inquiries.", features: ["Strategic CTA positioning", "Clear visual hierarchy", "Conversion optimization"] },
+  { icon: Smartphone, title: "Mobile Responsive Interface", description: "Most of the website traffic comes from mobile devices. We create seamless experiences that adapt perfectly across all screen sizes.", features: ["Responsive layouts", "Touch friendly UI interface", "Mobile optimized development"] },
+  { icon: Gauge, title: "Core Web Vitals Optimization", description: "High performance websites built for speed, user experience, and improved search engine visibility.", features: ["Fast page loading", "Image optimization", "Efficient code structure"] },
+  { icon: Search, title: "SEO Ready Foundation", description: "Every website is developed with essential technical SEO elements such as meta tags, sitemaps and schema markup to support long-term search visibility.", features: ["Technical SEO setup", "Structured schema markup", "Sitemap configuration and robots.txt"] },
+  { icon: Shield, title: "Secure Website Infrastructure", description: "Enhanced SSL security and DDoS protection to help keep your website secure, users' information safe, and performing at its best.", features: ["Secure HTTPS implementation", "Website security protocols", "Scheduled data backups"] },
+  { icon: Zap, title: "Efficient Project Delivery", description: "The development workflows are structured and are completed within 4-6 weeks, and the milestones are clearly defined for every project completion without compromising the quality.", features: ["Defined project timelines", "Agile development process", "Regular progress updates"] },
+  { icon: Globe, title: "Cross Platform Development Expertise", description: "Experienced across leading website technologies and platforms, allowing the right tech is available for every business requirement.", features: ["Flexible technology selection", "CMS management setup", "Advanced website architecture"] },
+  { icon: Code, title: "Scalable Development Standards", description: "Clean development practices will help you keep your website easy to manage, expand and maintain as your business grows.", features: ["Modern development frameworks", "Structured documentation", "Scalable website architecture"] },
+  { icon: Paintbrush, title: "UI/UX Interface Excellence", description: "Thoughtfully designed interfaces supported by user insights, intuitive navigation, structured layouts, and seamless interactions.", features: ["User behaviour research", "Wireframes and prototypes", "Interactive experience design"] },
 ];
 
 export const WDBenefitsSection = () => {
@@ -67,8 +67,8 @@ export const WDBenefitsSection = () => {
       <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
           <span className="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium mb-4 border border-emerald-500/30">Why Choose Us</span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Why Businesses Trust Us to Build Their Websites</h2>
-          <p className="text-base md:text-lg text-gray-300">Not just beautiful — fast, SEO-ready, and built to convert visitors into customers</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">Why Do Businesses Choose Our Website Designing Agency in Bangalore</h2>
+          <p className="text-base md:text-lg text-gray-300">Our custom website designing in Bangalore focuses on performance, search optimization, and turning visitors into qualified customers.</p>
         </div>
 
         <div className="relative group/carousel">
