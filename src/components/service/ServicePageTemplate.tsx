@@ -86,20 +86,29 @@ export interface ServicePageConfig {
     description: string;
     buttonText: string;
   };
+  sections?: {
+    problems?: { title?: React.ReactNode; description?: string };
+    services?: { title?: React.ReactNode; description?: string };
+    comparison?: { title?: React.ReactNode };
+    benefits?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    industries?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    process?: { title?: React.ReactNode };
+    whoIsThisFor?: { title?: React.ReactNode };
+  };
 }
 
 // ── Problem Section ──
-const ProblemSection = ({ problems }: { problems: ServicePageConfig["problems"] }) => {
+const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["problems"]; heading?: { title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-            The Problem Most Businesses <span className="text-brand">Face</span>
+            {heading?.title ?? <>The Problem Most Businesses <span className="text-brand">Face</span></>}
           </h2>
           <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto">
-            Sound familiar? You're not alone.
+            {heading?.description ?? "Sound familiar? You're not alone."}
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 max-w-5xl mx-auto">
