@@ -24,7 +24,7 @@ export const DMComparisonSection = () => (
         <h2 className="text-xl sm:text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
           Traditional Agency vs Our <span className="text-brand">Digital Marketing Agency in Bangalore</span>
         </h2>
-        <p className="text-sm sm:text-base md:text-lg text-gray-300">See why 300+ Bangalore businesses chose The Super 30</p>
+        <p className="text-sm sm:text-base md:text-lg text-gray-300">See why 300+ Bangalore businesses chose TheSuper 30</p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
@@ -42,7 +42,7 @@ export const DMComparisonSection = () => (
               ))}
             </ul>
             <div className="mt-5 p-3 bg-white/5 rounded-xl border border-white/10 text-center">
-              <span className="text-xl sm:text-2xl font-bold text-gray-400">1.5-2x</span>
+              <span className="text-xl sm:text-2xl font-bold text-gray-400">1.5 to 2x</span>
               <p className="text-xs text-gray-500">Typical Marketing ROI</p>
             </div>
           </div>
@@ -52,7 +52,7 @@ export const DMComparisonSection = () => (
           <div className="h-1 bg-brand" />
           <div className="p-4 sm:p-6 md:p-8">
             <div className="flex items-center justify-between mb-1">
-              <h3 className="text-lg sm:text-xl font-bold text-white">The Super 30</h3>
+              <h3 className="text-lg sm:text-xl font-bold text-white">TheSuper 30</h3>
               <span className="px-2 py-0.5 bg-brand/20 text-brand text-[10px] sm:text-xs font-bold rounded-full border border-brand/30">RECOMMENDED</span>
             </div>
             <p className="text-xs sm:text-sm text-brand mb-4 sm:mb-6">Integrated Digital Marketing</p>
@@ -65,7 +65,7 @@ export const DMComparisonSection = () => (
               ))}
             </ul>
             <div className="mt-5 p-3 bg-brand/10 rounded-xl border border-brand/30 text-center">
-              <span className="text-xl sm:text-2xl font-bold text-brand">5-8x</span>
+              <span className="text-xl sm:text-2xl font-bold text-brand">5 to 8x</span>
               <p className="text-xs text-brand font-medium">Average Marketing ROI</p>
             </div>
           </div>
