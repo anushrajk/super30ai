@@ -6,20 +6,20 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 const forYou = [
-  "You need a website that generates leads, not just looks good",
-  "Your current site is slow, outdated, or not mobile-friendly",
-  "You want SEO built into your website from day one",
-  "You need a reliable tech partner for ongoing maintenance and updates",
-  "You want a website that integrates with your marketing stack (CRM, analytics, ads)",
-  "You value clean code, fast loading, and Core Web Vitals compliance",
+  "You need a website that generates leads and not just looks good",
+  "Your current website is slow, outdated, or not mobile-friendly",
+  "You want SEO integrated into your website from the beginning",
+  "You need a reliable technology partner for ongoing maintenance and updates",
+  "You want your website connected with CRM, analytics, and marketing tools",
+  "You value fast loading speed, clean development, and performance standards",
 ];
 
 const notForYou = [
-  "You just want a ₹5k WordPress site with no strategy",
-  "You need a website builder tutorial, not a development partner",
-  "You're looking for the cheapest option regardless of quality",
-  "You need a website in 3 days with no design process",
-  "You want to micromanage every pixel without trusting the process",
+  "You only want a low-cost template website without strategy",
+  "You are looking for a DIY website builder guide instead of a development partner",
+  "You are searching for the cheapest option regardless of quality",
+  "You expect a complete website within a few days without a proper design process",
+  "You prefer to control every design detail without a collaborative process",
 ];
 
 export const WDRelevanceSection = () => {
@@ -39,8 +39,8 @@ export const WDRelevanceSection = () => {
       <div className="container mx-auto px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">Instant Relevance Filter</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Is Custom Web Design Right For You?</h2>
-          <p className="text-lg text-gray-300">We build websites for businesses serious about growth — here's how to know if we're the right fit</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Is Custom Website Design the Right Fit for Your Business?</h2>
+          <p className="text-lg text-gray-300">We work with businesses that are focused on long-term growth. Here is how to know if we are the right web design partner for you.</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto">
