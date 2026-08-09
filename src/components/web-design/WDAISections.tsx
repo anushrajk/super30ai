@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Bot, BrainCircuit, LineChart, Layout } from "lucide-react";
 
 const techFeatures = [
-  { icon: Layout, title: "Wireframe to Pixel-Perfect", description: "From sitemap and wireframes to high-fidelity Figma designs — nothing is left to chance" },
-  { icon: Sparkles, title: "AI-Assisted Development", description: "AI tools accelerate development while maintaining hand-crafted quality and attention to detail" },
-  { icon: BrainCircuit, title: "CRO Built-In", description: "Heatmap analysis, scroll-depth tracking, and conversion optimization from day one" },
-  { icon: LineChart, title: "Analytics & Tracking", description: "Google Analytics 4, Tag Manager, and goal tracking configured — measure what matters" },
+  { icon: Layout, title: "Website Planning to Design", description: "Every aspect, from discovery to wireframes, and from finished Figma designs, is carefully structured for clarity and effectiveness." },
+  { icon: Sparkles, title: "AI-Powered Development", description: "The use of advanced development tools helps to speed up the completion of the projects and ensure outstanding quality, precision and attention to detail." },
+  { icon: BrainCircuit, title: "CRO Built-in", description: "Analysis of user behaviour, monitoring user engagement, and optimizing for conversions are built in from the start." },
+  { icon: LineChart, title: "Analytics & Performance Tracking", description: "Google Analytics 4, Tag Manager, and conversion tracking are configured to provide valuable business insights." },
 ];
 
 export const WDAISections = () => {
@@ -26,12 +26,12 @@ export const WDAISections = () => {
           <div className="grid lg:grid-cols-2 gap-4 md:gap-8 items-center relative">
             <div>
               <span className="inline-block px-4 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-full text-sm font-medium mb-3 border border-emerald-500/30">Our Approach</span>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">End-to-End Web Development — Strategy to Launch</h3>
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">Complete Website Development From Strategy to Launch</h3>
               <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
-                We don't just build websites — we build digital sales machines. Every project starts with understanding your business goals, audience, and competitive landscape, then translating that into a website that works as hard as your best salesperson.
+                We develop websites with a clear focus on business objectives, audience needs, and market positioning. Every project is strategically designed to provide performance, engagement, and measurable growth.
               </p>
               <ul className="space-y-2.5 mb-5">
-                {["Discovery → UX research → Wireframes → Design → Development → QA → Launch", "Every page optimized for both humans and search engines", "Post-launch support, analytics setup, and conversion tracking"].map((item, i) => (
+                {["Discovery → UI/UX Research → Wireframes → Design → Development → Testing → Launch", "Every page is optimized for user experience and search visibility", "Ongoing support, analytics configuration, and conversion tracking"].map((item, i) => (
                   <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
                     <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
                     {item}
@@ -39,16 +39,16 @@ export const WDAISections = () => {
                 ))}
               </ul>
               <Button onClick={scrollToForm} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300">
-                Start Your Web Project<ArrowRight className="w-4 h-4 ml-2" />
+                Start Your Website Project<ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
             <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-8 backdrop-blur-sm">
               <div className="grid grid-cols-2 gap-4">
                 {[
-                  { value: "200+", label: "Websites Built" },
+                  { value: "200+", label: "Websites Created" },
                   { value: "90+", label: "PageSpeed Score" },
-                  { value: "3-4wk", label: "Avg. Delivery" },
-                  { value: "4.9/5", label: "Client Rating" },
+                  { value: "3 to 4 Weeks", label: "Average Delivery" },
+                  { value: "4.9/5", label: "Client Satisfaction Rating" },
                 ].map((stat, i) => (
                   <div key={i} className="text-center p-4 bg-white/5 rounded-xl border border-white/10 hover:border-emerald-500/30 transition-colors">
                     <div className="text-2xl font-bold text-brand">{stat.value}</div>
@@ -69,10 +69,10 @@ export const WDAISections = () => {
           
           <div className="relative">
             <div className="text-center mb-8">
-              <span className="badge-brand mb-3">Our Tech Edge</span>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">How We Build Websites That Perform</h3>
+              <span className="badge-brand mb-3">Our Technical Process</span>
+              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">How We Build Websites That Deliver Results</h3>
               <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                A methodical, AI-assisted process that combines design thinking with engineering precision.
+                A systematic, AI-powered approach that combines strategic planning, creative design, and technical expertise to deliver exceptional digital experiences.
               </p>
             </div>
             
