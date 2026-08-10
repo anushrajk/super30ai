@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+import { FAQSection } from "@/components/landing/FAQSection";
 
 import { TeamSection } from "@/components/about/TeamSection";
 import { InteractiveTimeline } from "@/components/about/InteractiveTimeline";
@@ -106,11 +107,11 @@ const About = () => {
                     <span className="text-brand-gradient">Digital Marketing Experts</span>
                     <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
                   </span>
-                  {" "}Delivering Predictable Growth
+                  {" "}Driving Measurable Business Growth
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Success in the digital age needs more than tools. Our team of digital marketing experts at this leading{" "}
-                  <span className="text-foreground font-semibold">internet marketing agency</span> combines years of field experience with smart data so your brand leads the competition.
+                  Success in today's digital landscape requires more than marketing tools. Our team of{" "}
+                  <span className="text-foreground font-semibold">digital marketing experts</span> combines industry experience, strategic insights, and performance driven execution to help businesses increase visibility, generate quality leads, and achieve sustainable growth.
                 </p>
               </div>
 
@@ -120,7 +121,7 @@ const About = () => {
                   { icon: Target, text: "300+ Projects" },
                   { icon: Award, text: "₹50Cr+ Revenue" },
                   { icon: Users, text: "50+ Clients" },
-                  { icon: Shield, text: "AI-First Approach" },
+                  { icon: Shield, text: "AI-Powered Strategy" },
                 ].map((signal, index) => (
                   <div 
                     key={index}
@@ -137,7 +138,7 @@ const About = () => {
                 <Link to="/contact-us">
                   <Button size="lg" className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 w-full sm:w-auto">
                     <Users className="w-4 h-4 mr-2" />
-                    Get in Touch
+                    Get In Touch
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </Link>
@@ -245,6 +246,10 @@ const About = () => {
         {/* Culture Section */}
         <div id="about-culture">
           <CultureSection />
+        </div>
+
+        <div id="about-faq">
+          <FAQSection slug="internet-marketing-agency" />
         </div>
 
         <div id="about-cta">
