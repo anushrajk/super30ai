@@ -40,7 +40,7 @@ export const ServicesCarousel = ({ services }: ServicesCarouselProps) => {
             Full Service Digital Marketing Solutions
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            From AI-powered SEO and paid ads to social media management and web development, everything your brand needs under one roof.
+            All your brand's needs in one place, from AI-powered SEO and paid ads to social media management and web development.
           </p>
         </div>
 
