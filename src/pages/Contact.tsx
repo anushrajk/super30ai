@@ -193,27 +193,27 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact TheSuper30 Agency | Let’s Grow Your Brand</title>
-        <meta name="description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <title>Contact TheSuper30 | Ready to Accelerate Your Business Growth</title>
+        <meta name="description" content="Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth." />
         <meta name="keywords" content="" />
         <link rel="canonical" href="https://super30ai.lovable.app/contact-us" />
-        
-        <meta property="og:title" content="Contact TheSuper30 Agency | Let’s Grow Your Brand" />
-        <meta property="og:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+
+        <meta property="og:title" content="Contact TheSuper30 | Ready to Accelerate Your Business Growth" />
+        <meta property="og:description" content="Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://super30ai.lovable.app/contact-us" />
-        
+
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact TheSuper30 Agency | Let’s Grow Your Brand" />
-        <meta name="twitter:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <meta name="twitter:title" content="Contact TheSuper30 | Ready to Accelerate Your Business Growth" />
+        <meta name="twitter:description" content="Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth." />
         <meta name="twitter:url" content="https://super30ai.lovable.app/contact-us" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ContactPage",
-            "name": "Contact TheSuper30 Agency",
+            "name": "Contact TheSuper30",
             "url": "https://www.thesuper30.ai/contact-us",
-            "description": "Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries."
+            "description": "Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth."
           })}
         </script>
       </Helmet>
@@ -239,15 +239,10 @@ const Contact = () => {
               {/* H1 and Description */}
               <div>
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground leading-tight mb-4">
-                  Contact TheSuper30 Agency —{" "}
-                  <span className="relative inline-block">
-                    <span className="text-brand-gradient">Let's Grow Your Brand</span>
-                    <span className="absolute -bottom-2 left-0 w-full h-1 bg-brand-gradient rounded-full opacity-50" />
-                  </span>
+                  Ready to Accelerate Your Business Growth?
                 </h1>
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-                  Ready to grow? Get in touch with TheSuper30 — a leading digital marketing agency in Bangalore with 30+ experts offering marketing support, strategy, AI SEO, ads, web and design.{" "}
-                  <span className="text-foreground font-semibold">Free 30-min consultation, 24-hour response.</span>
+                  Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth.
                 </p>
               </div>
 
