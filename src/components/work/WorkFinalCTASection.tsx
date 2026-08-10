@@ -26,14 +26,14 @@ export const WorkFinalCTASection = () => {
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-brand/10 border border-brand/20 px-4 py-1.5 rounded-full mb-6">
             <Award className="w-4 h-4 text-brand" />
-            <span className="text-brand text-sm font-medium">Join 300+ Success Stories</span>
+            <span className="text-brand text-sm font-medium">Join 300+ Growing Brands</span>
           </div>
           
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Ready to <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Write Your Success Story?</span>
+            Let's Build Your Next <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Business Success Story</span>
           </h2>
           <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Get a free consultation with our growth experts. Discover how we can transform your marketing and deliver measurable results.
+            Get a free consultation with our digital marketing experts. Identify growth opportunities, identify performance gaps, and be offered a customised strategy to get measurable business outcomes.
           </p>
           
           <div className="flex flex-wrap justify-center gap-3 mb-8">
@@ -65,7 +65,7 @@ export const WorkFinalCTASection = () => {
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
           </div>
-          <p className="text-white/50 text-sm mt-4">Takes 2 minutes • No credit card required</p>
+          <p className="text-white/50 text-sm mt-4">Takes 2 Minutes • No Obligation Consultation</p>
         </div>
       </div>
 
