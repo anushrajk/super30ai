@@ -132,7 +132,7 @@ const Home = () => {
               </h1>
 
               <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl mx-auto lg:mx-0">
-                There are many brands out there that have trouble with traffic that doesn't convert. We are a performance driven <span className="text-foreground font-semibold">digital marketing company</span> and provide AI driven strategies to bring in qualified customers and accelerate revenue growth with insights.
+                There are many brands out there that have trouble with traffic that doesn't convert. We are a performance driven <span className="text-foreground font-semibold">digital marketing company</span> that provides AI driven strategies to bring in qualified customers and accelerate revenue growth with insights.
               </p>
 
               {/* Platform Logos - simplified inline SVGs kept */}
