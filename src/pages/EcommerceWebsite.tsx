@@ -38,7 +38,6 @@ const config: ServicePageConfig = {
       description: "Conversion issues, poor user experience, and lower visibility are some common problems faced by many online stores. These problems limit the possibilities of sales, customer retention and long term growth in E-commerce.",
     },
     services: {
-      eyebrow: "WHAT WE OFFER",
       title: "Complete E-commerce Website Development solutions in Bangalore for Growth Focused Brands",
       description: "From storefront development to conversion optimization, we build E-commerce ecosystems designed to improve customer experiences, streamline operations, and maximize online revenue.",
     },
