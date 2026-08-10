@@ -50,10 +50,10 @@ export const HeroSection = ({ onSubmit, loading }: HeroSectionProps) => {
             <div>
             <h1 className="font-bold text-foreground mb-4 md:mb-5">
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  AI Digital Marketing
+                  The AI Digital Marketing Agency
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
-                  Agency in Bangalore
+                  That Turns Your Growth into Revenue
                 </span>
               </h1>
               <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
