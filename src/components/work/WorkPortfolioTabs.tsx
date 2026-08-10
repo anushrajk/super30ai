@@ -381,10 +381,10 @@ export const WorkPortfolioTabs = () => {
       <div className="container mx-auto px-3 md:px-4">
         <div className="text-center mb-8 md:mb-10">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-3">
-            Our <span className="text-brand-gradient">Portfolio</span>
+            Real Projects. Real Results. <span className="text-brand-gradient">Real Growth.</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Explore our work across different services and see the impact we've created for our clients.
+            Explore our portfolio across multiple services and discover how we can boost visibility, engagement, and growth for businesses with strategic digital initiatives.
           </p>
         </div>
 
