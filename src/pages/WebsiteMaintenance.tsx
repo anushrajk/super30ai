@@ -38,7 +38,6 @@ const config: ServicePageConfig = {
       description: "A neglected website can lead to security risks, slower performance, broken functionality, and missed business opportunities that impact customer experience and growth.",
     },
     services: {
-      eyebrow: "WHAT WE OFFER",
       title: "Complete Website Maintenance Services in Bangalore Under One Roof",
       description: "Complete Web Support Services in Bangalore to ensure the security, optimization, and successful support of your website with proactive monitoring, regular updates, improved security, and continuous performance enhancement.",
     },
