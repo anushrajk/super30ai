@@ -196,7 +196,6 @@ const Contact = () => {
         <title>Contact TheSuper30 Agency | Let’s Grow Your Brand</title>
         <meta name="robots" content="index, follow" />
         <meta name="description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
-        <meta name="keywords" content="" />
         <link rel="canonical" href="https://www.thesuper30.ai/contact-us" />
 
         <meta property="og:title" content="Contact TheSuper30 Agency | Let’s Grow Your Brand" />

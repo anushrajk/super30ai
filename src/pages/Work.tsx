@@ -183,7 +183,6 @@ const Work = () => {
         <title>Successful Digital Markeitng Results Delivered For 300+ Brands</title>
         <meta name="robots" content="index, follow" />
         <meta name="description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
-        <meta name="keywords" content="" />
         <link rel="canonical" href="https://www.thesuper30.ai/our-work" />
         
         {/* Open Graph */}

@@ -182,14 +182,16 @@ const App = () => (
                 <Route path="/branding-agency-bangalore" element={<BrandKit />} />
 
                 {/* Content */}
-                <Route path="/content-marketing-agency-bangalore" element={<ContentMarketing />} />
+                <Route path="/content-writing-agency-bangalore" element={<ContentMarketing />} />
+                <Route path="/content-marketing-agency-bangalore" element={<Navigate to="/content-writing-agency-bangalore" replace />} />
                 <Route path="/seo-content-writing-company-bangalore" element={<WebsiteContent />} />
                 <Route path="/blog-writing-services-bangalore" element={<BlogWriting />} />
                 <Route path="/script-writing-agency-bangalore" element={<ScriptWriting />} />
                 <Route path="/guest-posting-agency-bangalore" element={<GuestPosting />} />
 
                 {/* SMS & Messaging */}
-                <Route path="/bulk-sms-marketing-agency-bangalore" element={<SmsMarketing />} />
+                <Route path="/bulk-sms-services-bangalore" element={<SmsMarketing />} />
+                <Route path="/bulk-sms-marketing-agency-bangalore" element={<Navigate to="/bulk-sms-services-bangalore" replace />} />
                 <Route path="/whatsapp-marketing-company-bangalore" element={<WhatsappBusinessApi />} />
                 <Route path="/chatbot-development-company-bangalore" element={<Chatbot />} />
                 <Route path="/customer-engagement-agency-bangalore" element={<CustomerEngagement />} />
@@ -197,7 +199,8 @@ const App = () => (
                 <Route path="/rcs-messaging-provider-bangalore" element={<RCS />} />
 
                 {/* Production */}
-                <Route path="/video-photography-production-bangalore" element={<Production />} />
+                <Route path="/corporate-video-maker-bangalore" element={<Production />} />
+                <Route path="/video-photography-production-bangalore" element={<Navigate to="/corporate-video-maker-bangalore" replace />} />
                 <Route path="/video-production-agency-bangalore" element={<VideoProduction />} />
                 <Route path="/photography-services-bangalore" element={<Photography />} />
 
