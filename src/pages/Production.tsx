@@ -10,7 +10,7 @@ const config: ServicePageConfig = {
     title: "Corporate Video maker in Bangalore | Visual Storytellers",
     description: "Professional video maker in Bangalore offering corporate video making services, storytelling & high quality production for brands. Let’s create your video",
     keywords: "corporate video maker in bangalore, professional video maker in bangalore, corporate storytelling in bangalore, corporate video making services in bangalore",
-    canonical: "https://super30ai.lovable.app/video-photography-production-bangalore",
+    canonical: "https://www.thesuper30.ai/corporate-video-maker-bangalore",
     serviceType: "Video & Photography Production",
     ogTitle: "Corporate Video Maker in Bangalore | Professional Services",
     ogDescription: "Corporate video maker in Bangalore delivering storytelling and production services.",

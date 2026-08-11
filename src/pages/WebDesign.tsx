@@ -52,17 +52,18 @@ const WebDesign = () => {
     <>
       <Helmet>
         <title>Web Design Company in Bangalore | Custom Website Design</title>
-        <meta name="description" content="Professional web design company in Bangalore offering custom, responsive and SEO ready websites built to improve performance and generate business enquiries." />
-        <meta name="keywords" content="web design company in bangalore, website design services bangalore, website designing agency in bangalore, custom website designing in bangalore" />
-        <link rel="canonical" href="https://super30ai.lovable.app/web-design-company-bangalore" />
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="Looking for a website designing agency in Bangalore? We build custom, E-Commerce and responsive sites. 50+ delivered, 98% satisfaction. Let's Build!" />
+        <meta name="keywords" content="web design company in bangalore, website design services in bangalore, website designing agency in bangalore, Custom website designing in bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/web-design-company-bangalore" />
         <meta property="og:title" content="Your Website Should Work for You. Not Against You." />
         <meta property="og:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://super30ai.lovable.app/web-design-company-bangalore" />
+        <meta property="og:url" content="https://www.thesuper30.ai/web-design-company-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Your Website Should Work for You. Not Against You." />
         <meta name="twitter:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
-        <meta name="twitter:url" content="https://super30ai.lovable.app/web-design-company-bangalore" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/web-design-company-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

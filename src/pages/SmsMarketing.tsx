@@ -9,8 +9,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Bulk SMS marketing company in Bangalore | Reach More Customers Fast",
     description: "Reach thousands instantly with bulk SMS services in Bangalore. We deliver promotional and transactional messages with high open rates. Let's Connect!",
-    keywords: "bulk sms services bangalore, bulk sms marketing company bangalore, bulk sms service provider bangalore, bulk sms marketing services in bangalore, bulk sms provider in bangalore",
-    canonical: "https://super30ai.lovable.app/bulk-sms-marketing-agency-bangalore",
+    keywords: "bulk sms services in bangalore, bulk sms marketing company in bangalore, bulk sms service provider in bangalore, bulk sms marketing services in bangalore, bulk sms provider in bangalore",
+    canonical: "https://www.thesuper30.ai/bulk-sms-services-bangalore",
     serviceType: "SMS & Conversational Marketing",
     ogTitle: "Reach Thousands of Customers With One Click. That Simple.",
     ogDescription: "Promotional & transactional bulk SMS that reach thousands with high open rates. Let's connect!",

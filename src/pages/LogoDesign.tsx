@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Logo Design Company in Bangalore | Build Your Brand Identity",
     description: "We design logos that go beyond visuals. Our Bangalore logo design agency uses strategy, frameworks and brand insights to create meaningful identities.",
-    keywords: "logo design company bangalore, logo design agency in bangalore, logo design services bangalore, professional logo design company in bangalore, custom logo design company in bangalore",
-    canonical: "https://super30ai.lovable.app/logo-design-company-bangalore",
+    keywords: "logo design company in bangalore, logo design agency in bangalore, logo design services in bangalore, professional logo design company in bangalore, custom logo design company in bangalore",
+    canonical: "https://www.thesuper30.ai/logo-design-company-bangalore",
     serviceType: "Logo Design Services",
     ogTitle: "Your Logo Says Everything About Your Brand. Make It Count.",
     ogDescription: "Unique logos that capture your brand identity and make a strong first impression. Let's create!",

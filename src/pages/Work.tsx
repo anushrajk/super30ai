@@ -181,21 +181,22 @@ const Work = () => {
     <>
       <Helmet>
         <title>Successful Digital Markeitng Results Delivered For 300+ Brands</title>
+        <meta name="robots" content="index, follow" />
         <meta name="description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
         <meta name="keywords" content="" />
-        <link rel="canonical" href="https://super30ai.lovable.app/our-work" />
+        <link rel="canonical" href="https://www.thesuper30.ai/our-work" />
         
         {/* Open Graph */}
         <meta property="og:title" content="Successful Digital Markeitng Results Delivered For 300+ Brands" />
         <meta property="og:description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://super30ai.lovable.app/our-work" />
+        <meta property="og:url" content="https://www.thesuper30.ai/our-work" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Successful Digital Markeitng Results Delivered For 300+ Brands" />
         <meta name="twitter:description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
-        <meta name="twitter:url" content="https://super30ai.lovable.app/our-work" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/our-work" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
