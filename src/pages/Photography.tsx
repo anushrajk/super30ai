@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Photography Services in Bangalore | Corporate & Brand Shoots",
     description: "Make a strong first impression with our photography company in Bangalore. We handle corporate photography and brand shoots that tell your story. Let's Shoot!",
-    keywords: "photography services bangalore, photography company bangalore, professional photography in bangalore, corporate photography in bangalore, business photography in bangalore, business photography management in bangalore",
-    canonical: "https://super30ai.lovable.app/photography-services-bangalore",
+    keywords: "photography services in bangalore, photography company in bangalore, professional photography in bangalore, corporate photography in bangalore, business photography in bangalore, business photography management in bangalore",
+    canonical: "https://www.thesuper30.ai/photography-services-bangalore",
     serviceType: "Photography Services",
     ogTitle: "Your Brand Deserves Photos That Tell a Story. Let's Shoot.",
     ogDescription: "Corporate photography and brand shoots that represent your business and leave a lasting impression!",

@@ -6,8 +6,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "UI UX Design Agency in Bangalore | Best UX Design Company",
     description: "UI UX design company in Bangalore focused on creating experiences users love. We design simple and user friendly apps and websites that convert. Let’s build!",
-    keywords: "ui ux design agency bangalore, ui ux design company in bangalore, ui ux design services in bangalore, ui ux company in bangalore, ui ux agency in bangalore",
-    canonical: "https://super30ai.lovable.app/ui-ux-design-agency-bangalore",
+    keywords: "ui ux design agency in bangalore, ui ux design company in bangalore, ui ux design services in bangalore, ui ux company in bangalore, ui ux agency in bangalore",
+    canonical: "https://www.thesuper30.ai/ui-ux-design-agency-bangalore",
     serviceType: "UI/UX Design Services",
     ogTitle: "Bad UX Is Quietly Costing You Customers Every Single Day.",
     ogDescription: "User-first UI UX design that keeps visitors engaged and turns them into loyal customers. Let's talk!",

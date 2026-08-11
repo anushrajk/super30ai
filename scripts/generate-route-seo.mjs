@@ -8,6 +8,7 @@ const rootDir = path.resolve(__dirname, "..");
 const appFile = path.join(rootDir, "src", "App.tsx");
 const distIndexFile = path.join(rootDir, "dist", "index.html");
 const siteOrigin = "https://www.thesuper30.ai";
+const seoMetaFile = path.join(rootDir, "src", "data", "seoMeta.json");
 
 const escapeHtml = (value = "") =>
   value
@@ -163,10 +164,13 @@ const routeToOutputFile = (routePath) => {
 };
 
 const main = async () => {
-  const [appSource, distIndexHtml] = await Promise.all([
+  const [appSource, distIndexHtml, seoMetaRaw] = await Promise.all([
     fs.readFile(appFile, "utf8"),
     fs.readFile(distIndexFile, "utf8"),
+    fs.readFile(seoMetaFile, "utf8"),
   ]);
+
+  const seoMeta = JSON.parse(seoMetaRaw);
 
   const importMap = new Map();
   const importRegex = /const\s+(\w+)\s*=\s*lazy\(\(\)\s*=>\s*import\("(.+?)"\)/g;
@@ -191,15 +195,42 @@ const main = async () => {
 
   let generatedCount = 0;
 
+  const seenRoutes = new Set();
+
+  const writeRoute = async (routePath, metadata) => {
+    const outputFile = routeToOutputFile(routePath);
+    await fs.mkdir(path.dirname(outputFile), { recursive: true });
+    await fs.writeFile(outputFile, injectMetadata(distIndexHtml, metadata), "utf8");
+    seenRoutes.add(routePath);
+    generatedCount += 1;
+  };
+
+  // 1. Curated metadata (source of truth) — one static HTML file per route.
+  for (const [routePath, entry] of Object.entries(seoMeta)) {
+    const fallbackCanonical = routePath === "/" ? `${siteOrigin}/` : `${siteOrigin}${routePath}`;
+    await writeRoute(routePath, {
+      title: entry.title,
+      description: entry.description,
+      keywords: entry.keywords || "",
+      canonical: entry.canonical || fallbackCanonical,
+      robots: entry.robots || "index, follow",
+      ogTitle: entry.ogTitle || entry.title,
+      ogDescription: entry.ogDescription || entry.description,
+      ogType: entry.ogType || "website",
+      ogUrl: entry.ogUrl || entry.canonical || fallbackCanonical,
+      twitterCard: entry.twitterCard || "summary_large_image",
+      twitterTitle: entry.twitterTitle || entry.ogTitle || entry.title,
+      twitterDescription: entry.twitterDescription || entry.ogDescription || entry.description,
+    });
+  }
+
+  // 2. Remaining routes — parsed from the page source.
   for (const route of staticRoutes) {
+    if (seenRoutes.has(route.routePath)) continue;
     const source = await fs.readFile(route.filePath, "utf8");
     const metadata = parsePageMetadata(source, route.routePath);
     if (!metadata) continue;
-
-    const outputFile = routeToOutputFile(route.routePath);
-    await fs.mkdir(path.dirname(outputFile), { recursive: true });
-    await fs.writeFile(outputFile, injectMetadata(distIndexHtml, metadata), "utf8");
-    generatedCount += 1;
+    await writeRoute(route.routePath, metadata);
   }
 
   console.log(`Generated SEO HTML for ${generatedCount} static routes.`);

@@ -9,8 +9,8 @@ const config: ServicePageConfig = {
   seo: {
     title: "Copywriting & Content Writing Agency in Bangalore",
     description: "Copywriting done by experienced writers, customized for your business. Content writing services in Bangalore that build authority and trust for brands.",
-    keywords: "content writing services bangalore, content writing agency bangalore, content marketing services bangalore, content writing company bangalore",
-    canonical: "https://super30ai.lovable.app/content-marketing-agency-bangalore",
+    keywords: "content writing services in bangalore, content writing agency in bangalore, content marketing services in bangalore, content writing company in bangalore",
+    canonical: "https://www.thesuper30.ai/content-writing-agency-bangalore",
     serviceType: "Content Marketing",
     ogTitle: "Great Content Brings the Right Audience to Your Business.",
     ogDescription: "SEO-ready content and marketing copy that attract the right audience and drive growth. Let's write!",

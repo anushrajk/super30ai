@@ -193,20 +193,20 @@ const Contact = () => {
   return (
     <>
       <Helmet>
-        <title>Contact TheSuper30 | Ready to Accelerate Your Business Growth</title>
-        <meta name="description" content="Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth." />
-        <meta name="keywords" content="" />
-        <link rel="canonical" href="https://super30ai.lovable.app/contact-us" />
+        <title>Contact TheSuper30 Agency | Let’s Grow Your Brand</title>
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <link rel="canonical" href="https://www.thesuper30.ai/contact-us" />
 
-        <meta property="og:title" content="Contact TheSuper30 | Ready to Accelerate Your Business Growth" />
-        <meta property="og:description" content="Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth." />
+        <meta property="og:title" content="Contact TheSuper30 Agency | Let’s Grow Your Brand" />
+        <meta property="og:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://super30ai.lovable.app/contact-us" />
+        <meta property="og:url" content="https://www.thesuper30.ai/contact-us" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact TheSuper30 | Ready to Accelerate Your Business Growth" />
-        <meta name="twitter:description" content="Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth." />
-        <meta name="twitter:url" content="https://super30ai.lovable.app/contact-us" />
+        <meta name="twitter:title" content="Contact TheSuper30 Agency | Let’s Grow Your Brand" />
+        <meta name="twitter:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/contact-us" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",

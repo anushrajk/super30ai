@@ -51,17 +51,18 @@ const AiSeo = () => {
     <>
       <Helmet>
         <title>SEO Company in Bangalore | #1 AI-Driven SEO Services Agency</title>
-        <meta name="description" content="Struggling to get organic leads? Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility & 300% traffic growth. Book a free call" />
+        <meta name="robots" content="index, follow" />
+        <meta name="description" content="Struggling to get organic leads? Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility &amp; 300% traffic growth. Book a free call" />
         <meta name="keywords" content="AI seo services in bangalore, AI seo agency in bangalore, AI seo company in bangalore, seo services in bangalore, seo agency in bangalore, seo company in bangalore, search engine optimization services in bangalore, search engine optimization company in bangalore" />
-        <link rel="canonical" href="https://super30ai.lovable.app/seo-company-bangalore" />
+        <link rel="canonical" href="https://www.thesuper30.ai/seo-company-bangalore" />
         <meta property="og:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
-        <meta property="og:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google & AI search results!" />
+        <meta property="og:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://super30ai.lovable.app/seo-company-bangalore" />
+        <meta property="og:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
-        <meta name="twitter:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google & AI search results!" />
-        <meta name="twitter:url" content="https://super30ai.lovable.app/seo-company-bangalore" />
+        <meta name="twitter:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
+        <meta name="twitter:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
