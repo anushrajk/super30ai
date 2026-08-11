@@ -8,6 +8,7 @@ const rootDir = path.resolve(__dirname, "..");
 const appFile = path.join(rootDir, "src", "App.tsx");
 const distIndexFile = path.join(rootDir, "dist", "index.html");
 const siteOrigin = "https://www.thesuper30.ai";
+const seoMetaFile = path.join(rootDir, "src", "data", "seoMeta.json");
 
 const escapeHtml = (value = "") =>
   value
