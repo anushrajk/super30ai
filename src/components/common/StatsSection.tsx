@@ -40,14 +40,14 @@ export const StatsSection = ({ stats, className = "" }: StatsSectionProps) => {
 
 // Default stats data that can be reused across pages
 export const defaultStats = [
-  { value: "200%+", label: "Avg. Traffic Growth" },
+  { value: "300%+", label: "Avg. Traffic Growth" },
   { value: "60+", label: "Audits Delivered" },
   { value: "$2M+", label: "Revenue Generated" },
   { value: "4.9/5", label: "Client Rating" },
 ];
 
 export const workPageStats = [
-  { value: "200%+", label: "Avg. Traffic Growth" },
+  { value: "300%+", label: "Avg. Traffic Growth" },
   { value: "60+", label: "Audits Delivered" },
   { value: "$2M+", label: "Revenue Generated" },
   { value: "4.9/5", label: "Client Rating" },
