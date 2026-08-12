@@ -32,6 +32,37 @@ interface Post {
 
 const SITE = "https://super30ai.lovable.app";
 
+/** Convert leftover markdown artifacts in stored HTML into proper semantic HTML. */
+const normalizeContent = (html: string): string => {
+  let out = html;
+
+  // <p>---</p> (or ***, ___) -> <hr>
+  out = out.replace(/<p[^>]*>\s*(?:-{3,}|\*{3,}|_{3,})\s*<\/p>/gi, "<hr>");
+
+  // <p>&gt; quoted text</p> -> <blockquote><p>text</p></blockquote>
+  out = out.replace(
+    /<p([^>]*)>\s*(?:&gt;|>)\s*([\s\S]*?)<\/p>/gi,
+    (_m, attrs, inner) => `<blockquote><p${attrs}>${inner.trim()}</p></blockquote>`
+  );
+
+  // **bold** -> <strong>bold</strong>
+  out = out.replace(/\*\*([^*<>]+)\*\*/g, "<strong>$1</strong>");
+
+  // ## Heading lines wrapped in <p> -> real headings
+  out = out.replace(
+    /<p[^>]*>\s*(#{2,4})\s*([\s\S]*?)<\/p>/gi,
+    (_m, hashes: string, inner: string) => {
+      const level = Math.min(hashes.length, 4);
+      return `<h${level}>${inner.trim()}</h${level}>`;
+    }
+  );
+
+  // Merge adjacent blockquotes
+  out = out.replace(/<\/blockquote>\s*<blockquote>/gi, "");
+
+  return out;
+};
+
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<Post | null>(null);
@@ -185,7 +216,7 @@ const BlogPost = () => {
 
         <article className="container mx-auto max-w-3xl px-4 pb-16">
           <div
-            className="prose prose-lg max-w-none
+            className="blog-content prose prose-lg max-w-none
               prose-headings:text-foreground prose-headings:font-bold prose-headings:tracking-tight
               prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-4
               prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-3
@@ -199,7 +230,7 @@ const BlogPost = () => {
               prose-code:text-primary prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
               prose-pre:bg-muted prose-pre:text-foreground prose-pre:border prose-pre:border-border
               prose-hr:border-border"
-            dangerouslySetInnerHTML={{ __html: post.content }}
+            dangerouslySetInnerHTML={{ __html: normalizeContent(post.content) }}
           />
 
           <div className="mt-12 p-6 md:p-10 rounded-2xl bg-muted/50 border border-border text-center">
