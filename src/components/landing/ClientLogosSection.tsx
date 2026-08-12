@@ -69,7 +69,7 @@ export const ClientLogosSection = () => {
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/10">
           <div className="text-center">
-            <p className="text-2xl font-bold text-white">200%+</p>
+            <p className="text-2xl font-bold text-white">300%+</p>
             <p className="text-xs text-gray-400">Avg. Traffic Growth</p>
           </div>
           <div className="w-px h-8 bg-white/20 hidden sm:block" />
