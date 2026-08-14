@@ -118,6 +118,8 @@ const config: ServicePageConfig = {
       "You need search optimized content that delivers more than basic information",
       "Want to establish industry credibility, brand authority as a long-term priority",
       "You are ready to maintain a consistent and strategic publishing schedule",
+      "You want to build organic traffic that increases consistently every month",
+      "Content marketing matters to you, but internal bandwidth is limited",
     ],
     notForYou: [
       "You expect one article to generate thousands of traffic instantly",
