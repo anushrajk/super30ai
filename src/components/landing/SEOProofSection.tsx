@@ -101,14 +101,25 @@ export const SEOProofSection = () => (
             to={`/report/${r.slug}`}
             className="group rounded-2xl border border-border/50 bg-background overflow-hidden hover:border-brand/50 hover:shadow-lg transition-all duration-300"
           >
-            <div className="relative bg-muted/40 border-b border-border/40 overflow-hidden">
-              <img
-                src={r.image}
-                alt={`${r.name} SEO performance report`}
-                loading="lazy"
-                className="w-full h-48 object-cover object-top group-hover:scale-[1.03] transition-transform duration-500"
-              />
-              <span className="absolute top-3 left-3 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-background/90 border border-border/60 text-foreground">
+            <div className="relative bg-muted/40 border-b border-border/40 p-3">
+              {/* browser chrome */}
+              <div className="rounded-xl overflow-hidden border border-border/50 bg-white shadow-sm">
+                <div className="flex items-center gap-1.5 px-3 py-2 bg-muted/70 border-b border-border/50">
+                  <span className="w-2 h-2 rounded-full bg-red-400" />
+                  <span className="w-2 h-2 rounded-full bg-yellow-400" />
+                  <span className="w-2 h-2 rounded-full bg-green-400" />
+                  <span className="ml-2 text-[10px] text-muted-foreground truncate">Search performance report</span>
+                </div>
+                <div className="aspect-[16/9] bg-white flex items-center justify-center">
+                  <img
+                    src={r.image}
+                    alt={`${r.name} SEO performance report`}
+                    loading="lazy"
+                    className="w-full h-full object-contain group-hover:scale-[1.02] transition-transform duration-500"
+                  />
+                </div>
+              </div>
+              <span className="absolute top-5 right-5 text-[11px] font-semibold px-2.5 py-1 rounded-full bg-background/95 border border-border/60 text-foreground">
                 {r.industry}
               </span>
             </div>
