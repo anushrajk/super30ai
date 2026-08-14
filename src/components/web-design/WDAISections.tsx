@@ -1,13 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles, Bot, BrainCircuit, LineChart, Layout } from "lucide-react";
 
-const techFeatures = [
-  { icon: Layout, title: "Website Planning to Design", description: "Every aspect, from discovery to wireframes, and from finished Figma designs, is carefully structured for clarity and effectiveness." },
-  { icon: Sparkles, title: "AI-Powered Development", description: "The use of advanced development tools helps to speed up the completion of the projects and ensure outstanding quality, precision and attention to detail." },
-  { icon: BrainCircuit, title: "CRO Built-in", description: "Analysis of user behaviour, monitoring user engagement, and optimizing for conversions are built in from the start." },
-  { icon: LineChart, title: "Analytics & Performance Tracking", description: "Google Analytics 4, Tag Manager, and conversion tracking are configured to provide valuable business insights." },
-];
 
 export const WDAISections = () => {
   const scrollToForm = () => window.scrollTo({ top: 0, behavior: 'smooth' });
