@@ -2,6 +2,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 import { checkRateLimit } from "../_shared/rate-limit.ts";
+import { validateUrl } from "../_shared/validate-url.ts";
 
 serve(async (req) => {
   const corsPreFlight = handleCorsPreFlight(req);
@@ -27,6 +28,24 @@ serve(async (req) => {
       );
     }
 
+    if (typeof url !== 'string') {
+      return new Response(
+        JSON.stringify({ error: 'Invalid URL' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const urlValidation = validateUrl(url);
+    if (!urlValidation.valid) {
+      return new Response(
+        JSON.stringify({ error: urlValidation.error || 'Invalid URL' }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+    // Only the parsed origin + path is used downstream, so no prompt-injection text can survive
+    const parsedUrl = new URL(urlValidation.sanitizedUrl!);
+    const safeUrl = `${parsedUrl.protocol}//${parsedUrl.hostname}${parsedUrl.pathname}`.slice(0, 500);
+
     const LOVABLE_API_KEY = Deno.env.get('LOVABLE_API_KEY');
     if (!LOVABLE_API_KEY) {
       throw new Error('LOVABLE_API_KEY is not configured');
@@ -37,7 +56,7 @@ serve(async (req) => {
     // Create a prompt for competitor analysis
     const prompt = `Analyze this website URL and its audit data to provide competitor analysis:
 
-Website URL: ${url}
+Website URL: ${safeUrl}
 
 Audit Data:
 - SEO Score: ${auditData?.seo_score || 'N/A'}
@@ -187,7 +206,7 @@ Consider that this is an Indian business, so use INR for currency and consider I
           opportunity_breakdown: analysisData.opportunity_breakdown,
           estimated_monthly_loss: analysisData.estimated_monthly_loss,
           recommendations: analysisData.recommendations,
-          analyzed_url: url
+          analyzed_url: safeUrl
         });
 
       if (insertError) {
