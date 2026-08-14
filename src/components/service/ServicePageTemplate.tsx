@@ -87,23 +87,30 @@ export interface ServicePageConfig {
     buttonText: string;
   };
   sections?: {
-    problems?: { title?: React.ReactNode; description?: string };
-    services?: { title?: React.ReactNode; description?: string };
-    comparison?: { title?: React.ReactNode; description?: string };
+    problems?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    services?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    comparison?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     benefits?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     industries?: { eyebrow?: string; title?: React.ReactNode; description?: string };
-    process?: { title?: React.ReactNode };
-    whoIsThisFor?: { title?: React.ReactNode; description?: string };
+    process?: { eyebrow?: string; title?: React.ReactNode };
+    whoIsThisFor?: { eyebrow?: string; title?: React.ReactNode; description?: string };
   };
 }
 
+// ── Shared eyebrow ──
+const SectionEyebrow = ({ children }: { children?: React.ReactNode }) =>
+  children ? (
+    <span className="text-brand text-xs font-bold uppercase tracking-[0.25em] mb-3 block">{children}</span>
+  ) : null;
+
 // ── Problem Section ──
-const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["problems"]; heading?: { title?: React.ReactNode; description?: string } }) => {
+const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["problems"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{heading?.eyebrow ?? "The Problem"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>The Problem Most Businesses <span className="text-brand">Face</span></>}
           </h2>
