@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { ServiceHeroSection } from "@/components/service/ServiceHeroSection";
 import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+import { SEOProofSection } from "@/components/landing/SEOProofSection";
 import { 
   Search, Globe, Bot, BarChart3, TrendingUp,
   Building2, ShoppingCart, Briefcase, GraduationCap, 
@@ -126,6 +127,7 @@ const AiSeo = () => {
         </div>
 
         <ClientLogosSection />
+        <SEOProofSection />
 
         <Suspense fallback={null}>
           <ProblemSection />
