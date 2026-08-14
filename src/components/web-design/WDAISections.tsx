@@ -60,55 +60,6 @@ export const WDAISections = () => {
           </div>
         </div>
 
-        {/* Tech Process Infographic */}
-        <div className="bento-card p-4 md:p-8 relative overflow-hidden">
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl" />
-            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
-          </div>
-          
-          <div className="relative">
-            <div className="text-center mb-8">
-              <span className="badge-brand mb-3">Our Technical Process</span>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">How We Build Websites That Deliver Results</h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                A systematic, AI-powered approach that combines strategic planning, creative design, and technical expertise to deliver exceptional digital experiences.
-              </p>
-            </div>
-            
-            <div className="relative max-w-4xl mx-auto">
-              <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 z-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
-                {techFeatures.map((feature, index) => (
-                  <div key={index} className="group relative">
-                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center text-white text-xs font-bold z-20 group-hover:scale-125 transition-transform duration-300">{index + 1}</div>
-                    <Card className="bento-card transition-all duration-500 h-full overflow-hidden">
-                      <div className="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:via-brand/10 group-hover:to-brand/5 transition-all duration-500" />
-                      <CardContent className="p-5 text-center relative">
-                        <div className="relative mx-auto mb-4 w-16 h-16">
-                          <div className="relative w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg">
-                            <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
-                          </div>
-                        </div>
-                        <h4 className="font-bold text-foreground mb-2 text-sm md:text-base group-hover:text-brand transition-colors duration-300">{feature.title}</h4>
-                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </CardContent>
-                    </Card>
-                    {index < 3 && (
-                      <div className="hidden lg:flex absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
-                        <ArrowRight className="w-4 h-4 text-brand/50 group-hover:text-brand group-hover:translate-x-1 transition-all duration-300" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
