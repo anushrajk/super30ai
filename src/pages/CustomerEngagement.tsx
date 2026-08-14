@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Customer engagement strategies integrated with a customer engagement platform in Bangalore to enhance retention, repeat sales purchases, brand loyalty and maximise the customer lifetime value.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: <>Traditional Agency vs. <span className="text-brand">The Super 30</span></>,
       description: "Learn how a customer engagement consultant in Bangalore helps businesses strengthen customer retention through personalization, customer intelligence, and long-term relationship building.",
     },

@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Whether it's for corporate branding, e-commerce catalogues, events, or commercial campaigns, our photography services in Bangalore aim at delivering captivating images that leave a lasting impact and drive business growth.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: <>Traditional Photography Agencies vs <span className="text-brand">The Super 30</span></>,
       description: "Selecting the ideal photography company in Bangalore directly impacts your brand perception, content quality, and marketing outcomes. See how our approach delivers greater consistency, creative value, and business driven results.",
     },

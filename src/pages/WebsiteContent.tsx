@@ -34,6 +34,7 @@ const config: ServicePageConfig = {
   source: "website_content",
   sections: {
     problems: {
+      eyebrow: "The Challenge",
       title: "The Problem Most Businesses Face With Their Website Rankings",
       description: "Your website content may look complete, but low search volume, weak messaging, and outdated copy often stop businesses from generating consistent enquiries and organic growth.",
     },

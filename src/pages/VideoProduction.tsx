@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Whether it's brand storytelling and customer engagement to training and marketing campaigns, we create professional video content crafted exactly to your business objectives.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: <>Traditional Agency vs <span className="text-brand">TheSuper30</span></>,
       description: "Discover how strategic planning, creativity and clear execution help us stand apart from other media production companies in Bangalore while delivering successful video projects.",
     },

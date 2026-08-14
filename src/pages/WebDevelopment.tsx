@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Web development services in Bangalore are designed to be scalable, helping businesses grow, operate efficiently, and thrive in the digital realm.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. TheSuper 30",
       description: "See how our approach as a web development company in Bangalore delivers greater performance, transparency, ownership, and long-term value compared to conventional agency models.",
     },

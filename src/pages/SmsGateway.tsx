@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "High-quality SMS infrastructure to enhance the delivery of messages, communication efficiency, customer engagement, and smooth business SMS operations.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "Not all SMS gateway providers deliver the same performance. Compare delivery reliability, compliance support, API capabilities, and scalability before choosing an SMS API Provider in Bangalore.",
     },

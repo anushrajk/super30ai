@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Grow customer engagement, boost conversions, and build brand visibility with interactive RCS messaging solutions in Bangalore.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "Traditional SMS offers limited engagement opportunities, while RCS messaging opens up new opportunities for interactive brand experiences, leading to more compelling customer interaction and measurable business outcomes.",
     },

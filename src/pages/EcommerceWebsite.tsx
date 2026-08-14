@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "From storefront development to conversion optimization, we build E-commerce ecosystems designed to improve customer experiences, streamline operations, and maximize online revenue.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "Compare how a performance focused E-commerce website development company in Bangalore delivers stronger user experiences, higher conversions, and sustainable business growth compared to conventional E-commerce agencies.",
     },

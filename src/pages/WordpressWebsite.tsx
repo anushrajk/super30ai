@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "From custom development and performance optimization to e-commerce functionality and website security, we build WordPress solutions designed for growth and long-term success.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agencies vs. TheSuper30",
       description: "See how our WordPress development company in Bangalore delivers stronger performance, better flexibility, and long-term value compared to conventional website development models.",
     },

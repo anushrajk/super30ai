@@ -49,6 +49,7 @@ const config: ServicePageConfig = {
       description: "Integrated messaging solutions from a bulk sms provider in Bangalore designed to improve customer engagement, automate communication, and increase conversions across every platform.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agencies vs The Super 30",
       description: "Advanced messaging automation for engagement, conversions, compliance, and measurable customer communication growth.",
     },
