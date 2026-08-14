@@ -224,9 +224,7 @@ const BenefitsSection = ({ benefits, heading }: { benefits: ServicePageConfig["b
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
-          {heading?.eyebrow && (
-            <span className="text-brand text-xs font-bold uppercase tracking-[0.25em] mb-3 block">{heading.eyebrow}</span>
-          )}
+          <SectionEyebrow>{heading?.eyebrow ?? (heading?.title ? "Why Brands Choose Us?" : undefined)}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Why Brands <span className="text-brand">Choose Us</span></>}
           </h2>
@@ -451,7 +449,7 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         <Suspense fallback={null}>
           <ClientLogosSection />
           <LazySection minHeight="400px"><ProblemSection problems={config.problems} heading={config.sections?.problems} /></LazySection>
-          <LazySection minHeight="400px"><ServicesGrid services={config.services} title={config.sections?.services?.title} description={config.sections?.services?.description} /></LazySection>
+          <LazySection minHeight="400px"><ServicesGrid services={config.services} eyebrow={config.sections?.services?.eyebrow} title={config.sections?.services?.title} description={config.sections?.services?.description} /></LazySection>
           <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} heading={config.sections?.comparison} /></LazySection>
           <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} heading={config.sections?.benefits} /></LazySection>
           <LazySection minHeight="500px"><DMIndustriesSection {...(config.sections?.industries ?? {})} /></LazySection>
