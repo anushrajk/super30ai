@@ -139,12 +139,13 @@ const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["pr
 };
 
 // ── Services Grid ──
-const ServicesGrid = ({ services, title, description }: { services: ServicePageConfig["services"]; title?: React.ReactNode; description?: string }) => {
+const ServicesGrid = ({ services, eyebrow, title, description }: { services: ServicePageConfig["services"]; eyebrow?: string; title?: React.ReactNode; description?: string }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{eyebrow ?? "What We Offer"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {title || <>What We <span className="text-brand">Offer</span></>}
           </h2>
@@ -173,12 +174,13 @@ const ServicesGrid = ({ services, title, description }: { services: ServicePageC
 };
 
 // ── Comparison ──
-const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { title?: React.ReactNode; description?: string } }) => {
+const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{heading?.eyebrow ?? "The Difference"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Traditional Agency <span className="text-brand">vs. The Super 30</span></>}
           </h2>
@@ -287,12 +289,13 @@ const ProcessSection = ({ process, heading }: { process: ServicePageConfig["proc
 };
 
 // ── Who Is This For ──
-const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode; description?: string } }) => {
+const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{heading?.eyebrow ?? "Is This Right For You?"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Is This <span className="text-brand">Right For You?</span></>}
           </h2>
