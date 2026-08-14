@@ -29,19 +29,6 @@ const Chip = ({ children, i }: { children: React.ReactNode; i: number }) => (
   </span>
 );
 
-const Bar = ({ w, i, filled }: { w: string; i: number; filled?: boolean }) => (
-  <div className="flex items-center gap-2">
-    <div className={`h-1.5 w-1.5 rounded-full ${filled ? "bg-brand" : "bg-brand/30"}`} />
-    <div className="h-2 flex-1 overflow-hidden rounded-full bg-brand/10">
-      <div
-        className={`h-full rounded-full ${filled ? "bg-brand" : "bg-brand/40"} w-0 transition-all duration-700 ease-out`}
-        style={{ transitionDelay: `${i * 120}ms` }}
-        data-w={w}
-      />
-    </div>
-  </div>
-);
-
 // AI logos popping in
 const LLMVisual = () => (
   <div className="flex flex-wrap items-center gap-1.5">
@@ -99,21 +86,23 @@ const FormVisual = () => (
 );
 
 // Authority: mentions stacking
-const AuthorityVisual = () => (
-  <div className="flex items-end gap-1.5">
-    {[40, 60, 45, 80, 100].map((h, i) => (
-      <div
-        key={i}
-        className="w-6 rounded-t-md bg-brand/20 transition-all duration-700 ease-out group-hover:bg-brand"
-        style={{ height: 12, transitionDelay: `${i * 90}ms` }}
-        data-h={h}
-      />
-    ))}
-    <span className="ml-2 text-[10px] font-semibold uppercase tracking-wide text-brand opacity-0 transition-opacity duration-500 delay-500 group-hover:opacity-100">
-      Trusted brand
-    </span>
-  </div>
-);
+const AuthorityVisual = () => {
+  const heights = ["group-hover:h-4", "group-hover:h-7", "group-hover:h-5", "group-hover:h-10", "group-hover:h-14"];
+  return (
+    <div className="flex items-end gap-1.5">
+      {heights.map((h, i) => (
+        <div
+          key={i}
+          className={`h-2 w-6 rounded-t-md bg-brand/20 transition-all duration-700 ease-out group-hover:bg-brand ${h}`}
+          style={{ transitionDelay: `${i * 90}ms` }}
+        />
+      ))}
+      <span className="ml-2 text-[10px] font-semibold uppercase tracking-wide text-brand opacity-0 transition-opacity duration-500 delay-500 group-hover:opacity-100">
+        Trusted brand
+      </span>
+    </div>
+  );
+};
 
 // ROI counter
 const RoiVisual = () => (
