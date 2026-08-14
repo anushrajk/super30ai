@@ -88,7 +88,7 @@ export interface ServicePageConfig {
   };
   sections?: {
     problems?: { eyebrow?: string; title?: React.ReactNode; description?: string };
-    services?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    services?: { eyebrow?: string; title?: React.ReactNode; description?: string; ctaText?: string };
     comparison?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     benefits?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     industries?: { eyebrow?: string; title?: React.ReactNode; description?: string };
@@ -139,7 +139,7 @@ const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["pr
 };
 
 // ── Services Grid ──
-const ServicesGrid = ({ services, eyebrow, title, description }: { services: ServicePageConfig["services"]; eyebrow?: string; title?: React.ReactNode; description?: string }) => {
+const ServicesGrid = ({ services, eyebrow, title, description, ctaText }: { services: ServicePageConfig["services"]; eyebrow?: string; title?: React.ReactNode; description?: string; ctaText?: string }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
@@ -168,6 +168,17 @@ const ServicesGrid = ({ services, eyebrow, title, description }: { services: Ser
             </div>
           ))}
         </div>
+        {ctaText && (
+          <div className="mt-10 md:mt-12 text-center">
+            <Link
+              to="/contact-us"
+              className="inline-flex items-center gap-2 bg-brand text-white px-8 py-3.5 rounded-full font-semibold hover:bg-brand/90 transition-colors"
+            >
+              {ctaText}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -449,7 +460,7 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         <Suspense fallback={null}>
           <ClientLogosSection />
           <LazySection minHeight="400px"><ProblemSection problems={config.problems} heading={config.sections?.problems} /></LazySection>
-          <LazySection minHeight="400px"><ServicesGrid services={config.services} eyebrow={config.sections?.services?.eyebrow} title={config.sections?.services?.title} description={config.sections?.services?.description} /></LazySection>
+          <LazySection minHeight="400px"><ServicesGrid services={config.services} eyebrow={config.sections?.services?.eyebrow} title={config.sections?.services?.title} description={config.sections?.services?.description} ctaText={config.sections?.services?.ctaText} /></LazySection>
           <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} heading={config.sections?.comparison} /></LazySection>
           <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} heading={config.sections?.benefits} /></LazySection>
           <LazySection minHeight="500px"><DMIndustriesSection {...(config.sections?.industries ?? {})} /></LazySection>
