@@ -124,6 +124,7 @@ const config: ServicePageConfig = {
       "You plan to ignore the script structure during content production",
       "You want duplicated concepts copied from competitor video campaigns",
       "You do not have a defined goal or direction for your video content",
+      "You expect scripts delivered within 2 hours at minimal pricing",
     ],
   },
   faq: getFaqs("script-writing"),
