@@ -9,7 +9,6 @@ import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
 import { WorkPortfolioTabs } from "@/components/work/WorkPortfolioTabs";
 import { WorkFinalCTASection } from "@/components/work/WorkFinalCTASection";
 import { BlogSection } from "@/components/landing/BlogSection";
-import { FAQSection } from "@/components/landing/FAQSection";
 import { StatsSection, workPageStats } from "@/components/common/StatsSection";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
