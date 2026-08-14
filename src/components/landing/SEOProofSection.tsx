@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, TrendingUp, Search, BarChart3 } from "lucide-react";
+import { ArrowRight, Calendar, Briefcase, Search, Users } from "lucide-react";
 import bookMyScansReport from "@/assets/seo-reports/bookmyscans-report.png";
 import suranaReport from "@/assets/seo-reports/surana-report.png";
 import harvestReport from "@/assets/seo-reports/harvest-report.png";
@@ -64,9 +64,10 @@ const wins = [
 ];
 
 const highlights = [
-  { icon: TrendingUp, value: "300%+", label: "Avg. Traffic Growth" },
-  { icon: Search, value: "500+", label: "Keywords Ranked #1" },
-  { icon: BarChart3, value: "60+", label: "Audits Delivered" },
+  { icon: Calendar, value: "10+", label: "Years in Industry" },
+  { icon: Briefcase, value: "500+", label: "Projects Delivered" },
+  { icon: Search, value: "50k+", label: "Keywords Ranked" },
+  { icon: Users, value: "1 Lakh+", label: "Leads Generated" },
 ];
 
 export const SEOProofSection = () => (
@@ -83,7 +84,7 @@ export const SEOProofSection = () => (
       </div>
 
       {/* Highlight strip */}
-      <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-3xl mx-auto mb-12">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 max-w-4xl mx-auto mb-12">
         {highlights.map((h) => (
           <div key={h.label} className="rounded-2xl border border-border/60 bg-background p-4 md:p-6 text-center">
             <h.icon className="w-5 h-5 text-brand mx-auto mb-2" />
