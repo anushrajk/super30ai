@@ -3,40 +3,58 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Search, Target, BarChart3, FileText, Shield, Zap, ArrowRight, Quote, Users, Globe, MessageSquare, TrendingUp, Code, Database, Lock, Gauge, Bug, FileCheck, Sparkles, Bot, BrainCircuit, LineChart } from "lucide-react";
 import { BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
+import imgAiVisibility from "@/assets/svc-ai-visibility.jpg";
+import imgIntentMapping from "@/assets/svc-intent-mapping.jpg";
+import imgPredictive from "@/assets/svc-predictive-analytics.jpg";
+import imgContentStrategy from "@/assets/svc-content-strategy.jpg";
+import imgAuthority from "@/assets/svc-authority-signals.jpg";
+import imgTechnical from "@/assets/svc-technical-seo.jpg";
+import imgLlm from "@/assets/svc-llm-visibility.jpg";
+import imgBrand from "@/assets/svc-brand-presence.jpg";
+import imgRevenue from "@/assets/svc-revenue-seo.jpg";
 const coreServices = [{
   icon: Search,
+  image: imgAiVisibility,
   title: "AI SEO Visibility",
   description: "Improve visibility across AI powered search engines and GEO discovery platforms."
 }, {
   icon: Target,
+  image: imgIntentMapping,
   title: "Intent Based SEO Mapping",
   description: "Align search intent with structured AI understanding and smarter organic discovery patterns."
 }, {
   icon: BarChart3,
+  image: imgPredictive,
   title: "Predictive SEO Analytics",
   description: "Use performance forecasting and search behavior analysis to guide strategic SEO decisions."
 }, {
   icon: FileText,
+  image: imgContentStrategy,
   title: "AI Content Strategy",
   description: "Develop authoritative content frameworks designed for AI indexing and search relevance."
 }, {
   icon: Shield,
+  image: imgAuthority,
   title: "Digital Authority Signals",
   description: "Establish brand credibility through trusted entity signals and authoritative SEO positioning."
 }, {
   icon: Zap,
+  image: imgTechnical,
   title: "Advanced Technical AI SEO",
   description: "Build a search optimized technical structure designed for modern AI search systems."
 }, {
   icon: Globe,
+  image: imgLlm,
   title: "LLM Search Visibility",
   description: "Improve discoverability across ChatGPT, Perplexity, and evolving AI driven search platforms."
 }, {
   icon: MessageSquare,
+  image: imgBrand,
   title: "AI Brand Presence",
   description: "Increase brand visibility within AI generated search responses and recommendation systems."
 }, {
   icon: TrendingUp,
+  image: imgRevenue,
   title: "Revenue Focused SEO",
   description: "Track business growth through measurable SEO attribution and qualified conversion performance."
 }];
@@ -136,12 +154,25 @@ export const ServicesSection = () => {
 
         {/* Bento Grid for Core Services */}
         <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6 md:mb-12">
-          {coreServices.map((service, index) => <BentoCard key={index} className="group">
-              <BentoIcon size="md">
-                <service.icon className="w-6 h-6 md:w-7 md:h-7 text-brand group-hover:text-white transition-colors duration-300" />
-              </BentoIcon>
-              <h3 className="text-base md:text-lg font-bold text-foreground mb-1.5 group-hover:text-brand transition-colors mt-3">{service.title}</h3>
-              <p className="text-muted-foreground text-sm">{service.description}</p>
+          {coreServices.map((service, index) => <BentoCard key={index} className="group !p-0 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
+              <div className="relative w-full overflow-hidden bg-muted/40 aspect-[16/9]">
+                <img
+                  src={service.image}
+                  alt={`${service.title} illustration`}
+                  loading="lazy"
+                  width={768}
+                  height={512}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
+                <div className="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-background/90 backdrop-blur border border-border/60 shadow-sm flex items-center justify-center">
+                  <service.icon className="w-5 h-5 text-brand" />
+                </div>
+              </div>
+              <div className="p-5">
+                <h3 className="text-base md:text-lg font-bold text-foreground mb-1.5 group-hover:text-brand transition-colors">{service.title}</h3>
+                <p className="text-muted-foreground text-sm">{service.description}</p>
+              </div>
             </BentoCard>)}
         </BentoGrid>
 
