@@ -309,14 +309,9 @@ const Work = () => {
           <BlogSection />
         </div>
 
-        {/* Work Final CTA Section - above FAQ */}
+        {/* Work Final CTA Section */}
         <div id="work-final-cta">
           <WorkFinalCTASection />
-        </div>
-
-        {/* FAQ Section */}
-        <div id="work-faq">
-          <FAQSection />
         </div>
 
         <Footer />
