@@ -206,7 +206,7 @@ Consider that this is an Indian business, so use INR for currency and consider I
           opportunity_breakdown: analysisData.opportunity_breakdown,
           estimated_monthly_loss: analysisData.estimated_monthly_loss,
           recommendations: analysisData.recommendations,
-          analyzed_url: url
+          analyzed_url: safeUrl
         });
 
       if (insertError) {
