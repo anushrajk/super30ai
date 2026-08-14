@@ -1,18 +1,43 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { X, Check, Search, Bot, Building2, Users } from "lucide-react";
+import { TrendingUp, Target, Bot, ShieldCheck, LineChart, MapPin } from "lucide-react";
 
-const comparisons = [
-  { traditional: "Only keyword focused targeting", ai: "AI and intent driven SEO" },
-  { traditional: "Static performance reporting", ai: "Predictive AI search reporting" },
-  { traditional: "Traffic driven strategy", ai: "Revenue & lead focused optimization" },
-  { traditional: "Google focused optimization", ai: "Google AI and LLMs visibility" },
+const outcomeStats = [
+  { value: "60+", label: "AI audits delivered" },
+  { value: "$2M+", label: "Revenue influenced" },
+  { value: "4.8/5", label: "Client rating" },
 ];
 
-const journeySteps = [
-  { icon: Search, label: "User Search", color: "bg-muted" },
-  { icon: Bot, label: "AI Analysis", color: "bg-orange-100" },
-  { icon: Building2, label: "Your Brand", color: "bg-gradient-to-br from-orange-500 to-orange-600", textColor: "text-white" },
-  { icon: Users, label: "Qualified Leads", color: "bg-green-100" },
+const usps = [
+  {
+    icon: Target,
+    metric: "Lead quality",
+    title: "Intent-first keyword mapping",
+    description: "We chase buyers, not impressions, so every ranking gain shows up in your enquiry inbox.",
+  },
+  {
+    icon: Bot,
+    metric: "AI visibility",
+    title: "Cited by AI answers",
+    description: "Entity, schema and content signals tuned so ChatGPT, Gemini and AI Overviews reference your brand.",
+  },
+  {
+    icon: ShieldCheck,
+    metric: "Zero risk",
+    title: "Clean, white-hat execution",
+    description: "Technical fixes and earned links only. No penalties, no shortcuts, no rented authority.",
+  },
+  {
+    icon: LineChart,
+    metric: "Full clarity",
+    title: "Revenue-linked reporting",
+    description: "Live dashboards tie rankings to leads, calls and closed revenue every single month.",
+  },
+  {
+    icon: MapPin,
+    metric: "Local edge",
+    title: "Bangalore search dominance",
+    description: "Maps, local packs and city-intent pages built to win high-value searches near you.",
+    wide: true,
+  },
 ];
 
 export const AIComparisonSection = () => {
@@ -34,84 +59,46 @@ export const AIComparisonSection = () => {
           </p>
         </div>
 
-        {/* 50/50 Layout: Comparison Table + AI Search Journey */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-6xl mx-auto items-stretch">
-          {/* Left: Comparison Table */}
-          <Card className="border-border/50 overflow-hidden shadow-2xl hover:shadow-xl transition-all duration-500 h-full">
-            <CardContent className="p-0 h-full flex flex-col">
-              <div className="grid md:grid-cols-2 flex-1">
-                {/* Traditional SEO Column */}
-                <div className="p-4 md:p-6 bg-muted/50 backdrop-blur-sm border-b md:border-b-0 md:border-r border-border/50 flex flex-col">
-                  <h3 className="text-lg font-bold text-muted-foreground mb-4 text-center">
-                    Traditional SEO
-                  </h3>
-                  <div className="space-y-3 flex-1">
-                    {comparisons.map((item, index) => (
-                      <div 
-                        key={index} 
-                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-red-50/50 transition-colors duration-300"
-                      >
-                        <div className="w-7 h-7 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
-                          <X className="w-3.5 h-3.5 text-red-500" />
-                        </div>
-                        <span className="text-muted-foreground line-through text-sm">{item.traditional}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* AI SEO Column */}
-                <div className="p-4 md:p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 flex flex-col">
-                  <h3 className="text-lg font-bold text-orange-600 mb-4 text-center">
-                    Modern AI SEO Strategy
-                  </h3>
-                  <div className="space-y-3 flex-1">
-                    {comparisons.map((item, index) => (
-                      <div 
-                        key={index} 
-                        className="flex items-center gap-3 p-2 rounded-lg hover:bg-orange-200/50 transition-colors duration-300 group"
-                      >
-                        <div className="w-7 h-7 bg-gradient-to-br from-orange-500 to-orange-600 rounded-full flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
-                          <Check className="w-3.5 h-3.5 text-white" />
-                        </div>
-                        <span className="text-foreground font-medium text-sm">{item.ai}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+        {/* Outcome-based USP bento grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5 max-w-6xl mx-auto auto-rows-[minmax(150px,auto)]">
+          {/* Big highlight */}
+          <div className="md:col-span-2 md:row-span-2 rounded-3xl border border-orange-200/60 bg-gradient-to-br from-orange-50 to-background p-6 md:p-8 flex flex-col justify-between">
+            <div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-background border border-border/60 px-3 py-1 text-xs font-medium text-muted-foreground">
+                <TrendingUp className="w-3.5 h-3.5 text-orange-600" /> Revenue outcome
               </div>
-            </CardContent>
-          </Card>
-
-          {/* Right: AI Search Journey */}
-          <Card className="border-border/50 shadow-2xl hover:shadow-xl transition-all duration-500 h-full">
-            <CardContent className="p-4 md:p-6 h-full flex flex-col justify-center">
-              <h3 className="text-lg font-bold text-foreground mb-6 text-center">
-                The AI SEO Search Journey
+              <h3 className="mt-4 text-3xl md:text-4xl font-bold text-foreground leading-tight">
+                300%+ average organic <span className="bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">traffic growth</span>
               </h3>
-              <div className="flex flex-wrap items-center justify-center gap-3 flex-1">
-                {journeySteps.map((step, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="flex flex-col items-center gap-2 group">
-                      <div className={`w-16 h-16 ${step.color} rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:-rotate-3 transition-all duration-300`}>
-                        <step.icon className={`w-7 h-7 ${step.textColor || 'text-foreground'}`} />
-                      </div>
-                      <span className="text-xs text-muted-foreground font-medium">{step.label}</span>
-                    </div>
-                    {index < journeySteps.length - 1 && (
-                      <div className="hidden sm:flex items-center mb-6">
-                        <div className="w-8 h-1 bg-gradient-to-r from-orange-300 to-orange-500 rounded-full" />
-                        <div className="w-0 h-0 border-t-[3px] border-b-[3px] border-l-[6px] border-transparent border-l-orange-500" />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-              <p className="text-center text-muted-foreground mt-6 text-sm bg-gradient-to-r from-orange-50 to-orange-100/50 p-4 rounded-xl border border-orange-200/50">
-                AI SEO can make your business <span className="font-semibold text-orange-600">recognizable</span>, <span className="font-semibold text-orange-600">trusted</span>, <span className="font-semibold text-orange-600">recommended</span>, and <span className="font-semibold text-orange-600">referenced</span> across the complete search journey.
+              <p className="mt-3 text-muted-foreground max-w-lg">
+                Every sprint is measured against pipeline, not vanity rankings. We optimise for the keywords that convert into qualified enquiries.
               </p>
-            </CardContent>
-          </Card>
+            </div>
+            <div className="mt-6 grid grid-cols-3 gap-3">
+              {outcomeStats.map((s) => (
+                <div key={s.label} className="rounded-2xl bg-background border border-border/60 p-4">
+                  <div className="text-2xl font-bold text-foreground">{s.value}</div>
+                  <div className="text-xs text-muted-foreground mt-1">{s.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {usps.map((u) => (
+            <div
+              key={u.title}
+              className={`rounded-3xl border border-border/60 bg-card p-6 flex flex-col justify-between hover:border-orange-300 transition-colors duration-300 ${u.wide ? "md:col-span-2" : ""}`}
+            >
+              <div className="w-11 h-11 rounded-2xl bg-orange-100 flex items-center justify-center">
+                <u.icon className="w-5 h-5 text-orange-600" />
+              </div>
+              <div className="mt-5">
+                <div className="text-sm font-semibold uppercase tracking-wide text-orange-600">{u.metric}</div>
+                <h4 className="mt-1 text-lg font-bold text-foreground">{u.title}</h4>
+                <p className="mt-2 text-sm text-muted-foreground">{u.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
