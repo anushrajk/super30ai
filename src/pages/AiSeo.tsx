@@ -113,7 +113,8 @@ const AiSeo = () => {
             credentials={[
               "Google Certified SEO Experts",
               "10+ Years Experience",
-              "500+ Keywords Ranked #1",
+              "50k+ Keywords Ranked",
+              "1 Lakh+ Leads Generated",
             ]}
             onSubmit={handleFormSubmit}
             loading={loading}
