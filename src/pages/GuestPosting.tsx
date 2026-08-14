@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "High quality outreach and guest post writing in Bangalore for authority websites that aims to boost rankings, build trust for the domain, and drive sustained visibility in search results.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "A clear comparison between outdated backlink practices and strategic authority driven guest posting built for sustainable ranking growth.",
     },

@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "An integrated WhatsApp solution that automates communication, enhances customer engagement, and boosts response efficiency throughout the entire communication cycle.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "Analyze traditional WhatsApp marketing strategies and find out about modern AI powered automation conversation devices that allow for faster responses, larger engagement, and measurable business growth.",
     },

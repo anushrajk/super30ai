@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Custom AI chatbot solutions designed to automate conversations, improve customer support, qualify leads, and enhance user experiences across digital platforms.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "See how modern AI chatbot solutions compare with conventional chatbot systems in terms of intelligence, automation, scalability, and customer experience.",
     },

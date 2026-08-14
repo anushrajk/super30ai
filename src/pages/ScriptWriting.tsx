@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Strategic scripts crafted for advertisements, branded storytelling, video marketing, and audience engagement across digital and media platforms.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "Performance focused scripts crafted to hold attention, strengthen brand messaging, and improve audience response across every platform.",
     },
@@ -123,6 +124,7 @@ const config: ServicePageConfig = {
       "You plan to ignore the script structure during content production",
       "You want duplicated concepts copied from competitor video campaigns",
       "You do not have a defined goal or direction for your video content",
+      "You expect scripts delivered within 2 hours at minimal pricing",
     ],
   },
   faq: getFaqs("script-writing"),

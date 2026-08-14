@@ -42,6 +42,7 @@ const config: ServicePageConfig = {
       description: "Complete Web Support Services in Bangalore to ensure the security, optimization, and successful support of your website with proactive monitoring, regular updates, improved security, and continuous performance enhancement.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agencies vs. TheSuper 30",
       description: "Compare the difference between reactive website support and a proactive maintenance approach focused on performance, security, reliability, and long-term website health.",
     },

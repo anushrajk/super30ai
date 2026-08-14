@@ -34,6 +34,7 @@ const config: ServicePageConfig = {
   source: "blog_writing",
   sections: {
     problems: {
+      eyebrow: "The Challenge",
       title: "Content Challenges That Most Businesses Face",
       description: "Publishing content regularly is no longer enough. Without strategy, search visibility, and consistency, most business blogs fail to generate meaningful traffic or qualified leads.",
     },
@@ -42,6 +43,7 @@ const config: ServicePageConfig = {
       description: "Strategic blog content crafted to improve rankings, strengthen authority, and keep your brand visible across search engines and AI driven discovery platforms.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs TheSuper 30",
       description: "Unlike a typical article writing agency in Bangalore focused on content volume, we create search optimized blog content designed to improve rankings, authority, and long-term organic growth.",
     },
@@ -116,6 +118,8 @@ const config: ServicePageConfig = {
       "You need search optimized content that delivers more than basic information",
       "Want to establish industry credibility, brand authority as a long-term priority",
       "You are ready to maintain a consistent and strategic publishing schedule",
+      "You want to build organic traffic that increases consistently every month",
+      "Content marketing matters to you, but internal bandwidth is limited",
     ],
     notForYou: [
       "You expect one article to generate thousands of traffic instantly",

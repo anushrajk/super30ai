@@ -83,7 +83,7 @@ const WebDesign = () => {
         <div id="wd-hero">
           <ServiceHeroSection
             badgeIcon={Globe}
-            badgeText="Web Design Company in Bangalore"
+            badgeText="Custom Website Designing in Bangalore"
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">

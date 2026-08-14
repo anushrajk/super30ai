@@ -41,6 +41,7 @@ const config: ServicePageConfig = {
   source: "production",
   sections: {
     problems: {
+      eyebrow: "The Challenge",
       title: "The Production Problems Most Businesses Face",
       description: "Many businesses invest in video and photography expecting excellent brand impact, but inconsistent execution, poor planning, and fragmented production processes often limit results.",
     },
@@ -49,6 +50,7 @@ const config: ServicePageConfig = {
       description: "From corporate storytelling in Bangalore storytelling to commercial content creation, we provide end-to-end video production and photography solutions designed to establish brand presence, increase engagement, and support business growth.",
     },
     comparison: {
+      eyebrow: "What Makes Us Different?",
       title: "Traditional Agency vs. The Super 30",
       description: "The difference between average content and high performing visual assets often comes down to planning, execution, and accountability. Compare the traditional production approach with a dedicated creative team built for consistent business outcomes.",
     },

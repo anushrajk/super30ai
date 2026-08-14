@@ -87,23 +87,30 @@ export interface ServicePageConfig {
     buttonText: string;
   };
   sections?: {
-    problems?: { title?: React.ReactNode; description?: string };
-    services?: { title?: React.ReactNode; description?: string };
-    comparison?: { title?: React.ReactNode; description?: string };
+    problems?: { eyebrow?: string; title?: React.ReactNode; description?: string };
+    services?: { eyebrow?: string; title?: React.ReactNode; description?: string; ctaText?: string };
+    comparison?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     benefits?: { eyebrow?: string; title?: React.ReactNode; description?: string };
     industries?: { eyebrow?: string; title?: React.ReactNode; description?: string };
-    process?: { title?: React.ReactNode };
-    whoIsThisFor?: { title?: React.ReactNode; description?: string };
+    process?: { eyebrow?: string; title?: React.ReactNode };
+    whoIsThisFor?: { eyebrow?: string; title?: React.ReactNode; description?: string };
   };
 }
 
+// ── Shared eyebrow ──
+const SectionEyebrow = ({ children }: { children?: React.ReactNode }) =>
+  children ? (
+    <span className="text-brand text-xs font-bold uppercase tracking-[0.25em] mb-3 block">{children}</span>
+  ) : null;
+
 // ── Problem Section ──
-const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["problems"]; heading?: { title?: React.ReactNode; description?: string } }) => {
+const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["problems"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{heading?.eyebrow ?? "The Problem"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>The Problem Most Businesses <span className="text-brand">Face</span></>}
           </h2>
@@ -132,12 +139,13 @@ const ProblemSection = ({ problems, heading }: { problems: ServicePageConfig["pr
 };
 
 // ── Services Grid ──
-const ServicesGrid = ({ services, title, description }: { services: ServicePageConfig["services"]; title?: React.ReactNode; description?: string }) => {
+const ServicesGrid = ({ services, eyebrow, title, description, ctaText }: { services: ServicePageConfig["services"]; eyebrow?: string; title?: React.ReactNode; description?: string; ctaText?: string }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{eyebrow ?? "What We Offer"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {title || <>What We <span className="text-brand">Offer</span></>}
           </h2>
@@ -160,18 +168,30 @@ const ServicesGrid = ({ services, title, description }: { services: ServicePageC
             </div>
           ))}
         </div>
+        {ctaText && (
+          <div className="mt-10 md:mt-12 text-center">
+            <Link
+              to="/contact-us"
+              className="inline-flex items-center gap-2 bg-brand text-white px-8 py-3.5 rounded-full font-semibold hover:bg-brand/90 transition-colors"
+            >
+              {ctaText}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );
 };
 
 // ── Comparison ──
-const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { title?: React.ReactNode; description?: string } }) => {
+const ComparisonSection = ({ comparison, heading }: { comparison: ServicePageConfig["comparison"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{heading?.eyebrow ?? "The Difference"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Traditional Agency <span className="text-brand">vs. The Super 30</span></>}
           </h2>
@@ -215,9 +235,7 @@ const BenefitsSection = ({ benefits, heading }: { benefits: ServicePageConfig["b
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
-          {heading?.eyebrow && (
-            <span className="text-brand text-xs font-bold uppercase tracking-[0.25em] mb-3 block">{heading.eyebrow}</span>
-          )}
+          <SectionEyebrow>{heading?.eyebrow ?? (heading?.title ? "Why Brands Choose Us?" : undefined)}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Why Brands <span className="text-brand">Choose Us</span></>}
           </h2>
@@ -280,12 +298,13 @@ const ProcessSection = ({ process, heading }: { process: ServicePageConfig["proc
 };
 
 // ── Who Is This For ──
-const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { title?: React.ReactNode; description?: string } }) => {
+const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIsThisFor"]; heading?: { eyebrow?: string; title?: React.ReactNode; description?: string } }) => {
   const [ref, visible] = useScrollAnimation<HTMLElement>();
   return (
     <section ref={ref} className="py-12 md:py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-10 md:mb-14">
+          <SectionEyebrow>{heading?.eyebrow ?? "Is This Right For You?"}</SectionEyebrow>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             {heading?.title ?? <>Is This <span className="text-brand">Right For You?</span></>}
           </h2>
@@ -441,7 +460,7 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         <Suspense fallback={null}>
           <ClientLogosSection />
           <LazySection minHeight="400px"><ProblemSection problems={config.problems} heading={config.sections?.problems} /></LazySection>
-          <LazySection minHeight="400px"><ServicesGrid services={config.services} title={config.sections?.services?.title} description={config.sections?.services?.description} /></LazySection>
+          <LazySection minHeight="400px"><ServicesGrid services={config.services} eyebrow={config.sections?.services?.eyebrow} title={config.sections?.services?.title} description={config.sections?.services?.description} ctaText={config.sections?.services?.ctaText} /></LazySection>
           <LazySection minHeight="400px"><ComparisonSection comparison={config.comparison} heading={config.sections?.comparison} /></LazySection>
           <LazySection minHeight="400px"><BenefitsSection benefits={config.benefits} heading={config.sections?.benefits} /></LazySection>
           <LazySection minHeight="500px"><DMIndustriesSection {...(config.sections?.industries ?? {})} /></LazySection>
