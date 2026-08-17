@@ -9,6 +9,8 @@ const appFile = path.join(rootDir, "src", "App.tsx");
 const distIndexFile = path.join(rootDir, "dist", "index.html");
 const siteOrigin = "https://www.thesuper30.ai";
 const seoMetaFile = path.join(rootDir, "src", "data", "seoMeta.json");
+const schemaRoutesFile = path.join(rootDir, "src", "data", "schemaRoutes.json");
+const faqsFile = path.join(rootDir, "src", "data", "faqs.json");
 
 const escapeHtml = (value = "") =>
   value
@@ -154,7 +156,16 @@ const injectMetadata = (html, metadata) => {
     .filter(Boolean)
     .join("\n    ");
 
-  return cleanHtml.replace("</head>", `    ${tags}\n  </head>`);
+  const schemaTags = (metadata.schema || [])
+    .map(
+      (node) =>
+        `<script type="application/ld+json">${JSON.stringify(node).replace(/</g, "\\u003c")}</script>`
+    )
+    .join("\n    ");
+
+  const head = schemaTags ? `${tags}\n    ${schemaTags}` : tags;
+
+  return cleanHtml.replace("</head>", `    ${head}\n  </head>`);
 };
 
 const routeToOutputFile = (routePath) => {
@@ -164,13 +175,88 @@ const routeToOutputFile = (routePath) => {
 };
 
 const main = async () => {
-  const [appSource, distIndexHtml, seoMetaRaw] = await Promise.all([
+  const [appSource, distIndexHtml, seoMetaRaw, schemaRoutesRaw, faqsRaw] = await Promise.all([
     fs.readFile(appFile, "utf8"),
     fs.readFile(distIndexFile, "utf8"),
     fs.readFile(seoMetaFile, "utf8"),
+    fs.readFile(schemaRoutesFile, "utf8"),
+    fs.readFile(faqsFile, "utf8"),
   ]);
 
   const seoMeta = JSON.parse(seoMetaRaw);
+  const schemaRoutes = JSON.parse(schemaRoutesRaw);
+  const faqs = JSON.parse(faqsRaw);
+
+  const organization = {
+    "@type": "Organization",
+    "@id": `${siteOrigin}/#organization`,
+    name: "The Super 30",
+    url: `${siteOrigin}/`,
+    telephone: "+91 89041 50555",
+    areaServed: { "@type": "City", name: "Bangalore" },
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Bangalore",
+      addressRegion: "Karnataka",
+      addressCountry: "IN",
+    },
+    sameAs: ["https://www.instagram.com/thesuper30.ai/"],
+  };
+
+  const buildSchema = (routePath, metadata) => {
+    const route = schemaRoutes[routePath];
+    if (!route) return [];
+
+    const url = metadata.canonical;
+    const graph = [
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
+          { "@type": "ListItem", position: 2, name: route.name, item: url },
+        ],
+      },
+    ];
+
+    if (route.type === "Service") {
+      graph.push({
+        "@context": "https://schema.org",
+        "@type": "Service",
+        serviceType: route.serviceType || route.name,
+        name: metadata.title,
+        description: metadata.description,
+        url,
+        provider: organization,
+        areaServed: { "@type": "City", name: "Bangalore" },
+      });
+    } else {
+      graph.push({
+        "@context": "https://schema.org",
+        "@type": route.type,
+        name: metadata.title,
+        description: metadata.description,
+        url,
+        isPartOf: { "@type": "WebSite", name: "The Super 30", url: `${siteOrigin}/` },
+        publisher: organization,
+      });
+    }
+
+    const items = route.faqSlug ? faqs[route.faqSlug] || [] : [];
+    if (items.length) {
+      graph.push({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: items.map((f) => ({
+          "@type": "Question",
+          name: f.question,
+          acceptedAnswer: { "@type": "Answer", text: f.answer },
+        })),
+      });
+    }
+
+    return graph;
+  };
 
   const importMap = new Map();
   const importRegex = /const\s+(\w+)\s*=\s*lazy\(\(\)\s*=>\s*import\("(.+?)"\)/g;
@@ -199,8 +285,9 @@ const main = async () => {
 
   const writeRoute = async (routePath, metadata) => {
     const outputFile = routeToOutputFile(routePath);
+    const withSchema = { ...metadata, schema: buildSchema(routePath, metadata) };
     await fs.mkdir(path.dirname(outputFile), { recursive: true });
-    await fs.writeFile(outputFile, injectMetadata(distIndexHtml, metadata), "utf8");
+    await fs.writeFile(outputFile, injectMetadata(distIndexHtml, withSchema), "utf8");
     seenRoutes.add(routePath);
     generatedCount += 1;
   };

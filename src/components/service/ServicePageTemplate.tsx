@@ -415,18 +415,7 @@ export const ServicePageTemplate = ({ config }: { config: ServicePageConfig }) =
         <meta name="twitter:title" content={config.seo.twitterTitle || config.seo.ogTitle || config.seo.title} />
         <meta name="twitter:description" content={config.seo.twitterDescription || config.seo.ogDescription || config.seo.description} />
         <meta name="twitter:url" content={config.seo.canonical} />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            serviceType: config.seo.serviceType,
-            name: config.seo.title,
-            url: config.seo.canonical,
-            provider: { "@type": "Organization", name: "The Super 30", url: "https://www.thesuper30.ai/" },
-            areaServed: { "@type": "City", name: "Bangalore" },
-            description: config.seo.description,
-          })}
-        </script>
+        {/* Service / FAQ / Breadcrumb JSON-LD is emitted globally by <PageSchema /> */}
       </Helmet>
 
       <Navbar />
