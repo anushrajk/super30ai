@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { PageSchema } from "@/components/seo/PageSchema";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
 import { Loader2 } from "lucide-react";
@@ -142,6 +143,7 @@ const App = () => (
         <BrowserRouter>
           <DeferredUI />
           <ScrollToTop />
+          <PageSchema />
           <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
               <Routes>
