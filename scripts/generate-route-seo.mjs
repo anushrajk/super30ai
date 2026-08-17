@@ -9,6 +9,8 @@ const appFile = path.join(rootDir, "src", "App.tsx");
 const distIndexFile = path.join(rootDir, "dist", "index.html");
 const siteOrigin = "https://www.thesuper30.ai";
 const seoMetaFile = path.join(rootDir, "src", "data", "seoMeta.json");
+const schemaRoutesFile = path.join(rootDir, "src", "data", "schemaRoutes.json");
+const faqsFile = path.join(rootDir, "src", "data", "faqs.json");
 
 const escapeHtml = (value = "") =>
   value
@@ -154,7 +156,16 @@ const injectMetadata = (html, metadata) => {
     .filter(Boolean)
     .join("\n    ");
 
-  return cleanHtml.replace("</head>", `    ${tags}\n  </head>`);
+  const schemaTags = (metadata.schema || [])
+    .map(
+      (node) =>
+        `<script type="application/ld+json">${JSON.stringify(node).replace(/</g, "\\u003c")}</script>`
+    )
+    .join("\n    ");
+
+  const head = schemaTags ? `${tags}\n    ${schemaTags}` : tags;
+
+  return cleanHtml.replace("</head>", `    ${head}\n  </head>`);
 };
 
 const routeToOutputFile = (routePath) => {
