@@ -217,7 +217,116 @@ const NAV_LINKS = `<nav>
 
 // The static crawler block in index.html describes the home page. Every other
 // route gets its own block so the source HTML matches that page's content.
-const replaceSeoContent = (html, routePath, metadata, route, faqItems) => {
+
+// ---- Page content extraction -------------------------------------------------
+// Reads the route's page component (and the local components it imports, two
+// levels deep) and pulls out the real headings / paragraphs / list items so the
+// crawler-visible HTML mirrors what visitors actually see on that page.
+
+const sourceCache = new Map();
+
+const readSource = async (file) => {
+  if (sourceCache.has(file)) return sourceCache.get(file);
+  let text = "";
+  try {
+    text = await fs.readFile(file, "utf8");
+  } catch {
+    text = "";
+  }
+  sourceCache.set(file, text);
+  return text;
+};
+
+const resolveLocalImports = (source, fromFile) => {
+  const files = [];
+  const importRe = /from\s+"(@\/[^"]+|\.\.?\/[^"]+)"|import\("(@\/[^"]+|\.\.?\/[^"]+)"\)/g;
+  for (const match of source.matchAll(importRe)) {
+    const spec = match[1] || match[2];
+    if (!spec) continue;
+    if (/\.(css|json|png|jpe?g|svg|webp|mp4)$/i.test(spec)) continue;
+    if (spec.includes("/ui/") || spec.includes("integrations/supabase")) continue;
+    const base = spec.startsWith("@/")
+      ? path.join(rootDir, "src", spec.slice(2))
+      : path.resolve(path.dirname(fromFile), spec);
+    files.push(`${base}.tsx`);
+  }
+  return files;
+};
+
+const cleanText = (value) =>
+  value
+    .replace(/\s+/g, " ")
+    .replace(/&nbsp;/g, " ")
+    .trim();
+
+const isUsefulText = (value) =>
+  value.length > 2 &&
+  value.length < 600 &&
+  /[a-zA-Z]/.test(value) &&
+  !value.includes("{") &&
+  !value.includes("}") &&
+  !/^[\W\d]+$/.test(value);
+
+const extractFromSource = (source) => {
+  const nodes = [];
+  const seen = new Set();
+
+  const push = (tag, raw) => {
+    const text = cleanText(raw);
+    if (!isUsefulText(text)) return;
+    const key = `${tag}:${text.toLowerCase()}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    nodes.push({ tag, text });
+  };
+
+  const jsxRe = /<(h1|h2|h3|h4|p|li|blockquote)(?:\s[^>]*)?>([^<>{}]+)<\/\1>/g;
+  for (const match of source.matchAll(jsxRe)) {
+    const tag = match[1] === "h1" ? "h2" : match[1] === "h4" ? "h3" : match[1];
+    push(tag, match[2]);
+  }
+
+  const literalRe =
+    /\b(?:title|heading|headline|subheading|subtext|description|label|question|answer|text|quote|name)\s*:\s*("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g;
+  for (const match of source.matchAll(literalRe)) {
+    push("p", decodeJsStringLiteral(match[1]));
+  }
+
+  return nodes;
+};
+
+const buildPageContent = async (pageFile) => {
+  if (!pageFile) return [];
+  const visited = new Set();
+  const queue = [{ file: pageFile, depth: 0 }];
+  const nodes = [];
+
+  while (queue.length) {
+    const { file, depth } = queue.shift();
+    if (visited.has(file)) continue;
+    visited.add(file);
+    const source = await readSource(file);
+    if (!source) continue;
+    nodes.push(...extractFromSource(source));
+    if (depth < 2) {
+      for (const next of resolveLocalImports(source, file)) {
+        queue.push({ file: next, depth: depth + 1 });
+      }
+    }
+  }
+
+  const seen = new Set();
+  return nodes
+    .filter((node) => {
+      const key = node.text.toLowerCase();
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .slice(0, 400);
+};
+
+const replaceSeoContent = (html, routePath, metadata, route, faqItems, contentNodes = []) => {
   if (routePath === "/") return html;
 
   const start = html.indexOf('<div id="seo-content"');
@@ -227,6 +336,19 @@ const replaceSeoContent = (html, routePath, metadata, route, faqItems) => {
   if (end === -1) return html;
 
   const heading = route?.name || metadata.title.split("|")[0].trim();
+  const faqQuestions = new Set(faqItems.map((f) => cleanText(f.question).toLowerCase()));
+  const faqAnswers = new Set(faqItems.map((f) => cleanText(f.answer).toLowerCase()));
+  const bodyBlock = contentNodes
+    .filter(
+      (node) =>
+        !faqQuestions.has(node.text.toLowerCase()) &&
+        !faqAnswers.has(node.text.toLowerCase()) &&
+        node.text !== heading &&
+        node.text !== metadata.description
+    )
+    .map((node) => `          <${node.tag}>${escapeHtml(node.text)}</${node.tag}>`)
+    .join("\n");
+  const contentSection = bodyBlock ? `\n        <section>\n${bodyBlock}\n        </section>` : "";
   const faqBlock = faqItems.length
     ? `\n        <section>\n          <h2>Frequently Asked Questions</h2>\n${faqItems
         .map((f) => `          <h3>${escapeHtml(f.question)}</h3>\n          <p>${escapeHtml(f.answer)}</p>`)
@@ -240,7 +362,7 @@ ${NAV_LINKS}
         <header>
           <h1>${escapeHtml(heading)}</h1>
           <p>${escapeHtml(metadata.description)}</p>
-        </header>${faqBlock}
+        </header>${contentSection}${faqBlock}
 
         <footer>
           <p>The Super 30 — AI Digital Marketing Agency. Bangalore, Karnataka, India. Phone: +91 89041 50555.</p>
@@ -397,6 +519,7 @@ const main = async () => {
   let generatedCount = 0;
 
   const seenRoutes = new Set();
+  const routeFileMap = new Map(staticRoutes.map((r) => [r.routePath, r.filePath]));
 
   const writeRoute = async (routePath, metadata) => {
     const outputFile = routeToOutputFile(routePath);
@@ -404,7 +527,8 @@ const main = async () => {
     await fs.mkdir(path.dirname(outputFile), { recursive: true });
     const route = schemaRoutes[routePath];
     const faqItems = route?.faqSlug ? faqs[route.faqSlug] || [] : [];
-    const baseHtml = replaceSeoContent(distIndexHtml, routePath, metadata, route, faqItems);
+    const contentNodes = routePath === "/" ? [] : await buildPageContent(routeFileMap.get(routePath));
+    const baseHtml = replaceSeoContent(distIndexHtml, routePath, metadata, route, faqItems, contentNodes);
     await fs.writeFile(outputFile, injectMetadata(baseHtml, withSchema), "utf8");
     seenRoutes.add(routePath);
     generatedCount += 1;
