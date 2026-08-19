@@ -62,7 +62,7 @@ const DigitalMarketing = () => {
             url: "https://www.thesuper30.ai/digital-marketing-agency-bangalore",
             description:
               "The Super 30 is a leading digital marketing agency in Bangalore offering SEO, PPC, social media marketing, web design, content marketing, and ORM services for startups and enterprises.",
-            telephone: "+91-9876543210",
+            telephone: "+91 89041 50555",
             priceRange: "₹₹–₹₹₹",
             address: {
               "@type": "PostalAddress",
@@ -89,12 +89,6 @@ const DigitalMarketing = () => {
               "Web Design and Development",
               "Online Reputation Management",
             ],
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: "4.9",
-              reviewCount: "180",
-              bestRating: "5",
-            },
             foundingDate: "2017",
             numberOfEmployees: "30+",
             sameAs: [
@@ -111,16 +105,6 @@ const DigitalMarketing = () => {
               name: faq.q,
               acceptedAnswer: { "@type": "Answer", text: faq.a },
             })),
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            name: "The Super 30",
-            url: "https://www.thesuper30.ai/",
-            foundingDate: "2017",
-            numberOfEmployees: { "@type": "QuantitativeValue", value: 30 },
           })}
         </script>
       </Helmet>

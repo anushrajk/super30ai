@@ -91,18 +91,6 @@ const Home = () => {
       <meta name="twitter:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta name="twitter:url" content="https://www.thesuper30.ai/" />
       <meta name="robots" content="index, follow" />
-      <script type="application/ld+json">
-        {JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "The Super 30",
-          "url": "https://www.thesuper30.ai/",
-          "logo": "https://www.thesuper30.ai/logo.png",
-          "description": "A leading AI-driven digital marketing agency helping businesses achieve real ROI and scalable growth with proven strategies.",
-          "address": { "@type": "PostalAddress", "addressLocality": "Bangalore", "addressCountry": "IN" },
-          "sameAs": []
-        })}
-      </script>
     </Helmet>
 
     <Navbar />
