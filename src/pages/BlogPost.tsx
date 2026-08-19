@@ -30,7 +30,7 @@ interface Post {
   json_ld: Json | null;
 }
 
-const SITE = "https://super30ai.lovable.app";
+const SITE = "https://www.thesuper30.ai";
 
 /** Convert leftover markdown artifacts in stored HTML into proper semantic HTML. */
 const normalizeContent = (html: string): string => {

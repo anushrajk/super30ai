@@ -364,7 +364,7 @@ const LeadGenReport = () => {
           name="description"
           content={`How Super30 AI generated ${client.metrics[0].value} qualified leads for ${client.name} (${client.industry}) at ${client.metrics[1].value} cost per lead.`}
         />
-        <link rel="canonical" href={`https://super30ai.lovable.app/lead-gen-report/${slug}`} />
+        <link rel="canonical" href={`https://www.thesuper30.ai/lead-gen-report/${slug}`} />
       </Helmet>
 
       <Navbar />
