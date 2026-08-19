@@ -193,6 +193,10 @@ const main = async () => {
     name: "The Super 30",
     url: `${siteOrigin}/`,
     telephone: "+91 89041 50555",
+    logo: { "@type": "ImageObject", url: `${siteOrigin}/favicon.png` },
+    image: `${siteOrigin}/favicon.png`,
+    description:
+      "The Super 30 is an AI-driven digital marketing agency in Bangalore offering SEO, lead generation, social media, design and web development services.",
     areaServed: { "@type": "City", name: "Bangalore" },
     address: {
       "@type": "PostalAddress",
@@ -204,6 +208,34 @@ const main = async () => {
   };
 
   const buildSchema = (routePath, metadata) => {
+    if (routePath === "/") {
+      const homeGraph = [
+        { "@context": "https://schema.org", ...organization },
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": `${siteOrigin}/#website`,
+          name: "The Super 30",
+          url: `${siteOrigin}/`,
+          description: metadata.description,
+          publisher: { "@id": `${siteOrigin}/#organization` },
+        },
+      ];
+      const homeItems = faqs["home"] || [];
+      if (homeItems.length) {
+        homeGraph.push({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: homeItems.map((f) => ({
+            "@type": "Question",
+            name: f.question,
+            acceptedAnswer: { "@type": "Answer", text: f.answer },
+          })),
+        });
+      }
+      return homeGraph;
+    }
+
     const route = schemaRoutes[routePath];
     if (!route) return [];
 
@@ -224,21 +256,21 @@ const main = async () => {
         "@context": "https://schema.org",
         "@type": "Service",
         serviceType: route.serviceType || route.name,
-        name: metadata.title,
+        name: route.name,
         description: metadata.description,
         url,
-        provider: organization,
+        provider: { "@id": `${siteOrigin}/#organization` },
         areaServed: { "@type": "City", name: "Bangalore" },
       });
     } else {
       graph.push({
         "@context": "https://schema.org",
         "@type": route.type,
-        name: metadata.title,
+        name: route.name,
         description: metadata.description,
         url,
-        isPartOf: { "@type": "WebSite", name: "The Super 30", url: `${siteOrigin}/` },
-        publisher: organization,
+        isPartOf: { "@id": `${siteOrigin}/#website` },
+        publisher: { "@id": `${siteOrigin}/#organization` },
       });
     }
 
