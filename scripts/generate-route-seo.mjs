@@ -169,18 +169,50 @@ const injectMetadata = (html, metadata) => {
 };
 
 
-const NAV_LINKS = `      <nav>
+const NAV_LINKS = `<nav>
         <a href="/">Home</a>
-        <a href="/seo-company-bangalore">AI-Powered SEO</a>
-        <a href="/lead-generation-agency-bangalore">Lead Generation</a>
-        <a href="/digital-marketing-agency-bangalore">Digital Strategy &amp; Growth</a>
-        <a href="/social-media-design-agency-bangalore">Social Media</a>
-        <a href="/graphic-design-agency-bangalore">Design</a>
-        <a href="/web-design-company-bangalore">Web Design</a>
-        <a href="/work">Our Work</a>
-        <a href="/about">Team S30</a>
+        <a href="/digital-marketing-agency-bangalore">Digital Marketing Agency Bangalore</a>
+        <a href="/seo-company-bangalore">AI SEO Company Bangalore</a>
+        <a href="/lead-generation-agency-bangalore">Lead Generation Agency Bangalore</a>
+        <a href="/google-ads-agency-bangalore">Google Ads Agency Bangalore</a>
+        <a href="/social-media-marketing-agency-bangalore">Social Media Marketing Agency Bangalore</a>
+        <a href="/social-media-optimization-services-bangalore">Social Media Optimisation Services</a>
+        <a href="/ecommerce-marketing-agency-bangalore">Ecommerce Marketing Agency Bangalore</a>
+        <a href="/graphic-design-agency-bangalore">Graphic Design Agency Bangalore</a>
+        <a href="/ui-ux-design-agency-bangalore">UI UX Design Agency Bangalore</a>
+        <a href="/social-media-design-agency-bangalore">Social Media Design Agency Bangalore</a>
+        <a href="/logo-design-company-bangalore">Logo Design Company Bangalore</a>
+        <a href="/branding-agency-bangalore">Branding Agency Bangalore</a>
+        <a href="/content-writing-agency-bangalore">Content Writing Agency Bangalore</a>
+        <a href="/seo-content-writing-company-bangalore">SEO Content Writing Company Bangalore</a>
+        <a href="/blog-writing-services-bangalore">Blog Writing Services Bangalore</a>
+        <a href="/script-writing-agency-bangalore">Script Writing Agency Bangalore</a>
+        <a href="/guest-posting-agency-bangalore">Guest Posting Agency Bangalore</a>
+        <a href="/bulk-sms-services-bangalore">Bulk SMS Services Bangalore</a>
+        <a href="/whatsapp-marketing-company-bangalore">WhatsApp Marketing Company Bangalore</a>
+        <a href="/chatbot-development-company-bangalore">Chatbot Development Company Bangalore</a>
+        <a href="/customer-engagement-agency-bangalore">Customer Engagement Agency Bangalore</a>
+        <a href="/sms-gateway-service-bangalore">SMS Gateway Service Bangalore</a>
+        <a href="/rcs-messaging-provider-bangalore">RCS Messaging Provider Bangalore</a>
+        <a href="/corporate-video-maker-bangalore">Corporate Video Maker Bangalore</a>
+        <a href="/video-production-agency-bangalore">Video Production Agency Bangalore</a>
+        <a href="/photography-services-bangalore">Photography Services Bangalore</a>
+        <a href="/web-design-company-bangalore">Web Design Company Bangalore</a>
+        <a href="/web-development-company-bangalore">Web Development Company Bangalore</a>
+        <a href="/ecommerce-website-development-company-bangalore">Ecommerce Website Development Bangalore</a>
+        <a href="/wordpress-website-development-company-bangalore">WordPress Website Development Bangalore</a>
+        <a href="/website-maintenance-company-bangalore">Website Maintenance Company Bangalore</a>
+        <a href="/seo-training-in-bangalore">SEO Training in Bangalore</a>
+        <a href="/our-work">Our Work</a>
+        <a href="/internet-marketing-agency">Team S30</a>
         <a href="/blog">Blog</a>
-        <a href="/contact">Contact</a>
+        <a href="/audit">Free AI SEO Audit</a>
+        <a href="/performance-planner">Performance Marketing Planner</a>
+        <a href="/booking">Book a Consultation</a>
+        <a href="/contact-us">Contact Us</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="/cookie-policy">Cookie Policy</a>
       </nav>`;
 
 // The static crawler block in index.html describes the home page. Every other
