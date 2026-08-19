@@ -84,6 +84,7 @@ export interface ServicePageConfig {
     answer: string;
   }[];
   finalCTA: {
+    eyebrow?: string;
     headline: string;
     description: string;
     buttonText: string;
@@ -381,6 +382,9 @@ const FAQSection = ({ faq }: { faq: ServicePageConfig["faq"] }) => {
 const FinalCTASection = ({ data }: { data: ServicePageConfig["finalCTA"] }) => (
   <section className="py-12 md:py-20 bg-[#020617]">
     <div className="container mx-auto px-4 text-center">
+      {data.eyebrow && (
+        <span className="inline-block text-xs font-semibold tracking-widest uppercase text-brand mb-3">{data.eyebrow}</span>
+      )}
       <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">{data.headline}</h2>
       <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto mb-8">{data.description}</p>
       <Link
