@@ -172,7 +172,7 @@ const injectMetadata = (html, metadata) => {
 const NAV_LINKS = `<nav>
         <a href="/">Home</a>
         <a href="/digital-marketing-agency-bangalore">Digital Marketing Agency Bangalore</a>
-        <a href="/seo-company-bangalore">SEO Agency in Bangalore</a>
+        <a href="/seo-company-bangalore">AI SEO Company Bangalore</a>
         <a href="/lead-generation-agency-bangalore">Lead Generation Agency Bangalore</a>
         <a href="/google-ads-agency-bangalore">Google Ads Agency Bangalore</a>
         <a href="/social-media-marketing-agency-bangalore">Social Media Marketing Agency Bangalore</a>
