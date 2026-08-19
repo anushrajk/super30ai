@@ -168,6 +168,57 @@ const injectMetadata = (html, metadata) => {
   return cleanHtml.replace("</head>", `    ${head}\n  </head>`);
 };
 
+
+const NAV_LINKS = `      <nav>
+        <a href="/">Home</a>
+        <a href="/seo-company-bangalore">AI-Powered SEO</a>
+        <a href="/lead-generation-agency-bangalore">Lead Generation</a>
+        <a href="/digital-marketing-agency-bangalore">Digital Strategy &amp; Growth</a>
+        <a href="/social-media-design-agency-bangalore">Social Media</a>
+        <a href="/graphic-design-agency-bangalore">Design</a>
+        <a href="/web-design-company-bangalore">Web Design</a>
+        <a href="/work">Our Work</a>
+        <a href="/about">Team S30</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact">Contact</a>
+      </nav>`;
+
+// The static crawler block in index.html describes the home page. Every other
+// route gets its own block so the source HTML matches that page's content.
+const replaceSeoContent = (html, routePath, metadata, route, faqItems) => {
+  if (routePath === "/") return html;
+
+  const start = html.indexOf('<div id="seo-content"');
+  if (start === -1) return html;
+  const endMarker = "</article>\n    </div>";
+  const end = html.indexOf(endMarker, start);
+  if (end === -1) return html;
+
+  const heading = route?.name || metadata.title.split("|")[0].trim();
+  const faqBlock = faqItems.length
+    ? `\n        <section>\n          <h2>Frequently Asked Questions</h2>\n${faqItems
+        .map((f) => `          <h3>${escapeHtml(f.question)}</h3>\n          <p>${escapeHtml(f.answer)}</p>`)
+        .join("\n")}\n        </section>`
+    : "";
+
+  const block = `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+${NAV_LINKS}
+
+      <article>
+        <header>
+          <h1>${escapeHtml(heading)}</h1>
+          <p>${escapeHtml(metadata.description)}</p>
+        </header>${faqBlock}
+
+        <footer>
+          <p>The Super 30 — AI Digital Marketing Agency. Bangalore, Karnataka, India. Phone: +91 89041 50555.</p>
+        </footer>
+      </article>
+    </div>`;
+
+  return html.slice(0, start) + block + html.slice(end + endMarker.length);
+};
+
 const routeToOutputFile = (routePath) => {
   if (routePath === "/") return distIndexFile;
   const normalizedPath = routePath.replace(/^\//, "");
