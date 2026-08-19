@@ -39,7 +39,7 @@ const BlogList = () => {
       <Helmet>
         <title>Blog — AI SEO & Lead Generation Insights | The Super 30</title>
         <meta name="description" content="Practical guides on AI SEO, performance marketing and lead generation from The Super 30 team." />
-        <link rel="canonical" href="https://super30ai.lovable.app/blog" />
+        <link rel="canonical" href="https://www.thesuper30.ai/blog" />
       </Helmet>
       <Navbar />
       <main className="min-h-screen pt-20 md:pt-24 bg-background">

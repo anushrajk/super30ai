@@ -12,7 +12,7 @@ const PrivacyPolicy = () => {
         <title>Privacy Policy | The Super 30 - AI Marketing Agency</title>
         <meta name="description" content="Learn how The Super 30 collects, uses, and protects your personal information. Your privacy is our priority. GDPR compliant." />
         <meta name="keywords" content="privacy policy, data protection, GDPR, The Super 30 privacy" />
-        <link rel="canonical" href="https://thesuper30.ai/privacy-policy" />
+        <link rel="canonical" href="https://www.thesuper30.ai/privacy-policy" />
         <meta name="robots" content="index, follow" />
       </Helmet>
 
