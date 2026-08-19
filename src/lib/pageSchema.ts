@@ -23,6 +23,13 @@ export const ORGANIZATION = {
   name: "The Super 30",
   url: `${SITE_ORIGIN}/`,
   telephone: "+91 89041 50555",
+  logo: {
+    "@type": "ImageObject",
+    url: `${SITE_ORIGIN}/favicon.png`,
+  },
+  image: `${SITE_ORIGIN}/favicon.png`,
+  description:
+    "The Super 30 is an AI-driven digital marketing agency in Bangalore offering SEO, lead generation, social media, design and web development services.",
   areaServed: { "@type": "City", name: "Bangalore" },
   address: {
     "@type": "PostalAddress",
@@ -38,13 +45,45 @@ export const ORGANIZATION = {
  * (route map + curated meta + page FAQs). Returns [] when the
  * route has no mapping (pages that hardcode their own schema).
  */
+const homeFaqs = faqs["home"] ?? [];
+
+const buildHomeSchema = (): Record<string, unknown>[] => {
+  const meta = seo["/"] ?? {};
+  const graph: Record<string, unknown>[] = [
+    { "@context": "https://schema.org", ...ORGANIZATION },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${SITE_ORIGIN}/#website`,
+      name: "The Super 30",
+      url: `${SITE_ORIGIN}/`,
+      description: meta.description || "",
+      publisher: { "@id": `${SITE_ORIGIN}/#organization` },
+    },
+  ];
+  if (homeFaqs.length) {
+    graph.push({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: homeFaqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
+    });
+  }
+  return graph;
+};
+
 export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
+  if (path === "/") return buildHomeSchema();
+
   const route = routes[path];
   if (!route) return [];
 
   const meta = seo[path] ?? {};
   const url = meta.canonical || `${SITE_ORIGIN}${path}`;
-  const name = meta.title || route.name;
+  const name = route.name;
   const description = meta.description || "";
 
   const graph: Record<string, unknown>[] = [
@@ -64,9 +103,9 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
       "@type": "Service",
       serviceType: route.serviceType || route.name,
       name,
+      provider: { "@id": `${SITE_ORIGIN}/#organization` },
       description,
       url,
-      provider: ORGANIZATION,
       areaServed: { "@type": "City", name: "Bangalore" },
     });
   } else {
@@ -76,8 +115,8 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
       name,
       description,
       url,
-      isPartOf: { "@type": "WebSite", name: "The Super 30", url: `${SITE_ORIGIN}/` },
-      publisher: ORGANIZATION,
+      isPartOf: { "@id": `${SITE_ORIGIN}/#website` },
+      publisher: { "@id": `${SITE_ORIGIN}/#organization` },
     });
   }
 
