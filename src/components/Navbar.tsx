@@ -48,7 +48,7 @@ const menuItems: NavMenuItem[] = [
     label: "Content",
     href: "/content-writing-agency-bangalore",
     items: [
-      { label: "Website Content", href: "/seo-content-writing-services-bangalore" },
+      { label: "Website Content", href: "/seo-content-writing-company-bangalore" },
       { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
       { label: "Script Writing", href: "/script-writing-agency-bangalore" },
       { label: "Guest Posting", href: "/guest-posting-agency-bangalore" },
@@ -78,9 +78,20 @@ const menuItems: NavMenuItem[] = [
     href: "/web-design-company-bangalore",
     items: [
       { label: "Website Development", href: "/web-development-company-bangalore" },
-      { label: "Ecommerce Website", href: "/ecommerce-website-development-bangalore" },
-      { label: "Wordpress Website", href: "/wordpress-development-company-bangalore" },
-      { label: "Website Maintenance Service", href: "/website-maintenance-services-bangalore" },
+      { label: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
+      { label: "Wordpress Website", href: "/wordpress-website-development-company-bangalore" },
+      { label: "Website Maintenance Service", href: "/website-maintenance-company-bangalore" },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/blog",
+    items: [
+      { label: "Blog", href: "/blog" },
+      { label: "Free AI SEO Audit", href: "/audit" },
+      { label: "Performance Marketing Planner", href: "/performance-planner" },
+      { label: "SEO Training in Bangalore", href: "/seo-training-in-bangalore" },
+      { label: "Book a Consultation", href: "/booking" },
     ],
   },
   { label: "Our Work", href: "/our-work" },
