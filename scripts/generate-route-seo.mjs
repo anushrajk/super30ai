@@ -370,7 +370,10 @@ const main = async () => {
     const outputFile = routeToOutputFile(routePath);
     const withSchema = { ...metadata, schema: buildSchema(routePath, metadata) };
     await fs.mkdir(path.dirname(outputFile), { recursive: true });
-    await fs.writeFile(outputFile, injectMetadata(distIndexHtml, withSchema), "utf8");
+    const route = schemaRoutes[routePath];
+    const faqItems = route?.faqSlug ? faqs[route.faqSlug] || [] : [];
+    const baseHtml = replaceSeoContent(distIndexHtml, routePath, metadata, route, faqItems);
+    await fs.writeFile(outputFile, injectMetadata(baseHtml, withSchema), "utf8");
     seenRoutes.add(routePath);
     generatedCount += 1;
   };
