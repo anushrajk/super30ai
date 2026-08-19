@@ -84,6 +84,8 @@ const config: ServicePageConfig = {
     { icon: TrendingUp, title: "Scale & Grow", description: "Double down on winners, cut losers, and scale profitable campaigns." },
   ],
   whoIsThisFor: {
+    forYouTitle: "Ideal for Businesses That",
+    notForYouTitle: "Not Recommended for Businesses That",
     forYou: [
       "Want predictable lead generation and a stable monthly sales performance",
       "Maintain a monthly advertising budget starting from ₹30,000+",

@@ -76,6 +76,8 @@ export interface ServicePageConfig {
   whoIsThisFor: {
     forYou: string[];
     notForYou: string[];
+    forYouTitle?: string;
+    notForYouTitle?: string;
   };
   faq: {
     question: string;
@@ -314,7 +316,7 @@ const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIs
         </div>
         <div className={`grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="bg-brand/5 border border-brand/20 rounded-2xl p-6">
-            <h3 className="font-bold text-brand mb-4 text-lg">✅ Perfect For You If…</h3>
+            <h3 className="font-bold text-brand mb-4 text-lg">✅ {data.forYouTitle ?? "Perfect For You If…"}</h3>
             <ul className="space-y-3">
               {data.forYou.map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-foreground">
@@ -325,7 +327,7 @@ const WhoIsThisForSection = ({ data, heading }: { data: ServicePageConfig["whoIs
             </ul>
           </div>
           <div className="bg-background border border-border/50 rounded-2xl p-6">
-            <h3 className="font-bold text-foreground mb-4 text-lg">❌ Not For You If…</h3>
+            <h3 className="font-bold text-foreground mb-4 text-lg">❌ {data.notForYouTitle ?? "Not For You If…"}</h3>
             <ul className="space-y-3">
               {data.notForYou.map((item, i) => (
                 <li key={i} className="flex items-start gap-3 text-sm text-muted-foreground">
