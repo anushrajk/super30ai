@@ -519,6 +519,7 @@ const main = async () => {
   let generatedCount = 0;
 
   const seenRoutes = new Set();
+  const routeFileMap = new Map(staticRoutes.map((r) => [r.routePath, r.filePath]));
 
   const writeRoute = async (routePath, metadata) => {
     const outputFile = routeToOutputFile(routePath);
@@ -526,7 +527,8 @@ const main = async () => {
     await fs.mkdir(path.dirname(outputFile), { recursive: true });
     const route = schemaRoutes[routePath];
     const faqItems = route?.faqSlug ? faqs[route.faqSlug] || [] : [];
-    const baseHtml = replaceSeoContent(distIndexHtml, routePath, metadata, route, faqItems);
+    const contentNodes = routePath === "/" ? [] : await buildPageContent(routeFileMap.get(routePath));
+    const baseHtml = replaceSeoContent(distIndexHtml, routePath, metadata, route, faqItems, contentNodes);
     await fs.writeFile(outputFile, injectMetadata(baseHtml, withSchema), "utf8");
     seenRoutes.add(routePath);
     generatedCount += 1;
