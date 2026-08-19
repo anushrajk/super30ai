@@ -51,17 +51,17 @@ const AiSeo = () => {
   return (
     <>
       <Helmet>
-        <title>SEO Company in Bangalore | #1 AI-Driven SEO Services Agency</title>
+        <title>SEO Agency in Bangalore | AI-Driven SEO Services Company</title>
         <meta name="robots" content="index, follow" />
-        <meta name="description" content="Struggling to get organic leads? Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility &amp; 300% traffic growth. Book a free call" />
+        <meta name="description" content="Looking for an SEO agency in Bangalore? We deliver AI powered SEO services with 3x search visibility &amp; 300% organic traffic growth. Book a free strategy call" />
         <meta name="keywords" content="AI seo services in bangalore, AI seo agency in bangalore, AI seo company in bangalore, seo services in bangalore, seo agency in bangalore, seo company in bangalore, search engine optimization services in bangalore, search engine optimization company in bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/seo-company-bangalore" />
-        <meta property="og:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
+        <meta property="og:title" content="SEO Agency in Bangalore | AI-Driven SEO Services Company" />
         <meta property="og:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
+        <meta name="twitter:title" content="SEO Agency in Bangalore | AI-Driven SEO Services Company" />
         <meta name="twitter:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
         <script type="application/ld+json">
@@ -69,15 +69,19 @@ const AiSeo = () => {
             "@context": "https://schema.org",
             "@type": "Service",
             "serviceType": "SEO Services",
-            "name": "SEO Company in Bangalore | #1 AI-Driven SEO Services Agency",
+            "name": "SEO Agency in Bangalore | AI-Driven SEO Services Company",
             "url": "https://www.thesuper30.ai/seo-company-bangalore",
             "provider": {
               "@type": "Organization",
               "name": "The Super 30",
-              "url": "https://www.thesuper30.ai/"
+              "url": "https://www.thesuper30.ai/",
+              "alternateName": "SEO Agency in Bangalore"
             },
-            "areaServed": { "@type": "City", "name": "Bangalore" },
-            "description": "Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility & 300% traffic growth."
+            "areaServed": [
+              { "@type": "City", "name": "Bangalore" },
+              { "@type": "State", "name": "Karnataka" }
+            ],
+            "description": "SEO agency in Bangalore delivering AI powered SEO services with 3x search visibility and 300% organic traffic growth."
           })}
         </script>
       </Helmet>
@@ -88,11 +92,11 @@ const AiSeo = () => {
         <div id="ai-seo-hero">
           <ServiceHeroSection
             badgeIcon={TrendingUp}
-            badgeText="#1 AI SEO Agency in Bangalore"
+            badgeText="AI-Powered SEO Agency in Bangalore"
             headline={
               <>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-brand leading-[1.25] pb-1">
-                  The SEO Company in Bangalore
+                  The SEO Agency in Bangalore
                 </span>
                 <span className="block text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.25]">
                   Driving the AI Search Revolution
@@ -101,7 +105,7 @@ const AiSeo = () => {
             }
             description={
               <>
-                Most businesses struggle to stay visible because outdated search strategies no longer perform. Our <span className="text-foreground font-semibold">AI SEO services in Bangalore</span> help brands grow through intelligent search strategies that improve Google rankings, strengthen AI visibility, and drive 300% traffic growth.
+                Most businesses struggle to stay visible because outdated search strategies no longer perform. As an <span className="text-foreground font-semibold">SEO agency in Bangalore</span>, we help brands grow through AI-driven search strategies that improve Google rankings, strengthen AI visibility, and drive 300% traffic growth.
               </>
             }
             trustSignals={[
