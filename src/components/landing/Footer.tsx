@@ -16,6 +16,76 @@ const company = [
   { name: "About / Team 30", href: "/internet-marketing-agency" },
   { name: "Our Work", href: "/our-work" },
   { name: "Contact Us", href: "/contact-us" },
+  { name: "Blog", href: "/blog" },
+  { name: "Free AI SEO Audit", href: "/audit" },
+  { name: "Performance Marketing Planner", href: "/performance-planner" },
+  { name: "SEO Training in Bangalore", href: "/seo-training-in-bangalore" },
+  { name: "Book a Consultation", href: "/booking" },
+];
+
+// Full internal link map — keeps every canonical page one click from any page
+const serviceGroups: { title: string; href: string; links: { name: string; href: string }[] }[] = [
+  {
+    title: "Digital Marketing",
+    href: "/digital-marketing-agency-bangalore",
+    links: [
+      { name: "AI SEO", href: "/seo-company-bangalore" },
+      { name: "Lead Generation", href: "/lead-generation-agency-bangalore" },
+      { name: "Social Media Marketing", href: "/social-media-marketing-agency-bangalore" },
+      { name: "Google Ads", href: "/google-ads-agency-bangalore" },
+      { name: "Social Media Optimisation", href: "/social-media-optimization-services-bangalore" },
+      { name: "Ecommerce Marketing", href: "/ecommerce-marketing-agency-bangalore" },
+    ],
+  },
+  {
+    title: "Design",
+    href: "/graphic-design-agency-bangalore",
+    links: [
+      { name: "UI / UX Design", href: "/ui-ux-design-agency-bangalore" },
+      { name: "Social Media Posts", href: "/social-media-design-agency-bangalore" },
+      { name: "Logo Design", href: "/logo-design-company-bangalore" },
+      { name: "Brand Kit", href: "/branding-agency-bangalore" },
+    ],
+  },
+  {
+    title: "Content",
+    href: "/content-writing-agency-bangalore",
+    links: [
+      { name: "Website Content", href: "/seo-content-writing-company-bangalore" },
+      { name: "Blog Writing", href: "/blog-writing-services-bangalore" },
+      { name: "Script Writing", href: "/script-writing-agency-bangalore" },
+      { name: "Guest Posting", href: "/guest-posting-agency-bangalore" },
+    ],
+  },
+  {
+    title: "SMS & Messaging",
+    href: "/bulk-sms-services-bangalore",
+    links: [
+      { name: "WhatsApp Business API", href: "/whatsapp-marketing-company-bangalore" },
+      { name: "Chatbot Development", href: "/chatbot-development-company-bangalore" },
+      { name: "Customer Engagement", href: "/customer-engagement-agency-bangalore" },
+      { name: "SMS Gateway", href: "/sms-gateway-service-bangalore" },
+      { name: "RCS Messaging", href: "/rcs-messaging-provider-bangalore" },
+    ],
+  },
+  {
+    title: "Production",
+    href: "/corporate-video-maker-bangalore",
+    links: [
+      { name: "Video Production", href: "/video-production-agency-bangalore" },
+      { name: "Photography", href: "/photography-services-bangalore" },
+    ],
+  },
+  {
+    title: "Website",
+    href: "/web-design-company-bangalore",
+    links: [
+      { name: "Web Development", href: "/web-development-company-bangalore" },
+      { name: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
+      { name: "WordPress Website", href: "/wordpress-website-development-company-bangalore" },
+      { name: "Website Maintenance", href: "/website-maintenance-company-bangalore" },
+    ],
+  },
 ];
 
 const legal = [
@@ -157,6 +227,35 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
             </ul>
           </div>
         </div>
+
+        {/* Full site link map */}
+        <nav aria-label="All services" className="pt-8 border-t border-white/10 mb-10">
+          <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-6">Explore All Services</h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
+            {serviceGroups.map((group) => (
+              <div key={group.title}>
+                <Link
+                  to={group.href}
+                  className="block text-xs font-semibold uppercase tracking-wider text-[hsl(var(--brand-orange))] mb-3 hover:underline"
+                >
+                  {group.title}
+                </Link>
+                <ul className="space-y-2">
+                  {group.links.map((link) => (
+                    <li key={link.href}>
+                      <Link
+                        to={link.href}
+                        className="text-gray-400 hover:text-[hsl(var(--brand-orange))] transition-colors duration-300 text-sm"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </nav>
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10">
