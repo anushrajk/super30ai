@@ -1,153 +1,264 @@
 {
-  "/google-ads-agency-bangalore": {
-    "name": "Google Ads Management",
-    "serviceType": "Google Ads Management",
-    "faqSlug": "google-ads",
-    "type": "Service"
+  "/digital-marketing-agency-bangalore": {
+    "name": "Digital Marketing Agency in Bangalore",
+    "serviceType": "Digital Marketing",
+    "faqSlug": "digital-marketing",
+    "type": "Service",
+    "primary": true,
+    "price": 25000
   },
-  "/social-media-optimization-services-bangalore": {
-    "name": "Social Media Optimization",
-    "serviceType": "Social Media Optimization",
-    "faqSlug": "social-media-optimisation",
-    "type": "Service"
+  "/seo-company-bangalore": {
+    "name": "AI SEO Services",
+    "serviceType": "Search Engine Optimization",
+    "faqSlug": "ai-seo",
+    "type": "Service",
+    "parent": "/digital-marketing-agency-bangalore",
+    "price": 25000
+  },
+  "/lead-generation-agency-bangalore": {
+    "name": "Lead Generation",
+    "serviceType": "Lead Generation",
+    "faqSlug": "performance-marketing",
+    "type": "Service",
+    "parent": "/digital-marketing-agency-bangalore",
+    "price": 30000
   },
   "/social-media-marketing-agency-bangalore": {
     "name": "Social Media Marketing",
     "serviceType": "Social Media Marketing",
     "faqSlug": "social-media-marketing",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/digital-marketing-agency-bangalore",
+    "price": 20000
+  },
+  "/google-ads-agency-bangalore": {
+    "name": "Google Ads Management",
+    "serviceType": "Pay Per Click Advertising",
+    "faqSlug": "google-ads",
+    "type": "Service",
+    "parent": "/digital-marketing-agency-bangalore",
+    "price": 25000
+  },
+  "/social-media-optimization-services-bangalore": {
+    "name": "Social Media Optimization",
+    "serviceType": "Social Media Optimization",
+    "faqSlug": "social-media-optimisation",
+    "type": "Service",
+    "parent": "/digital-marketing-agency-bangalore",
+    "price": 15000
   },
   "/ecommerce-marketing-agency-bangalore": {
     "name": "Ecommerce Marketing",
     "serviceType": "Ecommerce Marketing",
     "faqSlug": "ecommerce-marketing",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/digital-marketing-agency-bangalore",
+    "price": 30000
+  },
+  "/graphic-design-agency-bangalore": {
+    "name": "Graphic Design & Creative Services",
+    "serviceType": "Graphic Design",
+    "faqSlug": "design",
+    "type": "Service",
+    "primary": true,
+    "price": 15000
   },
   "/ui-ux-design-agency-bangalore": {
     "name": "UI UX Design",
     "serviceType": "UI UX Design",
     "faqSlug": "uiux-design",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/graphic-design-agency-bangalore",
+    "price": 25000
+  },
+  "/social-media-design-agency-bangalore": {
+    "name": "Social Media Design",
+    "serviceType": "Social Media Creative Design",
+    "faqSlug": "social-media-design",
+    "type": "Service",
+    "parent": "/graphic-design-agency-bangalore",
+    "price": 15000
   },
   "/logo-design-company-bangalore": {
     "name": "Logo Design",
     "serviceType": "Logo Design",
     "faqSlug": "logo-design",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/graphic-design-agency-bangalore",
+    "price": 12000
   },
   "/branding-agency-bangalore": {
     "name": "Branding & Brand Kit Design",
     "serviceType": "Branding",
     "faqSlug": "brand-kit",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/graphic-design-agency-bangalore",
+    "price": 35000
   },
   "/content-writing-agency-bangalore": {
     "name": "Content Writing & Content Marketing",
     "serviceType": "Content Marketing",
     "faqSlug": "content-marketing",
-    "type": "Service"
+    "type": "Service",
+    "primary": true,
+    "price": 10000
   },
   "/seo-content-writing-company-bangalore": {
     "name": "SEO Content Writing",
     "serviceType": "SEO Content Writing",
     "faqSlug": "website-content",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/content-writing-agency-bangalore",
+    "price": 10000
   },
   "/blog-writing-services-bangalore": {
     "name": "Blog Writing Services",
     "serviceType": "Blog Writing",
     "faqSlug": "blog-writing",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/content-writing-agency-bangalore",
+    "price": 8000
   },
   "/script-writing-agency-bangalore": {
     "name": "Script Writing Services",
     "serviceType": "Script Writing",
     "faqSlug": "script-writing",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/content-writing-agency-bangalore",
+    "price": 8000
   },
   "/guest-posting-agency-bangalore": {
     "name": "Guest Posting Services",
     "serviceType": "Guest Posting & Link Building",
     "faqSlug": "guest-posting",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/content-writing-agency-bangalore",
+    "price": 15000
   },
   "/bulk-sms-services-bangalore": {
     "name": "Bulk SMS Services",
     "serviceType": "Bulk SMS Marketing",
     "faqSlug": "sms-marketing",
-    "type": "Service"
+    "type": "Service",
+    "primary": true,
+    "price": 5000
   },
   "/whatsapp-marketing-company-bangalore": {
     "name": "WhatsApp Business API & Marketing",
     "serviceType": "WhatsApp Marketing",
     "faqSlug": "whatsapp-business-api",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/bulk-sms-services-bangalore",
+    "price": 10000
   },
   "/chatbot-development-company-bangalore": {
     "name": "Chatbot Development",
     "serviceType": "Chatbot Development",
     "faqSlug": "chatbot",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/bulk-sms-services-bangalore",
+    "price": 25000
   },
   "/customer-engagement-agency-bangalore": {
     "name": "Customer Engagement Programs",
     "serviceType": "Customer Engagement",
     "faqSlug": "customer-engagement",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/bulk-sms-services-bangalore",
+    "price": 15000
   },
   "/sms-gateway-service-bangalore": {
     "name": "SMS Gateway Services",
     "serviceType": "SMS Gateway",
     "faqSlug": "sms-gateway",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/bulk-sms-services-bangalore",
+    "price": 5000
   },
   "/rcs-messaging-provider-bangalore": {
     "name": "RCS Messaging Services",
     "serviceType": "RCS Messaging",
     "faqSlug": "rcs",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/bulk-sms-services-bangalore",
+    "price": 10000
   },
   "/corporate-video-maker-bangalore": {
     "name": "Corporate Video Production",
-    "serviceType": "Video Production",
+    "serviceType": "Corporate Video Production",
     "faqSlug": "production",
-    "type": "Service"
+    "type": "Service",
+    "primary": true,
+    "price": 40000
   },
   "/video-production-agency-bangalore": {
     "name": "Video Production",
     "serviceType": "Video Production",
     "faqSlug": "video-production",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/corporate-video-maker-bangalore",
+    "price": 40000
   },
   "/photography-services-bangalore": {
     "name": "Photography Services",
     "serviceType": "Photography",
     "faqSlug": "photography",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/corporate-video-maker-bangalore",
+    "price": 25000
+  },
+  "/web-design-company-bangalore": {
+    "name": "Web Design & Development",
+    "serviceType": "Web Design and Development",
+    "faqSlug": "web-design",
+    "type": "Service",
+    "primary": true,
+    "price": 35000
   },
   "/web-development-company-bangalore": {
     "name": "Web Development",
     "serviceType": "Web Development",
     "faqSlug": "web-development",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/web-design-company-bangalore",
+    "price": 45000
   },
   "/ecommerce-website-development-company-bangalore": {
     "name": "Ecommerce Website Development",
     "serviceType": "Ecommerce Website Development",
     "faqSlug": "ecommerce-website",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/web-design-company-bangalore",
+    "price": 60000
   },
   "/wordpress-website-development-company-bangalore": {
     "name": "WordPress Website Development",
     "serviceType": "WordPress Development",
     "faqSlug": "wordpress-website",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/web-design-company-bangalore",
+    "price": 30000
   },
   "/website-maintenance-company-bangalore": {
     "name": "Website Maintenance & AMC",
     "serviceType": "Website Maintenance",
     "faqSlug": "website-maintenance",
-    "type": "Service"
+    "type": "Service",
+    "parent": "/web-design-company-bangalore",
+    "price": 8000
+  },
+  "/our-work": {
+    "name": "Our Work",
+    "type": "CollectionPage"
+  },
+  "/contact-us": {
+    "name": "Contact Us",
+    "type": "ContactPage"
+  },
+  "/internet-marketing-agency": {
+    "name": "About The Super 30",
+    "type": "AboutPage",
+    "faqSlug": "internet-marketing-agency"
   },
   "/blog": {
     "name": "Blog",
@@ -176,29 +287,5 @@
   "/cookie-policy": {
     "name": "Cookie Policy",
     "type": "WebPage"
-  },
-  "/internet-marketing-agency": {
-    "name": "About The Super 30",
-    "type": "WebPage",
-    "faqSlug": "internet-marketing-agency",
-    "faqOnly": true
-  },
-  "/seo-company-bangalore": {
-    "name": "AI SEO Services",
-    "type": "Service",
-    "faqSlug": "ai-seo",
-    "faqOnly": true
-  },
-  "/lead-generation-agency-bangalore": {
-    "name": "Lead Generation",
-    "type": "Service",
-    "faqSlug": "performance-marketing",
-    "faqOnly": true
-  },
-  "/web-design-company-bangalore": {
-    "name": "Web Design & Development",
-    "type": "Service",
-    "faqSlug": "web-design",
-    "faqOnly": true
   }
 }

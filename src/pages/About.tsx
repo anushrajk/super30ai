@@ -73,16 +73,6 @@ const About = () => {
         <meta name="twitter:description" content="Real people. Real strategies. AI-powered results. See the team that scales brands &amp; drives ROI." />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "AboutPage",
-            "name": "Internet Marketing Agency With 30+ Digital Marketing Experts",
-            "url": "https://www.thesuper30.ai/internet-marketing-agency",
-            "description": "Meet 30+ experts at TheSuper30, a leading internet marketing company. SEO, design, content, ads and web under one roof."
-          })}
-        </script>
       </Helmet>
 
       <Navbar />

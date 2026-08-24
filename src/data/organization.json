@@ -1,0 +1,40 @@
+{
+  "name": "The Super 30",
+  "legalName": "The Super 30",
+  "alternateName": "TheSuper30",
+  "description": "The Super 30 is an AI-driven digital marketing agency in Bangalore offering SEO, lead generation, performance marketing, social media, design, content and web development services.",
+  "slogan": "The AI Digital Marketing Agency That Turns Your Growth into Revenue",
+  "telephone": "+91-89041-50555",
+  "email": "hello@thesuper30.ai",
+  "foundingDate": "2017",
+  "numberOfEmployees": 30,
+  "priceRange": "₹₹–₹₹₹",
+  "currenciesAccepted": "INR",
+  "paymentAccepted": "Bank Transfer, UPI, Credit Card, Debit Card",
+  "knowsLanguage": ["en", "hi", "kn"],
+  "address": {
+    "streetAddress": "46/A, 1st Main Rd, opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar",
+    "addressLocality": "Bengaluru",
+    "addressRegion": "Karnataka",
+    "postalCode": "560078",
+    "addressCountry": "IN"
+  },
+  "geo": { "latitude": 12.9063, "longitude": 77.5857 },
+  "openingHours": [
+    { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "18:00" }
+  ],
+  "areaServed": [
+    { "type": "City", "name": "Bengaluru" },
+    { "type": "State", "name": "Karnataka" },
+    { "type": "Country", "name": "India" }
+  ],
+  "aggregateRating": { "ratingValue": 4.8, "bestRating": 5, "worstRating": 1, "reviewCount": 127 },
+  "defaultOffer": { "priceCurrency": "INR", "lowPrice": 25000, "highPrice": 250000 },
+  "sameAs": [
+    "https://www.instagram.com/thesuper30.ai/",
+    "https://www.linkedin.com/company/thesuper30",
+    "https://twitter.com/thesuper30ai",
+    "https://www.youtube.com/@thesuper30",
+    "https://www.facebook.com/thesuper30ai"
+  ]
+}

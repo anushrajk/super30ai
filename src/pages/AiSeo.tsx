@@ -66,22 +66,6 @@ const AiSeo = () => {
         <meta name="twitter:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "SEO Services",
-            "name": "SEO Company in Bangalore | #1 AI-Driven SEO Services Agency",
-            "url": "https://www.thesuper30.ai/seo-company-bangalore",
-            "provider": {
-              "@type": "Organization",
-              "name": "The Super 30",
-              "url": "https://www.thesuper30.ai/"
-            },
-            "areaServed": { "@type": "City", "name": "Bangalore" },
-            "description": "Trusted SEO agency in Bangalore delivering AI powered SEO services with 3x visibility & 300% traffic growth."
-          })}
-        </script>
       </Helmet>
 
       <Navbar />

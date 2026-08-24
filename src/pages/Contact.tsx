@@ -209,15 +209,6 @@ const Contact = () => {
         <meta name="twitter:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/contact-us" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ContactPage",
-            "name": "Contact TheSuper30",
-            "url": "https://www.thesuper30.ai/contact-us",
-            "description": "Connect with TheSuper30 and discover how strategic digital marketing, creative execution, and performance driven campaigns can help your business generate more leads, increase visibility, and achieve measurable growth."
-          })}
-        </script>
       </Helmet>
 
       <Navbar />

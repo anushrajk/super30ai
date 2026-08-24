@@ -51,28 +51,6 @@ const SocialMediaDesign = () => {
         <meta name="twitter:description" content="Scroll-stopping social creatives and post designs that make your brand impossible to ignore. Let's create!" />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/social-media-design-agency-bangalore" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Social Media Design",
-            "name": "Creative Social Media Post Design Agency in Bangalore",
-            "url": "https://www.thesuper30.ai/social-media-design-agency-bangalore",
-            "provider": { "@type": "Organization", "name": "The Super 30", "url": "https://www.thesuper30.ai/" },
-            "areaServed": { "@type": "City", "name": "Bangalore" }
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": smFaqs.map((f) => ({
-              "@type": "Question",
-              "name": f.question,
-              "acceptedAnswer": { "@type": "Answer", "text": f.answer },
-            })),
-          })}
-        </script>
       </Helmet>
 
       <Navbar />

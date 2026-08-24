@@ -198,26 +198,6 @@ const Work = () => {
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/our-work" />
         
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "CollectionPage",
-            "name": "Successful Digital Marketing Results Delivered For 300+ Brands",
-            "url": "https://www.thesuper30.ai/our-work",
-            "description": "Portfolio of successful digital marketing campaigns across SEO, ads, web and design",
-            "mainEntity": {
-              "@type": "ItemList",
-              "numberOfItems": 10,
-              "itemListElement": caseStudies.slice(0, 5).map((study, index) => ({
-                "@type": "ListItem",
-                "position": index + 1,
-                "name": study.title,
-                "description": study.description
-              }))
-            }
-          })}
-        </script>
       </Helmet>
 
       <Navbar />
