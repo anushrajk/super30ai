@@ -9,6 +9,8 @@ type RouteSchema = {
   type: "Service" | "WebPage" | "Blog";
   serviceType?: string;
   faqSlug?: string;
+  /** Page already hardcodes its own page/breadcrumb schema — emit only FAQPage. */
+  faqOnly?: boolean;
 };
 
 type Faq = { question: string; answer: string };
