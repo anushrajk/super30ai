@@ -561,17 +561,6 @@ const Design = () => {
         <meta name="twitter:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: designFaqs.map((f) => ({
-              "@type": "Question",
-              name: f.question,
-              acceptedAnswer: { "@type": "Answer", text: f.answer },
-            })),
-          })}
-        </script>
       </Helmet>
       <Navbar />
       <main className="pt-16 md:pt-20">

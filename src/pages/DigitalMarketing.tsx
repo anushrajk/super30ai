@@ -56,59 +56,6 @@ const DigitalMarketing = () => {
         <meta name="twitter:description" content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!" />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LocalBusiness",
-            name: "The Super 30 — Digital Marketing Agency in Bangalore",
-            url: "https://www.thesuper30.ai/digital-marketing-agency-bangalore",
-            description:
-              "The Super 30 is a leading digital marketing agency in Bangalore offering SEO, PPC, social media marketing, web design, content marketing, and ORM services for startups and enterprises.",
-            telephone: "+91 89041 50555",
-            priceRange: "₹₹–₹₹₹",
-            address: {
-              "@type": "PostalAddress",
-              addressLocality: "Bangalore",
-              addressRegion: "Karnataka",
-              addressCountry: "IN",
-            },
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: "12.9716",
-              longitude: "77.5946",
-            },
-            areaServed: [
-              { "@type": "City", name: "Bangalore" },
-              { "@type": "State", name: "Karnataka" },
-              { "@type": "Country", name: "India" },
-            ],
-            serviceType: [
-              "Digital Marketing",
-              "Search Engine Optimization",
-              "Pay Per Click Advertising",
-              "Social Media Marketing",
-              "Content Marketing",
-              "Web Design and Development",
-              "Online Reputation Management",
-            ],
-            foundingDate: "2017",
-            numberOfEmployees: "30+",
-            sameAs: [
-              "https://www.linkedin.com/company/thesuper30",
-            ],
-          })}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            mainEntity: faqSchemaData.map((faq) => ({
-              "@type": "Question",
-              name: faq.q,
-              acceptedAnswer: { "@type": "Answer", text: faq.a },
-            })),
-          })}
-        </script>
       </Helmet>
 
       <Navbar />

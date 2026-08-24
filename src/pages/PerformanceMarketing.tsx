@@ -166,26 +166,6 @@ const PerformanceMarketing = () => {
         <meta name="twitter:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
         <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Service",
-            "serviceType": "Lead Generation",
-            "name": "Lead Generation Agency in Bangalore | B2B Leads That Convert",
-            "url": "https://www.thesuper30.ai/lead-generation-agency-bangalore",
-            "provider": {
-              "@type": "Organization",
-              "name": "The Super 30",
-              "url": "https://www.thesuper30.ai/"
-            },
-            "areaServed": {
-              "@type": "City",
-              "name": "Bangalore"
-            },
-            "description": "Trusted lead generation agency in Bangalore helping B2B businesses attract & convert high-value leads."
-          })}
-        </script>
       </Helmet>
 
       <Navbar />
