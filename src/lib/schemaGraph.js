@@ -201,12 +201,14 @@ export const buildRouteGraph = (path, data) => {
       "@type": "OfferCatalog",
       "@id": `${SITE_ORIGIN}/#services`,
       name: "Digital Marketing Services",
-      itemListElement: primaries.map(([servicePath], i) => ({
+      url: `${SITE_ORIGIN}/`,
+      numberOfItems: primaries.length,
+      itemListElement: primaries.map(([servicePath]) => ({
         "@type": "Offer",
-        position: i + 1,
         itemOffered: { "@id": `${(seo[servicePath] || {}).canonical || abs(servicePath)}#service` },
       })),
     });
+
 
     const homeFaqs = faqs["home"] || [];
     if (homeFaqs.length) nodes.push(faqNode(url, homeFaqs));
