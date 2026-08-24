@@ -217,6 +217,7 @@ export const buildRouteGraph = (path, data) => {
   const route = routes[path];
   if (!route) return [];
 
+  nodes.push(buildOrganizationNode(org));
   nodes.push(website);
   nodes.push(breadcrumbNode(url, buildTrail(path, routes)));
 

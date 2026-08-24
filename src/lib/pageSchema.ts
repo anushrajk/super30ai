@@ -2,7 +2,6 @@ import schemaRoutes from "@/data/schemaRoutes.json";
 import faqsData from "@/data/faqs.json";
 import seoMetaData from "@/data/seoMeta.json";
 import organization from "@/data/organization.json";
-// @ts-expect-error - shared JS module used by both the app and the prerender script
 import { buildRouteGraph, buildOrganizationNode, SITE_ORIGIN as ORIGIN } from "./schemaGraph.js";
 
 export const SITE_ORIGIN: string = ORIGIN;
