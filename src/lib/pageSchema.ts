@@ -88,7 +88,7 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
   const name = route.name;
   const description = meta.description || "";
 
-  const graph: Record<string, unknown>[] = [
+  const graph: Record<string, unknown>[] = route.faqOnly ? [] : [
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
