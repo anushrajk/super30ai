@@ -99,7 +99,9 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
     },
   ];
 
-  if (route.type === "Service") {
+  if (route.faqOnly) {
+    // page ships its own Service/WebPage + Breadcrumb schema
+  } else if (route.type === "Service") {
     graph.push({
       "@context": "https://schema.org",
       "@type": "Service",
