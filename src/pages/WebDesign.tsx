@@ -60,9 +60,11 @@ const WebDesign = () => {
         <meta property="og:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/web-design-company-bangalore" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Your Website Should Work for You. Not Against You." />
         <meta name="twitter:description" content="Custom and responsive websites built to convert. 50+ projects, 98% satisfaction. Let's build yours!" />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/web-design-company-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({

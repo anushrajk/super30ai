@@ -189,11 +189,13 @@ const Work = () => {
         <meta property="og:description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/our-work" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Successful Digital Markeitng Results Delivered For 300+ Brands" />
         <meta name="twitter:description" content="From startups to enterprises, see how 300+ Bangalore brands grew with TheSuper30. Case studies across SEO, ads, web and design with 98% satisfaction rate." />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/our-work" />
         
         {/* Structured Data */}

@@ -555,9 +555,11 @@ const Design = () => {
         <meta property="og:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="100+ Brands Designed. Yours Could Be Next in Line." />
         <meta name="twitter:description" content="Bold visuals. Strong brand identity. Graphic design that makes your brand impossible to scroll past!" />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/graphic-design-agency-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({

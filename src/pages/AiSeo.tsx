@@ -60,9 +60,11 @@ const AiSeo = () => {
         <meta property="og:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Your Competitors Are Ranking on Google. Why Aren't You?" />
         <meta name="twitter:description" content="3x visibility boost. 300% traffic growth. AI-powered SEO that dominates Google &amp; AI search results!" />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/seo-company-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({
