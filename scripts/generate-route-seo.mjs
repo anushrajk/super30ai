@@ -445,18 +445,22 @@ const main = async () => {
     if (!route) return [];
 
     const url = metadata.canonical;
-    const graph = [
-      {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
-          { "@type": "ListItem", position: 2, name: route.name, item: url },
-        ],
-      },
-    ];
+    const graph = route.faqOnly
+      ? []
+      : [
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
+              { "@type": "ListItem", position: 2, name: route.name, item: url },
+            ],
+          },
+        ];
 
-    if (route.type === "Service") {
+    if (route.faqOnly) {
+      // page component already hardcodes its own page-level schema
+    } else if (route.type === "Service") {
       graph.push({
         "@context": "https://schema.org",
         "@type": "Service",

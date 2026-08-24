@@ -9,6 +9,8 @@ type RouteSchema = {
   type: "Service" | "WebPage" | "Blog";
   serviceType?: string;
   faqSlug?: string;
+  /** Page already hardcodes its own page/breadcrumb schema — emit only FAQPage. */
+  faqOnly?: boolean;
 };
 
 type Faq = { question: string; answer: string };
@@ -86,7 +88,7 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
   const name = route.name;
   const description = meta.description || "";
 
-  const graph: Record<string, unknown>[] = [
+  const graph: Record<string, unknown>[] = route.faqOnly ? [] : [
     {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
@@ -97,7 +99,9 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] => {
     },
   ];
 
-  if (route.type === "Service") {
+  if (route.faqOnly) {
+    // page ships its own Service/WebPage + Breadcrumb schema
+  } else if (route.type === "Service") {
     graph.push({
       "@context": "https://schema.org",
       "@type": "Service",
