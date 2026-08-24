@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { buildRouteGraph } from "../src/lib/schemaGraph.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -11,6 +12,7 @@ const siteOrigin = "https://www.thesuper30.ai";
 const seoMetaFile = path.join(rootDir, "src", "data", "seoMeta.json");
 const schemaRoutesFile = path.join(rootDir, "src", "data", "schemaRoutes.json");
 const faqsFile = path.join(rootDir, "src", "data", "faqs.json");
+const organizationFile = path.join(rootDir, "src", "data", "organization.json");
 
 const escapeHtml = (value = "") =>
   value
@@ -389,124 +391,27 @@ const routeToOutputFile = (routePath) => {
 };
 
 const main = async () => {
-  const [appSource, distIndexHtml, seoMetaRaw, schemaRoutesRaw, faqsRaw] = await Promise.all([
+  const [appSource, distIndexHtml, seoMetaRaw, schemaRoutesRaw, faqsRaw, organizationRaw] = await Promise.all([
     fs.readFile(appFile, "utf8"),
     fs.readFile(distIndexFile, "utf8"),
     fs.readFile(seoMetaFile, "utf8"),
     fs.readFile(schemaRoutesFile, "utf8"),
     fs.readFile(faqsFile, "utf8"),
+    fs.readFile(organizationFile, "utf8"),
   ]);
 
   const seoMeta = JSON.parse(seoMetaRaw);
   const schemaRoutes = JSON.parse(schemaRoutesRaw);
   const faqs = JSON.parse(faqsRaw);
+  const organization = JSON.parse(organizationRaw);
 
-  const organization = {
-    "@type": "Organization",
-    "@id": `${siteOrigin}/#organization`,
-    name: "The Super 30",
-    url: `${siteOrigin}/`,
-    telephone: "+91 89041 50555",
-    logo: { "@type": "ImageObject", url: `${siteOrigin}/favicon.png` },
-    image: `${siteOrigin}/favicon.png`,
-    description:
-      "The Super 30 is an AI-driven digital marketing agency in Bangalore offering SEO, lead generation, social media, design and web development services.",
-    areaServed: { "@type": "City", name: "Bangalore" },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Bangalore",
-      addressRegion: "Karnataka",
-      addressCountry: "IN",
-    },
-    sameAs: ["https://www.instagram.com/thesuper30.ai/"],
-  };
-
-  const buildSchema = (routePath, metadata) => {
-    if (routePath === "/") {
-      const homeGraph = [
-        { "@context": "https://schema.org", ...organization },
-        {
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "@id": `${siteOrigin}/#website`,
-          name: "The Super 30",
-          url: `${siteOrigin}/`,
-          description: metadata.description,
-          publisher: { "@id": `${siteOrigin}/#organization` },
-        },
-      ];
-      const homeItems = faqs["home"] || [];
-      if (homeItems.length) {
-        homeGraph.push({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: homeItems.map((f) => ({
-            "@type": "Question",
-            name: f.question,
-            acceptedAnswer: { "@type": "Answer", text: f.answer },
-          })),
-        });
-      }
-      return homeGraph;
-    }
-
-    const route = schemaRoutes[routePath];
-    if (!route) return [];
-
-    const url = metadata.canonical;
-    const graph = route.faqOnly
-      ? []
-      : [
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
-              { "@type": "ListItem", position: 2, name: route.name, item: url },
-            ],
-          },
-        ];
-
-    if (route.faqOnly) {
-      // page component already hardcodes its own page-level schema
-    } else if (route.type === "Service") {
-      graph.push({
-        "@context": "https://schema.org",
-        "@type": "Service",
-        serviceType: route.serviceType || route.name,
-        name: route.name,
-        description: metadata.description,
-        url,
-        provider: { "@id": `${siteOrigin}/#organization` },
-        areaServed: { "@type": "City", name: "Bangalore" },
-      });
-    } else {
-      graph.push({
-        "@context": "https://schema.org",
-        "@type": route.type,
-        name: route.name,
-        description: metadata.description,
-        url,
-        isPartOf: { "@id": `${siteOrigin}/#website` },
-        publisher: { "@id": `${siteOrigin}/#organization` },
-      });
-    }
-
-    const items = route.faqSlug ? faqs[route.faqSlug] || [] : [];
-    if (items.length) {
-      graph.push({
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        mainEntity: items.map((f) => ({
-          "@type": "Question",
-          name: f.question,
-          acceptedAnswer: { "@type": "Answer", text: f.answer },
-        })),
-      });
-    }
-
-    return graph;
-  };
+  const buildSchema = (routePath, metadata) =>
+    buildRouteGraph(routePath, {
+      org: organization,
+      routes: schemaRoutes,
+      faqs,
+      seo: { ...seoMeta, [routePath]: { ...(seoMeta[routePath] || {}), ...metadata } },
+    });
 
   const importMap = new Map();
   const importRegex = /const\s+(\w+)\s*=\s*lazy\(\(\)\s*=>\s*import\("(.+?)"\)/g;
