@@ -86,9 +86,11 @@ const Home = () => {
       <meta property="og:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
       <meta property="og:type" content="website" />
       <meta property="og:url" content="https://www.thesuper30.ai/" />
+      <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content="Stop Guessing. Start Growing With AI-Powered Marketing." />
       <meta name="twitter:description" content="From strategy to execution, Super 30 delivers proven 10x revenue growth. Book your free call now!" />
+      <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
       <meta name="twitter:url" content="https://www.thesuper30.ai/" />
       <meta name="robots" content="index, follow" />
     </Helmet>

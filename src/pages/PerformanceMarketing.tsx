@@ -158,11 +158,13 @@ const PerformanceMarketing = () => {
         <meta property="og:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Is Your Sales Pipeline Full Enough to Hit Your Targets?" />
         <meta name="twitter:description" content="No more cold leads. We deliver qualified B2B prospects straight to your sales team. Let's grow!" />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/lead-generation-agency-bangalore" />
         {/* Structured Data */}
         <script type="application/ld+json">

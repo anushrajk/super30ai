@@ -50,9 +50,11 @@ const DigitalMarketing = () => {
         <meta property="og:description" content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />
         <meta name="twitter:description" content="Most agencies promise results. We deliver 10x growth with AI-powered strategies. Let's talk today!" />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <script type="application/ld+json">
           {JSON.stringify({

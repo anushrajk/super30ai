@@ -202,10 +202,12 @@ const Contact = () => {
         <meta property="og:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/contact-us" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Contact TheSuper30 Agency | Let’s Grow Your Brand" />
         <meta name="twitter:description" content="Ready to grow? Get in touch with TheSuper30. 30+ experts offering marketing support, strategy and enquiries. Our team is here to help you scale anytime!" />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         <meta name="twitter:url" content="https://www.thesuper30.ai/contact-us" />
         <script type="application/ld+json">
           {JSON.stringify({

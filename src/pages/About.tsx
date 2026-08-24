@@ -65,11 +65,13 @@ const About = () => {
         <meta property="og:description" content="Real people. Real strategies. AI-powered results. See the team that scales brands &amp; drives ROI." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/internet-marketing-agency" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Meet the 30+ Experts Behind Every Campaign We Run." />
         <meta name="twitter:description" content="Real people. Real strategies. AI-powered results. See the team that scales brands &amp; drives ROI." />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
         {/* Structured Data */}
         <script type="application/ld+json">

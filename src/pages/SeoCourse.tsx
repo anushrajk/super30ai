@@ -36,11 +36,13 @@ const SeoCourse = () => {
         <meta property="og:description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance. One of the best SEO training courses for building real skills." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.thesuper30.ai/seo-training-in-bangalore" />
+        <meta property="og:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Advanced AI SEO Course with Hands-On Training | The Super 30" />
         <meta name="twitter:description" content="Join our AI SEO course and SEO certification course with practical training and expert guidance." />
+        <meta name="twitter:image" content="https://www.thesuper30.ai/og-image.jpg" />
         
         {/* Structured Data */}
         <script type="application/ld+json">
