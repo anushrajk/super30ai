@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { RichTextEditor } from "@/components/cms/RichTextEditor";
+import { MediaUpload } from "@/components/cms/MediaUpload";
+
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
 import type { Json } from "@/integrations/supabase/types";
