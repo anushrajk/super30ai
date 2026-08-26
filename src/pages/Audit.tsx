@@ -852,6 +852,7 @@ const Audit = () => {
         <title>Your AI SEO Audit Results | The Super 30</title>
         <meta name="description" content="View your personalized AI SEO visibility report and discover opportunities to improve your search presence." />
         <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://www.thesuper30.ai/audit" />
       </Helmet>
 
       <main className="min-h-screen bg-muted/30">
