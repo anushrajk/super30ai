@@ -88,10 +88,6 @@ const menuItems: NavMenuItem[] = [
     href: "/blog",
     items: [
       { label: "Blog", href: "/blog" },
-      { label: "Free AI SEO Audit", href: "/audit" },
-      { label: "Performance Marketing Planner", href: "/performance-planner" },
-      { label: "SEO Training in Bangalore", href: "/seo-training-in-bangalore" },
-      { label: "Book a Consultation", href: "/booking" },
     ],
   },
   { label: "Our Work", href: "/our-work" },

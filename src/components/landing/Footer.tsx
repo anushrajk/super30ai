@@ -17,10 +17,6 @@ const company = [
   { name: "Our Work", href: "/our-work" },
   { name: "Contact Us", href: "/contact-us" },
   { name: "Blog", href: "/blog" },
-  { name: "Free AI SEO Audit", href: "/audit" },
-  { name: "Performance Marketing Planner", href: "/performance-planner" },
-  { name: "SEO Training in Bangalore", href: "/seo-training-in-bangalore" },
-  { name: "Book a Consultation", href: "/booking" },
 ];
 
 // Full internal link map — keeps every canonical page one click from any page
