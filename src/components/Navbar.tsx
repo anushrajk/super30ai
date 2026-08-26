@@ -83,17 +83,7 @@ const menuItems: NavMenuItem[] = [
       { label: "Website Maintenance Service", href: "/website-maintenance-company-bangalore" },
     ],
   },
-  {
-    label: "Resources",
-    href: "/blog",
-    items: [
-      { label: "Blog", href: "/blog" },
-      { label: "Free AI SEO Audit", href: "/audit" },
-      { label: "Performance Marketing Planner", href: "/performance-planner" },
-      { label: "SEO Training in Bangalore", href: "/seo-training-in-bangalore" },
-      { label: "Book a Consultation", href: "/booking" },
-    ],
-  },
+  { label: "Blog", href: "/blog" },
   { label: "Our Work", href: "/our-work" },
   { label: "Team S30", href: "/internet-marketing-agency" },
 ];
