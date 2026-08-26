@@ -259,9 +259,10 @@ const AdminBlogEditor = () => {
                     <Input id="og_title" value={form.og_title} onChange={(e) => update("og_title", e.target.value)} />
                   </div>
                   <div>
-                    <Label htmlFor="og_image_url">OG image URL</Label>
-                    <Input id="og_image_url" value={form.og_image_url} onChange={(e) => update("og_image_url", e.target.value)} />
+                    <Label htmlFor="og_image_url">OG image</Label>
+                    <MediaUpload value={form.og_image_url} onChange={(url) => update("og_image_url", url)} />
                   </div>
+
                 </div>
                 <div>
                   <Label htmlFor="og_description">OG description</Label>
