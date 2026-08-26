@@ -37,7 +37,7 @@ const BlogList = () => {
   return (
     <>
       <Helmet>
-        <title>Blog — AI SEO & Lead Generation Insights | The Super 30</title>
+        <title>Blog - AI SEO & Lead Generation Insights | The Super 30</title>
         <meta name="description" content="Practical guides on AI SEO, performance marketing and lead generation from The Super 30 team." />
         <link rel="canonical" href="https://www.thesuper30.ai/blog" />
       </Helmet>
