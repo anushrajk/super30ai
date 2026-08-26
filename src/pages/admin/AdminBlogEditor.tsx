@@ -10,6 +10,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { RichTextEditor } from "@/components/cms/RichTextEditor";
+import { MediaUpload } from "@/components/cms/MediaUpload";
+
 import { slugify } from "@/lib/slugify";
 import { toast } from "sonner";
 import type { Json } from "@/integrations/supabase/types";
@@ -259,9 +261,10 @@ const AdminBlogEditor = () => {
                     <Input id="og_title" value={form.og_title} onChange={(e) => update("og_title", e.target.value)} />
                   </div>
                   <div>
-                    <Label htmlFor="og_image_url">OG image URL</Label>
-                    <Input id="og_image_url" value={form.og_image_url} onChange={(e) => update("og_image_url", e.target.value)} />
+                    <Label htmlFor="og_image_url">OG image</Label>
+                    <MediaUpload value={form.og_image_url} onChange={(url) => update("og_image_url", url)} />
                   </div>
+
                 </div>
                 <div>
                   <Label htmlFor="og_description">OG description</Label>
@@ -306,12 +309,10 @@ const AdminBlogEditor = () => {
                   <Input id="author_name" value={form.author_name} onChange={(e) => update("author_name", e.target.value)} placeholder={user?.email ?? ""} />
                 </div>
                 <div>
-                  <Label htmlFor="cover">Cover image URL</Label>
-                  <Input id="cover" value={form.cover_image_url} onChange={(e) => update("cover_image_url", e.target.value)} placeholder="https://..." />
-                  {form.cover_image_url && (
-                    <img src={form.cover_image_url} alt="Cover preview" className="mt-2 rounded-md w-full aspect-video object-cover" />
-                  )}
+                  <Label htmlFor="cover">Cover image</Label>
+                  <MediaUpload value={form.cover_image_url} onChange={(url) => update("cover_image_url", url)} />
                 </div>
+
               </CardContent>
             </Card>
           </div>
