@@ -306,12 +306,10 @@ const AdminBlogEditor = () => {
                   <Input id="author_name" value={form.author_name} onChange={(e) => update("author_name", e.target.value)} placeholder={user?.email ?? ""} />
                 </div>
                 <div>
-                  <Label htmlFor="cover">Cover image URL</Label>
-                  <Input id="cover" value={form.cover_image_url} onChange={(e) => update("cover_image_url", e.target.value)} placeholder="https://..." />
-                  {form.cover_image_url && (
-                    <img src={form.cover_image_url} alt="Cover preview" className="mt-2 rounded-md w-full aspect-video object-cover" />
-                  )}
+                  <Label htmlFor="cover">Cover image</Label>
+                  <MediaUpload value={form.cover_image_url} onChange={(url) => update("cover_image_url", url)} />
                 </div>
+
               </CardContent>
             </Card>
           </div>
