@@ -443,6 +443,7 @@ export default function PerformancePlanner() {
         <title>Your Ad Performance Plan | The Super 30</title>
         <meta name="description" content="View your personalized performance marketing opportunity report and ROI projections." />
         <meta name="robots" content="noindex, nofollow" />
+        <link rel="canonical" href="https://www.thesuper30.ai/performance-planner" />
       </Helmet>
       <Navbar />
       
