@@ -1,0 +1,4 @@
+CREATE POLICY "Public read blog media" ON storage.objects FOR SELECT USING (bucket_id = 'blog-media');
+CREATE POLICY "Authors upload blog media" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'blog-media' AND owner = auth.uid());
+CREATE POLICY "Authors update own blog media" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'blog-media' AND owner = auth.uid()) WITH CHECK (bucket_id = 'blog-media' AND owner = auth.uid());
+CREATE POLICY "Authors delete own blog media" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'blog-media' AND owner = auth.uid());
