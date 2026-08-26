@@ -46,7 +46,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Office",
-    value: "46/A, 1st Main Rd, opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078",
+    value: "1st Floor, 46/A, 1st Main Rd, Opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078",
     link: null,
   },
   {

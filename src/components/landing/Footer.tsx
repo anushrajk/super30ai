@@ -221,7 +221,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
                   <span className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-4 h-4" />
                   </span>
-                  <span className="pt-1.5">46/A, 1st Main Rd, opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078</span>
+                  <span className="pt-1.5">1st Floor, 46/A, 1st Main Rd, Opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078</span>
                 </div>
               </li>
             </ul>
