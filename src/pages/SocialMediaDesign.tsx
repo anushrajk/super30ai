@@ -13,6 +13,7 @@ import { lazy, Suspense } from "react";
 const SMProblemSection = lazy(() => import("@/components/social-media/SMProblemSection").then(m => ({ default: m.SMProblemSection })));
 const SMComparisonSection = lazy(() => import("@/components/social-media/SMComparisonSection").then(m => ({ default: m.SMComparisonSection })));
 const SMClientProfilesSection = lazy(() => import("@/components/social-media/SMClientProfilesSection").then(m => ({ default: m.SMClientProfilesSection })));
+const AadhyaInstagramGridSection = lazy(() => import("@/components/social-media/AadhyaInstagramGridSection").then(m => ({ default: m.AadhyaInstagramGridSection })));
 const SMBenefitsSection = lazy(() => import("@/components/social-media/SMBenefitsSection").then(m => ({ default: m.SMBenefitsSection })));
 const SMMoodboardSection = lazy(() => import("@/components/social-media/SMMoodboardSection").then(m => ({ default: m.SMMoodboardSection })));
 const SMReelsContentSection = lazy(() => import("@/components/social-media/SMReelsContentSection").then(m => ({ default: m.SMReelsContentSection })));
@@ -98,6 +99,7 @@ const SocialMediaDesign = () => {
           <SMProblemSection />
           <SMComparisonSection />
           <SMClientProfilesSection />
+          <AadhyaInstagramGridSection />
           <SMBenefitsSection />
           <SMMoodboardSection />
           <SMReelsContentSection />
