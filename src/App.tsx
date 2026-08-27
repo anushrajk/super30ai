@@ -154,6 +154,8 @@ const App = () => (
                 <Route path="/" element={<Home />} />
                 <Route path="/internet-marketing-agency" element={<About />} />
                 <Route path="/our-work" element={<Work />} />
+                <Route path="/aadhya-animatics-instagram-grid" element={<AadhyaAnimaticsGrid />} />
+
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/seo-training-in-bangalore" element={<SeoCourse />} />
                 <Route path="/audit" element={<Audit />} />
