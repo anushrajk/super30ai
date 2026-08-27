@@ -31,6 +31,8 @@ const AiSeo = lazy(() => import("./pages/AiSeo"));
 const PerformanceMarketing = lazy(() => import("./pages/PerformanceMarketing"));
 const About = lazy(() => import("./pages/About"));
 const Work = lazy(() => import("./pages/Work"));
+const AadhyaAnimaticsGrid = () => null;
+
 const Contact = lazy(() => import("./pages/Contact"));
 const Audit = lazy(() => import("./pages/Audit"));
 const Booking = lazy(() => import("./pages/Booking"));
