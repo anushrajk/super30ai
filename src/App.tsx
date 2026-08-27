@@ -31,6 +31,9 @@ const AiSeo = lazy(() => import("./pages/AiSeo"));
 const PerformanceMarketing = lazy(() => import("./pages/PerformanceMarketing"));
 const About = lazy(() => import("./pages/About"));
 const Work = lazy(() => import("./pages/Work"));
+const AadhyaAnimaticsGrid = lazy(() => import("./pages/AadhyaAnimaticsGrid"));
+
+
 const Contact = lazy(() => import("./pages/Contact"));
 const Audit = lazy(() => import("./pages/Audit"));
 const Booking = lazy(() => import("./pages/Booking"));
@@ -151,6 +154,8 @@ const App = () => (
                 <Route path="/" element={<Home />} />
                 <Route path="/internet-marketing-agency" element={<About />} />
                 <Route path="/our-work" element={<Work />} />
+                <Route path="/aadhya-animatics-instagram-grid" element={<AadhyaAnimaticsGrid />} />
+
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/seo-training-in-bangalore" element={<SeoCourse />} />
                 <Route path="/audit" element={<Audit />} />
