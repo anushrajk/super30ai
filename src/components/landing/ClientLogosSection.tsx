@@ -67,6 +67,27 @@ export const ClientLogosSection = () => {
           </div>
         </div>
 
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/10">
+          <div className="text-center">
+            <p className="text-2xl font-bold text-white">300%+</p>
+            <p className="text-xs text-gray-400">Avg. Traffic Growth</p>
+          </div>
+          <div className="w-px h-8 bg-white/20 hidden sm:block" />
+          <div className="text-center">
+            <p className="text-2xl font-bold text-white">50+</p>
+            <p className="text-xs text-gray-400">AI Audits Delivered</p>
+          </div>
+          <div className="w-px h-8 bg-white/20 hidden sm:block" />
+          <div className="text-center">
+            <p className="text-2xl font-bold text-white">$2M+</p>
+            <p className="text-xs text-gray-400">Revenue Generated</p>
+          </div>
+          <div className="w-px h-8 bg-white/20 hidden sm:block" />
+          <div className="text-center">
+            <p className="text-2xl font-bold text-white">4.8/5</p>
+            <p className="text-xs text-gray-400">Client Rating</p>
+          </div>
+        </div>
       </div>
     </section>
   );
