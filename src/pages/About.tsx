@@ -8,7 +8,7 @@ import { FAQSection } from "@/components/landing/FAQSection";
 
 import { TeamSection } from "@/components/about/TeamSection";
 import { InteractiveTimeline } from "@/components/about/InteractiveTimeline";
-import { AwardsSection } from "@/components/about/AwardsSection";
+
 import { CultureSection } from "@/components/about/CultureSection";
 import { Button } from "@/components/ui/button";
 import { BentoCard, BentoIcon, BentoBadge } from "@/components/ui/bento-grid";
@@ -226,10 +226,6 @@ const About = () => {
           <InteractiveTimeline />
         </div>
 
-        {/* Awards Section */}
-        <div id="about-awards">
-          <AwardsSection />
-        </div>
 
         {/* Culture Section */}
         <div id="about-culture">
