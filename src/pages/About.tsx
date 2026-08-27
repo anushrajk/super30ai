@@ -233,7 +233,7 @@ const About = () => {
         </div>
 
         <div id="about-cta">
-          <UnifiedCTASection />
+          <UnifiedCTASection variant="dark" />
         </div>
 
         <div id="about-faq">
