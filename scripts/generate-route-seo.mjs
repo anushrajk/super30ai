@@ -394,6 +394,227 @@ const routeToOutputFile = (routePath) => {
   return path.join(rootDir, "dist", normalizedPath, "index.html");
 };
 
+// ---- Blog posts (CMS content) -----------------------------------------------
+// Every published post in the CMS gets its own static HTML file whose <head>
+// and crawler-visible body come from the content typed in the editor.
+
+const readEnv = async () => {
+  const env = { ...process.env };
+  try {
+    const raw = await fs.readFile(path.join(rootDir, ".env"), "utf8");
+    for (const line of raw.split("\n")) {
+      const match = line.match(/^\s*([A-Z0-9_]+)\s*=\s*"?([^"\n]*)"?\s*$/);
+      if (match && !env[match[1]]) env[match[1]] = match[2];
+    }
+  } catch {
+    /* no .env in CI — rely on process.env */
+  }
+  return env;
+};
+
+const sanitizeArticleHtml = (html = "") =>
+  html
+    .replace(/<script[\s\S]*?<\/script>/gi, "")
+    .replace(/<style[\s\S]*?<\/style>/gi, "")
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi, "")
+    .replace(/\son\w+\s*=\s*"[^"]*"/gi, "")
+    .replace(/\son\w+\s*=\s*'[^']*'/gi, "")
+    .replace(/\sjavascript:/gi, " ")
+    .trim();
+
+const htmlToText = (html = "") =>
+  cleanText(
+    html
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&nbsp;/g, " ")
+      .replace(/&amp;/g, "&")
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+  );
+
+const fetchPublishedPosts = async () => {
+  const env = await readEnv();
+  const url = env.VITE_SUPABASE_URL;
+  const key = env.VITE_SUPABASE_PUBLISHABLE_KEY;
+  if (!url || !key) return [];
+  const endpoint =
+    `${url}/rest/v1/blogs?select=slug,title,excerpt,content,cover_image_url,category,read_time,author_name,` +
+    `published_at,updated_at,meta_title,meta_description,meta_keywords,canonical_url,og_title,og_description,og_image_url,json_ld` +
+    `&status=eq.published&order=published_at.desc`;
+  try {
+    const response = await fetch(endpoint, { headers: { apikey: key, Authorization: `Bearer ${key}` } });
+    if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+    return await response.json();
+  } catch (error) {
+    console.warn(`Skipping blog prerender — could not load posts: ${error.message}`);
+    return [];
+  }
+};
+
+const buildBlogSeoContent = (post, url, articleHtml) => {
+  const published = post.published_at ? new Date(post.published_at).toISOString() : "";
+  return `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+${NAV_LINKS}
+
+      <article>
+        <header>
+          <h1>${escapeHtml(post.title)}</h1>
+          ${post.excerpt ? `<p>${escapeHtml(post.excerpt)}</p>` : ""}
+          <p>${[
+            post.author_name ? `By ${post.author_name}` : "",
+            published ? `Published ${published.slice(0, 10)}` : "",
+            post.category || "",
+            post.read_time || "",
+          ]
+            .filter(Boolean)
+            .map((value) => escapeHtml(value))
+            .join(" · ")}</p>
+          ${post.cover_image_url ? `<img src="${escapeHtml(post.cover_image_url)}" alt="${escapeHtml(post.title)}" />` : ""}
+        </header>
+        <section>
+${articleHtml}
+        </section>
+        <footer>
+          <p><a href="${escapeHtml(url)}">${escapeHtml(post.title)}</a> — The Super 30, AI Digital Marketing Agency, Bangalore, Karnataka, India. Phone: +91 89041 50555.</p>
+          <p><a href="/blog">All articles</a></p>
+        </footer>
+      </article>
+    </div>`;
+};
+
+const replaceSeoBlock = (html, block) => {
+  const start = html.indexOf('<div id="seo-content"');
+  if (start === -1) return html;
+  const endMarker = "</article>\n    </div>";
+  const end = html.indexOf(endMarker, start);
+  if (end === -1) return html;
+  return html.slice(0, start) + block + html.slice(end + endMarker.length);
+};
+
+const generateBlogPages = async (distIndexHtml, organization) => {
+  const posts = await fetchPublishedPosts();
+  if (!posts.length) return 0;
+
+  for (const post of posts) {
+    const url = `${siteOrigin}/blog/${post.slug}`;
+    const articleHtml = sanitizeArticleHtml(post.content || "");
+    const plain = htmlToText(articleHtml);
+    const title = post.meta_title || `${post.title} | The Super 30`;
+    const description = (post.meta_description || post.excerpt || plain).slice(0, 300);
+    const image = post.og_image_url || post.cover_image_url || OG_IMAGE;
+    const published = post.published_at ? new Date(post.published_at).toISOString() : undefined;
+    const modified = post.updated_at ? new Date(post.updated_at).toISOString() : published;
+
+    const article = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": `${url}#article`,
+      mainEntityOfPage: { "@type": "WebPage", "@id": url },
+      headline: post.title.slice(0, 110),
+      description,
+      image: image ? [image] : undefined,
+      articleSection: post.category || undefined,
+      wordCount: plain ? plain.split(/\s+/).length : undefined,
+      keywords: post.meta_keywords || undefined,
+      datePublished: published,
+      dateModified: modified,
+      inLanguage: "en-IN",
+      author: {
+        "@type": "Person",
+        name: post.author_name || organization.name || "The Super 30",
+      },
+      publisher: {
+        "@type": "Organization",
+        name: organization.name || "The Super 30",
+        url: siteOrigin,
+        logo: { "@type": "ImageObject", url: `${siteOrigin}/og-image.jpg` },
+      },
+    };
+
+    const breadcrumb = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumb`,
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
+        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteOrigin}/blog` },
+        { "@type": "ListItem", position: 3, name: post.title, item: url },
+      ],
+    };
+
+    const schema = post.json_ld ? [post.json_ld, breadcrumb] : [article, breadcrumb];
+
+    const metadata = {
+      title,
+      description,
+      keywords: post.meta_keywords || "",
+      canonical: post.canonical_url || url,
+      robots: "index, follow",
+      ogTitle: post.og_title || post.meta_title || post.title,
+      ogDescription: post.og_description || description,
+      ogType: "article",
+      ogUrl: url,
+      image,
+      imageAlt: post.title,
+      twitterCard: "summary_large_image",
+      twitterTitle: post.og_title || post.meta_title || post.title,
+      twitterDescription: post.og_description || description,
+      articleMeta: [
+        published ? `<meta property="article:published_time" content="${escapeHtml(published)}" />` : "",
+        modified ? `<meta property="article:modified_time" content="${escapeHtml(modified)}" />` : "",
+        post.author_name ? `<meta property="article:author" content="${escapeHtml(post.author_name)}" />` : "",
+        post.category ? `<meta property="article:section" content="${escapeHtml(post.category)}" />` : "",
+      ].filter(Boolean),
+      schema,
+    };
+
+    const baseHtml = replaceSeoBlock(distIndexHtml, buildBlogSeoContent(post, url, articleHtml));
+    const outputFile = path.join(rootDir, "dist", "blog", post.slug, "index.html");
+    await fs.mkdir(path.dirname(outputFile), { recursive: true });
+    await fs.writeFile(outputFile, injectMetadata(baseHtml, metadata), "utf8");
+  }
+
+  // Blog index: list every published post so the archive is crawlable too.
+  const listFile = path.join(rootDir, "dist", "blog", "index.html");
+  try {
+    const listHtml = await fs.readFile(listFile, "utf8");
+    const items = posts
+      .map(
+        (post) =>
+          `          <li><a href="/blog/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a>` +
+          `${post.excerpt ? ` — ${escapeHtml(post.excerpt)}` : ""}</li>`
+      )
+      .join("\n");
+    const injected = listHtml.replace(
+      "</article>\n    </div>",
+      `  <section>\n          <h2>Latest articles</h2>\n          <ul>\n${items}\n          </ul>\n        </section>\n      </article>\n    </div>`
+    );
+    await fs.writeFile(listFile, injected, "utf8");
+  } catch {
+    /* blog index not generated */
+  }
+
+  // Sitemap: keep published post URLs in sync with the CMS.
+  const sitemapFile = path.join(rootDir, "dist", "sitemap.xml");
+  try {
+    let sitemap = await fs.readFile(sitemapFile, "utf8");
+    sitemap = sitemap.replace(/\s*<url>\s*<loc>[^<]*\/blog\/[^<]*<\/loc>[\s\S]*?<\/url>/g, "");
+    const entries = posts
+      .map((post) => {
+        const lastmod = (post.updated_at || post.published_at || new Date().toISOString()).slice(0, 10);
+        return `  <url>\n    <loc>${siteOrigin}/blog/${post.slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
+      })
+      .join("\n");
+    sitemap = sitemap.replace("</urlset>", `${entries}\n</urlset>`);
+    await fs.writeFile(sitemapFile, sitemap, "utf8");
+  } catch {
+    /* no sitemap in dist */
+  }
+
+  return posts.length;
+};
+
+
 const main = async () => {
   const [appSource, distIndexHtml, seoMetaRaw, schemaRoutesRaw, faqsRaw, organizationRaw] = await Promise.all([
     fs.readFile(appFile, "utf8"),
