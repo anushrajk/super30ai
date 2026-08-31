@@ -36,6 +36,13 @@ const SITE = "https://www.thesuper30.ai";
 const normalizeContent = (html: string): string => {
   let out = html;
 
+  // Legacy public-bucket URLs -> public edge-function media proxy
+  out = out.replace(
+    /\/storage\/v1\/object\/public\/blog-media\//g,
+    "/functions/v1/blog-media/"
+  );
+
+
   // <p>---</p> (or ***, ___) -> <hr>
   out = out.replace(/<p[^>]*>\s*(?:-{3,}|\*{3,}|_{3,})\s*<\/p>/gi, "<hr>");
 
