@@ -30,8 +30,12 @@ export async function uploadMedia(file: File): Promise<string> {
   });
   if (error) throw error;
 
-  const { data } = supabase.storage.from("blog-media").getPublicUrl(path);
-  return data.publicUrl;
+  // The bucket is private (public buckets are disabled for this workspace),
+  // so media is served through the public `blog-media` edge function proxy.
+  return `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/blog-media/${path
+    .split("/")
+    .map(encodeURIComponent)
+    .join("/")}`;
 }
 
 interface Props {
