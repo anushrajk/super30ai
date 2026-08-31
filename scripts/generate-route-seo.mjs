@@ -705,7 +705,10 @@ const main = async () => {
     await writeRoute(route.routePath, metadata);
   }
 
-  console.log(`Generated SEO HTML for ${generatedCount} static routes.`);
+  const blogCount = await generateBlogPages(distIndexHtml, organization);
+
+  console.log(`Generated SEO HTML for ${generatedCount} static routes and ${blogCount} blog posts.`);
+
 };
 
 main().catch((error) => {
