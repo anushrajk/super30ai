@@ -29,6 +29,7 @@ Deno.serve(async (req) => {
       .replace(/^blog-media\/?/, ""),
   );
 
+  console.log("pathname", url.pathname, "object", objectPath);
   if (!objectPath || objectPath.includes("..")) {
     return new Response("Not found", { status: 404 });
   }
@@ -41,6 +42,7 @@ Deno.serve(async (req) => {
     { headers: { Authorization: `Bearer ${SERVICE_KEY}`, apikey: SERVICE_KEY } },
   );
 
+  console.log("path", objectPath, "upstream", upstream.status);
   if (!upstream.ok) {
     return new Response("Not found", { status: 404 });
   }
