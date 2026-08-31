@@ -35,3 +35,6 @@ verify_jwt = false
 
 [functions.sync-lead-to-sheets]
 verify_jwt = false
+
+[functions.blog-media]
+verify_jwt = false
