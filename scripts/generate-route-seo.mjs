@@ -144,6 +144,8 @@ const stripSeoTags = (html) =>
 
 const injectMetadata = (html, metadata) => {
   const cleanHtml = stripSeoTags(html);
+  const image = metadata.image || OG_IMAGE;
+  const imageAlt = metadata.imageAlt || "The Super 30 — AI Digital Marketing Agency in Bangalore";
   const tags = [
     `<title>${escapeHtml(metadata.title)}</title>`,
     `<meta name="description" content="${escapeHtml(metadata.description)}" />`,
@@ -154,14 +156,15 @@ const injectMetadata = (html, metadata) => {
     `<meta property="og:description" content="${escapeHtml(metadata.ogDescription)}" />`,
     `<meta property="og:type" content="${escapeHtml(metadata.ogType)}" />`,
     `<meta property="og:url" content="${escapeHtml(metadata.ogUrl)}" />`,
-    `<meta property="og:image" content="${OG_IMAGE}" />`,
-    `<meta property="og:image:width" content="1200" />`,
-    `<meta property="og:image:height" content="630" />`,
-    `<meta property="og:image:alt" content="The Super 30 — AI Digital Marketing Agency in Bangalore" />`,
+    `<meta property="og:image" content="${escapeHtml(image)}" />`,
+    image === OG_IMAGE ? `<meta property="og:image:width" content="1200" />` : "",
+    image === OG_IMAGE ? `<meta property="og:image:height" content="630" />` : "",
+    `<meta property="og:image:alt" content="${escapeHtml(imageAlt)}" />`,
+    ...(metadata.articleMeta || []),
     `<meta name="twitter:card" content="${escapeHtml(metadata.twitterCard)}" />`,
     `<meta name="twitter:title" content="${escapeHtml(metadata.twitterTitle)}" />`,
     `<meta name="twitter:description" content="${escapeHtml(metadata.twitterDescription)}" />`,
-    `<meta name="twitter:image" content="${OG_IMAGE}" />`,
+    `<meta name="twitter:image" content="${escapeHtml(image)}" />`,
     `<meta name="twitter:url" content="${escapeHtml(metadata.ogUrl)}" />`,
   ]
     .filter(Boolean)
@@ -178,6 +181,7 @@ const injectMetadata = (html, metadata) => {
 
   return cleanHtml.replace("</head>", `    ${head}\n  </head>`);
 };
+
 
 
 const NAV_LINKS = `<nav>
