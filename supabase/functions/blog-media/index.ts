@@ -23,7 +23,10 @@ Deno.serve(async (req) => {
   const url = new URL(req.url);
   // Strip the function prefix to get the object path inside the bucket.
   const objectPath = decodeURIComponent(
-    url.pathname.replace(/^\/functions\/v1\/blog-media\/?/, "").replace(/^blog-media\/?/, ""),
+    url.pathname
+      .replace(/^\/+/, "")
+      .replace(/^functions\/v1\//, "")
+      .replace(/^blog-media\/?/, ""),
   );
 
   if (!objectPath || objectPath.includes("..")) {
