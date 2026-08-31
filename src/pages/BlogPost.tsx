@@ -32,6 +32,15 @@ interface Post {
 
 const SITE = "https://www.thesuper30.ai";
 
+/** Rewrite legacy public-bucket URLs to the public media proxy. */
+const toMediaUrl = (url?: string | null): string | undefined =>
+  url
+    ? url.replace(
+        /\/storage\/v1\/object\/public\/blog-media\//g,
+        "/functions/v1/blog-media/"
+      )
+    : undefined;
+
 /** Convert leftover markdown artifacts in stored HTML into proper semantic HTML. */
 const normalizeContent = (html: string): string => {
   let out = html;
@@ -126,7 +135,8 @@ const BlogPost = () => {
   const description = post.meta_description || post.excerpt || "";
   const ogTitle = post.og_title || title;
   const ogDesc = post.og_description || description;
-  const ogImage = post.og_image_url || post.cover_image_url || undefined;
+  const coverImage = toMediaUrl(post.cover_image_url);
+  const ogImage = toMediaUrl(post.og_image_url) || coverImage;
   const canonical = post.canonical_url || url;
 
   const jsonLd = post.json_ld ?? {
@@ -210,10 +220,12 @@ const BlogPost = () => {
             </div>
           </header>
 
-          {post.cover_image_url && (
+          {coverImage && (
             <figure className="mb-10 -mx-4 md:mx-0">
               <img
-                src={post.cover_image_url}
+                src={coverImage}
+                loading="eager"
+                onError={(e) => { (e.currentTarget.closest("figure") as HTMLElement | null)?.remove(); }}
                 alt={post.title}
                 className="w-full aspect-[16/9] object-cover md:rounded-2xl shadow-sm"
               />
