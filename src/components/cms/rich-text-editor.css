@@ -24,8 +24,29 @@
   left: 1.25rem;
   right: 1.25rem;
 }
+.cms-editor .ql-editor h1 { font-size: 2.1rem; font-weight: 700; margin: 1.75rem 0 0.85rem; }
 .cms-editor .ql-editor h2 { font-size: 1.75rem; font-weight: 700; margin: 1.5rem 0 0.75rem; }
 .cms-editor .ql-editor h3 { font-size: 1.35rem; font-weight: 600; margin: 1.25rem 0 0.5rem; }
+.cms-editor .ql-editor h4 { font-size: 1.15rem; font-weight: 600; margin: 1rem 0 0.5rem; }
+.cms-editor .ql-editor h5 { font-size: 1rem; font-weight: 600; margin: 0.9rem 0 0.4rem; }
+.cms-editor .ql-editor h6 { font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin: 0.9rem 0 0.4rem; }
+/* Heading picker labels */
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item::before { content: 'Normal'; }
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="1"]::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before { content: 'Heading 1'; }
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="2"]::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="2"]::before { content: 'Heading 2'; }
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="3"]::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="3"]::before { content: 'Heading 3'; }
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="4"]::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="4"]::before { content: 'Heading 4'; }
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="5"]::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="5"]::before { content: 'Heading 5'; }
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-label[data-value="6"]::before,
+.cms-editor .ql-snow .ql-picker.ql-header .ql-picker-item[data-value="6"]::before { content: 'Heading 6'; }
+.cms-editor .ql-snow .ql-picker.ql-header { width: 110px; }
+
 .cms-editor .ql-editor h4 { font-size: 1.1rem;  font-weight: 600; margin: 1rem 0 0.5rem; }
 .cms-editor .ql-editor p  { margin: 0 0 1rem; }
 .cms-editor .ql-editor blockquote {
