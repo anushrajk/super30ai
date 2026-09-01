@@ -73,7 +73,20 @@ const BlogList = () => {
                   className="group rounded-2xl border border-border bg-background hover:border-primary/40 transition overflow-hidden flex flex-col"
                 >
                   {p.cover_image_url ? (
-                    <img src={p.cover_image_url} alt={p.title} className="w-full aspect-video object-cover" loading="lazy" />
+                    <img
+                      src={toMediaUrl(p.cover_image_url)}
+                      alt={p.title}
+                      loading="lazy"
+                      onError={(e) => {
+                        const el = e.currentTarget;
+                        el.style.display = "none";
+                        el.insertAdjacentHTML(
+                          "afterend",
+                          '<div class="w-full aspect-video bg-gradient-to-br from-muted to-muted/60"></div>'
+                        );
+                      }}
+                      className="w-full aspect-video object-cover bg-muted"
+                    />
                   ) : (
                     <div className="w-full aspect-video bg-gradient-to-br from-muted to-muted/60" />
                   )}
