@@ -492,108 +492,17 @@ const replaceSeoBlock = (html, block) => {
   return html.slice(0, start) + block + html.slice(end + endMarker.length);
 };
 
-const generateBlogPages = async (distIndexHtml, organization) => {
+/**
+ * Blog pages are rendered at request time by the `blog-ssr` edge function
+ * (proxied via /blog and /blog/:slug), so a newly published post appears in
+ * the HTML source immediately without a rebuild. We deliberately do NOT
+ * prerender static files here — they would shadow the proxy on the host.
+ * The build only keeps the sitemap in sync with the CMS.
+ */
+const generateBlogPages = async () => {
   const posts = await fetchPublishedPosts();
   if (!posts.length) return 0;
 
-  for (const post of posts) {
-    const url = `${siteOrigin}/blog/${post.slug}`;
-    const articleHtml = sanitizeArticleHtml(post.content || "");
-    const plain = htmlToText(articleHtml);
-    const title = post.meta_title || `${post.title} | The Super 30`;
-    const description = (post.meta_description || post.excerpt || plain).slice(0, 300);
-    const image = post.og_image_url || post.cover_image_url || OG_IMAGE;
-    const published = post.published_at ? new Date(post.published_at).toISOString() : undefined;
-    const modified = post.updated_at ? new Date(post.updated_at).toISOString() : published;
-
-    const article = {
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "@id": `${url}#article`,
-      mainEntityOfPage: { "@type": "WebPage", "@id": url },
-      headline: post.title.slice(0, 110),
-      description,
-      image: image ? [image] : undefined,
-      articleSection: post.category || undefined,
-      wordCount: plain ? plain.split(/\s+/).length : undefined,
-      keywords: post.meta_keywords || undefined,
-      datePublished: published,
-      dateModified: modified,
-      inLanguage: "en-IN",
-      author: {
-        "@type": "Person",
-        name: post.author_name || organization.name || "The Super 30",
-      },
-      publisher: {
-        "@type": "Organization",
-        name: organization.name || "The Super 30",
-        url: siteOrigin,
-        logo: { "@type": "ImageObject", url: `${siteOrigin}/og-image.jpg` },
-      },
-    };
-
-    const breadcrumb = {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "@id": `${url}#breadcrumb`,
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Home", item: `${siteOrigin}/` },
-        { "@type": "ListItem", position: 2, name: "Blog", item: `${siteOrigin}/blog` },
-        { "@type": "ListItem", position: 3, name: post.title, item: url },
-      ],
-    };
-
-    const schema = post.json_ld ? [post.json_ld, breadcrumb] : [article, breadcrumb];
-
-    const metadata = {
-      title,
-      description,
-      keywords: post.meta_keywords || "",
-      canonical: post.canonical_url || url,
-      robots: "index, follow",
-      ogTitle: post.og_title || post.meta_title || post.title,
-      ogDescription: post.og_description || description,
-      ogType: "article",
-      ogUrl: url,
-      image,
-      imageAlt: post.title,
-      twitterCard: "summary_large_image",
-      twitterTitle: post.og_title || post.meta_title || post.title,
-      twitterDescription: post.og_description || description,
-      articleMeta: [
-        published ? `<meta property="article:published_time" content="${escapeHtml(published)}" />` : "",
-        modified ? `<meta property="article:modified_time" content="${escapeHtml(modified)}" />` : "",
-        post.author_name ? `<meta property="article:author" content="${escapeHtml(post.author_name)}" />` : "",
-        post.category ? `<meta property="article:section" content="${escapeHtml(post.category)}" />` : "",
-      ].filter(Boolean),
-      schema,
-    };
-
-    const baseHtml = replaceSeoBlock(distIndexHtml, buildBlogSeoContent(post, url, articleHtml));
-    const outputFile = path.join(rootDir, "dist", "blog", post.slug, "index.html");
-    await fs.mkdir(path.dirname(outputFile), { recursive: true });
-    await fs.writeFile(outputFile, injectMetadata(baseHtml, metadata), "utf8");
-  }
-
-  // Blog index: list every published post so the archive is crawlable too.
-  const listFile = path.join(rootDir, "dist", "blog", "index.html");
-  try {
-    const listHtml = await fs.readFile(listFile, "utf8");
-    const items = posts
-      .map(
-        (post) =>
-          `          <li><a href="/blog/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a>` +
-          `${post.excerpt ? ` — ${escapeHtml(post.excerpt)}` : ""}</li>`
-      )
-      .join("\n");
-    const injected = listHtml.replace(
-      "</article>\n    </div>",
-      `  <section>\n          <h2>Latest articles</h2>\n          <ul>\n${items}\n          </ul>\n        </section>\n      </article>\n    </div>`
-    );
-    await fs.writeFile(listFile, injected, "utf8");
-  } catch {
-    /* blog index not generated */
-  }
 
   // Sitemap: keep published post URLs in sync with the CMS.
   const sitemapFile = path.join(rootDir, "dist", "sitemap.xml");
@@ -706,7 +615,7 @@ const main = async () => {
     await writeRoute(route.routePath, metadata);
   }
 
-  const blogCount = await generateBlogPages(distIndexHtml, organization);
+  const blogCount = await generateBlogPages();
 
   console.log(`Generated SEO HTML for ${generatedCount} static routes and ${blogCount} blog posts.`);
 
