@@ -103,8 +103,23 @@ const render = (shell: string, head: string, seoContent: string) => {
   return html;
 };
 
+const NAV = `      <nav>
+        <a href="/">Home</a>
+        <a href="/digital-marketing-agency-bangalore">Digital Marketing Agency Bangalore</a>
+        <a href="/seo-company-bangalore">AI SEO Company Bangalore</a>
+        <a href="/lead-generation-agency-bangalore">Lead Generation Agency Bangalore</a>
+        <a href="/google-ads-agency-bangalore">Google Ads Agency Bangalore</a>
+        <a href="/social-media-marketing-agency-bangalore">Social Media Marketing Agency Bangalore</a>
+        <a href="/web-design-company-bangalore">Web Design Company Bangalore</a>
+        <a href="/our-work">Our Work</a>
+        <a href="/internet-marketing-agency">Team S30</a>
+        <a href="/blog">Blog</a>
+        <a href="/contact-us">Contact Us</a>
+      </nav>`;
+
 const wrapSeo = (inner: string) =>
   `<div id="seo-content" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;">
+${NAV}
 ${inner}
     </div>`;
 
