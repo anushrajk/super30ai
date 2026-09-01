@@ -260,7 +260,9 @@ ${posts
 
 Deno.serve(async (req) => {
   const { pathname } = new URL(req.url);
-  const slug = decodeURIComponent(pathname.replace(/^\/functions\/v1\/blog-ssr\/?/, "").replace(/\/+$/, ""));
+  const slug = decodeURIComponent(
+    pathname.replace(/^.*blog-ssr\/?/, "").replace(/^blog\//, "").replace(/\/+$/, "")
+  );
 
   let shell: string;
   try {
