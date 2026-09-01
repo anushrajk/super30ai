@@ -18,6 +18,15 @@ interface Post {
   published_at: string | null;
 }
 
+/** Rewrite legacy public-bucket URLs to the public media proxy. */
+const toMediaUrl = (url?: string | null): string | undefined =>
+  url
+    ? url.replace(
+        /\/storage\/v1\/object\/public\/blog-media\//g,
+        "/functions/v1/blog-media/"
+      )
+    : undefined;
+
 const BlogList = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
