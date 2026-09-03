@@ -36,7 +36,7 @@
 /bulk-sms-marketing-agency-bangalore /bulk-sms-services-bangalore 301
 /video-photography-production-bangalore /corporate-video-maker-bangalore 301
 
-/blog https://lunltoazmbezbfvozlfb.supabase.co/functions/v1/blog-ssr 200
-/blog/:slug https://lunltoazmbezbfvozlfb.supabase.co/functions/v1/blog-ssr/:slug 200
+
+
 
 /* /index.html 200
