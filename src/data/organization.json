@@ -28,7 +28,6 @@
     { "type": "State", "name": "Karnataka" },
     { "type": "Country", "name": "India" }
   ],
-  "aggregateRating": { "ratingValue": 4.8, "bestRating": 5, "worstRating": 1, "reviewCount": 127 },
   "defaultOffer": { "priceCurrency": "INR", "lowPrice": 25000, "highPrice": 250000 },
   "sameAs": [
     "https://www.instagram.com/thesuper30.ai/",
