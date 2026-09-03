@@ -1,13 +1,4 @@
 {
-  "rewrites": [
-    {
-      "source": "/blog",
-      "destination": "https://lunltoazmbezbfvozlfb.supabase.co/functions/v1/blog-ssr"
-    },
-    {
-      "source": "/blog/:slug",
-      "destination": "https://lunltoazmbezbfvozlfb.supabase.co/functions/v1/blog-ssr/:slug"
-    },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "cleanUrls": true,
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
