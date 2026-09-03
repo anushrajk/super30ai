@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { hasPrerenderedSchema } from "@/lib/pageSchema";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
@@ -174,7 +175,9 @@ const BlogPost = () => {
         {ogImage && <meta name="twitter:image" content={ogImage} />}
         {post.published_at && <meta property="article:published_time" content={post.published_at} />}
         {post.author_name && <meta property="article:author" content={post.author_name} />}
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        {!hasPrerenderedSchema() && (
+          <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+        )}
       </Helmet>
 
       <Navbar />

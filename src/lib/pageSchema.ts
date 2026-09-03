@@ -19,3 +19,8 @@ export const buildRouteSchema = (path: string): Record<string, unknown>[] =>
     faqs: faqsData,
     seo: seoMetaData,
   }) as Record<string, unknown>[];
+
+/** True when the prerendered HTML already contains this route's JSON-LD. */
+export const hasPrerenderedSchema = (): boolean =>
+  typeof document !== "undefined" &&
+  !!document.querySelector('script[type="application/ld+json"][data-schema="prerender"]');
