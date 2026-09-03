@@ -705,7 +705,7 @@ const main = async () => {
     await writeRoute(route.routePath, metadata);
   }
 
-  const blogCount = await generateBlogPages();
+  const blogCount = await generateBlogPages(distIndexHtml);
 
   console.log(`Generated SEO HTML for ${generatedCount} static routes and ${blogCount} blog posts.`);
 
