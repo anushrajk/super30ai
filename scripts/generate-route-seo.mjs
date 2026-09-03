@@ -173,7 +173,7 @@ const injectMetadata = (html, metadata) => {
   const schemaTags = (metadata.schema || [])
     .map(
       (node) =>
-        `<script type="application/ld+json">${JSON.stringify(node).replace(/</g, "\\u003c")}</script>`
+        `<script type="application/ld+json" data-schema="prerender">${JSON.stringify(node).replace(/</g, "\\u003c")}</script>`
     )
     .join("\n    ");
 

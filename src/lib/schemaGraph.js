@@ -16,17 +16,6 @@ const pageId = (url) => `${url}#webpage`;
 const areaServedNodes = (org) =>
   (org.areaServed || []).map((a) => ({ "@type": a.type, name: a.name }));
 
-const ratingNode = (rating) =>
-  rating
-    ? {
-        "@type": "AggregateRating",
-        ratingValue: rating.ratingValue,
-        bestRating: rating.bestRating,
-        worstRating: rating.worstRating,
-        reviewCount: rating.reviewCount,
-      }
-    : undefined;
-
 /** LocalBusiness (ProfessionalService) node — carries NAP, geo, hours, price range, rating. */
 export const buildOrganizationNode = (org) => {
   const node = {
