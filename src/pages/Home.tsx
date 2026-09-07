@@ -204,7 +204,6 @@ const Home = () => {
         <WhoIsThisForSection />
         <TestimonialSection />
         <BlogSection />
-        <FAQSection slug="home" />
         <UnifiedCTASection
           variant="dark"
           headline="Work with a Growth-Oriented AI Digital Marketing Agency Today"
@@ -212,6 +211,7 @@ const Home = () => {
           primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }}
           secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }}
         />
+        <FAQSection slug="home" />
       </Suspense>
 
       <Footer />
