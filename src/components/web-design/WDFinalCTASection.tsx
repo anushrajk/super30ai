@@ -1,12 +1,9 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MessageCircle, Sparkles } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import { EnquiryPopup } from "@/components/EnquiryPopup";
 
 export const WDFinalCTASection = () => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
-  const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   return (
     <section ref={sectionRef} className="py-10 md:py-16 bg-brand relative overflow-hidden">
@@ -20,13 +17,8 @@ export const WDFinalCTASection = () => {
           <Button size="lg" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="bg-white text-brand hover:bg-white/90 font-semibold rounded-full px-8">
             <Sparkles className="w-4 h-4 mr-2" />Get Free Website Consultation<ArrowRight className="w-4 h-4 ml-2" />
           </Button>
-          <Button size="lg" variant="outline-white" onClick={() => setShowEnquiryPopup(true)} className="rounded-full px-8">
-            <MessageCircle className="w-4 h-4 mr-2" />Enquire Now
-          </Button>
         </div>
       </div>
-
-      <EnquiryPopup open={showEnquiryPopup} onOpenChange={setShowEnquiryPopup} />
     </section>
   );
 };
