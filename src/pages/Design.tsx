@@ -496,8 +496,8 @@ const DesignCTASection = () => {
   const [showEnquiry, setShowEnquiry] = useState(false);
 
   return (
-    <section className="py-16 md:py-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+    <section className="py-16 md:py-24 bg-[#0a0a0a] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       <div className="container mx-auto px-4 relative text-center">
         <div className="max-w-3xl mx-auto">
@@ -505,10 +505,10 @@ const DesignCTASection = () => {
             <Heart className="w-4 h-4" />
             <span className="text-sm font-medium">Let's Create Together</span>
           </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Partner with Bangalore's <span className="text-brand">Leading Graphic Design Agency</span>
           </h2>
-          <p className="text-muted-foreground text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
             From social media creatives and marketing collateral to complete brand identity systems, our graphic design agency in Bangalore creates impactful visuals that strengthen brand presence, enhance communication, and support business growth.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
@@ -603,8 +603,8 @@ const Design = () => {
         <SocialMediaShowcase />
         <PortfolioCaseStudySection />
         <DesignProcessSection />
-        <DesignFAQSection />
         <DesignCTASection />
+        <DesignFAQSection />
       </main>
       <Footer />
     </>

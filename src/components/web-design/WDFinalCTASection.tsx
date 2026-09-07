@@ -9,7 +9,7 @@ export const WDFinalCTASection = () => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 bg-brand relative overflow-hidden">
+    <section ref={sectionRef} className="py-10 md:py-16 bg-[#0a0a0a] relative overflow-hidden">
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
       <div className="absolute top-10 right-10 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
       

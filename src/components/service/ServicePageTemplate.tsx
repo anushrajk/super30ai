@@ -382,7 +382,7 @@ const FAQSection = ({ faq }: { faq: ServicePageConfig["faq"] }) => {
 
 // ── Final CTA ──
 const FinalCTASection = ({ data }: { data: ServicePageConfig["finalCTA"] }) => (
-  <section className="py-12 md:py-20 bg-[#020617]">
+  <section className="py-12 md:py-20 bg-[#0a0a0a]">
     <div className="container mx-auto px-4 text-center">
       {data.eyebrow && (
         <span className="inline-block text-xs font-semibold tracking-widest uppercase text-brand mb-3">{data.eyebrow}</span>

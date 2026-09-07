@@ -8,9 +8,8 @@ export const DMFinalCTASection = () => {
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   return (
-    <section className="py-20 md:py-28 bg-brand relative overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_hsl(18_100%_55%/0.4),_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_hsl(18_100%_40%/0.3),_transparent_50%)]" />
+    <section className="py-20 md:py-28 bg-[#0a0a0a] relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
       <div className="container mx-auto px-4 text-center relative">
         <span className="text-white/60 text-xs font-bold uppercase tracking-[0.2em] mb-6 block">
