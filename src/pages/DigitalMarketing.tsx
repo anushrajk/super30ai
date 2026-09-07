@@ -148,14 +148,14 @@ const DigitalMarketing = () => {
           <DMRelevanceSection />
         </Suspense>
 
-        {/* Section 9: FAQ */}
-        <Suspense fallback={null}>
-          <DMFAQSection />
-        </Suspense>
-
-        {/* Section 10: Final CTA */}
+        {/* Section 9: Final CTA */}
         <Suspense fallback={null}>
           <DMFinalCTASection />
+        </Suspense>
+
+        {/* Section 10: FAQ */}
+        <Suspense fallback={null}>
+          <DMFAQSection />
         </Suspense>
 
         <Suspense fallback={null}>
