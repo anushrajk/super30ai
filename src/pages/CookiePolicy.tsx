@@ -73,7 +73,7 @@ const CookiePolicy = () => {
                 Cookie Policy
               </h1>
               <p className="text-sm sm:text-base md:text-lg text-slate-400">
-                Last updated: December 2024
+                Last updated: September 2026
               </p>
             </div>
           </div>
@@ -194,6 +194,7 @@ const CookiePolicy = () => {
                     <p className="text-foreground font-semibold text-sm md:text-base">The Super 30</p>
                     <p className="text-muted-foreground text-sm">Email: privacy@thesuper30.ai</p>
                     <p className="text-muted-foreground text-sm">Phone: +91 89041 50555</p>
+                    <p className="text-muted-foreground text-sm">Address: 1st Floor, 46/A, 1st Main Rd, Opposite Mini Forest, Sarakki Industrial Layout, 3rd Phase, J. P. Nagar, Bengaluru, Karnataka 560078</p>
                   </div>
                 </div>
               </div>
