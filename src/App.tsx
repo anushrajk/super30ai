@@ -41,6 +41,7 @@ const SeoCourse = lazy(() => import("./pages/SeoCourse"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const CookiePolicy = lazy(() => import("./pages/CookiePolicy"));
+const RefundPolicy = lazy(() => import("./pages/RefundPolicy"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const BlogList = lazy(() => import("./pages/BlogList"));
@@ -220,6 +221,7 @@ const App = () => (
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms-of-service" element={<TermsOfService />} />
                 <Route path="/cookie-policy" element={<CookiePolicy />} />
+                <Route path="/refund-policy" element={<RefundPolicy />} />
 
                 {/* Legacy URL Redirects */}
                 <Route path="/seo-experts-bangalore" element={<Navigate to="/internet-marketing-agency" replace />} />

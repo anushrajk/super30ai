@@ -88,6 +88,7 @@ const legal = [
   { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Terms of Service", href: "/terms-of-service" },
   { name: "Cookie Policy", href: "/cookie-policy" },
+  { name: "Refund Policy", href: "/refund-policy" },
 ];
 
 const socialLinks = [
@@ -262,7 +263,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
             <p className="text-gray-600 text-xs whitespace-nowrap">
               Serving businesses across Bangalore and India with AI-powered digital marketing services.
             </p>
-            <div className="flex items-center gap-6 whitespace-nowrap">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
               {legal.map((item) => (
                 <Link
                   key={item.name}
