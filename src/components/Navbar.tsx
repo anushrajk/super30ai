@@ -297,10 +297,10 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                       {item.categories ? (
                         item.mega ? (
                           <div>
-                            {/* Dark header bar */}
-                            <div className="flex items-center justify-between gap-6 px-6 py-3.5 bg-[#3f1708]">
-                              <p className="text-lg font-bold text-white">Solutions by Industry</p>
-                              <p className="text-sm text-white/60">
+                            {/* Header bar */}
+                            <div className="flex items-center justify-between gap-6 px-6 py-3.5 bg-muted/50 border-b border-border/50">
+                              <p className="text-lg font-bold text-foreground">Solutions by Industry</p>
+                              <p className="text-sm text-muted-foreground">
                                 AI-powered growth solutions tailored to your industry
                               </p>
                             </div>
@@ -310,7 +310,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                                 <div key={cat.label} className="min-w-0">
                                   <Link
                                     to={cat.href || "/contact-us"}
-                                    className="block text-center px-2 py-2 rounded-full bg-[hsl(var(--brand-orange))] text-white text-[13px] font-semibold leading-tight hover:opacity-90 transition-opacity"
+                                    className="block text-center px-2 py-2 rounded-full bg-primary/10 text-primary text-[13px] font-semibold leading-tight hover:bg-primary/15 transition-colors"
                                   >
                                     {cat.label}
                                   </Link>
@@ -319,7 +319,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                                       <Link
                                         key={sub.label}
                                         to={sub.href}
-                                        className="px-1.5 py-[5px] text-[12.5px] leading-snug text-neutral-800 hover:text-[hsl(var(--brand-orange))] transition-colors duration-150"
+                                        className="px-1.5 py-[5px] text-[12.5px] leading-snug text-foreground/80 hover:text-[hsl(var(--brand-orange))] transition-colors duration-150"
                                       >
                                         {sub.label}
                                       </Link>
@@ -329,8 +329,8 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                               ))}
                             </div>
                             {/* Footer strip */}
-                            <div className="flex items-center justify-between px-6 py-3 border-t border-neutral-200 bg-neutral-50">
-                              <p className="text-xs text-neutral-500">
+                            <div className="flex items-center justify-between px-6 py-3 border-t border-border/60 bg-muted/30">
+                              <p className="text-xs text-muted-foreground">
                                 6 industry hubs · 45+ sub-category specializations
                               </p>
                               <Link
