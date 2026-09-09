@@ -220,6 +220,85 @@ const BlogList = () => {
                 </div>
               </section>
 
+              {topics.length > 0 && (
+                <section className="mt-16 border-t border-border pt-10 md:mt-24 md:pt-14">
+                  <div className="mb-8"><p className="text-xs font-semibold uppercase text-editorial-accent">Browse by topic</p><h2 className="mt-2 text-2xl font-medium text-editorial-ink md:text-3xl">Explore our topic hubs</h2></div>
+                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                    {topics.map((topic) => (
+                      <button
+                        key={topic.name}
+                        type="button"
+                        onClick={() => { setActiveCategory(topic.name); window.scrollTo({ top: 0, behavior: "smooth" }); }}
+                        className="group flex items-center justify-between border border-border p-6 text-left transition-colors hover:border-editorial-accent"
+                      >
+                        <span>
+                          <span className="block text-base font-medium text-editorial-ink transition-colors group-hover:text-editorial-accent"><Tag className="mr-2 inline h-4 w-4 text-editorial-accent" />{topic.name}</span>
+                          <span className="mt-1 block text-xs uppercase text-muted-foreground">{topic.count} article{topic.count === 1 ? "" : "s"}</span>
+                        </span>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
+                      </button>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {(editorPicks.length > 0 || popularPosts.length > 0) && (
+                <div className="mt-16 grid gap-12 border-t border-border pt-10 lg:grid-cols-12 lg:gap-16 md:mt-24 md:pt-14">
+                  {editorPicks.length > 0 && (
+                    <section className="lg:col-span-7">
+                      <div className="mb-7 flex items-center gap-2"><BookOpen className="h-4 w-4 text-editorial-accent" /><p className="text-xs font-semibold uppercase text-editorial-accent">Editor's picks</p></div>
+                      <div className="divide-y divide-border border-y border-border">
+                        {editorPicks.map((post) => (
+                          <Link key={post.id} to={`/blog/${post.slug}`} className="group flex gap-5 py-6">
+                            <div className="hidden h-24 w-36 shrink-0 overflow-hidden bg-muted sm:block">
+                              {post.cover_image_url && <img src={toMediaUrl(post.cover_image_url)} alt={post.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]" />}
+                            </div>
+                            <div className="min-w-0">
+                              <p className="text-xs uppercase text-editorial-accent">{post.category ?? "Insights"}</p>
+                              <h3 className="mt-2 text-lg font-medium leading-snug text-editorial-ink transition-colors group-hover:text-editorial-accent">{post.title}</h3>
+                              {post.excerpt && <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>}
+                            </div>
+                          </Link>
+                        ))}
+                      </div>
+                    </section>
+                  )}
+
+                  {popularPosts.length > 0 && (
+                    <section className="lg:col-span-5">
+                      <div className="mb-7 flex items-center gap-2"><TrendingUp className="h-4 w-4 text-editorial-accent" /><p className="text-xs font-semibold uppercase text-editorial-accent">Popular this month</p></div>
+                      <ol className="divide-y divide-border border-y border-border">
+                        {popularPosts.map((post, index) => (
+                          <li key={post.id}>
+                            <Link to={`/blog/${post.slug}`} className="group flex items-start gap-4 py-5">
+                              <span className="text-2xl leading-none text-border">{String(index + 1).padStart(2, "0")}</span>
+                              <span className="min-w-0">
+                                <span className="line-clamp-2 block text-sm font-medium leading-snug text-foreground transition-colors group-hover:text-editorial-accent">{post.title}</span>
+                                <span className="mt-2 block text-xs uppercase text-muted-foreground">{post.read_time ?? "Quick read"}</span>
+                              </span>
+                            </Link>
+                          </li>
+                        ))}
+                      </ol>
+                    </section>
+                  )}
+                </div>
+              )}
+
+              <section className="mt-16 border-t border-border pt-10 md:mt-24 md:pt-14">
+                <div className="mb-8"><p className="text-xs font-semibold uppercase text-editorial-accent">Work with us</p><h2 className="mt-2 text-2xl font-medium text-editorial-ink md:text-3xl">Services our readers explore most</h2></div>
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                  {serviceLinks.map((service) => (
+                    <Link key={service.to} to={service.to} className="group border border-border p-6 transition-colors hover:border-editorial-accent">
+                      <h3 className="text-base font-medium text-editorial-ink transition-colors group-hover:text-editorial-accent">{service.label}</h3>
+                      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{service.description}</p>
+                      <span className="mt-4 flex items-center gap-2 text-sm font-medium text-foreground">Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+
+
               <section className="mt-16 bg-editorial-tint px-6 py-10 md:mt-24 md:px-12 md:py-14">
                 <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
                   <div className="max-w-2xl"><p className="text-xs font-semibold uppercase text-editorial-accent">Ready to grow?</p><h2 className="mt-3 text-2xl font-medium leading-tight text-editorial-ink md:text-4xl">Build a smarter digital growth strategy.</h2><p className="mt-3 text-muted-foreground">Get a focused consultation with The Super 30 team.</p></div>
