@@ -131,13 +131,6 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                   <span className="text-xs font-semibold uppercase text-editorial-accent">Knowledge Hub</span>
                   <span className="h-px flex-1 bg-border" aria-hidden="true" />
                 </div>
-                <h1 className="max-w-4xl text-5xl font-semibold leading-[0.92] text-editorial-ink sm:text-6xl md:text-8xl">
-                  Super 30
-                  <span className="mt-1 block text-muted-foreground">Perspectives.</span>
-                </h1>
-                <p className="mt-7 max-w-2xl border-l-2 border-editorial-accent pl-5 text-base leading-relaxed text-muted-foreground md:text-lg">
-                  Practical insights on AI SEO, performance marketing, lead generation and digital growth.
-                </p>
               </div>
 
               <div className="flex flex-col justify-between border-t border-border py-7 lg:border-t-0 lg:py-12 lg:pl-10">
