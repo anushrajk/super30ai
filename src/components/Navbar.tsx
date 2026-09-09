@@ -89,54 +89,86 @@ const menuItems: NavMenuItem[] = [
     mega: true,
     categories: [
       {
-        label: "Marketing & Growth",
+        label: "Education",
+        href: "/industries/education",
         items: [
-          { label: "AI SEO Solutions", href: "/seo-company-bangalore" },
-          { label: "Google Ads Solutions", href: "/google-ads-agency-bangalore" },
-          { label: "Social Media Marketing", href: "/social-media-marketing-agency-bangalore" },
-          { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
-          { label: "Ecommerce Marketing", href: "/ecommerce-marketing-agency-bangalore" },
+          { label: "Pre-schools & Daycares", href: "/industries/education" },
+          { label: "K-12 Schools", href: "/industries/education" },
+          { label: "Colleges", href: "/industries/education" },
+          { label: "Universities", href: "/industries/education" },
+          { label: "Coaching Institutes", href: "/industries/education" },
+          { label: "Govt Education Programs", href: "/industries/education" },
+          { label: "EdTech Platforms", href: "/industries/education" },
+          { label: "Skilling & Vocational", href: "/industries/education" },
         ],
       },
       {
-        label: "Design & Branding",
+        label: "E-Commerce",
+        href: "/industries/ecommerce",
         items: [
-          { label: "Branding (Brand Kit)", href: "/branding-agency-bangalore" },
-          { label: "Logo Design", href: "/logo-design-company-bangalore" },
-          { label: "UI/UX Design", href: "/ui-ux-design-agency-bangalore" },
+          { label: "D2C Brands", href: "/industries/ecommerce" },
+          { label: "Marketplace Sellers", href: "/industries/ecommerce" },
+          { label: "Fashion & Apparel", href: "/industries/ecommerce" },
+          { label: "Electronics & Gadgets", href: "/industries/ecommerce" },
+          { label: "Grocery/Quick Commerce", href: "/industries/ecommerce" },
+          { label: "Home & Furniture", href: "/industries/ecommerce" },
+          { label: "Beauty & Personal Care", href: "/industries/ecommerce" },
+          { label: "B2B/Wholesale", href: "/industries/ecommerce" },
         ],
       },
       {
-        label: "Content & Copy",
+        label: "Lifestyle",
+        href: "/industries/lifestyle",
         items: [
-          { label: "Website Content", href: "/seo-content-writing-company-bangalore" },
-          { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
-          { label: "Script Writing", href: "/script-writing-agency-bangalore" },
+          { label: "Fashion & Apparel", href: "/industries/lifestyle" },
+          { label: "Beauty & Cosmetics", href: "/industries/lifestyle" },
+          { label: "Wellness & Fitness", href: "/industries/lifestyle" },
+          { label: "Home Decor & Furniture", href: "/industries/lifestyle" },
+          { label: "F&B (Restaurants, Cafes)", href: "/industries/lifestyle" },
+          { label: "Travel & Hospitality", href: "/industries/lifestyle" },
+          { label: "Jewelry & Accessories", href: "/industries/lifestyle" },
+          { label: "Weddings & Events", href: "/industries/lifestyle" },
         ],
       },
       {
-        label: "Video & Photography",
+        label: "Sports",
+        href: "/industries/sports",
         items: [
-          { label: "Video Production", href: "/video-production-agency-bangalore" },
-          { label: "Photography", href: "/photography-services-bangalore" },
+          { label: "Sports Academies", href: "/industries/sports" },
+          { label: "Gyms & Fitness Studios", href: "/industries/sports" },
+          { label: "Sports Events/Tournaments", href: "/industries/sports" },
+          { label: "Sports Teams/Clubs", href: "/industries/sports" },
+          { label: "Equipment & Gear Brands", href: "/industries/sports" },
+          { label: "Individual Athletes", href: "/industries/sports" },
+          { label: "Sports Tech & Apps", href: "/industries/sports" },
         ],
       },
       {
-        label: "Web Development",
+        label: "Healthcare",
+        href: "/industries/healthcare",
         items: [
-          { label: "Website Development", href: "/web-development-company-bangalore" },
-          { label: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
+          { label: "Hospitals", href: "/industries/healthcare" },
+          { label: "Clinics & Nursing Homes", href: "/industries/healthcare" },
+          { label: "Dental Practices", href: "/industries/healthcare" },
+          { label: "Diagnostic Centers/Labs", href: "/industries/healthcare" },
+          { label: "Pharma/Pharmacy Brands", href: "/industries/healthcare" },
+          { label: "Mental Health Clinics", href: "/industries/healthcare" },
+          { label: "Fertility & IVF Centers", href: "/industries/healthcare" },
+          { label: "Telehealth Platforms", href: "/industries/healthcare" },
+          { label: "Ayurveda & Alt. Medicine", href: "/industries/healthcare" },
         ],
       },
       {
-        label: "Solutions by Industry",
+        label: "Businesses (B2B)",
+        href: "/industries/b2b",
         items: [
-          { label: "Education", href: "/industries/education" },
-          { label: "E-Commerce", href: "/industries/ecommerce" },
-          { label: "Lifestyle", href: "/industries/lifestyle" },
-          { label: "Sports", href: "/industries/sports" },
-          { label: "Healthcare", href: "/industries/healthcare" },
-          { label: "Businesses (B2B)", href: "/industries/b2b" },
+          { label: "Startups & SaaS", href: "/industries/b2b" },
+          { label: "BFSI", href: "/industries/b2b" },
+          { label: "Real Estate & Construction", href: "/industries/b2b" },
+          { label: "Manufacturing/Industrial", href: "/industries/b2b" },
+          { label: "Professional Services", href: "/industries/b2b" },
+          { label: "Logistics & Supply Chain", href: "/industries/b2b" },
+          { label: "IT & Tech Services", href: "/industries/b2b" },
         ],
       },
     ],
@@ -260,23 +292,34 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
                 {/* Desktop Dropdown */}
                 {hasDropdown(item) && openDesktop === item.label && (
-                  <div className={`absolute top-full pt-2 z-50 ${item.mega ? "left-1/2 -translate-x-1/2" : "left-0"}`}>
-                    <div className={`bg-background border border-border/60 rounded-xl shadow-xl p-2 animate-in fade-in slide-in-from-top-2 duration-200 ${item.mega ? "w-[920px] max-w-[calc(100vw-2rem)] p-4" : "min-w-[220px]"}`}>
+                  <div className={`${item.mega ? "fixed left-1/2 -translate-x-1/2 top-16 md:top-20" : "absolute top-full left-0"} pt-2 z-50`}>
+                    <div className={`bg-white border border-border/60 rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden ${item.mega ? "w-[1080px] max-w-[calc(100vw-2rem)]" : "min-w-[220px] p-2"}`}>
                       {item.categories ? (
                         item.mega ? (
                           <div>
-                            <div className="grid grid-cols-3 gap-x-6 gap-y-4">
+                            {/* Dark header bar */}
+                            <div className="flex items-center justify-between gap-6 px-6 py-3.5 bg-[#3f1708]">
+                              <p className="text-lg font-bold text-white">Solutions by Industry</p>
+                              <p className="text-sm text-white/60">
+                                AI-powered growth solutions tailored to your industry
+                              </p>
+                            </div>
+                            {/* Industry columns */}
+                            <div className="grid grid-cols-6 gap-x-4 px-5 py-5 bg-white">
                               {item.categories.map((cat) => (
-                                <div key={cat.label}>
-                                  <p className="px-3 pb-2 text-xs font-semibold text-[hsl(var(--brand-orange))] uppercase tracking-wider border-b border-border/50">
+                                <div key={cat.label} className="min-w-0">
+                                  <Link
+                                    to={cat.href || "/contact-us"}
+                                    className="block text-center px-2 py-2 rounded-full bg-[hsl(var(--brand-orange))] text-white text-[13px] font-semibold leading-tight hover:opacity-90 transition-opacity"
+                                  >
                                     {cat.label}
-                                  </p>
-                                  <div className="pt-1">
+                                  </Link>
+                                  <div className="pt-2.5 flex flex-col">
                                     {cat.items.map((sub) => (
                                       <Link
-                                        key={sub.href}
+                                        key={sub.label}
                                         to={sub.href}
-                                        className="block px-3 py-2 text-sm text-foreground/80 hover:text-[hsl(var(--brand-orange))] hover:bg-muted/50 rounded-lg transition-colors duration-150"
+                                        className="px-1.5 py-[5px] text-[12.5px] leading-snug text-neutral-800 hover:text-[hsl(var(--brand-orange))] transition-colors duration-150"
                                       >
                                         {sub.label}
                                       </Link>
@@ -285,9 +328,10 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                                 </div>
                               ))}
                             </div>
-                            <div className="mt-4 pt-3 border-t border-border/50 flex items-center justify-between px-3">
-                              <p className="text-xs text-muted-foreground">
-                                15 solutions grouped into 5 clusters · 6 industry hubs
+                            {/* Footer strip */}
+                            <div className="flex items-center justify-between px-6 py-3 border-t border-neutral-200 bg-neutral-50">
+                              <p className="text-xs text-neutral-500">
+                                6 industry hubs · 45+ sub-category specializations
                               </p>
                               <Link
                                 to="/contact-us"
