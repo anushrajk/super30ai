@@ -102,6 +102,30 @@ const BlogList = () => {
   const featuredPost = filteredPosts[0];
   const latestPosts = filteredPosts.slice(1, 4);
 
+  const topics = useMemo(() => {
+    const counts = new Map<string, number>();
+    posts.forEach((post) => {
+      const name = post.category?.trim();
+      if (name) counts.set(name, (counts.get(name) ?? 0) + 1);
+    });
+    return Array.from(counts, ([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count).slice(0, 8);
+  }, [posts]);
+
+  const editorPicks = useMemo(() => {
+    const seen = new Set<string>();
+    return posts.filter((post) => {
+      const key = post.category ?? "Insights";
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    }).slice(0, 4);
+  }, [posts]);
+
+  const popularPosts = useMemo(
+    () => posts.filter((post) => !editorPicks.some((pick) => pick.id === post.id)).slice(0, 5),
+    [posts, editorPicks]
+  );
+
   return (
     <>
       <Helmet>
