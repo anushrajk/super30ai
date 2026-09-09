@@ -118,30 +118,56 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
       <Navbar />
       <main ref={ref} className="min-h-screen bg-background pt-20 md:pt-24">
         <div className="container mx-auto px-4 py-10 md:py-16">
-          <header className="mb-10 border-y border-editorial-ink md:mb-14">
-            <div className="flex items-center justify-between border-b border-border py-3 text-[11px] font-semibold uppercase text-muted-foreground">
-              <span>The Super 30 Journal</span>
-              <span>{loading ? "Curated insights" : `${posts.length} expert article${posts.length === 1 ? "" : "s"}`}</span>
-            </div>
+          <header className="mb-10 md:mb-14">
+            {/* Orange + Black hero banner */}
+            <div className="relative overflow-hidden rounded-2xl bg-black md:rounded-3xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-[hsl(var(--brand-orange))]/20 via-transparent to-transparent" aria-hidden="true" />
+              <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[hsl(var(--brand-orange))]/30 blur-3xl md:h-56 md:w-56" aria-hidden="true" />
+              <div className="absolute -bottom-12 -left-12 h-32 w-32 rounded-full bg-[hsl(var(--brand-orange))]/20 blur-2xl md:h-48 md:w-48" aria-hidden="true" />
 
-            <div className="flex flex-col gap-5 py-5 md:flex-row md:items-center md:justify-between md:gap-10">
-              <div className="flex items-center gap-3">
-                <span className="h-2.5 w-2.5 bg-editorial-accent" aria-hidden="true" />
-                <span className="text-xs font-semibold uppercase text-editorial-accent">Knowledge Hub</span>
-                <span className="hidden h-px w-16 bg-border md:block" aria-hidden="true" />
-                <span className="hidden text-xs text-muted-foreground md:block">AI SEO, lead generation and growth insights from our team.</span>
+              <div className="relative flex flex-col items-start justify-between gap-6 px-6 py-10 md:flex-row md:items-center md:px-12 md:py-14">
+                <div className="max-w-2xl">
+                  <div className="flex items-center gap-2.5">
+                    <span className="h-2 w-2 rounded-full bg-[hsl(var(--brand-orange))]" aria-hidden="true" />
+                    <span className="text-xs font-semibold uppercase tracking-widest text-[hsl(var(--brand-orange))]">The Super 30 Journal</span>
+                  </div>
+                  <h1 className="mt-4 text-3xl font-semibold leading-[1.1] tracking-tight text-white md:text-5xl lg:text-6xl">
+                    Super 30 <span className="text-[hsl(var(--brand-orange))]">Perspectives.</span>
+                  </h1>
+                  <p className="mt-4 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
+                    Practical insights on AI SEO, performance marketing, lead generation and digital growth.
+                  </p>
+                </div>
+
+                <div className="w-full md:max-w-sm">
+                  <label className="flex h-12 items-center gap-3 rounded-full border border-white/20 bg-white/10 px-5 backdrop-blur-sm transition-all focus-within:border-[hsl(var(--brand-orange))] focus-within:bg-white/15 md:h-14">
+                    <Search className="h-5 w-5 text-[hsl(var(--brand-orange))]" aria-hidden="true" />
+                    <span className="sr-only">Search articles</span>
+                    <input
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                      placeholder="Search insights"
+                      className="h-full min-w-0 flex-1 bg-transparent text-base text-white outline-none placeholder:text-white/50"
+                    />
+                  </label>
+                  <p className="mt-2.5 text-xs text-white/50">
+                    {loading ? "Loading articles…" : `${posts.length} expert article${posts.length === 1 ? "" : "s"} available`}
+                  </p>
+                </div>
               </div>
-              <label className="flex h-12 w-full items-center gap-3 border-b-2 border-editorial-ink transition-colors focus-within:border-editorial-accent md:max-w-sm">
-                <Search className="h-5 w-5 text-editorial-accent" aria-hidden="true" />
-                <span className="sr-only">Search articles</span>
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search insights"
-                  className="h-full min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground"
-                />
-                <span className="text-xs font-semibold uppercase text-muted-foreground">Search</span>
-              </label>
+
+              <div className="relative border-t border-white/10 px-6 py-3 md:px-12">
+                <div className="flex flex-wrap items-center gap-2 text-xs font-medium uppercase tracking-wide text-white/60">
+                  <span className="text-[hsl(var(--brand-orange))]">Explore topics:</span>
+                  <span>AI SEO</span>
+                  <span className="hidden text-white/30 sm:inline">•</span>
+                  <span>Lead Generation</span>
+                  <span className="hidden text-white/30 sm:inline">•</span>
+                  <span>Performance Marketing</span>
+                  <span className="hidden text-white/30 sm:inline">•</span>
+                  <span>Digital Growth</span>
+                </div>
+              </div>
             </div>
 
             {!loading && categories.length > 1 && (
