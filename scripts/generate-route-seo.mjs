@@ -422,6 +422,28 @@ const sanitizeArticleHtml = (html = "") =>
     .replace(/\sjavascript:/gi, " ")
     .replace(/\/storage\/v1\/object\/public\/blog-media\//g, "/functions/v1/blog-media/")
     .replace(/&nbsp;|&#160;|\u00a0/gi, " ")
+    .replace(/\sstyle="([^"]*)"/gi, (_m, decls) => {
+      const kept = decls
+        .split(";")
+        .filter(
+          (d) =>
+            d.trim() &&
+            !/^\s*(color|background|background-color|font-family|font-size|line-height)\s*:/i.test(d)
+        )
+        .join("; ")
+        .trim();
+      return kept ? ` style="${kept}"` : "";
+    })
+    .replace(
+      /<p[^>]*>(?:\s|<strong[^>]*>|<span[^>]*>|<b>)*table of contents\s*:?(?:\s|<\/strong>|<\/span>|<\/b>)*<\/p>/gi,
+      "<h2>Table of Contents</h2>"
+    )
+    .replace(/<h1([^>]*)>/gi, "<h2$1>")
+    .replace(/<\/h1>/gi, "</h2>")
+    .replace(
+      /<p[^>]*>(?:\s|<br\s*\/?>|<span[^>]*>|<\/span>|<strong[^>]*>|<\/strong>|<em[^>]*>|<\/em>)*<\/p>/gi,
+      ""
+    )
     .trim();
 
 const htmlToText = (html = "") =>

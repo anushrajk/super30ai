@@ -228,6 +228,16 @@ All colors MUST be HSL.
 
 .blog-content > :last-child { margin-bottom: 0; }
 
+/* Table of Contents block — first list right after the ToC heading */
+.blog-content > h2:first-child + ol,
+.blog-content > h2:first-child + ul {
+  padding: 1.4rem 1.5rem 1.4rem 2.75rem;
+  background: hsl(var(--editorial-tint));
+  border-left: 4px solid hsl(var(--editorial-accent));
+}
+.blog-content > h2:first-child + ol li,
+.blog-content > h2:first-child + ul li { margin: 0.35rem 0; }
+
 .article-inline-cta {
   display: flex;
   align-items: center;
