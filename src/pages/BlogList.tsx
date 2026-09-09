@@ -124,34 +124,24 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
               <span>{loading ? "Curated insights" : `${posts.length} expert article${posts.length === 1 ? "" : "s"}`}</span>
             </div>
 
-            <div className="grid lg:grid-cols-[minmax(0,1.6fr)_minmax(18rem,0.7fr)]">
-              <div className="py-9 pr-0 md:py-12 lg:border-r lg:border-border lg:pr-12">
-                <div className="mb-6 flex items-center gap-3">
-                  <span className="h-2.5 w-2.5 bg-editorial-accent" aria-hidden="true" />
-                  <span className="text-xs font-semibold uppercase text-editorial-accent">Knowledge Hub</span>
-                  <span className="h-px flex-1 bg-border" aria-hidden="true" />
-                </div>
+            <div className="flex flex-col gap-5 py-5 md:flex-row md:items-center md:justify-between md:gap-10">
+              <div className="flex items-center gap-3">
+                <span className="h-2.5 w-2.5 bg-editorial-accent" aria-hidden="true" />
+                <span className="text-xs font-semibold uppercase text-editorial-accent">Knowledge Hub</span>
+                <span className="hidden h-px w-16 bg-border md:block" aria-hidden="true" />
+                <span className="hidden text-xs text-muted-foreground md:block">AI SEO, lead generation and growth insights from our team.</span>
               </div>
-
-              <div className="flex flex-col justify-between border-t border-border py-7 lg:border-t-0 lg:py-12 lg:pl-10">
-                <div>
-                  <p className="text-xs font-semibold uppercase text-editorial-accent">Find your next idea</p>
-                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
-                    Search strategies, perspectives and practical guidance from our team.
-                  </p>
-                </div>
-                <label className="mt-8 flex h-14 w-full items-center gap-3 border-b-2 border-editorial-ink transition-colors focus-within:border-editorial-accent">
-                  <Search className="h-5 w-5 text-editorial-accent" aria-hidden="true" />
-                  <span className="sr-only">Search articles</span>
-                  <input
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Search insights"
-                    className="h-full min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground"
-                  />
-                  <span className="text-xs font-semibold uppercase text-muted-foreground">Search</span>
-                </label>
-              </div>
+              <label className="flex h-12 w-full items-center gap-3 border-b-2 border-editorial-ink transition-colors focus-within:border-editorial-accent md:max-w-sm">
+                <Search className="h-5 w-5 text-editorial-accent" aria-hidden="true" />
+                <span className="sr-only">Search articles</span>
+                <input
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  placeholder="Search insights"
+                  className="h-full min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground"
+                />
+                <span className="text-xs font-semibold uppercase text-muted-foreground">Search</span>
+              </label>
             </div>
 
             {!loading && categories.length > 1 && (
