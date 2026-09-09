@@ -19,6 +19,7 @@ interface NavMenuItem {
   href?: string;
   items?: SubItem[];
   categories?: SubCategory[];
+  mega?: boolean;
 }
 
 const menuItems: NavMenuItem[] = [
@@ -81,6 +82,63 @@ const menuItems: NavMenuItem[] = [
       { label: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
       { label: "Wordpress Website", href: "/wordpress-website-development-company-bangalore" },
       { label: "Website Maintenance Service", href: "/website-maintenance-company-bangalore" },
+    ],
+  },
+  {
+    label: "Solutions",
+    mega: true,
+    categories: [
+      {
+        label: "Marketing & Growth",
+        items: [
+          { label: "AI SEO Solutions", href: "/seo-company-bangalore" },
+          { label: "Google Ads Solutions", href: "/google-ads-agency-bangalore" },
+          { label: "Social Media Marketing", href: "/social-media-marketing-agency-bangalore" },
+          { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
+          { label: "Ecommerce Marketing", href: "/ecommerce-marketing-agency-bangalore" },
+        ],
+      },
+      {
+        label: "Design & Branding",
+        items: [
+          { label: "Branding (Brand Kit)", href: "/branding-agency-bangalore" },
+          { label: "Logo Design", href: "/logo-design-company-bangalore" },
+          { label: "UI/UX Design", href: "/ui-ux-design-agency-bangalore" },
+        ],
+      },
+      {
+        label: "Content & Copy",
+        items: [
+          { label: "Website Content", href: "/seo-content-writing-company-bangalore" },
+          { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
+          { label: "Script Writing", href: "/script-writing-agency-bangalore" },
+        ],
+      },
+      {
+        label: "Video & Photography",
+        items: [
+          { label: "Video Production", href: "/video-production-agency-bangalore" },
+          { label: "Photography", href: "/photography-services-bangalore" },
+        ],
+      },
+      {
+        label: "Web Development",
+        items: [
+          { label: "Website Development", href: "/web-development-company-bangalore" },
+          { label: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
+        ],
+      },
+      {
+        label: "Solutions by Industry",
+        items: [
+          { label: "Education", href: "/industries/education" },
+          { label: "E-Commerce", href: "/industries/ecommerce" },
+          { label: "Lifestyle", href: "/industries/lifestyle" },
+          { label: "Sports", href: "/industries/sports" },
+          { label: "Healthcare", href: "/industries/healthcare" },
+          { label: "Businesses (B2B)", href: "/industries/b2b" },
+        ],
+      },
     ],
   },
   {
