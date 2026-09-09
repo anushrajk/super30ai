@@ -88,9 +88,12 @@ const normalizeContent = (html: string): string => {
   // Merge adjacent blockquotes
   out = out.replace(/<\/blockquote>\s*<blockquote>/gi, "");
 
+  // Pasted Word/Docs colour + background inline styles break the site typography
+  out = out.replace(/\sstyle="[^"]*"/gi, "").replace(/\sstyle='[^']*'/gi, "");
+
   // A "Table of Contents" line pasted as a paragraph -> real heading
   out = out.replace(
-    /<p[^>]*>\s*(?:<strong>)?\s*table of contents\s*:?\s*(?:<\/strong>)?\s*<\/p>/gi,
+    /<p[^>]*>(?:\s|<strong[^>]*>|<span[^>]*>|<b>)*table of contents\s*:?(?:\s|<\/strong>|<\/span>|<\/b>)*<\/p>/gi,
     "<h2>Table of Contents</h2>"
   );
 
@@ -98,7 +101,10 @@ const normalizeContent = (html: string): string => {
   out = out.replace(/<h1([^>]*)>/gi, "<h2$1>").replace(/<\/h1>/gi, "</h2>");
 
   // Drop empty paragraphs that create random vertical gaps
-  out = out.replace(/<p[^>]*>(?:\s|<br\s*\/?>)*<\/p>/gi, "");
+  out = out.replace(
+    /<p[^>]*>(?:\s|<br\s*\/?>|<span[^>]*>|<\/span>|<strong[^>]*>|<\/strong>|<em[^>]*>|<\/em>)*<\/p>/gi,
+    ""
+  );
 
   return out;
 };
