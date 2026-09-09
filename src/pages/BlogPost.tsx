@@ -88,8 +88,17 @@ const normalizeContent = (html: string): string => {
   // Merge adjacent blockquotes
   out = out.replace(/<\/blockquote>\s*<blockquote>/gi, "");
 
-  // Pasted Word/Docs colour + background inline styles break the site typography
-  out = out.replace(/\sstyle="[^"]*"/gi, "").replace(/\sstyle='[^']*'/gi, "");
+  // Pasted Word/Docs colour, background and font inline styles break site typography
+  out = out.replace(/\sstyle="([^"]*)"/gi, (_m, decls: string) => {
+    const kept = decls
+      .split(";")
+      .filter(
+        (d) => d.trim() && !/^\s*(color|background|background-color|font-family|font-size|line-height)\s*:/i.test(d)
+      )
+      .join("; ")
+      .trim();
+    return kept ? ` style="${kept}"` : "";
+  });
 
   // A "Table of Contents" line pasted as a paragraph -> real heading
   out = out.replace(
