@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { forwardRef, useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { Calendar, Clock, ArrowRight, Loader2, Search, Sparkles } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Loader2, Search, Sparkles, BookOpen, ChartNoAxesCombined, SearchCheck, Target } from "lucide-react";
 
 interface Post {
   id: string;
@@ -60,7 +60,7 @@ const ArticleImage = ({ post, priority = false }: { post: Post; priority?: boole
   </div>
 );
 
-const BlogList = () => {
+const BlogList = forwardRef<HTMLElement>((_, ref) => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("All");
@@ -94,6 +94,19 @@ const BlogList = () => {
 
   const featuredPost = filteredPosts[0];
   const latestPosts = filteredPosts.slice(1, 4);
+  const editorialPicks = filteredPosts.slice(1, 4);
+  const topicGroups = categories
+    .filter((category) => category !== "All")
+    .map((category) => ({
+      category,
+      count: posts.filter((post) => post.category === category).length,
+    }));
+
+  const focusAreas = [
+    { title: "AI SEO", description: "Search visibility, content systems and strategies built for AI-powered discovery.", href: "/seo-company-bangalore", icon: SearchCheck },
+    { title: "Lead Generation", description: "Practical frameworks for attracting and converting qualified business opportunities.", href: "/lead-generation-agency-bangalore", icon: Target },
+    { title: "Performance Marketing", description: "Sharper campaign decisions grounded in measurement, testing and profitable growth.", href: "/performance-marketing-agency-bangalore", icon: ChartNoAxesCombined },
+  ];
 
   return (
     <>
@@ -103,7 +116,7 @@ const BlogList = () => {
         <link rel="canonical" href="https://www.thesuper30.ai/blog" />
       </Helmet>
       <Navbar />
-      <main className="min-h-screen bg-background pt-20 md:pt-24">
+      <main ref={ref} className="min-h-screen bg-background pt-20 md:pt-24">
         <div className="container mx-auto px-4 py-10 md:py-16">
           <header className="mb-10 border-b border-border pb-8 md:mb-12 md:pb-10">
             <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
@@ -202,6 +215,55 @@ const BlogList = () => {
                 </aside>
               </div>
 
+              {editorialPicks.length > 0 && (
+                <section className="mt-16 bg-editorial-ink px-6 py-10 text-primary-foreground md:mt-24 md:px-10 md:py-14">
+                  <div className="mb-8 flex flex-col gap-3 border-b border-primary-foreground/20 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                    <div>
+                      <p className="text-xs font-semibold uppercase text-editorial-accent">Selected by our team</p>
+                      <h2 className="mt-2 text-2xl font-medium md:text-3xl">Editor’s selection</h2>
+                    </div>
+                    <p className="max-w-md text-sm leading-relaxed text-primary-foreground/60">Focused reading for teams building a stronger, more measurable digital growth engine.</p>
+                  </div>
+                  <div className="grid divide-y divide-primary-foreground/20 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+                    {editorialPicks.map((post, index) => (
+                      <Link key={post.id} to={`/blog/${post.slug}`} className="group flex min-h-56 flex-col justify-between py-7 lg:px-8 lg:first:pl-0 lg:last:pr-0">
+                        <div>
+                          <div className="flex items-center justify-between text-xs uppercase text-primary-foreground/50">
+                            <span>{post.category ?? "Insights"}</span>
+                            <span>{String(index + 1).padStart(2, "0")}</span>
+                          </div>
+                          <h3 className="mt-5 text-xl font-medium leading-snug transition-colors group-hover:text-editorial-accent md:text-2xl">{post.title}</h3>
+                        </div>
+                        <span className="mt-8 flex items-center gap-2 text-sm font-medium text-editorial-accent">Read insight <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              <section className="mt-16 border-y border-border py-12 md:mt-24 md:py-16">
+                <div className="grid gap-8 lg:grid-cols-[0.8fr_2fr] lg:gap-16">
+                  <div>
+                    <p className="text-xs font-semibold uppercase text-editorial-accent">Growth library</p>
+                    <h2 className="mt-3 text-2xl font-medium leading-tight text-editorial-ink md:text-4xl">Start with the outcome you need.</h2>
+                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground md:text-base">Explore specialist thinking across the core areas that shape sustainable digital growth.</p>
+                  </div>
+                  <div className="grid gap-px overflow-hidden border border-border bg-border md:grid-cols-3">
+                    {focusAreas.map((area) => {
+                      const Icon = area.icon;
+                      return (
+                        <Link key={area.title} to={area.href} className="group flex min-h-64 flex-col bg-background p-7 transition-colors hover:bg-editorial-tint">
+                          <Icon className="h-6 w-6 text-editorial-accent" aria-hidden="true" />
+                          <h3 className="mt-10 text-xl font-medium text-editorial-ink">{area.title}</h3>
+                          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{area.description}</p>
+                          <span className="mt-auto flex items-center gap-2 pt-7 text-sm font-medium text-editorial-ink">Explore topic <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                </div>
+              </section>
+
               <section className="mt-16 border-t border-border pt-10 md:mt-24 md:pt-14">
                 <div className="mb-8 flex items-end justify-between gap-4">
                   <div><p className="text-xs font-semibold uppercase text-editorial-accent">Browse the journal</p><h2 className="mt-2 text-2xl font-medium text-editorial-ink md:text-3xl">More expert insights</h2></div>
@@ -220,6 +282,32 @@ const BlogList = () => {
                 </div>
               </section>
 
+              {topicGroups.length > 0 && (
+                <section className="mt-16 md:mt-24">
+                  <div className="mb-8 flex items-end justify-between gap-4">
+                    <div><p className="text-xs font-semibold uppercase text-editorial-accent">Explore the archive</p><h2 className="mt-2 text-2xl font-medium text-editorial-ink md:text-3xl">Insights by topic</h2></div>
+                    <BookOpen className="hidden h-7 w-7 text-editorial-accent sm:block" aria-hidden="true" />
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                    {topicGroups.map(({ category, count }, index) => (
+                      <Button
+                        key={category}
+                        type="button"
+                        variant="outline"
+                        onClick={() => {
+                          setActiveCategory(category);
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }}
+                        className="group h-auto min-h-32 justify-between rounded-none border-border px-6 py-5 text-left hover:border-editorial-accent hover:bg-editorial-tint"
+                      >
+                        <span className="min-w-0"><span className="block text-xs font-normal text-muted-foreground">{String(index + 1).padStart(2, "0")}</span><span className="mt-4 block whitespace-normal text-base font-medium text-editorial-ink">{category}</span></span>
+                        <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-xs text-muted-foreground transition-colors group-hover:border-editorial-accent group-hover:text-editorial-accent">{count}</span>
+                      </Button>
+                    ))}
+                  </div>
+                </section>
+              )}
+
               <section className="mt-16 bg-editorial-tint px-6 py-10 md:mt-24 md:px-12 md:py-14">
                 <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
                   <div className="max-w-2xl"><p className="text-xs font-semibold uppercase text-editorial-accent">Ready to grow?</p><h2 className="mt-3 text-2xl font-medium leading-tight text-editorial-ink md:text-4xl">Build a smarter digital growth strategy.</h2><p className="mt-3 text-muted-foreground">Get a focused consultation with The Super 30 team.</p></div>
@@ -236,6 +324,8 @@ const BlogList = () => {
       <Footer />
     </>
   );
-};
+});
+
+BlogList.displayName = "BlogList";
 
 export default BlogList;
