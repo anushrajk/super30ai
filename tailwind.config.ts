@@ -27,6 +27,11 @@ export default {
           light: "hsl(var(--brand-light))",
           dark: "hsl(var(--brand-dark))",
         },
+        editorial: {
+          ink: "hsl(var(--editorial-ink))",
+          accent: "hsl(var(--editorial-accent))",
+          tint: "hsl(var(--editorial-tint))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

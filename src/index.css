@@ -46,6 +46,11 @@ All colors MUST be HSL.
     --brand-light: 18 100% 95%;
     --brand-dark: 18 100% 38%;
 
+    /* Blog editorial palette */
+    --editorial-ink: 221 39% 11%;
+    --editorial-accent: 14 91% 54%;
+    --editorial-tint: 122 39% 94%;
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
