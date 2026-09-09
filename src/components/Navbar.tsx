@@ -96,7 +96,7 @@ const menuItems: NavMenuItem[] = [
           { label: "K-12 Schools", href: "/industries/education" },
           { label: "Colleges", href: "/industries/education" },
           { label: "Universities", href: "/industries/education" },
-          { label: "Coaching Institutes", href: "/industries/education" },
+          { label: "Coaching Institutes", href: "/digital-marketing-for-coaching-institutes" },
           { label: "Govt Education Programs", href: "/industries/education" },
           { label: "EdTech Platforms", href: "/industries/education" },
           { label: "Skilling & Vocational", href: "/industries/education" },

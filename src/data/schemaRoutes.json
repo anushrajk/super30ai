@@ -287,5 +287,13 @@
   "/cookie-policy": {
     "name": "Cookie Policy",
     "type": "WebPage"
+  },
+  "/digital-marketing-for-coaching-institutes": {
+    "name": "Digital Marketing for Coaching Institutes in Bangalore",
+    "serviceType": "Education Digital Marketing",
+    "faqSlug": "coaching-institutes",
+    "type": "Service",
+    "primary": false,
+    "price": 25000
   }
 }

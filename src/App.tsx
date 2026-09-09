@@ -57,6 +57,7 @@ const LeadGenReport = lazy(() => import("./pages/LeadGenReport"));
 
 // Hub / parent pages
 const IndustryHub = lazy(() => import("./pages/IndustryHub"));
+const CoachingInstitutes = lazy(() => import("./pages/CoachingInstitutes"));
 const ContentMarketing = lazy(() => import("./pages/ContentMarketing"));
 const SmsMarketing = lazy(() => import("./pages/SmsMarketing"));
 const Production = lazy(() => import("./pages/Production"));
@@ -158,6 +159,8 @@ const App = () => (
 
                 <Route path="/contact-us" element={<Contact />} />
                 <Route path="/industries/:slug" element={<IndustryHub />} />
+                {/* Industry solution landing pages */}
+                <Route path="/digital-marketing-for-coaching-institutes" element={<CoachingInstitutes />} />
                 <Route path="/seo-training-in-bangalore" element={<SeoCourse />} />
                 <Route path="/audit" element={<Audit />} />
                 <Route path="/booking" element={<Booking />} />

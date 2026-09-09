@@ -1,3 +1,4 @@
+// SEO metadata is maintained in seoMeta.json (all fields required per entry).
 import meta from "./seoMeta.json";
 
 export type SeoMeta = {
