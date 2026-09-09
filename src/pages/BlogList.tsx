@@ -105,7 +105,7 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
   const focusAreas = [
     { title: "AI SEO", description: "Search visibility, content systems and strategies built for AI-powered discovery.", href: "/seo-company-bangalore", icon: SearchCheck },
     { title: "Lead Generation", description: "Practical frameworks for attracting and converting qualified business opportunities.", href: "/lead-generation-agency-bangalore", icon: Target },
-    { title: "Performance Marketing", description: "Sharper campaign decisions grounded in measurement, testing and profitable growth.", href: "/performance-marketing-agency-bangalore", icon: ChartNoAxesCombined },
+    { title: "Performance Marketing", description: "Sharper campaign decisions grounded in measurement, testing and profitable growth.", href: "/lead-generation-agency-bangalore", icon: ChartNoAxesCombined },
   ];
 
   return (
