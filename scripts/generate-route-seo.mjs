@@ -422,6 +422,13 @@ const sanitizeArticleHtml = (html = "") =>
     .replace(/\sjavascript:/gi, " ")
     .replace(/\/storage\/v1\/object\/public\/blog-media\//g, "/functions/v1/blog-media/")
     .replace(/&nbsp;|&#160;|\u00a0/gi, " ")
+    .replace(
+      /<p[^>]*>\s*(?:<strong>)?\s*table of contents\s*:?\s*(?:<\/strong>)?\s*<\/p>/gi,
+      "<h2>Table of Contents</h2>"
+    )
+    .replace(/<h1([^>]*)>/gi, "<h2$1>")
+    .replace(/<\/h1>/gi, "</h2>")
+    .replace(/<p[^>]*>(?:\s|<br\s*\/?>)*<\/p>/gi, "")
     .trim();
 
 const htmlToText = (html = "") =>
