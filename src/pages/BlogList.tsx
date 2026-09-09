@@ -43,7 +43,7 @@ const formatPublishedDate = (date: string): string => {
 };
 
 const ArticleImage = ({ post, priority = false }: { post: Post; priority?: boolean }) => (
-  <div className="overflow-hidden bg-muted">
+  <div className="aspect-[16/9] overflow-hidden bg-muted">
     {post.cover_image_url ? (
       <img
         src={toMediaUrl(post.cover_image_url)}
@@ -95,7 +95,6 @@ const BlogList = () => {
 
   const featuredPost = filteredPosts[0];
   const latestPosts = filteredPosts.slice(1, 4);
-  const morePosts = filteredPosts.slice(4);
 
   return (
     <>
@@ -212,7 +211,7 @@ const BlogList = () => {
                 <div className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
                   {filteredPosts.slice(1).map((post) => (
                     <Link key={post.id} to={`/blog/${post.slug}`} className="group flex flex-col">
-                      <div className="aspect-[3/2]"><ArticleImage post={post} /></div>
+                      <ArticleImage post={post} />
                       <div className="mt-5 flex items-center gap-3 text-xs uppercase text-muted-foreground"><span className="text-editorial-accent">{post.category ?? "Insights"}</span>{post.read_time && <><span>•</span><span>{post.read_time}</span></>}</div>
                       <h3 className="mt-3 text-xl font-medium leading-snug text-editorial-ink transition-colors group-hover:text-editorial-accent">{post.title}</h3>
                       {post.excerpt && <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>}
