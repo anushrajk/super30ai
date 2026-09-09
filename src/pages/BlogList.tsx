@@ -118,38 +118,58 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
       <Navbar />
       <main ref={ref} className="min-h-screen bg-background pt-20 md:pt-24">
         <div className="container mx-auto px-4 py-10 md:py-16">
-          <header className="mb-10 border-b border-border pb-8 md:mb-12 md:pb-10">
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-              <div className="max-w-2xl">
-                <span className="mb-3 block text-xs font-semibold uppercase text-editorial-accent">Knowledge Hub</span>
-                <h1 className="text-4xl font-medium leading-tight text-editorial-ink sm:text-5xl md:text-7xl">
-                  Super 30 <span className="block text-muted-foreground">Perspectives.</span>
+          <header className="mb-10 border-y border-editorial-ink md:mb-14">
+            <div className="flex items-center justify-between border-b border-border py-3 text-[11px] font-semibold uppercase text-muted-foreground">
+              <span>The Super 30 Journal</span>
+              <span>{loading ? "Curated insights" : `${posts.length} expert article${posts.length === 1 ? "" : "s"}`}</span>
+            </div>
+
+            <div className="grid lg:grid-cols-[minmax(0,1.6fr)_minmax(18rem,0.7fr)]">
+              <div className="py-9 pr-0 md:py-12 lg:border-r lg:border-border lg:pr-12">
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="h-2.5 w-2.5 bg-editorial-accent" aria-hidden="true" />
+                  <span className="text-xs font-semibold uppercase text-editorial-accent">Knowledge Hub</span>
+                  <span className="h-px flex-1 bg-border" aria-hidden="true" />
+                </div>
+                <h1 className="max-w-4xl text-5xl font-semibold leading-[0.92] text-editorial-ink sm:text-6xl md:text-8xl">
+                  Super 30
+                  <span className="mt-1 block text-muted-foreground">Perspectives.</span>
                 </h1>
-                <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
+                <p className="mt-7 max-w-2xl border-l-2 border-editorial-accent pl-5 text-base leading-relaxed text-muted-foreground md:text-lg">
                   Practical insights on AI SEO, performance marketing, lead generation and digital growth.
                 </p>
               </div>
 
-              <label className="flex h-12 w-full items-center gap-3 border-b border-foreground/20 lg:max-w-sm">
-                <Search className="h-4 w-4 text-muted-foreground" aria-hidden="true" />
-                <span className="sr-only">Search articles</span>
-                <input
-                  value={query}
-                  onChange={(event) => setQuery(event.target.value)}
-                  placeholder="Search insights"
-                  className="h-full min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
-                />
-              </label>
+              <div className="flex flex-col justify-between border-t border-border py-7 lg:border-t-0 lg:py-12 lg:pl-10">
+                <div>
+                  <p className="text-xs font-semibold uppercase text-editorial-accent">Find your next idea</p>
+                  <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">
+                    Search strategies, perspectives and practical guidance from our team.
+                  </p>
+                </div>
+                <label className="mt-8 flex h-14 w-full items-center gap-3 border-b-2 border-editorial-ink transition-colors focus-within:border-editorial-accent">
+                  <Search className="h-5 w-5 text-editorial-accent" aria-hidden="true" />
+                  <span className="sr-only">Search articles</span>
+                  <input
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder="Search insights"
+                    className="h-full min-w-0 flex-1 bg-transparent text-base text-foreground outline-none placeholder:text-muted-foreground"
+                  />
+                  <span className="text-xs font-semibold uppercase text-muted-foreground">Search</span>
+                </label>
+              </div>
             </div>
 
             {!loading && categories.length > 1 && (
-              <nav aria-label="Blog categories" className="mt-8 flex gap-2 overflow-x-auto pb-1">
+              <nav aria-label="Blog categories" className="flex items-center gap-2 overflow-x-auto border-t border-border py-4">
+                <span className="mr-2 shrink-0 text-[11px] font-semibold uppercase text-muted-foreground">Explore</span>
                 {categories.map((category) => (
                   <Button
                     key={category}
                     type="button"
                     size="sm"
-                    variant={activeCategory === category ? "default" : "outline"}
+                    variant={activeCategory === category ? "default" : "ghost"}
                     onClick={() => setActiveCategory(category)}
                     className="shrink-0 rounded-full px-5"
                   >
