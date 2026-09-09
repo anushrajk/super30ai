@@ -235,8 +235,8 @@ All colors MUST be HSL.
   background: hsl(var(--editorial-tint));
   border-left: 4px solid hsl(var(--editorial-accent));
 }
-.blog-content h2 + ol li,
-.blog-content h2 + ul li { margin: 0.35rem 0; }
+.blog-content > h2:first-child + ol li,
+.blog-content > h2:first-child + ul li { margin: 0.35rem 0; }
 
 .article-inline-cta {
   display: flex;
