@@ -293,22 +293,33 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                 {/* Desktop Dropdown */}
                 {hasDropdown(item) && openDesktop === item.label && (
                   <div className={`absolute top-full pt-2 z-50 ${item.mega ? "left-1/2 -translate-x-1/2" : "left-0"}`}>
-                    <div className={`bg-background border border-border/60 rounded-xl shadow-xl p-2 animate-in fade-in slide-in-from-top-2 duration-200 ${item.mega ? "w-[920px] max-w-[calc(100vw-2rem)] p-4" : "min-w-[220px]"}`}>
+                    <div className={`bg-white border border-border/60 rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden ${item.mega ? "w-[1080px] max-w-[calc(100vw-2rem)]" : "min-w-[220px] p-2"}`}>
                       {item.categories ? (
                         item.mega ? (
                           <div>
-                            <div className="grid grid-cols-3 gap-x-6 gap-y-4">
+                            {/* Dark header bar */}
+                            <div className="flex items-center justify-between gap-6 px-6 py-3.5 bg-[#3f1708]">
+                              <p className="text-lg font-bold text-white">Solutions by Industry</p>
+                              <p className="text-sm text-white/60">
+                                AI-powered growth solutions tailored to your industry
+                              </p>
+                            </div>
+                            {/* Industry columns */}
+                            <div className="grid grid-cols-6 gap-x-4 px-5 py-5 bg-white">
                               {item.categories.map((cat) => (
-                                <div key={cat.label}>
-                                  <p className="px-3 pb-2 text-xs font-semibold text-[hsl(var(--brand-orange))] uppercase tracking-wider border-b border-border/50">
+                                <div key={cat.label} className="min-w-0">
+                                  <Link
+                                    to={cat.href || "/contact-us"}
+                                    className="block text-center px-2 py-2 rounded-full bg-[hsl(var(--brand-orange))] text-white text-[13px] font-semibold leading-tight hover:opacity-90 transition-opacity"
+                                  >
                                     {cat.label}
-                                  </p>
-                                  <div className="pt-1">
+                                  </Link>
+                                  <div className="pt-2.5 flex flex-col">
                                     {cat.items.map((sub) => (
                                       <Link
-                                        key={sub.href}
+                                        key={sub.label}
                                         to={sub.href}
-                                        className="block px-3 py-2 text-sm text-foreground/80 hover:text-[hsl(var(--brand-orange))] hover:bg-muted/50 rounded-lg transition-colors duration-150"
+                                        className="px-1.5 py-[5px] text-[12.5px] leading-snug text-neutral-800 hover:text-[hsl(var(--brand-orange))] transition-colors duration-150"
                                       >
                                         {sub.label}
                                       </Link>
@@ -317,9 +328,10 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                                 </div>
                               ))}
                             </div>
-                            <div className="mt-4 pt-3 border-t border-border/50 flex items-center justify-between px-3">
-                              <p className="text-xs text-muted-foreground">
-                                15 solutions grouped into 5 clusters · 6 industry hubs
+                            {/* Footer strip */}
+                            <div className="flex items-center justify-between px-6 py-3 border-t border-neutral-200 bg-neutral-50">
+                              <p className="text-xs text-neutral-500">
+                                6 industry hubs · 45+ sub-category specializations
                               </p>
                               <Link
                                 to="/contact-us"
