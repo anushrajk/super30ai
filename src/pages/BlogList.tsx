@@ -49,7 +49,6 @@ const ArticleImage = ({ post, priority = false }: { post: Post; priority?: boole
         src={toMediaUrl(post.cover_image_url)}
         alt={post.title}
         loading={priority ? "eager" : "lazy"}
-        fetchPriority={priority ? "high" : "auto"}
         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
         onError={(event) => {
           event.currentTarget.style.display = "none";
