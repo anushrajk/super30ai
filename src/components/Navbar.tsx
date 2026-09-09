@@ -292,7 +292,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
                 {/* Desktop Dropdown */}
                 {hasDropdown(item) && openDesktop === item.label && (
-                  <div className={`absolute top-full pt-2 z-50 ${item.mega ? "right-0" : "left-0"}`}>
+                  <div className={`${item.mega ? "fixed left-1/2 -translate-x-1/2 top-16 md:top-20" : "absolute top-full left-0"} pt-2 z-50`}>
                     <div className={`bg-white border border-border/60 rounded-xl shadow-xl animate-in fade-in slide-in-from-top-2 duration-200 overflow-hidden ${item.mega ? "w-[1080px] max-w-[calc(100vw-2rem)]" : "min-w-[220px] p-2"}`}>
                       {item.categories ? (
                         item.mega ? (
