@@ -53,7 +53,9 @@ const toMediaUrl = (url?: string | null): string | undefined =>
 
 /** Convert leftover markdown artifacts in stored HTML into proper semantic HTML. */
 const normalizeContent = (html: string): string => {
-  let out = html;
+  // Word and Google Docs frequently turn every space into a non-breaking
+  // space. Convert those back so paragraphs wrap as normal prose.
+  let out = html.replace(/&nbsp;|&#160;|\u00a0/gi, " ");
 
   // Legacy public-bucket URLs -> public edge-function media proxy
   out = out.replace(

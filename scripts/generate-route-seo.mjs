@@ -421,6 +421,7 @@ const sanitizeArticleHtml = (html = "") =>
     .replace(/\son\w+\s*=\s*'[^']*'/gi, "")
     .replace(/\sjavascript:/gi, " ")
     .replace(/\/storage\/v1\/object\/public\/blog-media\//g, "/functions/v1/blog-media/")
+    .replace(/&nbsp;|&#160;|\u00a0/gi, " ")
     .trim();
 
 const htmlToText = (html = "") =>
