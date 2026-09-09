@@ -111,9 +111,11 @@ All colors MUST be HSL.
 .blog-content {
   width: 100%;
   max-width: 100%;
+  min-width: 0;
   overflow-wrap: break-word;
   word-wrap: break-word;
-  word-break: break-word;
+  word-break: normal;
+  white-space: normal;
   box-sizing: border-box;
   color: hsl(var(--foreground) / 0.82);
   font-size: 1.0625rem;
@@ -127,12 +129,21 @@ All colors MUST be HSL.
 
 .blog-content p,
 .blog-content li,
-.blog-content a,
 .blog-content span,
 .blog-content strong,
 .blog-content blockquote {
+  width: auto !important;
+  min-width: 0;
+  max-width: 100% !important;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.blog-content a {
+  white-space: normal !important;
   overflow-wrap: anywhere;
-  word-break: break-word;
+  word-break: normal;
 }
 
 .blog-content img,
