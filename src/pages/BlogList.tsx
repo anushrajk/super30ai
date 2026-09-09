@@ -10,8 +10,8 @@ import { Calendar, Clock, ArrowRight, Loader2, Search, Sparkles, Tag, TrendingUp
 const serviceLinks = [
   { to: "/seo-company-bangalore", label: "AI SEO", description: "Rank across Google and AI search engines." },
   { to: "/lead-generation-agency-bangalore", label: "Lead Generation", description: "Fill your pipeline with qualified leads." },
-  { to: "/performance-marketing-agency-bangalore", label: "Performance Marketing", description: "Paid campaigns built around measurable ROI." },
-  { to: "/web-design-development", label: "Web Design", description: "Fast, conversion-focused websites." },
+  { to: "/digital-marketing-agency-bangalore", label: "Digital Marketing", description: "Full-funnel growth across every channel." },
+  { to: "/web-design-company-bangalore", label: "Web Design", description: "Fast, conversion-focused websites." },
 ];
 
 interface Post {
