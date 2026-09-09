@@ -19,6 +19,7 @@ interface NavMenuItem {
   href?: string;
   items?: SubItem[];
   categories?: SubCategory[];
+  mega?: boolean;
 }
 
 const menuItems: NavMenuItem[] = [
@@ -81,6 +82,63 @@ const menuItems: NavMenuItem[] = [
       { label: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
       { label: "Wordpress Website", href: "/wordpress-website-development-company-bangalore" },
       { label: "Website Maintenance Service", href: "/website-maintenance-company-bangalore" },
+    ],
+  },
+  {
+    label: "Solutions",
+    mega: true,
+    categories: [
+      {
+        label: "Marketing & Growth",
+        items: [
+          { label: "AI SEO Solutions", href: "/seo-company-bangalore" },
+          { label: "Google Ads Solutions", href: "/google-ads-agency-bangalore" },
+          { label: "Social Media Marketing", href: "/social-media-marketing-agency-bangalore" },
+          { label: "Lead Generation", href: "/lead-generation-agency-bangalore" },
+          { label: "Ecommerce Marketing", href: "/ecommerce-marketing-agency-bangalore" },
+        ],
+      },
+      {
+        label: "Design & Branding",
+        items: [
+          { label: "Branding (Brand Kit)", href: "/branding-agency-bangalore" },
+          { label: "Logo Design", href: "/logo-design-company-bangalore" },
+          { label: "UI/UX Design", href: "/ui-ux-design-agency-bangalore" },
+        ],
+      },
+      {
+        label: "Content & Copy",
+        items: [
+          { label: "Website Content", href: "/seo-content-writing-company-bangalore" },
+          { label: "Blog Writing", href: "/blog-writing-services-bangalore" },
+          { label: "Script Writing", href: "/script-writing-agency-bangalore" },
+        ],
+      },
+      {
+        label: "Video & Photography",
+        items: [
+          { label: "Video Production", href: "/video-production-agency-bangalore" },
+          { label: "Photography", href: "/photography-services-bangalore" },
+        ],
+      },
+      {
+        label: "Web Development",
+        items: [
+          { label: "Website Development", href: "/web-development-company-bangalore" },
+          { label: "Ecommerce Website", href: "/ecommerce-website-development-company-bangalore" },
+        ],
+      },
+      {
+        label: "Solutions by Industry",
+        items: [
+          { label: "Education", href: "/industries/education" },
+          { label: "E-Commerce", href: "/industries/ecommerce" },
+          { label: "Lifestyle", href: "/industries/lifestyle" },
+          { label: "Sports", href: "/industries/sports" },
+          { label: "Healthcare", href: "/industries/healthcare" },
+          { label: "Businesses (B2B)", href: "/industries/b2b" },
+        ],
+      },
     ],
   },
   {
@@ -202,9 +260,45 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
                 {/* Desktop Dropdown */}
                 {hasDropdown(item) && openDesktop === item.label && (
-                  <div className="absolute top-full left-0 pt-2 z-50">
-                    <div className="bg-background border border-border/60 rounded-xl shadow-xl p-2 min-w-[220px] animate-in fade-in slide-in-from-top-2 duration-200">
+                  <div className={`absolute top-full pt-2 z-50 ${item.mega ? "left-1/2 -translate-x-1/2" : "left-0"}`}>
+                    <div className={`bg-background border border-border/60 rounded-xl shadow-xl p-2 animate-in fade-in slide-in-from-top-2 duration-200 ${item.mega ? "w-[920px] max-w-[calc(100vw-2rem)] p-4" : "min-w-[220px]"}`}>
                       {item.categories ? (
+                        item.mega ? (
+                          <div>
+                            <div className="grid grid-cols-3 gap-x-6 gap-y-4">
+                              {item.categories.map((cat) => (
+                                <div key={cat.label}>
+                                  <p className="px-3 pb-2 text-xs font-semibold text-[hsl(var(--brand-orange))] uppercase tracking-wider border-b border-border/50">
+                                    {cat.label}
+                                  </p>
+                                  <div className="pt-1">
+                                    {cat.items.map((sub) => (
+                                      <Link
+                                        key={sub.href}
+                                        to={sub.href}
+                                        className="block px-3 py-2 text-sm text-foreground/80 hover:text-[hsl(var(--brand-orange))] hover:bg-muted/50 rounded-lg transition-colors duration-150"
+                                      >
+                                        {sub.label}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="mt-4 pt-3 border-t border-border/50 flex items-center justify-between px-3">
+                              <p className="text-xs text-muted-foreground">
+                                15 solutions grouped into 5 clusters · 6 industry hubs
+                              </p>
+                              <Link
+                                to="/contact-us"
+                                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[hsl(var(--brand-orange))] hover:underline"
+                              >
+                                Talk to a strategist
+                                <ArrowRight className="w-3.5 h-3.5" />
+                              </Link>
+                            </div>
+                          </div>
+                        ) : (
                         <div className="flex gap-0">
                           {item.categories.map((cat) => (
                             <div key={cat.label} className="min-w-[200px]">
@@ -223,6 +317,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                             </div>
                           ))}
                         </div>
+                        )
                       ) : (
                         item.items?.map((sub) => (
                           <Link
