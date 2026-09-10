@@ -123,6 +123,7 @@ const menuItems: NavMenuItem[] = [
           { label: "Fashion & Apparel", href: "/industries/lifestyle" },
           { label: "Beauty & Cosmetics", href: "/industries/lifestyle" },
           { label: "Wellness & Fitness", href: "/industries/lifestyle" },
+          { label: "Dermatology, Pharmacy & Wellness", href: "/industries/lifestyle" },
           { label: "Home Decor & Furniture", href: "/industries/lifestyle" },
           { label: "Jewelry & Accessories", href: "/industries/lifestyle" },
           { label: "Weddings & Events", href: "/industries/lifestyle" },
@@ -326,7 +327,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                             {/* Footer strip */}
                             <div className="flex items-center justify-between px-6 py-3 border-t border-border/60 bg-muted/30">
                               <p className="text-xs text-muted-foreground">
-                                6 industry hubs · 40+ sub-category specializations
+                                6 industry hubs · 43+ sub-category specializations
                               </p>
                               <Link
                                 to="/contact-us"
