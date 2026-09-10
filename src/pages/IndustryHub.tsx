@@ -54,6 +54,7 @@ const industries: Record<string, IndustryData> = {
       "Beauty & Cosmetics",
       "Wellness & Fitness",
       "Dermatology, Pharmacy & Wellness",
+      "Health & Wellness Retail",
       "Home Decor & Furniture",
       "Jewelry & Accessories",
       "Weddings & Events",
