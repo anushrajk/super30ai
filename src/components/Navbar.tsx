@@ -144,21 +144,6 @@ const menuItems: NavMenuItem[] = [
         ],
       },
       {
-        label: "Healthcare",
-        href: "/industries/healthcare",
-        items: [
-          { label: "Hospitals", href: "/industries/healthcare" },
-          { label: "Clinics & Nursing Homes", href: "/industries/healthcare" },
-          { label: "Dental Practices", href: "/industries/healthcare" },
-          { label: "Diagnostic Centers/Labs", href: "/industries/healthcare" },
-          { label: "Pharma/Pharmacy Brands", href: "/industries/healthcare" },
-          { label: "Mental Health Clinics", href: "/industries/healthcare" },
-          { label: "Fertility & IVF Centers", href: "/industries/healthcare" },
-          { label: "Telehealth Platforms", href: "/industries/healthcare" },
-          { label: "Ayurveda & Alt. Medicine", href: "/industries/healthcare" },
-        ],
-      },
-      {
         label: "Businesses (B2B)",
         href: "/industries/b2b",
         items: [
@@ -305,7 +290,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                               </p>
                             </div>
                             {/* Industry columns */}
-                            <div className="grid grid-cols-6 gap-x-4 px-5 py-5 bg-white">
+                            <div className="grid grid-cols-5 gap-x-4 px-5 py-5 bg-white">
                               {item.categories.map((cat) => (
                                 <div key={cat.label} className="min-w-0">
                                   <Link
@@ -331,7 +316,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                             {/* Footer strip */}
                             <div className="flex items-center justify-between px-6 py-3 border-t border-border/60 bg-muted/30">
                               <p className="text-xs text-muted-foreground">
-                                6 industry hubs · 45+ sub-category specializations
+                                5 industry hubs · 35+ sub-category specializations
                               </p>
                               <Link
                                 to="/contact-us"
