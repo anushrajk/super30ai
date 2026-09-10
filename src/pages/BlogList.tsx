@@ -213,14 +213,17 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                 </Link>
 
                 <aside className="space-y-10 lg:col-span-4">
-                  <section className="bg-editorial-ink p-7 text-primary-foreground md:p-9">
-                    <Sparkles className="mb-8 h-6 w-6 text-editorial-accent" />
-                    <p className="text-xs font-semibold uppercase text-editorial-accent">Growth Consultation</p>
-                    <h2 className="mt-3 text-2xl font-medium leading-tight">Turn your next insight into measurable growth.</h2>
-                    <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">Talk with our team about AI SEO, lead generation and performance marketing.</p>
-                    <Button asChild className="mt-7 w-full rounded-full bg-editorial-accent text-primary-foreground hover:bg-editorial-accent/90">
-                      <Link to="/contact-us">Book a Consultation <ArrowRight /></Link>
-                    </Button>
+                  <section className="relative overflow-hidden rounded-2xl bg-editorial-ink p-7 text-primary-foreground md:p-9">
+                    <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-editorial-accent/10 blur-2xl" aria-hidden="true" />
+                    <div className="relative">
+                      <Sparkles className="mb-8 h-6 w-6 text-editorial-accent" />
+                      <p className="text-xs font-semibold uppercase text-editorial-accent">Growth Consultation</p>
+                      <h2 className="mt-3 text-2xl font-medium leading-tight">Turn your next insight into measurable growth.</h2>
+                      <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">Talk with our team about AI SEO, lead generation and performance marketing.</p>
+                      <Button asChild className="mt-7 w-full rounded-full bg-editorial-accent text-primary-foreground hover:bg-editorial-accent/90">
+                        <Link to="/contact-us">Book a Consultation <ArrowRight /></Link>
+                      </Button>
+                    </div>
                   </section>
 
                   {latestPosts.length > 0 && (
