@@ -145,7 +145,7 @@ const stripSeoTags = (html) =>
 const injectMetadata = (html, metadata) => {
   const cleanHtml = stripSeoTags(html);
   const image = metadata.image || OG_IMAGE;
-  const imageAlt = metadata.imageAlt || "The Super 30 — AI Digital Marketing Agency in Bangalore";
+  const imageAlt = metadata.imageAlt || "The Super 30 logo";
   const tags = [
     `<title>${escapeHtml(metadata.title)}</title>`,
     `<meta name="description" content="${escapeHtml(metadata.description)}" />`,
@@ -593,7 +593,7 @@ const generateBlogPages = async (distIndexHtml) => {
       twitterTitle: post.og_title || post.meta_title || post.title,
       twitterDescription: post.og_description || description,
       image,
-      imageAlt: post.title,
+      imageAlt: "The Super 30 logo",
       articleMeta: [
         published ? `<meta property="article:published_time" content="${escapeHtml(published)}" />` : "",
         modified ? `<meta property="article:modified_time" content="${escapeHtml(modified)}" />` : "",
