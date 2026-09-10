@@ -198,7 +198,7 @@ const BlogPost = () => {
   const ogTitle = post.og_title || title;
   const ogDesc = post.og_description || description;
   const coverImage = toMediaUrl(post.cover_image_url);
-  const ogImage = toMediaUrl(post.og_image_url) || coverImage;
+  const ogImage = `${SITE}/super30-social-logo.jpg`;
   const canonical = post.canonical_url || url;
 
   const jsonLd = post.json_ld ?? {
@@ -214,7 +214,7 @@ const BlogPost = () => {
     publisher: {
       "@type": "Organization",
       name: "The Super 30",
-      logo: { "@type": "ImageObject", url: `${SITE}/logo.png` },
+      logo: { "@type": "ImageObject", url: ogImage },
     },
   };
 
