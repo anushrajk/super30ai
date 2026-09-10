@@ -211,21 +211,28 @@ const IndustryHub = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-[#0a0a0a] text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-4xl font-bold mb-4">
-            Ready to Grow Your {industry.name} Business?
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto mb-8">
-            Get a free strategy session with our AI digital marketing experts in Bangalore.
-          </p>
-          <Link
-            to="/contact-us"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-full px-8 text-sm font-semibold text-white bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 transition-all"
-          >
-            Get Free Consultation
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+      <section className="py-8 md:py-12 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-8 md:p-12 lg:p-16 text-center">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[hsl(var(--brand-orange))]/10 blur-3xl" aria-hidden="true" />
+            <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-[hsl(var(--brand-orange))]/5 blur-3xl" aria-hidden="true" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+            <div className="relative">
+              <h2 className="text-2xl md:text-4xl font-bold mb-4 text-white">
+                Ready to Grow Your {industry.name} Business?
+              </h2>
+              <p className="text-white/60 max-w-2xl mx-auto mb-8">
+                Get a free strategy session with our AI digital marketing experts in Bangalore.
+              </p>
+              <Link
+                to="/contact-us"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-full px-8 text-sm font-semibold text-white bg-[hsl(var(--brand-orange))] hover:bg-[hsl(var(--brand-orange))]/90 transition-all"
+              >
+                Get Free Consultation
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
