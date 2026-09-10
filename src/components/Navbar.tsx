@@ -123,6 +123,7 @@ const menuItems: NavMenuItem[] = [
           { label: "Fashion & Apparel", href: "/industries/lifestyle" },
           { label: "Beauty & Cosmetics", href: "/industries/lifestyle" },
           { label: "Wellness & Fitness", href: "/industries/lifestyle" },
+          { label: "Dermatology, Pharmacy & Wellness", href: "/industries/lifestyle" },
           { label: "Home Decor & Furniture", href: "/industries/lifestyle" },
           { label: "Jewelry & Accessories", href: "/industries/lifestyle" },
           { label: "Weddings & Events", href: "/industries/lifestyle" },
