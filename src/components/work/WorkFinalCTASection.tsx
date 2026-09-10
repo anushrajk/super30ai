@@ -18,54 +18,62 @@ export const WorkFinalCTASection = () => {
   const [showAuditPopup, setShowAuditPopup] = useState(false);
   
   return (
-    <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-[#0a0a0a] overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
+    <section ref={ref} className="py-8 md:py-12 relative overflow-hidden bg-background transition-all duration-700">
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-3xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-brand/10 border border-brand/20 px-4 py-1.5 rounded-full mb-6">
-            <Award className="w-4 h-4 text-brand" />
-            <span className="text-brand text-sm font-medium">Join 300+ Growing Brands</span>
-          </div>
+        <div className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-8 md:p-12 lg:p-16">
+          {/* Glow accents */}
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/10 blur-3xl" aria-hidden="true" />
+          <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brand/5 blur-3xl" aria-hidden="true" />
           
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Let's Build Your Next <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Business Success Story</span>
-          </h2>
-          <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-            Get a free consultation with our digital marketing experts. Identify growth opportunities, identify performance gaps, and be offered a customised strategy to get measurable business outcomes.
-          </p>
-          
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
-            {benefits.map((item, i) => (
-              <div key={i} className="flex items-center gap-2 text-white bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
-                <item.icon className="w-4 h-4 text-brand" />
-                <span className="text-sm">{item.text}</span>
-              </div>
-            ))}
-          </div>
+          {/* Grid pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button 
-              onClick={() => setShowAuditPopup(true)}
-              size="lg"
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group w-full sm:w-auto"
-            >
-              <Sparkles className="w-4 h-4 mr-2" />
-              Get Free Audit & Strategy
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button 
-              size="lg"
-              onClick={() => setShowEnquiryPopup(true)}
-              className="bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all duration-300 group"
-            >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Enquire Now
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-            </Button>
+          <div className="relative">
+            <div className="max-w-3xl mx-auto text-center">
+              <div className={`inline-flex items-center gap-2 bg-brand/10 border border-brand/20 px-4 py-1.5 rounded-full mb-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <Award className="w-4 h-4 text-brand" />
+                <span className="text-brand text-sm font-medium">Join 300+ Growing Brands</span>
+              </div>
+              
+              <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 transition-all duration-700 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                Let's Build Your Next <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">Business Success Story</span>
+              </h2>
+              <p className={`text-lg text-white/70 mb-8 max-w-xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                Get a free consultation with our digital marketing experts. Identify growth opportunities, identify performance gaps, and be offered a customised strategy to get measurable business outcomes.
+              </p>
+              
+              <div className={`flex flex-wrap justify-center gap-3 mb-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                {benefits.map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 text-white bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
+                    <item.icon className="w-4 h-4 text-brand" />
+                    <span className="text-sm">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className={`flex flex-col sm:flex-row gap-3 justify-center transition-all duration-700 delay-400 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+                <Button 
+                  onClick={() => setShowAuditPopup(true)}
+                  size="lg"
+                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group w-full sm:w-auto rounded-full"
+                >
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Get Free Audit & Strategy
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <Button 
+                  size="lg"
+                  onClick={() => setShowEnquiryPopup(true)}
+                  className="bg-transparent border border-white/30 text-white hover:bg-white/10 hover:border-white/50 hover:scale-105 transition-all duration-300 group rounded-full"
+                >
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Enquire Now
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </div>
+              <p className={`text-white/50 text-sm mt-4 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>Takes 2 Minutes • No Obligation Consultation</p>
+            </div>
           </div>
-          <p className="text-white/50 text-sm mt-4">Takes 2 Minutes • No Obligation Consultation</p>
         </div>
       </div>
 
