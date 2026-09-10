@@ -156,6 +156,18 @@ const menuItems: NavMenuItem[] = [
           { label: "IT & Tech Services", href: "/industries/b2b" },
         ],
       },
+      {
+        label: "Hotel Management & Hospitality",
+        href: "/industries/hospitality",
+        items: [
+          { label: "Hotels & Resorts", href: "/industries/hospitality" },
+          { label: "Restaurants & Cafes", href: "/industries/hospitality" },
+          { label: "Cloud Kitchens", href: "/industries/hospitality" },
+          { label: "Travel & Tourism", href: "/industries/hospitality" },
+          { label: "Banquet Halls & Event Venues", href: "/industries/hospitality" },
+          { label: "Spa & Wellness Resorts", href: "/industries/hospitality" },
+        ],
+      },
     ],
   },
   {
@@ -290,7 +302,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                               </p>
                             </div>
                             {/* Industry columns */}
-                            <div className="grid grid-cols-5 gap-x-4 px-5 py-5 bg-white">
+                            <div className="grid grid-cols-6 gap-x-4 px-5 py-5 bg-white">
                               {item.categories.map((cat) => (
                                 <div key={cat.label} className="min-w-0">
                                   <Link
@@ -316,7 +328,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                             {/* Footer strip */}
                             <div className="flex items-center justify-between px-6 py-3 border-t border-border/60 bg-muted/30">
                               <p className="text-xs text-muted-foreground">
-                                5 industry hubs · 35+ sub-category specializations
+                                6 industry hubs · 40+ sub-category specializations
                               </p>
                               <Link
                                 to="/contact-us"
