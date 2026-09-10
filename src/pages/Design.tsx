@@ -496,37 +496,41 @@ const DesignCTASection = () => {
   const [showEnquiry, setShowEnquiry] = useState(false);
 
   return (
-    <section className="py-16 md:py-24 bg-[#0a0a0a] relative overflow-hidden">
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+    <section className="py-8 md:py-12 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-4 relative">
+        <div className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-8 md:p-12 lg:p-16 text-center">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/10 blur-3xl" aria-hidden="true" />
+          <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brand/5 blur-3xl" aria-hidden="true" />
 
-      <div className="container mx-auto px-4 relative text-center">
-        <div className="max-w-3xl mx-auto">
-          <div className="badge-brand mx-auto mb-4">
-            <Heart className="w-4 h-4" />
-            <span className="text-sm font-medium">Let's Create Together</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-            Partner with Bangalore's <span className="text-brand">Leading Graphic Design Agency</span>
-          </h2>
-          <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
-            From social media creatives and marketing collateral to complete brand identity systems, our graphic design agency in Bangalore creates impactful visuals that strengthen brand presence, enhance communication, and support business growth.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/contact-us">
-              <Button size="lg" className="bg-brand-gradient text-white px-8 py-3 h-auto rounded-xl group hover:opacity-90">
-                Get Started
-                <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+          <div className="relative max-w-3xl mx-auto">
+            <div className="badge-brand mx-auto mb-4">
+              <Heart className="w-4 h-4" />
+              <span className="text-sm font-medium">Let's Create Together</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
+              Partner with Bangalore's <span className="text-brand">Leading Graphic Design Agency</span>
+            </h2>
+            <p className="text-white/70 text-lg mb-8 max-w-2xl mx-auto">
+              From social media creatives and marketing collateral to complete brand identity systems, our graphic design agency in Bangalore creates impactful visuals that strengthen brand presence, enhance communication, and support business growth.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/contact-us">
+                <Button size="lg" className="bg-brand-gradient text-white px-8 py-3 h-auto rounded-full group hover:opacity-90">
+                  Get Started
+                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+              <Button
+                variant="outline-brand"
+                size="lg"
+                onClick={() => setShowEnquiry(true)}
+                className="px-8 py-3 h-auto rounded-full"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Enquire Now
               </Button>
-            </Link>
-            <Button
-              variant="outline-brand"
-              size="lg"
-              onClick={() => setShowEnquiry(true)}
-              className="px-8 py-3 h-auto rounded-xl"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Enquire Now
-            </Button>
+            </div>
           </div>
         </div>
       </div>
