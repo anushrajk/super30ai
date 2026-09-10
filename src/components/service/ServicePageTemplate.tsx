@@ -382,20 +382,30 @@ const FAQSection = ({ faq }: { faq: ServicePageConfig["faq"] }) => {
 
 // ── Final CTA ──
 const FinalCTASection = ({ data }: { data: ServicePageConfig["finalCTA"] }) => (
-  <section className="py-12 md:py-20 bg-[#0a0a0a]">
-    <div className="container mx-auto px-4 text-center">
-      {data.eyebrow && (
-        <span className="inline-block text-xs font-semibold tracking-widest uppercase text-brand mb-3">{data.eyebrow}</span>
-      )}
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">{data.headline}</h2>
-      <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto mb-8">{data.description}</p>
-      <Link
-        to="/contact-us"
-        className="inline-flex items-center gap-2 bg-brand text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-brand/90 transition-colors"
-      >
-        {data.buttonText}
-        <ArrowRight className="w-4 h-4" />
-      </Link>
+  <section className="py-8 md:py-12 bg-background">
+    <div className="container mx-auto px-4">
+      <div className="relative overflow-hidden rounded-3xl bg-[#0a0a0a] p-8 md:p-12 lg:p-16 text-center">
+        {/* Glow accents */}
+        <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-brand/10 blur-3xl" aria-hidden="true" />
+        <div className="absolute -bottom-20 -left-20 h-48 w-48 rounded-full bg-brand/5 blur-3xl" aria-hidden="true" />
+        {/* Grid pattern */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+
+        <div className="relative">
+          {data.eyebrow && (
+            <span className="inline-block text-xs font-semibold tracking-widest uppercase text-brand mb-3">{data.eyebrow}</span>
+          )}
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">{data.headline}</h2>
+          <p className="text-white/70 text-base md:text-lg max-w-2xl mx-auto mb-8">{data.description}</p>
+          <Link
+            to="/contact-us"
+            className="inline-flex items-center gap-2 bg-brand text-white px-8 py-3.5 rounded-full font-semibold hover:bg-brand/90 transition-colors"
+          >
+            {data.buttonText}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </div>
     </div>
   </section>
 );

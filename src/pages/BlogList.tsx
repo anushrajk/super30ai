@@ -213,14 +213,17 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                 </Link>
 
                 <aside className="space-y-10 lg:col-span-4">
-                  <section className="bg-editorial-ink p-7 text-primary-foreground md:p-9">
-                    <Sparkles className="mb-8 h-6 w-6 text-editorial-accent" />
-                    <p className="text-xs font-semibold uppercase text-editorial-accent">Growth Consultation</p>
-                    <h2 className="mt-3 text-2xl font-medium leading-tight">Turn your next insight into measurable growth.</h2>
-                    <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">Talk with our team about AI SEO, lead generation and performance marketing.</p>
-                    <Button asChild className="mt-7 w-full rounded-full bg-editorial-accent text-primary-foreground hover:bg-editorial-accent/90">
-                      <Link to="/contact-us">Book a Consultation <ArrowRight /></Link>
-                    </Button>
+                  <section className="relative overflow-hidden rounded-2xl bg-editorial-ink p-7 text-primary-foreground md:p-9">
+                    <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-editorial-accent/10 blur-2xl" aria-hidden="true" />
+                    <div className="relative">
+                      <Sparkles className="mb-8 h-6 w-6 text-editorial-accent" />
+                      <p className="text-xs font-semibold uppercase text-editorial-accent">Growth Consultation</p>
+                      <h2 className="mt-3 text-2xl font-medium leading-tight">Turn your next insight into measurable growth.</h2>
+                      <p className="mt-4 text-sm leading-relaxed text-primary-foreground/70">Talk with our team about AI SEO, lead generation and performance marketing.</p>
+                      <Button asChild className="mt-7 w-full rounded-full bg-editorial-accent text-primary-foreground hover:bg-editorial-accent/90">
+                        <Link to="/contact-us">Book a Consultation <ArrowRight /></Link>
+                      </Button>
+                    </div>
                   </section>
 
                   {latestPosts.length > 0 && (
@@ -245,27 +248,31 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
               </div>
 
               {editorialPicks.length > 0 && (
-                <section className="mt-16 bg-editorial-ink px-6 py-10 text-primary-foreground md:mt-24 md:px-10 md:py-14">
-                  <div className="mb-8 flex flex-col gap-3 border-b border-primary-foreground/20 pb-6 sm:flex-row sm:items-end sm:justify-between">
-                    <div>
-                      <p className="text-xs font-semibold uppercase text-editorial-accent">Selected by our team</p>
-                      <h2 className="mt-2 text-2xl font-medium md:text-3xl">Editor’s selection</h2>
+              <section className="relative mt-16 overflow-hidden rounded-3xl bg-editorial-ink px-6 py-10 text-primary-foreground md:mt-24 md:px-10 md:py-14">
+                  <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-editorial-accent/10 blur-3xl" aria-hidden="true" />
+                  <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-editorial-accent/5 blur-3xl" aria-hidden="true" />
+                  <div className="relative">
+                    <div className="mb-8 flex flex-col gap-3 border-b border-primary-foreground/20 pb-6 sm:flex-row sm:items-end sm:justify-between">
+                      <div>
+                        <p className="text-xs font-semibold uppercase text-editorial-accent">Selected by our team</p>
+                        <h2 className="mt-2 text-2xl font-medium md:text-3xl">Editor's selection</h2>
+                      </div>
+                      <p className="max-w-md text-sm leading-relaxed text-primary-foreground/60">Focused reading for teams building a stronger, more measurable digital growth engine.</p>
                     </div>
-                    <p className="max-w-md text-sm leading-relaxed text-primary-foreground/60">Focused reading for teams building a stronger, more measurable digital growth engine.</p>
-                  </div>
-                  <div className="grid divide-y divide-primary-foreground/20 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
-                    {editorialPicks.map((post, index) => (
-                      <Link key={post.id} to={`/blog/${post.slug}`} className="group flex min-h-56 flex-col justify-between py-7 lg:px-8 lg:first:pl-0 lg:last:pr-0">
-                        <div>
-                          <div className="flex items-center justify-between text-xs uppercase text-primary-foreground/50">
-                            <span>{post.category ?? "Insights"}</span>
-                            <span>{String(index + 1).padStart(2, "0")}</span>
+                    <div className="grid divide-y divide-primary-foreground/20 lg:grid-cols-3 lg:divide-x lg:divide-y-0">
+                      {editorialPicks.map((post, index) => (
+                        <Link key={post.id} to={`/blog/${post.slug}`} className="group flex min-h-56 flex-col justify-between py-7 lg:px-8 lg:first:pl-0 lg:last:pr-0">
+                          <div>
+                            <div className="flex items-center justify-between text-xs uppercase text-primary-foreground/50">
+                              <span>{post.category ?? "Insights"}</span>
+                              <span>{String(index + 1).padStart(2, "0")}</span>
+                            </div>
+                            <h3 className="mt-5 text-xl font-medium leading-snug transition-colors group-hover:text-editorial-accent md:text-2xl">{post.title}</h3>
                           </div>
-                          <h3 className="mt-5 text-xl font-medium leading-snug transition-colors group-hover:text-editorial-accent md:text-2xl">{post.title}</h3>
-                        </div>
-                        <span className="mt-8 flex items-center gap-2 text-sm font-medium text-editorial-accent">Read insight <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
-                      </Link>
-                    ))}
+                          <span className="mt-8 flex items-center gap-2 text-sm font-medium text-editorial-accent">Read insight <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 </section>
               )}
@@ -327,7 +334,7 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                           setActiveCategory(category);
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className="group h-auto min-h-32 justify-between rounded-none border-border px-6 py-5 text-left hover:border-editorial-accent hover:bg-editorial-tint"
+                        className="group h-auto min-h-32 justify-between rounded-2xl border-border px-6 py-5 text-left hover:border-editorial-accent hover:bg-editorial-tint"
                       >
                         <span className="min-w-0"><span className="block text-xs font-normal text-muted-foreground">{String(index + 1).padStart(2, "0")}</span><span className="mt-4 block whitespace-normal text-base font-medium text-editorial-ink">{category}</span></span>
                         <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-xs text-muted-foreground transition-colors group-hover:border-editorial-accent group-hover:text-editorial-accent">{count}</span>
@@ -337,8 +344,10 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                 </section>
               )}
 
-              <section className="mt-16 bg-editorial-tint px-6 py-10 md:mt-24 md:px-12 md:py-14">
-                <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
+              <section className="relative mt-16 overflow-hidden rounded-3xl border border-border bg-editorial-tint px-6 py-10 md:mt-24 md:px-12 md:py-14">
+                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-editorial-accent/10 blur-3xl" aria-hidden="true" />
+                <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-editorial-accent/5 blur-3xl" aria-hidden="true" />
+                <div className="relative flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
                   <div className="max-w-2xl"><p className="text-xs font-semibold uppercase text-editorial-accent">Ready to grow?</p><h2 className="mt-3 text-2xl font-medium leading-tight text-editorial-ink md:text-4xl">Build a smarter digital growth strategy.</h2><p className="mt-3 text-muted-foreground">Get a focused consultation with The Super 30 team.</p></div>
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Button asChild size="lg" className="rounded-full bg-editorial-accent text-primary-foreground hover:bg-editorial-accent/90"><Link to="/contact-us">Get Free Consultation <ArrowRight /></Link></Button>
