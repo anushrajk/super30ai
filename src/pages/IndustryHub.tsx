@@ -75,22 +75,6 @@ const industries: Record<string, IndustryData> = {
       "Sports Tech & Apps",
     ],
   },
-  healthcare: {
-    name: "Healthcare",
-    headline: "AI Digital Marketing Solutions for Healthcare Providers",
-    description:
-      "Hospitals, clinics and diagnostic centers get more patient enquiries with compliant AI SEO, Google Ads and lead generation strategies.",
-    subCategories: [
-      "Hospitals",
-      "Clinics & Nursing Homes",
-      "Dental Practices",
-      "Diagnostic Centers / Labs",
-      "Mental Health Clinics",
-      "Fertility & IVF Centers",
-      "Telehealth Platforms",
-      "Ayurveda & Alt. Medicine",
-    ],
-  },
   b2b: {
     name: "Businesses (B2B)",
     headline: "AI Digital Marketing Solutions for B2B Companies",

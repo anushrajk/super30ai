@@ -144,21 +144,6 @@ const menuItems: NavMenuItem[] = [
         ],
       },
       {
-        label: "Healthcare",
-        href: "/industries/healthcare",
-        items: [
-          { label: "Hospitals", href: "/industries/healthcare" },
-          { label: "Clinics & Nursing Homes", href: "/industries/healthcare" },
-          { label: "Dental Practices", href: "/industries/healthcare" },
-          { label: "Diagnostic Centers/Labs", href: "/industries/healthcare" },
-          { label: "Pharma/Pharmacy Brands", href: "/industries/healthcare" },
-          { label: "Mental Health Clinics", href: "/industries/healthcare" },
-          { label: "Fertility & IVF Centers", href: "/industries/healthcare" },
-          { label: "Telehealth Platforms", href: "/industries/healthcare" },
-          { label: "Ayurveda & Alt. Medicine", href: "/industries/healthcare" },
-        ],
-      },
-      {
         label: "Businesses (B2B)",
         href: "/industries/b2b",
         items: [
