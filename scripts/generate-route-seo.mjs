@@ -122,7 +122,7 @@ const parsePageMetadata = (source, routePath) => {
   };
 };
 
-const OG_IMAGE = "https://www.thesuper30.ai/og-image.jpg";
+const OG_IMAGE = "https://www.thesuper30.ai/super30-social-logo.jpg";
 
 const stripSeoTags = (html) =>
   html
@@ -541,7 +541,7 @@ const generateBlogPages = async (distIndexHtml) => {
     const plain = htmlToText(article);
     const title = post.meta_title || `${post.title} | The Super 30`;
     const description = (post.meta_description || post.excerpt || plain).slice(0, 300);
-    const image = toAbsolute(post.og_image_url || post.cover_image_url || "") || OG_IMAGE;
+    const image = OG_IMAGE;
     const published = post.published_at ? new Date(post.published_at).toISOString() : "";
     const modified = post.updated_at ? new Date(post.updated_at).toISOString() : published;
 
