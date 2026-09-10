@@ -48,7 +48,7 @@ const industries: Record<string, IndustryData> = {
     name: "Lifestyle",
     headline: "AI Digital Marketing Solutions for Lifestyle Brands",
     description:
-      "Fashion, beauty, wellness and hospitality brands scale with our AI-powered SEO, social media marketing and performance advertising.",
+      "Fashion, beauty, wellness, dermatology, pharmacy, home decor and lifestyle brands scale with our AI-powered SEO, social media marketing and performance advertising.",
     subCategories: [
       "Fashion & Apparel",
       "Beauty & Cosmetics",
