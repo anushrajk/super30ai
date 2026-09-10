@@ -344,8 +344,10 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                 </section>
               )}
 
-              <section className="mt-16 bg-editorial-tint px-6 py-10 md:mt-24 md:px-12 md:py-14">
-                <div className="flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
+              <section className="relative mt-16 overflow-hidden rounded-3xl border border-border bg-editorial-tint px-6 py-10 md:mt-24 md:px-12 md:py-14">
+                <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-editorial-accent/10 blur-3xl" aria-hidden="true" />
+                <div className="absolute -bottom-16 -left-16 h-40 w-40 rounded-full bg-editorial-accent/5 blur-3xl" aria-hidden="true" />
+                <div className="relative flex flex-col gap-7 lg:flex-row lg:items-center lg:justify-between">
                   <div className="max-w-2xl"><p className="text-xs font-semibold uppercase text-editorial-accent">Ready to grow?</p><h2 className="mt-3 text-2xl font-medium leading-tight text-editorial-ink md:text-4xl">Build a smarter digital growth strategy.</h2><p className="mt-3 text-muted-foreground">Get a focused consultation with The Super 30 team.</p></div>
                   <div className="flex flex-col gap-3 sm:flex-row">
                     <Button asChild size="lg" className="rounded-full bg-editorial-accent text-primary-foreground hover:bg-editorial-accent/90"><Link to="/contact-us">Get Free Consultation <ArrowRight /></Link></Button>
