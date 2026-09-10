@@ -90,6 +90,20 @@ const industries: Record<string, IndustryData> = {
       "IT & Tech Services",
     ],
   },
+  hospitality: {
+    name: "Hotel Management & Hospitality",
+    headline: "AI Digital Marketing Solutions for Hotels, Restaurants & Hospitality",
+    description:
+      "Hotels, restaurants, cloud kitchens and travel brands attract more bookings and diners with our AI SEO, local search marketing and performance advertising.",
+    subCategories: [
+      "Hotels & Resorts",
+      "Restaurants & Cafes",
+      "Cloud Kitchens",
+      "Travel & Tourism",
+      "Banquet Halls & Event Venues",
+      "Spa & Wellness Resorts",
+    ],
+  },
 };
 
 const solutions = [
