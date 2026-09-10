@@ -334,7 +334,7 @@ const BlogList = forwardRef<HTMLElement>((_, ref) => {
                           setActiveCategory(category);
                           window.scrollTo({ top: 0, behavior: "smooth" });
                         }}
-                        className="group h-auto min-h-32 justify-between rounded-none border-border px-6 py-5 text-left hover:border-editorial-accent hover:bg-editorial-tint"
+                        className="group h-auto min-h-32 justify-between rounded-2xl border-border px-6 py-5 text-left hover:border-editorial-accent hover:bg-editorial-tint"
                       >
                         <span className="min-w-0"><span className="block text-xs font-normal text-muted-foreground">{String(index + 1).padStart(2, "0")}</span><span className="mt-4 block whitespace-normal text-base font-medium text-editorial-ink">{category}</span></span>
                         <span className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-xs text-muted-foreground transition-colors group-hover:border-editorial-accent group-hover:text-editorial-accent">{count}</span>
