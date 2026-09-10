@@ -4,6 +4,9 @@ import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { UnifiedCTASection } from "@/components/landing/UnifiedCTASection";
+import { ClientLogosSection } from "@/components/landing/ClientLogosSection";
+import { SEOProofSection } from "@/components/landing/SEOProofSection";
+import { StatsSection, defaultStats } from "@/components/common/StatsSection";
 import { LeadCaptureForm } from "@/components/landing/LeadCaptureForm";
 import { useLeadSubmit } from "@/hooks/useLeadSubmit";
 import {
@@ -317,6 +320,9 @@ const CoachingInstitutes = () => {
         </div>
       </section>
 
+      {/* Social proof: client logos marquee (same as home page) */}
+      <ClientLogosSection />
+
       {/* Services */}
       <section className="py-16 md:py-20">
         <div className="container mx-auto px-4">
@@ -436,6 +442,9 @@ const CoachingInstitutes = () => {
         </div>
       </section>
 
+      {/* Proof of work (shared section) */}
+      <SEOProofSection />
+
       {/* Comparison */}
       <section className="py-16 md:py-20 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -542,6 +551,9 @@ const CoachingInstitutes = () => {
           </div>
         </div>
       </section>
+
+      {/* Stats (shared component used across pages) */}
+      <StatsSection stats={defaultStats} />
 
       {/* Talk to us band */}
       <section className="py-12 md:py-14">
