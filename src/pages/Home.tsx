@@ -4,6 +4,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { HomeSaasSections } from "@/components/home/HomeSaasSections";
 import { HomeHero } from "@/components/home/HomeHero";
+import { HomeExpansionSections } from "@/components/home/HomeExpansionSections";
 
 const UnifiedCTASection = lazy(() => import("@/components/landing/UnifiedCTASection").then(m => ({ default: m.UnifiedCTASection })));
 const ClientLogosSection = lazy(() => import("@/components/landing/ClientLogosSection").then(m => ({ default: m.ClientLogosSection })));
@@ -23,7 +24,7 @@ const Home = () => <>
   <Navbar />
   <main className="home-saas min-h-screen pt-16 md:pt-20">
     <HomeHero />
-    <Suspense fallback={null}><ClientLogosSection variant="clean" /><HomeSaasSections /><BlogSection /><UnifiedCTASection variant="dark" headline="Work with a Growth-Oriented AI Digital Marketing Agency Today" subtext="We are a seasoned AI-Powered digital marketing company with a legacy of building advanced strategies that focus on growth that drives traffic, conversions, and revenues. We offer a free brand audit with our team of 30 experts to build a plan that helps you focus on your growth." primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }} secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }} /><FAQSection slug="home" /></Suspense>
+    <Suspense fallback={null}><ClientLogosSection variant="clean" /><HomeSaasSections /><HomeExpansionSections /><BlogSection /><UnifiedCTASection variant="dark" headline="Work with a Growth-Oriented AI Digital Marketing Agency Today" subtext="We are a seasoned AI-Powered digital marketing company with a legacy of building advanced strategies that focus on growth that drives traffic, conversions, and revenues. We offer a free brand audit with our team of 30 experts to build a plan that helps you focus on your growth." primaryCTA={{ label: "Get My Free Brand Audit", href: "/seo-company-bangalore" }} secondaryCTA={{ label: "Explore Our Services", href: "/digital-marketing-agency-bangalore" }} /><FAQSection slug="home" /></Suspense>
     <Footer />
   </main>
 </>;
