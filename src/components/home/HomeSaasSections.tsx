@@ -36,12 +36,12 @@ const work = [
 
 export const HomeSaasSections = () => (
   <>
-    <section className="home-story-band"><div className="container mx-auto px-4"><div className="home-story-grid">
+    <section className="home-story-band home-band-orange"><div className="container mx-auto px-4"><div className="home-story-grid">
       <div className="home-story-copy"><span className="home-kicker">One connected growth partner</span><h2>Marketing feels fragmented when every channel tells a different story.</h2><p>Super 30 brings strategy, AI SEO, paid acquisition, content, design and web experiences into one focused growth system. Your teams see one plan, one narrative and clearer business outcomes.</p><div className="home-story-points"><div><strong>Discover</strong><span>Understand demand and opportunity.</span></div><div><strong>Convert</strong><span>Turn the right attention into action.</span></div><div><strong>Scale</strong><span>Improve what drives profitable growth.</span></div></div></div>
       <div className="home-story-visual"><img src={strategyImage} alt="Digital marketing strategy dashboard with campaign data" loading="lazy" /><div className="home-story-proof"><span>Connected strategy</span><strong>Search + Paid + Creative + Web</strong></div></div>
     </div></div></section>
 
-    <section id="home-services" className="home-services-band"><div className="container mx-auto px-4">
+    <section id="home-services" className="home-services-band home-band-black"><div className="container mx-auto px-4">
       <div className="home-section-heading"><div><span className="home-kicker">Capabilities</span><h2>Every service has a role in the growth story.</h2></div><p>Choose a focused engagement or connect the complete customer journey with one multidisciplinary team.</p></div>
       <nav className="home-service-jump" aria-label="Explore our core services">{serviceStories.map((service, index) => <a href={`#home-service-${index + 1}`} key={service.label}><img src={service.image} alt="" /><span><small>{String(index + 1).padStart(2, "0")}</small>{service.label}</span><ArrowRight aria-hidden="true" /></a>)}</nav>
       <div className="home-service-list">{serviceStories.map((service, index) => <article className={`home-service-story ${index % 2 === 1 ? "home-service-story-reverse" : ""}`} key={service.title}>
@@ -50,12 +50,12 @@ export const HomeSaasSections = () => (
       </article>)}</div>
     </div></section>
 
-    <section className="home-proof-band"><div className="container mx-auto px-4">
+    <section className="home-proof-band home-band-orange"><div className="container mx-auto px-4">
       <div className="home-proof-heading"><span className="home-kicker home-kicker-dark">Selected work</span><h2>Strategy becomes credible when you can see the work.</h2><p>Explore digital experiences created across education, consumer brands and growing businesses.</p></div>
       <div className="home-work-grid">{work.map((project, index) => <Link to="/our-work" className={`home-work-card home-work-card-${index + 1}`} key={project.name}><img src={project.image} alt={`${project.name} project by Super 30`} loading="lazy" /><div><span>{project.discipline}</span><h3>{project.name}</h3></div></Link>)}</div>
       <div className="home-report-strip"><div><span>Documented SEO performance</span><h3>Real reports. Clear movement. No vague promises.</h3><Button asChild className="rounded-full"><Link to="/our-work">View client work<ArrowRight /></Link></Button></div><img src={suranaProof} alt="SEO performance report for Surana Educational Institutions" loading="lazy" /></div>
     </div></section>
 
-    <section className="home-process-band"><div className="container mx-auto px-4"><div className="home-section-heading"><div><span className="home-kicker">How we work</span><h2>A clear path from ambition to momentum.</h2></div><p>No disconnected tasks. Every stage builds the evidence and foundation needed for the next.</p></div><div className="home-process-grid">{process.map((step) => <article className="home-process-card" key={step.number}><img src={step.image} alt="" loading="lazy" /><div><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div></article>)}</div></div></section>
+    <section className="home-process-band home-band-black"><div className="container mx-auto px-4"><div className="home-section-heading"><div><span className="home-kicker">How we work</span><h2>A clear path from ambition to momentum.</h2></div><p>No disconnected tasks. Every stage builds the evidence and foundation needed for the next.</p></div><div className="home-process-grid">{process.map((step) => <article className="home-process-card" key={step.number}><img src={step.image} alt="" loading="lazy" /><div><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div></article>)}</div></div></section>
   </>
 );
