@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Play, Search, Sparkles, TrendingUp, Users, Target, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Hero3DBackground } from "./Hero3DBackground";
 
 const servicePills = [
   { label: "AI SEO", href: "/seo-company-bangalore", icon: Target },
@@ -19,7 +18,6 @@ const metrics = [
 
 export const HomeHero = () => (
   <section id="home-hero" className="home-hero-v2">
-    <Hero3DBackground />
     <div className="container mx-auto px-4">
       <div className="home-hero-v2__copy">
         <div className="home-hero-v2__badge">
