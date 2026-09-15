@@ -5,10 +5,6 @@ import aadhyaWork from "@/assets/portfolio/aadhya-animatics.png";
 import academyWork from "@/assets/portfolio/digital-academy-360.png";
 import interiorsWork from "@/assets/portfolio/interiors-and-more.png";
 import suranaProof from "@/assets/seo-reports/surana-report.png";
-import seoImage from "@/assets/services/seo-services.jpg";
-import leadImage from "@/assets/services/lead-generation.jpg";
-import socialImage from "@/assets/services/social-media.jpg";
-import webImage from "@/assets/services/web-design.jpg";
 
 const heroImages = [
   { src: aadhyaWork, alt: "Aadhya Animatics brand and website project by Super 30" },
