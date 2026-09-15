@@ -15,10 +15,6 @@ const heroImages = [
   { src: academyWork, alt: "Digital Academy 360 education growth campaign" },
   { src: interiorsWork, alt: "Interiors & More premium web presence" },
   { src: suranaProof, alt: "Surana Educational Institutions SEO performance report" },
-  { src: seoImage, alt: "AI SEO service results" },
-  { src: leadImage, alt: "Lead generation campaigns" },
-  { src: socialImage, alt: "Social media marketing creative" },
-  { src: webImage, alt: "Web design and development work" },
 ];
 
 const servicePills = [
@@ -64,13 +60,11 @@ export const HomeHero = () => (
       </div>
 
       <div className="home-hero-v2__gallery" aria-label="Selected client work and results">
-        <div className="home-hero-v2__gallery-track">
-          {heroImages.map((img, i) => (
-            <div className="home-hero-v2__gallery-item" key={i}>
-              <img src={img.src} alt={img.alt} loading={i > 2 ? "lazy" : "eager"} />
+        {heroImages.map((img, index) => (
+            <div className="home-hero-v2__gallery-item" key={img.alt}>
+              <img src={img.src} alt={img.alt} loading={index > 1 ? "lazy" : "eager"} />
             </div>
-          ))}
-        </div>
+        ))}
       </div>
 
       <nav className="home-hero-v2__services" aria-label="Core services">
