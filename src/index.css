@@ -707,6 +707,18 @@ All colors MUST be HSL.
   background:hsl(0 0% 5%); color:hsl(0 0% 100%);
 }
 .home-saas .home-band-black { background:hsl(0 0% 5%); color:hsl(0 0% 100%); border-top:1px solid hsl(0 0% 14%); }
+.home-saas .home-band-white {
+  --background:0 0% 100%; --foreground:0 0% 8%;
+  --card:0 0% 97%; --card-foreground:0 0% 8%;
+  --muted:0 0% 96%; --muted-foreground:0 0% 40%;
+  --accent:18 100% 48%; --accent-foreground:0 0% 100%;
+  --secondary:0 0% 96%; --secondary-foreground:0 0% 8%;
+  --border:0 0% 90%; --input:0 0% 90%;
+  background:hsl(0 0% 100%); color:hsl(0 0% 8%); border-top:1px solid hsl(0 0% 92%);
+}
+.home-saas .home-band-white .home-kicker { color:hsl(18 100% 42%); }
+.home-saas .home-band-white .home-principles-grid article,
+.home-saas .home-band-white .home-journey-grid article { background:hsl(0 0% 100%); }
 .home-saas .home-band-orange {
   --background:18 100% 48%; --foreground:0 0% 100%;
   --card:18 100% 45%; --card-foreground:0 0% 100%;

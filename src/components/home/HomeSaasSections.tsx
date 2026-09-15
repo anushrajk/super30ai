@@ -36,7 +36,7 @@ const work = [
 
 export const HomeSaasSections = () => (
   <>
-    <section className="home-story-band home-band-orange"><div className="container mx-auto px-4"><div className="home-story-grid">
+    <section className="home-story-band home-band-white"><div className="container mx-auto px-4"><div className="home-story-grid">
       <div className="home-story-copy"><span className="home-kicker">One connected growth partner</span><h2>Marketing feels fragmented when every channel tells a different story.</h2><p>Super 30 brings strategy, AI SEO, paid acquisition, content, design and web experiences into one focused growth system. Your teams see one plan, one narrative and clearer business outcomes.</p><div className="home-story-points"><div><strong>Discover</strong><span>Understand demand and opportunity.</span></div><div><strong>Convert</strong><span>Turn the right attention into action.</span></div><div><strong>Scale</strong><span>Improve what drives profitable growth.</span></div></div></div>
       <div className="home-story-visual"><img src={strategyImage} alt="Digital marketing strategy dashboard with campaign data" loading="lazy" /><div className="home-story-proof"><span>Connected strategy</span><strong>Search + Paid + Creative + Web</strong></div></div>
     </div></div></section>
@@ -56,6 +56,6 @@ export const HomeSaasSections = () => (
       <div className="home-report-strip"><div><span>Documented SEO performance</span><h3>Real reports. Clear movement. No vague promises.</h3><Button asChild className="rounded-full"><Link to="/our-work">View client work<ArrowRight /></Link></Button></div><img src={suranaProof} alt="SEO performance report for Surana Educational Institutions" loading="lazy" /></div>
     </div></section>
 
-    <section className="home-process-band home-band-black"><div className="container mx-auto px-4"><div className="home-section-heading"><div><span className="home-kicker">How we work</span><h2>A clear path from ambition to momentum.</h2></div><p>No disconnected tasks. Every stage builds the evidence and foundation needed for the next.</p></div><div className="home-process-grid">{process.map((step) => <article className="home-process-card" key={step.number}><img src={step.image} alt="" loading="lazy" /><div><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div></article>)}</div></div></section>
+    <section className="home-process-band home-band-white"><div className="container mx-auto px-4"><div className="home-section-heading"><div><span className="home-kicker">How we work</span><h2>A clear path from ambition to momentum.</h2></div><p>No disconnected tasks. Every stage builds the evidence and foundation needed for the next.</p></div><div className="home-process-grid">{process.map((step) => <article className="home-process-card" key={step.number}><img src={step.image} alt="" loading="lazy" /><div><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div></article>)}</div></div></section>
   </>
 );
