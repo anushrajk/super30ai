@@ -1,8 +1,5 @@
 import { lazy, Suspense } from "react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Play, Search, Sparkles } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { HomeSaasSections } from "@/components/home/HomeSaasSections";
