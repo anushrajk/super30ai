@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
 import { HomeSaasSections } from "@/components/home/HomeSaasSections";
-import { HomeHeroVisual } from "@/components/home/HomeHeroVisual";
+import { HomeHero } from "@/components/home/HomeHero";
 
 const UnifiedCTASection = lazy(() => import("@/components/landing/UnifiedCTASection").then(m => ({ default: m.UnifiedCTASection })));
 const ClientLogosSection = lazy(() => import("@/components/landing/ClientLogosSection").then(m => ({ default: m.ClientLogosSection })));
