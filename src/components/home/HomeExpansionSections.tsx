@@ -95,7 +95,7 @@ const HomeInlineCTA = ({ eyebrow, title, text, primaryLabel, primaryHref, second
 
 export const HomeExpansionSections = () => (
   <>
-    <section className="home-journey-band">
+    <section className="home-journey-band home-band-orange">
       <div className="container mx-auto px-4">
         <div className="home-section-heading">
           <div><span className="home-kicker">The connected growth journey</span><h2>From first search to final decision, every moment has a job.</h2></div>
@@ -115,7 +115,7 @@ export const HomeExpansionSections = () => (
       </div>
     </section>
 
-    <section className="home-ai-band">
+    <section className="home-ai-band home-band-black">
       <div className="container mx-auto px-4"><div className="home-ai-shell">
         <div className="home-ai-visual">
           <img src={reportingImage} alt="Marketing reporting and optimisation workspace" loading="lazy" />
@@ -141,7 +141,7 @@ export const HomeExpansionSections = () => (
       secondaryHref="/digital-marketing-agency-bangalore"
     />
 
-    <section className="home-capabilities-band">
+    <section className="home-capabilities-band home-band-orange">
       <div className="container mx-auto px-4">
         <div className="home-section-heading">
           <div><span className="home-kicker">Explore every capability</span><h2>Specialist pages for every part of your digital growth system.</h2></div>
@@ -156,7 +156,7 @@ export const HomeExpansionSections = () => (
       </div>
     </section>
 
-    <section className="home-industries-band">
+    <section className="home-industries-band home-band-black">
       <div className="container mx-auto px-4">
         <div className="home-section-heading">
           <div><span className="home-kicker">Built around your market</span><h2>Growth systems shaped for how your customers actually choose.</h2></div>
@@ -180,7 +180,7 @@ export const HomeExpansionSections = () => (
       secondaryHref="/contact-us"
     />
 
-    <section className="home-evidence-band">
+    <section className="home-evidence-band home-band-orange">
       <div className="container mx-auto px-4">
         <div className="home-evidence-heading"><span className="home-kicker home-kicker-dark">Evidence, not theatre</span><h2>Real search work, presented clearly.</h2><p>See a selection of existing client reports that make progress visible and keep the conversation focused on what changed.</p></div>
         <div className="home-evidence-grid">{reports.map((report, index) => <figure className={index === 0 ? "home-evidence-featured" : ""} key={report.name}>
@@ -191,7 +191,7 @@ export const HomeExpansionSections = () => (
       </div>
     </section>
 
-    <section className="home-partnership-band">
+    <section className="home-partnership-band home-band-black">
       <div className="container mx-auto px-4"><div className="home-partnership-shell">
         <div className="home-partnership-intro"><Compass aria-hidden="true" /><span className="home-kicker">A better working relationship</span><h2>Clarity at every stage. Momentum without the noise.</h2><p>A strong agency partnership should make growth easier to understand, easier to act on and easier to improve.</p><Button asChild className="rounded-full"><Link to="/contact-us">Start a conversation<ArrowRight /></Link></Button></div>
         <div className="home-principles-grid">{principles.map((principle, index) => <article key={principle.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{principle.title}</h3><p>{principle.text}</p></article>)}</div>
