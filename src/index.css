@@ -548,7 +548,7 @@ All colors MUST be HSL.
 .home-hero-v2__badge,.home-kicker { display:inline-flex; align-items:center; gap:.5rem; text-transform:uppercase; font-size:.72rem; font-weight:800; color:hsl(var(--brand-orange)); }
 .home-hero-v2__badge { padding:.5rem .85rem; border:1px solid hsl(var(--brand-orange)/.25); border-radius:999px; background:hsl(var(--background)); }
 .home-hero-v2__badge svg { width:14px; }
-.home-hero-v2 h1 { margin:1.25rem auto 1rem; max-width:760px; font-size:clamp(2.35rem,4.3vw,4.35rem); line-height:1.08; font-weight:800; color:hsl(var(--foreground)); }
+.home-hero-v2 h1 { margin:1.25rem auto 1rem; max-width:760px; font-size:clamp(2.35rem,4.3vw,4.35rem); line-height:1.1; font-weight:600; color:hsl(var(--foreground)); }
 .home-hero-v2 h1 span { display:block; color:hsl(var(--brand-orange)); }
 .home-hero-v2__copy>p { max-width:620px; margin:0 auto; font-size:1rem; line-height:1.7; color:hsl(var(--muted-foreground)); }
 .home-hero-v2__actions { display:flex; flex-wrap:wrap; justify-content:center; gap:.8rem; margin-top:1.8rem; }
