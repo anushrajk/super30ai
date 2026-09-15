@@ -74,7 +74,7 @@ export const ClientLogosSection = () => {
           </div>
           <div className="w-px h-8 bg-white/20 hidden sm:block" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-white">50+</p>
+            <p className="text-2xl font-bold text-white">60+</p>
             <p className="text-xs text-gray-400">AI Audits Delivered</p>
           </div>
           <div className="w-px h-8 bg-white/20 hidden sm:block" />
