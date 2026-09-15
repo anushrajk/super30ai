@@ -12,6 +12,10 @@ import {
   ShoppingBag,
   Sparkles,
   Store,
+  Target,
+  PenTool,
+  Megaphone,
+  Globe2,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aiSeoImage from "@/assets/services/ai-seo-laptop.webp";
@@ -58,6 +62,37 @@ const principles = [
   { title: "A system built to improve", text: "Every launch creates learning that strengthens the next campaign, page or message." },
 ];
 
+const capabilities = [
+  { title: "AI SEO", detail: "Search visibility across Google and AI answers", href: "/seo-company-bangalore", image: aiSeoImage, icon: Search },
+  { title: "Lead Generation", detail: "Qualified demand built around conversion", href: "/lead-generation-agency-bangalore", image: performanceImage, icon: Target },
+  { title: "Performance Marketing", detail: "Paid campaigns connected to revenue", href: "/performance-marketing-agency-bangalore", image: reportingImage, icon: BarChart3 },
+  { title: "Social Media", detail: "Strategy, creative and community growth", href: "/social-media-marketing-agency-bangalore", image: socialImage, icon: Megaphone },
+  { title: "Web Design", detail: "Fast digital experiences designed to convert", href: "/web-design-company-bangalore", image: webImage, icon: Globe2 },
+  { title: "Creative Design", detail: "Distinctive visual systems and campaign ideas", href: "/design", image: interiorsWork, icon: PenTool },
+];
+
+const HomeInlineCTA = ({ eyebrow, title, text, primaryLabel, primaryHref, secondaryLabel, secondaryHref }: {
+  eyebrow: string;
+  title: string;
+  text: string;
+  primaryLabel: string;
+  primaryHref: string;
+  secondaryLabel: string;
+  secondaryHref: string;
+}) => (
+  <section className="home-inline-cta-band">
+    <div className="container mx-auto px-4">
+      <div className="home-inline-cta">
+        <div><span>{eyebrow}</span><h2>{title}</h2><p>{text}</p></div>
+        <div className="home-inline-cta-actions">
+          <Button asChild className="rounded-full"><Link to={primaryHref}>{primaryLabel}<ArrowRight /></Link></Button>
+          <Button asChild variant="outline-white" className="rounded-full"><Link to={secondaryHref}>{secondaryLabel}</Link></Button>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export const HomeExpansionSections = () => (
   <>
     <section className="home-journey-band">
@@ -96,6 +131,31 @@ export const HomeExpansionSections = () => (
       </div></div>
     </section>
 
+    <HomeInlineCTA
+      eyebrow="Start with the right opportunity"
+      title="Not sure which channel should lead your growth plan?"
+      text="Bring us the business goal. We will help identify the clearest route from visibility to qualified demand."
+      primaryLabel="Get a free brand audit"
+      primaryHref="/contact-us"
+      secondaryLabel="See our approach"
+      secondaryHref="/digital-marketing-agency-bangalore"
+    />
+
+    <section className="home-capabilities-band">
+      <div className="container mx-auto px-4">
+        <div className="home-section-heading">
+          <div><span className="home-kicker">Explore every capability</span><h2>Specialist pages for every part of your digital growth system.</h2></div>
+          <p>Go deeper into the services most relevant to your next stage, from visibility and acquisition to creative and conversion.</p>
+        </div>
+        <div className="home-capabilities-grid">
+          {capabilities.map((capability, index) => <Link to={capability.href} key={capability.title}>
+            <div className="home-capability-image"><img src={capability.image} alt={`${capability.title} service from Super 30`} loading="lazy" /><span>{String(index + 1).padStart(2, "0")}</span></div>
+            <div className="home-capability-copy"><capability.icon aria-hidden="true" /><span><strong>{capability.title}</strong><small>{capability.detail}</small></span><ArrowRight aria-hidden="true" /></div>
+          </Link>)}
+        </div>
+      </div>
+    </section>
+
     <section className="home-industries-band">
       <div className="container mx-auto px-4">
         <div className="home-section-heading">
@@ -109,6 +169,16 @@ export const HomeExpansionSections = () => (
         <div className="home-industries-action"><Button asChild variant="outline" className="rounded-full"><Link to="/digital-marketing-for-coaching-institutes">Explore coaching institute marketing<ArrowRight /></Link></Button></div>
       </div>
     </section>
+
+    <HomeInlineCTA
+      eyebrow="Built for your market"
+      title="Need a growth plan shaped around your industry?"
+      text="Explore focused solutions for education, e-commerce, lifestyle and hospitality—or speak with our team about your market."
+      primaryLabel="Explore industry solutions"
+      primaryHref="/industries/education"
+      secondaryLabel="Talk to our team"
+      secondaryHref="/contact-us"
+    />
 
     <section className="home-evidence-band">
       <div className="container mx-auto px-4">
@@ -127,5 +197,15 @@ export const HomeExpansionSections = () => (
         <div className="home-principles-grid">{principles.map((principle, index) => <article key={principle.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{principle.title}</h3><p>{principle.text}</p></article>)}</div>
       </div></div>
     </section>
+
+    <HomeInlineCTA
+      eyebrow="Your next growth chapter"
+      title="Turn scattered marketing into one clear operating plan."
+      text="Start with a focused conversation about your goals, current channels and the opportunities worth prioritising."
+      primaryLabel="Start a conversation"
+      primaryHref="/contact-us"
+      secondaryLabel="View our work"
+      secondaryHref="/our-work"
+    />
   </>
 );
