@@ -43,7 +43,7 @@ export const HomeHero = () => (
           <Sparkles aria-hidden="true" /> AI strategy. Human creativity. Real growth.
         </div>
         <h1>
-          The AI Digital Marketing Agency
+          The AI Digital Marketing Agency{" "}
           <span>built for revenue growth.</span>
         </h1>
         <p>
