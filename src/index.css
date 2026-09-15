@@ -780,3 +780,14 @@ All colors MUST be HSL.
 .home-saas .home-inline-cta:after { background:linear-gradient(115deg,transparent 46%,hsl(0 0% 0%/.25)); }
 .home-saas .home-inline-cta span { color:hsl(18 100% 55%); }
 .home-saas .home-inline-cta p { color:hsl(0 0% 72%); }
+
+/* Bento card internals: uniform media height regardless of span */
+.home-saas .home-capabilities-grid>a,
+.home-saas .home-industries-grid>a { display:flex; flex-direction:column; height:100%; }
+.home-saas .home-capabilities-grid .home-capability-image,
+.home-saas .home-industries-grid .home-industry-image { height:230px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.home-saas .home-capabilities-grid .home-capability-image img,
+.home-saas .home-industries-grid .home-industry-image img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+.home-saas .home-capabilities-grid .home-capability-copy,
+.home-saas .home-industries-grid .home-industry-copy { margin-top:auto; }
+@media (max-width:640px){.home-saas .home-capabilities-grid .home-capability-image,.home-saas .home-industries-grid .home-industry-image{height:190px}}
