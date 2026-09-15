@@ -43,8 +43,9 @@ export const HomeSaasSections = () => (
 
     <section id="home-services" className="home-services-band"><div className="container mx-auto px-4">
       <div className="home-section-heading"><div><span className="home-kicker">Capabilities</span><h2>Every service has a role in the growth story.</h2></div><p>Choose a focused engagement or connect the complete customer journey with one multidisciplinary team.</p></div>
+      <nav className="home-service-jump" aria-label="Explore our core services">{serviceStories.map((service, index) => <a href={`#home-service-${index + 1}`} key={service.label}><img src={service.image} alt="" /><span><small>{String(index + 1).padStart(2, "0")}</small>{service.label}</span><ArrowRight aria-hidden="true" /></a>)}</nav>
       <div className="home-service-list">{serviceStories.map((service, index) => <article className={`home-service-story ${index % 2 === 1 ? "home-service-story-reverse" : ""}`} key={service.title}>
-        <Link to={service.href} className="home-service-image"><img src={service.image} alt={`${service.label} service visual`} loading="lazy" /><span>{String(index + 1).padStart(2, "0")}</span></Link>
+        <Link to={service.href} id={`home-service-${index + 1}`} className="home-service-image"><img src={service.image} alt={`${service.label} service visual`} loading="lazy" /><span>{String(index + 1).padStart(2, "0")}</span><strong>{service.label}</strong></Link>
         <div className="home-service-copy"><div className="home-service-label"><service.icon aria-hidden="true" /> {service.label}</div><h3>{service.title}</h3><p>{service.description}</p><ul>{service.features.map((feature) => <li key={feature}><Check aria-hidden="true" />{feature}</li>)}</ul><Button asChild variant="outline" className="rounded-full"><Link to={service.href}>Explore {service.label}<ArrowRight /></Link></Button></div>
       </article>)}</div>
     </div></section>
