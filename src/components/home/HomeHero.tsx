@@ -5,20 +5,12 @@ import aadhyaWork from "@/assets/portfolio/aadhya-animatics.png";
 import academyWork from "@/assets/portfolio/digital-academy-360.png";
 import interiorsWork from "@/assets/portfolio/interiors-and-more.png";
 import suranaProof from "@/assets/seo-reports/surana-report.png";
-import seoImage from "@/assets/services/seo-services.jpg";
-import leadImage from "@/assets/services/lead-generation.jpg";
-import socialImage from "@/assets/services/social-media.jpg";
-import webImage from "@/assets/services/web-design.jpg";
 
 const heroImages = [
   { src: aadhyaWork, alt: "Aadhya Animatics brand and website project by Super 30" },
   { src: academyWork, alt: "Digital Academy 360 education growth campaign" },
   { src: interiorsWork, alt: "Interiors & More premium web presence" },
   { src: suranaProof, alt: "Surana Educational Institutions SEO performance report" },
-  { src: seoImage, alt: "AI SEO service results" },
-  { src: leadImage, alt: "Lead generation campaigns" },
-  { src: socialImage, alt: "Social media marketing creative" },
-  { src: webImage, alt: "Web design and development work" },
 ];
 
 const servicePills = [
@@ -64,13 +56,11 @@ export const HomeHero = () => (
       </div>
 
       <div className="home-hero-v2__gallery" aria-label="Selected client work and results">
-        <div className="home-hero-v2__gallery-track">
-          {heroImages.map((img, i) => (
-            <div className="home-hero-v2__gallery-item" key={i}>
-              <img src={img.src} alt={img.alt} loading={i > 2 ? "lazy" : "eager"} />
+        {heroImages.map((img, index) => (
+            <div className="home-hero-v2__gallery-item" key={img.alt}>
+              <img src={img.src} alt={img.alt} loading={index > 1 ? "lazy" : "eager"} />
             </div>
-          ))}
-        </div>
+        ))}
       </div>
 
       <nav className="home-hero-v2__services" aria-label="Core services">
