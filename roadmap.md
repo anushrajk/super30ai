@@ -6,3 +6,4 @@
 - [x] Redesign the entire homepage in the selected premium SaaS direction
 - [x] Add five image-led homepage storytelling sections
 - [x] Add homepage capability discovery and interstitial CTA banners
+- [x] Replace homepage hero preview tiles with a subtle 3D motion background

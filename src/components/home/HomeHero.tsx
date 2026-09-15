@@ -1,17 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Play, Search, Sparkles, TrendingUp, Users, Target, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import aadhyaWork from "@/assets/portfolio/aadhya-animatics.png";
-import academyWork from "@/assets/portfolio/digital-academy-360.png";
-import interiorsWork from "@/assets/portfolio/interiors-and-more.png";
-import suranaProof from "@/assets/seo-reports/surana-report.png";
-
-const heroImages = [
-  { src: aadhyaWork, alt: "Aadhya Animatics brand and website project by Super 30" },
-  { src: academyWork, alt: "Digital Academy 360 education growth campaign" },
-  { src: interiorsWork, alt: "Interiors & More premium web presence" },
-  { src: suranaProof, alt: "Surana Educational Institutions SEO performance report" },
-];
+import { Hero3DBackground } from "./Hero3DBackground";
 
 const servicePills = [
   { label: "AI SEO", href: "/seo-company-bangalore", icon: Target },
@@ -29,6 +19,7 @@ const metrics = [
 
 export const HomeHero = () => (
   <section id="home-hero" className="home-hero-v2">
+    <Hero3DBackground />
     <div className="container mx-auto px-4">
       <div className="home-hero-v2__copy">
         <div className="home-hero-v2__badge">
@@ -53,14 +44,6 @@ export const HomeHero = () => (
             </Link>
           </Button>
         </div>
-      </div>
-
-      <div className="home-hero-v2__gallery" aria-label="Selected client work and results">
-        {heroImages.map((img, index) => (
-            <div className="home-hero-v2__gallery-item" key={img.alt}>
-              <img src={img.src} alt={img.alt} loading={index > 1 ? "lazy" : "eager"} />
-            </div>
-        ))}
       </div>
 
       <nav className="home-hero-v2__services" aria-label="Core services">
