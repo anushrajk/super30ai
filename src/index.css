@@ -642,6 +642,54 @@ All colors MUST be HSL.
 .home-inline-cta p { color:hsl(var(--background)/.66); font-size:.9rem; line-height:1.65; }
 .home-inline-cta-actions { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:.7rem; }
 
+/* ---- Homepage consistency layer: one type scale, one rhythm, one radius ---- */
+.home-saas { --home-y:5.5rem; --home-radius:14px; --home-radius-sm:10px; --home-h2:clamp(2rem,3vw,2.95rem); --home-h3:1.06rem; --home-body:.95rem; --home-lh:1.7; --home-kicker:.72rem; }
+
+/* Vertical rhythm */
+.home-saas .home-story-band,.home-saas .home-services-band,.home-saas .home-process-band,
+.home-saas .home-proof-band,.home-saas .home-journey-band,.home-saas .home-ai-band,
+.home-saas .home-industries-band,.home-saas .home-evidence-band,.home-saas .home-partnership-band,
+.home-saas .home-capabilities-band { padding:var(--home-y) 0; }
+
+/* Eyebrow labels */
+.home-saas .home-kicker,.home-saas .home-hero-v2__badge { font-size:var(--home-kicker); font-weight:800; letter-spacing:.08em; }
+.home-saas .home-story-proof span,.home-saas .home-report-strip>div>span,
+.home-saas .home-inline-cta span,.home-saas .home-service-label { font-size:var(--home-kicker); font-weight:800; letter-spacing:.08em; }
+
+/* Section headings */
+.home-saas .home-story-copy h2,.home-saas .home-section-heading h2,.home-saas .home-ai-copy h2,
+.home-saas .home-proof-heading h2,.home-saas .home-evidence-heading h2,.home-saas .home-partnership-intro h2 {
+  font-size:var(--home-h2); line-height:1.14; font-weight:700; letter-spacing:-.01em;
+}
+.home-saas .home-service-copy h3,.home-saas .home-report-strip h3 { font-size:clamp(1.6rem,2.2vw,2.15rem); line-height:1.18; font-weight:700; letter-spacing:-.01em; }
+.home-saas .home-inline-cta h2 { font-size:clamp(1.45rem,2vw,2.05rem); line-height:1.2; font-weight:700; letter-spacing:-.01em; }
+
+/* Card headings */
+.home-saas .home-journey-grid h3,.home-saas .home-process-card h3,.home-saas .home-principles-grid h3,
+.home-saas .home-work-card h3 { font-size:var(--home-h3); line-height:1.35; font-weight:700; }
+.home-saas .home-capability-copy strong,.home-saas .home-industry-copy strong,
+.home-saas .home-ai-visual strong,.home-saas .home-story-proof strong,
+.home-saas .home-ai-capabilities strong,.home-saas .home-evidence-grid figcaption strong { font:700 .95rem/1.35 "Sora",sans-serif; }
+
+/* Body copy */
+.home-saas .home-story-copy>p,.home-saas .home-section-heading>p,.home-saas .home-ai-copy>p,
+.home-saas .home-proof-heading p,.home-saas .home-evidence-heading p,.home-saas .home-partnership-intro p,
+.home-saas .home-inline-cta p,.home-saas .home-hero-v2__copy>p { font-size:var(--home-body); line-height:var(--home-lh); }
+.home-saas .home-journey-grid p,.home-saas .home-process-card p,.home-saas .home-principles-grid p,
+.home-saas .home-service-copy li,.home-saas .home-ai-capabilities span,
+.home-saas .home-capability-copy small,.home-saas .home-industry-copy small { font-size:.85rem; line-height:1.6; }
+
+/* Surfaces */
+.home-saas .home-hero-v2__gallery,.home-saas .home-hero-v2__services>*,.home-saas .home-hero-v2__metrics,
+.home-saas .home-story-visual,.home-saas .home-service-image,.home-saas .home-service-jump a,
+.home-saas .home-process-card,.home-saas .home-work-card,.home-saas .home-report-strip,
+.home-saas .home-journey-grid,.home-saas .home-journey-visuals figure,.home-saas .home-ai-visual,
+.home-saas .home-industries-grid>a,.home-saas .home-evidence-grid figure,
+.home-saas .home-principles-grid,.home-saas .home-capabilities-grid>a { border-radius:var(--home-radius); }
+.home-saas .home-hero-v2__gallery-item,.home-saas .home-story-visual>img,
+.home-saas .home-ai-visual>img,.home-saas .home-service-jump img { border-radius:var(--home-radius-sm); }
+.home-saas .home-inline-cta { border-radius:24px; }
+
 @media (max-width:1100px){.home-service-jump{grid-template-columns:1fr 1fr}.home-industries-grid{grid-template-columns:1fr 1fr}.home-capabilities-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:900px){.home-hero-v2{padding-top:3.5rem}.home-hero-v2 h1{font-size:clamp(2.3rem,6vw,3.8rem)}.home-hero-v2__gallery{grid-template-columns:1fr 1fr;width:min(720px,100%)}.home-hero-v2__services{grid-template-columns:1fr 1fr}.home-hero-v2__metrics{grid-template-columns:1fr 1fr}.home-hero-v2__metrics div:nth-child(2){border-right:0}.home-hero-v2__metrics div:nth-child(-n+2){border-bottom:1px solid hsl(var(--border))}.home-story-grid,.home-service-story,.home-section-heading,.home-ai-shell,.home-partnership-shell{grid-template-columns:1fr;gap:2.25rem}.home-service-story-reverse .home-service-image{order:0}.home-process-grid,.home-journey-grid{grid-template-columns:1fr 1fr}.home-section-heading{margin-bottom:3rem}.home-service-list{gap:4rem}.home-ai-visual{max-width:720px}.home-evidence-grid{grid-template-columns:1fr;grid-template-rows:auto}.home-evidence-featured{grid-row:auto}.home-evidence-grid figure>div{height:310px}.home-inline-cta{grid-template-columns:1fr;padding:2.25rem}.home-inline-cta-actions{justify-content:flex-start}}
 @media (max-width:640px){.home-hero-v2{padding:2.75rem 0 2rem}.home-hero-v2 h1{font-size:2.2rem}.home-hero-v2__actions{flex-direction:column}.home-hero-v2__actions a{width:100%}.home-hero-v2__gallery{padding:.45rem;gap:.45rem;margin-top:2.2rem}.home-hero-v2__services{grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.25rem}.home-hero-v2__service-card{padding:.75rem}.home-hero-v2__service-card span{font-size:.72rem}.home-hero-v2__metrics{grid-template-columns:1fr 1fr}.home-hero-v2__metrics div{padding:.85rem}.home-story-band,.home-services-band,.home-proof-band,.home-process-band,.home-journey-band,.home-ai-band,.home-industries-band,.home-evidence-band,.home-partnership-band,.home-capabilities-band{padding:4rem 0}.home-story-points div{grid-template-columns:85px 1fr}.home-service-jump{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-1rem;padding-right:1rem;margin-bottom:3.5rem}.home-service-jump a{min-width:82%;scroll-snap-align:start}.home-service-copy ul{grid-template-columns:1fr}.home-work-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.home-work-card{min-width:86%;height:310px;scroll-snap-align:start}.home-report-strip{grid-template-columns:1fr}.home-report-strip img{height:auto;max-height:260px;object-fit:contain}.home-process-grid,.home-journey-grid,.home-industries-grid,.home-principles-grid,.home-capabilities-grid{grid-template-columns:1fr}.home-section-heading{gap:1rem}.home-journey-grid article{min-height:190px}.home-journey-grid h3{margin-top:2rem}.home-journey-visuals{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.home-journey-visuals figure{min-width:84%;scroll-snap-align:start}.home-ai-visual>img{aspect-ratio:1.05;object-fit:contain}.home-evidence-grid figure>div{height:235px}.home-principles-grid article{min-height:185px;border-right:0;border-bottom:1px solid hsl(var(--border))}.home-principles-grid article:nth-child(3){border-bottom:1px solid hsl(var(--border))}.home-principles-grid h3{margin-top:1.5rem}.home-inline-cta-band{padding:.75rem 0}.home-inline-cta{padding:1.75rem 1.35rem;border-radius:18px}.home-inline-cta-actions{display:grid;grid-template-columns:1fr}.home-inline-cta-actions a{width:100%}}
