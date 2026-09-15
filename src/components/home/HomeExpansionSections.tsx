@@ -141,7 +141,7 @@ export const HomeExpansionSections = () => (
       secondaryHref="/digital-marketing-agency-bangalore"
     />
 
-    <section className="home-capabilities-band home-band-orange">
+    <section className="home-capabilities-band home-band-white">
       <div className="container mx-auto px-4">
         <div className="home-section-heading">
           <div><span className="home-kicker">Explore every capability</span><h2>Specialist pages for every part of your digital growth system.</h2></div>
@@ -191,7 +191,7 @@ export const HomeExpansionSections = () => (
       </div>
     </section>
 
-    <section className="home-partnership-band home-band-black">
+    <section className="home-partnership-band home-band-white">
       <div className="container mx-auto px-4"><div className="home-partnership-shell">
         <div className="home-partnership-intro"><Compass aria-hidden="true" /><span className="home-kicker">A better working relationship</span><h2>Clarity at every stage. Momentum without the noise.</h2><p>A strong agency partnership should make growth easier to understand, easier to act on and easier to improve.</p><Button asChild className="rounded-full"><Link to="/contact-us">Start a conversation<ArrowRight /></Link></Button></div>
         <div className="home-principles-grid">{principles.map((principle, index) => <article key={principle.title}><span>{String(index + 1).padStart(2, "0")}</span><h3>{principle.title}</h3><p>{principle.text}</p></article>)}</div>
