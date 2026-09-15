@@ -695,7 +695,7 @@ All colors MUST be HSL.
 @media (max-width:640px){.home-hero-v2{padding:2.75rem 0 2rem}.home-hero-v2 h1{font-size:2.2rem}.home-hero-v2__actions{flex-direction:column}.home-hero-v2__actions a{width:100%}.home-hero-v2__gallery{padding:.45rem;gap:.45rem;margin-top:2.2rem}.home-hero-v2__services{grid-template-columns:1fr 1fr;gap:.5rem;margin-top:1.25rem}.home-hero-v2__service-card{padding:.75rem}.home-hero-v2__service-card span{font-size:.72rem}.home-hero-v2__metrics{grid-template-columns:1fr 1fr}.home-hero-v2__metrics div{padding:.85rem}.home-story-band,.home-services-band,.home-proof-band,.home-process-band,.home-journey-band,.home-ai-band,.home-industries-band,.home-evidence-band,.home-partnership-band,.home-capabilities-band{padding:4rem 0}.home-story-points div{grid-template-columns:85px 1fr}.home-service-jump{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-right:-1rem;padding-right:1rem;margin-bottom:3.5rem}.home-service-jump a{min-width:82%;scroll-snap-align:start}.home-service-copy ul{grid-template-columns:1fr}.home-work-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.home-work-card{min-width:86%;height:310px;scroll-snap-align:start}.home-report-strip{grid-template-columns:1fr}.home-report-strip img{height:auto;max-height:260px;object-fit:contain}.home-process-grid,.home-journey-grid,.home-industries-grid,.home-principles-grid,.home-capabilities-grid{grid-template-columns:1fr}.home-section-heading{gap:1rem}.home-journey-grid article{min-height:190px}.home-journey-grid h3{margin-top:2rem}.home-journey-visuals{display:flex;overflow-x:auto;scroll-snap-type:x mandatory}.home-journey-visuals figure{min-width:84%;scroll-snap-align:start}.home-ai-visual>img{aspect-ratio:1.05;object-fit:contain}.home-evidence-grid figure>div{height:235px}.home-principles-grid article{min-height:185px;border-right:0;border-bottom:1px solid hsl(var(--border))}.home-principles-grid article:nth-child(3){border-bottom:1px solid hsl(var(--border))}.home-principles-grid h3{margin-top:1.5rem}.home-inline-cta-band{padding:.75rem 0}.home-inline-cta{padding:1.75rem 1.35rem;border-radius:18px}.home-inline-cta-actions{display:grid;grid-template-columns:1fr}.home-inline-cta-actions a{width:100%}}
 @media (prefers-reduced-motion:reduce){.home-saas *{scroll-behavior:auto!important;transition-duration:.01ms!important}}
 
-/* ---- Homepage theme: alternating orange / black bands (reference-led) ---- */
+/* ---- Homepage theme: alternating black / white bands + bento cards ---- */
 .home-saas {
   --background:0 0% 5%; --foreground:0 0% 100%;
   --card:0 0% 8%; --card-foreground:0 0% 100%;
@@ -718,54 +718,76 @@ All colors MUST be HSL.
 }
 .home-saas .home-band-white .home-kicker { color:hsl(18 100% 42%); }
 .home-saas .home-band-white .home-principles-grid article,
-.home-saas .home-band-white .home-journey-grid article { background:hsl(0 0% 100%); }
-.home-saas .home-band-orange {
-  --background:18 100% 48%; --foreground:0 0% 100%;
-  --card:18 100% 45%; --card-foreground:0 0% 100%;
-  --muted:18 100% 45%; --muted-foreground:24 100% 95%;
-  --accent:18 100% 45%; --accent-foreground:0 0% 100%;
-  --border:20 100% 66%; --input:20 100% 66%;
-  --brand-orange:0 0% 8%; --primary:0 0% 8%; --primary-foreground:0 0% 100%;
-  background:hsl(18 100% 48%); color:hsl(0 0% 100%); border-top:0;
-}
-/* Bands that were originally inverted need explicit surfaces again */
+.home-saas .home-band-white .home-journey-grid article { background:hsl(0 0% 98%); }
+.home-saas .home-band-black .home-principles-grid article,
+.home-saas .home-band-black .home-journey-grid article { background:hsl(0 0% 8%); }
+/* AI band stays a deep panel */
 .home-saas .home-ai-band { background:hsl(0 0% 8%); color:hsl(0 0% 100%); }
 .home-saas .home-ai-band .home-ai-visual { border-color:hsl(0 0% 100%/.14); background:hsl(0 0% 100%/.05); }
 .home-saas .home-ai-band .home-ai-copy>p,.home-saas .home-ai-band .home-ai-capabilities span,
 .home-saas .home-ai-band .home-ai-visual span { color:hsl(0 0% 72%); }
 .home-saas .home-ai-band .home-ai-capabilities,.home-saas .home-ai-band .home-ai-capabilities>div { border-color:hsl(0 0% 100%/.13); }
 .home-saas .home-ai-band .home-ai-capabilities strong,.home-saas .home-ai-band .home-ai-visual strong { color:hsl(0 0% 100%); }
-.home-saas .home-band-orange.home-proof-band,.home-saas .home-band-orange.home-evidence-band { background:hsl(18 100% 48%); color:hsl(0 0% 100%); }
-.home-saas .home-band-orange .home-proof-heading p,.home-saas .home-band-orange .home-evidence-heading p { color:hsl(24 100% 95%); }
-.home-saas .home-band-orange .home-work-card { color:hsl(0 0% 100%); }
-.home-saas .home-band-orange .home-work-card:after { background:linear-gradient(transparent,hsl(0 0% 4%/.9)); }
-.home-saas .home-band-orange .home-work-card span { color:hsl(0 0% 100%/.72); }
-.home-saas .home-band-orange .home-report-strip { background:hsl(0 0% 7%); color:hsl(0 0% 100%); }
-.home-saas .home-band-orange .home-report-strip>div>span { color:hsl(18 100% 55%); }
-.home-saas .home-band-orange .home-evidence-grid figure { border-color:hsl(20 100% 66%); background:hsl(18 100% 45%); }
-.home-saas .home-band-orange .home-evidence-grid figure>div { background:hsl(0 0% 100%); }
-/* Screenshot wells stay white on orange so report images read clearly */
-.home-saas .home-band-orange .home-story-visual,.home-saas .home-band-orange .home-service-image,
-.home-saas .home-band-orange .home-journey-visuals figure,.home-saas .home-band-orange .home-capability-image,
-.home-saas .home-band-orange .home-industry-image,.home-saas .home-band-orange .home-service-jump img,
-.home-saas .home-band-orange .home-process-card img { background:hsl(0 0% 100%); }
-.home-saas .home-band-orange .home-capability-image>span { background:hsl(0 0% 8%); color:hsl(0 0% 100%); }
-.home-saas .home-band-orange .home-journey-visuals figcaption,
-.home-saas .home-band-orange .home-capability-copy small,
-.home-saas .home-band-orange .home-industry-copy small { color:hsl(24 100% 95%); }
-.home-saas .home-band-orange .home-capability-copy>svg:last-child,
-.home-saas .home-band-orange .home-industry-copy>svg:last-child { color:hsl(0 0% 100%/.75); }
-.home-saas .home-band-orange .home-journey-grid,.home-saas .home-band-orange .home-principles-grid { background:hsl(20 100% 66%); }
-.home-saas .home-band-orange .home-journey-grid article { background:hsl(18 100% 48%); }
-.home-saas .home-band-orange a:hover,.home-saas .home-band-orange .home-capabilities-grid>a:hover,
-.home-saas .home-band-orange .home-industries-grid>a:hover { border-color:hsl(0 0% 100%); }
-/* Inline CTA cards pick up the orange accent card from the reference */
+/* Screenshot wells always sit on white so reports stay readable */
+.home-saas .home-story-visual,.home-saas .home-service-image,
+.home-saas .home-journey-visuals figure,.home-saas .home-capability-image,
+.home-saas .home-industry-image,.home-saas .home-service-jump img,
+.home-saas .home-evidence-grid figure>div,
+.home-saas .home-process-card img { background:hsl(0 0% 100%); }
+.home-saas .home-band-black .home-capability-image>span,
+.home-saas .home-band-white .home-capability-image>span { background:hsl(0 0% 8%); color:hsl(0 0% 100%); }
+
+/* ---- Bento card grids ---- */
+.home-saas .home-capabilities-grid,
+.home-saas .home-industries-grid,
+.home-saas .home-principles-grid,
+.home-saas .home-journey-grid { background:transparent; border:0; gap:1rem; }
+.home-saas .home-capabilities-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+.home-saas .home-capabilities-grid>a { border:1px solid hsl(var(--border)); border-radius:20px; background:hsl(var(--card)); overflow:hidden; }
+.home-saas .home-capabilities-grid>a:nth-child(1),
+.home-saas .home-capabilities-grid>a:nth-child(2) { grid-column:span 2; }
+.home-saas .home-industries-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+.home-saas .home-industries-grid>a { border:1px solid hsl(var(--border)); border-radius:20px; background:hsl(var(--card)); overflow:hidden; }
+.home-saas .home-industries-grid>a:nth-child(1),
+.home-saas .home-industries-grid>a:last-child { grid-column:span 2; }
+.home-saas .home-principles-grid,
+.home-saas .home-journey-grid { display:grid; }
+.home-saas .home-principles-grid article,
+.home-saas .home-journey-grid article { border:1px solid hsl(var(--border))!important; border-radius:20px; }
+/* One accent card per bento grid, like the reference */
+.home-saas .home-capabilities-grid>a:nth-child(4),
+.home-saas .home-industries-grid>a:nth-child(3),
+.home-saas .home-principles-grid article:nth-child(2),
+.home-saas .home-journey-grid article:nth-child(2) { background:hsl(0 0% 7%)!important; color:hsl(0 0% 100%); border-color:hsl(0 0% 16%)!important; }
+.home-saas .home-capabilities-grid>a:nth-child(4) .home-capability-copy strong,
+.home-saas .home-industries-grid>a:nth-child(3) .home-industry-copy strong,
+.home-saas .home-principles-grid article:nth-child(2) h3,
+.home-saas .home-journey-grid article:nth-child(2) h3 { color:hsl(0 0% 100%); }
+.home-saas .home-capabilities-grid>a:nth-child(4) .home-capability-copy small,
+.home-saas .home-industries-grid>a:nth-child(3) .home-industry-copy small,
+.home-saas .home-principles-grid article:nth-child(2) p,
+.home-saas .home-journey-grid article:nth-child(2) p { color:hsl(0 0% 70%); }
+.home-saas .home-capabilities-grid>a:nth-child(4) svg,
+.home-saas .home-industries-grid>a:nth-child(3) svg,
+.home-saas .home-principles-grid article:nth-child(2) span,
+.home-saas .home-journey-grid article:nth-child(2) span { color:hsl(18 100% 55%); }
+@media (max-width:1100px){.home-saas .home-capabilities-grid{grid-template-columns:1fr 1fr}.home-saas .home-capabilities-grid>a:nth-child(1),.home-saas .home-capabilities-grid>a:nth-child(2){grid-column:span 1}.home-saas .home-industries-grid{grid-template-columns:1fr 1fr}.home-saas .home-industries-grid>a:nth-child(1),.home-saas .home-industries-grid>a:last-child{grid-column:span 1}}
+@media (max-width:640px){.home-saas .home-capabilities-grid,.home-saas .home-industries-grid{grid-template-columns:1fr}}
+
+/* Inline CTA banners: dark, never orange */
 .home-saas .home-inline-cta-band { background:hsl(0 0% 5%); }
-.home-saas .home-inline-cta { background:hsl(18 100% 48%); color:hsl(0 0% 100%); }
-.home-saas .home-inline-cta:after { background:linear-gradient(115deg,transparent 46%,hsl(0 0% 0%/.16)); }
-.home-saas .home-inline-cta span { color:hsl(0 0% 10%); }
-.home-saas .home-inline-cta p { color:hsl(24 100% 96%); }
-.home-saas .home-band-orange .home-journey-visuals figcaption,
-.home-saas .home-band-orange .home-evidence-grid figcaption span,
-.home-saas .home-band-orange .home-service-label,
-.home-saas .home-band-orange .home-story-proof span { color:hsl(0 0% 10%); }
+.home-saas .home-inline-cta { background:hsl(0 0% 8%); color:hsl(0 0% 100%); border:1px solid hsl(0 0% 16%); }
+.home-saas .home-inline-cta:after { background:linear-gradient(115deg,transparent 46%,hsl(0 0% 0%/.25)); }
+.home-saas .home-inline-cta span { color:hsl(18 100% 55%); }
+.home-saas .home-inline-cta p { color:hsl(0 0% 72%); }
+
+/* Bento card internals: uniform media height regardless of span */
+.home-saas .home-capabilities-grid>a,
+.home-saas .home-industries-grid>a { display:flex; flex-direction:column; height:100%; }
+.home-saas .home-capabilities-grid .home-capability-image,
+.home-saas .home-industries-grid .home-industry-image { height:230px; flex:0 0 auto; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+.home-saas .home-capabilities-grid .home-capability-image img,
+.home-saas .home-industries-grid .home-industry-image img { width:100%; height:100%; object-fit:cover; object-position:top center; }
+.home-saas .home-capabilities-grid .home-capability-copy,
+.home-saas .home-industries-grid .home-industry-copy { margin-top:auto; }
+@media (max-width:640px){.home-saas .home-capabilities-grid .home-capability-image,.home-saas .home-industries-grid .home-industry-image{height:190px}}

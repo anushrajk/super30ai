@@ -50,12 +50,12 @@ export const HomeSaasSections = () => (
       </article>)}</div>
     </div></section>
 
-    <section className="home-proof-band home-band-orange"><div className="container mx-auto px-4">
+    <section className="home-proof-band home-band-white"><div className="container mx-auto px-4">
       <div className="home-proof-heading"><span className="home-kicker home-kicker-dark">Selected work</span><h2>Strategy becomes credible when you can see the work.</h2><p>Explore digital experiences created across education, consumer brands and growing businesses.</p></div>
       <div className="home-work-grid">{work.map((project, index) => <Link to="/our-work" className={`home-work-card home-work-card-${index + 1}`} key={project.name}><img src={project.image} alt={`${project.name} project by Super 30`} loading="lazy" /><div><span>{project.discipline}</span><h3>{project.name}</h3></div></Link>)}</div>
       <div className="home-report-strip"><div><span>Documented SEO performance</span><h3>Real reports. Clear movement. No vague promises.</h3><Button asChild className="rounded-full"><Link to="/our-work">View client work<ArrowRight /></Link></Button></div><img src={suranaProof} alt="SEO performance report for Surana Educational Institutions" loading="lazy" /></div>
     </div></section>
 
-    <section className="home-process-band home-band-white"><div className="container mx-auto px-4"><div className="home-section-heading"><div><span className="home-kicker">How we work</span><h2>A clear path from ambition to momentum.</h2></div><p>No disconnected tasks. Every stage builds the evidence and foundation needed for the next.</p></div><div className="home-process-grid">{process.map((step) => <article className="home-process-card" key={step.number}><img src={step.image} alt="" loading="lazy" /><div><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div></article>)}</div></div></section>
+    <section className="home-process-band home-band-black"><div className="container mx-auto px-4"><div className="home-section-heading"><div><span className="home-kicker">How we work</span><h2>A clear path from ambition to momentum.</h2></div><p>No disconnected tasks. Every stage builds the evidence and foundation needed for the next.</p></div><div className="home-process-grid">{process.map((step) => <article className="home-process-card" key={step.number}><img src={step.image} alt="" loading="lazy" /><div><span>{step.number}</span><h3>{step.title}</h3><p>{step.description}</p></div></article>)}</div></div></section>
   </>
 );
