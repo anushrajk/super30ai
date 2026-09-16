@@ -3,3 +3,5 @@
 - [x] Expand the blog hub with editorial discovery and topic sections
 - [x] Redesign the blog opening as a magazine masthead
 - [x] Rewrite coaching institute landing page: remove outcome section + metrics, reposition around services
+
+- [ ] Finish and visually verify the AI SEO page redesign
