@@ -1,17 +1,17 @@
-# Solutions Mega Menu Refresh
+# AI SEO Page Design Alignment
 
 ## Goal
-Make the existing Solutions mega menu feel more polished and visually engaging without changing its links, categories, or the site’s established light color palette.
+Bring the AI SEO page back into the same polished visual system used across the current website, while keeping all existing AI SEO wording, SEO metadata, forms, links, and section order intact.
 
 ## Changes
-- Strengthen the menu header with a clearer title, short supporting copy, and compact industry count.
-- Turn each industry column into a distinct, lightly bordered group with an icon, stronger heading, and clear “view industry” affordance.
-- Improve subcategory scanning with refined spacing, separators, hover states, and arrow feedback.
-- Upgrade the bottom consultation strip into a clearer conversion area while retaining the existing strategist link.
-- Keep the menu compact enough for common laptop screens and preserve the current mobile navigation behavior.
-- Verify the open menu visually and confirm the preview remains error-free.
+- Restyle the AI SEO sections to use the website’s current centered section headings, compact orange labels, restrained white and light-grey backgrounds, and consistent spacing.
+- Replace the page’s editorial rules, oversized uppercase headings, mixed dark blocks, glow effects, and inconsistent card treatments with the same rounded cards and orange accents used on the Digital Marketing and other service pages.
+- Keep all service images and content, but simplify the service layouts so the page feels cohesive rather than combining several visual systems.
+- Make the audience, fit-assessment, process, and CTA areas match the site-wide card and banner patterns.
+- Preserve the final black CTA treatment and keep the FAQ after the CTA.
+- Check desktop and mobile layouts for spacing, text fit, and visual consistency.
 
 ## Technical details
-- Update only the navigation presentation and supporting industry icon metadata.
-- Use existing semantic color tokens and the project’s orange accent; no new off-brand colors or gradients.
-- Preserve all existing routes and menu content.
+- Update only AI SEO-specific presentation components and their composition on the AI SEO page.
+- Reuse existing design tokens and shared button components; do not change business logic, form submission behavior, metadata, schema, or other pages.
+- Validate the rendered page and confirm the preview remains error-free.
