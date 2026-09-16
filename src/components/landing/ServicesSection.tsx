@@ -1,6 +1,9 @@
+import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   ArrowRight,
+  ChevronLeft,
+  ChevronRight,
   BarChart3,
   Bot,
   BrainCircuit,
@@ -53,6 +56,10 @@ const aiPromptFeatures = [
 
 export const ServicesSection = () => {
   const scrollToForm = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scroll = (direction: "left" | "right") => {
+    scrollRef.current?.scrollBy({ left: direction === "left" ? -360 : 360, behavior: "smooth" });
+  };
 
   return (
     <section className="py-12 md:py-20 lg:py-24 bg-muted/30">
