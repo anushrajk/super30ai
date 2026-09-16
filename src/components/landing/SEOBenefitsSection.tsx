@@ -78,7 +78,7 @@ const FormVisual = () => (
       </div>
     ))}
     <div className="flex justify-end">
-      <span className="rounded-full bg-brand px-2 py-0.5 text-[9px] font-bold text-white opacity-0 transition-all duration-500 delay-[600ms] group-hover:opacity-100">
+      <span className="rounded-full bg-brand px-2 py-0.5 text-[9px] font-bold text-primary-foreground opacity-0 transition-all duration-500 delay-[600ms] group-hover:opacity-100">
         Lead captured
       </span>
     </div>
@@ -265,22 +265,17 @@ export const SEOBenefitsSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-background">
+    <section ref={sectionRef} className="py-12 md:py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
-        {/* Eyebrow rule */}
-        <div className="border-t border-border pt-4 mb-6 md:mb-10">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold uppercase mb-4">
             Why Modern AI SEO Matters?
           </span>
-        </div>
-
-        {/* Editorial split heading */}
-        <div className="grid lg:grid-cols-12 gap-4 md:gap-10 items-start mb-8 md:mb-12">
-          <h2 className="lg:col-span-7 text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight leading-[1.05] text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-foreground mb-4">
             Content strategies designed for{" "}
             <span className="text-brand">modern AI search visibility</span>
           </h2>
-          <p className="lg:col-span-5 text-base md:text-lg text-muted-foreground lg:pt-2">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             We don't just write for bots, we write for your customers. Modern SEO goes beyond just search rankings. Our{" "}
             <span className="text-foreground font-semibold">search engine optimization services in Bangalore</span>{" "}
             develop authoritative content strategies to boost your Google visibility, enhance your relevance for AI
@@ -293,16 +288,16 @@ export const SEOBenefitsSection = () => {
           {benefits.map((benefit, index) => (
             <div
               key={benefit.title}
-              className={`group relative flex flex-col rounded-2xl border border-border bg-card p-5 md:p-6 transition-all duration-500 hover:border-brand hover:shadow-[0_12px_40px_-24px_hsl(var(--brand)/0.6)] ${
+              className={`group relative flex flex-col rounded-xl border border-border bg-card p-5 md:p-6 transition-all duration-500 hover:border-brand/40 hover:-translate-y-1 hover:shadow-lg ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
               style={{ transitionDelay: `${index * 40}ms` }}
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0 transition-colors duration-300 group-hover:bg-brand">
-                  <benefit.icon className="w-5 h-5 text-brand transition-colors duration-300 group-hover:text-white" />
+                  <benefit.icon className="w-5 h-5 text-brand transition-colors duration-300 group-hover:text-primary-foreground" />
                 </div>
-                <h3 className="text-base md:text-lg font-bold uppercase tracking-tight text-foreground">
+                <h3 className="text-base md:text-lg font-bold text-foreground">
                   {benefit.title}
                 </h3>
                 <span className="ml-auto text-[11px] font-semibold tabular-nums text-muted-foreground">
