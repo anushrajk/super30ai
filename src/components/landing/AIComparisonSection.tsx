@@ -57,22 +57,17 @@ const usps = [
 
 export const AIComparisonSection = () => {
   return (
-    <section className="py-10 md:py-16 lg:py-24 bg-background">
+    <section className="py-12 md:py-20 lg:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        {/* Eyebrow rule */}
-        <div className="border-t border-border pt-4 mb-6 md:mb-10">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold uppercase mb-4">
             The Difference
           </span>
-        </div>
-
-        {/* Editorial split heading */}
-        <div className="grid lg:grid-cols-12 gap-4 md:gap-10 items-start mb-8 md:mb-12">
-          <h2 className="lg:col-span-7 text-3xl sm:text-4xl md:text-5xl font-bold uppercase tracking-tight leading-[1.05] text-foreground">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] text-foreground mb-4">
             Make your site AI ready with our{" "}
             <span className="text-brand">AI SEO agency in Bangalore</span>
           </h2>
-          <p className="lg:col-span-5 text-base md:text-lg text-muted-foreground lg:pt-2">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             Technical errors on your website limit visibility before it even starts ranking. As a leading{" "}
             <span className="text-foreground font-semibold">AI SEO company in Bangalore</span>, we fix your website
             structure, optimize search performance, and improve entity signals so Google and AI search platforms can
@@ -80,18 +75,17 @@ export const AIComparisonSection = () => {
           </p>
         </div>
 
-        {/* Big flat stat blocks */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mb-4 md:mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-5">
           {outcomeStats.map((s) => {
             const theme =
               s.theme === "brand"
-                ? "bg-brand text-white"
+                ? "bg-brand text-primary-foreground"
                 : s.theme === "dark"
                 ? "bg-foreground text-background"
                 : "bg-muted text-foreground";
             const sub = s.theme === "light" ? "text-muted-foreground" : "opacity-70";
             return (
-              <div key={s.label} className={`rounded-2xl p-6 md:p-8 flex flex-col justify-between min-h-[190px] ${theme}`}>
+              <div key={s.label} className={`rounded-xl p-6 md:p-8 flex flex-col justify-between min-h-[180px] ${theme}`}>
                 <div className="flex items-start">
                   <span className="text-5xl md:text-6xl font-bold leading-none tracking-tight">{s.value}</span>
                   <span className="text-xl md:text-2xl font-semibold ml-1 mt-1">{s.suffix}</span>
@@ -102,26 +96,22 @@ export const AIComparisonSection = () => {
           })}
         </div>
 
-        {/* Numbered USP rows */}
-        <div className="rounded-2xl border border-border overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-4">
           {usps.map((u, i) => (
             <div
               key={u.title}
-              className="group grid grid-cols-1 md:grid-cols-12 gap-2 md:gap-6 items-center px-5 md:px-8 py-5 md:py-6 border-b border-border last:border-b-0 bg-card hover:bg-muted/60 transition-colors"
+              className={`group rounded-xl border border-border bg-card p-5 md:p-6 hover:border-brand/30 hover:shadow-lg transition-all ${u.wide ? "md:col-span-2" : ""}`}
             >
-              <div className="md:col-span-1 text-sm font-semibold text-muted-foreground tabular-nums">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <div className="md:col-span-4 flex items-center gap-3">
-                <div className="w-9 h-9 rounded-lg bg-brand/10 flex items-center justify-center flex-shrink-0">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-brand/10 flex items-center justify-center flex-shrink-0">
                   <u.icon className="w-4 h-4 text-brand" />
                 </div>
-                <h3 className="text-base md:text-lg font-bold uppercase tracking-tight text-foreground">{u.title}</h3>
+                <div>
+                  <span className="text-xs font-semibold text-brand">{String(i + 1).padStart(2, "0")} · {u.metric}</span>
+                  <h3 className="text-base md:text-lg font-bold text-foreground">{u.title}</h3>
+                </div>
               </div>
-              <p className="md:col-span-6 text-sm text-muted-foreground">{u.description}</p>
-              <div className="md:col-span-1 hidden md:flex justify-end">
-                <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-brand">{u.metric}</span>
-              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed">{u.description}</p>
             </div>
           ))}
         </div>

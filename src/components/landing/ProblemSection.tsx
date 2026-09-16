@@ -38,37 +38,28 @@ export const ProblemSection = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-10 md:py-16 lg:py-24 bg-muted/40">
+    <section ref={sectionRef} className="py-12 md:py-20 lg:py-24 bg-background">
       <div className="container mx-auto px-4">
-        <div className="border-t border-border pt-4 mb-6 md:mb-10">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">
+        <div className={`text-center max-w-3xl mx-auto mb-8 md:mb-14 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+          <span className="inline-block px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold uppercase mb-4">
             The Problem
           </span>
-        </div>
-
-        {/* Split heading */}
-        <div
-          className={`grid lg:grid-cols-12 gap-4 md:gap-10 items-start mb-8 md:mb-12 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
-        >
-          <h2 className="lg:col-span-7 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-            <span className="block text-brand">Your competitors are</span>
-            <span className="block text-foreground">ranking on Google.</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-4">
+            Your competitors are <span className="text-brand">ranking on Google.</span>
           </h2>
-          <div className="lg:col-span-5 lg:pt-2">
-            <p className="text-base md:text-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
               Search visibility is evolving rapidly, and outdated SEO methods are becoming less effective. Our{" "}
               <span className="text-foreground font-semibold">SEO services in Bangalore</span> leverage advanced search
               intelligence to identify missed ranking opportunities, enhance AI visibility, and position your business
               ahead of competitors.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
+          </p>
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
               {proofChips.map((c) => (
-                <div key={c.label} className="flex items-center gap-3 rounded-2xl bg-card border border-border px-4 py-3">
+                <div key={c.label} className="flex items-center gap-3 rounded-xl bg-muted/50 border border-border px-4 py-3">
                   <span className="text-xl font-bold text-foreground">{c.value}</span>
                   <span className="text-xs text-muted-foreground max-w-[120px] leading-snug">{c.label}</span>
                 </div>
               ))}
-            </div>
           </div>
         </div>
 
@@ -79,30 +70,30 @@ export const ProblemSection = () => {
             return (
               <div
                 key={index}
-                className={`group relative rounded-3xl p-6 md:p-7 min-h-[240px] flex flex-col justify-between transition-all duration-500 hover:-translate-y-1 ${
-                  highlight ? "bg-brand text-white" : "bg-card border border-border"
+                className={`group relative rounded-xl p-5 md:p-6 min-h-[220px] flex flex-col justify-between border transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ${
+                  highlight ? "bg-brand text-primary-foreground border-brand" : "bg-card border-border hover:border-brand/30"
                 } ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}
                 style={{ transitionDelay: `${(index + 1) * 90}ms` }}
               >
                 <div className="flex items-start justify-between">
                   <div
                     className={`w-11 h-11 rounded-2xl flex items-center justify-center ${
-                      highlight ? "bg-white/15" : "bg-brand/10"
+                      highlight ? "bg-primary-foreground/15" : "bg-brand/10"
                     }`}
                   >
-                    <problem.icon className={`w-5 h-5 ${highlight ? "text-white" : "text-brand"}`} />
+                    <problem.icon className={`w-5 h-5 ${highlight ? "text-primary-foreground" : "text-brand"}`} />
                   </div>
                   <ArrowUpRight
                     className={`w-5 h-5 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 ${
-                      highlight ? "text-white" : "text-brand"
+                      highlight ? "text-primary-foreground" : "text-brand"
                     }`}
                   />
                 </div>
                 <div className="mt-8">
-                  <h3 className={`text-base md:text-lg font-bold leading-snug ${highlight ? "text-white" : "text-foreground"}`}>
+                  <h3 className={`text-base md:text-lg font-bold leading-snug ${highlight ? "text-primary-foreground" : "text-foreground"}`}>
                     {problem.title}
                   </h3>
-                  <p className={`mt-2 text-sm leading-relaxed ${highlight ? "text-white/80" : "text-muted-foreground"}`}>
+                  <p className={`mt-2 text-sm leading-relaxed ${highlight ? "text-primary-foreground/80" : "text-muted-foreground"}`}>
                     {problem.description}
                   </p>
                 </div>
@@ -111,14 +102,14 @@ export const ProblemSection = () => {
           })}
         </div>
 
-        <div className={`mt-8 md:mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-3xl bg-foreground text-background p-6 md:p-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+        <div className={`mt-8 md:mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 rounded-2xl bg-foreground text-background p-6 md:p-8 transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <p className="text-lg md:text-2xl font-bold tracking-tight max-w-xl">
             From invisible to referenced — see exactly where your search visibility leaks.
           </p>
           <Button
             onClick={scrollToForm}
             size="lg"
-            className="bg-brand text-white hover:opacity-90 rounded-full px-7 flex-shrink-0"
+            className="bg-brand text-primary-foreground hover:bg-brand/90 rounded-full px-7 flex-shrink-0"
           >
             Discover Your Search Visibility
             <ArrowRight className="w-4 h-4 ml-2" />
