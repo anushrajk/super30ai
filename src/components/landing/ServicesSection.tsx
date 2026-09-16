@@ -1,8 +1,21 @@
-import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Search, Target, BarChart3, FileText, Shield, Zap, ArrowRight, Quote, Users, Globe, MessageSquare, TrendingUp, Code, Database, Lock, Gauge, Bug, FileCheck, Sparkles, Bot, BrainCircuit, LineChart } from "lucide-react";
-import { BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
+import {
+  ArrowRight,
+  BarChart3,
+  Bot,
+  BrainCircuit,
+  FileText,
+  Globe,
+  LineChart,
+  MessageSquare,
+  Search,
+  Shield,
+  Sparkles,
+  Target,
+  TrendingUp,
+  Users,
+  Zap,
+} from "lucide-react";
 import imgAiVisibility from "@/assets/svc-ai-visibility.jpg";
 import imgIntentMapping from "@/assets/svc-intent-mapping.jpg";
 import imgPredictive from "@/assets/svc-predictive-analytics.jpg";
@@ -12,331 +25,120 @@ import imgTechnical from "@/assets/svc-technical-seo.jpg";
 import imgLlm from "@/assets/svc-llm-visibility.jpg";
 import imgBrand from "@/assets/svc-brand-presence.jpg";
 import imgRevenue from "@/assets/svc-revenue-seo.jpg";
-const coreServices = [{
-  icon: Search,
-  image: imgAiVisibility,
-  title: "AI SEO Visibility",
-  description: "Improve visibility across AI powered search engines and GEO discovery platforms."
-}, {
-  icon: Target,
-  image: imgIntentMapping,
-  title: "Intent Based SEO Mapping",
-  description: "Align search intent with structured AI understanding and smarter organic discovery patterns."
-}, {
-  icon: BarChart3,
-  image: imgPredictive,
-  title: "Predictive SEO Analytics",
-  description: "Use performance forecasting and search behavior analysis to guide strategic SEO decisions."
-}, {
-  icon: FileText,
-  image: imgContentStrategy,
-  title: "AI Content Strategy",
-  description: "Develop authoritative content frameworks designed for AI indexing and search relevance."
-}, {
-  icon: Shield,
-  image: imgAuthority,
-  title: "Digital Authority Signals",
-  description: "Establish brand credibility through trusted entity signals and authoritative SEO positioning."
-}, {
-  icon: Zap,
-  image: imgTechnical,
-  title: "Advanced Technical AI SEO",
-  description: "Build a search optimized technical structure designed for modern AI search systems."
-}, {
-  icon: Globe,
-  image: imgLlm,
-  title: "LLM Search Visibility",
-  description: "Improve discoverability across ChatGPT, Perplexity, and evolving AI driven search platforms."
-}, {
-  icon: MessageSquare,
-  image: imgBrand,
-  title: "AI Brand Presence",
-  description: "Increase brand visibility within AI generated search responses and recommendation systems."
-}, {
-  icon: TrendingUp,
-  image: imgRevenue,
-  title: "Revenue Focused SEO",
-  description: "Track business growth through measurable SEO attribution and qualified conversion performance."
-}];
-const intentMappingIcons = [{
-  Icon: Search,
-  label: "Search Analysis"
-}, {
-  Icon: Target,
-  label: "Intent Mapping"
-}, {
-  Icon: Users,
-  label: "Lead Conversion"
-}];
-const aiPromptFeatures = [{
-  icon: Sparkles,
-  title: "Optimize for AI",
-  description: "Develop and optimize content for sophisticated AI search comprehension and LLM content processing."
-}, {
-  icon: Bot,
-  title: "LLM Authority Signals",
-  description: "Develop trusted authority signals that AI systems recognize and prioritize across search results."
-}, {
-  icon: BrainCircuit,
-  title: "Authority Citation Growth",
-  description: "Increase trusted brand mentions across AI search responses and discovery platforms."
-}, {
-  icon: LineChart,
-  title: "Tracking & Monitoring",
-  description: "Track AI search visibility through live performance reporting and discovery insights."
-}];
-const technicalTabs = [{
-  id: "schema",
-  label: "Schema Markup",
-  icon: Code,
-  title: "Structured Data & Schema",
-  description: "Implement rich schema markup that helps AI systems understand your content structure, entities, and relationships.",
-  benefits: ["JSON-LD implementation", "Entity relationships", "Rich snippets optimization", "Knowledge graph inclusion"]
-}, {
-  id: "data",
-  label: "Structured Data",
-  icon: Database,
-  title: "Data Architecture",
-  description: "Build a semantic data layer that AI crawlers can easily parse and understand for better content comprehension.",
-  benefits: ["Semantic HTML structure", "Content hierarchies", "Internal linking optimization", "Topic clustering"]
-}, {
-  id: "audits",
-  label: "Technical Audits",
-  icon: Bug,
-  title: "Comprehensive Technical Audits",
-  description: "Deep-dive technical analysis to identify and fix issues preventing AI systems from properly indexing your content.",
-  benefits: ["Crawl budget optimization", "Index coverage analysis", "Canonicalization review", "Mobile-first audit"]
-}, {
-  id: "vitals",
-  label: "Core Web Vitals",
-  icon: Gauge,
-  title: "Performance Optimization",
-  description: "Optimize Core Web Vitals to meet Google's performance standards that influence AI-powered rankings.",
-  benefits: ["LCP optimization", "FID/INP improvement", "CLS reduction", "Page speed enhancement"]
-}, {
-  id: "crawl",
-  label: "Crawl Optimization",
-  icon: FileCheck,
-  title: "Crawl Efficiency",
-  description: "Ensure AI bots can efficiently discover and process your most important content.",
-  benefits: ["XML sitemap optimization", "Robots.txt configuration", "Log file analysis", "Crawl prioritization"]
-}, {
-  id: "security",
-  label: "Security & Trust",
-  icon: Lock,
-  title: "Security & Trust Signals",
-  description: "Build the security foundation that establishes trust with both users and AI systems.",
-  benefits: ["HTTPS implementation", "Security headers", "Trust badge integration", "Privacy compliance"]
-}];
+
+const coreServices = [
+  { icon: Search, image: imgAiVisibility, title: "AI SEO Visibility", description: "Improve visibility across AI powered search engines and GEO discovery platforms." },
+  { icon: Target, image: imgIntentMapping, title: "Intent Based SEO Mapping", description: "Align search intent with structured AI understanding and smarter organic discovery patterns." },
+  { icon: BarChart3, image: imgPredictive, title: "Predictive SEO Analytics", description: "Use performance forecasting and search behavior analysis to guide strategic SEO decisions." },
+  { icon: FileText, image: imgContentStrategy, title: "AI Content Strategy", description: "Develop authoritative content frameworks designed for AI indexing and search relevance." },
+  { icon: Shield, image: imgAuthority, title: "Digital Authority Signals", description: "Establish brand credibility through trusted entity signals and authoritative SEO positioning." },
+  { icon: Zap, image: imgTechnical, title: "Advanced Technical AI SEO", description: "Build a search optimized technical structure designed for modern AI search systems." },
+  { icon: Globe, image: imgLlm, title: "LLM Search Visibility", description: "Improve discoverability across ChatGPT, Perplexity, and evolving AI driven search platforms." },
+  { icon: MessageSquare, image: imgBrand, title: "AI Brand Presence", description: "Increase brand visibility within AI generated search responses and recommendation systems." },
+  { icon: TrendingUp, image: imgRevenue, title: "Revenue Focused SEO", description: "Track business growth through measurable SEO attribution and qualified conversion performance." },
+];
+
+const intentMappingIcons = [
+  { Icon: Search, label: "Search Analysis" },
+  { Icon: Target, label: "Intent Mapping" },
+  { Icon: Users, label: "Lead Conversion" },
+];
+
+const aiPromptFeatures = [
+  { icon: Sparkles, title: "Optimize for AI", description: "Develop and optimize content for sophisticated AI search comprehension and LLM content processing." },
+  { icon: Bot, title: "LLM Authority Signals", description: "Develop trusted authority signals that AI systems recognize and prioritize across search results." },
+  { icon: BrainCircuit, title: "Authority Citation Growth", description: "Increase trusted brand mentions across AI search responses and discovery platforms." },
+  { icon: LineChart, title: "Tracking & Monitoring", description: "Track AI search visibility through live performance reporting and discovery insights." },
+];
+
 export const ServicesSection = () => {
-  const [activeTab, setActiveTab] = useState("schema");
-  const scrollToForm = () => window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-  const activeTabData = technicalTabs.find(tab => tab.id === activeTab);
-  return <section className="py-6 md:py-10 lg:py-16 bg-muted/30 relative overflow-hidden">
-      {/* Background pattern */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
-      
-      <div className="container mx-auto px-3 md:px-4 relative">
-        <div className="text-center max-w-3xl mx-auto mb-5 md:mb-10">
-          <span className="badge-brand mb-4">
+  const scrollToForm = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  return (
+    <section className="py-12 md:py-20 lg:py-24 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-14">
+          <span className="inline-block px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold uppercase mb-4">
             Our Services
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3">
-            Advanced AI SEO Strategies To Drive Scalable Business Growth
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground leading-[1.1] mb-4">
+            Advanced AI SEO Strategies To Drive <span className="text-brand">Scalable Business Growth</span>
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
+          <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
             We prioritize measurable growth in search presence that boosts AI visibility, generates high quality leads, and drives long-term growth in business performance. For 300+ brands, our <span className="text-foreground font-semibold">AI SEO services in Bangalore</span> have enabled them to enhance their organic reach, boost their AI search visibility, and drive revenue growth through advanced search optimization techniques, ranging from technical SEO to content systems and authority building.
           </p>
         </div>
 
-        {/* Bento Grid for Core Services */}
-        <BentoGrid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mb-6 md:mb-12">
-          {coreServices.map((service, index) => <BentoCard key={index} className="group !p-0 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
-              <div className="relative w-full overflow-hidden bg-muted/40 aspect-[16/9]">
-                <img
-                  src={service.image}
-                  alt={`${service.title} illustration`}
-                  loading="lazy"
-                  width={768}
-                  height={512}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
-                <div className="absolute bottom-3 left-3 w-10 h-10 rounded-xl bg-background/90 backdrop-blur border border-border/60 shadow-sm flex items-center justify-center">
-                  <service.icon className="w-5 h-5 text-brand" />
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 md:mb-14">
+          {coreServices.map((service) => (
+            <article key={service.title} className="group overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg">
+              <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+                <img src={service.image} alt={`${service.title} illustration`} loading="lazy" width={768} height={432} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background/90 backdrop-blur-sm">
+                  <service.icon className="h-5 w-5 text-brand" />
                 </div>
               </div>
-              <div className="p-5">
-                <h3 className="text-base md:text-lg font-bold text-foreground mb-1.5 group-hover:text-brand transition-colors">{service.title}</h3>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
+              <div className="p-5 md:p-6">
+                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-brand transition-colors">{service.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
               </div>
-            </BentoCard>)}
-        </BentoGrid>
+            </article>
+          ))}
+        </div>
 
-        {/* AI Search & Intent Mapping - Dark Section */}
-        <div className="bg-[#0a0a0a] rounded-2xl p-6 md:p-10 mb-6 md:mb-12 relative overflow-hidden">
-          {/* Background elements */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-          <div className="absolute top-10 left-10 w-48 h-48 bg-brand/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl" />
-          
-          <div className="grid lg:grid-cols-2 gap-4 md:gap-8 items-center relative">
+        <div className="rounded-2xl bg-foreground p-6 md:p-10 lg:p-12 mb-6 text-background">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-14 items-center">
             <div>
-              <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-3 border border-orange-500/30">
-                Featured Service
-              </span>
-              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-3">AI Search & Intent Mapping</h3>
-              <p className="text-gray-300 mb-5 leading-relaxed text-sm md:text-base">
-                Understand how AI search systems process search queries and align your content with users' intent.
-              </p>
-              <ul className="space-y-2.5 mb-5">
-                {["AI search analysis and intent classification", "Semantic search performance optimization", "User journey mapping for AI platforms"].map((item, i) => <li key={i} className="flex items-center gap-3 text-gray-300 text-sm md:text-base group">
-                    <div className="w-2 h-2 bg-brand-gradient rounded-full group-hover:scale-150 transition-transform" />
-                    {item}
-                  </li>)}
+              <span className="inline-block px-4 py-1.5 bg-brand/15 text-brand rounded-full text-xs font-semibold uppercase mb-4 border border-brand/30">Featured Service</span>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">AI Search &amp; Intent Mapping</h3>
+              <p className="text-background/70 mb-6 leading-relaxed">Understand how AI search systems process search queries and align your content with users&apos; intent.</p>
+              <ul className="space-y-3 mb-7">
+                {["AI search analysis and intent classification", "Semantic search performance optimization", "User journey mapping for AI platforms"].map((item) => (
+                  <li key={item} className="flex items-center gap-3 text-sm md:text-base text-background/80">
+                    <span className="h-2 w-2 rounded-full bg-brand" />{item}
+                  </li>
+                ))}
               </ul>
-              <Button onClick={scrollToForm} className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300">
-                Improve AI Visibility
-                <ArrowRight className="w-4 h-4 ml-2" />
+              <Button onClick={scrollToForm} className="rounded-full bg-brand text-primary-foreground hover:bg-brand/90">
+                Improve AI Visibility <ArrowRight className="w-4 h-4 ml-2" />
               </Button>
             </div>
-            <div className="bg-white/5 border border-white/10 rounded-2xl p-5 md:p-8 backdrop-blur-sm">
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                {intentMappingIcons.map((item, i) => <div key={i} className="flex flex-col sm:flex-row items-center gap-4">
-                    <div className="flex flex-col items-center gap-2">
-                      <div className={`w-14 h-14 sm:w-18 sm:h-18 ${i === 2 ? 'bg-brand-gradient' : 'bg-brand/20'} rounded-2xl flex items-center justify-center hover:scale-110 hover:rotate-3 transition-all duration-300`}>
-                        <item.Icon className={`w-7 h-7 sm:w-9 sm:h-9 ${i === 2 ? 'text-white' : 'text-brand'}`} />
-                      </div>
-                      <span className="text-xs text-gray-400 font-medium">{item.label}</span>
+            <div className="rounded-xl border border-background/10 bg-background/5 p-6 md:p-8">
+              <div className="grid grid-cols-3 gap-3">
+                {intentMappingIcons.map((item, index) => (
+                  <div key={item.label} className="relative flex flex-col items-center text-center gap-3">
+                    <div className={`h-14 w-14 rounded-xl flex items-center justify-center ${index === 2 ? "bg-brand" : "bg-brand/15"}`}>
+                      <item.Icon className={`h-6 w-6 ${index === 2 ? "text-primary-foreground" : "text-brand"}`} />
                     </div>
-                    {i < 2 && <div className="hidden sm:flex items-center mb-6">
-                        <div className="w-6 h-1 bg-gradient-to-r from-brand/30 to-brand rounded-full" />
-                        <div className="w-0 h-0 border-t-4 border-b-4 border-l-6 border-transparent border-l-brand" />
-                      </div>}
-                    {i < 2 && <div className="flex sm:hidden items-center my-2">
-                        <div className="w-1 h-5 bg-gradient-to-b from-brand/30 to-brand rounded-full" />
-                      </div>}
-                  </div>)}
+                    <span className="text-xs font-medium text-background/70">{item.label}</span>
+                    {index < 2 && <ArrowRight className="hidden sm:block absolute -right-3 top-5 h-4 w-4 text-brand" />}
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Enhanced AI Prompt & Generative Search Optimization - Infographic Style */}
-        <div className="bento-card p-4 md:p-8 mb-6 md:mb-12 relative overflow-hidden">
-          {/* Background elements */}
-          <div className="absolute inset-0 overflow-hidden pointer-events-none">
-            <div className="absolute top-10 left-10 w-32 h-32 bg-brand/5 rounded-full blur-2xl" />
-            <div className="absolute bottom-10 right-10 w-40 h-40 bg-primary/5 rounded-full blur-2xl" />
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand/3 rounded-full blur-3xl" />
+        <div className="rounded-2xl border border-border bg-card p-6 md:p-10">
+          <div className="text-center max-w-2xl mx-auto mb-8">
+            <span className="inline-block px-4 py-1.5 rounded-full border border-brand/20 bg-brand/5 text-brand text-xs font-semibold uppercase mb-4">AI Visibility</span>
+            <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-3">AI Prompt &amp; Generative Search Optimization</h3>
+            <p className="text-muted-foreground">Optimize your content to appear in AI generated responses and become a trusted source cited by AI systems.</p>
           </div>
-          
-          <div className="relative">
-            <div className="text-center mb-8">
-              <span className="badge-brand mb-3">
-                AI Visibility
-              </span>
-              <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-foreground mb-3">
-                AI Prompt & Generative Search Optimization
-              </h3>
-              <p className="text-muted-foreground max-w-2xl mx-auto text-sm md:text-base">
-                Optimize your content to appear in AI generated responses and become a trusted source cited by AI systems.
-              </p>
-            </div>
-            
-            {/* Infographic Flow Design */}
-            <div className="relative max-w-4xl mx-auto">
-              {/* Connection lines - Desktop */}
-              <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-1 -translate-y-1/2 z-0">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/20 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/40 to-transparent" />
-              </div>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 relative z-10">
-                {aiPromptFeatures.map((feature, index) => <div key={index} className="group relative" style={{
-                animationDelay: `${index * 100}ms`
-              }}>
-                    {/* Step number badge */}
-                    <div className="absolute -top-2 -left-2 w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center text-white text-xs font-bold z-20 group-hover:scale-125 transition-transform duration-300">
-                      {index + 1}
-                    </div>
-                    
-                    {/* Card with enhanced interactions */}
-                    <Card className="bento-card transition-all duration-500 h-full overflow-hidden">
-                      {/* Hover gradient overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-brand/0 via-brand/0 to-brand/0 group-hover:from-brand/5 group-hover:via-brand/10 group-hover:to-brand/5 transition-all duration-500" />
-                      
-                      <CardContent className="p-5 text-center relative">
-                        {/* Animated icon container */}
-                        <div className="relative mx-auto mb-4 w-16 h-16">
-                          {/* Pulse ring animation */}
-                          <div className="absolute inset-0 rounded-2xl bg-brand/10 group-hover:animate-ping opacity-0 group-hover:opacity-100" style={{
-                        animationDuration: '1.5s'
-                      }} />
-                          
-                          {/* Icon background with hover effects */}
-                          <div className="relative w-16 h-16 bg-brand/10 rounded-2xl flex items-center justify-center transition-all duration-500 group-hover:scale-110 shadow-lg">
-                            <feature.icon className="w-7 h-7 text-brand group-hover:text-white transition-all duration-300" />
-                          </div>
-                        </div>
-                        
-                        <h4 className="font-bold text-foreground mb-2 text-sm md:text-base group-hover:text-brand transition-colors duration-300">
-                          {feature.title}
-                        </h4>
-                        <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                          {feature.description}
-                        </p>
-                        
-                        {/* Bottom accent line */}
-                        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      </CardContent>
-                    </Card>
-                    
-                    {/* Arrow connector - Desktop only */}
-                    {index < 3 && <div className="hidden lg:flex absolute top-1/2 -right-3 transform -translate-y-1/2 z-20">
-                        <div className="w-6 h-6 flex items-center justify-center">
-                          <ArrowRight className="w-4 h-4 text-brand/50 group-hover:text-brand group-hover:translate-x-1 transition-all duration-300" />
-                        </div>
-                      </div>}
-                    
-                    {/* Arrow connector - Mobile/Tablet */}
-                    {index < 3 && <div className="flex lg:hidden justify-center py-2 sm:hidden">
-                        <div className="w-1 h-6 bg-gradient-to-b from-brand/30 to-brand rounded-full" />
-                      </div>}
-                  </div>)}
-              </div>
-            </div>
-            
-            {/* Bottom CTA area with stats */}
-            <div className="mt-8 pt-6 border-t border-border/50">
-              <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-                <div className="text-center group cursor-default">
-                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">95%</div>
-                  <div className="text-xs text-muted-foreground">AI Citation Rate</div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {aiPromptFeatures.map((feature, index) => (
+              <div key={feature.title} className="rounded-xl border border-border bg-background p-5">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="h-11 w-11 rounded-xl bg-brand/10 flex items-center justify-center"><feature.icon className="h-5 w-5 text-brand" /></div>
+                  <span className="text-xs font-semibold text-muted-foreground">0{index + 1}</span>
                 </div>
-                <div className="w-px h-8 bg-border/50 hidden sm:block" />
-                <div className="text-center group cursor-default">
-                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">3x</div>
-                  <div className="text-xs text-muted-foreground">AI Visibility Growth</div>
-                </div>
-                <div className="w-px h-8 bg-border/50 hidden sm:block" />
-                <div className="text-center group cursor-default">
-                  <div className="text-2xl md:text-3xl font-bold text-brand group-hover:scale-110 transition-transform duration-300">24/7</div>
-                  <div className="text-xs text-muted-foreground">AI Search Monitoring</div>
-                </div>
+                <h4 className="font-bold text-foreground mb-2">{feature.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{feature.description}</p>
               </div>
-            </div>
+            ))}
           </div>
         </div>
-
-        {/* Interactive Technical AI SEO Tabs */}
-        
-
-        {/* AI Link & Brand Signal */}
-        
       </div>
-    </section>;
+    </section>
+  );
 };

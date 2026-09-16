@@ -28,16 +28,14 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
   return (
     <section 
       ref={sectionRef}
-      className={`py-8 md:py-16 lg:py-20 relative overflow-hidden ${isDark ? 'bg-[#0a0a0a]' : 'bg-background'}`}
+      className="py-12 md:py-20 bg-background"
     >
-      <div className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] ${isDark ? '' : 'opacity-50'}`} />
-
-      <div className="container mx-auto px-4 relative">
-        <div className="max-w-5xl mx-auto">
+      <div className="container mx-auto px-4">
+        <div className={`max-w-6xl mx-auto rounded-2xl p-6 md:p-10 lg:p-12 overflow-hidden ${isDark ? 'bg-foreground' : 'bg-muted/40 border border-border'}`}>
             {/* Urgency banner */}
             <div className={`text-center mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${isDark ? 'bg-brand/20 border border-brand/30' : 'bg-brand/10 border border-brand/20'}`}>
-                <div className="w-2 h-2 bg-brand rounded-full animate-pulse" />
+                <div className="w-2 h-2 bg-brand rounded-full" />
                 <span className="text-brand text-sm font-medium">
                   Limited: Only 5 free audits remaining this week
                 </span>
@@ -65,8 +63,8 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
                       className={`flex items-start gap-3 justify-center lg:justify-start group transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                       style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                     >
-                      <div className="w-6 h-6 bg-brand-gradient rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">
-                        <Check className="w-3.5 h-3.5 text-white" />
+                       <div className="w-6 h-6 bg-brand rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform duration-300">
+                         <Check className="w-3.5 h-3.5 text-primary-foreground" />
                       </div>
                       <span className={`text-left ${isDark ? 'text-white' : 'text-foreground'}`}>{benefit}</span>
                     </div>

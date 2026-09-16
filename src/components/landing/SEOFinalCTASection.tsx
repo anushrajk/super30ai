@@ -23,18 +23,16 @@ export const SEOFinalCTASection = () => {
   };
   
   return (
-    <section ref={ref} className={`py-8 md:py-14 lg:py-20 relative bg-[#0a0a0a] overflow-hidden transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
-
-      <div className="container mx-auto px-4 relative">
-        <div className="max-w-3xl mx-auto text-center">
+    <section ref={ref} className={`py-12 md:py-20 bg-background transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+      <div className="container mx-auto px-4">
+        <div className="max-w-6xl mx-auto rounded-2xl bg-foreground px-6 py-10 md:px-12 md:py-14 text-center overflow-hidden">
               <div className="inline-flex items-center gap-2 bg-brand/20 border border-brand/30 px-4 py-1.5 rounded-full mb-6">
                 <Search className="w-4 h-4 text-brand" />
                 <span className="text-brand text-sm font-medium">Free AI SEO Consultation</span>
               </div>
               
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
-                Ready to Lead with <span className="bg-gradient-to-r from-brand to-orange-500 bg-clip-text text-transparent">AI SEO Company in Bangalore?</span>
+               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-6">
+                 Ready to Lead with <span className="text-brand">AI SEO Company in Bangalore?</span>
               </h2>
               <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
                 Stop losing qualified search traffic to your competitors. Connect with a leading <span className="text-white font-semibold">AI SEO agency in Bangalore</span> for a strategic AI visibility audit and discover how advanced search optimization can boost your rankings, increase qualified inquiries, and improve sustainable organic growth.
@@ -53,7 +51,7 @@ export const SEOFinalCTASection = () => {
                 <Button 
                   onClick={scrollToForm}
                   size="lg"
-                  className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
+                 className="bg-brand hover:bg-brand/90 text-primary-foreground rounded-full transition-all duration-300 group"
                 >
                   <Sparkles className="w-4 h-4 mr-2" />
                   Get Your Free SEO Audit
@@ -63,7 +61,7 @@ export const SEOFinalCTASection = () => {
                   variant="outline"
                   size="lg"
                   onClick={() => setShowEnquiryPopup(true)}
-                  className="bg-white text-gray-900 border-white hover:bg-gray-100 hover:scale-105 transition-all duration-300 group"
+                 className="bg-background text-foreground border-background hover:bg-background/90 rounded-full transition-all duration-300 group"
                 >
                   <MessageCircle className="w-4 h-4 mr-2" />
                   Enquire Now
