@@ -12,16 +12,27 @@ import {
   Home as HomeIcon, 
   Scale, 
   Utensils,
-  MessageCircle,
-  type LucideIcon
+  MessageCircle
 } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
+const defaultAudiences = [
+  { icon: Building2, title: "B2B SaaS", description: "Full-funnel digital marketing for SaaS — from SEO and content to paid campaigns that generate qualified pipeline." },
+  { icon: ShoppingCart, title: "E-commerce", description: "AI-driven eCommerce marketing combining SEO, paid ads, and social media to boost conversions and ROAS." },
+  { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to build authority, drive inbound leads, and grow your practice." },
+  { icon: GraduationCap, title: "EdTech", description: "Multi-channel digital marketing for EdTech — SEO, paid campaigns, and social media to reach learners at scale." },
+  { icon: Stethoscope, title: "Healthcare", description: "Compliance-ready digital marketing for healthcare — from patient acquisition ads to trust-building content." },
+  { icon: Rocket, title: "Tech Startups", description: "Growth marketing for startups — rapid experimentation across SEO, ads, social, and content to find product-market fit." },
+  { icon: HomeIcon, title: "Real Estate", description: "Digital marketing strategies for real estate — SEO, Google Ads, social media, and landing pages that generate quality leads." },
+  { icon: Scale, title: "Legal Services", description: "Targeted digital marketing for law firms — from local SEO to paid ads that attract high-intent clients." },
+  { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality — social media, SEO, and paid campaigns that drive bookings." },
+];
+
 interface Audience {
-  icon: LucideIcon;
+  icon: React.ComponentType<{ className?: string }>;
   title: string;
   description: string;
 }
@@ -36,24 +47,12 @@ interface WhoIsThisForSectionProps {
   secondaryCtaLabel?: string;
 }
 
-const defaultAudiences: Audience[] = [
-  { icon: Building2, title: "B2B SaaS", description: "Full funnel digital marketing for SaaS from SEO and content to paid campaigns that generate a qualified pipeline." },
-  { icon: ShoppingCart, title: "E-commerce", description: "AI driven e-commerce marketing combining SEO, paid ads, and social media to increase conversions and ROAS." },
-  { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to establish authority, attract inbound leads, and grow your practice." },
-  { icon: GraduationCap, title: "EdTech", description: "Multi channel digital marketing for EdTech using SEO, paid campaigns, and social media to scale learner acquisition." },
-  { icon: Stethoscope, title: "Healthcare", description: "Compliance ready digital marketing for healthcare, from patient acquisition ads to trust building content that converts." },
-  { icon: Rocket, title: "Tech Startups", description: "Growth marketing for startups using rapid experimentation across SEO, ads, social, and content to achieve the best product market fit." },
-  { icon: HomeIcon, title: "Real Estate", description: "Digital marketing strategies for real estate using SEO, Google Ads, social media, and landing pages that generate quality leads." },
-  { icon: Scale, title: "Legal Services", description: "Targeted digital marketing for law firms, from local SEO to paid ads that attract high intent clients." },
-  { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality using social media, SEO, and paid campaigns that drive bookings." },
-];
-
 export const WhoIsThisForSection = ({
   label = "Perfect Fit",
-  heading = "Industry-Leading AI Digital Marketing Company for Every Sector",
-  description = "Our digital marketing company is custom built for dynamic business models that are prepared to grow across every channel.",
+  heading = "Who Is This For?",
+  description = "Our AI-powered digital marketing solutions are built for ambitious businesses ready to scale across every channel",
   audiences = defaultAudiences,
-  bottomText = "Is Your Industry Not Listed? We help businesses across every sector grow with confidence.",
+  bottomText = "Don't see your industry? We work with all growth-focused businesses.",
   primaryCtaLabel = "Get a Free Strategy Call",
   secondaryCtaLabel = "Enquire Now",
 }: WhoIsThisForSectionProps) => {
@@ -64,17 +63,22 @@ export const WhoIsThisForSection = ({
   return (
     <section 
       ref={sectionRef}
-      className="py-12 md:py-20 lg:py-24 bg-background"
+      className="py-6 md:py-10 lg:py-16 bg-[#0a0a0a] relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute top-20 left-10 w-72 h-72 bg-brand/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+      
+      <div className="container mx-auto px-3 md:px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-5 md:mb-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-          <span className="inline-block px-4 py-1.5 bg-brand/5 text-brand rounded-full text-xs font-semibold uppercase mb-4 border border-brand/20">
+          <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
             {label}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3">
             {heading}
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-gray-300 max-w-2xl mx-auto">
             {description}
           </p>
         </div>
@@ -83,17 +87,17 @@ export const WhoIsThisForSection = ({
           {audiences.map((audience, index) => (
             <BentoCard 
               key={index} 
-              className={`group bg-card border-border hover:border-brand/30 rounded-xl ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-300`}
+              className={`group bg-white/5 border-white/10 hover:border-white/20 ${isVisible ? 'opacity-100' : 'opacity-0'} transition-all duration-500`}
             >
               <div className="flex items-start gap-3 md:gap-4">
                 <BentoIcon size="md" className="bg-brand/20">
-                  <audience.icon className="w-6 h-6 md:w-7 md:h-7 text-brand transition-colors duration-300" />
+                  <audience.icon className="w-6 h-6 md:w-7 md:h-7 text-brand group-hover:text-white transition-colors duration-300" />
                 </BentoIcon>
                 <div className="flex-1">
-                   <h3 className="text-base md:text-lg font-bold text-foreground mb-1 group-hover:text-brand transition-colors duration-300">
+                  <h3 className="text-base md:text-lg font-bold text-white mb-1 group-hover:text-brand transition-colors duration-300">
                     {audience.title}
                   </h3>
-                   <p className="text-muted-foreground text-sm leading-relaxed">
+                  <p className="text-gray-400 text-sm leading-relaxed">
                     {audience.description}
                   </p>
                 </div>
@@ -103,24 +107,24 @@ export const WhoIsThisForSection = ({
         </BentoGrid>
 
         <div className={`text-center transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ transitionDelay: '400ms' }}>
-          <p className="text-muted-foreground mb-5 text-sm md:text-base">{bottomText}</p>
+          <p className="text-gray-400 mb-5 text-sm md:text-base">{bottomText}</p>
           
           {/* Dual CTA */}
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button 
               onClick={() => setShowAuditPopup(true)}
               size="lg"
-              className="bg-brand hover:bg-brand/90 text-primary-foreground rounded-full transition-all duration-300 group"
+              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
             >
               <Sparkles className="w-4 h-4 mr-2" />
               {primaryCtaLabel}
               <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
             </Button>
             <Button 
-              variant="outline-brand"
+              variant="outline-white"
               size="lg"
               onClick={() => setShowEnquiryPopup(true)}
-              className="rounded-full transition-all duration-300 group"
+              className="hover:scale-105 transition-all duration-300 group"
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               {secondaryCtaLabel}

@@ -7,20 +7,20 @@ import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
 const forYou = [
-  "You invest ₹50,000 monthly and expect measurable SEO performance",
-  "Organic search visibility directly impacts your business growth",
-  "You want stronger visibility across ChatGPT and Google AI results",
-  "You prefer one accountable agency managing complete SEO execution",
-  "You value sustainable long-term search growth and brand authority",
-  "You rely on data driven decisions for marketing performance",
+  "Spending ₹50,000+/mo but can't predict ROI",
+  "Revenue from organic is important",
+  "You want visibility inside ChatGPT & Google AI",
+  "You want one agency accountable for outcomes",
+  "You're ready to invest in long-term growth",
+  "You value data-driven decision making",
 ];
 
 const notForYou = [
-  "You only want short-term traffic spikes without a strategy",
-  "You expect enterprise level SEO growth with only a 10k/mo budget",
-  "You rely on outdated backlink selling or spam SEO tactics",
-  "You expect overnight rankings without consistent optimization efforts",
-  "You are not ready for a structured long-term SEO strategy",
+  "Bloggers looking for quick traffic",
+  "₹10k/month SEO budget expectations",
+  "Link sellers and black-hat practitioners",
+  "Looking for overnight results",
+  "Not ready to commit to a strategy",
 ];
 
 export const RelevanceFilterSection = () => {
@@ -33,18 +33,25 @@ export const RelevanceFilterSection = () => {
   return (
     <section 
       ref={sectionRef}
-      className="py-12 md:py-20 lg:py-24 bg-muted/30"
+      className="py-8 md:py-14 lg:py-20 bg-[#0a0a0a] relative overflow-hidden"
     >
-      <div className="container mx-auto px-4">
+      {/* Background decoration */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.1)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.1)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-gradient-to-br from-green-500/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-gradient-to-br from-red-500/10 to-transparent rounded-full blur-3xl" />
+      </div>
+
+      <div className="container mx-auto px-4 relative">
         <div className={`text-center max-w-3xl mx-auto mb-6 md:mb-10 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <span className="inline-block px-4 py-1.5 bg-brand/5 text-brand rounded-full text-xs font-semibold uppercase mb-4 border border-brand/20">
-            Instant Fit Assessment
+          <span className="inline-block px-4 py-1.5 bg-orange-500/20 text-orange-400 rounded-full text-sm font-medium mb-4 border border-orange-500/30">
+            Instant Relevance Filter
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Is This SEO Strategy Right for Your Business?
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+            Is This Right For You?
           </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
-            We're selective about who we work with and honest about who we can help. We partner with businesses that prioritize growth, search visibility, and measurable performance outcomes across Google and AI driven search platforms.
+          <p className="text-lg text-gray-300">
+            We're selective about who we work with — and honest about who we can help
           </p>
         </div>
 
@@ -54,13 +61,13 @@ export const RelevanceFilterSection = () => {
             ref={leftCardRef}
             className={`transition-all duration-700 delay-100 ${leftCardVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}
           >
-            <Card className="bg-card border-border hover:border-brand/30 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group h-full rounded-xl">
+            <Card className="bg-green-950/50 backdrop-blur-sm border-green-800 shadow-xl shadow-green-500/5 hover:shadow-2xl hover:shadow-green-500/10 hover:-translate-y-2 transition-all duration-500 group h-full">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-brand/10 rounded-full flex items-center justify-center">
-                    <Check className="w-5 h-5 text-brand" />
+                  <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-500/30">
+                    <Check className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">This Is Best for You If...</h3>
+                  <h3 className="text-xl font-bold text-green-400">This is for you if...</h3>
                 </div>
                 <ul className="space-y-4">
                   {forYou.map((item, index) => (
@@ -69,10 +76,10 @@ export const RelevanceFilterSection = () => {
                       className={`flex items-start gap-3 transition-all duration-500 ${leftCardVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}
                       style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                     >
-                      <div className="w-5 h-5 bg-brand/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <Check className="w-3 h-3 text-brand" />
+                      <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md shadow-green-500/20">
+                        <Check className="w-3 h-3 text-white" />
                       </div>
-                      <span className="text-muted-foreground font-medium">{item}</span>
+                      <span className="text-gray-300 font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -85,13 +92,13 @@ export const RelevanceFilterSection = () => {
             ref={rightCardRef}
             className={`transition-all duration-700 delay-200 ${rightCardVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}
           >
-            <Card className="bg-card border-border hover:border-border/80 hover:-translate-y-1 hover:shadow-lg transition-all duration-300 group h-full rounded-xl">
+            <Card className="bg-red-950/50 backdrop-blur-sm border-red-800 shadow-xl shadow-red-500/5 hover:shadow-2xl hover:shadow-red-500/10 hover:-translate-y-2 transition-all duration-500 group h-full">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-muted rounded-full flex items-center justify-center">
-                    <X className="w-5 h-5 text-muted-foreground" />
+                  <div className="w-10 h-10 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/30">
+                    <X className="w-5 h-5 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-foreground">Not the Right Fit If...</h3>
+                  <h3 className="text-xl font-bold text-red-400">Not for you if...</h3>
                 </div>
                 <ul className="space-y-4">
                   {notForYou.map((item, index) => (
@@ -100,10 +107,10 @@ export const RelevanceFilterSection = () => {
                       className={`flex items-start gap-3 transition-all duration-500 ${rightCardVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}
                       style={{ transitionDelay: `${(index + 3) * 100}ms` }}
                     >
-                      <div className="w-5 h-5 bg-muted rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                        <X className="w-3 h-3 text-muted-foreground" />
+                      <div className="w-5 h-5 bg-red-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 shadow-md shadow-red-500/20">
+                        <X className="w-3 h-3 text-white" />
                       </div>
-                      <span className="text-muted-foreground font-medium">{item}</span>
+                      <span className="text-gray-300 font-medium">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -117,17 +124,17 @@ export const RelevanceFilterSection = () => {
           <Button 
             onClick={() => setShowAuditPopup(true)}
             size="lg"
-            className="bg-brand hover:bg-brand/90 text-primary-foreground rounded-full transition-all duration-300 group"
+            className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white shadow-lg hover:scale-105 transition-all duration-300 group"
           >
             <Sparkles className="w-4 h-4 mr-2" />
-            Start Your Free SEO Audit
+            Start Free Audit Now
             <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button 
-            variant="outline-brand"
+            variant="outline-white"
             size="lg"
             onClick={() => setShowEnquiryPopup(true)}
-            className="rounded-full transition-all duration-300 group"
+            className="hover:scale-105 transition-all duration-300 group"
           >
             <MessageCircle className="w-4 h-4 mr-2" />
             Enquire Now
