@@ -34,13 +34,13 @@ export const SEOFinalCTASection = () => {
                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-6">
                  Ready to Lead with <span className="text-brand">AI SEO Company in Bangalore?</span>
               </h2>
-              <p className="text-lg text-white/70 mb-8 max-w-xl mx-auto">
-                Stop losing qualified search traffic to your competitors. Connect with a leading <span className="text-white font-semibold">AI SEO agency in Bangalore</span> for a strategic AI visibility audit and discover how advanced search optimization can boost your rankings, increase qualified inquiries, and improve sustainable organic growth.
+              <p className="text-lg text-background/70 mb-8 max-w-xl mx-auto">
+                Stop losing qualified search traffic to your competitors. Connect with a leading <span className="text-background font-semibold">AI SEO agency in Bangalore</span> for a strategic AI visibility audit and discover how advanced search optimization can boost your rankings, increase qualified inquiries, and improve sustainable organic growth.
               </p>
               
               <div className="flex flex-wrap justify-center gap-3 mb-8">
                 {benefits.map((item, i) => (
-                  <div key={i} className="flex items-center gap-2 text-white bg-white/5 border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 hover:border-white/30 transition-all duration-300">
+                  <div key={i} className="flex items-center gap-2 text-background bg-background/5 border border-background/10 rounded-full px-4 py-2 hover:bg-background/10 hover:border-background/30 transition-all duration-300">
                     <item.icon className="w-4 h-4 text-brand" />
                     <span className="text-sm">{item.text}</span>
                   </div>
@@ -68,7 +68,7 @@ export const SEOFinalCTASection = () => {
                   <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </div>
-              <p className="text-white/60 text-sm mt-4">Takes 2 minutes • No credit card required</p>
+              <p className="text-background/60 text-sm mt-4">Takes 2 minutes • No credit card required</p>
             </div>
       </div>
 

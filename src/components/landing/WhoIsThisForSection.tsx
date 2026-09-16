@@ -87,7 +87,7 @@ export const WhoIsThisForSection = ({
             >
               <div className="flex items-start gap-3 md:gap-4">
                 <BentoIcon size="md" className="bg-brand/20">
-                  <audience.icon className="w-6 h-6 md:w-7 md:h-7 text-brand group-hover:text-white transition-colors duration-300" />
+                  <audience.icon className="w-6 h-6 md:w-7 md:h-7 text-brand transition-colors duration-300" />
                 </BentoIcon>
                 <div className="flex-1">
                    <h3 className="text-base md:text-lg font-bold text-foreground mb-1 group-hover:text-brand transition-colors duration-300">

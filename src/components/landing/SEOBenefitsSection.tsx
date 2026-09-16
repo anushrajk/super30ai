@@ -78,7 +78,7 @@ const FormVisual = () => (
       </div>
     ))}
     <div className="flex justify-end">
-      <span className="rounded-full bg-brand px-2 py-0.5 text-[9px] font-bold text-white opacity-0 transition-all duration-500 delay-[600ms] group-hover:opacity-100">
+      <span className="rounded-full bg-brand px-2 py-0.5 text-[9px] font-bold text-primary-foreground opacity-0 transition-all duration-500 delay-[600ms] group-hover:opacity-100">
         Lead captured
       </span>
     </div>
