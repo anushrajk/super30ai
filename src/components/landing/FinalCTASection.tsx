@@ -28,18 +28,12 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
   return (
     <section 
       ref={sectionRef}
-      className="py-8 md:py-12 relative overflow-hidden bg-background"
+      className={`py-8 md:py-16 lg:py-20 relative overflow-hidden ${isDark ? 'bg-[#0a0a0a]' : 'bg-background'}`}
     >
-      <div className="container mx-auto px-4 relative">
-        <div className={`relative overflow-hidden rounded-3xl p-8 md:p-12 lg:p-16 ${isDark ? "bg-[#0a0a0a]" : "bg-white border border-border"}`}>
-          {/* Glow accents */}
-          <div className={`absolute -right-20 -top-20 h-64 w-64 rounded-full blur-3xl ${isDark ? "bg-brand/10" : "bg-brand/5"}`} aria-hidden="true" />
-          <div className={`absolute -bottom-20 -left-20 h-48 w-48 rounded-full blur-3xl ${isDark ? "bg-brand/5" : "bg-brand/5"}`} aria-hidden="true" />
-          
-          {/* Grid pattern */}
-          <div className={`absolute inset-0 bg-[linear-gradient(to_right,${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}_1px,transparent_1px),linear-gradient(to_bottom,${isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.03)"}_1px,transparent_1px)] bg-[size:4rem_4rem] ${isDark ? '' : 'opacity-50'}`} />
+      <div className={`absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] ${isDark ? '' : 'opacity-50'}`} />
 
-          <div className="relative max-w-5xl mx-auto">
+      <div className="container mx-auto px-4 relative">
+        <div className="max-w-5xl mx-auto">
             {/* Urgency banner */}
             <div className={`text-center mb-8 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
               <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${isDark ? 'bg-brand/20 border border-brand/30' : 'bg-brand/10 border border-brand/20'}`}>
@@ -118,7 +112,6 @@ export const FinalCTASection = ({ onSubmit, loading, variant = "dark" }: FinalCT
                 </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
     </section>
