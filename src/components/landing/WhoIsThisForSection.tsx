@@ -19,7 +19,7 @@ import { BentoGrid, BentoCard, BentoIcon } from "@/components/ui/bento-grid";
 import { EnquiryPopup } from "@/components/EnquiryPopup";
 import { AuditChoicePopup } from "@/components/popups/AuditChoicePopup";
 
-const audiences = [
+const defaultAudiences = [
   { icon: Building2, title: "B2B SaaS", description: "Full-funnel digital marketing for SaaS — from SEO and content to paid campaigns that generate qualified pipeline." },
   { icon: ShoppingCart, title: "E-commerce", description: "AI-driven eCommerce marketing combining SEO, paid ads, and social media to boost conversions and ROAS." },
   { icon: Briefcase, title: "Professional Services", description: "Integrated digital marketing strategies to build authority, drive inbound leads, and grow your practice." },
@@ -31,7 +31,31 @@ const audiences = [
   { icon: Utensils, title: "Hospitality & Travel", description: "Comprehensive digital marketing for hospitality — social media, SEO, and paid campaigns that drive bookings." },
 ];
 
-export const WhoIsThisForSection = () => {
+interface Audience {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}
+
+interface WhoIsThisForSectionProps {
+  label?: string;
+  heading?: React.ReactNode;
+  description?: string;
+  audiences?: Audience[];
+  bottomText?: string;
+  primaryCtaLabel?: string;
+  secondaryCtaLabel?: string;
+}
+
+export const WhoIsThisForSection = ({
+  label = "Perfect Fit",
+  heading = "Who Is This For?",
+  description = "Our AI-powered digital marketing solutions are built for ambitious businesses ready to scale across every channel",
+  audiences = defaultAudiences,
+  bottomText = "Don't see your industry? We work with all growth-focused businesses.",
+  primaryCtaLabel = "Get a Free Strategy Call",
+  secondaryCtaLabel = "Enquire Now",
+}: WhoIsThisForSectionProps) => {
   const [sectionRef, isVisible] = useScrollAnimation<HTMLElement>({ threshold: 0.1 });
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
   const [showAuditPopup, setShowAuditPopup] = useState(false);
