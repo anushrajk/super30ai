@@ -76,21 +76,47 @@ export const ServicesSection = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10 md:mb-14">
-          {coreServices.map((service) => (
-            <article key={service.title} className="group overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg">
-              <div className="relative aspect-[16/9] overflow-hidden bg-muted">
-                <img src={service.image} alt={`${service.title} illustration`} loading="lazy" width={768} height={432} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background/90 backdrop-blur-sm">
-                  <service.icon className="h-5 w-5 text-brand" />
+        <div className="relative mb-10 md:mb-14">
+          <button
+            onClick={() => scroll("left")}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 md:-translate-x-5 z-10 w-10 h-10 bg-background border border-border rounded-full items-center justify-center shadow-lg hover:bg-muted transition-colors hidden md:flex"
+            aria-label="Scroll services left"
+          >
+            <ChevronLeft className="w-5 h-5 text-foreground" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 md:translate-x-5 z-10 w-10 h-10 bg-background border border-border rounded-full items-center justify-center shadow-lg hover:bg-muted transition-colors hidden md:flex"
+            aria-label="Scroll services right"
+          >
+            <ChevronRight className="w-5 h-5 text-foreground" />
+          </button>
+
+          <div
+            ref={scrollRef}
+            className="flex gap-4 md:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-1 scrollbar-hide"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {coreServices.map((service) => (
+              <article
+                key={service.title}
+                className="group flex-shrink-0 w-[280px] sm:w-[320px] md:w-[340px] snap-start overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-brand/30 hover:shadow-lg"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-muted">
+                  <img src={service.image} alt={`${service.title} illustration`} loading="lazy" width={768} height={432} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-background/90 backdrop-blur-sm">
+                    <service.icon className="h-5 w-5 text-brand" />
+                  </div>
                 </div>
-              </div>
-              <div className="p-5 md:p-6">
-                <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-brand transition-colors">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
-              </div>
-            </article>
-          ))}
+                <div className="p-5 md:p-6">
+                  <h3 className="text-lg font-bold text-foreground mb-2 group-hover:text-brand transition-colors">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="text-center mt-1 text-sm text-muted-foreground md:hidden">Swipe to explore more →</p>
         </div>
 
         <div className="rounded-2xl bg-foreground p-6 md:p-10 lg:p-12 mb-6 text-background">
