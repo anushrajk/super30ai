@@ -26,23 +26,17 @@ const clientLogos = [
   { name: "Lancesoft", logo: lancesoftLogo, industry: "Healthcare" },
 ];
 
-interface ClientLogosSectionProps {
-  variant?: "dark" | "clean";
-}
-
-export const ClientLogosSection = ({ variant = "dark" }: ClientLogosSectionProps) => {
-  const isClean = variant === "clean";
-
+export const ClientLogosSection = () => {
   return (
-    <section className={isClean ? "home-client-proof" : "py-6 md:py-10 bg-foreground relative overflow-hidden"}>
+    <section className="py-6 md:py-10 bg-[#0a0a0a] relative overflow-hidden">
       <div className="container mx-auto px-4 relative">
-        <div className={`flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4 md:mb-6 ${isClean ? "home-client-proof__heading" : ""}`}>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-4 md:mb-6">
           <div className="flex items-center gap-1">
             {[1,2,3,4,5].map((i) => (
               <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
             ))}
           </div>
-          <p className={`text-sm font-medium ${isClean ? "text-foreground" : "text-primary-foreground"}`}>
+          <p className="text-sm font-medium text-white">
             Trusted by <span className="text-brand font-bold">50+ leading companies</span> across industries
           </p>
         </div>
@@ -53,7 +47,7 @@ export const ClientLogosSection = ({ variant = "dark" }: ClientLogosSectionProps
             {[...clientLogos, ...clientLogos].map((client, index) => (
               <div 
                 key={index}
-                className={`flex-shrink-0 flex items-center gap-3 px-5 py-3 rounded-lg border ${isClean ? "bg-background border-border" : "bg-background/5 border-background/10"}`}
+                className="flex-shrink-0 flex items-center gap-3 px-5 py-3 bg-white/5 rounded-xl border border-white/10"
               >
                 <img
                   src={client.logo}
@@ -65,22 +59,22 @@ export const ClientLogosSection = ({ variant = "dark" }: ClientLogosSectionProps
                   height="48"
                 />
                 <div>
-                  <span className={`${isClean ? "text-foreground" : "text-primary-foreground"} font-medium whitespace-nowrap block text-sm`}>{client.name}</span>
-                  <span className="text-muted-foreground text-xs">{client.industry}</span>
+                  <span className="text-white font-medium whitespace-nowrap block text-sm">{client.name}</span>
+                  <span className="text-gray-400 text-xs">{client.industry}</span>
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        {!isClean && <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-background/10">
+        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-4 md:mt-6 pt-3 md:pt-4 border-t border-white/10">
           <div className="text-center">
             <p className="text-2xl font-bold text-white">300%+</p>
             <p className="text-xs text-gray-400">Avg. Traffic Growth</p>
           </div>
           <div className="w-px h-8 bg-white/20 hidden sm:block" />
           <div className="text-center">
-            <p className="text-2xl font-bold text-white">60+</p>
+            <p className="text-2xl font-bold text-white">50+</p>
             <p className="text-xs text-gray-400">AI Audits Delivered</p>
           </div>
           <div className="w-px h-8 bg-white/20 hidden sm:block" />
@@ -93,7 +87,7 @@ export const ClientLogosSection = ({ variant = "dark" }: ClientLogosSectionProps
             <p className="text-2xl font-bold text-white">4.8/5</p>
             <p className="text-xs text-gray-400">Client Rating</p>
           </div>
-        </div>}
+        </div>
       </div>
     </section>
   );
