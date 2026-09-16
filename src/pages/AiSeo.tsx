@@ -114,7 +114,7 @@ const AiSeo = () => {
         </div>
 
         <ClientLogosSection />
-        <SEOProofSection />
+        <SEOProofSection layout="grid" />
 
         <Suspense fallback={null}>
           <ProblemSection />
