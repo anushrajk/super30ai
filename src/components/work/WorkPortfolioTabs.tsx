@@ -113,6 +113,21 @@ const leadGenClients = [
 /* ── Demo content for non-report tabs ── */
 
 const logoImages = [
+  { src: aasaanImpexLogo, alt: "Aasaan Impex logo design" },
+  { src: berylLogo, alt: "Beryl Luxury Interiors logo design" },
+  { src: brownBakeLogo, alt: "Brown Bake Company logo design" },
+  { src: dataQubeLogo, alt: "DataQube logo design" },
+  { src: diakoniaLogo, alt: "Diakonia Financial and Insurance Services logo design" },
+  { src: paragonPartnersLogo, alt: "Paragon Partners logo design" },
+  { src: lewisTransportLogo, alt: "Lewis Transport Contractors logo design" },
+  { src: novaLifelineLogo, alt: "Nova Lifeline Super Speciality Hospital logo design" },
+  { src: samsaraLogo, alt: "Samsara logo design" },
+  { src: ardraLogo, alt: "Ardra logo design" },
+  { src: oleLogo, alt: "OLE Order Local Eats logo design" },
+  { src: hmConsultLogo, alt: "HM Consult logo design" },
+  { src: pebbleLogo, alt: "Pebble logo design" },
+  { src: weAreTravellersLogo, alt: "We Are Travellers logo design" },
+  { src: nishitaEximLogo, alt: "Nishita Exim logo design" },
   { src: da360Logo, alt: "Digital Academy 360 logo design" },
   { src: kashtiLogo, alt: "Kashti logo design" },
   { src: icsLogo, alt: "ICS logo design" },
@@ -125,16 +140,6 @@ const logoImages = [
   { src: logo8, alt: "Logo design portfolio project 8" },
   { src: logo10, alt: "Logo design portfolio project 10" },
   { src: logo11, alt: "Logo design portfolio project 11" },
-  { src: paragonPartnersLogo, alt: "Paragon Partners logo design" },
-  { src: lewisTransportLogo, alt: "Lewis Transport Contractors logo design" },
-  { src: novaLifelineLogo, alt: "Nova Lifeline Super Speciality Hospital logo design" },
-  { src: samsaraLogo, alt: "Samsara logo design" },
-  { src: ardraLogo, alt: "Ardra logo design" },
-  { src: oleLogo, alt: "OLE Order Local Eats logo design" },
-  { src: hmConsultLogo, alt: "HM Consult logo design" },
-  { src: pebbleLogo, alt: "Pebble logo design" },
-  { src: weAreTravellersLogo, alt: "We Are Travellers logo design" },
-  { src: nishitaEximLogo, alt: "Nishita Exim logo design" },
 ];
 
 const LogoGrid = () => (
