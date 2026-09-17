@@ -28,6 +28,16 @@ import logo11 from "@/assets/logos/logo-11.jpg";
 import da360Logo from "@/assets/logos/digital-academy-360.png";
 import kashtiLogo from "@/assets/logos/kashti.png";
 import icsLogo from "@/assets/logos/ics.png";
+import paragonPartnersAsset from "@/assets/logos/uploaded/portfolio-07.jpg.asset.json";
+import lewisTransportAsset from "@/assets/logos/uploaded/portfolio-08.jpg.asset.json";
+import novaLifelineAsset from "@/assets/logos/uploaded/portfolio-09.jpg.asset.json";
+import samsaraAsset from "@/assets/logos/uploaded/portfolio-10.jpg.asset.json";
+import ardraAsset from "@/assets/logos/uploaded/portfolio-11.jpg.asset.json";
+import oleAsset from "@/assets/logos/uploaded/portfolio-12.jpg.asset.json";
+import hmConsultAsset from "@/assets/logos/uploaded/portfolio-13.jpg.asset.json";
+import pebbleAsset from "@/assets/logos/uploaded/portfolio-14.jpg.asset.json";
+import weAreTravellersAsset from "@/assets/logos/uploaded/portfolio-15.jpg.asset.json";
+import nishitaEximAsset from "@/assets/logos/uploaded/portfolio-16.jpg.asset.json";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
 import brand2 from "@/assets/brand-identity/brand-2.jpg";
 import brand3 from "@/assets/brand-identity/brand-3.jpg";
@@ -97,17 +107,40 @@ const leadGenClients = [
 
 /* ── Demo content for non-report tabs ── */
 
-const logoImages = [da360Logo, kashtiLogo, icsLogo, logo1, logo2, logo3, logo4, logo6, logo7, logo8, logo10, logo11];
+const logoImages = [
+  { src: da360Logo, alt: "Digital Academy 360 logo design" },
+  { src: kashtiLogo, alt: "Kashti logo design" },
+  { src: icsLogo, alt: "ICS logo design" },
+  { src: logo1, alt: "Logo design portfolio project 1" },
+  { src: logo2, alt: "Logo design portfolio project 2" },
+  { src: logo3, alt: "Logo design portfolio project 3" },
+  { src: logo4, alt: "Logo design portfolio project 4" },
+  { src: logo6, alt: "Logo design portfolio project 6" },
+  { src: logo7, alt: "Logo design portfolio project 7" },
+  { src: logo8, alt: "Logo design portfolio project 8" },
+  { src: logo10, alt: "Logo design portfolio project 10" },
+  { src: logo11, alt: "Logo design portfolio project 11" },
+  { src: paragonPartnersAsset.url, alt: "Paragon Partners logo design" },
+  { src: lewisTransportAsset.url, alt: "Lewis Transport Contractors logo design" },
+  { src: novaLifelineAsset.url, alt: "Nova Lifeline Super Speciality Hospital logo design" },
+  { src: samsaraAsset.url, alt: "Samsara logo design" },
+  { src: ardraAsset.url, alt: "Ardra logo design" },
+  { src: oleAsset.url, alt: "OLE Order Local Eats logo design" },
+  { src: hmConsultAsset.url, alt: "HM Consult logo design" },
+  { src: pebbleAsset.url, alt: "Pebble logo design" },
+  { src: weAreTravellersAsset.url, alt: "We Are Travellers logo design" },
+  { src: nishitaEximAsset.url, alt: "Nishita Exim logo design" },
+];
 
 const LogoGrid = () => (
   <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-    {logoImages.map((img, i) => (
-      <Card key={i} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
+    {logoImages.map((logo) => (
+      <Card key={logo.alt} className="bg-background border-border/50 overflow-hidden hover:shadow-lg transition-shadow group">
         <CardContent className="p-0">
           <div className="aspect-square overflow-hidden">
             <img
-              src={img}
-              alt={`Logo design project ${i + 1}`}
+              src={logo.src}
+              alt={logo.alt}
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               loading="lazy"
             />
