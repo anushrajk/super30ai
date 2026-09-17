@@ -28,6 +28,11 @@ import logo11 from "@/assets/logos/logo-11.jpg";
 import da360Logo from "@/assets/logos/digital-academy-360.png";
 import kashtiLogo from "@/assets/logos/kashti.png";
 import icsLogo from "@/assets/logos/ics.png";
+import aasaanImpexLogo from "@/assets/logos/portfolio-02.jpg";
+import berylLogo from "@/assets/logos/portfolio-03.jpg";
+import brownBakeLogo from "@/assets/logos/portfolio-04.jpg";
+import dataQubeLogo from "@/assets/logos/portfolio-05.jpg";
+import diakoniaLogo from "@/assets/logos/portfolio-06.jpg";
 import paragonPartnersLogo from "@/assets/logos/portfolio-07.jpg";
 import lewisTransportLogo from "@/assets/logos/portfolio-08.jpg";
 import novaLifelineLogo from "@/assets/logos/portfolio-09.jpg";
@@ -108,6 +113,21 @@ const leadGenClients = [
 /* ── Demo content for non-report tabs ── */
 
 const logoImages = [
+  { src: aasaanImpexLogo, alt: "Aasaan Impex logo design" },
+  { src: berylLogo, alt: "Beryl Luxury Interiors logo design" },
+  { src: brownBakeLogo, alt: "Brown Bake Company logo design" },
+  { src: dataQubeLogo, alt: "DataQube logo design" },
+  { src: diakoniaLogo, alt: "Diakonia Financial and Insurance Services logo design" },
+  { src: paragonPartnersLogo, alt: "Paragon Partners logo design" },
+  { src: lewisTransportLogo, alt: "Lewis Transport Contractors logo design" },
+  { src: novaLifelineLogo, alt: "Nova Lifeline Super Speciality Hospital logo design" },
+  { src: samsaraLogo, alt: "Samsara logo design" },
+  { src: ardraLogo, alt: "Ardra logo design" },
+  { src: oleLogo, alt: "OLE Order Local Eats logo design" },
+  { src: hmConsultLogo, alt: "HM Consult logo design" },
+  { src: pebbleLogo, alt: "Pebble logo design" },
+  { src: weAreTravellersLogo, alt: "We Are Travellers logo design" },
+  { src: nishitaEximLogo, alt: "Nishita Exim logo design" },
   { src: da360Logo, alt: "Digital Academy 360 logo design" },
   { src: kashtiLogo, alt: "Kashti logo design" },
   { src: icsLogo, alt: "ICS logo design" },
@@ -120,16 +140,6 @@ const logoImages = [
   { src: logo8, alt: "Logo design portfolio project 8" },
   { src: logo10, alt: "Logo design portfolio project 10" },
   { src: logo11, alt: "Logo design portfolio project 11" },
-  { src: paragonPartnersLogo, alt: "Paragon Partners logo design" },
-  { src: lewisTransportLogo, alt: "Lewis Transport Contractors logo design" },
-  { src: novaLifelineLogo, alt: "Nova Lifeline Super Speciality Hospital logo design" },
-  { src: samsaraLogo, alt: "Samsara logo design" },
-  { src: ardraLogo, alt: "Ardra logo design" },
-  { src: oleLogo, alt: "OLE Order Local Eats logo design" },
-  { src: hmConsultLogo, alt: "HM Consult logo design" },
-  { src: pebbleLogo, alt: "Pebble logo design" },
-  { src: weAreTravellersLogo, alt: "We Are Travellers logo design" },
-  { src: nishitaEximLogo, alt: "Nishita Exim logo design" },
 ];
 
 const LogoGrid = () => (
