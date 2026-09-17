@@ -28,16 +28,16 @@ import logo11 from "@/assets/logos/logo-11.jpg";
 import da360Logo from "@/assets/logos/digital-academy-360.png";
 import kashtiLogo from "@/assets/logos/kashti.png";
 import icsLogo from "@/assets/logos/ics.png";
-import paragonPartnersAsset from "@/assets/logos/uploaded/portfolio-07.jpg.asset.json";
-import lewisTransportAsset from "@/assets/logos/uploaded/portfolio-08.jpg.asset.json";
-import novaLifelineAsset from "@/assets/logos/uploaded/portfolio-09.jpg.asset.json";
-import samsaraAsset from "@/assets/logos/uploaded/portfolio-10.jpg.asset.json";
-import ardraAsset from "@/assets/logos/uploaded/portfolio-11.jpg.asset.json";
-import oleAsset from "@/assets/logos/uploaded/portfolio-12.jpg.asset.json";
-import hmConsultAsset from "@/assets/logos/uploaded/portfolio-13.jpg.asset.json";
-import pebbleAsset from "@/assets/logos/uploaded/portfolio-14.jpg.asset.json";
-import weAreTravellersAsset from "@/assets/logos/uploaded/portfolio-15.jpg.asset.json";
-import nishitaEximAsset from "@/assets/logos/uploaded/portfolio-16.jpg.asset.json";
+import paragonPartnersLogo from "@/assets/logos/portfolio-07.jpg";
+import lewisTransportLogo from "@/assets/logos/portfolio-08.jpg";
+import novaLifelineLogo from "@/assets/logos/portfolio-09.jpg";
+import samsaraLogo from "@/assets/logos/portfolio-10.jpg";
+import ardraLogo from "@/assets/logos/portfolio-11.jpg";
+import oleLogo from "@/assets/logos/portfolio-12.jpg";
+import hmConsultLogo from "@/assets/logos/portfolio-13.jpg";
+import pebbleLogo from "@/assets/logos/portfolio-14.jpg";
+import weAreTravellersLogo from "@/assets/logos/portfolio-15.jpg";
+import nishitaEximLogo from "@/assets/logos/portfolio-16.jpg";
 import brand1 from "@/assets/brand-identity/brand-1.jpg";
 import brand2 from "@/assets/brand-identity/brand-2.jpg";
 import brand3 from "@/assets/brand-identity/brand-3.jpg";
@@ -120,16 +120,16 @@ const logoImages = [
   { src: logo8, alt: "Logo design portfolio project 8" },
   { src: logo10, alt: "Logo design portfolio project 10" },
   { src: logo11, alt: "Logo design portfolio project 11" },
-  { src: paragonPartnersAsset.url, alt: "Paragon Partners logo design" },
-  { src: lewisTransportAsset.url, alt: "Lewis Transport Contractors logo design" },
-  { src: novaLifelineAsset.url, alt: "Nova Lifeline Super Speciality Hospital logo design" },
-  { src: samsaraAsset.url, alt: "Samsara logo design" },
-  { src: ardraAsset.url, alt: "Ardra logo design" },
-  { src: oleAsset.url, alt: "OLE Order Local Eats logo design" },
-  { src: hmConsultAsset.url, alt: "HM Consult logo design" },
-  { src: pebbleAsset.url, alt: "Pebble logo design" },
-  { src: weAreTravellersAsset.url, alt: "We Are Travellers logo design" },
-  { src: nishitaEximAsset.url, alt: "Nishita Exim logo design" },
+  { src: paragonPartnersLogo, alt: "Paragon Partners logo design" },
+  { src: lewisTransportLogo, alt: "Lewis Transport Contractors logo design" },
+  { src: novaLifelineLogo, alt: "Nova Lifeline Super Speciality Hospital logo design" },
+  { src: samsaraLogo, alt: "Samsara logo design" },
+  { src: ardraLogo, alt: "Ardra logo design" },
+  { src: oleLogo, alt: "OLE Order Local Eats logo design" },
+  { src: hmConsultLogo, alt: "HM Consult logo design" },
+  { src: pebbleLogo, alt: "Pebble logo design" },
+  { src: weAreTravellersLogo, alt: "We Are Travellers logo design" },
+  { src: nishitaEximLogo, alt: "Nishita Exim logo design" },
 ];
 
 const LogoGrid = () => (
