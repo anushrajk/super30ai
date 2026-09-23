@@ -97,7 +97,9 @@ const handler = async (req: Request): Promise<Response> => {
       );
     }
 
-    const identifier = `session:${sessionId}`;
+    const identifier = headerSessionId && uuidRegex.test(headerSessionId)
+      ? `session:${headerSessionId}`
+      : `ip:${clientIp}`;
     const operation = "lead_operation";
 
     // Check rate limit

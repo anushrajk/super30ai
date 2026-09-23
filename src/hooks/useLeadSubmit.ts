@@ -76,7 +76,13 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
       });
 
       // Wait for the lead to be created so we can send email with session data
-      const { data: leadResult } = await createLeadPromise;
+      const { data: leadResult, error: leadError } = await createLeadPromise;
+
+      if (leadError || leadResult?.error) {
+        console.error('Lead was not saved:', leadError || leadResult?.error);
+        toast.error('We could not submit your details. Please try again or call 89041 50555.');
+        return;
+      }
 
       // 4. Send notification email via edge function (non-blocking)
       if (sessionId) {
