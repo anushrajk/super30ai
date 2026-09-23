@@ -32,22 +32,50 @@ const handler = async (req: Request): Promise<Response> => {
       Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? ""
     );
 
-    const sessionId = req.headers.get("x-session-id");
-    if (!sessionId) {
-      return new Response(
-        JSON.stringify({ error: "Session ID required" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    const headerSessionId = req.headers.get("x-session-id");
+    const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      req.headers.get("x-real-ip") || "unknown";
+
+    // Resolve a usable session. A missing or stale session must NEVER cause a lost lead.
+    let sessionId: string | null = null;
+    if (headerSessionId && uuidRegex.test(headerSessionId)) {
+      const { data: existingSession } = await supabase
+        .from("sessions")
+        .select("id")
+        .eq("id", headerSessionId)
+        .maybeSingle();
+      if (existingSession?.id) sessionId = existingSession.id;
     }
 
-    // Validate session ID format (UUID)
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-    if (!uuidRegex.test(sessionId)) {
-      return new Response(
-        JSON.stringify({ error: "Invalid session ID format" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
+    if (!sessionId) {
+      const { data: fallbackSession, error: fallbackError } = await supabase
+        .from("sessions")
+        .insert({
+          first_page_url: req.headers.get("referer") || "unknown",
+          current_page_url: req.headers.get("referer") || "unknown",
+          referrer: "Unknown (recovered at submit)",
+          user_agent: req.headers.get("user-agent") || "unknown",
+          browser: "Unknown",
+          ip_address: clientIp,
+          ip_city: "Unknown",
+          ip_state: "Unknown",
+          ip_country: "Unknown",
+        })
+        .select("id")
+        .single();
+
+      if (fallbackError || !fallbackSession?.id) {
+        console.error("Fallback session creation failed:", fallbackError);
+        return new Response(
+          JSON.stringify({ error: "Failed to create lead" }),
+          { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      sessionId = fallbackSession.id;
+      console.log("Recovered lead submission with new session", sessionId);
     }
+
 
     const body: LeadData & { lead_id?: string } = await req.json();
     const { email, website_url, step, role, monthly_revenue, phone, company_name, lead_id, service_type, business_type, preferred_platforms } = body;
