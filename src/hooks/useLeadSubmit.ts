@@ -76,33 +76,37 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
       });
 
       // Wait for the lead to be created so we can send email with session data
-      const { data: leadResult } = await createLeadPromise;
+      const { data: leadResult, error: leadError } = await createLeadPromise;
 
-      // 4. Send notification email via edge function (non-blocking)
-      if (sessionId) {
-        // Get session data for the email
-        void supabase.functions.invoke('send-lead-email', {
-          body: {
-            lead: {
-              website_url: data.website_url,
-              email: data.email,
-              role: data.role,
-              monthly_revenue: data.monthly_revenue,
-              phone: data.phone,
-              company_name: data.company_name,
-              step: 1,
-            },
-            session: {
-              first_page_url: '',
-              current_page_url: window.location.href,
-              referrer: document.referrer || 'Direct',
-              browser: navigator.userAgent,
-            },
-            submission_time: new Date().toISOString(),
-            form_step: `Lead Capture - ${source}`,
-          },
-        });
+      if (leadError || leadResult?.error) {
+        console.error('Lead was not saved:', leadError || leadResult?.error);
+        toast.error('We could not submit your details. Please try again or call 89041 50555.');
+        return;
       }
+
+      // 4. Send notification email via edge function (non-blocking, always sent)
+      void supabase.functions.invoke('send-lead-email', {
+        body: {
+          lead: {
+            website_url: data.website_url,
+            email: data.email,
+            role: data.role,
+            monthly_revenue: data.monthly_revenue,
+            phone: data.phone,
+            company_name: data.company_name,
+            full_name: data.full_name,
+            step: 1,
+          },
+          session: {
+            first_page_url: '',
+            current_page_url: window.location.href,
+            referrer: document.referrer || 'Direct',
+            browser: navigator.userAgent,
+          },
+          submission_time: new Date().toISOString(),
+          form_step: `Lead Capture - ${source}`,
+        },
+      });
 
       // Store lead ID for future reference
       if (leadResult?.id) {

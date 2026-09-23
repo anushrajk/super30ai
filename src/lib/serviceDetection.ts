@@ -4,21 +4,40 @@
  */
 
 const SERVICE_MAP: Record<string, string> = {
+  "/": "ai-seo",
   "/digital-marketing": "digital-marketing",
+  "/digital-marketing-agency-bangalore": "digital-marketing",
   "/ai-seo-agency-bangalore": "ai-seo",
+  "/seo-company-bangalore": "ai-seo",
   "/performance-marketing": "lead-generation",
+  "/lead-generation-agency-bangalore": "lead-generation",
+  "/google-ads-agency-bangalore": "google-ads",
   "/social-media-post-design": "social-media",
+  "/social-media-marketing-agency-bangalore": "social-media",
+  "/social-media-optimization-services-bangalore": "social-media",
+  "/video-production-agency-bangalore": "video-production",
+  "/corporate-video-maker-bangalore": "video-production",
+  "/photography-services-bangalore": "photography",
   "/design": "design",
+  "/logo-design-company-bangalore": "design",
+  "/ui-ux-design-agency-bangalore": "design",
   "/web-design-development": "web-design",
+  "/web-design-company-bangalore": "web-design",
+  "/web-development-company-bangalore": "web-design",
+  "/digital-marketing-for-coaching-institutes": "coaching-institutes",
 };
 
 const HEADLINE_MAP: Record<string, string> = {
   "digital-marketing": "Get Your Free Digital Marketing Strategy",
   "ai-seo": "Get Your AI SEO Growth Plan",
   "lead-generation": "Get High-Intent Leads for Your Business",
+  "google-ads": "Get a Free Google Ads Account Review",
   "social-media": "Get Scroll-Stopping Social Media Content",
+  "video-production": "Plan Your Next Brand Video",
+  "photography": "Plan Your Brand Photoshoot",
   "design": "Upgrade Your Brand Design Strategy",
   "web-design": "Get a High-Converting Website Design",
+  "coaching-institutes": "Get More Admission Enquiries",
 };
 
 export const detectService = (): string => {
