@@ -48,6 +48,7 @@ const BlogList = lazy(() => import("./pages/BlogList"));
 const Auth = lazy(() => import("./pages/Auth"));
 const AdminBlogs = lazy(() => import("./pages/admin/AdminBlogs"));
 const AdminBlogEditor = lazy(() => import("./pages/admin/AdminBlogEditor"));
+const AdminTraffic = lazy(() => import("./pages/admin/AdminTraffic"));
 const DigitalMarketing = lazy(() => import("./pages/DigitalMarketing"));
 const SocialMediaDesign = lazy(() => import("./pages/SocialMediaDesign"));
 const WebDesign = lazy(() => import("./pages/WebDesign"));
@@ -173,6 +174,7 @@ const App = () => (
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/admin" element={<Navigate to="/admin/blogs" replace />} />
                 <Route path="/admin/blogs" element={<AdminBlogs />} />
+                <Route path="/admin/traffic" element={<AdminTraffic />} />
                 <Route path="/admin/blogs/new" element={<AdminBlogEditor />} />
                 <Route path="/admin/blogs/:id/edit" element={<AdminBlogEditor />} />
 
