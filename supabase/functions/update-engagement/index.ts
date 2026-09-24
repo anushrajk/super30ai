@@ -32,8 +32,19 @@ serve(async (req) => {
       scroll_milestones: Array.isArray(payload.scroll_milestones) ? payload.scroll_milestones.filter((m: any) => [25, 50, 75, 100].includes(m)) : [],
       sections_viewed: Array.isArray(payload.sections_viewed) ? payload.sections_viewed.slice(0, 50).map((s: any) => String(s).slice(0, 100)) : [],
       time_on_page: Math.min(Math.max(Math.round(Number(payload.time_on_page) || 0), 0), 86400),
-      interactions: Array.isArray(payload.interactions) ? payload.interactions.slice(0, 200) : [],
+      interactions: Array.isArray(payload.interactions)
+        ? payload.interactions.slice(0, 200).map((i: any) => ({
+            type: String(i?.type || "").slice(0, 40),
+            element: String(i?.element || "").slice(0, 120),
+            timestamp: Math.max(0, Math.round(Number(i?.timestamp) || 0)),
+          }))
+        : [],
     };
+
+    const uuidRe = /^[0-9a-f-]{36}$/i;
+    if (!uuidRe.test(String(sessionId))) {
+      return new Response(JSON.stringify({ error: "Invalid session" }), { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    }
 
     if (metricId) {
       // UPDATE: verify the row belongs to this session before updating
