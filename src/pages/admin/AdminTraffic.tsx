@@ -15,7 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 
 type Preset = "live" | "today" | "7d" | "28d" | "custom";
-interface SessionRow { id: string; first_page_url: string | null; referrer: string | null; ip_address: string | null; ip_city: string | null; ip_state: string | null; ip_country: string | null; browser: string | null; created_at: string; }
+interface SessionRow { id: string; first_page_url: string | null; referrer: string | null; ip_address: string | null; ip_city: string | null; ip_state: string | null; ip_country: string | null; browser: string | null; user_agent: string | null; created_at: string; }
 interface Interaction { type: string; element: string }
 interface MetricRow { id: string; session_id: string | null; page_url: string; max_scroll_depth: number | null; scroll_milestones: number[] | null; time_on_page: number | null; interactions: Interaction[] | null; created_at: string; updated_at: string | null; }
 interface LeadRow { id: string; session_id: string | null; created_at: string }
@@ -39,6 +39,13 @@ const pathOf = (url: string | null) => {
   try { return new URL(url).pathname.replace(/\/+$/, "") || "/"; } catch { return (url.split("?")[0].replace(/\/+$/, "") || "/"); }
 };
 const isInternal = (s: SessionRow) => /lovable\.(app|dev)|lovableproject\.com|localhost/i.test(s.first_page_url || "");
+const isBot = (s: SessionRow) => {
+  const ua = (s.user_agent || "").toLowerCase();
+  if (/bot|crawler|spider|headless|lighthouse|pagespeed|slurp|curl|wget|python|scrapy|pingdom|uptime/.test(ua)) return true;
+  // Google crawler IPs (Mountain View) with no engagement signal
+  if (/mountain view/i.test(s.ip_city || "") && /united states/i.test(s.ip_country || "")) return true;
+  return false;
+};
 const sourceOf = (s: SessionRow): string => {
   const url = s.first_page_url || "";
   const ref = (s.referrer || "").toLowerCase();
