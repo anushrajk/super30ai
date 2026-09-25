@@ -99,6 +99,7 @@ const AdminTraffic = () => {
   const [preset, setPreset] = useState<Preset>("28d");
   const [custom, setCustom] = useState<DateRange | undefined>();
   const [hideInternal, setHideInternal] = useState(true);
+  const [hideBots, setHideBots] = useState(true);
   const [data, setData] = useState<Payload | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -133,7 +134,7 @@ const AdminTraffic = () => {
 
   const view = useMemo(() => {
     if (!data) return null;
-    const sessions = hideInternal ? data.sessions.filter((s) => !isInternal(s)) : data.sessions;
+    const sessions = data.sessions.filter((s) => (!hideInternal || !isInternal(s)) && (!hideBots || !isBot(s)));
     const sMap = new Map(sessions.map((s) => [s.id, s]));
     const metrics = data.metrics.filter((m) => m.session_id && sMap.has(m.session_id));
     const leads = data.leads.filter((l) => !hideInternal || !l.session_id || sMap.has(l.session_id) || !data.sessions.some((s) => s.id === l.session_id));
