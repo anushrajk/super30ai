@@ -4,13 +4,12 @@ import { Helmet } from "react-helmet-async";
 import { format } from "date-fns";
 import { CalendarIcon, Download, Loader2, RefreshCw, Radio } from "lucide-react";
 import { ResponsiveContainer, AreaChart, Area, XAxis, YAxis, Tooltip, CartesianGrid } from "recharts";
-import type { DateRange } from "react-day-picker";
+type DateRange = { from?: Date; to?: Date };
 import { FunctionsHttpError } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
@@ -74,7 +73,7 @@ const rangeFor = (preset: Preset, custom?: DateRange): { start: Date; end: Date 
   if (preset === "7d") return { start: new Date(now.getTime() - 7 * 86400000), end: now };
   if (preset === "custom" && custom?.from) {
     const end = new Date(custom.to ?? custom.from); end.setHours(23, 59, 59, 999);
-    return { start: new Date(custom.from.setHours(0, 0, 0, 0)), end };
+    return { start: new Date(new Date(custom.from).setHours(0, 0, 0, 0)), end };
   }
   return { start: new Date(now.getTime() - 28 * 86400000), end: now };
 };
@@ -275,7 +274,10 @@ const AdminTraffic = () => {
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="end">
-                <Calendar mode="range" selected={custom} onSelect={(r) => { setCustom(r); setPreset("custom"); }} disabled={{ after: new Date() }} numberOfMonths={2} className={cn("p-3 pointer-events-auto")} />
+                <div className="flex flex-col gap-2 p-3 text-sm">
+                  <label>From <input type="date" max={format(new Date(), "yyyy-MM-dd")} className="ml-2 rounded border border-border bg-background px-2 py-1" onChange={(e) => { if (e.target.value) { setCustom((c) => ({ ...c, from: new Date(e.target.value) })); setPreset("custom"); } }} /></label>
+                  <label>To <input type="date" max={format(new Date(), "yyyy-MM-dd")} className="ml-6 rounded border border-border bg-background px-2 py-1" onChange={(e) => { if (e.target.value) { setCustom((c) => ({ ...c, to: new Date(e.target.value) })); setPreset("custom"); } }} /></label>
+                </div>
               </PopoverContent>
             </Popover>
             <Button size="sm" variant="outline" className="rounded-full" onClick={() => void load()} disabled={loading}>
