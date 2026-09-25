@@ -97,7 +97,7 @@ const AdminTraffic = () => {
   const [error, setError] = useState<string | null>(null);
   const [denied, setDenied] = useState(false);
 
-  useEffect(() => { if (!authLoading && !user) navigate("/auth", { replace: true }); }, [user, authLoading, navigate]);
+  useEffect(() => { if (!authLoading && !user) navigate("/auth?redirect=/admin/traffic", { replace: true }); }, [user, authLoading, navigate]);
 
   const load = useCallback(async () => {
     if (preset === "custom" && !custom?.from) return;
