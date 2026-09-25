@@ -15,7 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { cn } from "@/lib/utils";
 
 type Preset = "live" | "today" | "7d" | "28d" | "custom";
-interface SessionRow { id: string; first_page_url: string | null; referrer: string | null; ip_address: string | null; ip_city: string | null; ip_state: string | null; ip_country: string | null; browser: string | null; created_at: string; }
+interface SessionRow { id: string; first_page_url: string | null; referrer: string | null; ip_address: string | null; ip_city: string | null; ip_state: string | null; ip_country: string | null; browser: string | null; user_agent: string | null; created_at: string; }
 interface Interaction { type: string; element: string }
 interface MetricRow { id: string; session_id: string | null; page_url: string; max_scroll_depth: number | null; scroll_milestones: number[] | null; time_on_page: number | null; interactions: Interaction[] | null; created_at: string; updated_at: string | null; }
 interface LeadRow { id: string; session_id: string | null; created_at: string }
@@ -39,6 +39,13 @@ const pathOf = (url: string | null) => {
   try { return new URL(url).pathname.replace(/\/+$/, "") || "/"; } catch { return (url.split("?")[0].replace(/\/+$/, "") || "/"); }
 };
 const isInternal = (s: SessionRow) => /lovable\.(app|dev)|lovableproject\.com|localhost/i.test(s.first_page_url || "");
+const isBot = (s: SessionRow) => {
+  const ua = (s.user_agent || "").toLowerCase();
+  if (/bot|crawler|spider|headless|lighthouse|pagespeed|slurp|curl|wget|python|scrapy|pingdom|uptime/.test(ua)) return true;
+  // Google crawler IPs (Mountain View) with no engagement signal
+  if (/mountain view/i.test(s.ip_city || "") && /united states/i.test(s.ip_country || "")) return true;
+  return false;
+};
 const sourceOf = (s: SessionRow): string => {
   const url = s.first_page_url || "";
   const ref = (s.referrer || "").toLowerCase();
@@ -92,6 +99,7 @@ const AdminTraffic = () => {
   const [preset, setPreset] = useState<Preset>("28d");
   const [custom, setCustom] = useState<DateRange | undefined>();
   const [hideInternal, setHideInternal] = useState(true);
+  const [hideBots, setHideBots] = useState(true);
   const [data, setData] = useState<Payload | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -126,7 +134,7 @@ const AdminTraffic = () => {
 
   const view = useMemo(() => {
     if (!data) return null;
-    const sessions = hideInternal ? data.sessions.filter((s) => !isInternal(s)) : data.sessions;
+    const sessions = data.sessions.filter((s) => (!hideInternal || !isInternal(s)) && (!hideBots || !isBot(s)));
     const sMap = new Map(sessions.map((s) => [s.id, s]));
     const metrics = data.metrics.filter((m) => m.session_id && sMap.has(m.session_id));
     const leads = data.leads.filter((l) => !hideInternal || !l.session_id || sMap.has(l.session_id) || !data.sessions.some((s) => s.id === l.session_id));
@@ -233,7 +241,7 @@ const AdminTraffic = () => {
       avgTime, clicks, formStarts: count("form_start"), formSubmits: count("form_submit"), enquiries: leads.length,
       pageRows, visitorRows, sources: [...sources.entries()].sort((a, b) => b[1] - a[1]), trend, live,
     };
-  }, [data, hideInternal, preset]);
+  }, [data, hideInternal, hideBots, preset]);
 
   if (authLoading || !user) return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin" /></div>;
   if (denied) return (
@@ -286,9 +294,14 @@ const AdminTraffic = () => {
           </div>
         </div>
 
-        <label className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Switch checked={hideInternal} onCheckedChange={setHideInternal} /> Hide internal preview/test visits
-        </label>
+        <div className="flex flex-wrap items-center gap-6">
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Switch checked={hideInternal} onCheckedChange={setHideInternal} /> Hide internal preview/test visits
+          </label>
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Switch checked={hideBots} onCheckedChange={setHideBots} /> Hide bots & crawlers (Google, Lighthouse, etc.)
+          </label>
+        </div>
 
         {error && <div className="rounded-2xl border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive">Couldn't load data: {error}</div>}
 
