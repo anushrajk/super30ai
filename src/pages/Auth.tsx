@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -12,15 +12,18 @@ import { useAuth } from "@/hooks/useAuth";
 
 const Auth = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { user, loading } = useAuth();
+  const redirectParam = searchParams.get("redirect");
+  const dest = redirectParam && redirectParam.startsWith("/") && !redirectParam.startsWith("//") ? redirectParam : "/admin/blogs";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (!loading && user) navigate("/admin/blogs", { replace: true });
-  }, [user, loading, navigate]);
+    if (!loading && user) navigate(dest, { replace: true });
+  }, [user, loading, navigate, dest]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -29,7 +32,7 @@ const Auth = () => {
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Signed in");
-    navigate("/admin/blogs");
+    navigate(dest);
   };
 
   const handleSignup = async (e: React.FormEvent) => {
@@ -39,14 +42,14 @@ const Auth = () => {
       email,
       password,
       options: {
-        emailRedirectTo: `${window.location.origin}/admin/blogs`,
+        emailRedirectTo: `${window.location.origin}${dest}`,
         data: { full_name: name },
       },
     });
     setBusy(false);
     if (error) return toast.error(error.message);
     toast.success("Account created — you're signed in");
-    navigate("/admin/blogs");
+    navigate(dest);
   };
 
   return (

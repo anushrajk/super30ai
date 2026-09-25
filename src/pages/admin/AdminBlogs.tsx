@@ -26,7 +26,7 @@ const AdminBlogs = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate("/auth", { replace: true });
+    if (!authLoading && !user) navigate("/auth?redirect=/admin/blogs", { replace: true });
   }, [user, authLoading, navigate]);
 
   const fetchPosts = async () => {
