@@ -241,7 +241,7 @@ const AdminTraffic = () => {
       avgTime, clicks, formStarts: count("form_start"), formSubmits: count("form_submit"), enquiries: leads.length,
       pageRows, visitorRows, sources: [...sources.entries()].sort((a, b) => b[1] - a[1]), trend, live,
     };
-  }, [data, hideInternal, preset]);
+  }, [data, hideInternal, hideBots, preset]);
 
   if (authLoading || !user) return <div className="flex min-h-screen items-center justify-center"><Loader2 className="h-6 w-6 animate-spin" /></div>;
   if (denied) return (
@@ -294,9 +294,14 @@ const AdminTraffic = () => {
           </div>
         </div>
 
-        <label className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Switch checked={hideInternal} onCheckedChange={setHideInternal} /> Hide internal preview/test visits
-        </label>
+        <div className="flex flex-wrap items-center gap-6">
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Switch checked={hideInternal} onCheckedChange={setHideInternal} /> Hide internal preview/test visits
+          </label>
+          <label className="flex items-center gap-2 text-sm text-muted-foreground">
+            <Switch checked={hideBots} onCheckedChange={setHideBots} /> Hide bots & crawlers (Google, Lighthouse, etc.)
+          </label>
+        </div>
 
         {error && <div className="rounded-2xl border border-destructive/40 bg-destructive/10 p-4 text-sm text-destructive">Couldn't load data: {error}</div>}
 
