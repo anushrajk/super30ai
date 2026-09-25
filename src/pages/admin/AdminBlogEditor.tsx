@@ -69,7 +69,7 @@ const AdminBlogEditor = () => {
   const [slugTouched, setSlugTouched] = useState(false);
 
   useEffect(() => {
-    if (!authLoading && !user) navigate("/auth", { replace: true });
+    if (!authLoading && !user) navigate(`/auth?redirect=${encodeURIComponent(window.location.pathname)}`, { replace: true });
   }, [user, authLoading, navigate]);
 
   useEffect(() => {
