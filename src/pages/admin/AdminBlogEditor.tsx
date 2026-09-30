@@ -185,11 +185,11 @@ const AdminBlogEditor = () => {
       </Helmet>
       <main className="min-h-screen bg-muted/30">
         <div className="border-b bg-background sticky top-0 z-10">
-          <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-2">
-            <Link to="/admin/blogs" className="flex items-center text-sm text-muted-foreground hover:text-foreground">
+          <div className="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-2">
+            <Link to="/admin/blogs" className="flex items-center text-sm text-muted-foreground hover:text-foreground shrink-0">
               <ArrowLeft className="w-4 h-4 mr-1" /> All posts
             </Link>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {form.status === "published" && (
                 <Link to={`/blog/${form.slug}`} target="_blank">
                   <Button variant="outline" size="sm">
