@@ -372,9 +372,9 @@ export default function PerformancePlanner() {
                   <span className="text-sm text-muted-foreground">Preview of your ad opportunity report</span>
                 </div>
                 
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-3 gap-2 sm:gap-4">
                   {[Target, TrendingUp, DollarSign].map((Icon, idx) => (
-                    <div key={idx} className="p-4 bg-muted/50 rounded-xl animate-pulse">
+                    <div key={idx} className="min-w-0 p-2 sm:p-4 bg-muted/50 rounded-xl animate-pulse">
                       <div className="flex flex-col items-center">
                         <div className="w-12 h-12 rounded-full bg-muted mb-2 relative overflow-hidden">
                           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-background/50 to-transparent animate-shimmer" />

@@ -93,7 +93,7 @@ export const ProjectShowcaseSection = () => {
 
           {/* Right: Laptop mockup */}
           <div className="animate-fade-in" key={`img-${activeIndex}`} style={{ animationDelay: "100ms" }}>
-            <div className="relative mx-auto max-w-md md:max-w-lg">
+            <div className="relative mx-auto w-full max-w-md md:max-w-lg">
               {/* Laptop frame */}
               <div className="bg-[#1a1a2e] rounded-t-xl p-1 pt-3 border border-white/10">
                 {/* Browser dots */}

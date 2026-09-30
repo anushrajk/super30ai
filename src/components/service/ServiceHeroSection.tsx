@@ -52,10 +52,10 @@ export const ServiceHeroSection = ({
       </div>
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
-          <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
-            <div className="inline-flex items-center gap-2 bg-accent border border-border px-4 py-1.5 rounded-full">
-              <BadgeIcon className="w-4 h-4 text-brand" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
+          <div className="min-w-0 md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
+            <div className="inline-flex max-w-full items-center gap-2 bg-accent border border-border px-4 py-1.5 rounded-full">
+              <BadgeIcon className="w-4 h-4 shrink-0 text-brand" />
               <span className="text-foreground text-sm font-medium">{badgeText}</span>
             </div>
 
@@ -93,7 +93,7 @@ export const ServiceHeroSection = ({
             </div>
           </div>
 
-          <div className="md:col-span-1 lg:col-span-5">
+          <div className="min-w-0 md:col-span-1 lg:col-span-5">
             <LeadCaptureForm 
               onSubmit={onSubmit} 
               loading={loading}

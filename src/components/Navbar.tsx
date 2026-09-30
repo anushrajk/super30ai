@@ -315,7 +315,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed inset-x-0 top-16 md:top-20 bottom-0 bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-xl transition-all duration-300 z-50 overflow-y-auto ${
+        className={`lg:hidden absolute inset-x-0 top-full h-[calc(100dvh-4rem)] md:h-[calc(100dvh-5rem)] bg-background border-b border-border/50 shadow-xl transition-all duration-300 z-50 overflow-y-auto ${
           isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
@@ -337,7 +337,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openMobile === item.label ? "rotate-180" : ""}`} />
                     </button>
                     {openMobile === item.label && (
-                      <div className="ml-4 pl-4 border-l-2 border-border/50 mt-1 mb-2 flex flex-col gap-0.5">
+                      <div className="ml-2 pl-2 sm:ml-4 sm:pl-4 border-l-2 border-border/50 mt-1 mb-2 flex flex-col gap-0.5">
                         {item.href && (
                           <Link
                             to={item.href}

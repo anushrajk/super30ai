@@ -255,7 +255,13 @@ All colors MUST be HSL.
   .blog-content h2 { margin-top: 2.5rem; font-size: 1.65rem; }
   .blog-content h3 { margin-top: 2rem; font-size: 1.35rem; }
   .blog-content blockquote { padding: 1.1rem 1.25rem; }
+  .blog-content th, .blog-content td { min-width: 7rem; overflow-wrap: anywhere; }
   .article-inline-cta { align-items: flex-start; flex-direction: column; }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar, .no-scrollbar::-webkit-scrollbar { display: none; }
+  .scrollbar-hide, .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 }
 
 .report-card {

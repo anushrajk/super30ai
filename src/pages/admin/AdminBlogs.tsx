@@ -73,10 +73,10 @@ const AdminBlogs = () => {
       </Helmet>
       <main className="min-h-screen bg-muted/30">
         <div className="border-b bg-background">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div>
+          <div className="container mx-auto px-4 py-4 flex flex-wrap items-center justify-between gap-3">
+            <div className="min-w-0">
               <h1 className="text-xl font-bold">Blog CMS</h1>
-              <p className="text-xs text-muted-foreground">{user.email}</p>
+              <p className="text-xs text-muted-foreground break-all">{user.email}</p>
             </div>
             <div className="flex gap-2">
               <Link to="/blog" target="_blank">
@@ -109,8 +109,8 @@ const AdminBlogs = () => {
               </Link>
             </div>
           ) : (
-            <div className="bg-background rounded-lg border overflow-hidden">
-              <table className="w-full text-sm">
+            <div className="bg-background rounded-lg border overflow-x-auto">
+              <table className="w-full min-w-[700px] text-sm">
                 <thead className="bg-muted/50 text-xs uppercase text-muted-foreground">
                   <tr>
                     <th className="text-left px-4 py-3">Title</th>

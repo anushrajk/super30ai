@@ -291,8 +291,8 @@ export const LeadCaptureForm = ({
 
           {/* Phone Number with +91 */}
           <div className="relative">
-            <div className="flex">
-              <div className="flex items-center gap-1 bg-muted border border-r-0 border-border rounded-l-md px-3 h-12">
+            <div className="flex min-w-0">
+              <div className="flex shrink-0 items-center gap-1 bg-muted border border-r-0 border-border rounded-l-md px-3 h-12">
                 <Phone className="w-4 h-4 text-muted-foreground" />
                 <span className="text-sm font-medium text-muted-foreground">+91</span>
               </div>
@@ -303,7 +303,7 @@ export const LeadCaptureForm = ({
                 onChange={(e) => handlePhoneChange(e.target.value)}
                 onFocus={() => setFocusedField('phone')}
                 onBlur={() => handleBlur('phone')}
-                className={`w-full bg-background h-12 rounded-l-none transition-all duration-300 pl-3 pr-10 ${
+                className={`min-w-0 flex-1 bg-background h-12 rounded-l-none transition-all duration-300 pl-3 pr-10 ${
                   touched.phone && !isPhoneValid 
                     ? 'border-destructive focus:border-destructive focus:ring-destructive/20' 
                     : 'border-border focus:border-brand focus:ring-2 focus:ring-brand/20'

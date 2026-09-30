@@ -257,7 +257,7 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-white/10">
           <div className="flex flex-col lg:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm whitespace-nowrap">
+            <p className="text-gray-500 text-sm text-center lg:text-left">
               © {new Date().getFullYear()} The Super 30 | AI Marketing Agency, Bangalore, India. All rights reserved.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
