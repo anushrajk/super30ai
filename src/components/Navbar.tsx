@@ -337,7 +337,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
                       <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${openMobile === item.label ? "rotate-180" : ""}`} />
                     </button>
                     {openMobile === item.label && (
-                      <div className="ml-4 pl-4 border-l-2 border-border/50 mt-1 mb-2 flex flex-col gap-0.5">
+                      <div className="ml-2 pl-2 sm:ml-4 sm:pl-4 border-l-2 border-border/50 mt-1 mb-2 flex flex-col gap-0.5">
                         {item.href && (
                           <Link
                             to={item.href}

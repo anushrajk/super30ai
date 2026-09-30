@@ -41,9 +41,9 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
 
       <div className="container relative mx-auto px-4 py-8 md:py-12 lg:py-16">
         {/* 2-Column Layout */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 md:gap-8 lg:gap-16 items-center">
           {/* Left Column - Content */}
-          <div className="md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
+          <div className="min-w-0 md:col-span-1 lg:col-span-7 space-y-4 md:space-y-6">
             {/* Badge */}
             <div className="badge-brand">
               <TrendingUp className="w-4 h-4" />
@@ -94,7 +94,7 @@ export const PMHeroSection = ({ onSubmit, loading }: PMHeroSectionProps) => {
           </div>
 
           {/* Right Column - Form */}
-          <div className="md:col-span-1 lg:col-span-5">
+          <div className="min-w-0 md:col-span-1 lg:col-span-5">
             <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
               <PMLeadCaptureForm onSubmit={onSubmit} loading={loading} />
             </div>
