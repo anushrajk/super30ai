@@ -405,7 +405,7 @@ const ClientReport = () => {
           <section data-section="traffic" id="traffic">
             <SectionHeader tag="02 — Traffic & Performance" title="Traffic Overview" sub="Monthly organic sessions and click-through performance." />
             <TrafficLineChart />
-            <div className="grid grid-cols-3 gap-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               <MetricCard label="Click-Through Rate" value="4.8%" delta="↑ from 3.2%" direction="up" />
               <MetricCard label="Impressions" value="412K" delta="↑ 18%" direction="up" />
               <MetricCard label="Bounce Rate" value="42%" delta="↓ from 58%" direction="up" />
@@ -417,8 +417,8 @@ const ClientReport = () => {
           {/* ── 03 KEYWORDS ── */}
           <section data-section="keywords" id="keywords">
             <SectionHeader tag="03 — Keyword Rankings" title="Keyword Performance" sub="Top tracked keywords and their current positions." />
-            <div className="report-card p-0 overflow-hidden mb-3.5">
-              <table className="w-full text-[13px]">
+            <div className="report-card p-0 overflow-x-auto mb-3.5">
+              <table className="w-full min-w-[620px] text-[13px]">
                 <thead>
                   <tr className="border-b border-report-border">
                     {["Keyword", "Volume/mo", "Position", "Change", "Status"].map((h) => (
@@ -448,7 +448,7 @@ const ClientReport = () => {
                 </tbody>
               </table>
             </div>
-            <div className="grid grid-cols-3 gap-3.5">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               <MetricCard label="Top 3 Positions" value="42" delta="↑ 18 new" direction="up" />
               <MetricCard label="Top 10 Positions" value="186" delta="↑ 74 new" direction="up" />
               <MetricCard label="Top 30 Positions" value="640" delta="↑ 218 new" direction="up" />
