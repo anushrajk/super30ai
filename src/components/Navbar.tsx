@@ -315,7 +315,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
       {/* Mobile Menu */}
       <div
-        className={`lg:hidden fixed inset-x-0 top-16 md:top-20 bottom-0 bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-xl transition-all duration-300 z-50 overflow-y-auto ${
+        className={`lg:hidden absolute inset-x-0 top-full h-[calc(100dvh-4rem)] md:h-[calc(100dvh-5rem)] bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-xl transition-all duration-300 z-50 overflow-y-auto ${
           isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
         }`}
       >
