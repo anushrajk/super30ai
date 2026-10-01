@@ -245,7 +245,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-0.5 ml-auto mr-4">
-            {menuItems.map((item) => (
+            {visibleMenuItems.map((item) => (
               <div
                 key={item.label}
                 className="relative"
@@ -412,7 +412,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
       >
         <div className="container mx-auto px-4 py-4 pb-24">
           <div className="flex flex-col gap-1">
-            {menuItems.map((item) => (
+            {visibleMenuItems.map((item) => (
               <div key={item.label}>
                 {hasDropdown(item) ? (
                   <>
