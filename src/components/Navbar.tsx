@@ -184,6 +184,8 @@ const menuItems: NavMenuItem[] = [
   { label: "Team S30", href: "/internet-marketing-agency" },
 ];
 
+const visibleMenuItems = menuItems.filter((item) => !item.hidden);
+
 export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
