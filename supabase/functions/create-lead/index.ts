@@ -2,8 +2,8 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 
-// Rate limit: 10 lead operations per session per hour
-const RATE_LIMIT = 10;
+// Rate limit: generous so genuine/testing enquiries are never dropped; only blocks floods
+const RATE_LIMIT = 60;
 const RATE_WINDOW_MINUTES = 60;
 
 interface LeadData {
