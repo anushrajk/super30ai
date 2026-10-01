@@ -20,6 +20,8 @@ interface NavMenuItem {
   items?: SubItem[];
   categories?: SubCategory[];
   mega?: boolean;
+  /** Hidden items stay defined here so they can be re-enabled easily. */
+  hidden?: boolean;
 }
 
 const menuItems: NavMenuItem[] = [
@@ -87,6 +89,7 @@ const menuItems: NavMenuItem[] = [
   {
     label: "Solutions",
     mega: true,
+    hidden: true,
     categories: [
       {
         label: "Education",
@@ -181,6 +184,8 @@ const menuItems: NavMenuItem[] = [
   { label: "Team S30", href: "/internet-marketing-agency" },
 ];
 
+const visibleMenuItems = menuItems.filter((item) => !item.hidden);
+
 export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -240,7 +245,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-0.5 ml-auto mr-4">
-            {menuItems.map((item) => (
+            {visibleMenuItems.map((item) => (
               <div
                 key={item.label}
                 className="relative"
@@ -407,7 +412,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
       >
         <div className="container mx-auto px-4 py-4 pb-24">
           <div className="flex flex-col gap-1">
-            {menuItems.map((item) => (
+            {visibleMenuItems.map((item) => (
               <div key={item.label}>
                 {hasDropdown(item) ? (
                   <>
