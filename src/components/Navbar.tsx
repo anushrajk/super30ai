@@ -20,6 +20,8 @@ interface NavMenuItem {
   items?: SubItem[];
   categories?: SubCategory[];
   mega?: boolean;
+  /** Hidden items stay defined here so they can be re-enabled easily. */
+  hidden?: boolean;
 }
 
 const menuItems: NavMenuItem[] = [
@@ -87,6 +89,7 @@ const menuItems: NavMenuItem[] = [
   {
     label: "Solutions",
     mega: true,
+    hidden: true,
     categories: [
       {
         label: "Education",
