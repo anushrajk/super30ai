@@ -45,35 +45,10 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
         headers: sessionId ? { 'x-session-id': sessionId } : undefined,
       });
 
-      // 2. Submit to Web3Forms (non-blocking)
-      void submitFormToGoogleSheets({
-        form_id: formId || `${source}_form`,
-        form_name: formName || `Lead Capture - ${source}`,
-        page_url: window.location.href,
-        trigger_type: 'form_submit',
-        data: {
-          name: data.full_name || '',
-          company: data.company_name || '',
-          website: data.website_url,
-          email: data.email,
-          phone: data.phone || '',
-          role: data.role || '',
-          revenue: data.monthly_revenue || '',
-          service,
-        },
-      });
+      // Web3Forms + Google Sheet rows are sent once by the form component itself
+      // (LeadCaptureForm). Sending them here too created duplicate sheet rows.
 
-      // 3. Sync to Google Sheets via edge function (non-blocking)
-      void supabase.functions.invoke('sync-lead-to-sheets', {
-        body: {
-          website: data.website_url,
-          email: data.email,
-          phone: data.phone || '',
-          role: data.role || '',
-          revenue: data.monthly_revenue || '',
-          formSource: source,
-        },
-      });
+
 
       // Wait for the lead to be created so we can send email with session data
       const { data: leadResult, error: leadError } = await createLeadPromise;
