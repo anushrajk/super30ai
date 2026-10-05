@@ -89,7 +89,6 @@ const menuItems: NavMenuItem[] = [
   {
     label: "Solutions",
     mega: true,
-    hidden: true,
     categories: [
       {
         label: "Education",
