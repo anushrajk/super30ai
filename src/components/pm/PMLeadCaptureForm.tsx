@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
 import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
-import { detectService, getServiceHeadline, submitToGoogleSheets } from "@/lib/serviceDetection";
+import { detectService, getServiceHeadline } from "@/lib/serviceDetection";
 
 interface PMLeadCaptureFormProps {
   onSubmit: (data: { 
@@ -123,20 +123,6 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
           message: message || "",
           service,
         },
-      });
-
-      // Submit to Google Sheets via Apps Script (non-blocking)
-      void submitToGoogleSheets({
-        name: fullName,
-        company: companyName,
-        website: urlWithProtocol,
-        email: email,
-        phone: phone ? `+91${phone}` : "",
-        role: roleOptions.find(r => r.value === role)?.label || role || "",
-        revenue: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
-        message: message || "",
-        service,
-        page_url: window.location.href,
       });
 
       onSubmit({ 
