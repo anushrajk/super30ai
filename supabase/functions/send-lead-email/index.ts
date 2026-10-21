@@ -1,5 +1,4 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
-import { Resend } from "https://esm.sh/resend@2.0.0";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 import { checkRateLimit } from "../_shared/rate-limit.ts";
 import { escapeHtml } from "../_shared/escape-html.ts";
@@ -89,7 +88,7 @@ const handler = async (req: Request): Promise<Response> => {
     );
   }
 
-  const resend = new Resend(apiKey);
+  const lovableKey = Deno.env.get("LOVABLE_API_KEY");
 
   try {
     const { lead, session, submission_time, form_step }: LeadEmailRequest = await req.json();
@@ -188,22 +187,30 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Sending email...
     
-    const emailResponse = await resend.emails.send({
-      from: "AI SEO Agency <onboarding@resend.dev>",
-      to: ["thesuper30.ai@gmail.com"],
-      subject: `🚀 New Lead (${form_step}): ${lead.email}`,
-      html: emailHtml,
+    const gwRes = await fetch("https://connector-gateway.lovable.dev/resend/emails", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${lovableKey}`,
+        "X-Connection-Api-Key": apiKey,
+      },
+      body: JSON.stringify({
+        // Until thesuper30.ai is verified in Resend, only the account owner's inbox can receive.
+        from: "Super30 Leads <onboarding@resend.dev>",
+        to: ["thesuper30.ai@gmail.com"],
+        subject: `🚀 New Lead (${form_step}): ${lead.email}`,
+        html: emailHtml,
+      }),
     });
-
-    // Email response received
-
-    if (emailResponse.error) {
-      console.error("Resend error:", emailResponse.error);
+    const gwText = await gwRes.text();
+    if (!gwRes.ok) {
+      console.error(`Resend error [${gwRes.status}]: ${gwText}`);
       return new Response(
-        JSON.stringify({ error: emailResponse.error }),
-        { status: 500, headers: { "Content-Type": "application/json", ...corsHeaders } }
+        JSON.stringify({ error: "Email send failed", status: gwRes.status, details: gwText }),
+        { status: gwRes.status, headers: { "Content-Type": "application/json", ...corsHeaders } }
       );
     }
+    const emailResponse = { data: JSON.parse(gwText) };
 
     console.log("Email sent successfully");
 
