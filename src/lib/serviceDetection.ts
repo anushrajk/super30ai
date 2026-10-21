@@ -50,7 +50,7 @@ export const getServiceHeadline = (service: string): string | null => {
 };
 
 const GOOGLE_SHEETS_URL =
-  "https://script.google.com/macros/s/AKfycbyHu1YbqhQQdcqp0CeBAdN4dLMcCJakCHCj7CisR0ZPLL3Q-98car8VLsNmmfhwVOXm/exec";
+  "https://script.google.com/macros/s/AKfycbxp-HKGGkx4zEkGHcATl06dSsVXs4DY-U973k7qgdfO-ClxgTx_p_4aTD6ozZlBuULq/exec";
 
 export interface GoogleSheetsPayload {
   name: string;

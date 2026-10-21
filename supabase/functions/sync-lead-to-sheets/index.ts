@@ -12,7 +12,7 @@ interface SheetsLeadPayload {
 }
 
 const GOOGLE_APPS_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbwtAO1DRg-1RnW5HreL0ewiFQoh-S4IqVPQRugUANbTvnurt1eO2Gk10P8pJh0S4MaK/exec";
+  "https://script.google.com/macros/s/AKfycbxp-HKGGkx4zEkGHcATl06dSsVXs4DY-U973k7qgdfO-ClxgTx_p_4aTD6ozZlBuULq/exec";
 
 const handler = async (req: Request): Promise<Response> => {
   const corsPreFlight = handleCorsPreFlight(req);
@@ -27,7 +27,7 @@ const handler = async (req: Request): Promise<Response> => {
     // Rate limit: 10 requests per IP per hour
     const rateLimitResult = await checkRateLimit(req, corsHeaders, {
       operation: "sync_lead_to_sheets",
-      limit: 10,
+      limit: 60,
     });
     if (!rateLimitResult.allowed) return rateLimitResult.response!;
 
