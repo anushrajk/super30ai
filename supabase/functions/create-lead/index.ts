@@ -5,6 +5,8 @@ import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 // Rate limit: generous so genuine/testing enquiries are never dropped; only blocks floods
 const RATE_LIMIT = 60;
 const RATE_WINDOW_MINUTES = 60;
+const GOOGLE_SHEET_URL =
+  "https://script.google.com/macros/s/AKfycbxp-HKGGkx4zEkGHcATl06dSsVXs4DY-U973k7qgdfO-ClxgTx_p_4aTD6ozZlBuULq/exec";
 
 interface LeadData {
   email: string;
@@ -77,7 +79,7 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
 
-    const body: LeadData & { lead_id?: string } = await req.json();
+    const body: LeadData & { lead_id?: string; full_name?: string; page_url?: string; message?: string } = await req.json();
     const { email, website_url, step, role, monthly_revenue, phone, company_name, lead_id, service_type, business_type, preferred_platforms } = body;
 
     // Basic validation
@@ -200,6 +202,34 @@ const handler = async (req: Request): Promise<Response> => {
       }
       result = data;
       console.log("Lead created");
+
+      // Send every new enquiry to the Google Sheet from the server (no browser blockers).
+      try {
+        const sheetRes = await fetch(GOOGLE_SHEET_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({
+            name: (body.full_name || company_name || email).toString().slice(0, 200),
+            company: company_name || "",
+            website: website_url,
+            email: email.trim(),
+            phone: phone || "",
+            role: role || "",
+            revenue: monthly_revenue || "",
+            service: service_type || "",
+            page_url: (body.page_url || req.headers.get("referer") || "").toString().slice(0, 500),
+            message: (body.message || "").toString().slice(0, 2000),
+          }),
+          redirect: "manual",
+        });
+        let text = "";
+        const loc = sheetRes.headers.get("location");
+        if (loc) text = await (await fetch(loc)).text();
+        else text = await sheetRes.text();
+        console.log("Sheet sync:", sheetRes.status, text.slice(0, 200));
+      } catch (e) {
+        console.error("Sheet sync failed:", e);
+      }
     }
 
     return new Response(JSON.stringify(result), {

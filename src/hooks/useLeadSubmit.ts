@@ -41,6 +41,8 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
           company_name: data.company_name,
           service_type: service,
           step: 1,
+          full_name: data.full_name,
+          page_url: window.location.href,
         },
         headers: sessionId ? { 'x-session-id': sessionId } : undefined,
       });
