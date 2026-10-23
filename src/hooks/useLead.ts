@@ -10,6 +10,7 @@ export interface LeadData {
   monthly_revenue?: string;
   phone?: string;
   company_name?: string;
+  full_name?: string;
   step: number;
 }
 
@@ -29,6 +30,7 @@ export const useLead = () => {
           monthly_revenue: data.monthly_revenue,
           phone: data.phone,
           company_name: data.company_name,
+          full_name: data.full_name,
           step: data.step || 1
         },
         headers: sessionId ? { 'x-session-id': sessionId } : undefined
@@ -63,6 +65,7 @@ export const useLead = () => {
           monthly_revenue: data.monthly_revenue,
           phone: data.phone,
           company_name: data.company_name,
+          full_name: data.full_name,
           step: data.step || 1
         },
         headers: sessionId ? { 'x-session-id': sessionId } : undefined

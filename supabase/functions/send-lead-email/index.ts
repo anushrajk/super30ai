@@ -11,6 +11,7 @@ interface LeadEmailRequest {
     monthly_revenue?: string;
     phone?: string;
     company_name?: string;
+    full_name?: string;
     step: number;
   };
   session: {
@@ -117,6 +118,10 @@ const handler = async (req: Request): Promise<Response> => {
         
         <h2 style="color: #333; margin-top: 20px;">Lead Information</h2>
         <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+          ${lead.full_name ? `<tr>
+            <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Full Name</td>
+            <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.full_name)}</td>
+          </tr>` : ''}
           <tr style="background: #f9fafb;">
             <td style="padding: 10px; border: 1px solid #e5e7eb; font-weight: bold;">Website URL</td>
             <td style="padding: 10px; border: 1px solid #e5e7eb;">${escapeHtml(lead.website_url)}</td>

@@ -1,6 +1,7 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
+import { leadIdentity, sheetIdentity } from "../_shared/lead-identity.js";
 
 // Rate limit: generous so genuine/testing enquiries are never dropped; only blocks floods
 const RATE_LIMIT = 60;
@@ -16,6 +17,7 @@ interface LeadData {
   monthly_revenue?: string;
   phone?: string;
   company_name?: string;
+  full_name?: string;
   service_type?: string;
   business_type?: string;
   preferred_platforms?: string[];
@@ -81,6 +83,14 @@ const handler = async (req: Request): Promise<Response> => {
 
     const body: LeadData & { lead_id?: string; full_name?: string; page_url?: string; message?: string } = await req.json();
     const { email, website_url, step, role, monthly_revenue, phone, company_name, lead_id, service_type, business_type, preferred_platforms } = body;
+    let identity;
+    try {
+      identity = leadIdentity(body);
+    } catch {
+      return new Response(JSON.stringify({ error: "Invalid name or company name" }), {
+        status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     // Basic validation
     if (!email || !website_url) {
@@ -153,7 +163,7 @@ const handler = async (req: Request): Promise<Response> => {
           role,
           monthly_revenue,
           phone,
-          company_name,
+          ...identity,
           service_type,
           business_type,
           preferred_platforms,
@@ -184,7 +194,7 @@ const handler = async (req: Request): Promise<Response> => {
           role,
           monthly_revenue,
           phone,
-          company_name,
+          ...identity,
           service_type,
           business_type,
           preferred_platforms,
@@ -209,8 +219,7 @@ const handler = async (req: Request): Promise<Response> => {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify({
-            name: (body.full_name || company_name || email).toString().slice(0, 200),
-            company: company_name || "",
+            ...sheetIdentity(result),
             website: website_url,
             email: email.trim(),
             phone: phone || "",

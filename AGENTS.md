@@ -1,4 +1,5 @@
 # Architecture rules
+- Lead identity is normalized independently in the shared server helper and persisted as full_name and company_name; omitted fields stay undefined on partial updates to prevent loss during follow-up steps.
 - Keep industry content in shared JSON consumed by React and the static SEO generator, so dynamic industry URLs ship matching metadata and content before JavaScript runs.
 - Use shared SEO content helpers for CMS image labels, editorial internal-link normalization, and search-description formatting at runtime and prerender time, so crawler and visitor output agree.
 - The crawler nav link list lives only in `NAV_LINKS` in `scripts/generate-route-seo.mjs`; the generator syncs it into index.html's seo-content block and injects blog-post links into the /blog listing, so never edit those navs by hand.

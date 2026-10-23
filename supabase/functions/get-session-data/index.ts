@@ -55,7 +55,7 @@ const handler = async (req: Request): Promise<Response> => {
     if (type === "leads" || type === "all") {
       const { data: leads } = await supabase
         .from("leads")
-        .select("id, email, website_url, step, role, monthly_revenue, company_name, created_at")
+        .select("id, email, website_url, step, role, monthly_revenue, full_name, company_name, created_at")
         .eq("session_id", sessionId)
         .order("created_at", { ascending: false });
       result.leads = leads || [];
