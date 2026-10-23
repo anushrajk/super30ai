@@ -691,6 +691,7 @@ const main = async () => {
     fs.readFile(organizationFile, "utf8"),
   ]);
 
+  const distIndexHtml = syncHomepageNav(distIndexHtmlRaw);
   const seoMeta = JSON.parse(seoMetaRaw);
   const schemaRoutes = JSON.parse(schemaRoutesRaw);
   const faqs = JSON.parse(faqsRaw);
