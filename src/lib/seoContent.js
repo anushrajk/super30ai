@@ -24,3 +24,10 @@ export const improveArticleHtml = (html, title) => {
     });
   });
 };
+/** Industry page title, kept under ~60 characters for search results. */
+export function industryTitle(name) {
+  const full = `${name} Digital Marketing Agency Bangalore | The Super 30`;
+  if (full.length <= 60) return full;
+  const short = `${name} Marketing Agency Bangalore`;
+  return short.length <= 60 ? short : `${name} Marketing | The Super 30`;
+}

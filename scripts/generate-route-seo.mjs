@@ -745,7 +745,7 @@ const main = async () => {
   for (const [slug, industry] of Object.entries(industries)) {
     const routePath = `/industries/${slug}`;
     const url = `${siteOrigin}${routePath}`;
-    const title = `${industry.name} Digital Marketing Agency Bangalore | The Super 30`;
+    const title = industryTitle(industry.name);
     const description = searchDescription(industry.description);
     const metadata = {
       title, description, canonical: url, robots: "index, follow",

@@ -23,7 +23,7 @@ const IndustryHub = () => {
 
   if (!industry) return <Navigate to="/" replace />;
 
-  const title = `${industry.name} Digital Marketing Agency Bangalore | The Super 30`;
+  const title = industryTitle(industry.name);
   const metaDescription = searchDescription(industry.description);
 
   return (
