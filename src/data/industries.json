@@ -1,0 +1,88 @@
+{
+  "education": {
+    "name": "Education",
+    "headline": "AI Digital Marketing Solutions for the Education Industry",
+    "description": "From pre-schools to EdTech platforms, we help education brands attract more admissions with AI SEO, performance marketing and lead generation built for the education sector.",
+    "subCategories": [
+      "Pre-schools & Daycares",
+      "K-12 Schools",
+      "Colleges",
+      "Universities",
+      "Coaching Institutes",
+      "EdTech Platforms",
+      "Govt Education Programs",
+      "Skilling & Vocational"
+    ]
+  },
+  "ecommerce": {
+    "name": "E-Commerce",
+    "headline": "AI Digital Marketing Solutions for E-Commerce Brands",
+    "description": "D2C brands and marketplace sellers grow revenue with our AI SEO, Google Ads and ecommerce marketing solutions built for online retail.",
+    "subCategories": [
+      "D2C Brands",
+      "Marketplace Sellers",
+      "Electronics & Gadgets",
+      "Grocery / Quick Commerce",
+      "Home & Furniture",
+      "Beauty & Personal Care",
+      "B2B / Wholesale",
+      "Pharma / Pharmacy Brands"
+    ]
+  },
+  "lifestyle": {
+    "name": "Lifestyle",
+    "headline": "AI Digital Marketing Solutions for Lifestyle Brands",
+    "description": "Fashion, beauty, wellness, dermatology, pharmacy, home decor and lifestyle brands scale with our AI-powered SEO, social media marketing and performance advertising.",
+    "subCategories": [
+      "Fashion & Apparel",
+      "Beauty & Cosmetics",
+      "Wellness & Fitness",
+      "Dermatology, Pharmacy & Wellness",
+      "Health & Wellness Retail",
+      "Home Decor & Furniture",
+      "Jewelry & Accessories",
+      "Weddings & Events"
+    ]
+  },
+  "sports": {
+    "name": "Sports",
+    "headline": "AI Digital Marketing Solutions for the Sports Industry",
+    "description": "Sports academies, gyms, teams and gear brands win more fans and customers with AI SEO, lead generation and performance marketing.",
+    "subCategories": [
+      "Sports Academies",
+      "Gyms & Fitness Studios",
+      "Sports Events / Tournaments",
+      "Sports Teams / Clubs",
+      "Equipment & Gear Brands",
+      "Individual Athletes",
+      "Sports Tech & Apps"
+    ]
+  },
+  "b2b": {
+    "name": "Businesses (B2B)",
+    "headline": "AI Digital Marketing Solutions for B2B Companies",
+    "description": "Startups, SaaS and enterprise businesses generate qualified B2B leads with our AI SEO, account-based performance marketing and content solutions.",
+    "subCategories": [
+      "Startups & SaaS",
+      "BFSI",
+      "Real Estate & Construction",
+      "Manufacturing / Industrial",
+      "Professional Services",
+      "Logistics & Supply Chain",
+      "IT & Tech Services"
+    ]
+  },
+  "hospitality": {
+    "name": "Hotel Management & Hospitality",
+    "headline": "AI Digital Marketing Solutions for Hotels, Restaurants & Hospitality",
+    "description": "Hotels, restaurants, cloud kitchens and travel brands attract more bookings and diners with our AI SEO, local search marketing and performance advertising.",
+    "subCategories": [
+      "Hotels & Resorts",
+      "Restaurants & Cafes",
+      "Cloud Kitchens",
+      "Travel & Tourism",
+      "Banquet Halls & Event Venues",
+      "Spa & Wellness Resorts"
+    ]
+  }
+}
