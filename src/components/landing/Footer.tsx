@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, ArrowRight } from "lucide-react";
 import super30FooterLogo from "@/assets/super30-footer-logo-white.png";
+import industries from "@/data/industries.json";
 
 const services = [
   { name: "Digital Marketing", href: "/digital-marketing-agency-bangalore" },
@@ -251,6 +252,16 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
                 </ul>
               </div>
             ))}
+          </div>
+        </nav>
+
+        <nav aria-label="Industry solutions" className="pt-8 border-t border-border mb-10">
+          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Industry Solutions</h3>
+          <div className="flex flex-wrap gap-x-6 gap-y-3">
+            {Object.entries(industries).map(([slug, industry]) => (
+              <Link key={slug} to={`/industries/${slug}`} className="text-sm text-muted-foreground underline-offset-4 hover:underline">{industry.name}</Link>
+            ))}
+            <Link to="/digital-marketing-for-coaching-institutes" className="text-sm text-muted-foreground underline-offset-4 hover:underline">Coaching Institutes</Link>
           </div>
         </nav>
 

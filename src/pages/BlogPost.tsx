@@ -322,7 +322,7 @@ const BlogPost = () => {
               </Button>
             </div>
 
-            <div className="blog-content" dangerouslySetInnerHTML={{ __html: normalizeContent(post.content) }} />
+            <div className="blog-content" dangerouslySetInnerHTML={{ __html: improveArticleHtml(normalizeContent(post.content), post.title) }} />
 
             <section className="mt-12 bg-editorial-ink px-6 py-9 text-primary-foreground md:px-10 md:py-11">
               <Sparkles className="mb-5 h-6 w-6 text-editorial-accent" />

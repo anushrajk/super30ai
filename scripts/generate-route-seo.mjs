@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildRouteGraph } from "../src/lib/schemaGraph.js";
+import { improveArticleHtml, searchDescription } from "../src/lib/seoContent.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -228,6 +229,14 @@ const NAV_LINKS = `<nav>
         <a href="/privacy-policy">Privacy Policy</a>
         <a href="/terms-of-service">Terms of Service</a>
         <a href="/cookie-policy">Cookie Policy</a>
+        <a href="/refund-policy">Refund Policy</a>
+        <a href="/digital-marketing-for-coaching-institutes">Coaching Institute Marketing</a>
+        <a href="/industries/education">Education Marketing</a>
+        <a href="/industries/ecommerce">Ecommerce Brand Marketing</a>
+        <a href="/industries/lifestyle">Lifestyle Marketing</a>
+        <a href="/industries/sports">Sports Marketing</a>
+        <a href="/industries/b2b">B2B Marketing</a>
+        <a href="/industries/hospitality">Hospitality Marketing</a>
       </nav>`;
 
 // The static crawler block in index.html describes the home page. Every other
@@ -537,10 +546,10 @@ const generateBlogPages = async (distIndexHtml) => {
 
   for (const post of posts) {
     const url = `${siteOrigin}/blog/${post.slug}`;
-    const article = sanitizeArticleHtml(post.content || "");
+    const article = improveArticleHtml(sanitizeArticleHtml(post.content || ""), post.title);
     const plain = htmlToText(article);
     const title = post.meta_title || `${post.title} | The Super 30`;
-    const description = (post.meta_description || post.excerpt || plain).slice(0, 300);
+    const description = searchDescription(post.meta_description || post.excerpt || plain);
     const image = OG_IMAGE;
     const published = post.published_at ? new Date(post.published_at).toISOString() : "";
     const modified = post.updated_at ? new Date(post.updated_at).toISOString() : published;
@@ -623,6 +632,7 @@ const generateBlogPages = async (distIndexHtml) => {
     let sitemap = await fs.readFile(sitemapFile, "utf8");
     sitemap = sitemap.replace(/\s*<url>\s*<loc>[^<]*\/blog\/[^<]*<\/loc>[\s\S]*?<\/url>/g, "");
     const entries = posts
+      .filter((post) => !post.canonical_url || post.canonical_url === `${siteOrigin}/blog/${post.slug}`)
       .map((post) => {
         const lastmod = (post.updated_at || post.published_at || new Date().toISOString()).slice(0, 10);
         return `  <url>\n    <loc>${siteOrigin}/blog/${post.slug}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>`;
@@ -726,6 +736,27 @@ const main = async () => {
     const metadata = parsePageMetadata(source, route.routePath);
     if (!metadata) continue;
     await writeRoute(route.routePath, metadata);
+  }
+
+  // Parameterized industry pages also need their own HTML, not the home-page
+  // canonical and content inherited from the SPA fallback.
+  const industries = JSON.parse(await fs.readFile(path.join(rootDir, "src/data/industries.json"), "utf8"));
+  for (const [slug, industry] of Object.entries(industries)) {
+    const routePath = `/industries/${slug}`;
+    const url = `${siteOrigin}${routePath}`;
+    const title = `${industry.name} Digital Marketing Agency Bangalore | The Super 30`;
+    const description = searchDescription(industry.description);
+    const metadata = {
+      title, description, canonical: url, robots: "index, follow",
+      ogTitle: title, ogDescription: description, ogType: "website", ogUrl: url,
+      twitterCard: "summary_large_image", twitterTitle: title, twitterDescription: description,
+    };
+    const contentNodes = industry.subCategories.map((text) => ({ tag: "p", text }));
+    const html = replaceSeoContent(distIndexHtml, routePath, metadata, { name: industry.headline }, [], contentNodes);
+    const outputFile = routeToOutputFile(routePath);
+    await fs.mkdir(path.dirname(outputFile), { recursive: true });
+    await fs.writeFile(outputFile, injectMetadata(html, metadata), "utf8");
+    generatedCount += 1;
   }
 
   const blogCount = await generateBlogPages(distIndexHtml);
