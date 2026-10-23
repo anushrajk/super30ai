@@ -127,7 +127,7 @@ const OG_IMAGE = "https://www.thesuper30.ai/super30-social-logo.jpg";
 
 const stripSeoTags = (html) =>
   html
-    .replace(/\s*<title>[\s\S]*?<\/title>/gi, "")
+    .replace(/\s*<title\b[^>]*>[\s\S]*?<\/title>/gi, "")
     .replace(/\s*<meta[^>]+name="description"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="keywords"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="robots"[^>]*>/gi, "")
