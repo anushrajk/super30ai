@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildRouteGraph } from "../src/lib/schemaGraph.js";
-import { improveArticleHtml, searchDescription } from "../src/lib/seoContent.js";
+import { improveArticleHtml, industryTitle, searchDescription } from "../src/lib/seoContent.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -127,7 +127,7 @@ const OG_IMAGE = "https://www.thesuper30.ai/super30-social-logo.jpg";
 
 const stripSeoTags = (html) =>
   html
-    .replace(/\s*<title>[\s\S]*?<\/title>/gi, "")
+    .replace(/\s*<title\b[^>]*>[\s\S]*?<\/title>/gi, "")
     .replace(/\s*<meta[^>]+name="description"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="keywords"[^>]*>/gi, "")
     .replace(/\s*<meta[^>]+name="robots"[^>]*>/gi, "")
@@ -745,7 +745,7 @@ const main = async () => {
   for (const [slug, industry] of Object.entries(industries)) {
     const routePath = `/industries/${slug}`;
     const url = `${siteOrigin}${routePath}`;
-    const title = `${industry.name} Digital Marketing Agency Bangalore | The Super 30`;
+    const title = industryTitle(industry.name);
     const description = searchDescription(industry.description);
     const metadata = {
       title, description, canonical: url, robots: "index, follow",

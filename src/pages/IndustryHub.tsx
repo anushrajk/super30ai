@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import industryData from "@/data/industries.json";
-import { searchDescription } from "@/lib/seoContent.js";
+import { industryTitle, searchDescription } from "@/lib/seoContent.js";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
@@ -23,7 +23,7 @@ const IndustryHub = () => {
 
   if (!industry) return <Navigate to="/" replace />;
 
-  const title = `${industry.name} Digital Marketing Agency Bangalore | The Super 30`;
+  const title = industryTitle(industry.name);
   const metaDescription = searchDescription(industry.description);
 
   return (
