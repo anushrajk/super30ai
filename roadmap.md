@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Preserve person name and company name independently in enquiry storage and notifications; verify a form submission
+- [x] Preserve person name and company name independently in enquiry storage and notifications; browser submission verified against the saved record and four identity tests pass
 - [x] Verify the latest live deployment across sitemap pages and crawler-visible links; all 52 sitemap URLs pass the checked metadata, canonical, image-label and JSON-LD parsing checks, and missing homepage/blog links are live
 - [x] Fix actionable Ahrefs issues: internal links, sitemap/canonicals, metadata, image descriptions and structured data
 - [x] Verify the fixes and identify any audit items requiring hosting changes or a fresh crawl
