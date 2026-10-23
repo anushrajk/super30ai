@@ -1,0 +1,2 @@
+ALTER TABLE public.leads ADD COLUMN IF NOT EXISTS full_name text;
+COMMENT ON COLUMN public.leads.full_name IS 'Person name supplied in the enquiry form; distinct from company_name. Historical missing names remain NULL.';

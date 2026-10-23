@@ -68,6 +68,7 @@ const PerformanceMarketing = () => {
         role: data.role,
         monthly_revenue: data.monthly_revenue,
         company_name: data.company_name,
+        full_name: data.full_name,
         service_type: "pm",
         step: 1
       };
