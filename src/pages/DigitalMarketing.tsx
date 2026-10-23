@@ -43,7 +43,7 @@ const DigitalMarketing = () => {
       <Helmet>
         <title>Digital Marketing Agency in Bangalore | 10x Your Growth</title>
         <meta name="robots" content="index, follow" />
-        <meta name="description" content="Scale your brand with leading digital marketing company in Bangalore. Our services deliver ROI-focused SEO, PPC &amp; social media strategies. Get a free brand audit" />
+        <meta name="description" content="Grow your brand with a digital marketing company in Bangalore. ROI-focused AI SEO, PPC and social media strategies. Get a free brand audit." />
         <meta name="keywords" content="AI Digital Marketing Agency in Bangalore, AI Digital Marketing Company In Bangalore, AI Digital Marketing Services In Bangalore, Digital Marketing Agency in Bangalore, Digital Marketing Company In Bangalore, Digital Marketing Services In Bangalore, Online marketing company in bangalore, Internet marketing services in bangalore" />
         <link rel="canonical" href="https://www.thesuper30.ai/digital-marketing-agency-bangalore" />
         <meta property="og:title" content="Is Your Digital Marketing Agency Actually Driving Growth?" />

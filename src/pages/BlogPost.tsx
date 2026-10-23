@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, ArrowRight, Calendar, CheckCircle2, Clock, User, Sparkles, Loader2, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import type { Json } from "@/integrations/supabase/types";
+import { improveArticleHtml, searchDescription } from "@/lib/seoContent.js";
 
 interface Post {
   id: string;
@@ -193,8 +194,8 @@ const BlogPost = () => {
   }
 
   const url = `${SITE}/blog/${post.slug}`;
-  const title = post.meta_title || post.title;
-  const description = post.meta_description || post.excerpt || "";
+  const title = post.meta_title || `${post.title} | The Super 30`;
+  const description = searchDescription(post.meta_description || post.excerpt || post.content);
   const ogTitle = post.og_title || title;
   const ogDesc = post.og_description || description;
   const coverImage = toMediaUrl(post.cover_image_url);
@@ -321,7 +322,7 @@ const BlogPost = () => {
               </Button>
             </div>
 
-            <div className="blog-content" dangerouslySetInnerHTML={{ __html: normalizeContent(post.content) }} />
+            <div className="blog-content" dangerouslySetInnerHTML={{ __html: improveArticleHtml(normalizeContent(post.content), post.title) }} />
 
             <section className="mt-12 bg-editorial-ink px-6 py-9 text-primary-foreground md:px-10 md:py-11">
               <Sparkles className="mb-5 h-6 w-6 text-editorial-accent" />

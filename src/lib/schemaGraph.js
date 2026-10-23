@@ -221,10 +221,10 @@ export const buildRouteGraph = (path, data) => {
       description: meta.description,
       inLanguage: "en-IN",
       isPartOf: { "@id": WEBSITE_ID },
-      breadcrumb: { "@id": `${url}#breadcrumb` },
+      ...(pageType === "Blog" ? {} : { breadcrumb: { "@id": `${url}#breadcrumb` } }),
       about: { "@id": ORG_ID },
       publisher: { "@id": ORG_ID },
-      primaryImageOfPage: { "@id": `${SITE_ORIGIN}/#logo` },
+      ...(pageType === "Blog" ? { image: { "@id": `${SITE_ORIGIN}/#logo` } } : { primaryImageOfPage: { "@id": `${SITE_ORIGIN}/#logo` } }),
     })
   );
 
