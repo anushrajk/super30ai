@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Verify the latest live deployment across sitemap pages and crawler-visible links; fix any confirmed source issues
 - [x] Fix actionable Ahrefs issues: internal links, sitemap/canonicals, metadata, image descriptions and structured data
 - [x] Verify the fixes and identify any audit items requiring hosting changes or a fresh crawl
 - [ ] Confirm remaining Ahrefs URL-level findings after publication and a fresh audit — blocked by aggregate-only report and unpublished changes; host-level HTTP→HTTPS→www chain remains outside source control, and Google controls SERP titles/traffic
