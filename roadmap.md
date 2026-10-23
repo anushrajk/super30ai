@@ -1,8 +1,8 @@
 # Roadmap
-- [ ] Verify the latest live deployment across sitemap pages and crawler-visible links; fix any confirmed source issues
+- [x] Verify the latest live deployment across sitemap pages and crawler-visible links; all 52 sitemap URLs pass the checked metadata, canonical, image-label and JSON-LD parsing checks, and missing homepage/blog links are live
 - [x] Fix actionable Ahrefs issues: internal links, sitemap/canonicals, metadata, image descriptions and structured data
 - [x] Verify the fixes and identify any audit items requiring hosting changes or a fresh crawl
-- [ ] Confirm remaining Ahrefs URL-level findings after publication and a fresh audit — blocked by aggregate-only report and unpublished changes; host-level HTTP→HTTPS→www chain remains outside source control, and Google controls SERP titles/traffic
+- [ ] Confirm remaining Ahrefs URL-level findings after a fresh audit — live checks pass, but a new Ahrefs report is needed to verify its verdict; the bare-domain HTTP→HTTPS→www chain remains a hosting setting outside source control
 - [x] Optimize all site pages for mobile layouts and touch usability
 - [x] Implement the reference-style individual blog layout globally
 - [x] Expand the blog hub with editorial discovery and topic sections
