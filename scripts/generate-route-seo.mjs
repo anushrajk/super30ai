@@ -178,7 +178,8 @@ const injectMetadata = (html, metadata) => {
     )
     .join("\n    ");
 
-  const head = schemaTags ? `${tags}\n    ${schemaTags}` : tags;
+  const managedTags = tags.replace(/<(title|meta|link)\b/g, '<$1 data-rh="true"');
+  const head = schemaTags ? `${managedTags}\n    ${schemaTags}` : managedTags;
 
   return cleanHtml.replace("</head>", `    ${head}\n  </head>`);
 };

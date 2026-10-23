@@ -256,12 +256,12 @@ export const Footer = forwardRef<HTMLElement>((props, ref) => {
         </nav>
 
         <nav aria-label="Industry solutions" className="pt-8 border-t border-border mb-10">
-          <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4">Industry Solutions</h3>
+          <h3 className="text-sm font-semibold text-background/70 uppercase tracking-wider mb-4">Industry Solutions</h3>
           <div className="flex flex-wrap gap-x-6 gap-y-3">
             {Object.entries(industries).map(([slug, industry]) => (
-              <Link key={slug} to={`/industries/${slug}`} className="text-sm text-muted-foreground underline-offset-4 hover:underline">{industry.name}</Link>
+              <Link key={slug} to={`/industries/${slug}`} className="text-sm text-background/70 underline-offset-4 hover:underline">{industry.name}</Link>
             ))}
-            <Link to="/digital-marketing-for-coaching-institutes" className="text-sm text-muted-foreground underline-offset-4 hover:underline">Coaching Institutes</Link>
+            <Link to="/digital-marketing-for-coaching-institutes" className="text-sm text-background/70 underline-offset-4 hover:underline">Coaching Institutes</Link>
           </div>
         </nav>
 
