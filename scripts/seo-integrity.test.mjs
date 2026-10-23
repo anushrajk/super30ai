@@ -19,3 +19,17 @@ test("blog schema uses CreativeWork image rather than WebPage-only properties", 
   assert.equal("primaryImageOfPage" in blog, false);
   assert.ok(blog.image);
 });
+import { readFileSync as __read, readdirSync as __ls, statSync as __st, existsSync as __ex } from "node:fs";
+import { join as __join } from "node:path";
+import __assert from "node:assert/strict";
+import { test as __test } from "node:test";
+import { industryTitle as __it } from "../src/lib/seoContent.js";
+
+__test("industry titles stay within 60 characters", () => {
+  __assert.ok(__it("Hotel Management & Hospitality").length <= 60);
+});
+
+__test("every built page has exactly one <title>", { skip: !__ex("dist") }, () => {
+  const walk = (d) => __ls(d).flatMap((f) => { const p = __join(d, f); return __st(p).isDirectory() ? walk(p) : p.endsWith(".html") ? [p] : []; });
+  for (const f of walk("dist")) __assert.equal((__read(f, "utf8").match(/<title\b/g) || []).length, 1, f);
+});

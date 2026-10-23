@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildRouteGraph } from "../src/lib/schemaGraph.js";
-import { improveArticleHtml, searchDescription } from "../src/lib/seoContent.js";
+import { improveArticleHtml, industryTitle, searchDescription } from "../src/lib/seoContent.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

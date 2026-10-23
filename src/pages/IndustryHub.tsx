@@ -1,6 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import industryData from "@/data/industries.json";
-import { searchDescription } from "@/lib/seoContent.js";
+import { industryTitle, searchDescription } from "@/lib/seoContent.js";
 import { Helmet } from "react-helmet-async";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/landing/Footer";
