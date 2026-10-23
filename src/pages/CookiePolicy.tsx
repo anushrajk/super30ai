@@ -41,7 +41,7 @@ const CookiePolicy = () => {
     <>
       <Helmet>
         <title>Cookie Policy | The Super 30 - AI Marketing Agency</title>
-        <meta name="description" content="Learn about the cookies used on The Super 30 website and how to manage your cookie preferences." />
+        <meta name="description" content="Read The Super 30 cookie policy to understand necessary, analytics and marketing cookies, and manage your consent and preferences on our website." />
         <meta name="keywords" content="cookie policy, cookies, website cookies, The Super 30 cookies, cookie consent" />
         <link rel="canonical" href="https://www.thesuper30.ai/cookie-policy" />
         <meta name="robots" content="index, follow" />

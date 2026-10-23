@@ -9,6 +9,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { ArrowLeft, ArrowRight, Calendar, CheckCircle2, Clock, User, Sparkles, Loader2, Share2 } from "lucide-react";
 import { toast } from "sonner";
 import type { Json } from "@/integrations/supabase/types";
+import { improveArticleHtml, searchDescription } from "@/lib/seoContent.js";
 
 interface Post {
   id: string;
@@ -193,8 +194,8 @@ const BlogPost = () => {
   }
 
   const url = `${SITE}/blog/${post.slug}`;
-  const title = post.meta_title || post.title;
-  const description = post.meta_description || post.excerpt || "";
+  const title = post.meta_title || `${post.title} | The Super 30`;
+  const description = searchDescription(post.meta_description || post.excerpt || post.content);
   const ogTitle = post.og_title || title;
   const ogDesc = post.og_description || description;
   const coverImage = toMediaUrl(post.cover_image_url);
