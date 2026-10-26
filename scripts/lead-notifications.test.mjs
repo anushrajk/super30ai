@@ -47,3 +47,17 @@ test('both destinations include landing, first and last page URLs', () => {
   assert.match(chatMessage(record).text, /Last page URL: https:\/\/example.com\/work/);
   assert.equal(details.message, 'Actual message');
 });
+
+test('attribution uses actual landing parameters and session location without invented sources', () => {
+  const record = { ...lead, landing_page_url: 'https://example.com/?utm_source=instagram&utm_medium=paid&utm_campaign=october' };
+  const message = chatMessage(record, { session: { referrer: 'https://instagram.com/', ip_city: 'Bengaluru', ip_state: 'Karnataka', ip_country: 'India' } });
+  assert.match(message.text, /Source \/ Medium: instagram \/ paid/);
+  assert.match(message.text, /Campaign: october/);
+  assert.match(message.text, /Location: Bengaluru, Karnataka, India/);
+  assert.match(chatMessage(lead).text, /Source \/ Medium: Not provided/);
+});
+
+test('alert actions never include unsafe submission URLs', () => {
+  const message = chatMessage({ ...lead, last_page_url: 'javascript:alert(1)' });
+  assert.equal(JSON.stringify(message.cardsV2).includes('javascript:'), false);
+});
