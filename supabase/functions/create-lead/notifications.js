@@ -10,7 +10,11 @@ export function enquiryDetails(lead, context = {}) {
     revenue: lead.monthly_revenue ?? '',
     service: lead.service_type ?? '',
     page_url: String(context.page_url ?? '').slice(0, 500),
-    message: String(context.message ?? '').slice(0, 2000),
+    landing_page_url: lead.landing_page_url ?? context.landing_page_url ?? '',
+    first_page_url: lead.first_page_url ?? context.first_page_url ?? '',
+    last_page_url: lead.last_page_url ?? context.page_url ?? '',
+    form_name: lead.form_name ?? context.form_name ?? '',
+    message: String(lead.message ?? context.message ?? '').slice(0, 2000),
   };
 }
 
@@ -30,11 +34,17 @@ export function chatMessage(lead, context = {}) {
     ['Email', details.email], ['Phone', details.phone], ['Website', details.website],
     ['Service', details.service], ['Role', details.role], ['Monthly revenue', details.revenue],
     ['Business type', lead.business_type], ['Preferred platforms', lead.preferred_platforms?.join(', ')],
-    ['Page', details.page_url], ['Message', details.message],
+    ['Form', details.form_name], ['Landing page', details.landing_page_url],
+    ['First page URL', details.first_page_url], ['Last page URL', details.last_page_url], ['Message', details.message],
     ['Submitted', submissionTime(lead.created_at)], ['Enquiry ID', lead.id],
   ];
   const clean = (value) => String(value ?? '').replace(/[\r\n]+/g, ' ').slice(0, 2000);
-  return { text: ['New website enquiry', ...fields.map(([label, value]) => `${label}: ${clean(value) || 'Not provided'}`)].join('\n') };
+  const text = ['*New website enquiry*', ...fields.map(([label, value]) => `${label}: ${clean(value) || 'Not provided'}`)].join('\n');
+  const html = value => clean(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return { text, cardsV2: [{ cardId: 'enquiry', card: {
+    header: { title: 'New website enquiry', subtitle: `${clean(details.name) || 'Name not provided'} · ${clean(details.company) || 'Company not provided'}` },
+    sections: [{ widgets: fields.map(([label, value]) => ({ decoratedText: { topLabel: label, text: html(value) || 'Not provided', wrapText: true } })) }],
+  }}] };
 }
 
 export async function deliverSheet(url, lead, context, fetcher = fetch) {

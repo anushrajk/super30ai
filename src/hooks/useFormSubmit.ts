@@ -1,9 +1,6 @@
-/**
- * Centralized hook for submitting all forms to Web3Forms endpoint
- */
-
-const WEB3FORMS_ACCESS_KEY = "0a6e76cf-34fb-47e4-9f75-38a127adfd45";
-const WEB3FORMS_URL = "https://api.web3forms.com/submit";
+import { supabase } from '@/integrations/supabase/client';
+import { detectService } from '@/lib/serviceDetection';
+import { enquiryPayload } from '@/lib/enquiryPayload.js';
 
 export interface FormSubmitPayload {
   form_id: string;
@@ -25,40 +22,22 @@ export const submitFormToGoogleSheets = async (
   payload: FormSubmitPayload
 ): Promise<FormSubmitResult> => {
   try {
-    const response = await fetch(WEB3FORMS_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
-      },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        subject: `${payload.form_name} — ${payload.form_id}`,
-        from_name: "The Super 30 Website",
-        form_id: payload.form_id,
-        form_name: payload.form_name,
-        page_url: payload.page_url,
-        trigger_type: payload.trigger_type,
-        ...payload.data,
-      }),
+    let sessionId: string | null = null;
+    try { sessionId = localStorage.getItem('seo_session_id'); } catch { /* Server recovers the session. */ }
+    const body = enquiryPayload(payload, { service: detectService() });
+    const { data: result, error } = await supabase.functions.invoke('create-lead', {
+      body, headers: sessionId ? { 'x-session-id': sessionId } : undefined,
     });
-
-    const result = await response.json();
-
-    if (result.success) {
-      return { success: true };
-    }
-
-    return {
-      success: false,
-      error: result.message || "Form submission failed",
-    };
+    if (error || result?.error || !result?.id) throw new Error('Your enquiry could not be saved. Please try again or call 89041 50555.');
+    try { localStorage.setItem('seo_lead_id', result.id); } catch { /* Saving succeeded independently. */ }
+    await supabase.functions.invoke('send-lead-email', { body: {
+      lead: result, session: { first_page_url: result.first_page_url, current_page_url: result.last_page_url, referrer: document.referrer || 'Direct', browser: navigator.userAgent },
+      submission_time: result.created_at, form_step: payload.form_name,
+    }}).catch(() => undefined);
+    return { success: true };
   } catch (error) {
-    console.error("Form submission error:", error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error occurred",
-    };
+    // Callers must not close or show success when persistence fails.
+    throw error instanceof Error ? error : new Error('Enquiry submission failed. Please try again.');
   }
 };
 

@@ -38,3 +38,12 @@ test('a failed Chat delivery never prevents the Sheet delivery', async () => {
 test('Apps Script application errors are not reported as successful delivery', async () => {
   assert.equal((await deliverSheet('https://script.google.com/test', lead, {}, async () => new Response('TypeError: appendRow'))).delivered, false);
 });
+test('both destinations include landing, first and last page URLs', () => {
+  const record = { ...lead, landing_page_url: 'https://example.com/', first_page_url: 'https://example.com/', last_page_url: 'https://example.com/work', message: 'Actual message' };
+  const details = enquiryDetails(record);
+  assert.equal(details.first_page_url, 'https://example.com/');
+  assert.equal(details.last_page_url, 'https://example.com/work');
+  assert.match(chatMessage(record).text, /Landing page: https:\/\/example.com\//);
+  assert.match(chatMessage(record).text, /Last page URL: https:\/\/example.com\/work/);
+  assert.equal(details.message, 'Actual message');
+});

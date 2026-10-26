@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, CheckCircle, AlertCircle, Phone, Target, TrendingUp } from "lucide-react";
-import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 import { detectService, getServiceHeadline } from "@/lib/serviceDetection";
 
 interface PMLeadCaptureFormProps {
@@ -17,6 +16,7 @@ interface PMLeadCaptureFormProps {
     monthly_revenue?: string;
     full_name?: string;
     company_name?: string;
+    message?: string;
   }) => void;
   loading?: boolean;
 }
@@ -106,25 +106,6 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
     if (canSubmit) {
       const urlWithProtocol = websiteUrl.startsWith('http') ? websiteUrl : `https://${websiteUrl}`;
       
-      // Submit to Web3Forms (non-blocking)
-      void submitFormToGoogleSheets({
-        form_id: "pm_lead_capture_form",
-        form_name: "Free Ads Performance Consultation",
-        page_url: window.location.href,
-        trigger_type: "form_submit",
-        data: {
-          name: fullName,
-          company: companyName,
-          website: urlWithProtocol,
-          email: email,
-          phone: phone ? `+91${phone}` : "",
-          role: roleOptions.find(r => r.value === role)?.label || role || "",
-          ad_budget: adBudgetOptions.find(r => r.value === adBudget)?.label || adBudget || "",
-          message: message || "",
-          service,
-        },
-      });
-
       onSubmit({ 
         website_url: urlWithProtocol, 
         email,
@@ -133,6 +114,7 @@ export const PMLeadCaptureForm = ({ onSubmit, loading }: PMLeadCaptureFormProps)
         monthly_revenue: adBudget || undefined,
         full_name: fullName || undefined,
         company_name: companyName || undefined,
+        message,
       });
     }
   };

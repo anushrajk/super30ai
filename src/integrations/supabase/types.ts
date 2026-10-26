@@ -314,8 +314,13 @@ export type Database = {
           company_name: string | null
           created_at: string
           email: string
+          first_page_url: string | null
+          form_name: string | null
           full_name: string | null
           id: string
+          landing_page_url: string | null
+          last_page_url: string | null
+          message: string | null
           monthly_revenue: string | null
           phone: string | null
           preferred_platforms: Json | null
@@ -331,8 +336,13 @@ export type Database = {
           company_name?: string | null
           created_at?: string
           email: string
+          first_page_url?: string | null
+          form_name?: string | null
           full_name?: string | null
           id?: string
+          landing_page_url?: string | null
+          last_page_url?: string | null
+          message?: string | null
           monthly_revenue?: string | null
           phone?: string | null
           preferred_platforms?: Json | null
@@ -348,8 +358,13 @@ export type Database = {
           company_name?: string | null
           created_at?: string
           email?: string
+          first_page_url?: string | null
+          form_name?: string | null
           full_name?: string | null
           id?: string
+          landing_page_url?: string | null
+          last_page_url?: string | null
+          message?: string | null
           monthly_revenue?: string | null
           phone?: string | null
           preferred_platforms?: Json | null
