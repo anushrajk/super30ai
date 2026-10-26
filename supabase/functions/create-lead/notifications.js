@@ -29,6 +29,13 @@ function submissionTime(date) {
 
 export function chatMessage(lead, context = {}) {
   const details = enquiryDetails(lead, context);
+  const session = context.session ?? {};
+  let attribution;
+  try { attribution = new URL(details.landing_page_url).searchParams; } catch { attribution = new URLSearchParams(); }
+  const source = attribution.get('utm_source') || session.referrer || '';
+  const medium = attribution.get('utm_medium') || '';
+  const campaign = attribution.get('utm_campaign') || '';
+  const location = [session.ip_city, session.ip_state, session.ip_country].filter(value => value && value !== 'Unknown').join(', ');
   const fields = [
     ['Person name', details.name], ['Company name', details.company],
     ['Email', details.email], ['Phone', details.phone], ['Website', details.website],
@@ -37,13 +44,41 @@ export function chatMessage(lead, context = {}) {
     ['Form', details.form_name], ['Landing page', details.landing_page_url],
     ['First page URL', details.first_page_url], ['Last page URL', details.last_page_url], ['Message', details.message],
     ['Submitted', submissionTime(lead.created_at)], ['Enquiry ID', lead.id],
+    ['Source / Medium', [source, medium].filter(Boolean).join(' / ')], ['Campaign', campaign], ['Location', location], ['IP', session.ip_address],
   ];
   const clean = (value) => String(value ?? '').replace(/[\r\n]+/g, ' ').slice(0, 2000);
   const text = ['*New website enquiry*', ...fields.map(([label, value]) => `${label}: ${clean(value) || 'Not provided'}`)].join('\n');
   const html = value => clean(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const widget = (label, value) => ({ decoratedText: { topLabel: label, text: html(value) || 'Not provided', wrapText: true } });
+  const column = pairs => ({ horizontalSizeStyle: 'FILL_AVAILABLE_SPACE', horizontalAlignment: 'START', widgets: pairs.map(([label, value]) => widget(label, value)) });
+  const safeUrl = value => {
+    try { const url = new URL(value); return ['https:', 'http:'].includes(url.protocol) ? url.href : undefined; } catch { return undefined; }
+  };
+  const pageTrail = [['Landing page', details.landing_page_url], ['First page URL', details.first_page_url], ['Last page URL', details.last_page_url]].map(([label, value]) => {
+    const url = safeUrl(value);
+    return widget(label, url || 'Not provided');
+  });
+  const buttons = [];
+  const digits = details.phone.replace(/\D/g, '');
+  if (digits.length >= 7 && digits.length <= 15) {
+    buttons.push({ text: 'Open WhatsApp', onClick: { openLink: { url: `https://wa.me/${digits.length === 10 ? `91${digits}` : digits}` } } });
+  }
+  const lastUrl = safeUrl(details.last_page_url);
+  if (lastUrl) buttons.push({ text: 'Open submission page', onClick: { openLink: { url: lastUrl } } });
   return { text, cardsV2: [{ cardId: 'enquiry', card: {
-    header: { title: 'New website enquiry', subtitle: `${clean(details.name) || 'Name not provided'} · ${clean(details.company) || 'Company not provided'}` },
-    sections: [{ widgets: fields.map(([label, value]) => ({ decoratedText: { topLabel: label, text: html(value) || 'Not provided', wrapText: true } })) }],
+    header: { title: html(details.name) || 'New website enquiry', subtitle: `${html(details.form_name) || 'Website enquiry'} | ${submissionTime(lead.created_at)}` },
+    sections: [
+      { header: 'WEBSITE ENQUIRY · Saved', widgets: [{ columns: { columnItems: [
+        column([['Person name', details.name], ['Company name', details.company], ['Phone', details.phone], ['Email', details.email]]),
+        column([['Service', details.service], ['Website', details.website], ['Capture form', details.form_name], ['Role', details.role]]),
+      ] } }, ...[['Monthly revenue', details.revenue], ['Business type', lead.business_type], ['Preferred platforms', lead.preferred_platforms?.join(', ')], ['Message', details.message]].filter(([, value]) => value).map(([label, value]) => widget(label, value))] },
+      { header: 'Attribution', widgets: [{ columns: { columnItems: [
+        column([['Source / Medium', [source, medium].filter(Boolean).join(' / ')], ['Campaign', campaign]]),
+        column([['Location', location], ['IP', session.ip_address]]),
+      ] } }] },
+      { header: 'Page Trail', collapsible: true, uncollapsibleWidgetsCount: 0, widgets: [...pageTrail, widget('Enquiry ID', lead.id)] },
+      ...(buttons.length ? [{ widgets: [{ buttonList: { buttons } }] }] : []),
+    ],
   }}] };
 }
 
