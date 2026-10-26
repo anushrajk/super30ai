@@ -5,11 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Sparkles, Loader2, CheckCircle, AlertCircle, Phone } from "lucide-react";
-import { submitFormToGoogleSheets } from "@/hooks/useFormSubmit";
 import { detectService, getServiceHeadline } from "@/lib/serviceDetection";
 
 interface LeadCaptureFormProps {
-  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string }) => void;
+  onSubmit: (data: { website_url: string; email: string; phone?: string; role?: string; monthly_revenue?: string; full_name?: string; company_name?: string; message?: string }) => void;
   loading?: boolean;
   variant?: "default" | "compact";
   formTitle?: string;
@@ -121,26 +120,8 @@ export const LeadCaptureForm = ({
         monthly_revenue: monthlyRevenue || undefined,
         full_name: fullName || undefined,
         company_name: companyName || undefined,
+        message,
       };
-
-      // Submit to Web3Forms (non-blocking)
-      void submitFormToGoogleSheets({
-        form_id: formId,
-        form_name: formName,
-        page_url: window.location.href,
-        trigger_type: "form_submit",
-        data: {
-          name: fullName,
-          company: companyName,
-          website: websiteUrl,
-          email: email,
-          phone: phone ? `+91${phone}` : "",
-          role: roleOptions.find(r => r.value === role)?.label || role || "",
-          revenue: revenueOptions.find(r => r.value === monthlyRevenue)?.label || monthlyRevenue || "",
-          message: message || "",
-          service,
-        },
-      });
 
       onSubmit(formData);
     }
