@@ -1,7 +1,8 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
-import { leadIdentity, sheetIdentity } from "../_shared/lead-identity.js";
+import { leadIdentity } from "../_shared/lead-identity.js";
+import { deliverSheet, deliverChat } from "./notifications.js";
 
 // Rate limit: generous so genuine/testing enquiries are never dropped; only blocks floods
 const RATE_LIMIT = 60;
@@ -143,6 +144,7 @@ const handler = async (req: Request): Promise<Response> => {
     });
 
     let result;
+    let deliveryStatus;
 
     if (lead_id) {
       // Validate UUID format for lead_id
@@ -213,35 +215,17 @@ const handler = async (req: Request): Promise<Response> => {
       result = data;
       console.log("Lead created");
 
-      // Send every new enquiry to the Google Sheet from the server (no browser blockers).
-      try {
-        const sheetRes = await fetch(GOOGLE_SHEET_URL, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify({
-            ...sheetIdentity(result),
-            website: website_url,
-            email: email.trim(),
-            phone: phone || "",
-            role: role || "",
-            revenue: monthly_revenue || "",
-            service: service_type || "",
-            page_url: (body.page_url || req.headers.get("referer") || "").toString().slice(0, 500),
-            message: (body.message || "").toString().slice(0, 2000),
-          }),
-          redirect: "manual",
-        });
-        let text = "";
-        const loc = sheetRes.headers.get("location");
-        if (loc) text = await (await fetch(loc)).text();
-        else text = await sheetRes.text();
-        console.log("Sheet sync:", sheetRes.status, text.slice(0, 200));
-      } catch (e) {
-        console.error("Sheet sync failed:", e);
-      }
+      // Both deliveries start after saving and finish independently; neither can lose a saved enquiry.
+      const context = { page_url: body.page_url || req.headers.get("referer") || "", message: body.message || "" };
+      const [google_sheet, google_chat] = await Promise.all([
+        deliverSheet(GOOGLE_SHEET_URL, result, context),
+        deliverChat(Deno.env.get("GOOGLE_API_KEY"), Deno.env.get("GOOGLE_CHAT_WEBHOOK_TOKEN"), result, context),
+      ]);
+      deliveryStatus = { google_sheet, google_chat };
+      console.log("Lead notification delivery", JSON.stringify({ lead_id: result.id, ...deliveryStatus }));
     }
 
-    return new Response(JSON.stringify(result), {
+    return new Response(JSON.stringify({ ...result, ...(deliveryStatus ? { delivery_status: deliveryStatus } : {}) }), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
