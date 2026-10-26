@@ -203,6 +203,13 @@ const handler = async (req: Request): Promise<Response> => {
       result = data;
       console.log("Lead updated");
     } else {
+      // Flag repeat contacts without dropping new submissions or conflating their IDs.
+      const matches = await Promise.all([
+        ...(email ? [supabase.from('leads').select('id,created_at').eq('email', email.trim()).order('created_at', { ascending: false }).limit(1).maybeSingle()] : []),
+        ...(phone ? [supabase.from('leads').select('id,created_at').eq('phone', phone.trim()).order('created_at', { ascending: false }).limit(1).maybeSingle()] : []),
+      ]);
+      if (matches.some(match => match.error)) throw new Error('Could not check existing enquiries');
+      const previousEnquiry = matches.map(match => match.data).filter(Boolean).sort((a, b) => b.created_at.localeCompare(a.created_at))[0];
       // Create new lead
       const { data, error } = await supabase
         .from("leads")
@@ -234,7 +241,7 @@ const handler = async (req: Request): Promise<Response> => {
       console.log("Lead created");
 
       // Both deliveries start after saving and finish independently; neither can lose a saved enquiry.
-      const context = { page_url: pageUrl, ...tracking, session };
+      const context = { page_url: pageUrl, ...tracking, session, previous_enquiry: previousEnquiry };
       const [google_sheet, google_chat] = await Promise.all([
         deliverSheet(GOOGLE_SHEET_URL, result, context),
         deliverChat(Deno.env.get("GOOGLE_API_KEY"), Deno.env.get("GOOGLE_CHAT_WEBHOOK_TOKEN"), result, context),
