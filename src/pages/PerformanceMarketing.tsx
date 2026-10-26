@@ -37,6 +37,7 @@ interface InitialFormData {
   monthly_revenue?: string;
   full_name?: string;
   company_name?: string;
+  message?: string;
 }
 
 const PerformanceMarketing = () => {
@@ -69,6 +70,7 @@ const PerformanceMarketing = () => {
         monthly_revenue: data.monthly_revenue,
         company_name: data.company_name,
         full_name: data.full_name,
+        message: data.message,
         service_type: "pm",
         step: 1
       };
@@ -101,6 +103,7 @@ const PerformanceMarketing = () => {
       const { data: updateResult, error: updateError } = await supabase.functions.invoke('create-lead', {
         body: {
           lead_id: leadId,
+          page_url: window.location.href,
           email: initialFormData.email,
           website_url: initialFormData.website_url,
           business_type: questionnaireData.business_type,

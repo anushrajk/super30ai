@@ -27,7 +27,8 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
   const handleFormSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      const sessionId = localStorage.getItem('seo_session_id');
+      let sessionId: string | null = null;
+      try { sessionId = localStorage.getItem('seo_session_id'); } catch { /* Server recovers the session. */ }
       const service = detectService();
 
       // 1. Create lead in database via edge function (non-blocking for UX, but awaited for reliability)
@@ -84,7 +85,7 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
 
       // Store lead ID for future reference
       if (leadResult?.id) {
-        localStorage.setItem('seo_lead_id', leadResult.id);
+        try { localStorage.setItem('seo_lead_id', leadResult.id); } catch { /* Enquiry is already saved. */ }
       }
 
       toast.success('Form submitted successfully!');
