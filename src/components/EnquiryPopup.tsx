@@ -91,12 +91,12 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
     e.preventDefault();
     setTouched({ name: true, email: true, phone: true });
 
-    if (!canSubmit) return;
+    if (loading || !canSubmit) return;
 
     setLoading(true);
 
     try {
-      // Submit to Google Sheets
+      // Save centrally; the server delivers the saved enquiry to Sheet and Chat.
       await submitFormToGoogleSheets({
         form_id: "enquiry_popup_form",
         form_name: "Enquiry Popup Form",
@@ -114,7 +114,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
       toast.success("Thank you for your enquiry!");
       onOpenChange(false);
       
-      // Open thank you page in new tab
+      // Redirect in the same tab only after the enquiry is saved.
       openThankYouPage({
         source: "enquiry",
         name: name.trim(),
@@ -123,7 +123,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
       });
     } catch (error) {
       console.error("Error submitting enquiry:", error);
-      toast.error("Something went wrong. Please try again.");
+      toast.error(error instanceof Error ? error.message : "Your enquiry could not be saved. Please try again or call 89041 50555.");
     } finally {
       setLoading(false);
     }

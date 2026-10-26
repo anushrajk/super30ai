@@ -16,7 +16,8 @@ export interface FormSubmitResult {
 }
 
 /**
- * Submit form data to Web3Forms endpoint
+ * Save every popup/standalone enquiry through create-lead, which delivers
+ * Google Sheet and Chat notifications after persistence. Never use Web3Forms.
  */
 export const submitFormToGoogleSheets = async (
   payload: FormSubmitPayload
