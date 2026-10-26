@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Verify homepage hero popup: current source saves and both Google destinations acknowledge delivery; live www host still uses Web3Forms and must redeploy current source. Improved error display and repeat-submit guard; 18 tests pass
 - [x] Label popup/regular enquiry sources, remove repeated Chat content, and flag genuine repeat contacts; 18 tests pass, both live TEST enquiries reached Sheet and Chat
 - [x] Fix popup/standalone enquiry persistence and delivery; formatted Chat cards and saved landing/first/latest URLs; manual popup test saved and both Google destinations acknowledged delivery
 - [x] Send new Google Sheet enquiries to Google Chat securely; browser TEST submission saved separate names and both destinations acknowledged delivery with status 200
