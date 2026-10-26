@@ -42,6 +42,16 @@ const handler = async (req: Request): Promise<Response> => {
     const clientIp = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       req.headers.get("x-real-ip") || "unknown";
 
+    const rawBody = await req.json();
+    const optionalText = (value: unknown, max = 2000): string | undefined => {
+      if (value === undefined || value === null) return undefined;
+      if (typeof value !== 'string' || value.length > max) throw new Error('Invalid enquiry field');
+      return value.trim();
+    };
+    const body = { ...rawBody, email: optionalText(rawBody.email, 320) || '', website_url: optionalText(rawBody.website_url, 2000) || '',
+      phone: optionalText(rawBody.phone, 40), message: optionalText(rawBody.message, 5000), form_name: optionalText(rawBody.form_name, 200),
+      page_url: optionalText(rawBody.page_url), first_page_url: optionalText(rawBody.first_page_url), landing_page_url: optionalText(rawBody.landing_page_url) };
+    const pageUrl = body.page_url || req.headers.get('referer') || '';
     // Resolve a usable session. A missing or stale session must NEVER cause a lost lead.
     let sessionId: string | null = null;
     if (headerSessionId && uuidRegex.test(headerSessionId)) {
@@ -57,8 +67,8 @@ const handler = async (req: Request): Promise<Response> => {
       const { data: fallbackSession, error: fallbackError } = await supabase
         .from("sessions")
         .insert({
-          first_page_url: req.headers.get("referer") || "unknown",
-          current_page_url: req.headers.get("referer") || "unknown",
+          first_page_url: body.first_page_url || pageUrl,
+          current_page_url: pageUrl,
           referrer: "Unknown (recovered at submit)",
           user_agent: req.headers.get("user-agent") || "unknown",
           browser: "Unknown",
@@ -82,7 +92,6 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
 
-    const body: LeadData & { lead_id?: string; full_name?: string; page_url?: string; message?: string } = await req.json();
     const { email, website_url, step, role, monthly_revenue, phone, company_name, lead_id, service_type, business_type, preferred_platforms } = body;
     let identity;
     try {
@@ -94,21 +103,28 @@ const handler = async (req: Request): Promise<Response> => {
     }
 
     // Basic validation
-    if (!email || !website_url) {
+    if (!email && !phone) {
       return new Response(
-        JSON.stringify({ error: "Email and website URL are required" }),
+        JSON.stringify({ error: "Email or phone is required" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email.trim())) {
+    if (email && !emailRegex.test(email.trim())) {
       return new Response(
         JSON.stringify({ error: "Invalid email format" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
+    if (phone && !/^\+?[\d\s()-]{7,40}$/.test(phone)) {
+      return new Response(JSON.stringify({ error: 'Invalid phone' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+    }
+    const { data: session } = await supabase.from('sessions').select('first_page_url').eq('id', sessionId).maybeSingle();
+    const tracking = { first_page_url: session?.first_page_url || body.first_page_url || pageUrl,
+      landing_page_url: session?.first_page_url || body.landing_page_url || pageUrl, last_page_url: pageUrl,
+      message: body.message, form_name: body.form_name };
 
     const identifier = headerSessionId && uuidRegex.test(headerSessionId)
       ? `session:${headerSessionId}`
@@ -169,6 +185,7 @@ const handler = async (req: Request): Promise<Response> => {
           service_type,
           business_type,
           preferred_platforms,
+          ...tracking,
           updated_at: new Date().toISOString(),
         })
         .eq("id", lead_id)
@@ -201,6 +218,7 @@ const handler = async (req: Request): Promise<Response> => {
           business_type,
           preferred_platforms,
           session_id: sessionId,
+          ...tracking,
         })
         .select()
         .single();
@@ -216,7 +234,7 @@ const handler = async (req: Request): Promise<Response> => {
       console.log("Lead created");
 
       // Both deliveries start after saving and finish independently; neither can lose a saved enquiry.
-      const context = { page_url: body.page_url || req.headers.get("referer") || "", message: body.message || "" };
+      const context = { page_url: pageUrl, ...tracking };
       const [google_sheet, google_chat] = await Promise.all([
         deliverSheet(GOOGLE_SHEET_URL, result, context),
         deliverChat(Deno.env.get("GOOGLE_API_KEY"), Deno.env.get("GOOGLE_CHAT_WEBHOOK_TOKEN"), result, context),

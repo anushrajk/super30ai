@@ -1,5 +1,6 @@
 # Architecture rules
 - New enquiry notifications to Apps Script and Google Chat run independently in create-lead after persistence, using server-only webhook credentials and reporting delivery status without logging URLs, credentials or provider bodies.
+- Popup and standalone forms use the centralized enquiry payload adapter and create-lead; parent-managed audit forms submit only through their parent to prevent duplicates. First/landing URLs come from the stored session, and the submission URL is snapshotted on each lead.
 - Lead identity is normalized independently in the shared server helper and persisted as full_name and company_name; omitted fields stay undefined on partial updates to prevent loss during follow-up steps.
 - Keep industry content in shared JSON consumed by React and the static SEO generator, so dynamic industry URLs ship matching metadata and content before JavaScript runs.
 - Use shared SEO content helpers for CMS image labels, editorial internal-link normalization, and search-description formatting at runtime and prerender time, so crawler and visitor output agree.

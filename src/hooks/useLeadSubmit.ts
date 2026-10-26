@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { toast } from 'sonner';
 import { openThankYouPage } from '@/lib/thankYouRedirect';
-import { submitFormToGoogleSheets } from '@/hooks/useFormSubmit';
 import { detectService } from '@/lib/serviceDetection';
 
 interface FormData {
@@ -13,6 +12,7 @@ interface FormData {
   monthly_revenue?: string;
   full_name?: string;
   company_name?: string;
+  message?: string;
 }
 
 interface UseLeadSubmitOptions {
@@ -42,15 +42,12 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
           service_type: service,
           step: 1,
           full_name: data.full_name,
+          message: data.message,
+          form_name: formName || source,
           page_url: window.location.href,
         },
         headers: sessionId ? { 'x-session-id': sessionId } : undefined,
       });
-
-      // Web3Forms + Google Sheet rows are sent once by the form component itself
-      // (LeadCaptureForm). Sending them here too created duplicate sheet rows.
-
-
 
       // Wait for the lead to be created so we can send email with session data
       const { data: leadResult, error: leadError } = await createLeadPromise;
@@ -75,7 +72,7 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
             step: 1,
           },
           session: {
-            first_page_url: '',
+            first_page_url: leadResult.first_page_url || '',
             current_page_url: window.location.href,
             referrer: document.referrer || 'Direct',
             browser: navigator.userAgent,
