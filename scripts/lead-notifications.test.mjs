@@ -1,17 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { enquiryDetails, chatMessage, deliverSheet, deliverChat } from '../supabase/functions/create-lead/notifications.js';
+import { enquiryDetails, chatMessage, deliverSheet, deliverChat, formOrigin, enquiryStatus } from '../supabase/functions/create-lead/notifications.js';
 
 const lead = { id: 'test-id', full_name: 'Test Person', company_name: 'TEST Company', email: 'test@example.com', phone: '+919999999999', website_url: 'https://example.com', service_type: 'ai-seo', created_at: '2026-10-26T07:26:00Z' };
 
 test('both destinations preserve different person and company names', () => {
   assert.deepEqual([enquiryDetails(lead).name, enquiryDetails(lead).company], ['Test Person', 'TEST Company']);
-  assert.match(chatMessage(lead).text, /Person name: Test Person\nCompany name: TEST Company/);
-  assert.match(chatMessage(lead).text, /26 10 2026 12:56 PM IST/);
+  assert.match(chatMessage(lead).fallbackText, /Person name: Test Person\nCompany name: TEST Company/);
+  assert.match(chatMessage(lead).fallbackText, /26 10 2026 12:56 PM IST/);
 });
 
 test('missing person name is not substituted with company', () => {
-  assert.match(chatMessage({ ...lead, full_name: null }).text, /Person name: Not provided\nCompany name: TEST Company/);
+  assert.match(chatMessage({ ...lead, full_name: null }).fallbackText, /Person name: Not provided\nCompany name: TEST Company/);
 });
 
 test('new enquiry is posted once to both Google destinations independently', async () => {
@@ -43,21 +43,48 @@ test('both destinations include landing, first and last page URLs', () => {
   const details = enquiryDetails(record);
   assert.equal(details.first_page_url, 'https://example.com/');
   assert.equal(details.last_page_url, 'https://example.com/work');
-  assert.match(chatMessage(record).text, /Landing page: https:\/\/example.com\//);
-  assert.match(chatMessage(record).text, /Last page URL: https:\/\/example.com\/work/);
+  assert.match(chatMessage(record).fallbackText, /Landing page: https:\/\/example.com\//);
+  assert.match(chatMessage(record).fallbackText, /Last page URL: https:\/\/example.com\/work/);
   assert.equal(details.message, 'Actual message');
 });
 
 test('attribution uses actual landing parameters and session location without invented sources', () => {
   const record = { ...lead, landing_page_url: 'https://example.com/?utm_source=instagram&utm_medium=paid&utm_campaign=october' };
   const message = chatMessage(record, { session: { referrer: 'https://instagram.com/', ip_city: 'Bengaluru', ip_state: 'Karnataka', ip_country: 'India' } });
-  assert.match(message.text, /Source \/ Medium: instagram \/ paid/);
-  assert.match(message.text, /Campaign: october/);
-  assert.match(message.text, /Location: Bengaluru, Karnataka, India/);
-  assert.match(chatMessage(lead).text, /Source \/ Medium: Not provided/);
+  assert.match(message.fallbackText, /Source \/ Medium: instagram \/ paid/);
+  assert.match(message.fallbackText, /Campaign: october/);
+  assert.match(message.fallbackText, /Location: Bengaluru, Karnataka, India/);
+  assert.match(chatMessage(lead).fallbackText, /Source \/ Medium: Not provided/);
 });
 
 test('alert actions never include unsafe submission URLs', () => {
   const message = chatMessage({ ...lead, last_page_url: 'javascript:alert(1)' });
   assert.equal(JSON.stringify(message.cardsV2).includes('javascript:'), false);
+});
+
+test('popup and regular submissions are classified independently', () => {
+  assert.equal(formOrigin('Enquiry Popup Form'), 'Popup form');
+  assert.equal(formOrigin('Contact Us'), 'Regular form');
+  assert.equal(formOrigin(), 'Not recorded');
+});
+
+test('repeat enquiries are Duplicate and retain their original reference', () => {
+  assert.equal(enquiryStatus({ id: 'original-id' }), 'Duplicate');
+  assert.equal(enquiryStatus(), 'New');
+  assert.equal(enquiryDetails(lead, { previous_enquiry: { id: 'original-id' } }).duplicate_of, 'original-id');
+});
+
+test('same enquiry ID uses one deterministic Chat message ID', async () => {
+  const ids = [];
+  const record = { ...lead, id: '12345678-1234-1234-1234-123456789abc' };
+  const fetcher = async (url, options) => {
+    ids.push(new URL(url).searchParams.get('messageId'));
+    const body = JSON.parse(options.body);
+    assert.equal(Object.hasOwn(body, 'text'), false);
+    return new Response(ids.length === 1 ? JSON.stringify({ name: 'spaces/AAQAi6NTb3I/messages/test' }) : '{}', { status: ids.length === 1 ? 200 : 409 });
+  };
+  await deliverChat('test-key', 'test-token', record, {}, fetcher);
+  const second = await deliverChat('test-key', 'test-token', record, {}, fetcher);
+  assert.deepEqual(ids, ['client-enquiry-12345678-1234-1234-1234-123456789abc', 'client-enquiry-12345678-1234-1234-1234-123456789abc']);
+  assert.equal(second.duplicate_suppressed, true);
 });

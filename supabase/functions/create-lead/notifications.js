@@ -1,5 +1,14 @@
 import { sheetIdentity } from '../_shared/lead-identity.js';
 
+export function formOrigin(formName) {
+  if (!formName) return 'Not recorded';
+  return /popup|modal|exit.intent|callback/i.test(formName) ? 'Popup form' : 'Regular form';
+}
+
+export function enquiryStatus(previous) {
+  return previous?.id ? 'Duplicate' : 'New';
+}
+
 export function enquiryDetails(lead, context = {}) {
   return {
     ...sheetIdentity(lead),
@@ -14,6 +23,9 @@ export function enquiryDetails(lead, context = {}) {
     first_page_url: lead.first_page_url ?? context.first_page_url ?? '',
     last_page_url: lead.last_page_url ?? context.page_url ?? '',
     form_name: lead.form_name ?? context.form_name ?? '',
+    form_type: formOrigin(lead.form_name ?? context.form_name),
+    status: enquiryStatus(context.previous_enquiry),
+    duplicate_of: context.previous_enquiry?.id ?? '',
     message: String(lead.message ?? context.message ?? '').slice(0, 2000),
   };
 }
@@ -41,7 +53,7 @@ export function chatMessage(lead, context = {}) {
     ['Email', details.email], ['Phone', details.phone], ['Website', details.website],
     ['Service', details.service], ['Role', details.role], ['Monthly revenue', details.revenue],
     ['Business type', lead.business_type], ['Preferred platforms', lead.preferred_platforms?.join(', ')],
-    ['Form', details.form_name], ['Landing page', details.landing_page_url],
+    ['Form', details.form_name], ['Form type', details.form_type], ['Status', details.status], ['Duplicate of', details.duplicate_of], ['Landing page', details.landing_page_url],
     ['First page URL', details.first_page_url], ['Last page URL', details.last_page_url], ['Message', details.message],
     ['Submitted', submissionTime(lead.created_at)], ['Enquiry ID', lead.id],
     ['Source / Medium', [source, medium].filter(Boolean).join(' / ')], ['Campaign', campaign], ['Location', location], ['IP', session.ip_address],
@@ -65,13 +77,14 @@ export function chatMessage(lead, context = {}) {
   }
   const lastUrl = safeUrl(details.last_page_url);
   if (lastUrl) buttons.push({ text: 'Open submission page', onClick: { openLink: { url: lastUrl } } });
-  return { text, cardsV2: [{ cardId: 'enquiry', card: {
+  // fallbackText is used by notifications, not rendered above the card like text.
+  return { fallbackText: text, cardsV2: [{ cardId: 'enquiry', card: {
     header: { title: html(details.name) || 'New website enquiry', subtitle: `${html(details.form_name) || 'Website enquiry'} | ${submissionTime(lead.created_at)}` },
     sections: [
-      { header: 'WEBSITE ENQUIRY · Saved', widgets: [{ columns: { columnItems: [
+      { header: `WEBSITE ENQUIRY · ${details.status} · Saved`, widgets: [{ columns: { columnItems: [
         column([['Person name', details.name], ['Company name', details.company], ['Phone', details.phone], ['Email', details.email]]),
-        column([['Service', details.service], ['Website', details.website], ['Capture form', details.form_name], ['Role', details.role]]),
-      ] } }, ...[['Monthly revenue', details.revenue], ['Business type', lead.business_type], ['Preferred platforms', lead.preferred_platforms?.join(', ')], ['Message', details.message]].filter(([, value]) => value).map(([label, value]) => widget(label, value))] },
+        column([['Service', details.service], ['Website', details.website], ['Capture form', details.form_name], ['Form type', details.form_type], ['Role', details.role]]),
+      ] } }, ...[['Duplicate of', details.duplicate_of], ['Monthly revenue', details.revenue], ['Business type', lead.business_type], ['Preferred platforms', lead.preferred_platforms?.join(', ')], ['Message', details.message]].filter(([, value]) => value).map(([label, value]) => widget(label, value))] },
       { header: 'Attribution', widgets: [{ columns: { columnItems: [
         column([['Source / Medium', [source, medium].filter(Boolean).join(' / ')], ['Campaign', campaign]]),
         column([['Location', location], ['IP', session.ip_address]]),
@@ -115,10 +128,14 @@ export async function deliverChat(apiKey, token, lead, context, fetcher = fetch)
     const url = new URL('https://chat.googleapis.com/v1/spaces/AAQAi6NTb3I/messages');
     url.searchParams.set('key', apiKey);
     url.searchParams.set('token', token);
+    if (/^[0-9a-f-]{36}$/.test(lead.id ?? '')) url.searchParams.set('messageId', `client-enquiry-${lead.id}`);
     const response = await fetcher(url.toString(), {
       method: 'POST', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(chatMessage(lead, context)), signal: AbortSignal.timeout(15000),
     });
+    if (response.status === 409 && url.searchParams.has('messageId')) {
+      return { delivered: true, status: 409, duplicate_suppressed: true };
+    }
     if (!response.ok) {
       // Never log provider bodies or request URLs: they may contain webhook credentials.
       return { delivered: false, status: response.status };
