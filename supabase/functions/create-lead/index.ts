@@ -121,7 +121,7 @@ const handler = async (req: Request): Promise<Response> => {
     if (phone && !/^\+?[\d\s()-]{7,40}$/.test(phone)) {
       return new Response(JSON.stringify({ error: 'Invalid phone' }), { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
     }
-    const { data: session } = await supabase.from('sessions').select('first_page_url').eq('id', sessionId).maybeSingle();
+    const { data: session } = await supabase.from('sessions').select('first_page_url,referrer,ip_city,ip_state,ip_country,ip_address').eq('id', sessionId).maybeSingle();
     const tracking = { first_page_url: session?.first_page_url || body.first_page_url || pageUrl,
       landing_page_url: session?.first_page_url || body.landing_page_url || pageUrl, last_page_url: pageUrl,
       message: body.message, form_name: body.form_name };
@@ -234,7 +234,7 @@ const handler = async (req: Request): Promise<Response> => {
       console.log("Lead created");
 
       // Both deliveries start after saving and finish independently; neither can lose a saved enquiry.
-      const context = { page_url: pageUrl, ...tracking };
+      const context = { page_url: pageUrl, ...tracking, session };
       const [google_sheet, google_chat] = await Promise.all([
         deliverSheet(GOOGLE_SHEET_URL, result, context),
         deliverChat(Deno.env.get("GOOGLE_API_KEY"), Deno.env.get("GOOGLE_CHAT_WEBHOOK_TOKEN"), result, context),
