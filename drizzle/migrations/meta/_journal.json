@@ -8,6 +8,13 @@
       "when": 1792754738921,
       "tag": "0000_preserve_lead_person_name",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1793000007290,
+      "tag": "0001_add_enquiry_origin_details",
+      "breakpoints": true
     }
   ]
 }
