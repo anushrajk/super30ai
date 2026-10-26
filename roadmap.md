@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Label popup/regular enquiry sources, remove repeated Chat content, and flag genuine repeat enquiries; verify delivery
+- [x] Label popup/regular enquiry sources, remove repeated Chat content, and flag genuine repeat contacts; 18 tests pass, both live TEST enquiries reached Sheet and Chat
 - [x] Fix popup/standalone enquiry persistence and delivery; formatted Chat cards and saved landing/first/latest URLs; manual popup test saved and both Google destinations acknowledged delivery
 - [x] Send new Google Sheet enquiries to Google Chat securely; browser TEST submission saved separate names and both destinations acknowledged delivery with status 200
 - [x] Preserve person name and company name independently in enquiry storage and notifications; browser submission verified against the saved record and four identity tests pass
