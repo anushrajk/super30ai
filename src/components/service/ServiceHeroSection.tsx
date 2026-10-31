@@ -46,7 +46,7 @@ export const ServiceHeroSection = ({
   const [showEnquiryPopup, setShowEnquiryPopup] = useState(false);
 
   return (
-    <section className="relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
+    <section className="s30-service-hero relative bg-background overflow-hidden min-h-[85vh] md:min-h-[90vh] flex items-center">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border))_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-30" />
       </div>
@@ -93,7 +93,7 @@ export const ServiceHeroSection = ({
             </div>
           </div>
 
-          <div className="min-w-0 md:col-span-1 lg:col-span-5">
+          <div className="s30-service-form min-w-0 md:col-span-1 lg:col-span-5">
             <LeadCaptureForm 
               onSubmit={onSubmit} 
               loading={loading}

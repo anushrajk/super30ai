@@ -1,5 +1,5 @@
 # Architecture rules
-- Homepage reference styling is scoped to its page wrapper and a dedicated stylesheet; shared navigation, forms and footer retain their behaviour and other pages keep their own theme.
+- Shared reference styling uses global semantic tokens and a route-aware presentation wrapper; homepage-specific layouts remain scoped, and page content, navigation, forms and delivery behaviour stay owned by their existing components.
 - Google Chat uses card-only payloads with fallbackText and a deterministic per-enquiry message ID; repeat contacts are retained and labelled separately from duplicate notification attempts.
 - New enquiry notifications to Apps Script and Google Chat run independently in create-lead after persistence, using server-only webhook credentials and reporting delivery status without logging URLs, credentials or provider bodies.
 - Popup and standalone forms use the centralized enquiry payload adapter and create-lead; parent-managed audit forms submit only through their parent to prevent duplicates. First/landing URLs come from the stored session, and the submission URL is snapshotted on each lead.

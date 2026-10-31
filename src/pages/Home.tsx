@@ -22,9 +22,6 @@ const Home = () => <div className="s30-home">
       <meta name="twitter:url" content="https://www.thesuper30.ai/" />
       <meta name="robots" content="index, follow" />
     </Helmet>
-    <Helmet>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;650;700;800&display=swap" />
-    </Helmet>
     <Navbar />
     <main>
       <HomeReference />

@@ -101,22 +101,7 @@ const socialLinks = [
 
 export const Footer = forwardRef<HTMLElement>((props, ref) => {
   return (
-    <footer ref={ref} className="relative bg-[#0a0a0a] dark:bg-[#0a0a0a] overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div 
-          className="absolute inset-0" 
-          style={{
-            backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--brand-orange)) 1px, transparent 0)`,
-            backgroundSize: '40px 40px'
-          }}
-        />
-      </div>
-      
-      {/* Floating decorative elements */}
-      <div className="absolute top-20 right-10 w-32 h-32 bg-gradient-to-br from-[hsl(var(--brand-orange))]/10 to-transparent rounded-full blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-[hsl(var(--brand-orange))]/5 to-transparent rounded-full blur-3xl" />
-
+    <footer ref={ref} className="site-footer relative bg-midnight overflow-hidden">
       <div className="container mx-auto px-4 py-12 md:py-16 relative z-10">
         {/* Main Footer Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">

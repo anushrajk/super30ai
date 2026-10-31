@@ -14,9 +14,14 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        sans: ['DM Sans', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        heading: ['Plus Jakarta Sans', 'DM Sans', 'sans-serif'],
       },
       colors: {
+        midnight: 'hsl(var(--s30-midnight))',
+        'night-card': 'hsl(var(--s30-night-card))',
+        'on-midnight': 'hsl(var(--s30-light))',
+        'muted-on-midnight': 'hsl(var(--s30-soft-light))',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -75,15 +80,15 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
-        xl: "calc(var(--radius) + 4px)",
-        "2xl": "calc(var(--radius) + 8px)",
-        "3xl": "calc(var(--radius) + 12px)",
+        xl: "var(--radius)",
+        "2xl": "var(--radius)",
+        "3xl": "var(--radius)",
       },
       fontWeight: {
         normal: '400',
         medium: '500',
-        semibold: '500',
-        bold: '500',
+        semibold: '600',
+        bold: '700',
       },
       boxShadow: {},
       keyframes: {
