@@ -9,7 +9,6 @@ import { PageSchema } from "@/components/seo/PageSchema";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { HelmetProvider } from "react-helmet-async";
 import { Loader2 } from "lucide-react";
-import { SiteAppearance } from "@/components/SiteAppearance";
 
 // Lazy load ALL non-critical global components
 const EngagementTracker = lazy(() => 
@@ -150,7 +149,6 @@ const App = () => (
           <DeferredUI />
           <ScrollToTop />
           <PageSchema />
-          <SiteAppearance>
           <ErrorBoundary>
             <Suspense fallback={<PageLoader />}>
               <Routes>
@@ -270,7 +268,6 @@ const App = () => (
               </Routes>
             </Suspense>
           </ErrorBoundary>
-          </SiteAppearance>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
