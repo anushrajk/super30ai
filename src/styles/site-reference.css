@@ -1,0 +1,86 @@
+/* Shared reference presentation. Page copy, section order and controls stay owned by each route. */
+.s30-site { min-height: 100vh; }
+.s30-interior .container { max-width: 1200px; }
+.s30-interior main { padding-top: 112px; }
+.s30-interior h1 { font-weight: 700; line-height: 1.22; }
+.s30-interior h2 { font-weight: 650; line-height: 1.3; }
+.s30-interior h3 { font-weight: 600; line-height: 1.4; }
+.s30-interior :is(h1,h2,h3,h4,p,a,button,label,span) { letter-spacing: 0; }
+
+/* The same inset midnight navigation as the homepage, with legible light menus. */
+.s30-interior .site-navbar {
+  top: 18px; left: 24px; right: 24px;
+  border: 1px solid hsl(var(--s30-line)); border-radius: 50px;
+  background: hsl(var(--s30-midnight)); color: hsl(var(--s30-light));
+  box-shadow: none;
+}
+.s30-interior .site-navbar nav { height: 66px; }
+.s30-interior .site-navbar nav > a img { height: 30px; filter: grayscale(1) brightness(0) invert(1); }
+.s30-interior .site-navbar nav > div:first-of-type { margin-right: 12px; gap: 0; }
+.s30-interior .site-navbar nav > div:first-of-type > div > :is(a,button) { color: hsl(var(--s30-soft-light)); font-size: 11px; padding: 8px 6px; }
+.s30-interior .site-navbar nav > div:first-of-type > div > :is(a,button):hover { color: hsl(var(--s30-light)); background: hsl(var(--s30-night-card)); }
+.s30-interior .site-navbar nav > button { color: hsl(var(--s30-light)); }
+.s30-interior .site-navbar > div:last-child { color: hsl(var(--foreground)); background: hsl(var(--card)); border-radius: 8px; }
+
+/* Dark lead-in bands retain their existing copy and enquiry forms. */
+.s30-service-hero, .s30-interior :is(#about-hero,#contact-hero) {
+  --background: var(--s30-midnight); --foreground: var(--s30-light);
+  --muted: var(--s30-night-card); --muted-foreground: var(--s30-soft-light);
+  --border: var(--s30-line);
+  background-color: hsl(var(--s30-midnight)) !important;
+  color: hsl(var(--s30-light));
+  min-height: 700px !important; padding: 32px 0 48px;
+  background-image: url('../assets/home-seoai-background.jpg');
+  background-position: center; background-size: cover;
+}
+.s30-service-hero > .absolute, .s30-interior :is(#about-hero,#contact-hero) > .absolute { display: none; }
+.s30-service-hero h1 .text-brand { color: hsl(var(--s30-highlight)); }
+.s30-service-hero .bg-accent > .text-foreground { color: hsl(var(--accent-foreground)); }
+.s30-service-hero button[class*="border-brand"] { color: hsl(var(--s30-highlight)); }
+.s30-service-form {
+  --background: 0 0% 97.5%; --foreground: 220 30% 12%;
+  --muted: 220 14% 95%; --muted-foreground: 220 8% 44%;
+  --border: 220 13% 89%; --input: 220 13% 89%;
+  color: hsl(var(--foreground));
+}
+.s30-service-form > div { border-radius: 8px; background: hsl(var(--card)); box-shadow: none; backdrop-filter: none; }
+.s30-service-form form > button { border-radius: 50px; background-image: none; background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); box-shadow: none; }
+
+/* Compatibility for old presentation utilities; semantic status and portfolio colours remain intact. */
+.s30-site [class~="bg-black"], .s30-site [class~="bg-[#0a0a0a]"] { background-color: hsl(var(--s30-midnight)); }
+.s30-interior [class*="from-orange-"] { background-image: none; background-color: hsl(var(--primary)); color: hsl(var(--primary-foreground)); box-shadow: none; }
+.s30-interior [class~="text-orange-500"], .s30-interior [class~="text-orange-600"] { color: hsl(var(--primary)); }
+.s30-interior [class~="bg-orange-50"], .s30-interior [class~="bg-orange-100"] { background-color: hsl(var(--accent)); }
+.s30-interior [class~="bg-orange-500"], .s30-interior [class~="bg-orange-600"] { background-color: hsl(var(--primary)); }
+.s30-interior [class*="border-orange-"] { border-color: hsl(var(--primary) / .25); }
+.s30-interior [class~="text-brand-gradient"] { background: none; color: hsl(var(--primary)); -webkit-text-fill-color: currentColor; }
+.s30-interior section [aria-hidden="true"][class*="blur-"][class*="rounded-full"] { display: none; }
+.s30-interior .bento-card, .s30-interior .hover-lift { box-shadow: none; }
+.s30-interior .bento-card:hover, .s30-interior .hover-lift:hover { transform: none; box-shadow: none; }
+
+/* Full footer content and crawler links are retained, unlike decorative reference details. */
+.s30-site .site-footer { background: hsl(var(--s30-midnight)); color: hsl(var(--s30-soft-light)); margin: 0 16px 12px; border-radius: 8px; }
+.s30-site .site-footer :is(p,a,li > div > span) { color: hsl(var(--s30-soft-light)); }
+.s30-site .site-footer h3 { color: hsl(var(--s30-light)); }
+.s30-site .site-footer :is(nav,[class*="border-t"]) { border-color: hsl(var(--s30-line)); }
+.s30-site .site-footer a:hover { color: hsl(var(--s30-highlight)); }
+.s30-site .site-footer a svg { color: hsl(var(--s30-highlight)); }
+
+@media (max-width: 1199px) {
+  .s30-interior .site-navbar nav > div:first-of-type > div > :is(a,button) { font-size: 10px; padding: 8px 4px; }
+}
+@media (max-width: 1023px) {
+  .s30-interior .site-navbar { left: 16px; right: 16px; }
+  .s30-interior .site-navbar > div:last-child { height: calc(100dvh - 108px); }
+}
+@media (max-width: 767px) {
+  .s30-interior main { padding-top: 92px; }
+  .s30-interior .site-navbar { top: 14px; left: 12px; right: 12px; }
+  .s30-interior .site-navbar nav { height: 56px; }
+  .s30-service-hero, .s30-interior :is(#about-hero,#contact-hero) { min-height: auto !important; padding: 28px 0 40px; }
+  .s30-site .site-footer { margin: 0 8px 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .s30-site { scroll-behavior: auto; }
+  .s30-site *, .s30-site *::before, .s30-site *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

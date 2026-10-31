@@ -220,7 +220,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`site-navbar fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         forceWhiteBg
           ? "bg-white border-b border-border/50 shadow-md"
           : isScrolled
@@ -385,7 +385,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
           <div className="hidden lg:flex items-center">
             <Link
               to="/contact-us"
-              className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-md px-4 py-2 text-sm font-semibold text-white transition-all duration-300 active:scale-[0.98] bg-[hsl(var(--brand-orange))] shadow-lg hover:scale-105 hover:bg-[hsl(var(--brand-orange))]/90 hover:shadow-xl"
+              className="inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-colors bg-primary hover:bg-primary/90"
             >
               Contact
               <ArrowRight className="h-4 w-4 shrink-0" />
@@ -493,7 +493,7 @@ export const Navbar = ({ forceWhiteBg = false }: { forceWhiteBg?: boolean }) => 
               <Link
                 to="/contact-us"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold text-white bg-[hsl(var(--brand-orange))] shadow-lg hover:bg-[hsl(var(--brand-orange))]/90 transition-all"
+                className="inline-flex h-10 w-full items-center justify-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
               >
                 Contact
                 <ArrowRight className="h-4 w-4 shrink-0" />
