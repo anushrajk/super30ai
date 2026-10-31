@@ -27,7 +27,7 @@
   --background: var(--s30-midnight); --foreground: var(--s30-light);
   --muted: var(--s30-night-card); --muted-foreground: var(--s30-soft-light);
   --border: var(--s30-line);
-  background: hsl(var(--s30-midnight)) !important;
+  background-color: hsl(var(--s30-midnight)) !important;
   color: hsl(var(--s30-light));
   min-height: 700px !important; padding: 32px 0 48px;
   background-image: url('../assets/home-seoai-background.jpg');
@@ -36,7 +36,7 @@
 .s30-service-hero > .absolute, .s30-interior :is(#about-hero,#contact-hero) > .absolute { display: none; }
 .s30-service-hero h1 .text-brand { color: hsl(var(--s30-highlight)); }
 .s30-service-hero .bg-accent > .text-foreground { color: hsl(var(--accent-foreground)); }
-.s30-service-hero button[class*="outline"] { color: hsl(var(--s30-highlight)); }
+.s30-service-hero button[class*="border-brand"] { color: hsl(var(--s30-highlight)); }
 .s30-service-form {
   --background: 0 0% 97.5%; --foreground: 220 30% 12%;
   --muted: 220 14% 95%; --muted-foreground: 220 8% 44%;

@@ -146,7 +146,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
         onOpenChange(isOpen);
       }}
     >
-      <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-xl border border-border/40 shadow-2xl rounded-2xl p-6 sm:p-8">
+      <DialogContent className="sm:max-w-md bg-card border border-border shadow-none rounded-lg p-6 sm:p-8">
         {/* Modern icon treatment */}
         <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-xl bg-primary/10">
           <MessageCircle className="w-6 h-6 text-primary" />
@@ -289,7 +289,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
           <Button
             type="submit"
             disabled={loading || !canSubmit}
-            className="w-full h-11 bg-foreground text-background rounded-xl font-medium hover:bg-foreground/90 transition-all duration-200 group"
+            className="w-full h-11 bg-primary text-primary-foreground rounded-full font-medium hover:bg-primary/90 transition-colors duration-200 group"
           >
             {loading ? (
               <Loader2 className="w-4 h-4 animate-spin" />
