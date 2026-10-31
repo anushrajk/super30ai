@@ -49,7 +49,7 @@ export function HomeReference() {
       <img className="s30-hero-background" src={background} alt="" width={1920} height={1024} fetchPriority="high" />
       <div className="s30-hero-content">
         <span className="s30-hero-tag"><Sparkles size={13} /> AI-Powered. Human-Driven.</span>
-        <h1>The AI Digital Marketing Agency<br className="s30-desktop-break" />That Turns Your Growth<br className="s30-desktop-break" />into <span>Revenue</span></h1>
+        <h1>The AI Digital Marketing Agency <br className="s30-desktop-break" />That Turns Your Growth <br className="s30-desktop-break" />into <span>Revenue</span></h1>
         <p>AI-driven strategies. Qualified customers. Measurable growth.<br className="s30-desktop-break" /> Bring your next chapter of growth to life with The Super 30.</p>
         {cta()}
       </div>
