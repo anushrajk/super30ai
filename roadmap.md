@@ -1,5 +1,5 @@
 # Roadmap
-- [ ] Extend the homepage reference design across the entire site without changing content or enquiry delivery; verify representative pages and all public routes
+- [x] Extend the homepage reference design across the site with shared fonts, violet accents, midnight navigation/hero/footer and compact cards; retained page content, checked 42 pages at desktop/390px plus key 320px pages, verified menus and valid popup inputs, and passed 18 enquiry regression tests
 - [x] Replicate the supplied SEOAI homepage design with violet/navy colours, matching-style fonts, photographic sections and existing enquiry capture; desktop/390px/320px checks pass, popup opens, articles load, no broken images or browser errors, 14 enquiry regression tests pass
 - [x] Verify homepage hero popup: current source saves and both Google destinations acknowledge delivery; live www host still uses Web3Forms and must redeploy current source. Improved error display and repeat-submit guard; 18 tests pass
 - [x] Label popup/regular enquiry sources, remove repeated Chat content, and flag genuine repeat contacts; 18 tests pass, both live TEST enquiries reached Sheet and Chat
