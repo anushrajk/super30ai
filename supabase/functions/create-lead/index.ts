@@ -2,13 +2,15 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { getCorsHeaders, handleCorsPreFlight } from "../_shared/cors.ts";
 import { leadIdentity } from "../_shared/lead-identity.js";
-import { deliverSheet, deliverChat } from "./notifications.js";
+import { deliverSheet, deliverChat, deliverEmail, formOrigin } from "./notifications.js";
 
 // Rate limit: generous so genuine/testing enquiries are never dropped; only blocks floods
 const RATE_LIMIT = 60;
 const RATE_WINDOW_MINUTES = 60;
 const GOOGLE_SHEET_URL =
   "https://script.google.com/macros/s/AKfycbxp-HKGGkx4zEkGHcATl06dSsVXs4DY-U973k7qgdfO-ClxgTx_p_4aTD6ozZlBuULq/exec";
+// Resend only delivers to the account owner's inbox until thesuper30.ai is verified there.
+const LEAD_EMAIL_TO = ["thesuper30.ai@gmail.com"];
 
 interface LeadData {
   email: string;
@@ -50,7 +52,7 @@ const handler = async (req: Request): Promise<Response> => {
     };
     const body = { ...rawBody, email: optionalText(rawBody.email, 320) || '', website_url: optionalText(rawBody.website_url, 2000) || '',
       phone: optionalText(rawBody.phone, 40), message: optionalText(rawBody.message, 5000), form_name: optionalText(rawBody.form_name, 200),
-      page_url: optionalText(rawBody.page_url), first_page_url: optionalText(rawBody.first_page_url), landing_page_url: optionalText(rawBody.landing_page_url) };
+      page_url: optionalText(rawBody.page_url), form_type: optionalText(rawBody.form_type, 40), first_page_url: optionalText(rawBody.first_page_url), landing_page_url: optionalText(rawBody.landing_page_url) };
     const pageUrl = body.page_url || req.headers.get('referer') || '';
     // Resolve a usable session. A missing or stale session must NEVER cause a lost lead.
     let sessionId: string | null = null;
@@ -124,7 +126,7 @@ const handler = async (req: Request): Promise<Response> => {
     const { data: session } = await supabase.from('sessions').select('first_page_url,referrer,ip_city,ip_state,ip_country,ip_address').eq('id', sessionId).maybeSingle();
     const tracking = { first_page_url: session?.first_page_url || body.first_page_url || pageUrl,
       landing_page_url: session?.first_page_url || body.landing_page_url || pageUrl, last_page_url: pageUrl,
-      message: body.message, form_name: body.form_name };
+      message: body.message, form_name: body.form_name, form_type: formOrigin(body.form_name, body.form_type) };
 
     const identifier = headerSessionId && uuidRegex.test(headerSessionId)
       ? `session:${headerSessionId}`
@@ -242,12 +244,17 @@ const handler = async (req: Request): Promise<Response> => {
 
       // Both deliveries start after saving and finish independently; neither can lose a saved enquiry.
       const context = { page_url: pageUrl, ...tracking, session, previous_enquiry: previousEnquiry };
-      const [google_sheet, google_chat] = await Promise.all([
+      const [google_sheet, google_chat, email] = await Promise.all([
         deliverSheet(GOOGLE_SHEET_URL, result, context),
         deliverChat(Deno.env.get("GOOGLE_API_KEY"), Deno.env.get("GOOGLE_CHAT_WEBHOOK_TOKEN"), result, context),
+        deliverEmail(Deno.env.get("LOVABLE_API_KEY"), Deno.env.get("RESEND_API_KEY"), LEAD_EMAIL_TO, result, context),
       ]);
-      deliveryStatus = { google_sheet, google_chat };
-      console.log("Lead notification delivery", JSON.stringify({ lead_id: result.id, ...deliveryStatus }));
+      deliveryStatus = { google_sheet, google_chat, email };
+      const logRows = [["database", { delivered: true }], ["email", email], ["google_sheet", google_sheet], ["google_chat", google_chat]]
+        .map(([channel, r]: any) => ({ lead_id: result.id, channel, delivered: !!r.delivered, http_status: r.status ?? null, detail: r.error ?? (r.duplicate_suppressed ? "duplicate_suppressed" : null) }));
+      const { error: logError } = await supabase.from("lead_delivery_log").insert(logRows);
+      if (logError) console.error("Delivery log insert failed:", logError.message);
+      console.log("Lead notification delivery", JSON.stringify({ lead_id: result.id, google_sheet: google_sheet.delivered, google_chat: google_chat.delivered, email: email.delivered }));
     }
 
     return new Response(JSON.stringify({ ...result, ...(deliveryStatus ? { delivery_status: deliveryStatus } : {}) }), {
