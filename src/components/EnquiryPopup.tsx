@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import {
   Select,
@@ -40,6 +41,25 @@ const roleOptions = [
   { value: "other", label: "Other" },
 ];
 
+const revenueOptions = [
+  { value: "under_50k", label: "Under ₹50L/month" },
+  { value: "50k_100k", label: "₹50L-₹1Cr/month" },
+  { value: "100k_500k", label: "₹1Cr-₹5Cr/month" },
+  { value: "500k_1m", label: "₹5Cr-₹10Cr/month" },
+  { value: "over_1m", label: "Over ₹10Cr/month" },
+];
+
+// Website is optional in the popup; accept "example.com" and save it as a full link.
+const normalizeWebsite = (value: string): string => {
+  const v = value.trim();
+  if (!v) return "";
+  return /^https?:\/\//i.test(v) ? v : `https://${v}`;
+};
+const validateWebsite = (value: string): boolean => {
+  if (!value.trim()) return true;
+  try { return /\./.test(new URL(normalizeWebsite(value)).hostname); } catch { return false; }
+};
+
 const serviceOptions = [
   { value: "ai-seo", label: "AI SEO" },
   { value: "performance-marketing", label: "Lead Generation" },
@@ -62,6 +82,10 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
   
   const [loading, setLoading] = useState(false);
   const [name, setName] = useState("");
+  const [company, setCompany] = useState("");
+  const [website, setWebsite] = useState("");
+  const [revenue, setRevenue] = useState("");
+  const [message, setMessage] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [role, setRole] = useState("");
@@ -84,12 +108,13 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
   const isEmailValid = validateEmail(email);
   const isPhoneValid = validatePhone(phone);
   const isNameValid = name.trim().length > 0;
+  const isWebsiteValid = validateWebsite(website);
 
-  const canSubmit = isNameValid && isEmailValid && isPhoneValid;
+  const canSubmit = isNameValid && isEmailValid && isPhoneValid && isWebsiteValid;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setTouched({ name: true, email: true, phone: true });
+    setTouched({ name: true, email: true, phone: true, website: true });
 
     if (loading || !canSubmit) return;
 
@@ -104,8 +129,12 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
         trigger_type: "popup",
         data: {
           name: name.trim(),
+          company_name: company.trim(),
+          website_url: normalizeWebsite(website),
           email: email.trim(),
           phone: phone ? `+91${phone}` : "",
+          monthly_revenue: revenueOptions.find(r => r.value === revenue)?.label || "",
+          message: message.trim(),
           role: roleOptions.find(r => r.value === role)?.label || role || "",
           service_interest: serviceOptions.find(s => s.value === serviceInterest)?.label || serviceInterest || "",
         },
@@ -131,6 +160,10 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
 
   const resetForm = () => {
     setName("");
+    setCompany("");
+    setWebsite("");
+    setRevenue("");
+    setMessage("");
     setEmail("");
     setPhone("");
     setRole("");
@@ -146,7 +179,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
         onOpenChange(isOpen);
       }}
     >
-      <DialogContent className="sm:max-w-md bg-background/95 backdrop-blur-xl border border-border/40 shadow-2xl rounded-2xl p-6 sm:p-8">
+      <DialogContent className="sm:max-w-lg max-h-[90vh] overflow-y-auto bg-background/95 backdrop-blur-xl border border-border/40 shadow-2xl rounded-2xl p-6 sm:p-8">
         {/* Modern icon treatment */}
         <div className="flex items-center justify-center w-12 h-12 mx-auto rounded-xl bg-primary/10">
           <MessageCircle className="w-6 h-6 text-primary" />
@@ -161,7 +194,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
           </p>
         </DialogHeader>
 
-        <form onSubmit={handleSubmit} className="space-y-4 mt-4">
+        <form onSubmit={handleSubmit} className="space-y-3 mt-2">
           {/* Name */}
           <div className="relative">
             <Input
@@ -184,6 +217,31 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
             <p className="text-xs text-destructive -mt-2 ml-1">
               Please enter your name
             </p>
+          )}
+
+          {/* Company */}
+          <Input
+            type="text"
+            placeholder="Company name"
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
+            className="w-full h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60"
+          />
+
+          {/* Website */}
+          <Input
+            type="text"
+            inputMode="url"
+            placeholder="Website (e.g. yourcompany.com)"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            onBlur={() => handleBlur("website")}
+            className={`w-full h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 placeholder:text-muted-foreground/60 ${
+              touched.website && !isWebsiteValid ? "ring-2 ring-destructive/50" : "focus:ring-primary/20"
+            }`}
+          />
+          {touched.website && !isWebsiteValid && (
+            <p className="text-xs text-destructive -mt-1 ml-1">Please enter a valid website</p>
           )}
 
           {/* Email */}
@@ -250,6 +308,7 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
             </p>
           )}
 
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {/* Role */}
           <Select value={role} onValueChange={setRole}>
             <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
@@ -285,6 +344,30 @@ export const EnquiryPopup = ({ open, onOpenChange }: EnquiryPopupProps) => {
               ))}
             </SelectContent>
           </Select>
+          </div>
+
+          {/* Monthly revenue */}
+          <Select value={revenue} onValueChange={setRevenue}>
+            <SelectTrigger className="h-11 bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20">
+              <SelectValue placeholder="Monthly revenue" />
+            </SelectTrigger>
+            <SelectContent className="rounded-xl">
+              {revenueOptions.map((option) => (
+                <SelectItem key={option.value} value={option.value} className="cursor-pointer">
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+
+          {/* Message */}
+          <Textarea
+            placeholder="Tell us about your project or goals (optional)"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            maxLength={2000}
+            className="w-full min-h-[72px] bg-muted/40 border-0 rounded-xl focus:ring-2 focus:ring-primary/20 placeholder:text-muted-foreground/60 resize-none"
+          />
 
           <Button
             type="submit"

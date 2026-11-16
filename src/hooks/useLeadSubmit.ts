@@ -45,6 +45,7 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
           full_name: data.full_name,
           message: data.message,
           form_name: formName || source,
+          form_type: 'Banner form',
           page_url: window.location.href,
         },
         headers: sessionId ? { 'x-session-id': sessionId } : undefined,
@@ -59,29 +60,7 @@ export const useLeadSubmit = ({ source, formId, formName }: UseLeadSubmitOptions
         return;
       }
 
-      // 4. Send notification email via edge function (non-blocking, always sent)
-      void supabase.functions.invoke('send-lead-email', {
-        body: {
-          lead: {
-            website_url: data.website_url,
-            email: data.email,
-            role: data.role,
-            monthly_revenue: data.monthly_revenue,
-            phone: data.phone,
-            company_name: data.company_name,
-            full_name: data.full_name,
-            step: 1,
-          },
-          session: {
-            first_page_url: leadResult.first_page_url || '',
-            current_page_url: window.location.href,
-            referrer: document.referrer || 'Direct',
-            browser: navigator.userAgent,
-          },
-          submission_time: new Date().toISOString(),
-          form_step: `Lead Capture - ${source}`,
-        },
-      });
+      // create-lead sends the email, Sheet and Chat alerts server-side and logs each delivery.
 
       // Store lead ID for future reference
       if (leadResult?.id) {

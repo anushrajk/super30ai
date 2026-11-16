@@ -1,8 +1,12 @@
 import { sheetIdentity } from '../_shared/lead-identity.js';
 
-export function formOrigin(formName) {
-  if (!formName) return 'Not recorded';
-  return /popup|modal|exit.intent|callback/i.test(formName) ? 'Popup form' : 'Regular form';
+// Explicit form_type from the browser wins; otherwise infer from the form name.
+// Forms that reach create-lead without any name are the page/banner forms of older builds.
+export function formOrigin(formName, formType) {
+  if (/^popup/i.test(formType ?? '')) return 'Popup form';
+  if (/^(banner|regular|page)/i.test(formType ?? '')) return 'Banner form';
+  if (!formName) return 'Banner form';
+  return /popup|modal|exit.intent|callback/i.test(formName) ? 'Popup form' : 'Banner form';
 }
 
 export function enquiryStatus(previous) {
@@ -23,7 +27,7 @@ export function enquiryDetails(lead, context = {}) {
     first_page_url: lead.first_page_url ?? context.first_page_url ?? '',
     last_page_url: lead.last_page_url ?? context.page_url ?? '',
     form_name: lead.form_name ?? context.form_name ?? '',
-    form_type: formOrigin(lead.form_name ?? context.form_name),
+    form_type: formOrigin(lead.form_name ?? context.form_name, lead.form_type ?? context.form_type),
     status: enquiryStatus(context.previous_enquiry),
     duplicate_of: context.previous_enquiry?.id ?? '',
     message: String(lead.message ?? context.message ?? '').slice(0, 2000),
@@ -142,6 +146,40 @@ export async function deliverChat(apiKey, token, lead, context, fetcher = fetch)
     }
     const data = await response.json();
     return { delivered: typeof data.name === 'string' && data.name.startsWith('spaces/AAQAi6NTb3I/messages/'), status: response.status };
+  } catch {
+    return { delivered: false, error: 'delivery_failed' };
+  }
+}
+const esc = (value) => String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+export function emailMessage(lead, context = {}) {
+  const d = enquiryDetails(lead, context);
+  const session = context.session ?? {};
+  const location = [session.ip_city, session.ip_state, session.ip_country].filter(v => v && v !== 'Unknown').join(', ');
+  const rows = [
+    ['Form type', d.form_type], ['Form', d.form_name], ['Status', d.status], ['Person name', d.name], ['Company name', d.company],
+    ['Email', d.email], ['Phone', d.phone], ['Website', d.website], ['Service', d.service], ['Role', d.role],
+    ['Monthly revenue', d.revenue], ['Message', d.message], ['Landing page', d.landing_page_url],
+    ['First page URL', d.first_page_url], ['Last page URL', d.last_page_url], ['Referrer', session.referrer],
+    ['Location', location], ['IP', session.ip_address], ['Submitted', submissionTime(lead.created_at)], ['Enquiry ID', lead.id],
+  ];
+  const html = `<div style="font-family:Arial,sans-serif;max-width:640px;margin:0 auto"><h2 style="margin:0 0 12px">New ${esc(d.form_type)} enquiry: ${esc(d.name || d.email || d.phone)}</h2><table style="width:100%;border-collapse:collapse">${rows.map(([k, v]) => `<tr><td style="padding:8px;border:1px solid #e5e7eb;font-weight:bold;width:35%">${esc(k)}</td><td style="padding:8px;border:1px solid #e5e7eb">${esc(v) || 'Not provided'}</td></tr>`).join('')}</table></div>`;
+  return { subject: `New lead (${d.form_type}${d.status === 'Duplicate' ? ' · Duplicate' : ''}): ${d.name || d.email || d.phone} — ${d.form_name || 'Website'}`, html };
+}
+
+export async function deliverEmail(lovableKey, resendKey, to, lead, context, fetcher = fetch) {
+  if (!lovableKey || !resendKey) return { delivered: false, error: 'not_configured' };
+  try {
+    const { subject, html } = emailMessage(lead, context);
+    const response = await fetcher('https://connector-gateway.lovable.dev/resend/emails', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${lovableKey}`, 'X-Connection-Api-Key': resendKey, 'Idempotency-Key': `enquiry-${lead.id}` },
+      body: JSON.stringify({ from: 'Super30 Leads <onboarding@resend.dev>', to, subject, html }),
+      signal: AbortSignal.timeout(15000),
+    });
+    if (!response.ok) return { delivered: false, status: response.status, error: (await response.text()).slice(0, 300) };
+    const data = await response.json();
+    return { delivered: typeof data.id === 'string', status: response.status };
   } catch {
     return { delivered: false, error: 'delivery_failed' };
   }

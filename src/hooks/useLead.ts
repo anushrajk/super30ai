@@ -36,6 +36,7 @@ export const useLead = () => {
           message: data.message,
           service_type: data.service_type,
           page_url: window.location.href,
+          form_type: 'Banner form',
           step: data.step || 1
         },
         headers: sessionId ? { 'x-session-id': sessionId } : undefined

@@ -15,6 +15,13 @@
       "when": 1793000007290,
       "tag": "0001_add_enquiry_origin_details",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1794815633019,
+      "tag": "0002_lead_delivery_log",
+      "breakpoints": true
     }
   ]
 }
