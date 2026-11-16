@@ -9,6 +9,7 @@ export function enquiryPayload(payload, tracking = {}) {
     service_type: text(d.service_type, d.service, d.service_interest, d.services) || tracking.service,
     business_type: text(d.business_type), message: text(d.message) || message,
     form_name: payload.form_name, form_id: payload.form_id, step: 1,
+    form_type: ['popup', 'exit_intent'].includes(payload.trigger_type) ? 'Popup form' : 'Banner form',
     page_url: payload.page_url, last_page_url: payload.page_url,
     first_page_url: tracking.first_page_url || payload.page_url,
     landing_page_url: tracking.landing_page_url || tracking.first_page_url || payload.page_url,

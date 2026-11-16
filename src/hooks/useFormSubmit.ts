@@ -30,11 +30,8 @@ export const submitFormToGoogleSheets = async (
       body, headers: sessionId ? { 'x-session-id': sessionId } : undefined,
     });
     if (error || result?.error || !result?.id) throw new Error('Your enquiry could not be saved. Please try again or call 89041 50555.');
+    // create-lead sends the email, Sheet and Chat alerts server-side and logs each delivery.
     try { localStorage.setItem('seo_lead_id', result.id); } catch { /* Saving succeeded independently. */ }
-    await supabase.functions.invoke('send-lead-email', { body: {
-      lead: result, session: { first_page_url: result.first_page_url, current_page_url: result.last_page_url, referrer: document.referrer || 'Direct', browser: navigator.userAgent },
-      submission_time: result.created_at, form_step: payload.form_name,
-    }}).catch(() => undefined);
     return { success: true };
   } catch (error) {
     // Callers must not close or show success when persistence fails.
