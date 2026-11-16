@@ -308,6 +308,44 @@ export type Database = {
           },
         ]
       }
+      lead_delivery_log: {
+        Row: {
+          channel: string
+          created_at: string
+          delivered: boolean
+          detail: string | null
+          http_status: number | null
+          id: string
+          lead_id: string | null
+        }
+        Insert: {
+          channel: string
+          created_at?: string
+          delivered?: boolean
+          detail?: string | null
+          http_status?: number | null
+          id?: string
+          lead_id?: string | null
+        }
+        Update: {
+          channel?: string
+          created_at?: string
+          delivered?: boolean
+          detail?: string | null
+          http_status?: number | null
+          id?: string
+          lead_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_delivery_log_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       leads: {
         Row: {
           business_type: string | null
@@ -316,6 +354,7 @@ export type Database = {
           email: string
           first_page_url: string | null
           form_name: string | null
+          form_type: string | null
           full_name: string | null
           id: string
           landing_page_url: string | null
@@ -338,6 +377,7 @@ export type Database = {
           email: string
           first_page_url?: string | null
           form_name?: string | null
+          form_type?: string | null
           full_name?: string | null
           id?: string
           landing_page_url?: string | null
@@ -360,6 +400,7 @@ export type Database = {
           email?: string
           first_page_url?: string | null
           form_name?: string | null
+          form_type?: string | null
           full_name?: string | null
           id?: string
           landing_page_url?: string | null
